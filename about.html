@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
 
     <meta
@@ -8,7 +10,9 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>About LearnByte - Learn, Explore & Grow</title>
+    <title>
+        About LearnByte - Learn, Explore & Grow
+    </title>
 
     <meta
         name="description"
@@ -17,25 +21,88 @@
 
     <meta
         name="robots"
-        content="index, follow"
+        content="index, follow, max-image-preview:large"
     >
+
+    <meta
+        name="author"
+        content="LearnByte"
+    >
+
+
+    <!-- Canonical -->
+
+    <link
+        rel="canonical"
+        href="https://learnbtyehq.github.io/about.html"
+    >
+
+
+    <!-- Open Graph -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:title"
+        content="About LearnByte - Learn, Explore & Grow"
+    >
+
+    <meta
+        property="og:description"
+        content="Learn more about LearnByte, a growing knowledge platform covering education, technology, SEO and gaming."
+    >
+
+    <meta
+        property="og:url"
+        content="https://learnbtyehq.github.io/about.html"
+    >
+
+    <meta
+        property="og:site_name"
+        content="LearnByte"
+    >
+
+
+    <!-- Styles -->
 
     <link
         rel="stylesheet"
         href="style.css"
     >
 
-    <link
-        rel="canonical"
-        href="https://learnbtyehq.github.io/learnbyte/about.html"
-    >
+
+    <!-- About Page Structured Data -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AboutPage",
+        "name": "About LearnByte",
+        "description": "Learn more about LearnByte, a growing knowledge platform covering education, technology, SEO and gaming.",
+        "url": "https://learnbtyehq.github.io/about.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "LearnByte",
+            "url": "https://learnbtyehq.github.io/"
+        }
+    }
+    </script>
+
 </head>
 
+
 <body>
+
+
+    <!-- ================= HEADER ================= -->
 
     <header class="site-header">
 
         <div class="container navbar">
+
 
             <a
                 href="index.html"
@@ -45,258 +112,28 @@
                 Learn<span>Byte</span>
             </a>
 
+
             <button
                 class="menu-toggle"
                 id="menuToggle"
                 aria-label="Open navigation menu"
                 aria-expanded="false"
+                aria-controls="navMenu"
+                type="button"
             >
                 ☰
             </button>
+
 
             <nav
                 class="nav-menu"
                 id="navMenu"
                 aria-label="Main navigation"
             >
-                <a href="index.html">Home</a>
-                <a href="category/education.html">Education</a>
-                <a href="category/technology.html">Technology</a>
-                <a href="category/seo.html">SEO</a>
-                <a href="category/gaming.html">Gaming</a>
-            </nav>
 
-        </div>
-
-    </header>
-
-
-    <main>
-
-        <section class="hero">
-
-            <div class="container hero-content">
-
-                <p class="hero-label">
-                    About LearnByte
-                </p>
-
-                <h1>
-                    Learn something useful,
-                    <span>every day.</span>
-                </h1>
-
-                <p class="hero-description">
-                    LearnByte is a knowledge platform created to make
-                    useful information about education, technology,
-                    SEO and gaming easier to understand.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <section class="section">
-
-            <div class="container about-content">
-
-                <p class="section-label">
-                    Our Purpose
-                </p>
-
-                <h2>
-                    Making useful knowledge easier to understand.
-                </h2>
-
-                <p>
-                    The internet contains a huge amount of information,
-                    but finding clear and useful explanations is not
-                    always easy.
-                </p>
-
-                <br>
-
-                <p>
-                    LearnByte aims to publish practical, beginner-friendly
-                    guides and articles that help readers learn something
-                    useful and apply that knowledge in real situations.
-                </p>
-
-                <br>
-
-                <p>
-                    Our main areas are education, technology, SEO and
-                    gaming. As the website grows, more useful topics and
-                    resources may be added.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <section class="categories section">
-
-            <div class="container">
-
-                <div class="section-heading">
-
-                    <p class="section-label">
-                        What We Cover
-                    </p>
-
-                    <h2>
-                        Explore LearnByte
-                    </h2>
-
-                </div>
-
-
-                <div class="category-grid">
-
-                    <a
-                        href="category/education.html"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon">
-                            🎓
-                        </div>
-
-                        <h3>
-                            Education
-                        </h3>
-
-                        <p>
-                            Study resources, exams, courses and
-                            student-focused guides.
-                        </p>
-
-                    </a>
-
-
-                    <a
-                        href="category/technology.html"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon">
-                            💻
-                        </div>
-
-                        <h3>
-                            Technology
-                        </h3>
-
-                        <p>
-                            Technology, AI, apps, software and
-                            practical digital guides.
-                        </p>
-
-                    </a>
-
-
-                    <a
-                        href="category/seo.html"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon">
-                            🔎
-                        </div>
-
-                        <h3>
-                            SEO
-                        </h3>
-
-                        <p>
-                            Search engine optimization and
-                            website growth guides.
-                        </p>
-
-                    </a>
-
-
-                    <a
-                        href="category/gaming.html"
-                        class="category-card"
-                    >
-
-                        <div class="category-icon">
-                            🎮
-                        </div>
-
-                        <h3>
-                            Gaming
-                        </h3>
-
-                        <p>
-                            Gaming guides, tips, updates and
-                            useful gaming information.
-                        </p>
-
-                    </a>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <footer class="site-footer">
-
-        <div class="container footer-content">
-
-            <div class="footer-brand">
-
-                <a
-                    href="index.html"
-                    class="logo"
-                >
-                    Learn<span>Byte</span>
+                <a href="index.html">
+                    Home
                 </a>
-
-                <p>
-                    Learn something useful, every day.
-                </p>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <h3>
-                    Quick Links
-                </h3>
-
-                <a href="about.html">
-                    About
-                </a>
-
-                <a href="contact.html">
-                    Contact
-                </a>
-
-                <a href="privacy-policy.html">
-                    Privacy Policy
-                </a>
-
-                <a href="disclaimer.html">
-                    Disclaimer
-                </a>
-
-            </div>
-
-
-            <div class="footer-links">
-
-                <h3>
-                    Categories
-                </h3>
 
                 <a href="category/education.html">
                     Education
@@ -314,27 +151,378 @@
                     Gaming
                 </a>
 
+            </nav>
+
+        </div>
+
+    </header>
+
+
+
+    <main>
+
+
+        <!-- ================= HERO ================= -->
+
+        <section
+            class="hero"
+            aria-labelledby="about-title"
+        >
+
+            <div class="container hero-content">
+
+
+                <p class="hero-label">
+                    About LearnByte
+                </p>
+
+
+                <h1 id="about-title">
+
+                    Learn something useful,
+
+                    <span>
+                        every day.
+                    </span>
+
+                </h1>
+
+
+                <p class="hero-description">
+
+                    LearnByte is a knowledge platform created
+                    to make useful information about education,
+                    technology, SEO and gaming easier to understand.
+
+                </p>
+
+
             </div>
+
+        </section>
+
+
+
+        <!-- ================= PURPOSE ================= -->
+
+        <section
+            class="section"
+            aria-labelledby="purpose-title"
+        >
+
+            <div class="container about-content">
+
+
+                <p class="section-label">
+                    Our Purpose
+                </p>
+
+
+                <h2 id="purpose-title">
+                    Making useful knowledge easier to understand.
+                </h2>
+
+
+                <p>
+                    The internet contains a huge amount of information,
+                    but finding clear and useful explanations is not
+                    always easy.
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    LearnByte aims to publish practical,
+                    beginner-friendly guides and articles that help
+                    readers learn something useful and apply that
+                    knowledge in real situations.
+                </p>
+
+
+                <br>
+
+
+                <p>
+                    Our main areas are education, technology, SEO and
+                    gaming. As the website grows, more useful topics
+                    and resources may be added.
+                </p>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= WHAT WE COVER ================= -->
+
+        <section
+            class="categories section"
+            aria-labelledby="coverage-title"
+        >
+
+            <div class="container">
+
+
+                <div class="section-heading">
+
+
+                    <p class="section-label">
+                        What We Cover
+                    </p>
+
+
+                    <h2 id="coverage-title">
+                        Explore LearnByte
+                    </h2>
+
+
+                </div>
+
+
+
+                <div class="category-grid">
+
+
+                    <a
+                        href="category/education.html"
+                        class="category-card"
+                    >
+
+                        <div
+                            class="category-icon"
+                            aria-hidden="true"
+                        >
+                            🎓
+                        </div>
+
+
+                        <h3>
+                            Education
+                        </h3>
+
+
+                        <p>
+                            Study resources, exams, courses and
+                            student-focused guides.
+                        </p>
+
+                    </a>
+
+
+
+                    <a
+                        href="category/technology.html"
+                        class="category-card"
+                    >
+
+                        <div
+                            class="category-icon"
+                            aria-hidden="true"
+                        >
+                            💻
+                        </div>
+
+
+                        <h3>
+                            Technology
+                        </h3>
+
+
+                        <p>
+                            Technology, AI, apps, software and
+                            practical digital guides.
+                        </p>
+
+                    </a>
+
+
+
+                    <a
+                        href="category/seo.html"
+                        class="category-card"
+                    >
+
+                        <div
+                            class="category-icon"
+                            aria-hidden="true"
+                        >
+                            🔎
+                        </div>
+
+
+                        <h3>
+                            SEO
+                        </h3>
+
+
+                        <p>
+                            Search engine optimization and
+                            website growth guides.
+                        </p>
+
+                    </a>
+
+
+
+                    <a
+                        href="category/gaming.html"
+                        class="category-card"
+                    >
+
+                        <div
+                            class="category-icon"
+                            aria-hidden="true"
+                        >
+                            🎮
+                        </div>
+
+
+                        <h3>
+                            Gaming
+                        </h3>
+
+
+                        <p>
+                            Gaming guides, tips, updates and
+                            useful gaming information.
+                        </p>
+
+                    </a>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="site-footer">
+
+
+        <div class="container footer-content">
+
+
+            <div class="footer-brand">
+
+
+                <a
+                    href="index.html"
+                    class="logo"
+                >
+                    Learn<span>Byte</span>
+                </a>
+
+
+                <p>
+                    Learn something useful, every day.
+                </p>
+
+
+            </div>
+
+
+
+            <div class="footer-links">
+
+
+                <h3>
+                    Quick Links
+                </h3>
+
+
+                <a href="about.html">
+                    About
+                </a>
+
+
+                <a href="contact.html">
+                    Contact
+                </a>
+
+
+                <a href="privacy-policy.html">
+                    Privacy Policy
+                </a>
+
+
+                <a href="disclaimer.html">
+                    Disclaimer
+                </a>
+
+
+            </div>
+
+
+
+            <div class="footer-links">
+
+
+                <h3>
+                    Categories
+                </h3>
+
+
+                <a href="category/education.html">
+                    Education
+                </a>
+
+
+                <a href="category/technology.html">
+                    Technology
+                </a>
+
+
+                <a href="category/seo.html">
+                    SEO
+                </a>
+
+
+                <a href="category/gaming.html">
+                    Gaming
+                </a>
+
+
+            </div>
+
 
         </div>
 
 
+
         <div class="footer-bottom">
 
+
             <div class="container">
+
 
                 <p>
                     © 2026 LearnByte. All rights reserved.
                 </p>
 
+
             </div>
+
 
         </div>
 
+
     </footer>
+
 
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
