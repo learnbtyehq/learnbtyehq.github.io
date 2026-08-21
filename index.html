@@ -11,17 +11,17 @@
     >
 
     <title>
-        LearnByte - Education, Technology, SEO & Gaming
+        LearnByte - Education, Technology, SEO & Gaming Guides
     </title>
 
     <meta
         name="description"
-        content="LearnByte brings useful guides, tips and insights about education, technology, SEO and gaming."
+        content="LearnByte provides practical guides and useful information about education, technology, artificial intelligence, SEO and gaming."
     >
 
     <meta
         name="keywords"
-        content="education, technology, SEO, gaming, AI, study guides, SEO guides, gaming guides"
+        content="LearnByte, education guides, technology guides, AI guides, SEO guides, gaming guides, study resources, artificial intelligence"
     >
 
     <meta
@@ -31,18 +31,105 @@
 
     <meta
         name="robots"
+        content="index, follow, max-image-preview:large"
+    >
+
+    <meta
+        name="googlebot"
         content="index, follow"
     >
+
+    <meta
+        name="theme-color"
+        content="#6c2bd9"
+    >
+
+
+    <!-- Canonical -->
+
+    <link
+        rel="canonical"
+        href="https://learnbytehq.github.io/learnbyte/"
+    >
+
+
+    <!-- Open Graph -->
+
+    <meta
+        property="og:type"
+        content="website"
+    >
+
+    <meta
+        property="og:title"
+        content="LearnByte - Education, Technology, SEO & Gaming Guides"
+    >
+
+    <meta
+        property="og:description"
+        content="Explore practical guides and useful information about education, technology, AI, SEO and gaming."
+    >
+
+    <meta
+        property="og:url"
+        content="https://learnbytehq.github.io/learnbyte/"
+    >
+
+    <meta
+        property="og:site_name"
+        content="LearnByte"
+    >
+
+
+    <!-- Twitter / X -->
+
+    <meta
+        name="twitter:card"
+        content="summary"
+    >
+
+    <meta
+        name="twitter:title"
+        content="LearnByte - Useful Guides for the Digital World"
+    >
+
+    <meta
+        name="twitter:description"
+        content="Practical guides about education, technology, AI, SEO and gaming."
+    >
+
+
+    <!-- Styles -->
 
     <link
         rel="stylesheet"
         href="style.css"
     >
 
-    <link
-        rel="canonical"
-        href="https://learnbytehq.github.io/learnbyte/"
-    >
+
+    <!-- Website Structured Data -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "LearnByte",
+        "url": "https://learnbytehq.github.io/learnbyte/",
+        "description": "A knowledge platform covering education, technology, artificial intelligence, SEO and gaming."
+    }
+    </script>
+
+
+    <!-- Organization Structured Data -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "LearnByte",
+        "url": "https://learnbytehq.github.io/learnbyte/"
+    }
+    </script>
 
 </head>
 
@@ -50,11 +137,12 @@
 <body>
 
 
-    <!-- Header -->
+    <!-- ================= HEADER ================= -->
 
     <header class="site-header">
 
         <div class="container navbar">
+
 
             <a
                 href="index.html"
@@ -70,6 +158,8 @@
                 id="menuToggle"
                 aria-label="Open navigation menu"
                 aria-expanded="false"
+                aria-controls="navMenu"
+                type="button"
             >
                 ☰
             </button>
@@ -112,31 +202,44 @@
     <main>
 
 
-        <!-- Hero Section -->
+        <!-- ================= HERO ================= -->
 
-        <section class="hero">
+        <section
+            class="hero"
+            aria-labelledby="hero-title"
+        >
 
             <div class="container hero-content">
+
 
                 <p class="hero-label">
                     Learn • Explore • Grow
                 </p>
 
 
-                <h1>
+                <h1 id="hero-title">
+
                     Learn something useful,
-                    <span>every day.</span>
+
+                    <span>
+                        every day.
+                    </span>
+
                 </h1>
 
 
                 <p class="hero-description">
+
                     Explore practical guides, useful information
                     and helpful resources about education,
-                    technology, SEO and gaming.
+                    technology, artificial intelligence, SEO
+                    and gaming.
+
                 </p>
 
 
                 <div class="hero-actions">
+
 
                     <a
                         href="#latest-posts"
@@ -153,6 +256,7 @@
                         Browse Topics
                     </a>
 
+
                 </div>
 
             </div>
@@ -161,11 +265,12 @@
 
 
 
-        <!-- Categories -->
+        <!-- ================= CATEGORIES ================= -->
 
         <section
             class="categories section"
             id="categories"
+            aria-labelledby="categories-title"
         >
 
             <div class="container">
@@ -178,7 +283,7 @@
                     </p>
 
 
-                    <h2>
+                    <h2 id="categories-title">
                         Browse by Category
                     </h2>
 
@@ -195,12 +300,17 @@
                 <div class="category-grid">
 
 
+                    <!-- Education -->
+
                     <a
                         href="category/education.html"
                         class="category-card"
                     >
 
-                        <div class="category-icon">
+                        <div
+                            class="category-icon"
+                            aria-hidden="true"
+                        >
                             🎓
                         </div>
 
@@ -219,12 +329,17 @@
 
 
 
+                    <!-- Technology -->
+
                     <a
                         href="category/technology.html"
                         class="category-card"
                     >
 
-                        <div class="category-icon">
+                        <div
+                            class="category-icon"
+                            aria-hidden="true"
+                        >
                             💻
                         </div>
 
@@ -243,12 +358,17 @@
 
 
 
+                    <!-- SEO -->
+
                     <a
                         href="category/seo.html"
                         class="category-card"
                     >
 
-                        <div class="category-icon">
+                        <div
+                            class="category-icon"
+                            aria-hidden="true"
+                        >
                             🔎
                         </div>
 
@@ -267,12 +387,17 @@
 
 
 
+                    <!-- Gaming -->
+
                     <a
                         href="category/gaming.html"
                         class="category-card"
                     >
 
-                        <div class="category-icon">
+                        <div
+                            class="category-icon"
+                            aria-hidden="true"
+                        >
                             🎮
                         </div>
 
@@ -298,9 +423,12 @@
 
 
 
-        <!-- Featured Article -->
+        <!-- ================= FEATURED ARTICLE ================= -->
 
-        <section class="featured section">
+        <section
+            class="featured section"
+            aria-labelledby="featured-title"
+        >
 
             <div class="container">
 
@@ -312,7 +440,7 @@
                     </p>
 
 
-                    <h2>
+                    <h2 id="featured-title">
                         Featured Article
                     </h2>
 
@@ -323,6 +451,7 @@
                 <article class="featured-card">
 
                     <div class="featured-content">
+
 
                         <span class="post-category">
                             Technology
@@ -350,6 +479,7 @@
                             Read Article →
                         </a>
 
+
                     </div>
 
                 </article>
@@ -360,11 +490,12 @@
 
 
 
-        <!-- Latest Posts -->
+        <!-- ================= LATEST POSTS ================= -->
 
         <section
             class="latest-posts section"
             id="latest-posts"
+            aria-labelledby="latest-title"
         >
 
             <div class="container">
@@ -377,7 +508,7 @@
                     </p>
 
 
-                    <h2>
+                    <h2 id="latest-title">
                         Latest Articles
                     </h2>
 
@@ -394,16 +525,21 @@
                 <div class="post-grid">
 
 
-                    <!-- AI Article -->
+                    <!-- AI -->
 
                     <article class="post-card">
 
-                        <div class="post-image">
+
+                        <div
+                            class="post-image"
+                            aria-hidden="true"
+                        >
                             🤖
                         </div>
 
 
                         <div class="post-content">
+
 
                             <span class="post-category">
                                 Technology
@@ -429,22 +565,28 @@
                                 Read Article →
                             </a>
 
+
                         </div>
 
                     </article>
 
 
 
-                    <!-- SEO Article -->
+                    <!-- SEO -->
 
                     <article class="post-card">
 
-                        <div class="post-image">
+
+                        <div
+                            class="post-image"
+                            aria-hidden="true"
+                        >
                             🔎
                         </div>
 
 
                         <div class="post-content">
+
 
                             <span class="post-category">
                                 SEO
@@ -470,6 +612,7 @@
                                 Read Article →
                             </a>
 
+
                         </div>
 
                     </article>
@@ -480,12 +623,17 @@
 
                     <article class="post-card">
 
-                        <div class="post-image">
+
+                        <div
+                            class="post-image"
+                            aria-hidden="true"
+                        >
                             🎓
                         </div>
 
 
                         <div class="post-content">
+
 
                             <span class="post-category">
                                 Education
@@ -509,6 +657,7 @@
                                 Explore Education →
                             </a>
 
+
                         </div>
 
                     </article>
@@ -519,12 +668,17 @@
 
                     <article class="post-card">
 
-                        <div class="post-image">
+
+                        <div
+                            class="post-image"
+                            aria-hidden="true"
+                        >
                             💻
                         </div>
 
 
                         <div class="post-content">
+
 
                             <span class="post-category">
                                 Technology
@@ -537,8 +691,8 @@
 
 
                             <p>
-                                Discover useful technology
-                                and AI guides on LearnByte.
+                                Discover useful technology,
+                                AI and digital guides on LearnByte.
                             </p>
 
 
@@ -547,6 +701,7 @@
                             >
                                 Explore Technology →
                             </a>
+
 
                         </div>
 
@@ -561,9 +716,12 @@
 
 
 
-        <!-- About LearnByte -->
+        <!-- ================= ABOUT ================= -->
 
-        <section class="about-section section">
+        <section
+            class="about-section section"
+            aria-labelledby="about-title"
+        >
 
             <div class="container about-content">
 
@@ -573,7 +731,7 @@
                 </p>
 
 
-                <h2>
+                <h2 id="about-title">
                     Simple knowledge for the digital world.
                 </h2>
 
@@ -583,9 +741,10 @@
                     platform focused on useful and
                     easy-to-understand content. Our goal is
                     to make learning about education,
-                    technology, SEO and gaming simple
-                    and accessible.
+                    technology, artificial intelligence,
+                    SEO and gaming simple and accessible.
                 </p>
+
 
             </div>
 
@@ -596,7 +755,7 @@
 
 
 
-    <!-- Footer -->
+    <!-- ================= FOOTER ================= -->
 
     <footer class="site-footer">
 
@@ -604,7 +763,10 @@
         <div class="container footer-content">
 
 
+            <!-- Brand -->
+
             <div class="footer-brand">
+
 
                 <a
                     href="index.html"
@@ -618,11 +780,15 @@
                     Learn something useful, every day.
                 </p>
 
+
             </div>
 
 
 
+            <!-- Quick Links -->
+
             <div class="footer-links">
+
 
                 <h3>
                     Quick Links
@@ -648,11 +814,15 @@
                     Disclaimer
                 </a>
 
+
             </div>
 
 
 
+            <!-- Categories -->
+
             <div class="footer-links">
+
 
                 <h3>
                     Categories
@@ -678,6 +848,7 @@
                     Gaming
                 </a>
 
+
             </div>
 
 
@@ -687,13 +858,17 @@
 
         <div class="footer-bottom">
 
+
             <div class="container">
+
 
                 <p>
                     © 2026 LearnByte. All rights reserved.
                 </p>
 
+
             </div>
+
 
         </div>
 
@@ -701,6 +876,8 @@
     </footer>
 
 
+
+    <!-- JavaScript -->
 
     <script src="script.js"></script>
 
