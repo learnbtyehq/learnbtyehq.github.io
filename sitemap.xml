@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset
+    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+>
+
+    <!-- Homepage -->
+
+    <url>
+        <loc>https://learnbtyehq.github.io/</loc>
+    </url>
+
+
+    <!-- Main Pages -->
+
+    <url>
+        <loc>https://learnbtyehq.github.io/about.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/contact.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/write.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/privacy-policy.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/disclaimer.html</loc>
+    </url>
+
+
+    <!-- Categories -->
+
+    <url>
+        <loc>https://learnbtyehq.github.io/category/education.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/category/technology.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/category/seo.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/category/gaming.html</loc>
+    </url>
+
+
+    <!-- Education Articles -->
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/how-to-choose-career-after-class-12.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/how-to-choose-right-course-after-class-12.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/scholarships-after-class-12.html</loc>
+    </url>
+
+
+    <!-- Technology Articles -->
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/what-is-artificial-intelligence.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/useful-apps-for-students.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/what-is-software.html</loc>
+    </url>
+
+
+    <!-- SEO Articles -->
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/on-page-seo-checklist.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/technical-seo-checklist.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/how-to-get-website-indexed-by-google.html</loc>
+    </url>
+
+
+    <!-- Gaming Articles -->
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/best-gaming-tips-for-beginners.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/how-to-improve-gaming-skills.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/gaming-settings-for-better-performance.html</loc>
+    </url>
+
+</urlset>
