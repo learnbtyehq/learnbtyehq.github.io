@@ -1,941 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0, viewport-fit=cover"
->
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>LearnByte Control Center</title>
-
-<meta
-    name="robots"
-    content="noindex,nofollow,noarchive"
->
-
-<meta
-    name="theme-color"
-    content="#050811"
->
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#050811">
 
 <style>
-
-/* =========================================================
-   RESET
-========================================================= */
-
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
-html,
-body {
-    margin: 0;
-    width: 100%;
-    min-height: 100%;
-    overflow-x: hidden;
-}
-
-body {
-    font-family:
-        Inter,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    color: #f5f7fb;
-
-    background:
-        radial-gradient(
-            circle at 5% 0%,
-            rgba(0,220,255,.13),
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 95% 5%,
-            rgba(115,75,255,.15),
-            transparent 30%
-        ),
-        #050811;
-
-    line-height: 1.5;
-}
-
-button,
-input,
-textarea,
-select {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-input,
-textarea,
-select {
-    outline: none;
-}
-
-h1,
-h2,
-h3,
-h4,
-p {
-    overflow-wrap: anywhere;
-}
-
-
-/* =========================================================
-   CONTAINER
-========================================================= */
-
-.container {
-    width: min(1120px, calc(100% - 32px));
-    margin: 0 auto;
-}
-
-
-/* =========================================================
-   HEADER
-========================================================= */
-
-.site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-
-    background:
-        rgba(5,9,18,.88);
-
-    border-bottom:
-        1px solid rgba(255,255,255,.07);
-
-    backdrop-filter:
-        blur(20px);
-}
-
-.navbar {
-    min-height: 72px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 15px;
-}
-
-.logo {
-    color: white;
-    text-decoration: none;
-
-    font-size: 23px;
-    font-weight: 900;
-}
-
-.logo span {
-    color: #2ddfff;
-}
-
-.admin-label {
-    color: #738198;
-    font-size: 11px;
-    margin-left: 6px;
-}
-
-.status {
-    padding: 8px 13px;
-
-    border-radius: 999px;
-
-    border:
-        1px solid #27354d;
-
-    background:
-        #0b1220;
-
-    color:
-        #9ba8bc;
-
-    font-size: 12px;
-}
-
-.status.connected {
-    color: #62f6c2;
-
-    border-color:
-        rgba(0,255,170,.3);
-
-    background:
-        rgba(0,255,170,.08);
-}
-
-
-/* =========================================================
-   HERO
-========================================================= */
-
-.hero {
-    padding: 52px 0 28px;
-}
-
-.badge {
-    display: inline-flex;
-
-    padding: 8px 13px;
-
-    border-radius: 999px;
-
-    background:
-        rgba(32,223,248,.09);
-
-    border:
-        1px solid rgba(32,223,248,.22);
-
-    color:
-        #32dcf8;
-
-    font-size: 11px;
-    font-weight: 850;
-    letter-spacing: .5px;
-}
-
-h1 {
-    margin: 18px 0 12px;
-
-    font-size:
-        clamp(35px, 7vw, 62px);
-
-    line-height: 1.02;
-}
-
-.gradient {
-    background:
-        linear-gradient(
-            90deg,
-            #ffffff,
-            #42e5ff,
-            #8171ff
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-}
-
-.hero-description {
-    max-width: 790px;
-
-    margin: 0;
-
-    color: #8e9aae;
-
-    font-size: 16px;
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   MAIN GRID
-========================================================= */
-
-.grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0, 1fr));
-
-    gap: 18px;
-}
-
-.full {
-    grid-column: 1 / -1;
-}
-
-
-/* =========================================================
-   CARD
-========================================================= */
-
-.card {
-    min-width: 0;
-
-    padding: 22px;
-
-    border-radius: 20px;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18,28,45,.95),
-            rgba(8,13,24,.96)
-        );
-
-    border:
-        1px solid rgba(255,255,255,.08);
-
-    box-shadow:
-        0 20px 60px rgba(0,0,0,.22);
-
-    overflow: hidden;
-}
-
-.card h2 {
-    margin: 0 0 7px;
-
-    font-size: 21px;
-}
-
-.card-description {
-    margin: 0 0 18px;
-
-    color: #8f9bad;
-
-    font-size: 14px;
-    line-height: 1.6;
-}
-
-
-/* =========================================================
-   FORMS
-========================================================= */
-
-label {
-    display: block;
-
-    margin: 15px 0 7px;
-
-    color: #b9c4d5;
-
-    font-size: 13px;
-    font-weight: 750;
-}
-
-input,
-textarea,
-select {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
-
-    padding: 13px 14px;
-
-    border:
-        1px solid #27334a;
-
-    border-radius: 12px;
-
-    background: #080e19;
-
-    color: #fff;
-}
-
-input:focus,
-textarea:focus,
-select:focus {
-    border-color: #27dfff;
-
-    box-shadow:
-        0 0 0 3px
-        rgba(39,223,255,.08);
-}
-
-textarea {
-    min-height: 170px;
-    resize: vertical;
-
-    line-height: 1.65;
-}
-
-.small-textarea {
-    min-height: 115px;
-}
-
-.large-textarea {
-    min-height: 270px;
-}
-
-
-/* =========================================================
-   BUTTONS
-========================================================= */
-
-.button-row {
-    display: flex;
-    flex-wrap: wrap;
-
-    gap: 10px;
-
-    margin-top: 15px;
-}
-
-button {
-    min-height: 44px;
-
-    padding: 12px 18px;
-
-    border: 0;
-    border-radius: 12px;
-
-    color: #031018;
-
-    background:
-        linear-gradient(
-            135deg,
-            #20dff8,
-            #6d7cff
-        );
-
-    font-size: 14px;
-    font-weight: 800;
-}
-
-button.secondary {
-    color: #dce5f3;
-
-    background: #182235;
-
-    border:
-        1px solid #2b3952;
-}
-
-button.danger {
-    color: #fff;
-
-    background:
-        linear-gradient(
-            135deg,
-            #ff5d72,
-            #ff3152
-        );
-}
-
-button.success {
-    color: #031018;
-
-    background:
-        linear-gradient(
-            135deg,
-            #45f0b0,
-            #27dfff
-        );
-}
-
-button:disabled {
-    opacity: .5;
-    cursor: not-allowed;
-}
-
-
-/* =========================================================
-   RESULT
-========================================================= */
-
-.result {
-    margin-top: 14px;
-
-    padding: 13px;
-
-    border-radius: 12px;
-
-    background: #070c15;
-
-    border:
-        1px solid #202c40;
-
-    color: #aeb9ca;
-
-    white-space: pre-wrap;
-
-    overflow-wrap: anywhere;
-
-    word-break: break-word;
-
-    font-size: 13px;
-    line-height: 1.55;
-}
-
-.success {
-    color: #62f6c2;
-}
-
-.error {
-    color: #ff7889;
-}
-
-
-/* =========================================================
-   DASHBOARD
-========================================================= */
-
-.dashboard-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap: 10px;
-
-    margin-top: 18px;
-}
-
-.stat {
-    min-width: 0;
-
-    padding: 16px;
-
-    border-radius: 14px;
-
-    background: #080e19;
-
-    border:
-        1px solid #202c40;
-}
-
-.stat-number {
-    display: block;
-
-    font-size: 27px;
-    font-weight: 900;
-}
-
-.stat-label {
-    display: block;
-
-    margin-top: 4px;
-
-    color: #78869a;
-
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   ARTICLE HEADING BOX
-========================================================= */
-
-.heading-box {
-    margin-top: 15px;
-
-    padding: 18px;
-
-    border-radius: 16px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #0a1220,
-            #070c16
-        );
-
-    border:
-        1px solid #202e45;
-}
-
-.heading-box h3 {
-    margin: 0 0 10px;
-
-    color: #48e5ff;
-
-    font-size: 16px;
-}
-
-
-/* =========================================================
-   BIG UPLOAD BUTTON
-========================================================= */
-
-.upload-button {
-    width: 100%;
-
-    min-height: 62px;
-
-    margin-top: 20px;
-
-    font-size: 16px;
-    font-weight: 900;
-}
-
-
-/* =========================================================
-   CHECKBOX
-========================================================= */
-
-.remember-row {
-    display: flex;
-
-    align-items: center;
-
-    gap: 9px;
-
-    margin-top: 10px;
-
-    color: #8e9aae;
-
-    font-size: 13px;
-}
-
-.remember-row input {
-    width: 18px;
-    height: 18px;
-    margin: 0;
-}
-
-
-/* =========================================================
-   PREVIEW
-========================================================= */
-
-.preview-wrapper,
-.code-wrapper,
-.seo-wrapper {
-    display: none;
-
-    margin-top: 20px;
-}
-
-.article-preview {
-    padding: 22px;
-
-    border-radius: 15px;
-
-    background: #fff;
-
-    color: #172033;
-
-    line-height: 1.75;
-
-    overflow: hidden;
-}
-
-.article-preview iframe {
-    width: 100%;
-
-    min-height: 650px;
-
-    border: 0;
-
-    border-radius: 12px;
-
-    background: white;
-}
-
-.code-preview {
-    width: 100%;
-
-    min-height: 360px;
-
-    font-family:
-        ui-monospace,
-        SFMono-Regular,
-        Menlo,
-        Consolas,
-        monospace;
-
-    font-size: 12px;
-
-    line-height: 1.55;
-}
-
-
-/* =========================================================
-   SEO ANALYZER
-========================================================= */
-
-.seo-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(4, minmax(0, 1fr));
-
-    gap: 10px;
-
-    margin-top: 15px;
-}
-
-.seo-box {
-    padding: 14px;
-
-    border-radius: 13px;
-
-    background: #080e19;
-
-    border:
-        1px solid #202c40;
-}
-
-.seo-box strong {
-    display: block;
-
-    font-size: 22px;
-}
-
-.seo-box span {
-    display: block;
-
-    margin-top: 3px;
-
-    color: #7f8ca0;
-
-    font-size: 11px;
-}
-
-
-/* =========================================================
-   LISTS
-========================================================= */
-
-.file-list {
-    display: grid;
-
-    gap: 8px;
-
-    margin-top: 14px;
-}
-
-.list-item {
-    padding: 14px;
-
-    border-radius: 12px;
-
-    background: #0b1322;
-
-    border:
-        1px solid #1c2940;
-}
-
-.list-item strong {
-    display: block;
-
-    margin-bottom: 5px;
-}
-
-.list-item span {
-    color: #8d9bb0;
-
-    font-size: 13px;
-
-    line-height: 1.5;
-}
-
-
-/* =========================================================
-   INFO
-========================================================= */
-
-.info-grid {
-    display: grid;
-
-    grid-template-columns:
-        repeat(2, minmax(0,1fr));
-
-    gap: 10px;
-}
-
-.info-box {
-    padding: 15px;
-
-    border-radius: 13px;
-
-    background: #080e19;
-
-    border:
-        1px solid #202c40;
-}
-
-.info-box strong {
-    display: block;
-
-    margin-bottom: 5px;
-}
-
-.info-box span {
-    color: #8290a5;
-
-    font-size: 13px;
-
-    line-height: 1.5;
-
-    overflow-wrap: anywhere;
-}
-
-
-/* =========================================================
-   DIVIDER
-========================================================= */
-
-.divider {
-    height: 1px;
-
-    margin: 22px 0;
-
-    background:
-        rgba(255,255,255,.07);
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-    padding: 35px 0 55px;
-
-    text-align: center;
-
-    color: #647085;
-
-    font-size: 12px;
-}
-
-
-/* =========================================================
-   MOBILE
-========================================================= */
-
-@media (max-width: 900px) {
-
-    .container {
-        width: min(100% - 26px, 760px);
-    }
-
-    .grid {
-        grid-template-columns: 1fr;
-    }
-
-    .full {
-        grid-column: auto;
-    }
-
-    .dashboard-grid {
-        grid-template-columns:
-            repeat(2, minmax(0,1fr));
-    }
-
-    .seo-grid {
-        grid-template-columns:
-            repeat(2, minmax(0,1fr));
-    }
-}
-
-@media (max-width: 600px) {
-
-    .container {
-        width: calc(100% - 18px);
-    }
-
-    .navbar {
-        min-height: 65px;
-    }
-
-    .logo {
-        font-size: 20px;
-    }
-
-    .hero {
-        padding: 30px 0 20px;
-    }
-
-    .card {
-        padding: 16px;
-    }
-
-    input,
-    textarea,
-    select {
-        font-size: 16px;
-    }
-
-    .button-row {
-        flex-direction: column;
-    }
-
-    .button-row button {
-        width: 100%;
-    }
-
-    .dashboard-grid,
-    .seo-grid {
-        grid-template-columns:
-            repeat(2, minmax(0,1fr));
-    }
-
-    .info-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-@media (max-width: 380px) {
-
-    .container {
-        width: calc(100% - 12px);
-    }
-
-    .dashboard-grid,
-    .seo-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .status {
-        display: none;
-    }
-}
-
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;overflow-x:hidden}
+body{font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;background:radial-gradient(circle at 8% 4%,rgba(0,220,255,.12),transparent 30%),radial-gradient(circle at 92% 8%,rgba(120,80,255,.14),transparent 30%),#050811;color:#f5f7fb;line-height:1.55}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+a{color:inherit}
+.wrap{width:min(1120px,calc(100% - 24px));margin:auto}
+.header{position:sticky;top:0;z-index:99;background:rgba(5,9,18,.9);border-bottom:1px solid #ffffff12;backdrop-filter:blur(18px)}
+.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.logo{text-decoration:none;font-size:22px;font-weight:900}
+.logo span{color:#29ddff}
+.status{padding:7px 11px;border-radius:999px;border:1px solid #27354d;background:#0b1220;color:#9ba8bc;font-size:12px}
+.connected{color:#62f6c2;border-color:#00ffaa44;background:#00ffaa12}
+.hero{padding:38px 0 22px}
+.badge{display:inline-block;padding:7px 11px;border-radius:999px;background:#20dff814;border:1px solid #20dff838;color:#32dcf8;font-size:11px;font-weight:800}
+.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.03;margin:15px 0 10px}
+.gradient{background:linear-gradient(90deg,#fff,#48e5ff,#8171ff);background-clip:text;-webkit-background-clip:text;color:transparent}
+.hero p{max-width:780px;color:#8e9aae}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.full{grid-column:1/-1}
+.card{min-width:0;padding:20px;border-radius:18px;background:linear-gradient(145deg,#121c2df2,#080d18f5);border:1px solid #ffffff12;box-shadow:0 20px 60px #00000038}
+.card h2{margin:0 0 6px;font-size:20px}
+.desc{margin:0 0 15px;color:#8f9bad;font-size:13px}
+.field{margin-top:13px}
+.field label{display:block;margin-bottom:6px;color:#b9c4d5;font-size:12px;font-weight:750}
+.field input,.field textarea,.field select{width:100%;min-width:0;padding:12px 13px;border:1px solid #27334a;border-radius:11px;background:#080e19;color:#fff;outline:0}
+.field input:focus,.field textarea:focus,.field select:focus{border-color:#27dfff;box-shadow:0 0 0 3px #27dfff14}
+.field textarea{min-height:120px;resize:vertical}
+.row{display:flex;flex-wrap:wrap;gap:9px;margin-top:13px}
+button{border:0;border-radius:11px;padding:11px 16px;min-height:43px;font-weight:800;color:#031018;background:linear-gradient(135deg,#20dff8,#6d7cff)}
+button.secondary{color:#dce5f3;background:#182235;border:1px solid #2b3952}
+button.danger{color:#fff;background:linear-gradient(135deg,#ff5d72,#ff3152)}
+button:disabled{opacity:.5;cursor:not-allowed}
+.publish{width:100%;min-height:58px;margin-top:16px;font-size:16px}
+.result{margin-top:12px;padding:12px;border-radius:11px;background:#070c15;border:1px solid #202c40;color:#aeb9ca;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
+.ok{color:#62f6c2}
+.err{color:#ff7889}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:14px}
+.stat{padding:13px;border-radius:12px;background:#080e19;border:1px solid #202c40}
+.stat b{display:block;font-size:23px}
+.stat span{font-size:10px;color:#78869a}
+.section-note{margin-top:9px;padding:10px 12px;border-radius:10px;background:#0b1322;border:1px solid #1c2940;color:#8d9bb0;font-size:12px}
+.preview{display:none;margin-top:16px}
+.preview iframe{width:100%;height:620px;border:0;border-radius:12px;background:#fff}
+.code{display:none;width:100%;min-height:330px;font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:12px}
+.list{display:grid;gap:8px;margin-top:12px}
+.item{padding:12px;border-radius:11px;background:#0b1322;border:1px solid #1c2940}
+.item strong{display:block;margin-bottom:4px}
+.item small{color:#8d9bb0}
+.check{display:flex;align-items:center;gap:8px;color:#8e9aae;font-size:12px;margin-top:9px}
+.check input{width:17px;height:17px}
+footer{padding:35px 0 50px;text-align:center;color:#647085;font-size:11px}
+@media(max-width:850px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
+@media(max-width:600px){.wrap{width:calc(100% - 16px)}.card{padding:15px}.row{flex-direction:column}.row button{width:100%}.stats{grid-template-columns:repeat(2,1fr)}}
 </style>
 
 </head>
 
 <body>
 
+<header class="header">
+<div class="wrap nav">
 
-<!-- =========================================================
-     HEADER
-========================================================= -->
-
-<header class="site-header">
-
-<div class="container navbar">
-
-<a
-    href="admin-control.html"
-    class="logo"
->
-    Learn<span>Byte</span>
-
-    <small class="admin-label">
-        / ADMIN
-    </small>
+<a class="logo" href="admin-control.html">
+Learn<span>Byte</span> <small>/ ADMIN</small>
 </a>
 
-<div
-    class="status"
-    id="status"
->
-    ● Not connected
+<div id="status" class="status">
+● Not connected
 </div>
 
 </div>
-
 </header>
 
 
-<main>
-
-<div class="container">
-
-
-<!-- =========================================================
-     HERO
-========================================================= -->
+<main class="wrap">
 
 <section class="hero">
 
@@ -950,10 +98,10 @@ Control Center.
 </span>
 </h1>
 
-<p class="hero-description">
-Manage GitHub files, create articles, inspect SEO,
-manage keywords, prepare internal links and redirects
-from one private control panel.
+<p>
+Direct-publish articles to GitHub with the selected LearnByte section theme.
+The panel also updates the category page, homepage latest-posts section
+and sitemap automatically.
 </p>
 
 </section>
@@ -962,20 +110,15 @@ from one private control panel.
 <div class="grid">
 
 
-<!-- =========================================================
-     CONNECTION
-========================================================= -->
-
 <section class="card">
 
-<h2>
-🔐 Secure Connection
-</h2>
+<h2>🔐 Secure Connection</h2>
 
-<p class="card-description">
-Connect this panel to your Cloudflare Worker.
-Your GitHub token remains on the Worker.
+<p class="desc">
+The GitHub token stays on your Cloudflare Worker.
 </p>
+
+<div class="field">
 
 <label>
 Cloudflare Worker URL
@@ -987,6 +130,11 @@ type="url"
 value="https://learnbyte-seo-manager.learnbytehq.workers.dev"
 >
 
+</div>
+
+
+<div class="field">
+
 <label>
 Admin Key
 </label>
@@ -994,34 +142,32 @@ Admin Key
 <input
 id="adminKey"
 type="password"
-placeholder="Enter your admin key"
 autocomplete="off"
+placeholder="Enter Admin Key"
 >
 
-<label class="remember-row">
+</div>
+
+
+<label class="check">
 
 <input
-type="checkbox"
 id="rememberKey"
+type="checkbox"
 >
 
-<span>
 Remember key on this device
-</span>
 
 </label>
 
-<div class="button-row">
 
-<button
-type="button"
-onclick="testConnection()"
->
+<div class="row">
+
+<button onclick="testConnection()">
 Test Connection
 </button>
 
 <button
-type="button"
 class="secondary"
 onclick="clearSavedKey()"
 >
@@ -1030,9 +176,10 @@ Clear Saved Key
 
 </div>
 
+
 <div
-class="result"
 id="connectionResult"
+class="result"
 >
 Not tested yet.
 </div>
@@ -1040,101 +187,138 @@ Not tested yet.
 </section>
 
 
-<!-- =========================================================
-     DASHBOARD
-========================================================= -->
-
 <section class="card">
 
-<h2>
-📊 Dashboard
-</h2>
+<h2>📊 Dashboard</h2>
 
-<p class="card-description">
-Quick overview of your LearnByte control system.
+<p class="desc">
+Current publishing session.
 </p>
 
-<div class="dashboard-grid">
+<div class="stats">
 
 <div class="stat">
 
-<span
-class="stat-number"
-id="statStatus"
->
+<b id="statStatus">
 —
-</span>
+</b>
 
-<span class="stat-label">
+<span>
 Connection
 </span>
 
 </div>
 
+
 <div class="stat">
 
-<span
-class="stat-number"
-id="statFiles"
->
+<b id="statFiles">
 0
-</span>
+</b>
 
-<span class="stat-label">
-Files Loaded
+<span>
+Files Updated
 </span>
 
 </div>
 
+
 <div class="stat">
 
-<span
-class="stat-number"
-id="statKeywords"
->
+<b id="statArticles">
 0
+</b>
+
+<span>
+Articles Published
 </span>
 
-<span class="stat-label">
+</div>
+
+
+<div class="stat">
+
+<b id="statKeywords">
+0
+</b>
+
+<span>
 Keywords
 </span>
 
 </div>
 
-<div class="stat">
-
-<span
-class="stat-number"
-id="statArticles"
->
-0
-</span>
-
-<span class="stat-label">
-Articles Created
-</span>
-
 </div>
 
+
+<div
+id="publishSummary"
+class="result"
+>
+No publish completed yet.
 </div>
 
 </section>
 
 
-<!-- =========================================================
-     ARTICLE CREATOR
-========================================================= -->
-
 <section class="card full">
 
 <h2>
-📝 New Article Creator
+📝 Direct Publish Article
 </h2>
 
-<p class="card-description">
-Write your article normally. You do not need to write HTML.
-The panel generates the HTML automatically.
+<p class="desc">
+
+Select a section, write the article and press
+<b>DIRECT PUBLISH</b>.
+
+The panel creates the article, applies the selected section theme,
+adds the article to that category page, adds it to the homepage
+latest posts and adds the URL to the sitemap.
+
 </p>
+
+
+<div class="field">
+
+<label>
+Website Section / Theme *
+</label>
+
+<select
+id="articleSection"
+onchange="updateSectionInfo()"
+>
+
+<option value="education">
+Education
+</option>
+
+<option value="technology">
+Technology
+</option>
+
+<option value="seo" selected>
+SEO
+</option>
+
+<option value="gaming">
+Gaming
+</option>
+
+</select>
+
+</div>
+
+
+<div
+id="sectionInfo"
+class="section-note"
+>
+</div>
+
+
+<div class="field">
 
 <label>
 Article Title *
@@ -1145,6 +329,11 @@ id="articleTitle"
 placeholder="What Is SEO? Complete Beginner Guide"
 >
 
+</div>
+
+
+<div class="field">
+
 <label>
 URL / File Name *
 </label>
@@ -1154,14 +343,24 @@ id="articleSlug"
 placeholder="what-is-seo.html"
 >
 
+</div>
+
+
+<div class="field">
+
 <label>
-Category
+Category / Subcategory
 </label>
 
 <input
 id="articleCategory"
-placeholder="SEO"
+placeholder="SEO Basics"
 >
+
+</div>
+
+
+<div class="field">
 
 <label>
 Publish Date
@@ -1172,6 +371,11 @@ id="articleDate"
 type="date"
 >
 
+</div>
+
+
+<div class="field">
+
 <label>
 Meta Title
 </label>
@@ -1181,15 +385,24 @@ id="articleMetaTitle"
 placeholder="What Is SEO? Complete Beginner Guide | LearnByte"
 >
 
+</div>
+
+
+<div class="field">
+
 <label>
 Meta Description *
 </label>
 
 <textarea
 id="articleMetaDescription"
-class="small-textarea"
 placeholder="Write an SEO-friendly meta description..."
 ></textarea>
+
+</div>
+
+
+<div class="field">
 
 <label>
 Primary Keyword
@@ -1200,14 +413,24 @@ id="articlePrimaryKeyword"
 placeholder="what is SEO"
 >
 
+</div>
+
+
+<div class="field">
+
 <label>
 Secondary Keywords
 </label>
 
 <input
 id="articleSecondaryKeywords"
-placeholder="SEO meaning, search engine optimization, SEO basics"
+placeholder="SEO meaning, SEO basics, search engine optimization"
 >
+
+</div>
+
+
+<div class="field">
 
 <label>
 Featured Image URL
@@ -1216,8 +439,13 @@ Featured Image URL
 <input
 id="articleImage"
 type="url"
-placeholder="https://example.com/image.jpg"
+placeholder="https://..."
 >
+
+</div>
+
+
+<div class="field">
 
 <label>
 Introduction
@@ -1225,189 +453,16 @@ Introduction
 
 <textarea
 id="articleIntro"
-placeholder="Write your article introduction..."
-></textarea>
-
-
-<!-- HEADING 1 -->
-
-<div class="heading-box">
-
-<h3>
-Heading 1
-</h3>
-
-<label>
-Heading
-</label>
-
-<input
-id="heading1"
-placeholder="What is SEO?"
->
-
-<label>
-Article Content
-</label>
-
-<textarea
-id="content1"
-class="article-content"
-placeholder="Write the content for this heading..."
+placeholder="Write the introduction..."
 ></textarea>
 
 </div>
 
 
-<!-- HEADING 2 -->
-
-<div class="heading-box">
-
-<h3>
-Heading 2
-</h3>
-
-<label>
-Heading
-</label>
-
-<input
-id="heading2"
-placeholder="How does SEO work?"
->
-
-<label>
-Article Content
-</label>
-
-<textarea
-id="content2"
-class="article-content"
-placeholder="Optional. Leave blank if not needed."
-></textarea>
-
-</div>
+<div id="headingFields"></div>
 
 
-<!-- HEADING 3 -->
-
-<div class="heading-box">
-
-<h3>
-Heading 3
-</h3>
-
-<label>
-Heading
-</label>
-
-<input
-id="heading3"
-placeholder="Why is SEO important?"
->
-
-<label>
-Article Content
-</label>
-
-<textarea
-id="content3"
-class="article-content"
-placeholder="Optional. Leave blank if not needed."
-></textarea>
-
-</div>
-
-
-<!-- HEADING 4 -->
-
-<div class="heading-box">
-
-<h3>
-Heading 4
-</h3>
-
-<label>
-Heading
-</label>
-
-<input
-id="heading4"
-placeholder="Important SEO factors"
->
-
-<label>
-Article Content
-</label>
-
-<textarea
-id="content4"
-class="article-content"
-placeholder="Optional. Leave blank if not needed."
-></textarea>
-
-</div>
-
-
-<!-- HEADING 5 -->
-
-<div class="heading-box">
-
-<h3>
-Heading 5
-</h3>
-
-<label>
-Heading
-</label>
-
-<input
-id="heading5"
-placeholder="Common SEO mistakes"
->
-
-<label>
-Article Content
-</label>
-
-<textarea
-id="content5"
-class="article-content"
-placeholder="Optional. Leave blank if not needed."
-></textarea>
-
-</div>
-
-
-<!-- HEADING 6 -->
-
-<div class="heading-box">
-
-<h3>
-Heading 6
-</h3>
-
-<label>
-Heading
-</label>
-
-<input
-id="heading6"
-placeholder="Final thoughts"
->
-
-<label>
-Article Content
-</label>
-
-<textarea
-id="content6"
-class="article-content"
-placeholder="Optional. Leave blank if not needed."
-></textarea>
-
-</div>
-
+<div class="field">
 
 <label>
 Conclusion
@@ -1418,11 +473,12 @@ id="articleConclusion"
 placeholder="Write the conclusion..."
 ></textarea>
 
+</div>
 
-<div class="button-row">
+
+<div class="row">
 
 <button
-type="button"
 class="secondary"
 onclick="previewArticle()"
 >
@@ -1430,15 +486,6 @@ onclick="previewArticle()"
 </button>
 
 <button
-type="button"
-class="secondary"
-onclick="showGeneratedHTML()"
->
-🔍 Generated HTML
-</button>
-
-<button
-type="button"
 class="secondary"
 onclick="analyzeSEO()"
 >
@@ -1446,7 +493,13 @@ onclick="analyzeSEO()"
 </button>
 
 <button
-type="button"
+class="secondary"
+onclick="showGeneratedHTML()"
+>
+🔍 Generated HTML
+</button>
+
+<button
 class="secondary"
 onclick="clearArticle()"
 >
@@ -1457,129 +510,56 @@ onclick="clearArticle()"
 
 
 <button
-type="button"
-class="upload-button"
-onclick="uploadArticle()"
+class="publish"
+id="publishBtn"
+onclick="directPublish()"
 >
-🚀 CREATE & UPLOAD ARTICLE TO GITHUB
+🚀 DIRECT PUBLISH TO WEBSITE
 </button>
 
 
 <div
-class="result"
 id="articleResult"
->
-Article Creator ready.
-</div>
-
-
-<!-- SEO -->
-
-<div
-class="seo-wrapper"
-id="seoWrapper"
->
-
-<h3>
-📈 SEO Analysis
-</h3>
-
-<div class="seo-grid">
-
-<div class="seo-box">
-
-<strong id="seoWords">
-0
-</strong>
-
-<span>
-Words
-</span>
-
-</div>
-
-<div class="seo-box">
-
-<strong id="seoTitle">
-0
-</strong>
-
-<span>
-Title characters
-</span>
-
-</div>
-
-<div class="seo-box">
-
-<strong id="seoMeta">
-0
-</strong>
-
-<span>
-Meta characters
-</span>
-
-</div>
-
-<div class="seo-box">
-
-<strong id="seoHeadings">
-0
-</strong>
-
-<span>
-H2 headings
-</span>
-
-</div>
-
-</div>
-
-<div
 class="result"
-id="seoResult"
 >
-SEO analysis not run.
+Ready to publish.
 </div>
 
-</div>
-
-
-<!-- PREVIEW -->
 
 <div
-class="preview-wrapper"
-id="previewWrapper"
+id="seoBox"
+class="result"
+style="display:none"
+>
+</div>
+
+
+<div
+id="previewBox"
+class="preview"
 >
 
 <h3>
-👁️ Article Preview
+Article Preview
 </h3>
 
-<div
-class="article-preview"
-id="articlePreview"
->
-</div>
+<div id="previewArea"></div>
 
 </div>
 
 
-<!-- CODE -->
-
 <div
-class="code-wrapper"
-id="codeWrapper"
+id="codeBox"
+style="display:none"
 >
 
 <h3>
-🔍 Generated HTML
+Generated HTML
 </h3>
 
 <textarea
 id="articleCode"
-class="code-preview"
+class="code"
 readonly
 ></textarea>
 
@@ -1588,19 +568,17 @@ readonly
 </section>
 
 
-<!-- =========================================================
-     EXISTING FILE MANAGER
-========================================================= -->
-
 <section class="card">
 
 <h2>
 📄 File Manager
 </h2>
 
-<p class="card-description">
-Read any allowed file directly from GitHub.
+<p class="desc">
+Read a GitHub file and load it into the editor.
 </p>
+
+<div class="field">
 
 <label>
 Repository File Path
@@ -1611,17 +589,16 @@ id="filePath"
 placeholder="index.html"
 >
 
-<div class="button-row">
+</div>
 
-<button
-type="button"
-onclick="readFile()"
->
+
+<div class="row">
+
+<button onclick="readFile()">
 📖 Read File
 </button>
 
 <button
-type="button"
 class="secondary"
 onclick="loadIndex()"
 >
@@ -1630,9 +607,10 @@ Load index.html
 
 </div>
 
+
 <div
-class="result"
 id="fileResult"
+class="result"
 >
 No file loaded.
 </div>
@@ -1640,29 +618,31 @@ No file loaded.
 </section>
 
 
-<!-- =========================================================
-     GITHUB EDITOR
-========================================================= -->
-
 <section class="card">
 
 <h2>
-✏️ GitHub File Editor
+✏️ GitHub Editor
 </h2>
 
-<p class="card-description">
-Edit the loaded file and commit it directly to GitHub.
+<p class="desc">
+Edit a loaded file and commit it.
 </p>
+
+<div class="field">
 
 <label>
 Current File
 </label>
 
 <input
-id="currentFileDisplay"
+id="currentFile"
 readonly
-placeholder="No file loaded"
 >
+
+</div>
+
+
+<div class="field">
 
 <label>
 Commit Message
@@ -1670,8 +650,13 @@ Commit Message
 
 <input
 id="commitMessage"
-value="Update file from LearnByte SEO Control"
+value="Update file from LearnByte Control Center"
 >
+
+</div>
+
+
+<div class="field">
 
 <label>
 File Content
@@ -1679,22 +664,20 @@ File Content
 
 <textarea
 id="editor"
-class="large-textarea"
+style="min-height:300px;font-family:monospace"
 spellcheck="false"
-placeholder="Load a file first..."
 ></textarea>
 
-<div class="button-row">
+</div>
 
-<button
-type="button"
-onclick="saveFile()"
->
+
+<div class="row">
+
+<button onclick="saveFile()">
 💾 Save & Commit
 </button>
 
 <button
-type="button"
 class="secondary"
 onclick="clearEditor()"
 >
@@ -1703,9 +686,10 @@ Clear
 
 </div>
 
+
 <div
-class="result"
 id="saveResult"
+class="result"
 >
 No changes made.
 </div>
@@ -1713,22 +697,18 @@ No changes made.
 </section>
 
 
-<!-- =========================================================
-     KEYWORD MANAGER
-========================================================= -->
-
 <section class="card full">
 
 <h2>
 🔑 Keyword Manager
 </h2>
 
-<p class="card-description">
-Store page-wise SEO keywords inside
-<strong>seo-keywords.json</strong>.
-Keywords are stored as data and are NOT blindly
-inserted into article text.
+<p class="desc">
+Stores page-wise keywords in <b>seo-keywords.json</b>.
 </p>
+
+
+<div class="field">
 
 <label>
 Page
@@ -1736,8 +716,13 @@ Page
 
 <input
 id="keywordPage"
-placeholder="posts/what-is-seo.html"
+placeholder="posts/my-article.html"
 >
+
+</div>
+
+
+<div class="field">
 
 <label>
 Primary Keyword
@@ -1745,8 +730,13 @@ Primary Keyword
 
 <input
 id="keywordPrimary"
-placeholder="what is SEO"
+placeholder="primary keyword"
 >
+
+</div>
+
+
+<div class="field">
 
 <label>
 Secondary Keywords
@@ -1754,20 +744,19 @@ Secondary Keywords
 
 <input
 id="keywordSecondary"
-placeholder="SEO meaning, SEO basics"
+placeholder="keyword one, keyword two"
 >
 
-<div class="button-row">
+</div>
 
-<button
-type="button"
-onclick="addKeyword()"
->
+
+<div class="row">
+
+<button onclick="addKeyword()">
 ➕ Add Keyword
 </button>
 
 <button
-type="button"
 class="secondary"
 onclick="loadKeywords()"
 >
@@ -1776,25 +765,23 @@ onclick="loadKeywords()"
 
 </div>
 
-<div
-class="result"
-id="keywordResult"
->
-Keyword Manager ready.
-</div>
 
 <div
-class="file-list"
+id="keywordResult"
+class="result"
+>
+Keyword manager ready.
+</div>
+
+
+<div
 id="keywordList"
+class="list"
 >
 </div>
 
 </section>
 
-
-<!-- =========================================================
-     INTERNAL LINK MANAGER
-========================================================= -->
 
 <section class="card">
 
@@ -1802,9 +789,12 @@ id="keywordList"
 🔗 Internal Linking
 </h2>
 
-<p class="card-description">
-Create an internal link or apply it to a loaded source file.
+<p class="desc">
+Generate or apply a link to a source page.
 </p>
+
+
+<div class="field">
 
 <label>
 Source Page
@@ -1812,8 +802,13 @@ Source Page
 
 <input
 id="sourcePage"
-placeholder="posts/seo.html"
+placeholder="posts/source.html"
 >
+
+</div>
+
+
+<div class="field">
 
 <label>
 Target Page
@@ -1821,8 +816,13 @@ Target Page
 
 <input
 id="targetPage"
-placeholder="posts/career.html"
+placeholder="posts/target.html"
 >
+
+</div>
+
+
+<div class="field">
 
 <label>
 Anchor Text
@@ -1830,31 +830,31 @@ Anchor Text
 
 <input
 id="anchorText"
-placeholder="Career Options After Class 12"
+placeholder="Read this guide"
 >
 
-<div class="button-row">
+</div>
+
+
+<div class="row">
 
 <button
-type="button"
 class="secondary"
 onclick="prepareLink()"
 >
-🔗 Generate Link
+Generate Link
 </button>
 
-<button
-type="button"
-onclick="applyInternalLink()"
->
-⚡ Apply To Source File
+<button onclick="applyInternalLink()">
+⚡ Apply & Commit
 </button>
 
 </div>
 
+
 <div
-class="result"
 id="linkResult"
+class="result"
 >
 Internal linking ready.
 </div>
@@ -1862,19 +862,18 @@ Internal linking ready.
 </section>
 
 
-<!-- =========================================================
-     REDIRECT MANAGER
-========================================================= -->
-
 <section class="card">
 
 <h2>
 🔀 Redirect Manager
 </h2>
 
-<p class="card-description">
-Create a simple redirect HTML file for an old page.
+<p class="desc">
+Create a redirect HTML file.
 </p>
+
+
+<div class="field">
 
 <label>
 Old URL / File
@@ -1885,6 +884,11 @@ id="oldUrl"
 placeholder="/old-page.html"
 >
 
+</div>
+
+
+<div class="field">
+
 <label>
 New URL
 </label>
@@ -1894,195 +898,68 @@ id="newUrl"
 placeholder="/new-page.html"
 >
 
-<div class="button-row">
+</div>
 
-<button
-type="button"
-class="secondary"
-onclick="prepareRedirect()"
->
-🔍 Preview Redirect
-</button>
 
-<button
-type="button"
-onclick="createRedirect()"
->
-🚀 Create Redirect File
+<div class="row">
+
+<button onclick="createRedirect()">
+🚀 Create Redirect
 </button>
 
 </div>
+
 
 <div
-class="result"
 id="redirectResult"
+class="result"
 >
-Redirect Manager ready.
+Redirect manager ready.
 </div>
 
 </section>
 
-
-<!-- =========================================================
-     SITEMAP
-========================================================= -->
 
 <section class="card">
 
 <h2>
-🗺️ Sitemap
+🌐 Quick Links
 </h2>
 
-<p class="card-description">
-Open your current XML sitemap.
-</p>
-
-<label>
-Sitemap URL
-</label>
-
-<input
-id="sitemapUrl"
-type="url"
-value="https://learnbtyehq.github.io/sitemap.xml"
->
-
-<div class="button-row">
+<div class="row">
 
 <button
-type="button"
-onclick="openSitemap()"
->
-🗺️ Open Sitemap
-</button>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     WEBSITE INFO
-========================================================= -->
-
-<section class="card">
-
-<h2>
-🌐 Website
-</h2>
-
-<p class="card-description">
-LearnByte website and control-system information.
-</p>
-
-<div class="info-grid">
-
-<div class="info-box">
-
-<strong>
-Website
-</strong>
-
-<span>
-https://learnbtyehq.github.io/
-</span>
-
-</div>
-
-<div class="info-box">
-
-<strong>
-Repository
-</strong>
-
-<span>
-learnbtyehq/learnbtyehq.github.io
-</span>
-
-</div>
-
-<div class="info-box">
-
-<strong>
-Branch
-</strong>
-
-<span>
-main
-</span>
-
-</div>
-
-<div class="info-box">
-
-<strong>
-Backend
-</strong>
-
-<span>
-Cloudflare Worker + GitHub API
-</span>
-
-</div>
-
-</div>
-
-</section>
-
-
-<!-- =========================================================
-     QUICK ACTIONS
-========================================================= -->
-
-<section class="card full">
-
-<h2>
-⚡ Quick Actions
-</h2>
-
-<p class="card-description">
-Useful shortcuts for managing the website.
-</p>
-
-<div class="button-row">
-
-<button
-type="button"
-onclick="loadIndex()"
->
-📄 Load index.html
-</button>
-
-<button
-type="button"
 class="secondary"
 onclick="openWebsite()"
 >
-🌐 Open Website
+Website
 </button>
 
 <button
-type="button"
 class="secondary"
 onclick="openGitHub()"
 >
-🐙 Open GitHub
+GitHub
 </button>
 
 <button
-type="button"
 class="secondary"
 onclick="openWorker()"
 >
-☁️ Open Worker
+Worker
+</button>
+
+<button
+class="secondary"
+onclick="openSitemap()"
+>
+Sitemap
 </button>
 
 </div>
 
 </section>
 
-
-</div>
 
 </div>
 
@@ -2090,217 +967,387 @@ onclick="openWorker()"
 
 
 <footer>
-
-<div class="container">
 LearnByte SEO Control · Private administration tool
-</div>
-
 </footer>
 
 
 <script>
 
-/* =========================================================
-   GLOBAL STATE
-========================================================= */
+const CONFIG = {
 
-let currentFileSha = null;
-let currentFilePath = null;
+    base:
+        'https://learnbtyehq.github.io/',
 
-let keywordSha = null;
+    repo:
+        'learnbtyehq/learnbtyehq.github.io',
+
+    branch:
+        'main',
+
+    sections: {
+
+        education: {
+
+            name:
+                'Education',
+
+            css:
+                'education.css',
+
+            category:
+                'category/education.html',
+
+            icon:
+                '🎓',
+
+            cardClass:
+                'education-post-card',
+
+            gridClass:
+                'education-post-grid',
+
+            label:
+                'EDUCATION',
+
+            read:
+                'Read Guide →'
+
+        },
+
+
+        technology: {
+
+            name:
+                'Technology',
+
+            css:
+                'technology.css',
+
+            category:
+                'category/technology.html',
+
+            icon:
+                '💻',
+
+            cardClass:
+                'tech-card',
+
+            gridClass:
+                'tech-card-grid',
+
+            label:
+                'TECHNOLOGY',
+
+            read:
+                'Open Guide →'
+
+        },
+
+
+        seo: {
+
+            name:
+                'SEO',
+
+            css:
+                'seo.css',
+
+            category:
+                'category/seo.html',
+
+            icon:
+                '🔎',
+
+            cardClass:
+                'seo-post-card',
+
+            gridClass:
+                'seo-post-grid',
+
+            label:
+                'SEO',
+
+            read:
+                'Read Guide'
+
+        },
+
+
+        gaming: {
+
+            name:
+                'Gaming',
+
+            css:
+                'gaming.css',
+
+            category:
+                'category/gaming.html',
+
+            icon:
+                '🎮',
+
+            cardClass:
+                'gaming-post-card',
+
+            gridClass:
+                'gaming-post-grid',
+
+            label:
+                'GAMING',
+
+            read:
+                'Read Article'
+
+        }
+
+    }
+
+};
+
+
+let currentFileSha =
+    null;
+
+let currentFilePath =
+    null;
+
+let keywordSha =
+    null;
 
 let keywordData = {
     keywords: []
 };
 
 
-/* =========================================================
-   HELPER
-========================================================= */
+const $ =
+    id =>
+        document.getElementById(id);
 
-function $(id) {
-    return document.getElementById(id);
+
+const worker =
+    () =>
+        $('workerUrl')
+            .value
+            .trim()
+            .replace(
+                /\/+$/,
+                ''
+            );
+
+
+const key =
+    () =>
+        $('adminKey')
+            .value
+            .trim();
+
+
+const headers =
+    () => ({
+        'Content-Type':
+            'application/json',
+
+        'X-Admin-Key':
+            key()
+
+    });
+
+
+function result(
+    id,
+    msg,
+    type = ''
+) {
+
+    const e =
+        $(id);
+
+    e.className =
+        'result ' + type;
+
+    e.textContent =
+        msg;
+
 }
 
 
-function getWorkerUrl() {
+function esc(v) {
 
-    return $("workerUrl")
-        .value
-        .trim()
-        .replace(/\/+$/, "");
-
-}
-
-
-function getAdminKey() {
-
-    return $("adminKey")
-        .value
-        .trim();
-
-}
-
-
-function authHeaders() {
-
-    return {
-        "Content-Type": "application/json",
-        "X-Admin-Key": getAdminKey()
-    };
-
-}
-
-
-function setResult(id, message, type = "") {
-
-    const box = $(id);
-
-    box.className =
-        type
-        ? "result " + type
-        : "result";
-
-    box.textContent = message;
-
-}
-
-
-/* =========================================================
-   CONNECTION
-========================================================= */
-
-function setConnected(value) {
-
-    const status = $("status");
-    const stat = $("statStatus");
-
-    if (value) {
-
-        status.textContent =
-            "● Connected";
-
-        status.classList.add(
-            "connected"
+    return String(
+        v ?? ''
+    )
+        .replace(
+            /&/g,
+            '&amp;'
+        )
+        .replace(
+            /</g,
+            '&lt;'
+        )
+        .replace(
+            />/g,
+            '&gt;'
+        )
+        .replace(
+            /"/g,
+            '&quot;'
+        )
+        .replace(
+            /'/g,
+            '&#039;'
         );
 
-        stat.textContent =
-            "OK";
+}
 
-    } else {
 
-        status.textContent =
-            "● Not connected";
+async function api(
+    path,
+    method = 'GET',
+    body
+) {
 
-        status.classList.remove(
-            "connected"
+    const r =
+        await fetch(
+            worker() +
+            path,
+            {
+
+                method,
+
+                headers:
+                    headers(),
+
+                body:
+                    body === undefined
+                        ? undefined
+                        : JSON.stringify(body)
+
+            }
         );
 
-        stat.textContent =
-            "—";
+
+    let d = {};
+
+    try {
+
+        d =
+            await r.json();
+
+    } catch {}
+
+
+    if (!r.ok) {
+
+        throw new Error(
+            d.error ||
+            d.message ||
+            (
+                'Request failed: ' +
+                r.status
+            )
+        );
 
     }
+
+
+    return d;
+
+}
+
+
+function setConnected(v) {
+
+    $('status')
+        .textContent =
+        v
+            ? '● Connected'
+            : '● Not connected';
+
+
+    $('status')
+        .classList
+        .toggle(
+            'connected',
+            v
+        );
+
+
+    $('statStatus')
+        .textContent =
+        v
+            ? 'OK'
+            : '—';
 
 }
 
 
 async function testConnection() {
 
-    if (!getAdminKey()) {
+    if (!key()) {
 
-        setResult(
-            "connectionResult",
-            "Please enter your Admin Key.",
-            "error"
+        return result(
+            'connectionResult',
+            'Enter Admin Key.',
+            'err'
         );
-
-        setConnected(false);
-
-        return;
 
     }
 
-    setResult(
-        "connectionResult",
-        "Testing connection..."
+
+    result(
+        'connectionResult',
+        'Testing...'
     );
+
 
     try {
 
-        const response =
-            await fetch(
-                getWorkerUrl() +
-                "/github-test",
-                {
-                    method: "GET",
-                    headers: authHeaders()
-                }
+        const d =
+            await api(
+                '/github-test'
             );
 
-        const data =
-            await response.json();
 
-        if (!response.ok) {
-
-            throw new Error(
-                data.error ||
-                "Connection failed."
-            );
-
-        }
-
-        setResult(
-            "connectionResult",
+        result(
+            'connectionResult',
             JSON.stringify(
-                data,
+                d,
                 null,
                 2
             ),
-            "success"
+            'ok'
         );
 
-        setConnected(true);
+
+        setConnected(
+            true
+        );
+
 
         if (
-            $("rememberKey").checked
+            $('rememberKey')
+                .checked
         ) {
 
             localStorage.setItem(
-                "learnbyte_admin_key",
-                getAdminKey()
+                'learnbyte_admin_key',
+                key()
             );
 
         }
 
-    } catch (error) {
+    } catch(e) {
 
-        setResult(
-            "connectionResult",
-            error.message,
-            "error"
+        result(
+            'connectionResult',
+            e.message,
+            'err'
         );
 
-        setConnected(false);
-
-    }
-
-}
-
-
-function loadSavedKey() {
-
-    const saved =
-        localStorage.getItem(
-            "learnbyte_admin_key"
+        setConnected(
+            false
         );
-
-    if (saved) {
-
-        $("adminKey").value =
-            saved;
-
-        $("rememberKey").checked =
-            true;
 
     }
 
@@ -2310,674 +1357,158 @@ function loadSavedKey() {
 function clearSavedKey() {
 
     localStorage.removeItem(
-        "learnbyte_admin_key"
+        'learnbyte_admin_key'
     );
 
-    $("adminKey").value =
-        "";
+    $('adminKey')
+        .value =
+        '';
 
-    $("rememberKey").checked =
+    $('rememberKey')
+        .checked =
         false;
 
-    setResult(
-        "connectionResult",
-        "Saved key cleared."
+    setConnected(
+        false
     );
 
-    setConnected(false);
+    result(
+        'connectionResult',
+        'Saved key cleared.'
+    );
 
 }
 
 
-/* =========================================================
-   FILE MANAGER
-========================================================= */
+function loadSavedKey() {
 
-async function readFile() {
-
-    const path =
-        $("filePath")
-            .value
-            .trim();
-
-    if (!path) {
-
-        setResult(
-            "fileResult",
-            "Enter a file path.",
-            "error"
+    const k =
+        localStorage.getItem(
+            'learnbyte_admin_key'
         );
 
-        return;
 
-    }
+    if (k) {
 
-    if (!getAdminKey()) {
+        $('adminKey')
+            .value =
+            k;
 
-        setResult(
-            "fileResult",
-            "Enter your Admin Key first.",
-            "error"
-        );
-
-        return;
-
-    }
-
-    setResult(
-        "fileResult",
-        "Reading file..."
-    );
-
-    try {
-
-        const response =
-            await fetch(
-                getWorkerUrl() +
-                "/get-file",
-                {
-                    method: "POST",
-                    headers: authHeaders(),
-                    body: JSON.stringify({
-                        path: path
-                    })
-                }
-            );
-
-        const data =
-            await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.error ||
-                "Could not read file."
-            );
-
-        }
-
-        currentFileSha =
-            data.sha;
-
-        currentFilePath =
-            data.path;
-
-        $("editor").value =
-            data.content;
-
-        $("currentFileDisplay").value =
-            data.path;
-
-        $("statFiles").textContent =
-            "1";
-
-        setResult(
-            "fileResult",
-            "Loaded: " +
-            data.path +
-            "\n\nSHA: " +
-            data.sha,
-            "success"
-        );
-
-    } catch (error) {
-
-        setResult(
-            "fileResult",
-            error.message,
-            "error"
-        );
+        $('rememberKey')
+            .checked =
+            true;
 
     }
 
 }
 
 
-/* =========================================================
-   SAVE FILE
-========================================================= */
+function updateSectionInfo() {
 
-async function saveFile() {
+    const s =
+        CONFIG.sections[
+            $('articleSection')
+                .value
+        ];
 
-    if (!currentFilePath) {
 
-        alert(
-            "First load a file."
-        );
+    $('sectionInfo')
+        .textContent =
 
-        return;
-
-    }
-
-    if (!getAdminKey()) {
-
-        alert(
-            "Enter your Admin Key first."
-        );
-
-        return;
-
-    }
-
-    setResult(
-        "saveResult",
-        "Saving to GitHub..."
-    );
-
-    try {
-
-        const response =
-            await fetch(
-                getWorkerUrl() +
-                "/update-file",
-                {
-                    method: "POST",
-                    headers: authHeaders(),
-
-                    body: JSON.stringify({
-
-                        path:
-                            currentFilePath,
-
-                        content:
-                            $("editor").value,
-
-                        message:
-                            $("commitMessage")
-                                .value
-                                .trim() ||
-                            "Update file from LearnByte SEO Control",
-
-                        sha:
-                            currentFileSha
-
-                    })
-                }
-            );
-
-        const data =
-            await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.error ||
-                "Could not update file."
-            );
-
-        }
-
-        currentFileSha =
-            data.sha ||
-            currentFileSha;
-
-        setResult(
-            "saveResult",
-            "✅ File saved and committed.\n\n" +
-            JSON.stringify(
-                data,
-                null,
-                2
-            ),
-            "success"
-        );
-
-    } catch (error) {
-
-        setResult(
-            "saveResult",
-            error.message,
-            "error"
-        );
-
-    }
+        `${s.name} theme: ${s.css} · ` +
+        `Category page: ${s.category} · ` +
+        `New articles publish under posts/`;
 
 }
 
 
-function clearEditor() {
+function makeHeadingFields() {
 
-    $("editor").value =
-        "";
-
-    $("currentFileDisplay").value =
-        "";
-
-    currentFileSha =
-        null;
-
-    currentFilePath =
-        null;
-
-    setResult(
-        "fileResult",
-        "No file loaded."
-    );
-
-    setResult(
-        "saveResult",
-        "No changes made."
-    );
-
-}
+    let h = '';
 
 
-/* =========================================================
-   KEYWORDS
-========================================================= */
-
-async function loadKeywords() {
-
-    if (!getAdminKey()) {
-
-        setResult(
-            "keywordResult",
-            "Enter your Admin Key first.",
-            "error"
-        );
-
-        return;
-
-    }
-
-    setResult(
-        "keywordResult",
-        "Loading keywords..."
-    );
-
-    try {
-
-        const response =
-            await fetch(
-                getWorkerUrl() +
-                "/get-file",
-                {
-                    method: "POST",
-                    headers: authHeaders(),
-
-                    body: JSON.stringify({
-                        path:
-                            "seo-keywords.json"
-                    })
-                }
-            );
-
-        const data =
-            await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.error ||
-                "Could not load keywords."
-            );
-
-        }
-
-        keywordSha =
-            data.sha;
-
-        keywordData =
-            JSON.parse(
-                data.content ||
-                '{"keywords":[]}'
-            );
-
-        if (
-            !Array.isArray(
-                keywordData.keywords
-            )
-        ) {
-
-            keywordData.keywords =
-                [];
-
-        }
-
-        renderKeywords();
-
-        $("statKeywords").textContent =
-            keywordData.keywords.length;
-
-        setResult(
-            "keywordResult",
-            "Keywords loaded.\nTotal entries: " +
-            keywordData.keywords.length,
-            "success"
-        );
-
-    } catch (error) {
-
-        setResult(
-            "keywordResult",
-            error.message,
-            "error"
-        );
-
-    }
-
-}
-
-
-async function addKeyword() {
-
-    const page =
-        $("keywordPage")
-            .value
-            .trim();
-
-    const primary =
-        $("keywordPrimary")
-            .value
-            .trim();
-
-    const secondary =
-        $("keywordSecondary")
-            .value
-            .trim();
-
-    if (!page || !primary) {
-
-        alert(
-            "Page and Primary Keyword are required."
-        );
-
-        return;
-
-    }
-
-    if (!keywordSha) {
-
-        await loadKeywords();
-
-        if (!keywordSha) {
-
-            return;
-
-        }
-
-    }
-
-    keywordData.keywords.push({
-
-        page: page,
-
-        primary: primary,
-
-        secondary:
-            secondary
-                .split(",")
-                .map(
-                    x => x.trim()
-                )
-                .filter(Boolean)
-
-    });
-
-    await saveKeywords();
-
-    $("keywordPage").value =
-        "";
-
-    $("keywordPrimary").value =
-        "";
-
-    $("keywordSecondary").value =
-        "";
-
-}
-
-
-async function deleteKeyword(index) {
-
-    if (
-        !confirm(
-            "Delete this keyword entry?"
-        )
+    for (
+        let i = 1;
+        i <= 6;
+        i++
     ) {
 
-        return;
+        h += `
+
+<div class="field">
+
+<label>
+Heading ${i}
+</label>
+
+<input
+id="heading${i}"
+placeholder="Optional heading ${i}"
+>
+
+<div class="field">
+
+<label>
+Content ${i}
+</label>
+
+<textarea
+id="content${i}"
+placeholder="Content for this section..."
+></textarea>
+
+</div>
+
+</div>
+
+`;
 
     }
 
-    keywordData.keywords.splice(
-        index,
-        1
-    );
 
-    await saveKeywords();
+    $('headingFields')
+        .innerHTML =
+        h;
 
 }
 
 
-async function saveKeywords() {
+function slugify(v) {
 
-    if (!getAdminKey()) {
-
-        setResult(
-            "keywordResult",
-            "Enter your Admin Key first.",
-            "error"
-        );
-
-        return;
-
-    }
-
-    setResult(
-        "keywordResult",
-        "Saving keywords..."
-    );
-
-    try {
-
-        const response =
-            await fetch(
-                getWorkerUrl() +
-                "/update-file",
-                {
-                    method: "POST",
-                    headers: authHeaders(),
-
-                    body: JSON.stringify({
-
-                        path:
-                            "seo-keywords.json",
-
-                        content:
-                            JSON.stringify(
-                                keywordData,
-                                null,
-                                2
-                            ),
-
-                        message:
-                            "Update SEO keywords",
-
-                        sha:
-                            keywordSha
-
-                    })
-                }
-            );
-
-        const data =
-            await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.error ||
-                "Could not save keywords."
-            );
-
-        }
-
-        keywordSha =
-            data.sha ||
-            keywordSha;
-
-        renderKeywords();
-
-        $("statKeywords").textContent =
-            keywordData.keywords.length;
-
-        setResult(
-            "keywordResult",
-            "✅ Keywords saved successfully.",
-            "success"
-        );
-
-    } catch (error) {
-
-        setResult(
-            "keywordResult",
-            error.message,
-            "error"
-        );
-
-    }
-
-}
-
-
-function escapeHtml(value) {
-
-    return String(value)
-        .replace(/&/g, "&amp;")
-        .replace(/</g, "&lt;")
-        .replace(/>/g, "&gt;")
-        .replace(/"/g, "&quot;")
-        .replace(/'/g, "&#039;");
-
-}
-
-
-function renderKeywords() {
-
-    const list =
-        $("keywordList");
-
-    list.innerHTML =
-        "";
-
-    if (
-        !keywordData.keywords.length
-    ) {
-
-        list.innerHTML =
-            `<div class="result">
-                No keywords added yet.
-            </div>`;
-
-        return;
-
-    }
-
-    keywordData.keywords.forEach(
-        (item, index) => {
-
-            const div =
-                document.createElement(
-                    "div"
-                );
-
-            div.className =
-                "list-item";
-
-            const secondary =
-                Array.isArray(
-                    item.secondary
-                )
-                ? item.secondary.join(", ")
-                : "";
-
-            div.innerHTML = `
-
-                <strong>
-                    ${escapeHtml(
-                        item.page
-                    )}
-                </strong>
-
-                <span>
-                    <b>Primary:</b>
-                    ${escapeHtml(
-                        item.primary
-                    )}
-                </span>
-
-                <br>
-
-                <span>
-                    <b>Secondary:</b>
-                    ${escapeHtml(
-                        secondary ||
-                        "None"
-                    )}
-                </span>
-
-                <div class="button-row">
-
-                    <button
-                        type="button"
-                        class="danger"
-                        onclick="deleteKeyword(${index})"
-                    >
-                        Delete
-                    </button>
-
-                </div>
-            `;
-
-            list.appendChild(
-                div
-            );
-
-        }
-    );
-
-}
-
-
-/* =========================================================
-   ARTICLE
-========================================================= */
-
-function slugify(value) {
-
-    return String(value)
+    return String(v)
         .toLowerCase()
         .trim()
         .replace(
             /\.html$/,
-            ""
+            ''
         )
         .replace(
             /[^a-z0-9]+/g,
-            "-"
+            '-'
         )
         .replace(
             /^-+|-+$/g,
-            ""
+            ''
         ) +
-        ".html";
+        '.html';
 
 }
 
 
-$("articleTitle")
+$('articleTitle')
     .addEventListener(
-        "input",
-        function () {
+        'input',
+        () => {
 
             if (
-                !$("articleSlug").value
+                !$('articleSlug')
+                    .value
             ) {
 
-                $("articleSlug").value =
+                $('articleSlug')
+                    .value =
                     slugify(
-                        $("articleTitle")
+                        $('articleTitle')
                             .value
                     );
 
@@ -2987,84 +1518,93 @@ $("articleTitle")
     );
 
 
-function getArticlePath() {
+function articlePath() {
 
-    let slug =
-        $("articleSlug")
+    let s =
+        $('articleSlug')
             .value
             .trim();
 
-    if (!slug) {
 
-        slug =
+    if (!s) {
+
+        s =
             slugify(
-                $("articleTitle")
+                $('articleTitle')
                     .value
             );
 
     }
 
-    if (!slug) {
-        return "";
+
+    if (!s) {
+
+        return '';
+
     }
+
 
     if (
-        !slug.endsWith(".html")
+        !s.endsWith(
+            '.html'
+        )
     ) {
 
-        slug =
-            slugify(slug);
+        s =
+            slugify(
+                s
+            );
 
     }
+
 
     if (
-        !slug.includes("/")
+        s.includes('/')
     ) {
 
-        slug =
-            "posts/" +
-            slug;
+        return s;
 
     }
 
-    return slug;
+
+    return 'posts/' + s;
 
 }
 
 
-function textToParagraphs(text) {
+function textParas(t) {
 
-    return String(text || "")
+    return String(
+        t || ''
+    )
         .trim()
         .split(
             /\n\s*\n/
         )
-        .filter(Boolean)
+        .filter(
+            Boolean
+        )
         .map(
-            paragraph => {
-
-                return (
-                    "<p>" +
-                    escapeHtml(
-                        paragraph
-                    )
+            x =>
+                '<p>' +
+                esc(x)
                     .replace(
                         /\n/g,
-                        "<br>"
+                        '<br>'
                     ) +
-                    "</p>"
-                );
-
-            }
+                '</p>'
         )
-        .join("\n");
+        .join(
+            '\n'
+        );
 
 }
 
 
-function getArticleData() {
+function data() {
 
-    const headings = [];
+    const hs = [];
+
 
     for (
         let i = 1;
@@ -3072,90 +1612,105 @@ function getArticleData() {
         i++
     ) {
 
-        const heading =
-            $("heading" + i)
+        const h =
+            $('heading' + i)
                 .value
                 .trim();
 
-        const content =
-            $("content" + i)
+        const c =
+            $('content' + i)
                 .value
                 .trim();
+
 
         if (
-            heading ||
-            content
+            h ||
+            c
         ) {
 
-            headings.push({
+            hs.push({
+
                 heading:
-                    heading,
+                    h,
 
                 content:
-                    content
+                    c
+
             });
 
         }
 
     }
 
+
     return {
 
+        section:
+            $('articleSection')
+                .value,
+
         title:
-            $("articleTitle")
+            $('articleTitle')
                 .value
                 .trim(),
 
         path:
-            getArticlePath(),
+            articlePath(),
 
         category:
-            $("articleCategory")
+            $('articleCategory')
                 .value
-                .trim(),
+                .trim() ||
+            CONFIG.sections[
+                $('articleSection')
+                    .value
+            ].name,
 
         date:
-            $("articleDate")
+            $('articleDate')
                 .value ||
             new Date()
                 .toISOString()
-                .slice(0,10),
+                .slice(
+                    0,
+                    10
+                ),
 
         metaTitle:
-            $("articleMetaTitle")
+            $('articleMetaTitle')
                 .value
                 .trim(),
 
         metaDescription:
-            $("articleMetaDescription")
+            $('articleMetaDescription')
                 .value
                 .trim(),
 
         primary:
-            $("articlePrimaryKeyword")
+            $('articlePrimaryKeyword')
                 .value
                 .trim(),
 
         secondary:
-            $("articleSecondaryKeywords")
+            $('articleSecondaryKeywords')
                 .value
                 .trim(),
 
         image:
-            $("articleImage")
+            $('articleImage')
                 .value
                 .trim(),
 
         intro:
-            $("articleIntro")
+            $('articleIntro')
                 .value
                 .trim(),
 
         headings:
-            headings,
+            hs,
 
         conclusion:
-            $("articleConclusion")
+            $('articleConclusion')
                 .value
                 .trim()
 
@@ -3164,152 +1719,185 @@ function getArticleData() {
 }
 
 
-function validateArticle(article) {
+function validate(a) {
 
-    if (!article.title) {
+    if (!a.title)
 
-        return "Article Title is required.";
+        return 'Article Title is required.';
 
-    }
 
-    if (!article.path) {
+    if (!a.path)
 
-        return "URL / File Name is required.";
+        return 'URL / File Name is required.';
 
-    }
 
-    if (!article.metaDescription) {
+    if (!a.metaDescription)
 
-        return "Meta Description is required.";
+        return 'Meta Description is required.';
 
-    }
 
     if (
-        !article.intro &&
-        !article.headings.length &&
-        !article.conclusion
-    ) {
+        !a.intro &&
+        !a.headings.length &&
+        !a.conclusion
+    )
 
-        return "Please write some article content.";
+        return 'Write some article content.';
 
-    }
 
-    return "";
+    return '';
 
 }
 
 
-function generateArticleHTML() {
-
-    const article =
-        getArticleData();
-
-    let content =
-        "";
+function themeBackground(
+    section
+) {
 
     if (
-        article.intro
-    ) {
+        section === 'seo'
+    )
 
-        content +=
-            `
-<section class="article-introduction">
+        return `
+<div
+class="seo-background"
+aria-hidden="true"
+>
+<div class="seo-grid"></div>
+<div class="seo-orb seo-orb-one"></div>
+<div class="seo-orb seo-orb-two"></div>
+<div class="seo-ring seo-ring-one"></div>
+<div class="seo-ring seo-ring-two"></div>
+</div>
+`;
 
-${textToParagraphs(
-    article.intro
+
+    if (
+        section === 'technology'
+    )
+
+        return `
+<div
+class="tech-background"
+aria-hidden="true"
+>
+<div class="tech-grid"></div>
+</div>
+`;
+
+
+    return '';
+
+}
+
+
+function generateHTML() {
+
+    const a =
+        data();
+
+    const s =
+        CONFIG.sections[
+            a.section
+        ];
+
+
+    let content =
+        '';
+
+
+    if (a.intro)
+
+        content += `
+
+<section
+class="article-introduction"
+>
+
+${textParas(
+    a.intro
 )}
 
 </section>
+
 `;
 
-    }
 
-    article.headings.forEach(
-        section => {
+    a.headings.forEach(
+        x => {
 
-            if (
-                section.heading
-            ) {
+            if (x.heading)
 
-                content +=
-                    `
+                content += `
+
 <h2>
-${escapeHtml(
-    section.heading
-)}
+${esc(x.heading)}
 </h2>
+
 `;
 
-            }
 
-            if (
-                section.content
-            ) {
+            if (x.content)
 
                 content +=
-                    textToParagraphs(
-                        section.content
-                    ) +
-                    "\n";
-
-            }
+                    textParas(
+                        x.content
+                    );
 
         }
     );
 
-    if (
-        article.conclusion
-    ) {
 
-        content +=
-            `
+    if (a.conclusion)
+
+        content += `
+
 <h2>
 Conclusion
 </h2>
 
-${textToParagraphs(
-    article.conclusion
+${textParas(
+    a.conclusion
 )}
+
 `;
 
-    }
 
-    const keywords = [
+    const kw = [
 
-        article.primary,
+        a.primary,
 
-        ...article.secondary
-            .split(",")
+        ...a.secondary
+            .split(',')
             .map(
-                x => x.trim()
+                x =>
+                    x.trim()
             )
-            .filter(Boolean)
+            .filter(
+                Boolean
+            )
 
     ]
-    .filter(Boolean)
-    .join(", ");
+        .filter(
+            Boolean
+        )
+        .join(
+            ', '
+        );
 
-    let imageHTML =
-        "";
 
-    if (
-        article.image
-    ) {
-
-        imageHTML =
-            `
+    const img =
+        a.image
+            ? `
 <img
-    src="${escapeHtml(
-        article.image
-    )}"
-    alt="${escapeHtml(
-        article.title
-    )}"
-    loading="lazy"
+class="article-featured-image"
+src="${esc(a.image)}"
+alt="${esc(a.title)}"
+loading="lazy"
 >
-`;
+`
+            : '';
 
-    }
 
     return `<!DOCTYPE html>
 
@@ -3320,86 +1908,148 @@ ${textToParagraphs(
 <meta charset="UTF-8">
 
 <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
+name="viewport"
+content="width=device-width,initial-scale=1.0"
 >
 
 <title>
-${escapeHtml(
-    article.metaTitle ||
-    article.title
+${esc(
+    a.metaTitle ||
+    a.title
 )}
 </title>
 
 <meta
-    name="description"
-    content="${escapeHtml(
-        article.metaDescription
-    )}"
+name="description"
+content="${esc(
+    a.metaDescription
+)}"
 >
 
 <meta
-    name="keywords"
-    content="${escapeHtml(
-        keywords
-    )}"
+name="keywords"
+content="${esc(
+    kw
+)}"
 >
 
 <meta
-    name="robots"
-    content="index,follow"
+name="author"
+content="LearnByte"
+>
+
+<meta
+name="robots"
+content="index,follow,max-image-preview:large"
 >
 
 <link
-    rel="canonical"
-    href="https://learnbtyehq.github.io/${escapeHtml(
-        article.path
-    )}"
+rel="canonical"
+href="${CONFIG.base}${esc(a.path)}"
+>
+
+<meta
+property="og:type"
+content="article"
+>
+
+<meta
+property="og:title"
+content="${esc(
+    a.metaTitle ||
+    a.title
+)}"
+>
+
+<meta
+property="og:description"
+content="${esc(
+    a.metaDescription
+)}"
+>
+
+<meta
+property="og:url"
+content="${CONFIG.base}${esc(a.path)}"
+>
+
+<meta
+property="og:site_name"
+content="LearnByte"
+>
+
+<link
+rel="stylesheet"
+href="../style.css"
+>
+
+<link
+rel="stylesheet"
+href="../${s.css}"
 >
 
 <style>
 
-body {
-    margin: 0;
-    font-family:
-        system-ui,
-        -apple-system,
-        "Segoe UI",
-        sans-serif;
-    color: #172033;
-    line-height: 1.75;
+.lb-published-article{
+max-width:900px;
+margin:0 auto;
+padding:80px 20px 90px
 }
 
-main {
-    max-width: 850px;
-    margin: auto;
-    padding: 30px 20px 60px;
+.lb-published-article
+.article-meta{
+opacity:.72;
+font-size:.9rem;
+margin-bottom:12px
 }
 
-article h1 {
-    font-size:
-        clamp(32px,6vw,52px);
-    line-height: 1.15;
+.lb-published-article
+h1{
+font-size:
+clamp(
+2.3rem,
+6vw,
+4.3rem
+);
+line-height:1.08;
+margin:0 0 22px
 }
 
-article h2 {
-    margin-top: 34px;
-    line-height: 1.25;
+.lb-published-article
+h2{
+margin-top:42px;
+line-height:1.2
 }
 
-article p {
-    font-size: 17px;
+.lb-published-article
+p{
+font-size:1.08rem;
+line-height:1.85
 }
 
-article img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 12px;
+.article-featured-image{
+display:block;
+width:100%;
+max-height:520px;
+object-fit:cover;
+border-radius:18px;
+margin:24px 0
 }
 
-.article-meta {
-    color: #68758a;
-    font-size: 14px;
+.article-introduction{
+font-size:1.08rem
+}
+
+.lb-published-article
+a{
+color:inherit
+}
+
+.lb-published-article
+.back-link{
+display:inline-block;
+margin-top:35px;
+font-weight:800
 }
 
 </style>
@@ -3408,35 +2058,132 @@ article img {
 
 <body>
 
+${themeBackground(
+    a.section
+)}
+
+<header class="site-header">
+
+<div class="container navbar">
+
+<a
+href="../index.html"
+class="logo"
+>
+Learn<span>Byte</span>
+</a>
+
+<button
+class="menu-toggle"
+id="menuToggle"
+type="button"
+>
+☰
+</button>
+
+<nav
+class="nav-menu"
+id="navMenu"
+>
+
+<a href="../index.html">
+Home
+</a>
+
+<a href="../category/education.html">
+Education
+</a>
+
+<a href="../category/technology.html">
+Technology
+</a>
+
+<a href="../category/seo.html">
+SEO
+</a>
+
+<a href="../category/gaming.html">
+Gaming
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
 <main>
 
-<article>
+<article
+class="lb-published-article"
+>
 
 <div class="article-meta">
 
-${escapeHtml(
-    article.category
-)}
+${esc(a.category)}
  ·
-${escapeHtml(
-    article.date
-)}
+${esc(a.date)}
 
 </div>
 
 <h1>
-${escapeHtml(
-    article.title
-)}
+
+${esc(a.title)}
+
 </h1>
 
-${imageHTML}
+${img}
 
 ${content}
+
+<a
+class="back-link"
+href="../category/${a.section}.html"
+>
+← Back to
+${esc(s.name)}
+</a>
 
 </article>
 
 </main>
+
+<footer>
+
+<div class="container">
+
+LearnByte ·
+${esc(s.name)}
+Guides
+
+</div>
+
+</footer>
+
+<script>
+
+const b =
+document.getElementById(
+    'menuToggle'
+);
+
+const n =
+document.getElementById(
+    'navMenu'
+);
+
+if (
+    b &&
+    n
+)
+    b.onclick =
+        () => {
+            n.classList.toggle(
+                'open'
+            );
+        };
+
+<\/script>
 
 </body>
 
@@ -3445,295 +2192,173 @@ ${content}
 }
 
 
-/* =========================================================
-   ARTICLE PREVIEW
-========================================================= */
-
 function previewArticle() {
 
-    const article =
-        getArticleData();
+    const a =
+        data();
 
-    const error =
-        validateArticle(
-            article
-        );
+    const e =
+        validate(a);
 
-    if (error) {
 
-        alert(error);
+    if (e)
 
-        return;
+        return alert(e);
 
-    }
 
-    const html =
-        generateArticleHTML();
-
-    const iframe =
+    const f =
         document.createElement(
-            "iframe"
+            'iframe'
         );
 
-    iframe.srcdoc =
-        html;
 
-    const preview =
-        $("articlePreview");
+    f.srcdoc =
+        generateHTML();
 
-    preview.innerHTML =
-        "";
 
-    preview.appendChild(
-        iframe
-    );
+    $('previewArea')
+        .innerHTML =
+        '';
 
-    $("previewWrapper")
+
+    $('previewArea')
+        .appendChild(
+            f
+        );
+
+
+    $('previewBox')
         .style.display =
-        "block";
+        'block';
 
 }
 
-
-/* =========================================================
-   SHOW HTML
-========================================================= */
 
 function showGeneratedHTML() {
 
-    const article =
-        getArticleData();
+    const a =
+        data();
 
-    const error =
-        validateArticle(
-            article
-        );
+    const e =
+        validate(a);
 
-    if (error) {
 
-        alert(error);
+    if (e)
 
-        return;
+        return alert(e);
 
-    }
 
-    $("articleCode").value =
-        generateArticleHTML();
+    $('articleCode')
+        .value =
+        generateHTML();
 
-    $("codeWrapper")
+
+    $('articleCode')
         .style.display =
-        "block";
+        'block';
+
+
+    $('codeBox')
+        .style.display =
+        'block';
 
 }
 
-
-/* =========================================================
-   SEO ANALYZER
-========================================================= */
 
 function analyzeSEO() {
 
-    const article =
-        getArticleData();
+    const a =
+        data();
 
-    const textParts = [
+    const text = [
 
-        article.intro,
+        a.intro,
 
-        ...article.headings.map(
-            x => x.content
+        ...a.headings.map(
+            x =>
+                x.content
         ),
 
-        article.conclusion
+        a.conclusion
+
+    ].join(' ');
+
+
+    const words =
+        text.trim()
+            ? text
+                .trim()
+                .split(
+                    /\s+/
+                )
+                .length
+            : 0;
+
+
+    const notes = [
+
+        `Words: ${words}`,
+
+        `Title characters: ${a.title.length}`,
+
+        `Meta characters: ${a.metaDescription.length}`,
+
+        `H2 headings: ${
+            a.headings.filter(
+                x => x.heading
+            ).length
+        }`,
+
+        a.primary
+            ? `Primary keyword occurrences: ${
+                text
+                    .toLowerCase()
+                    .split(
+                        a.primary
+                            .toLowerCase()
+                    )
+                    .length - 1
+            }`
+            : 'Primary keyword is empty'
 
     ];
 
-    const text =
-        textParts
-            .join(" ")
-            .trim();
 
-    const words =
-        text
-            ? text.split(/\s+/).length
-            : 0;
-
-    const titleLength =
-        article.title.length;
-
-    const metaLength =
-        article.metaDescription.length;
-
-    const headingCount =
-        article.headings.filter(
-            x => x.heading
-        ).length;
-
-    $("seoWords").textContent =
-        words;
-
-    $("seoTitle").textContent =
-        titleLength;
-
-    $("seoMeta").textContent =
-        metaLength;
-
-    $("seoHeadings").textContent =
-        headingCount;
-
-    const notes = [];
-
-    if (
-        titleLength < 30
-    ) {
-
-        notes.push(
-            "⚠️ Title is quite short."
-        );
-
-    } else if (
-        titleLength > 65
-    ) {
-
-        notes.push(
-            "⚠️ Title may be too long."
-        );
-
-    } else {
-
-        notes.push(
-            "✅ Title length looks reasonable."
-        );
-
-    }
-
-    if (
-        metaLength < 120
-    ) {
-
-        notes.push(
-            "⚠️ Meta description is short."
-        );
-
-    } else if (
-        metaLength > 170
-    ) {
-
-        notes.push(
-            "⚠️ Meta description may be too long."
-        );
-
-    } else {
-
-        notes.push(
-            "✅ Meta description length looks reasonable."
-        );
-
-    }
-
-    if (
-        headingCount === 0
-    ) {
-
-        notes.push(
-            "⚠️ No H2 heading added."
-        );
-
-    } else {
-
-        notes.push(
-            "✅ H2 headings detected: " +
-            headingCount
-        );
-
-    }
-
-    if (
-        words < 300
-    ) {
-
-        notes.push(
-            "⚠️ Article content is under 300 words."
-        );
-
-    } else {
-
-        notes.push(
-            "✅ Article has " +
-            words +
-            " words."
-        );
-
-    }
-
-    if (
-        !article.primary
-    ) {
-
-        notes.push(
-            "⚠️ Primary keyword is empty."
-        );
-
-    } else {
-
-        const count =
-            text
-                .toLowerCase()
-                .split(
-                    article.primary
-                        .toLowerCase()
-                )
-                .length - 1;
-
-        notes.push(
-            "Primary keyword occurrences in text: " +
-            count
-        );
-
-    }
-
-    setResult(
-        "seoResult",
-        notes.join("\n")
+    result(
+        'seoBox',
+        notes.join('\n')
     );
 
-    $("seoWrapper")
+
+    $('seoBox')
         .style.display =
-        "block";
+        'block';
 
 }
 
 
-/* =========================================================
-   CLEAR ARTICLE
-========================================================= */
-
 function clearArticle() {
 
-    const ids = [
+    [
 
-        "articleTitle",
-        "articleSlug",
-        "articleCategory",
-        "articleDate",
-        "articleMetaTitle",
-        "articleMetaDescription",
-        "articlePrimaryKeyword",
-        "articleSecondaryKeywords",
-        "articleImage",
-        "articleIntro",
-        "articleConclusion"
+        'articleTitle',
+        'articleSlug',
+        'articleCategory',
+        'articleDate',
+        'articleMetaTitle',
+        'articleMetaDescription',
+        'articlePrimaryKeyword',
+        'articleSecondaryKeywords',
+        'articleImage',
+        'articleIntro',
+        'articleConclusion'
 
-    ];
-
-    ids.forEach(
-        id => {
-
+    ].forEach(
+        id =>
             $(id).value =
-                "";
-
-        }
+                ''
     );
+
 
     for (
         let i = 1;
@@ -3741,167 +2366,1634 @@ function clearArticle() {
         i++
     ) {
 
-        $("heading" + i).value =
-            "";
+        $('heading' + i)
+            .value =
+            '';
 
-        $("content" + i).value =
-            "";
+        $('content' + i)
+            .value =
+            '';
 
     }
 
-    setResult(
-        "articleResult",
-        "Article Creator ready."
+
+    $('previewBox')
+        .style.display =
+        'none';
+
+    $('codeBox')
+        .style.display =
+        'none';
+
+    $('seoBox')
+        .style.display =
+        'none';
+
+
+    result(
+        'articleResult',
+        'Ready to publish.'
     );
-
-    $("previewWrapper")
-        .style.display =
-        "none";
-
-    $("codeWrapper")
-        .style.display =
-        "none";
-
-    $("seoWrapper")
-        .style.display =
-        "none";
 
 }
 
 
-/* =========================================================
-   UPLOAD ARTICLE
-========================================================= */
+async function readFile() {
 
-async function uploadArticle() {
+    const p =
+        $('filePath')
+            .value
+            .trim();
 
-    const article =
-        getArticleData();
 
-    const error =
-        validateArticle(
-            article
+    if (!p)
+
+        return result(
+            'fileResult',
+            'Enter a file path.',
+            'err'
         );
 
-    if (error) {
-
-        alert(error);
-
-        return;
-
-    }
-
-    if (!getAdminKey()) {
-
-        alert(
-            "Enter your Admin Key first."
-        );
-
-        return;
-
-    }
-
-    if (
-        !confirm(
-            "Create and upload this article?\n\n" +
-            article.path
-        )
-    ) {
-
-        return;
-
-    }
-
-    setResult(
-        "articleResult",
-        "Generating HTML and uploading..."
-    );
 
     try {
 
-        const html =
-            generateArticleHTML();
-
-        const response =
-            await fetch(
-                getWorkerUrl() +
-                "/update-file",
+        const d =
+            await api(
+                '/get-file',
+                'POST',
                 {
-                    method: "POST",
-                    headers: authHeaders(),
-
-                    body: JSON.stringify({
-
-                        path:
-                            article.path,
-
-                        content:
-                            html,
-
-                        message:
-                            "Add new article: " +
-                            article.title
-
-                    })
+                    path:
+                        p
                 }
             );
 
-        const data =
-            await response.json();
 
-        if (!response.ok) {
+        currentFileSha =
+            d.sha;
 
-            throw new Error(
-                data.error ||
-                "GitHub upload failed."
+        currentFilePath =
+            d.path;
+
+
+        $('currentFile')
+            .value =
+            d.path;
+
+        $('editor')
+            .value =
+            d.content;
+
+
+        $('statFiles')
+            .textContent =
+            '1';
+
+
+        result(
+            'fileResult',
+            `Loaded: ${d.path}
+SHA: ${d.sha}`,
+            'ok'
+        );
+
+    } catch(e) {
+
+        result(
+            'fileResult',
+            e.message,
+            'err'
+        );
+
+    }
+
+}
+
+
+async function saveFile() {
+
+    if (!currentFilePath)
+
+        return alert(
+            'Load a file first.'
+        );
+
+
+    try {
+
+        const d =
+            await api(
+                '/update-file',
+                'POST',
+                {
+
+                    path:
+                        currentFilePath,
+
+                    content:
+                        $('editor')
+                            .value,
+
+                    message:
+                        $('commitMessage')
+                            .value
+                            .trim() ||
+                        'Update file from LearnByte Control Center',
+
+                    sha:
+                        currentFileSha
+
+                }
+            );
+
+
+        currentFileSha =
+            d.sha ||
+            currentFileSha;
+
+
+        result(
+            'saveResult',
+            JSON.stringify(
+                d,
+                null,
+                2
+            ),
+            'ok'
+        );
+
+    } catch(e) {
+
+        result(
+            'saveResult',
+            e.message,
+            'err'
+        );
+
+    }
+
+}
+
+
+function clearEditor() {
+
+    currentFilePath =
+        null;
+
+    currentFileSha =
+        null;
+
+    $('currentFile')
+        .value =
+        '';
+
+    $('editor')
+        .value =
+        '';
+
+    result(
+        'fileResult',
+        'No file loaded.'
+    );
+
+    result(
+        'saveResult',
+        'No changes made.'
+    );
+
+}
+
+
+async function getFile(path) {
+
+    return api(
+        '/get-file',
+        'POST',
+        {
+            path
+        }
+    );
+
+}
+
+
+async function putFile(
+    path,
+    content,
+    message,
+    sha
+) {
+
+    return api(
+        '/update-file',
+        'POST',
+        {
+
+            path,
+            content,
+            message,
+            sha
+
+        }
+    );
+
+}
+
+
+function insertBeforeFirstArticle(
+    html,
+    gridClass,
+    card
+) {
+
+    const re =
+        new RegExp(
+            `(<div\\s+class=["']${gridClass}["'][^>]*>)`,
+            'i'
+        );
+
+
+    if (!re.test(html))
+
+        throw new Error(
+            `Could not find ${gridClass} in category page.`
+        );
+
+
+    if (
+        html.includes(
+            `href="../${card.path}"`
+        ) ||
+        html.includes(
+            `href="${card.path}"`
+        )
+    )
+
+        return html;
+
+
+    return html.replace(
+        re,
+        `$1
+
+${card.html}
+`
+    );
+
+}
+
+
+function cardHTML(
+    a,
+    section,
+    index
+) {
+
+    const n =
+        String(index)
+            .padStart(
+                2,
+                '0'
+            );
+
+
+    const href =
+        `../${a.path}`;
+
+
+    const label =
+        esc(
+            a.category
+        ).toUpperCase();
+
+
+    const title =
+        esc(
+            a.title
+        );
+
+
+    const desc =
+        esc(
+            (
+                a.intro ||
+                ''
+            )
+                .replace(
+                    /\s+/g,
+                    ' '
+                )
+                .slice(
+                    0,
+                    180
+                ) +
+                (
+                    a.intro &&
+                    a.intro.length > 180
+                        ? '…'
+                        : ''
+                )
+        );
+
+
+    if (
+        section ===
+        'education'
+    )
+
+        return `
+
+<article
+class="education-post-card"
+>
+
+<div
+class="education-post-number"
+>
+${n}
+</div>
+
+<div
+class="education-post-icon"
+>
+${CONFIG.sections[section].icon}
+</div>
+
+<span
+class="education-post-label"
+>
+${label}
+</span>
+
+<h3>
+${title}
+</h3>
+
+<p>
+${desc}
+</p>
+
+<a
+href="${href}"
+>
+Read Guide →
+</a>
+
+</article>
+
+`;
+
+
+    if (
+        section ===
+        'technology'
+    )
+
+        return `
+
+<article
+class="tech-card"
+>
+
+<div
+class="tech-card-top"
+>
+
+<span>
+${String(index).padStart(
+    3,
+    '0'
+)}
+</span>
+
+<div class="tech-icon">
+${CONFIG.sections[section].icon}
+</div>
+
+</div>
+
+<div class="tech-tag">
+${label}
+</div>
+
+<h3>
+${title}
+</h3>
+
+<p>
+${desc}
+</p>
+
+<a href="${href}">
+Open Guide
+<span>
+→
+</span>
+</a>
+
+</article>
+
+`;
+
+
+    if (
+        section ===
+        'gaming'
+    )
+
+        return `
+
+<article
+class="gaming-post-card"
+>
+
+<div
+class="gaming-post-top"
+>
+
+<span
+class="gaming-post-number"
+>
+${n}
+</span>
+
+<span
+class="gaming-post-icon"
+>
+${CONFIG.sections[section].icon}
+</span>
+
+<span
+class="gaming-post-type"
+>
+${label}
+</span>
+
+</div>
+
+<div
+class="gaming-post-content"
+>
+
+<h3>
+${title}
+</h3>
+
+<p>
+${desc}
+</p>
+
+<a
+href="${href}"
+class="gaming-read"
+>
+Read Article
+<span>
+→
+</span>
+</a>
+
+</div>
+
+</article>
+
+`;
+
+
+    return `
+
+<article
+class="seo-post-card"
+>
+
+<div
+class="seo-card-top"
+>
+
+<span
+class="seo-card-number"
+>
+${n}
+</span>
+
+<span
+class="seo-card-icon"
+>
+${CONFIG.sections[section].icon}
+</span>
+
+</div>
+
+<span
+class="post-category"
+>
+${label}
+</span>
+
+<h3>
+${title}
+</h3>
+
+<p>
+${desc}
+</p>
+
+<a
+href="${href}"
+class="seo-read"
+>
+Read Guide
+<span>
+↗
+</span>
+</a>
+
+</article>
+
+`;
+
+}
+
+
+function addHomepageCard(
+    html,
+    a
+) {
+
+    const href =
+        a.path;
+
+    const title =
+        esc(
+            a.title
+        );
+
+    const desc =
+        esc(
+            (
+                a.intro ||
+                ''
+            )
+                .replace(
+                    /\s+/g,
+                    ' '
+                )
+                .slice(
+                    0,
+                    160
+                ) +
+                (
+                    a.intro &&
+                    a.intro.length > 160
+                        ? '…'
+                        : ''
+                )
+        );
+
+    const label =
+        esc(
+            CONFIG
+                .sections[
+                    a.section
+                ].name
+        );
+
+
+    if (
+        html.includes(
+            `href="${href}"`
+        )
+    )
+
+        return html;
+
+
+    const card = `
+
+<article
+class="post-card"
+>
+
+<div
+class="post-image"
+aria-hidden="true"
+>
+${CONFIG.sections[
+    a.section
+].icon}
+</div>
+
+<div
+class="post-content"
+>
+
+<span
+class="post-category"
+>
+${label}
+</span>
+
+<h3>
+${title}
+</h3>
+
+<p>
+${desc}
+</p>
+
+<a
+href="${href}"
+>
+Read Article →
+</a>
+
+</div>
+
+</article>
+
+`;
+
+
+    const grid =
+        /<div\s+class=["']post-grid["'][^>]*>/i;
+
+
+    if (!grid.test(html))
+
+        throw new Error(
+            'Could not find homepage post-grid.'
+        );
+
+
+    return html.replace(
+        grid,
+        m =>
+            m +
+            '\n\n' +
+            card +
+            '\n'
+    );
+
+}
+
+
+function addSitemap(
+    xml,
+    a
+) {
+
+    const url =
+        CONFIG.base +
+        a.path;
+
+
+    if (
+        xml.includes(
+            `<loc>${url}</loc>`
+        )
+    )
+
+        return xml;
+
+
+    const entry = `
+
+    <url>
+
+        <loc>
+${url}
+        </loc>
+
+        <lastmod>
+${a.date}
+        </lastmod>
+
+    </url>`;
+
+
+    return xml.replace(
+        /<\/urlset>/i,
+        entry +
+        '\n</urlset>'
+    );
+
+}
+
+
+async function updateCategory(
+    a
+) {
+
+    const s =
+        CONFIG.sections[
+            a.section
+        ];
+
+
+    const d =
+        await getFile(
+            s.category
+        );
+
+
+    const count =
+        (
+            d.content.match(
+                /<article\b/gi
+            ) ||
+            []
+        ).length +
+        1;
+
+
+    const html =
+        insertBeforeFirstArticle(
+            d.content,
+            s.gridClass,
+            {
+
+                path:
+                    a.path,
+
+                html:
+                    cardHTML(
+                        a,
+                        a.section,
+                        count
+                    )
+
+            }
+        );
+
+
+    if (
+        html ===
+        d.content
+    )
+
+        return d;
+
+
+    return putFile(
+        s.category,
+        html,
+        `Add article to ${s.name}: ${a.title}`,
+        d.sha
+    );
+
+}
+
+
+async function updateHome(a) {
+
+    const d =
+        await getFile(
+            'index.html'
+        );
+
+
+    const html =
+        addHomepageCard(
+            d.content,
+            a
+        );
+
+
+    if (
+        html ===
+        d.content
+    )
+
+        return d;
+
+
+    return putFile(
+        'index.html',
+        html,
+        `Add article to homepage: ${a.title}`,
+        d.sha
+    );
+
+}
+
+
+async function updateSitemap(a) {
+
+    const d =
+        await getFile(
+            'sitemap.xml'
+        );
+
+
+    const xml =
+        addSitemap(
+            d.content,
+            a
+        );
+
+
+    if (
+        xml ===
+        d.content
+    )
+
+        return d;
+
+
+    return putFile(
+        'sitemap.xml',
+        xml,
+        `Add sitemap URL: ${a.title}`,
+        d.sha
+    );
+
+}
+
+
+async function saveKeywordsForArticle(a) {
+
+    try {
+
+        const d =
+            await getFile(
+                'seo-keywords.json'
+            );
+
+
+        let obj = {
+            keywords: []
+        };
+
+
+        try {
+
+            obj =
+                JSON.parse(
+                    d.content ||
+                    '{"keywords":[]}'
+                );
+
+        } catch {}
+
+
+        if (
+            !Array.isArray(
+                obj.keywords
+            )
+        )
+
+            obj.keywords =
+                [];
+
+
+        if (
+            a.primary &&
+            !obj.keywords.some(
+                x =>
+                    x.page ===
+                    a.path
+            )
+        ) {
+
+            obj.keywords.push({
+
+                page:
+                    a.path,
+
+                primary:
+                    a.primary,
+
+                secondary:
+                    a.secondary
+                        .split(',')
+                        .map(
+                            x =>
+                                x.trim()
+                        )
+                        .filter(
+                            Boolean
+                        )
+
+            });
+
+
+            await putFile(
+                'seo-keywords.json',
+
+                JSON.stringify(
+                    obj,
+                    null,
+                    2
+                ),
+
+                'Add SEO keywords: ' +
+                a.title,
+
+                d.sha
             );
 
         }
 
-        $("articleCode").value =
-            html;
+    } catch(e) {
 
-        $("codeWrapper")
-            .style.display =
-            "block";
+        console.warn(
+            'Keyword auto-save skipped',
+            e
+        );
 
-        const current =
-            Number(
-                $("statArticles")
-                    .textContent
-            ) || 0;
+    }
 
-        $("statArticles")
-            .textContent =
-            String(
-                current + 1
+}
+
+
+async function directPublish() {
+
+    const a =
+        data();
+
+
+    const e =
+        validate(a);
+
+
+    if (e)
+
+        return alert(e);
+
+
+    if (!key())
+
+        return alert(
+            'Enter Admin Key first.'
+        );
+
+
+    if (
+        !confirm(
+            `DIRECT PUBLISH this article?
+
+${a.title}
+
+${a.path}`
+        )
+    )
+
+        return;
+
+
+    const btn =
+        $('publishBtn');
+
+
+    btn.disabled =
+        true;
+
+
+    let steps = [];
+
+
+    try {
+
+        result(
+            'articleResult',
+            '1/5 Creating article...'
+        );
+
+
+        const html =
+            generateHTML();
+
+
+        const articleFile =
+            await putFile(
+                a.path,
+                html,
+                'Publish article: ' +
+                a.title
             );
 
-        setResult(
-            "articleResult",
 
-            "✅ ARTICLE UPLOADED SUCCESSFULLY\n\n" +
-            "File: " +
-            article.path +
-            "\n\n" +
+        steps.push(
+            'Article published'
+        );
+
+
+        result(
+            'articleResult',
+            '2/5 Updating ' +
+            CONFIG.sections[
+                a.section
+            ].name +
+            ' category...'
+        );
+
+
+        await updateCategory(
+            a
+        );
+
+
+        steps.push(
+            'Category updated'
+        );
+
+
+        result(
+            'articleResult',
+            '3/5 Updating homepage...'
+        );
+
+
+        await updateHome(
+            a
+        );
+
+
+        steps.push(
+            'Homepage updated'
+        );
+
+
+        result(
+            'articleResult',
+            '4/5 Updating sitemap...'
+        );
+
+
+        await updateSitemap(
+            a
+        );
+
+
+        steps.push(
+            'Sitemap updated'
+        );
+
+
+        result(
+            'articleResult',
+            '5/5 Saving SEO keywords...'
+        );
+
+
+        await saveKeywordsForArticle(
+            a
+        );
+
+
+        steps.push(
+            'SEO keywords saved'
+        );
+
+
+        $('articleCode')
+            .value =
+            html;
+
+
+        $('articleCode')
+            .style.display =
+            'block';
+
+
+        $('codeBox')
+            .style.display =
+            'block';
+
+
+        $('statArticles')
+            .textContent =
+            String(
+                Number(
+                    $('statArticles')
+                        .textContent ||
+                    0
+                ) + 1
+            );
+
+
+        $('statFiles')
+            .textContent =
+            String(
+                Number(
+                    $('statFiles')
+                        .textContent ||
+                    0
+                ) + 3
+            );
+
+
+        const live =
+            CONFIG.base +
+            a.path;
+
+
+        result(
+            'publishSummary',
+
+            `✅ DIRECT PUBLISH COMPLETE
+
+Live URL:
+
+${live}
+
+${steps
+    .map(
+        x =>
+            '✓ ' + x
+    )
+    .join('\n')}`,
+
+            'ok'
+        );
+
+
+        result(
+            'articleResult',
+
+            `✅ Published successfully.
+
+Live URL:
+
+${live}
+
+All automatic updates completed.`,
+
+            'ok'
+        );
+
+
+        window.lastPublishedUrl =
+            live;
+
+    } catch(err) {
+
+        result(
+            'articleResult',
+
+            `❌ PUBLISH STOPPED
+
+${err.message}
+
+Completed before failure:
+
+${
+    steps
+        .map(
+            x =>
+                '✓ ' + x
+        )
+        .join('\n') ||
+    'None'
+}
+
+Check the affected files before retrying.`,
+
+            'err'
+        );
+
+    } finally {
+
+        btn.disabled =
+            false;
+
+    }
+
+}
+
+
+async function loadKeywords() {
+
+    try {
+
+        const d =
+            await getFile(
+                'seo-keywords.json'
+            );
+
+
+        keywordSha =
+            d.sha;
+
+
+        keywordData =
+            JSON.parse(
+                d.content ||
+                '{"keywords":[]}'
+            );
+
+
+        if (
+            !Array.isArray(
+                keywordData.keywords
+            )
+        )
+
+            keywordData.keywords =
+                [];
+
+
+        renderKeywords();
+
+
+        $('statKeywords')
+            .textContent =
+            keywordData
+                .keywords
+                .length;
+
+
+        result(
+            'keywordResult',
+            'Keywords loaded.',
+            'ok'
+        );
+
+    } catch(e) {
+
+        result(
+            'keywordResult',
+            e.message,
+            'err'
+        );
+
+    }
+
+}
+
+
+function renderKeywords() {
+
+    $('keywordList')
+        .innerHTML =
+
+        keywordData.keywords.length
+
+            ?
+
+            keywordData
+                .keywords
+                .map(
+                    (x,i) => `
+
+<div class="item">
+
+<strong>
+${esc(x.page)}
+</strong>
+
+<small>
+
+Primary:
+${esc(x.primary)}
+
+<br>
+
+Secondary:
+${esc(
+    Array.isArray(
+        x.secondary
+    )
+        ? x.secondary.join(
+            ', '
+        )
+        : x.secondary ||
+          'None'
+)}
+
+</small>
+
+<div class="row">
+
+<button
+class="danger"
+onclick="deleteKeyword(${i})"
+>
+Delete
+</button>
+
+</div>
+
+</div>
+
+`
+                )
+                .join('')
+
+            :
+
+            '<div class="result">No keywords yet.</div>';
+
+}
+
+
+async function addKeyword() {
+
+    if (!keywordSha)
+
+        await loadKeywords();
+
+
+    if (!keywordSha)
+
+        return;
+
+
+    const p =
+        $('keywordPage')
+            .value
+            .trim();
+
+
+    const k =
+        $('keywordPrimary')
+            .value
+            .trim();
+
+
+    if (
+        !p ||
+        !k
+    )
+
+        return alert(
+            'Page and Primary Keyword are required.'
+        );
+
+
+    keywordData
+        .keywords
+        .push({
+
+            page:
+                p,
+
+            primary:
+                k,
+
+            secondary:
+                $('keywordSecondary')
+                    .value
+                    .split(',')
+                    .map(
+                        x =>
+                            x.trim()
+                    )
+                    .filter(
+                        Boolean
+                    )
+
+        });
+
+
+    await saveKeywords();
+
+
+    $('keywordPage')
+        .value =
+        '';
+
+    $('keywordPrimary')
+        .value =
+        '';
+
+    $('keywordSecondary')
+        .value =
+        '';
+
+}
+
+
+async function deleteKeyword(i) {
+
+    if (
+        !confirm(
+            'Delete this keyword?'
+        )
+    )
+
+        return;
+
+
+    keywordData
+        .keywords
+        .splice(
+            i,
+            1
+        );
+
+
+    await saveKeywords();
+
+}
+
+
+async function saveKeywords() {
+
+    try {
+
+        const d =
+            await putFile(
+                'seo-keywords.json',
+
+                JSON.stringify(
+                    keywordData,
+                    null,
+                    2
+                ),
+
+                'Update SEO keywords',
+
+                keywordSha
+            );
+
+
+        keywordSha =
+            d.sha ||
+            keywordSha;
+
+
+        renderKeywords();
+
+
+        $('statKeywords')
+            .textContent =
+            keywordData
+                .keywords
+                .length;
+
+
+        result(
+            'keywordResult',
+            '✅ Keywords saved.',
+            'ok'
+        );
+
+    } catch(e) {
+
+        result(
+            'keywordResult',
+            e.message,
+            'err'
+        );
+
+    }
+
+}
+
+
+function prepareLink() {
+
+    const s =
+        $('sourcePage')
+            .value
+            .trim();
+
+    const t =
+        $('targetPage')
+            .value
+            .trim();
+
+    const a =
+        $('anchorText')
+            .value
+            .trim();
+
+
+    if (
+        !s ||
+        !t ||
+        !a
+    )
+
+        return alert(
+            'Fill all fields.'
+        );
+
+
+    result(
+        'linkResult',
+
+        `Generated link:
+
+<a href="${esc(t)}">
+${esc(a)}
+</a>`,
+
+        'ok'
+    );
+
+}
+
+
+async function applyInternalLink() {
+
+    const s =
+        $('sourcePage')
+            .value
+            .trim();
+
+    const t =
+        $('targetPage')
+            .value
+            .trim();
+
+    const a =
+        $('anchorText')
+            .value
+            .trim();
+
+
+    if (
+        !s ||
+        !t ||
+        !a
+    )
+
+        return alert(
+            'Fill all fields.'
+        );
+
+
+    try {
+
+        const d =
+            await getFile(
+                s
+            );
+
+
+        if (
+            d.content.includes(
+                `href="${t}"`
+            ) &&
+            d.content.includes(
+                a
+            )
+        )
+
+            throw new Error(
+                'This link appears to already exist.'
+            );
+
+
+        const re =
+            new RegExp(
+                '(?<![>])(' +
+                a.replace(
+                    /[.*+?^${}()|[\]\\]/g,
+                    '\\$&'
+                ) +
+                ')(?![^<]*>)',
+                'i'
+            );
+
+
+        const html =
+            d.content.replace(
+                re,
+                `<a href="${esc(t)}">$1</a>`
+            );
+
+
+        if (
+            html ===
+            d.content
+        )
+
+            throw new Error(
+                'Anchor text was not found.'
+            );
+
+
+        const out =
+            await putFile(
+                s,
+                html,
+                'Add internal link: ' +
+                a,
+                d.sha
+            );
+
+
+        result(
+            'linkResult',
+
+            '✅ Internal link applied and committed.\n\n' +
             JSON.stringify(
-                data,
+                out,
                 null,
                 2
             ),
 
-            "success"
+            'ok'
         );
 
-    } catch (error) {
+    } catch(e) {
 
-        setResult(
-            "articleResult",
-
-            "❌ ARTICLE UPLOAD FAILED\n\n" +
-            error.message,
-
-            "error"
+        result(
+            'linkResult',
+            e.message,
+            'err'
         );
 
     }
@@ -3909,345 +4001,9 @@ async function uploadArticle() {
 }
 
 
-/* =========================================================
-   INTERNAL LINK
-========================================================= */
-
-function prepareLink() {
-
-    const source =
-        $("sourcePage")
-            .value
-            .trim();
-
-    const target =
-        $("targetPage")
-            .value
-            .trim();
-
-    const anchor =
-        $("anchorText")
-            .value
-            .trim();
-
-    if (
-        !source ||
-        !target ||
-        !anchor
-    ) {
-
-        alert(
-            "Fill all internal-link fields."
-        );
-
-        return;
-
-    }
-
-    const html =
-        `<a href="${escapeHtml(
-            target
-        )}">${escapeHtml(
-            anchor
-        )}</a>`;
-
-    setResult(
-        "linkResult",
-
-        "Source:\n" +
-        source +
-
-        "\n\nTarget:\n" +
-        target +
-
-        "\n\nAnchor:\n" +
-        anchor +
-
-        "\n\nGenerated Link:\n" +
-        html,
-
-        "success"
-    );
-
-}
-
-
-/* =========================================================
-   APPLY INTERNAL LINK
-========================================================= */
-
-async function applyInternalLink() {
-
-    const source =
-        $("sourcePage")
-            .value
-            .trim();
-
-    const target =
-        $("targetPage")
-            .value
-            .trim();
-
-    const anchor =
-        $("anchorText")
-            .value
-            .trim();
-
-    if (
-        !source ||
-        !target ||
-        !anchor
-    ) {
-
-        alert(
-            "Fill Source Page, Target Page and Anchor Text."
-        );
-
-        return;
-
-    }
-
-    if (!getAdminKey()) {
-
-        alert(
-            "Enter your Admin Key first."
-        );
-
-        return;
-
-    }
-
-    setResult(
-        "linkResult",
-        "Loading source page..."
-    );
-
-    try {
-
-        const response =
-            await fetch(
-                getWorkerUrl() +
-                "/get-file",
-                {
-                    method: "POST",
-                    headers: authHeaders(),
-
-                    body: JSON.stringify({
-                        path: source
-                    })
-                }
-            );
-
-        const data =
-            await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.error ||
-                "Could not load source page."
-            );
-
-        }
-
-        const oldContent =
-            data.content;
-
-        if (
-            oldContent
-                .toLowerCase()
-                .includes(
-                    anchor.toLowerCase()
-                )
-        ) {
-
-            const escapedAnchor =
-                anchor.replace(
-                    /[.*+?^${}()|[\]\\]/g,
-                    "\\$&"
-                );
-
-            const pattern =
-                new RegExp(
-                    "(?<![>])(" +
-                    escapedAnchor +
-                    ")(?![^<]*>)",
-                    "i"
-                );
-
-            const replacement =
-                `<a href="${escapeHtml(
-                    target
-                )}">$1</a>`;
-
-            const newContent =
-                oldContent.replace(
-                    pattern,
-                    replacement
-                );
-
-            if (
-                newContent === oldContent
-            ) {
-
-                throw new Error(
-                    "Anchor text was found, but it could not be safely linked automatically. Use the File Editor instead."
-                );
-
-            }
-
-            if (
-                !confirm(
-                    "Apply this internal link to:\n\n" +
-                    source +
-                    "\n\nAnchor:\n" +
-                    anchor +
-                    "\n\nTarget:\n" +
-                    target
-                )
-            ) {
-
-                return;
-
-            }
-
-            const saveResponse =
-                await fetch(
-                    getWorkerUrl() +
-                    "/update-file",
-                    {
-                        method: "POST",
-                        headers: authHeaders(),
-
-                        body: JSON.stringify({
-
-                            path:
-                                source,
-
-                            content:
-                                newContent,
-
-                            message:
-                                "Add internal link: " +
-                                anchor,
-
-                            sha:
-                                data.sha
-
-                        })
-                    }
-                );
-
-            const saveData =
-                await saveResponse.json();
-
-            if (!saveResponse.ok) {
-
-                throw new Error(
-                    saveData.error ||
-                    "Could not save source page."
-                );
-
-            }
-
-            setResult(
-                "linkResult",
-                "✅ Internal link applied and committed.\n\n" +
-                JSON.stringify(
-                    saveData,
-                    null,
-                    2
-                ),
-                "success"
-            );
-
-            return;
-
-        }
-
-        throw new Error(
-            "Anchor text was not found in the source page."
-        );
-
-    } catch (error) {
-
-        setResult(
-            "linkResult",
-            error.message,
-            "error"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   REDIRECT
-========================================================= */
-
-function cleanPath(value) {
-
-    return String(value)
-        .trim()
-        .replace(/^\/+/, "");
-
-}
-
-
-function prepareRedirect() {
-
-    const oldUrl =
-        $("oldUrl")
-            .value
-            .trim();
-
-    const newUrl =
-        $("newUrl")
-            .value
-            .trim();
-
-    if (
-        !oldUrl ||
-        !newUrl
-    ) {
-
-        alert(
-            "Fill Old URL and New URL."
-        );
-
-        return;
-
-    }
-
-    const html =
-        createRedirectHTML(
-            newUrl
-        );
-
-    setResult(
-        "redirectResult",
-
-        "Redirect file:\n" +
-        cleanPath(oldUrl) +
-
-        "\n\nDestination:\n" +
-        newUrl +
-
-        "\n\nA redirect HTML file will be generated when you create it.",
-
-        "success"
-    );
-
-}
-
-
-function createRedirectHTML(destination) {
-
-    const safeDestination =
-        escapeHtml(
-            destination
-        );
+function redirectHTML(
+    url
+) {
 
     return `<!DOCTYPE html>
 
@@ -4258,18 +4014,18 @@ function createRedirectHTML(destination) {
 <meta charset="UTF-8">
 
 <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
+name="viewport"
+content="width=device-width,initial-scale=1.0"
 >
 
 <meta
-    http-equiv="refresh"
-    content="0; url=${safeDestination}"
+http-equiv="refresh"
+content="0; url=${esc(url)}"
 >
 
 <link
-    rel="canonical"
-    href="${safeDestination}"
+rel="canonical"
+href="${esc(url)}"
 >
 
 <title>
@@ -4277,9 +4033,9 @@ Redirecting...
 </title>
 
 <script>
-window.location.replace(
-    ${JSON.stringify(destination)}
-);
+location.replace(
+${JSON.stringify(url)}
+)
 <\/script>
 
 </head>
@@ -4290,11 +4046,11 @@ window.location.replace(
 Redirecting...
 </p>
 
-<p>
-<a href="${safeDestination}">
+<a
+href="${esc(url)}"
+>
 Continue
 </a>
-</p>
 
 </body>
 
@@ -4305,132 +4061,73 @@ Continue
 
 async function createRedirect() {
 
-    const oldUrl =
-        $("oldUrl")
+    const old =
+        $('oldUrl')
+            .value
+            .trim()
+            .replace(
+                /^\/+/,
+                ''
+            );
+
+
+    const url =
+        $('newUrl')
             .value
             .trim();
 
-    const newUrl =
-        $("newUrl")
-            .value
-            .trim();
 
     if (
-        !oldUrl ||
-        !newUrl
-    ) {
+        !old ||
+        !url
+    )
 
-        alert(
-            "Fill Old URL and New URL."
+        return alert(
+            'Fill Old URL and New URL.'
         );
 
-        return;
 
-    }
+    if (!key())
 
-    if (!getAdminKey()) {
-
-        alert(
-            "Enter your Admin Key first."
+        return alert(
+            'Enter Admin Key.'
         );
 
-        return;
-
-    }
-
-    const path =
-        cleanPath(oldUrl);
-
-    if (!path) {
-
-        alert(
-            "Invalid old URL."
-        );
-
-        return;
-
-    }
-
-    if (
-        !confirm(
-            "Create redirect file?\n\n" +
-            path +
-            "\n→\n" +
-            newUrl
-        )
-    ) {
-
-        return;
-
-    }
-
-    setResult(
-        "redirectResult",
-        "Creating redirect file..."
-    );
 
     try {
 
-        const html =
-            createRedirectHTML(
-                newUrl
+        const d =
+            await putFile(
+                old,
+                redirectHTML(
+                    url
+                ),
+                'Create redirect: ' +
+                old +
+                ' -> ' +
+                url
             );
 
-        const response =
-            await fetch(
-                getWorkerUrl() +
-                "/update-file",
-                {
-                    method: "POST",
-                    headers: authHeaders(),
 
-                    body: JSON.stringify({
+        result(
+            'redirectResult',
 
-                        path:
-                            path,
-
-                        content:
-                            html,
-
-                        message:
-                            "Create redirect: " +
-                            oldUrl +
-                            " -> " +
-                            newUrl
-
-                    })
-                }
-            );
-
-        const data =
-            await response.json();
-
-        if (!response.ok) {
-
-            throw new Error(
-                data.error ||
-                "Could not create redirect."
-            );
-
-        }
-
-        setResult(
-            "redirectResult",
-            "✅ Redirect file created.\n\n" +
+            '✅ Redirect file created.\n\n' +
             JSON.stringify(
-                data,
+                d,
                 null,
                 2
             ),
-            "success"
+
+            'ok'
         );
 
-    } catch (error) {
+    } catch(e) {
 
-        setResult(
-            "redirectResult",
-            error.message,
-            "error"
+        result(
+            'redirectResult',
+            e.message,
+            'err'
         );
 
     }
@@ -4438,14 +4135,11 @@ async function createRedirect() {
 }
 
 
-/* =========================================================
-   QUICK ACTIONS
-========================================================= */
-
 function loadIndex() {
 
-    $("filePath").value =
-        "index.html";
+    $('filePath')
+        .value =
+        'index.html';
 
     readFile();
 
@@ -4455,8 +4149,8 @@ function loadIndex() {
 function openWebsite() {
 
     window.open(
-        "https://learnbtyehq.github.io/",
-        "_blank"
+        CONFIG.base,
+        '_blank'
     );
 
 }
@@ -4465,8 +4159,9 @@ function openWebsite() {
 function openGitHub() {
 
     window.open(
-        "https://github.com/learnbtyehq/learnbtyehq.github.io",
-        "_blank"
+        'https://github.com/' +
+        CONFIG.repo,
+        '_blank'
     );
 
 }
@@ -4475,8 +4170,8 @@ function openGitHub() {
 function openWorker() {
 
     window.open(
-        getWorkerUrl(),
-        "_blank"
+        worker(),
+        '_blank'
     );
 
 }
@@ -4484,38 +4179,33 @@ function openWorker() {
 
 function openSitemap() {
 
-    const url =
-        $("sitemapUrl")
-            .value
-            .trim();
-
-    if (!url) {
-
-        alert(
-            "Enter sitemap URL."
-        );
-
-        return;
-
-    }
-
     window.open(
-        url,
-        "_blank"
+        CONFIG.base +
+        'sitemap.xml',
+        '_blank'
     );
 
 }
 
 
-/* =========================================================
-   START
-========================================================= */
-
 document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+    'DOMContentLoaded',
+    () => {
+
+        makeHeadingFields();
+
+        updateSectionInfo();
 
         loadSavedKey();
+
+        $('articleDate')
+            .value =
+            new Date()
+                .toISOString()
+                .slice(
+                    0,
+                    10
+                );
 
     }
 );
