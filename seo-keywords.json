@@ -1,3 +1,23 @@
 {
-  "keywords": []
+  "keywords": [
+    {
+      "page": "posts/what-is-seo.html",
+      "primary": "what is SEO",
+      "secondary": [
+        "SEO meaning",
+        "SEO basics",
+        "search engine optimization",
+        "SEO for beginners"
+      ]
+    },
+    {
+      "page": "posts/what-is-seo.html",
+      "primary": "what is SEO",
+      "secondary": [
+        "SEO meaning",
+        "SEO basics",
+        "SEO for beginners"
+      ]
+    }
+  ]
 }
