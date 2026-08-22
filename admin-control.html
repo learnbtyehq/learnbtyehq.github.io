@@ -1,1093 +1,1593 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>LearnByte Admin Control</title>
-
-    <meta
-        name="robots"
-        content="noindex,nofollow,noarchive"
-    >
-
-    <style>
-
-        * {
-            box-sizing: border-box;
-        }
-
-        body {
-            margin: 0;
-            font-family:
-                Inter,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
-
-            background:
-                radial-gradient(
-                    circle at 10% 10%,
-                    rgba(0, 220, 255, .12),
-                    transparent 35%
-                ),
-                radial-gradient(
-                    circle at 90% 20%,
-                    rgba(130, 80, 255, .13),
-                    transparent 35%
-                ),
-                #050811;
-
-            color: #f5f7fb;
-            min-height: 100vh;
-        }
-
-        .container {
-            width: min(1100px, 92%);
-            margin: auto;
-            padding: 35px 0 70px;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 20px;
-
-            padding: 20px 24px;
-            margin-bottom: 25px;
-
-            background: rgba(12, 18, 31, .8);
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 20px;
-
-            backdrop-filter: blur(15px);
-        }
-
-        .logo {
-            font-size: 25px;
-            font-weight: 800;
-        }
-
-        .logo span {
-            color: #22dfff;
-        }
-
-        .status {
-            padding: 8px 13px;
-            border-radius: 999px;
-            font-size: 13px;
-            background: rgba(0,255,170,.1);
-            color: #58ffc7;
-            border: 1px solid rgba(0,255,170,.2);
-        }
-
-        h1 {
-            font-size: clamp(32px, 6vw, 55px);
-            margin: 20px 0 10px;
-            line-height: 1.05;
-        }
-
-        .gradient {
-            background:
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #56e5ff,
-                    #8c6cff
-                );
-
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .subtitle {
-            color: #9ca8bb;
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 30px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns:
-                repeat(2, minmax(0, 1fr));
-
-            gap: 20px;
-        }
-
-        .card {
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(18,28,45,.92),
-                    rgba(9,14,25,.92)
-                );
-
-            border: 1px solid rgba(255,255,255,.08);
-            border-radius: 20px;
-            padding: 22px;
-
-            box-shadow:
-                0 20px 60px rgba(0,0,0,.25);
-        }
-
-        .card.full {
-            grid-column: 1 / -1;
-        }
-
-        .card h2 {
-            margin: 0 0 8px;
-            font-size: 21px;
-        }
-
-        .card p {
-            color: #8f9bad;
-            line-height: 1.5;
-            font-size: 14px;
-        }
-
-        label {
-            display: block;
-            margin: 18px 0 7px;
-            color: #b8c2d3;
-            font-size: 13px;
-            font-weight: 600;
-        }
-
-        input,
-        textarea,
-        select {
-
-            width: 100%;
-
-            border: 1px solid #27334a;
-            border-radius: 12px;
-
-            background: #080e19;
-            color: #fff;
-
-            padding: 13px 14px;
-
-            outline: none;
-            font: inherit;
-        }
-
-        input:focus,
-        textarea:focus {
-            border-color: #27dfff;
-            box-shadow:
-                0 0 0 3px rgba(39,223,255,.08);
-        }
-
-        textarea {
-            min-height: 350px;
-            resize: vertical;
-            font-family:
-                ui-monospace,
-                SFMono-Regular,
-                Menlo,
-                Consolas,
-                monospace;
-
-            font-size: 13px;
-            line-height: 1.55;
-        }
-
-        button {
-
-            border: 0;
-            border-radius: 12px;
-
-            padding: 12px 18px;
-
-            font-weight: 700;
-            font-size: 14px;
-
-            cursor: pointer;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #20dff8,
-                    #6d7cff
-                );
-
-            color: #031018;
-
-            margin-top: 15px;
-        }
-
-        button.secondary {
-            background: #182235;
-            color: #dce5f3;
-            border: 1px solid #2b3952;
-        }
-
-        button.danger {
-            background:
-                linear-gradient(
-                    135deg,
-                    #ff5d72,
-                    #ff3152
-                );
-
-            color: white;
-        }
-
-        button:disabled {
-            opacity: .5;
-            cursor: not-allowed;
-        }
-
-        .button-row {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .result {
-            margin-top: 15px;
-            padding: 13px;
-
-            border-radius: 12px;
-
-            background: #070c15;
-            border: 1px solid #202c40;
-
-            color: #aeb9ca;
-
-            white-space: pre-wrap;
-            word-break: break-word;
-
-            font-size: 13px;
-        }
-
-        .success {
-            color: #62f6c2;
-        }
-
-        .error {
-            color: #ff7889;
-        }
-
-        .file-list {
-            display: grid;
-            gap: 8px;
-            margin-top: 15px;
-        }
-
-        .file-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 12px;
-
-            padding: 12px 14px;
-
-            border-radius: 10px;
-
-            background: #0b1322;
-            border: 1px solid #1c2940;
-        }
-
-        .file-item code {
-            color: #83eaff;
-            word-break: break-all;
-        }
-
-        footer {
-            margin-top: 35px;
-            text-align: center;
-            color: #647085;
-            font-size: 12px;
-        }
-
-        @media (max-width: 750px) {
-
-            .grid {
-                grid-template-columns: 1fr;
-            }
-
-            .card.full {
-                grid-column: auto;
-            }
-
-            header {
-                padding: 16px;
-            }
-
-            .status {
-                display: none;
-            }
-
-            .container {
-                padding-top: 20px;
-            }
-
-        }
-
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>LearnByte SEO Control Center</title>
+
+<meta name="robots" content="noindex,nofollow,noarchive">
+
+<style>
+*{
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#050811;
+    --card:#0d1524;
+    --card2:#101b2e;
+    --border:#22304a;
+    --text:#f5f7fb;
+    --muted:#8f9caf;
+    --cyan:#22dfff;
+    --purple:#7b6cff;
+    --green:#54f5bd;
+    --red:#ff6176;
+    --yellow:#ffd166;
+}
+
+body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif;
+    background:
+        radial-gradient(circle at 10% 0%,rgba(0,220,255,.12),transparent 30%),
+        radial-gradient(circle at 90% 10%,rgba(120,80,255,.14),transparent 30%),
+        var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+.container{
+    width:min(1150px,92%);
+    margin:auto;
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:20;
+    background:rgba(5,8,17,.88);
+    backdrop-filter:blur(18px);
+    border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+.nav{
+    min-height:72px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+}
+
+.logo{
+    font-size:23px;
+    font-weight:900;
+}
+
+.logo span{
+    color:var(--cyan);
+}
+
+.status{
+    padding:8px 13px;
+    border-radius:50px;
+    font-size:12px;
+    border:1px solid #263650;
+    color:var(--muted);
+}
+
+main{
+    padding:35px 0 70px;
+}
+
+.hero{
+    margin-bottom:28px;
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 12px;
+    border-radius:50px;
+    background:rgba(34,223,255,.08);
+    border:1px solid rgba(34,223,255,.18);
+    color:var(--cyan);
+    font-size:12px;
+    font-weight:700;
+}
+
+h1{
+    font-size:clamp(34px,6vw,58px);
+    line-height:1.05;
+    margin:18px 0 12px;
+}
+
+.gradient{
+    background:linear-gradient(90deg,#fff,var(--cyan),#8d72ff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.subtitle{
+    color:var(--muted);
+    max-width:760px;
+    line-height:1.7;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:20px;
+}
+
+.card{
+    background:linear-gradient(145deg,rgba(17,27,45,.96),rgba(8,14,25,.96));
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:22px;
+    box-shadow:0 20px 60px rgba(0,0,0,.2);
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+.card h2{
+    margin:0 0 8px;
+    font-size:21px;
+}
+
+.card-desc{
+    color:var(--muted);
+    font-size:14px;
+    line-height:1.55;
+    margin-bottom:18px;
+}
+
+label{
+    display:block;
+    margin:14px 0 7px;
+    color:#b8c3d4;
+    font-size:13px;
+    font-weight:700;
+}
+
+input,textarea,select{
+    width:100%;
+    padding:13px 14px;
+    border-radius:11px;
+    border:1px solid #273650;
+    background:#070d18;
+    color:#fff;
+    outline:none;
+    font:inherit;
+}
+
+input:focus,textarea:focus,select:focus{
+    border-color:var(--cyan);
+    box-shadow:0 0 0 3px rgba(34,223,255,.08);
+}
+
+textarea{
+    min-height:320px;
+    resize:vertical;
+    font-family:ui-monospace,SFMono-Regular,Consolas,monospace;
+    font-size:13px;
+    line-height:1.55;
+}
+
+button{
+    border:0;
+    border-radius:11px;
+    padding:12px 17px;
+    margin-top:14px;
+    font-weight:800;
+    cursor:pointer;
+    background:linear-gradient(135deg,var(--cyan),var(--purple));
+    color:#031018;
+}
+
+button.secondary{
+    background:#172237;
+    color:#dce5f3;
+    border:1px solid #2b3a54;
+}
+
+button.danger{
+    background:linear-gradient(135deg,#ff6176,#ff3152);
+    color:white;
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+}
+
+.result{
+    margin-top:14px;
+    padding:13px;
+    border-radius:11px;
+    background:#070c15;
+    border:1px solid #202d43;
+    color:#aeb9ca;
+    white-space:pre-wrap;
+    word-break:break-word;
+    font-size:13px;
+}
+
+.success{
+    color:var(--green);
+}
+
+.error{
+    color:#ff7d8d;
+}
+
+.warning{
+    color:var(--yellow);
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin-top:18px;
+}
+
+.stat{
+    background:#0a1220;
+    border:1px solid #1e2c43;
+    border-radius:14px;
+    padding:17px;
+}
+
+.stat strong{
+    display:block;
+    font-size:27px;
+}
+
+.stat span{
+    color:var(--muted);
+    font-size:12px;
+}
+
+.checkbox{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-top:10px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+.checkbox input{
+    width:auto;
+}
+
+.table-wrap{
+    overflow-x:auto;
+    margin-top:15px;
+}
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:600px;
+}
+
+th,td{
+    text-align:left;
+    padding:12px;
+    border-bottom:1px solid #1e2b40;
+    font-size:13px;
+}
+
+th{
+    color:#aebbd0;
+}
+
+td{
+    color:#d9e1ed;
+}
+
+.pill{
+    display:inline-block;
+    padding:5px 9px;
+    border-radius:30px;
+    font-size:11px;
+    font-weight:700;
+}
+
+.pill.green{
+    color:var(--green);
+    background:rgba(84,245,189,.08);
+}
+
+.pill.red{
+    color:#ff7889;
+    background:rgba(255,97,118,.08);
+}
+
+.pill.yellow{
+    color:var(--yellow);
+    background:rgba(255,209,102,.08);
+}
+
+footer{
+    text-align:center;
+    color:#58667b;
+    font-size:12px;
+    padding:30px 0;
+}
+
+@media(max-width:800px){
+    .grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+}
+
+@media(max-width:500px){
+    .container{
+        width:94%;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .card{
+        padding:17px;
+    }
+
+    .status{
+        display:none;
+    }
+}
+</style>
 </head>
 
 <body>
 
-<div class="container">
-
-    <header>
-
-        <div class="logo">
-            Learn<span>Byte</span>
-            <small style="color:#8491a5;font-size:12px;">
-                / ADMIN
-            </small>
-        </div>
-
-        <div
-            class="status"
-            id="status"
-        >
-            ● Control Panel
-        </div>
-
-    </header>
-
-
-    <main>
-
-        <h1>
-            SEO
-            <span class="gradient">
-                Control Center.
-            </span>
-        </h1>
-
-        <div class="subtitle">
-            Private tools for managing LearnByte files,
-            redirects and internal links.
-        </div>
-
-
-        <div class="grid">
-
-
-            <!-- CONNECTION -->
-
-            <section class="card">
-
-                <h2>🔐 Connection</h2>
-
-                <p>
-                    Connect this panel to your
-                    Cloudflare Worker.
-                </p>
-
-                <label>
-                    Cloudflare Worker URL
-                </label>
-
-                <input
-                    id="workerUrl"
-                    value="https://learnbyte-seo-control.learnbytehq.workers.dev"
-                    placeholder="https://your-worker.workers.dev"
-                >
-
-                <label>
-                    Admin Key
-                </label>
-
-                <input
-                    id="adminKey"
-                    type="password"
-                    placeholder="Enter admin key"
-                    autocomplete="off"
-                >
-
-                <div class="button-row">
-
-                    <button
-                        onclick="testConnection()"
-                    >
-                        Test Connection
-                    </button>
-
-                </div>
-
-                <div
-                    class="result"
-                    id="connectionResult"
-                >
-                    Not tested yet.
-                </div>
-
-            </section>
-
-
-
-            <!-- FILE READER -->
-
-            <section class="card">
-
-                <h2>📄 File Manager</h2>
-
-                <p>
-                    Read a file directly from
-                    the GitHub repository.
-                </p>
-
-                <label>
-                    Repository File Path
-                </label>
-
-                <input
-                    id="filePath"
-                    placeholder="example.html"
-                >
-
-                <div class="button-row">
-
-                    <button
-                        onclick="readFile()"
-                    >
-                        Read File
-                    </button>
-
-                </div>
-
-                <div
-                    class="result"
-                    id="fileResult"
-                >
-                    No file loaded.
-                </div>
-
-            </section>
-
-
-
-            <!-- EDITOR -->
-
-            <section class="card full">
-
-                <h2>✏️ GitHub File Editor</h2>
-
-                <p>
-                    Edit the loaded file and commit
-                    the changes directly to GitHub.
-                </p>
-
-                <label>
-                    Commit Message
-                </label>
-
-                <input
-                    id="commitMessage"
-                    value="Update file from LearnByte SEO Control"
-                >
-
-                <label>
-                    File Content
-                </label>
-
-                <textarea
-                    id="editor"
-                    spellcheck="false"
-                    placeholder="Load a file first..."
-                ></textarea>
-
-                <div class="button-row">
-
-                    <button
-                        onclick="saveFile()"
-                    >
-                        💾 Save & Commit
-                    </button>
-
-                    <button
-                        class="secondary"
-                        onclick="clearEditor()"
-                    >
-                        Clear
-                    </button>
-
-                </div>
-
-                <div
-                    class="result"
-                    id="saveResult"
-                >
-                    No changes made.
-                </div>
-
-            </section>
-
-
-
-            <!-- INTERNAL LINKING -->
-
-            <section class="card">
-
-                <h2>🔗 Internal Linking</h2>
-
-                <p>
-                    Central place for managing
-                    internal links.
-                </p>
-
-                <label>
-                    Source Page
-                </label>
-
-                <input
-                    id="sourcePage"
-                    placeholder="category/education.html"
-                >
-
-                <label>
-                    Target Page
-                </label>
-
-                <input
-                    id="targetPage"
-                    placeholder="article/career.html"
-                >
-
-                <label>
-                    Anchor Text
-                </label>
-
-                <input
-                    id="anchorText"
-                    placeholder="Career Options After Class 12"
-                >
-
-                <button
-                    class="secondary"
-                    onclick="prepareLink()"
-                >
-                    Prepare Link
-                </button>
-
-                <div
-                    class="result"
-                    id="linkResult"
-                >
-                    Link generator ready.
-                </div>
-
-            </section>
-
-
-
-            <!-- REDIRECT -->
-
-            <section class="card">
-
-                <h2>🔀 Redirect Manager</h2>
-
-                <p>
-                    Prepare redirect rules for
-                    old and new URLs.
-                </p>
-
-                <label>
-                    Old URL
-                </label>
-
-                <input
-                    id="oldUrl"
-                    placeholder="/old-page.html"
-                >
-
-                <label>
-                    New URL
-                </label>
-
-                <input
-                    id="newUrl"
-                    placeholder="/new-page.html"
-                >
-
-                <button
-                    class="secondary"
-                    onclick="prepareRedirect()"
-                >
-                    Prepare Redirect
-                </button>
-
-                <div
-                    class="result"
-                    id="redirectResult"
-                >
-                    Redirect manager ready.
-                </div>
-
-            </section>
-
-
-        </div>
-
-    </main>
-
-
-    <footer>
-        LearnByte SEO Control · Private administration tool
-    </footer>
+<header>
+<div class="container nav">
+
+    <div class="logo">
+        Learn<span>Byte</span>
+        <small style="color:#728097;font-size:11px;"> / ADMIN</small>
+    </div>
+
+    <div class="status" id="topStatus">
+        ● Not connected
+    </div>
 
 </div>
+</header>
+
+
+<main>
+<div class="container">
+
+<section class="hero">
+
+    <span class="badge">PRIVATE SEO ADMIN PANEL</span>
+
+    <h1>
+        LearnByte
+        <span class="gradient">Control Center</span>
+    </h1>
+
+    <p class="subtitle">
+        Manage GitHub files, inspect internal links, prepare redirects,
+        check sitemap files and maintain your LearnByte website from one panel.
+    </p>
+
+</section>
+
+
+<div class="grid">
+
+
+<!-- CONNECTION -->
+
+<section class="card">
+
+<h2>🔐 Secure Connection</h2>
+
+<p class="card-desc">
+Connect the panel with your Cloudflare Worker.
+The GitHub token stays on the Worker, not inside this webpage.
+</p>
+
+<label>Cloudflare Worker URL</label>
+
+<input
+id="workerUrl"
+value="https://learnbyte-seo-control.learnbytehq.workers.dev"
+>
+
+<label>Admin Key</label>
+
+<input
+id="adminKey"
+type="password"
+placeholder="Enter your admin key"
+autocomplete="off"
+>
+
+<label class="checkbox">
+<input type="checkbox" id="rememberKey">
+ Remember key on this device
+</label>
+
+<div class="row">
+
+<button onclick="testConnection()">
+Test Connection
+</button>
+
+<button class="secondary" onclick="clearSavedKey()">
+Clear Saved Key
+</button>
+
+</div>
+
+<div id="connectionResult" class="result">
+Not tested yet.
+</div>
+
+</section>
+
+
+<!-- DASHBOARD -->
+
+<section class="card">
+
+<h2>📊 Dashboard</h2>
+
+<p class="card-desc">
+Quick overview of the SEO control system.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<strong id="statFiles">—</strong>
+<span>Files Loaded</span>
+</div>
+
+<div class="stat">
+<strong id="statLinks">—</strong>
+<span>Links Checked</span>
+</div>
+
+<div class="stat">
+<strong id="statRedirects">—</strong>
+<span>Redirects</span>
+</div>
+
+<div class="stat">
+<strong id="statSitemaps">—</strong>
+<span>Sitemaps</span>
+</div>
+
+</div>
+
+<div id="dashboardResult" class="result">
+Dashboard ready.
+</div>
+
+</section>
+
+
+<!-- FILE MANAGER -->
+
+<section class="card">
+
+<h2>📄 File Manager</h2>
+
+<p class="card-desc">
+Read any file from your GitHub repository.
+</p>
+
+<label>Repository File Path</label>
+
+<input
+id="filePath"
+placeholder="index.html"
+>
+
+<div class="row">
+
+<button onclick="readFile()">
+Read File
+</button>
+
+<button class="secondary" onclick="loadCommonFile('index.html')">
+Load index.html
+</button>
+
+</div>
+
+<div id="fileResult" class="result">
+No file loaded.
+</div>
+
+</section>
+
+
+<!-- GITHUB EDITOR -->
+
+<section class="card">
+
+<h2>✏️ GitHub File Editor</h2>
+
+<p class="card-desc">
+Edit the loaded file and commit it directly to GitHub.
+</p>
+
+<label>Commit Message</label>
+
+<input
+id="commitMessage"
+value="Update file from LearnByte SEO Control"
+>
+
+<label>File Content</label>
+
+<textarea
+id="editor"
+spellcheck="false"
+placeholder="Load a file first..."
+></textarea>
+
+<div class="row">
+
+<button onclick="saveFile()">
+💾 Save & Commit
+</button>
+
+<button class="secondary" onclick="clearEditor()">
+Clear
+</button>
+
+</div>
+
+<div id="saveResult" class="result">
+No changes made.
+</div>
+
+</section>
+
+
+<!-- INTERNAL LINKS -->
+
+<section class="card full">
+
+<h2>🔗 Internal Link Manager</h2>
+
+<p class="card-desc">
+Prepare internal links and record which source page links to which target.
+</p>
+
+<label>Source Page</label>
+
+<input
+id="sourcePage"
+placeholder="category/education.html"
+>
+
+<label>Target Page</label>
+
+<input
+id="targetPage"
+placeholder="posts/career-guide.html"
+>
+
+<label>Anchor / Keyword</label>
+
+<input
+id="anchorText"
+placeholder="Career Options After Class 12"
+>
+
+<div class="row">
+
+<button onclick="prepareLink()">
+Prepare Link
+</button>
+
+<button class="secondary" onclick="saveLinkRecord()">
+Save Link Record
+</button>
+
+</div>
+
+<div id="linkResult" class="result">
+No internal link prepared.
+</div>
+
+<div class="table-wrap">
+
+<table>
+
+<thead>
+<tr>
+<th>Source Page</th>
+<th>Target Page</th>
+<th>Keyword / Anchor</th>
+<th>Status</th>
+</tr>
+</thead>
+
+<tbody id="linkTable">
+<tr>
+<td colspan="4">No saved link records.</td>
+</tr>
+</tbody>
+
+</table>
+
+</div>
+
+</section>
+
+
+<!-- REDIRECTS -->
+
+<section class="card">
+
+<h2>🔀 Redirect Manager</h2>
+
+<p class="card-desc">
+Prepare and maintain old → new URL redirect rules.
+</p>
+
+<label>Old URL</label>
+
+<input
+id="oldUrl"
+placeholder="/old-page.html"
+>
+
+<label>New URL</label>
+
+<input
+id="newUrl"
+placeholder="/new-page.html"
+>
+
+<div class="row">
+
+<button onclick="prepareRedirect()">
+Prepare Redirect
+</button>
+
+<button class="secondary" onclick="saveRedirect()">
+Save Record
+</button>
+
+</div>
+
+<div id="redirectResult" class="result">
+Redirect manager ready.
+</div>
+
+</section>
+
+
+<!-- SITEMAP -->
+
+<section class="card">
+
+<h2>🗺️ Sitemap Manager</h2>
+
+<p class="card-desc">
+Check important sitemap files and open them directly.
+</p>
+
+<label>Sitemap Path</label>
+
+<input
+id="sitemapPath"
+value="sitemap.xml"
+>
+
+<div class="row">
+
+<button onclick="checkSitemap()">
+Check Sitemap
+</button>
+
+<button class="secondary" onclick="openSitemap()">
+Open Sitemap
+</button>
+
+</div>
+
+<div id="sitemapResult" class="result">
+Sitemap not checked.
+</div>
+
+</section>
+
+
+<!-- SEO CHECK -->
+
+<section class="card full">
+
+<h2>🔎 On-Page SEO Quick Check</h2>
+
+<p class="card-desc">
+Load an HTML file and inspect basic SEO elements such as title,
+description, canonical, headings, robots and image ALT attributes.
+</p>
+
+<label>HTML File To Audit</label>
+
+<input
+id="seoPath"
+placeholder="index.html"
+>
+
+<button onclick="runSEOAudit()">
+Run SEO Audit
+</button>
+
+<div id="seoResult" class="result">
+SEO audit not started.
+</div>
+
+</section>
+
+
+<!-- SITE MAP LINKS -->
+
+<section class="card full">
+
+<h2>🌐 Website Resources</h2>
+
+<p class="card-desc">
+Quick access to important LearnByte website files.
+</p>
+
+<div class="row">
+
+<button class="secondary"
+onclick="loadCommonFile('robots.txt')">
+Read robots.txt
+</button>
+
+<button class="secondary"
+onclick="loadCommonFile('sitemap.xml')">
+Read sitemap.xml
+</button>
+
+<button class="secondary"
+onclick="loadCommonFile('index.html')">
+Read index.html
+</button>
+
+</div>
+
+<div id="resourceResult" class="result">
+Choose a resource.
+</div>
+
+</section>
+
+
+<!-- SECURITY -->
+
+<section class="card full">
+
+<h2>🛡️ Security Notes</h2>
+
+<p class="card-desc">
+Your GitHub Personal Access Token should remain inside Cloudflare Worker
+secrets. Never paste the GitHub token directly into this HTML file.
+</p>
+
+<div class="result warning">
+Admin Key → panel input
+
+GitHub Token → Cloudflare Worker secret
+
+GitHub repository → learnbytehq/learnbytehq.github.io
+
+Branch → main
+</div>
+
+</section>
+
+
+</div>
+
+</div>
+</main>
+
+
+<footer>
+LearnByte SEO Control · Private administration tool · 2026
+</footer>
 
 
 <script>
 
-    let currentFileSha = null;
-    let currentFilePath = null;
+let currentFileSha = null;
+let currentFilePath = null;
+
+let linkRecords =
+JSON.parse(localStorage.getItem("learnbyte_links") || "[]");
+
+let redirectRecords =
+JSON.parse(localStorage.getItem("learnbyte_redirects") || "[]");
 
 
-    function getWorkerUrl() {
+function getWorkerUrl(){
 
-        return document
-            .getElementById("workerUrl")
-            .value
-            .trim()
-            .replace(/\/+$/, "");
+    return document
+        .getElementById("workerUrl")
+        .value
+        .trim()
+        .replace(/\/+$/,"");
+
+}
+
+
+function getAdminKey(){
+
+    return document
+        .getElementById("adminKey")
+        .value
+        .trim();
+
+}
+
+
+function authHeaders(){
+
+    return {
+        "Content-Type":"application/json",
+        "X-Admin-Key":getAdminKey()
+    };
+
+}
+
+
+function saveKeyIfRequested(){
+
+    const remember =
+        document.getElementById("rememberKey").checked;
+
+    if(remember){
+
+        localStorage.setItem(
+            "learnbyte_admin_key",
+            getAdminKey()
+        );
 
     }
 
-
-    function getAdminKey() {
-
-        return document
-            .getElementById("adminKey")
-            .value
-            .trim();
-
-    }
+}
 
 
-    function authHeaders() {
+function loadSavedKey(){
 
-        return {
+    const saved =
+        localStorage.getItem("learnbyte_admin_key");
 
-            "Content-Type":
-                "application/json",
+    if(saved){
 
-            "X-Admin-Key":
-                getAdminKey()
+        document.getElementById("adminKey").value = saved;
 
-        };
+        document.getElementById("rememberKey").checked = true;
 
     }
 
+}
 
-    async function testConnection() {
 
-        const box =
-            document.getElementById(
-                "connectionResult"
+function clearSavedKey(){
+
+    localStorage.removeItem("learnbyte_admin_key");
+
+    document.getElementById("adminKey").value = "";
+
+    document.getElementById("rememberKey").checked = false;
+
+}
+
+
+async function testConnection(){
+
+    const box =
+        document.getElementById("connectionResult");
+
+    box.className = "result";
+
+    box.textContent = "Testing connection...";
+
+    if(!getAdminKey()){
+
+        box.className = "result error";
+        box.textContent = "Enter Admin Key first.";
+        return;
+
+    }
+
+    saveKeyIfRequested();
+
+    try{
+
+        const response =
+            await fetch(
+                getWorkerUrl()+"/github-test",
+                {
+                    method:"GET",
+                    headers:authHeaders()
+                }
             );
 
-        box.className = "result";
+        const data =
+            await response.json();
+
+        if(!response.ok){
+
+            throw new Error(
+                data.error || "Connection failed."
+            );
+
+        }
+
+        box.className = "result success";
 
         box.textContent =
-            "Testing connection...";
+            JSON.stringify(data,null,2);
 
+        document.getElementById("topStatus").textContent =
+            "● Connected";
 
-        try {
+        document.getElementById("topStatus").style.color =
+            "#54f5bd";
 
-            const response =
-                await fetch(
-                    getWorkerUrl() +
-                    "/github-test",
-                    {
-                        headers:
-                            authHeaders()
-                    }
-                );
+    }catch(error){
 
+        box.className = "result error";
 
-            const data =
-                await response.json();
+        box.textContent = error.message;
 
-
-            if (!response.ok) {
-
-                throw new Error(
-                    data.error ||
-                    "Connection failed."
-                );
-
-            }
-
-
-            box.className =
-                "result success";
-
-            box.textContent =
-                JSON.stringify(
-                    data,
-                    null,
-                    2
-                );
-
-        } catch (error) {
-
-            box.className =
-                "result error";
-
-            box.textContent =
-                error.message;
-
-        }
+        document.getElementById("topStatus").textContent =
+            "● Connection failed";
 
     }
 
-
-    async function readFile() {
-
-        const path =
-            document
-                .getElementById("filePath")
-                .value
-                .trim();
-
-        const box =
-            document
-                .getElementById("fileResult");
+}
 
 
-        if (!path) {
+async function readFile(pathOverride=null){
 
-            box.className =
-                "result error";
+    const path =
+        pathOverride ||
+        document.getElementById("filePath").value.trim();
 
-            box.textContent =
-                "Enter a file path.";
+    const box =
+        document.getElementById("fileResult");
 
-            return;
+    if(!path){
+
+        box.className = "result error";
+        box.textContent = "Enter a file path.";
+        return;
+
+    }
+
+    box.className = "result";
+    box.textContent = "Reading file...";
+
+    try{
+
+        const response =
+            await fetch(
+                getWorkerUrl()+"/get-file",
+                {
+                    method:"POST",
+                    headers:authHeaders(),
+                    body:JSON.stringify({
+                        path:path
+                    })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if(!response.ok){
+
+            throw new Error(
+                data.error || "Could not read file."
+            );
 
         }
 
+        currentFileSha = data.sha;
+        currentFilePath = data.path;
 
-        box.className = "result";
+        document.getElementById("filePath").value =
+            data.path;
+
+        document.getElementById("editor").value =
+            data.content;
+
+        box.className = "result success";
 
         box.textContent =
-            "Reading file...";
+            "Loaded: "+data.path+
+            "\nSHA: "+data.sha;
 
+        document.getElementById("statFiles").textContent = "1";
 
-        try {
+    }catch(error){
 
-            const response =
-                await fetch(
-                    getWorkerUrl() +
-                    "/get-file",
-                    {
-
-                        method: "POST",
-
-                        headers:
-                            authHeaders(),
-
-                        body:
-                            JSON.stringify({
-                                path
-                            })
-
-                    }
-                );
-
-
-            const data =
-                await response.json();
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    data.error ||
-                    "Could not read file."
-                );
-
-            }
-
-
-            currentFileSha =
-                data.sha;
-
-            currentFilePath =
-                data.path;
-
-
-            document
-                .getElementById("editor")
-                .value =
-                data.content;
-
-
-            box.className =
-                "result success";
-
-            box.textContent =
-                "Loaded: " +
-                data.path +
-                "\nSHA: " +
-                data.sha;
-
-        } catch (error) {
-
-            box.className =
-                "result error";
-
-            box.textContent =
-                error.message;
-
-        }
+        box.className = "result error";
+        box.textContent = error.message;
 
     }
 
+}
 
-    async function saveFile() {
 
-        if (!currentFilePath) {
+function loadCommonFile(path){
 
-            alert(
-                "First load a file."
+    document.getElementById("filePath").value = path;
+
+    readFile(path);
+
+}
+
+
+async function saveFile(){
+
+    if(!currentFilePath){
+
+        alert("First load a file.");
+        return;
+
+    }
+
+    const content =
+        document.getElementById("editor").value;
+
+    const message =
+        document
+        .getElementById("commitMessage")
+        .value
+        .trim();
+
+    const box =
+        document.getElementById("saveResult");
+
+    box.className = "result";
+    box.textContent = "Saving to GitHub...";
+
+    try{
+
+        const response =
+            await fetch(
+                getWorkerUrl()+"/update-file",
+                {
+                    method:"POST",
+                    headers:authHeaders(),
+                    body:JSON.stringify({
+
+                        path:currentFilePath,
+
+                        content:content,
+
+                        message:message,
+
+                        sha:currentFileSha
+
+                    })
+                }
             );
 
-            return;
+        const data =
+            await response.json();
+
+        if(!response.ok){
+
+            throw new Error(
+                data.error ||
+                "Could not update file."
+            );
 
         }
 
+        currentFileSha =
+            data.sha || currentFileSha;
 
-        const content =
-            document
-                .getElementById("editor")
-                .value;
-
-
-        const message =
-            document
-                .getElementById(
-                    "commitMessage"
-                )
-                .value
-                .trim();
-
-
-        const box =
-            document
-                .getElementById(
-                    "saveResult"
-                );
-
-
-        box.className = "result";
+        box.className = "result success";
 
         box.textContent =
-            "Saving to GitHub...";
+            JSON.stringify(data,null,2);
 
+    }catch(error){
 
-        try {
+        box.className = "result error";
 
-            const response =
-                await fetch(
-                    getWorkerUrl() +
-                    "/update-file",
-                    {
-
-                        method: "POST",
-
-                        headers:
-                            authHeaders(),
-
-                        body:
-                            JSON.stringify({
-
-                                path:
-                                    currentFilePath,
-
-                                content,
-
-                                message,
-
-                                sha:
-                                    currentFileSha
-
-                            })
-
-                    }
-                );
-
-
-            const data =
-                await response.json();
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    data.error ||
-                    "Could not update file."
-                );
-
-            }
-
-
-            currentFileSha =
-                data.sha;
-
-
-            box.className =
-                "result success";
-
-            box.textContent =
-                JSON.stringify(
-                    data,
-                    null,
-                    2
-                );
-
-        } catch (error) {
-
-            box.className =
-                "result error";
-
-            box.textContent =
-                error.message;
-
-        }
+        box.textContent = error.message;
 
     }
 
+}
 
-    function clearEditor() {
 
-        document
-            .getElementById("editor")
-            .value = "";
+function clearEditor(){
 
-        currentFileSha = null;
-        currentFilePath = null;
+    document.getElementById("editor").value = "";
 
-        document
-            .getElementById(
-                "fileResult"
-            )
-            .textContent =
-            "No file loaded.";
+    currentFileSha = null;
+    currentFilePath = null;
+
+    document.getElementById("fileResult").textContent =
+        "No file loaded.";
+
+}
+
+
+function prepareLink(){
+
+    const source =
+        document.getElementById("sourcePage").value.trim();
+
+    const target =
+        document.getElementById("targetPage").value.trim();
+
+    const anchor =
+        document.getElementById("anchorText").value.trim();
+
+    const box =
+        document.getElementById("linkResult");
+
+    if(!source || !target || !anchor){
+
+        box.className = "result error";
+        box.textContent =
+            "Fill source, target and keyword.";
+        return;
 
     }
 
+    const html =
+        `<a href="${target}">${anchor}</a>`;
 
-    function prepareLink() {
+    box.className = "result success";
 
-        const source =
-            document
-                .getElementById(
-                    "sourcePage"
-                )
-                .value
-                .trim();
+    box.textContent =
+        "Source: "+source+
+        "\nTarget: "+target+
+        "\nKeyword: "+anchor+
+        "\n\nGenerated HTML:\n"+html;
 
-        const target =
-            document
-                .getElementById(
-                    "targetPage"
-                )
-                .value
-                .trim();
-
-        const anchor =
-            document
-                .getElementById(
-                    "anchorText"
-                )
-                .value
-                .trim();
+}
 
 
-        if (
-            !source ||
-            !target ||
-            !anchor
-        ) {
+function saveLinkRecord(){
 
-            alert(
-                "Fill all internal-link fields."
+    const source =
+        document.getElementById("sourcePage").value.trim();
+
+    const target =
+        document.getElementById("targetPage").value.trim();
+
+    const anchor =
+        document.getElementById("anchorText").value.trim();
+
+    if(!source || !target || !anchor){
+
+        alert("Fill all internal-link fields.");
+        return;
+
+    }
+
+    linkRecords.push({
+        source,
+        target,
+        anchor
+    });
+
+    localStorage.setItem(
+        "learnbyte_links",
+        JSON.stringify(linkRecords)
+    );
+
+    renderLinks();
+
+    document.getElementById("statLinks").textContent =
+        linkRecords.length;
+
+}
+
+
+function renderLinks(){
+
+    const table =
+        document.getElementById("linkTable");
+
+    if(!linkRecords.length){
+
+        table.innerHTML =
+            `<tr><td colspan="4">No saved link records.</td></tr>`;
+
+        return;
+
+    }
+
+    table.innerHTML =
+        linkRecords.map(item => `
+
+        <tr>
+
+            <td>${escapeHTML(item.source)}</td>
+
+            <td>${escapeHTML(item.target)}</td>
+
+            <td>${escapeHTML(item.anchor)}</td>
+
+            <td>
+                <span class="pill green">
+                    Recorded
+                </span>
+            </td>
+
+        </tr>
+
+    `).join("");
+
+}
+
+
+function prepareRedirect(){
+
+    const oldUrl =
+        document.getElementById("oldUrl").value.trim();
+
+    const newUrl =
+        document.getElementById("newUrl").value.trim();
+
+    const box =
+        document.getElementById("redirectResult");
+
+    if(!oldUrl || !newUrl){
+
+        box.className = "result error";
+        box.textContent =
+            "Fill both URLs.";
+        return;
+
+    }
+
+    const rule =
+        `RewriteRule ^${oldUrl.replace(/^\//,"").replace(/[.*+?^${}()|[\]\\]/g,"\\$&")}$ ${newUrl} [R=301,L]`;
+
+    box.className = "result success";
+
+    box.textContent =
+        "301 Redirect prepared:\n\n"+rule;
+
+}
+
+
+function saveRedirect(){
+
+    const oldUrl =
+        document.getElementById("oldUrl").value.trim();
+
+    const newUrl =
+        document.getElementById("newUrl").value.trim();
+
+    if(!oldUrl || !newUrl){
+
+        alert("Fill both URLs.");
+        return;
+
+    }
+
+    redirectRecords.push({
+        oldUrl,
+        newUrl
+    });
+
+    localStorage.setItem(
+        "learnbyte_redirects",
+        JSON.stringify(redirectRecords)
+    );
+
+    document.getElementById("statRedirects").textContent =
+        redirectRecords.length;
+
+    document.getElementById("redirectResult").className =
+        "result success";
+
+    document.getElementById("redirectResult").textContent =
+        "Redirect record saved.\n\n"+
+        oldUrl+" → "+newUrl;
+
+}
+
+
+async function checkSitemap(){
+
+    const path =
+        document.getElementById("sitemapPath")
+        .value.trim();
+
+    const box =
+        document.getElementById("sitemapResult");
+
+    if(!path){
+
+        box.className = "result error";
+        box.textContent = "Enter sitemap path.";
+        return;
+
+    }
+
+    box.className = "result";
+    box.textContent = "Checking sitemap...";
+
+    try{
+
+        const response =
+            await fetch(
+                getWorkerUrl()+"/get-file",
+                {
+                    method:"POST",
+                    headers:authHeaders(),
+                    body:JSON.stringify({
+                        path:path
+                    })
+                }
             );
 
-            return;
+        const data =
+            await response.json();
 
-        }
+        if(!response.ok){
 
-
-        const html =
-            `<a href="${target}">${anchor}</a>`;
-
-
-        document
-            .getElementById(
-                "linkResult"
-            )
-            .textContent =
-            "Source: " +
-            source +
-            "\n\nGenerated link:\n" +
-            html;
-
-    }
-
-
-    function prepareRedirect() {
-
-        const oldUrl =
-            document
-                .getElementById(
-                    "oldUrl"
-                )
-                .value
-                .trim();
-
-        const newUrl =
-            document
-                .getElementById(
-                    "newUrl"
-                )
-                .value
-                .trim();
-
-
-        if (
-            !oldUrl ||
-            !newUrl
-        ) {
-
-            alert(
-                "Fill both URLs."
+            throw new Error(
+                data.error || "Sitemap not found."
             );
 
-            return;
+        }
+
+        box.className = "result success";
+
+        box.textContent =
+            "Sitemap found: "+data.path+
+            "\nSHA: "+data.sha+
+            "\n\nPreview:\n"+
+            data.content.substring(0,1000);
+
+        document.getElementById("statSitemaps").textContent =
+            "1";
+
+    }catch(error){
+
+        box.className = "result error";
+        box.textContent = error.message;
+
+    }
+
+}
+
+
+function openSitemap(){
+
+    const path =
+        document.getElementById("sitemapPath")
+        .value.trim();
+
+    const base =
+        location.origin;
+
+    window.open(
+        base+"/"+path,
+        "_blank"
+    );
+
+}
+
+
+async function runSEOAudit(){
+
+    const path =
+        document.getElementById("seoPath")
+        .value.trim();
+
+    const box =
+        document.getElementById("seoResult");
+
+    if(!path){
+
+        box.className = "result error";
+        box.textContent = "Enter an HTML file.";
+        return;
+
+    }
+
+    box.className = "result";
+    box.textContent = "Running SEO audit...";
+
+    try{
+
+        const response =
+            await fetch(
+                getWorkerUrl()+"/get-file",
+                {
+                    method:"POST",
+                    headers:authHeaders(),
+                    body:JSON.stringify({
+                        path:path
+                    })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if(!response.ok){
+
+            throw new Error(
+                data.error || "Could not load file."
+            );
 
         }
 
+        const html = data.content;
 
-        const rule =
-            `RewriteRule ^${oldUrl.replace(/^\//, "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$ ${newUrl} [R=301,L]`;
+        const parser =
+            new DOMParser();
 
+        const doc =
+            parser.parseFromString(html,"text/html");
 
-        document
-            .getElementById(
-                "redirectResult"
-            )
-            .textContent =
-            "Redirect prepared:\n\n" +
-            rule;
+        const title =
+            doc.querySelector("title");
+
+        const description =
+            doc.querySelector(
+                'meta[name="description"]'
+            );
+
+        const canonical =
+            doc.querySelector(
+                'link[rel="canonical"]'
+            );
+
+        const robots =
+            doc.querySelector(
+                'meta[name="robots"]'
+            );
+
+        const h1 =
+            doc.querySelectorAll("h1");
+
+        const images =
+            [...doc.querySelectorAll("img")];
+
+        const missingAlt =
+            images.filter(
+                img => !img.getAttribute("alt")
+            ).length;
+
+        let output = "";
+
+        output +=
+            "FILE: "+data.path+"\n\n";
+
+        output +=
+            (title ?
+            "✅ Title: "+title.textContent.trim() :
+            "❌ Title missing")+"\n";
+
+        output +=
+            (description ?
+            "✅ Meta description found" :
+            "❌ Meta description missing")+"\n";
+
+        output +=
+            (canonical ?
+            "✅ Canonical found" :
+            "⚠️ Canonical missing")+"\n";
+
+        output +=
+            (robots ?
+            "✅ Robots meta found" :
+            "⚠️ Robots meta missing")+"\n";
+
+        output +=
+            "H1 count: "+h1.length+"\n";
+
+        output +=
+            "Images: "+images.length+"\n";
+
+        output +=
+            "Images missing ALT: "+missingAlt+"\n";
+
+        if(h1.length === 1){
+
+            output += "\n✅ Exactly one H1 found.";
+
+        }else if(h1.length === 0){
+
+            output += "\n❌ No H1 found.";
+
+        }else{
+
+            output +=
+                "\n⚠️ Multiple H1 tags found.";
+
+        }
+
+        box.className = "result success";
+        box.textContent = output;
+
+    }catch(error){
+
+        box.className = "result error";
+        box.textContent = error.message;
 
     }
+
+}
+
+
+function escapeHTML(value){
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+document
+.getElementById("rememberKey")
+.addEventListener(
+    "change",
+    saveKeyIfRequested
+);
+
+
+loadSavedKey();
+renderLinks();
+
+document.getElementById("statLinks").textContent =
+    linkRecords.length || "0";
+
+document.getElementById("statRedirects").textContent =
+    redirectRecords.length || "0";
 
 </script>
 
 </body>
-  </html>
+</html>
