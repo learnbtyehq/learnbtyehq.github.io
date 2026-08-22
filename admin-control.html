@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LearnByte Admin Control</title>
+
+    <meta
+        name="robots"
+        content="noindex,nofollow,noarchive"
+    >
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family:
+                Inter,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            background:
+                radial-gradient(
+                    circle at 10% 10%,
+                    rgba(0, 220, 255, .12),
+                    transparent 35%
+                ),
+                radial-gradient(
+                    circle at 90% 20%,
+                    rgba(130, 80, 255, .13),
+                    transparent 35%
+                ),
+                #050811;
+
+            color: #f5f7fb;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: min(1100px, 92%);
+            margin: auto;
+            padding: 35px 0 70px;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+
+            padding: 20px 24px;
+            margin-bottom: 25px;
+
+            background: rgba(12, 18, 31, .8);
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 20px;
+
+            backdrop-filter: blur(15px);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: 800;
+        }
+
+        .logo span {
+            color: #22dfff;
+        }
+
+        .status {
+            padding: 8px 13px;
+            border-radius: 999px;
+            font-size: 13px;
+            background: rgba(0,255,170,.1);
+            color: #58ffc7;
+            border: 1px solid rgba(0,255,170,.2);
+        }
+
+        h1 {
+            font-size: clamp(32px, 6vw, 55px);
+            margin: 20px 0 10px;
+            line-height: 1.05;
+        }
+
+        .gradient {
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffffff,
+                    #56e5ff,
+                    #8c6cff
+                );
+
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .subtitle {
+            color: #9ca8bb;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns:
+                repeat(2, minmax(0, 1fr));
+
+            gap: 20px;
+        }
+
+        .card {
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(18,28,45,.92),
+                    rgba(9,14,25,.92)
+                );
+
+            border: 1px solid rgba(255,255,255,.08);
+            border-radius: 20px;
+            padding: 22px;
+
+            box-shadow:
+                0 20px 60px rgba(0,0,0,.25);
+        }
+
+        .card.full {
+            grid-column: 1 / -1;
+        }
+
+        .card h2 {
+            margin: 0 0 8px;
+            font-size: 21px;
+        }
+
+        .card p {
+            color: #8f9bad;
+            line-height: 1.5;
+            font-size: 14px;
+        }
+
+        label {
+            display: block;
+            margin: 18px 0 7px;
+            color: #b8c2d3;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        input,
+        textarea,
+        select {
+
+            width: 100%;
+
+            border: 1px solid #27334a;
+            border-radius: 12px;
+
+            background: #080e19;
+            color: #fff;
+
+            padding: 13px 14px;
+
+            outline: none;
+            font: inherit;
+        }
+
+        input:focus,
+        textarea:focus {
+            border-color: #27dfff;
+            box-shadow:
+                0 0 0 3px rgba(39,223,255,.08);
+        }
+
+        textarea {
+            min-height: 350px;
+            resize: vertical;
+            font-family:
+                ui-monospace,
+                SFMono-Regular,
+                Menlo,
+                Consolas,
+                monospace;
+
+            font-size: 13px;
+            line-height: 1.55;
+        }
+
+        button {
+
+            border: 0;
+            border-radius: 12px;
+
+            padding: 12px 18px;
+
+            font-weight: 700;
+            font-size: 14px;
+
+            cursor: pointer;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #20dff8,
+                    #6d7cff
+                );
+
+            color: #031018;
+
+            margin-top: 15px;
+        }
+
+        button.secondary {
+            background: #182235;
+            color: #dce5f3;
+            border: 1px solid #2b3952;
+        }
+
+        button.danger {
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff5d72,
+                    #ff3152
+                );
+
+            color: white;
+        }
+
+        button:disabled {
+            opacity: .5;
+            cursor: not-allowed;
+        }
+
+        .button-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 13px;
+
+            border-radius: 12px;
+
+            background: #070c15;
+            border: 1px solid #202c40;
+
+            color: #aeb9ca;
+
+            white-space: pre-wrap;
+            word-break: break-word;
+
+            font-size: 13px;
+        }
+
+        .success {
+            color: #62f6c2;
+        }
+
+        .error {
+            color: #ff7889;
+        }
+
+        .file-list {
+            display: grid;
+            gap: 8px;
+            margin-top: 15px;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+
+            padding: 12px 14px;
+
+            border-radius: 10px;
+
+            background: #0b1322;
+            border: 1px solid #1c2940;
+        }
+
+        .file-item code {
+            color: #83eaff;
+            word-break: break-all;
+        }
+
+        footer {
+            margin-top: 35px;
+            text-align: center;
+            color: #647085;
+            font-size: 12px;
+        }
+
+        @media (max-width: 750px) {
+
+            .grid {
+                grid-template-columns: 1fr;
+            }
+
+            .card.full {
+                grid-column: auto;
+            }
+
+            header {
+                padding: 16px;
+            }
+
+            .status {
+                display: none;
+            }
+
+            .container {
+                padding-top: 20px;
+            }
+
+        }
+
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+
+        <div class="logo">
+            Learn<span>Byte</span>
+            <small style="color:#8491a5;font-size:12px;">
+                / ADMIN
+            </small>
+        </div>
+
+        <div
+            class="status"
+            id="status"
+        >
+            ● Control Panel
+        </div>
+
+    </header>
+
+
+    <main>
+
+        <h1>
+            SEO
+            <span class="gradient">
+                Control Center.
+            </span>
+        </h1>
+
+        <div class="subtitle">
+            Private tools for managing LearnByte files,
+            redirects and internal links.
+        </div>
+
+
+        <div class="grid">
+
+
+            <!-- CONNECTION -->
+
+            <section class="card">
+
+                <h2>🔐 Connection</h2>
+
+                <p>
+                    Connect this panel to your
+                    Cloudflare Worker.
+                </p>
+
+                <label>
+                    Cloudflare Worker URL
+                </label>
+
+                <input
+                    id="workerUrl"
+                    value="https://learnbyte-seo-control.learnbytehq.workers.dev"
+                    placeholder="https://your-worker.workers.dev"
+                >
+
+                <label>
+                    Admin Key
+                </label>
+
+                <input
+                    id="adminKey"
+                    type="password"
+                    placeholder="Enter admin key"
+                    autocomplete="off"
+                >
+
+                <div class="button-row">
+
+                    <button
+                        onclick="testConnection()"
+                    >
+                        Test Connection
+                    </button>
+
+                </div>
+
+                <div
+                    class="result"
+                    id="connectionResult"
+                >
+                    Not tested yet.
+                </div>
+
+            </section>
+
+
+
+            <!-- FILE READER -->
+
+            <section class="card">
+
+                <h2>📄 File Manager</h2>
+
+                <p>
+                    Read a file directly from
+                    the GitHub repository.
+                </p>
+
+                <label>
+                    Repository File Path
+                </label>
+
+                <input
+                    id="filePath"
+                    placeholder="example.html"
+                >
+
+                <div class="button-row">
+
+                    <button
+                        onclick="readFile()"
+                    >
+                        Read File
+                    </button>
+
+                </div>
+
+                <div
+                    class="result"
+                    id="fileResult"
+                >
+                    No file loaded.
+                </div>
+
+            </section>
+
+
+
+            <!-- EDITOR -->
+
+            <section class="card full">
+
+                <h2>✏️ GitHub File Editor</h2>
+
+                <p>
+                    Edit the loaded file and commit
+                    the changes directly to GitHub.
+                </p>
+
+                <label>
+                    Commit Message
+                </label>
+
+                <input
+                    id="commitMessage"
+                    value="Update file from LearnByte SEO Control"
+                >
+
+                <label>
+                    File Content
+                </label>
+
+                <textarea
+                    id="editor"
+                    spellcheck="false"
+                    placeholder="Load a file first..."
+                ></textarea>
+
+                <div class="button-row">
+
+                    <button
+                        onclick="saveFile()"
+                    >
+                        💾 Save & Commit
+                    </button>
+
+                    <button
+                        class="secondary"
+                        onclick="clearEditor()"
+                    >
+                        Clear
+                    </button>
+
+                </div>
+
+                <div
+                    class="result"
+                    id="saveResult"
+                >
+                    No changes made.
+                </div>
+
+            </section>
+
+
+
+            <!-- INTERNAL LINKING -->
+
+            <section class="card">
+
+                <h2>🔗 Internal Linking</h2>
+
+                <p>
+                    Central place for managing
+                    internal links.
+                </p>
+
+                <label>
+                    Source Page
+                </label>
+
+                <input
+                    id="sourcePage"
+                    placeholder="category/education.html"
+                >
+
+                <label>
+                    Target Page
+                </label>
+
+                <input
+                    id="targetPage"
+                    placeholder="article/career.html"
+                >
+
+                <label>
+                    Anchor Text
+                </label>
+
+                <input
+                    id="anchorText"
+                    placeholder="Career Options After Class 12"
+                >
+
+                <button
+                    class="secondary"
+                    onclick="prepareLink()"
+                >
+                    Prepare Link
+                </button>
+
+                <div
+                    class="result"
+                    id="linkResult"
+                >
+                    Link generator ready.
+                </div>
+
+            </section>
+
+
+
+            <!-- REDIRECT -->
+
+            <section class="card">
+
+                <h2>🔀 Redirect Manager</h2>
+
+                <p>
+                    Prepare redirect rules for
+                    old and new URLs.
+                </p>
+
+                <label>
+                    Old URL
+                </label>
+
+                <input
+                    id="oldUrl"
+                    placeholder="/old-page.html"
+                >
+
+                <label>
+                    New URL
+                </label>
+
+                <input
+                    id="newUrl"
+                    placeholder="/new-page.html"
+                >
+
+                <button
+                    class="secondary"
+                    onclick="prepareRedirect()"
+                >
+                    Prepare Redirect
+                </button>
+
+                <div
+                    class="result"
+                    id="redirectResult"
+                >
+                    Redirect manager ready.
+                </div>
+
+            </section>
+
+
+        </div>
+
+    </main>
+
+
+    <footer>
+        LearnByte SEO Control · Private administration tool
+    </footer>
+
+</div>
+
+
+<script>
+
+    let currentFileSha = null;
+    let currentFilePath = null;
+
+
+    function getWorkerUrl() {
+
+        return document
+            .getElementById("workerUrl")
+            .value
+            .trim()
+            .replace(/\/+$/, "");
+
+    }
+
+
+    function getAdminKey() {
+
+        return document
+            .getElementById("adminKey")
+            .value
+            .trim();
+
+    }
+
+
+    function authHeaders() {
+
+        return {
+
+            "Content-Type":
+                "application/json",
+
+            "X-Admin-Key":
+                getAdminKey()
+
+        };
+
+    }
+
+
+    async function testConnection() {
+
+        const box =
+            document.getElementById(
+                "connectionResult"
+            );
+
+        box.className = "result";
+
+        box.textContent =
+            "Testing connection...";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    getWorkerUrl() +
+                    "/github-test",
+                    {
+                        headers:
+                            authHeaders()
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.error ||
+                    "Connection failed."
+                );
+
+            }
+
+
+            box.className =
+                "result success";
+
+            box.textContent =
+                JSON.stringify(
+                    data,
+                    null,
+                    2
+                );
+
+        } catch (error) {
+
+            box.className =
+                "result error";
+
+            box.textContent =
+                error.message;
+
+        }
+
+    }
+
+
+    async function readFile() {
+
+        const path =
+            document
+                .getElementById("filePath")
+                .value
+                .trim();
+
+        const box =
+            document
+                .getElementById("fileResult");
+
+
+        if (!path) {
+
+            box.className =
+                "result error";
+
+            box.textContent =
+                "Enter a file path.";
+
+            return;
+
+        }
+
+
+        box.className = "result";
+
+        box.textContent =
+            "Reading file...";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    getWorkerUrl() +
+                    "/get-file",
+                    {
+
+                        method: "POST",
+
+                        headers:
+                            authHeaders(),
+
+                        body:
+                            JSON.stringify({
+                                path
+                            })
+
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.error ||
+                    "Could not read file."
+                );
+
+            }
+
+
+            currentFileSha =
+                data.sha;
+
+            currentFilePath =
+                data.path;
+
+
+            document
+                .getElementById("editor")
+                .value =
+                data.content;
+
+
+            box.className =
+                "result success";
+
+            box.textContent =
+                "Loaded: " +
+                data.path +
+                "\nSHA: " +
+                data.sha;
+
+        } catch (error) {
+
+            box.className =
+                "result error";
+
+            box.textContent =
+                error.message;
+
+        }
+
+    }
+
+
+    async function saveFile() {
+
+        if (!currentFilePath) {
+
+            alert(
+                "First load a file."
+            );
+
+            return;
+
+        }
+
+
+        const content =
+            document
+                .getElementById("editor")
+                .value;
+
+
+        const message =
+            document
+                .getElementById(
+                    "commitMessage"
+                )
+                .value
+                .trim();
+
+
+        const box =
+            document
+                .getElementById(
+                    "saveResult"
+                );
+
+
+        box.className = "result";
+
+        box.textContent =
+            "Saving to GitHub...";
+
+
+        try {
+
+            const response =
+                await fetch(
+                    getWorkerUrl() +
+                    "/update-file",
+                    {
+
+                        method: "POST",
+
+                        headers:
+                            authHeaders(),
+
+                        body:
+                            JSON.stringify({
+
+                                path:
+                                    currentFilePath,
+
+                                content,
+
+                                message,
+
+                                sha:
+                                    currentFileSha
+
+                            })
+
+                    }
+                );
+
+
+            const data =
+                await response.json();
+
+
+            if (!response.ok) {
+
+                throw new Error(
+                    data.error ||
+                    "Could not update file."
+                );
+
+            }
+
+
+            currentFileSha =
+                data.sha;
+
+
+            box.className =
+                "result success";
+
+            box.textContent =
+                JSON.stringify(
+                    data,
+                    null,
+                    2
+                );
+
+        } catch (error) {
+
+            box.className =
+                "result error";
+
+            box.textContent =
+                error.message;
+
+        }
+
+    }
+
+
+    function clearEditor() {
+
+        document
+            .getElementById("editor")
+            .value = "";
+
+        currentFileSha = null;
+        currentFilePath = null;
+
+        document
+            .getElementById(
+                "fileResult"
+            )
+            .textContent =
+            "No file loaded.";
+
+    }
+
+
+    function prepareLink() {
+
+        const source =
+            document
+                .getElementById(
+                    "sourcePage"
+                )
+                .value
+                .trim();
+
+        const target =
+            document
+                .getElementById(
+                    "targetPage"
+                )
+                .value
+                .trim();
+
+        const anchor =
+            document
+                .getElementById(
+                    "anchorText"
+                )
+                .value
+                .trim();
+
+
+        if (
+            !source ||
+            !target ||
+            !anchor
+        ) {
+
+            alert(
+                "Fill all internal-link fields."
+            );
+
+            return;
+
+        }
+
+
+        const html =
+            `<a href="${target}">${anchor}</a>`;
+
+
+        document
+            .getElementById(
+                "linkResult"
+            )
+            .textContent =
+            "Source: " +
+            source +
+            "\n\nGenerated link:\n" +
+            html;
+
+    }
+
+
+    function prepareRedirect() {
+
+        const oldUrl =
+            document
+                .getElementById(
+                    "oldUrl"
+                )
+                .value
+                .trim();
+
+        const newUrl =
+            document
+                .getElementById(
+                    "newUrl"
+                )
+                .value
+                .trim();
+
+
+        if (
+            !oldUrl ||
+            !newUrl
+        ) {
+
+            alert(
+                "Fill both URLs."
+            );
+
+            return;
+
+        }
+
+
+        const rule =
+            `RewriteRule ^${oldUrl.replace(/^\//, "").replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}$ ${newUrl} [R=301,L]`;
+
+
+        document
+            .getElementById(
+                "redirectResult"
+            )
+            .textContent =
+            "Redirect prepared:\n\n" +
+            rule;
+
+    }
+
+</script>
+
+</body>
+  </html>
