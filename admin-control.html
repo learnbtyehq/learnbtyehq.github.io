@@ -1,1009 +1,4196 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+
+<meta
+    name="viewport"
+    content="width=device-width,initial-scale=1"
+>
+
 <title>LearnByte Control Center</title>
-<meta name="robots" content="noindex,nofollow,noarchive">
+
+<meta
+    name="robots"
+    content="noindex,nofollow,noarchive"
+>
+
 <style>
-*{box-sizing:border-box}
-body{margin:0;background:radial-gradient(circle at 5% 0%,#102b38,transparent 30%),radial-gradient(circle at 95% 0%,#24154b,transparent 30%),#050811;color:#f5f7fb;font-family:Inter,system-ui,sans-serif;line-height:1.55}
-button,input,textarea,select{font:inherit}
-button{cursor:pointer;border:0;border-radius:11px;padding:11px 16px;min-height:43px;font-weight:800;background:linear-gradient(135deg,#20dff8,#6d7cff);color:#031018}
-button.secondary{background:#182235;border:1px solid #2b3952;color:#dce5f3}
-button.danger{background:linear-gradient(135deg,#ff5d72,#ff3152);color:#fff}
-button:disabled{opacity:.5;cursor:not-allowed}
-a{color:inherit}
-.wrap{width:min(1120px,calc(100% - 20px));margin:auto}
-header{position:sticky;top:0;z-index:50;background:#050811e8;border-bottom:1px solid #ffffff12;backdrop-filter:blur(18px)}
-nav{min-height:68px;display:flex;align-items:center;justify-content:space-between}
-.logo{font-size:22px;font-weight:900;text-decoration:none}
-.logo span{color:#29ddff}
-.status{padding:7px 11px;border-radius:99px;border:1px solid #27354d;color:#9ba8bc;background:#0b1220;font-size:12px}
-.status.connected{color:#62f6c2;border-color:#00ffaa55;background:#00ffaa12}
-.hero{padding:38px 0 22px}
-.badge{display:inline-block;padding:7px 11px;border-radius:99px;background:#20dff814;border:1px solid #20dff838;color:#32dcf8;font-size:11px;font-weight:800}
-.hero h1{font-size:clamp(34px,6vw,58px);line-height:1.03;margin:15px 0 10px}
-.gradient{background:linear-gradient(90deg,#fff,#48e5ff,#8171ff);background-clip:text;-webkit-background-clip:text;color:transparent}
-.hero p,.desc{color:#8e9aae}
-.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.full{grid-column:1/-1}
-.card{min-width:0;padding:20px;border-radius:18px;background:linear-gradient(145deg,#121c2df2,#080d18f5);border:1px solid #ffffff12;box-shadow:0 20px 60px #00000038}
-.card h2{margin:0 0 6px;font-size:20px}
-.desc{margin:0 0 15px;font-size:13px}
-.field{margin-top:13px}
-.field label{display:block;margin-bottom:6px;color:#b9c4d5;font-size:12px;font-weight:750}
-input,textarea,select{width:100%;padding:12px 13px;border:1px solid #27334a;border-radius:11px;background:#080e19;color:#fff;outline:0}
-input:focus,textarea:focus,select:focus{border-color:#27dfff;box-shadow:0 0 0 3px #27dfff14}
-textarea{min-height:120px;resize:vertical}
-.row{display:flex;flex-wrap:wrap;gap:9px;margin-top:13px}
-.result{margin-top:12px;padding:12px;border-radius:11px;background:#070c15;border:1px solid #202c40;color:#aeb9ca;white-space:pre-wrap;overflow-wrap:anywhere;font-size:12px}
-.ok{color:#62f6c2}.err{color:#ff7889}
-.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-top:14px}
-.stat{padding:13px;border-radius:12px;background:#080e19;border:1px solid #202c40}
-.stat b{display:block;font-size:23px}.stat span{font-size:10px;color:#78869a}
-.note{margin-top:9px;padding:10px 12px;border-radius:10px;background:#0b1322;border:1px solid #1c2940;color:#8d9bb0;font-size:12px}
-.check{display:flex;align-items:center;gap:8px;color:#8e9aae;font-size:12px;margin-top:9px}.check input{width:17px;height:17px}
-.publish{width:100%;min-height:58px;margin-top:16px;font-size:16px}
-.preview{display:none;margin-top:16px}.preview iframe{width:100%;height:620px;border:0;border-radius:12px;background:#fff}
-.code{display:none;width:100%;min-height:360px;font:12px monospace}
-.list{display:grid;gap:8px;margin-top:12px}
-.item{padding:12px;border-radius:11px;background:#0b1322;border:1px solid #1c2940}
-.item strong{display:block;margin-bottom:4px}.item small{color:#8d9bb0}
-footer{text-align:center;padding:35px;color:#647085;font-size:11px}
-@media(max-width:850px){.grid{grid-template-columns:1fr}.full{grid-column:auto}}
-@media(max-width:600px){.wrap{width:calc(100% - 14px)}.card{padding:15px}.row{flex-direction:column}.row button{width:100%}.stats{grid-template-columns:repeat(2,1fr)}}
+
+*{
+    box-sizing:border-box
+}
+
+body{
+    margin:0;
+    background:
+        radial-gradient(
+            circle at 5% 0%,
+            #102b38,
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 95% 0%,
+            #24154b,
+            transparent 30%
+        ),
+        #050811;
+    color:#f5f7fb;
+    font-family:
+        Inter,
+        system-ui,
+        sans-serif;
+    line-height:1.55
+}
+
+button,
+input,
+textarea,
+select{
+    font:inherit
+}
+
+button{
+    cursor:pointer;
+    border:0;
+    border-radius:11px;
+    padding:11px 16px;
+    min-height:43px;
+    font-weight:800;
+    background:
+        linear-gradient(
+            135deg,
+            #20dff8,
+            #6d7cff
+        );
+    color:#031018
+}
+
+button.secondary{
+    background:#182235;
+    border:1px solid #2b3952;
+    color:#dce5f3
+}
+
+button.danger{
+    background:
+        linear-gradient(
+            135deg,
+            #ff5d72,
+            #ff3152
+        );
+    color:#fff
+}
+
+button.green{
+    background:
+        linear-gradient(
+            135deg,
+            #20e6a0,
+            #20a9ff
+        )
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed
+}
+
+a{
+    color:inherit
+}
+
+.wrap{
+    width:min(
+        1120px,
+        calc(100% - 20px)
+    );
+    margin:auto
+}
+
+header{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:#050811e8;
+    border-bottom:
+        1px solid #ffffff12;
+    backdrop-filter:blur(18px)
+}
+
+.nav{
+    min-height:68px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    text-decoration:none
+}
+
+.logo span{
+    color:#29ddff
+}
+
+.status{
+    padding:7px 11px;
+    border-radius:99px;
+    border:1px solid #27354d;
+    color:#9ba8bc;
+    background:#0b1220;
+    font-size:12px
+}
+
+.status.connected{
+    color:#62f6c2;
+    border-color:#00ffaa55;
+    background:#00ffaa12
+}
+
+.hero{
+    padding:38px 0 22px
+}
+
+.badge{
+    display:inline-block;
+    padding:7px 11px;
+    border-radius:99px;
+    background:#20dff814;
+    border:1px solid #20dff838;
+    color:#32dcf8;
+    font-size:11px;
+    font-weight:800
+}
+
+.hero h1{
+    font-size:
+        clamp(
+            34px,
+            6vw,
+            58px
+        );
+    line-height:1.03;
+    margin:15px 0 10px
+}
+
+.gradient{
+    background:
+        linear-gradient(
+            90deg,
+            #fff,
+            #48e5ff,
+            #8171ff
+        );
+    background-clip:text;
+    -webkit-background-clip:text;
+    color:transparent
+}
+
+.hero p,
+.desc{
+    color:#8e9aae
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0,1fr)
+        );
+    gap:18px
+}
+
+.full{
+    grid-column:1/-1
+}
+
+.card{
+    min-width:0;
+    padding:20px;
+    border-radius:18px;
+    background:
+        linear-gradient(
+            145deg,
+            #121c2df2,
+            #080d18f5
+        );
+    border:1px solid #ffffff12;
+    box-shadow:
+        0 20px 60px #00000038
+}
+
+.card h2{
+    margin:0 0 6px;
+    font-size:20px
+}
+
+.desc{
+    margin:0 0 15px;
+    font-size:13px
+}
+
+.field{
+    margin-top:13px
+}
+
+.field label{
+    display:block;
+    margin-bottom:6px;
+    color:#b9c4d5;
+    font-size:12px;
+    font-weight:750
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:12px 13px;
+    border:1px solid #27334a;
+    border-radius:11px;
+    background:#080e19;
+    color:#fff;
+    outline:0
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#27dfff;
+    box-shadow:
+        0 0 0 3px #27dfff14
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical
+}
+
+.row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:13px
+}
+
+.result{
+    margin-top:12px;
+    padding:12px;
+    border-radius:11px;
+    background:#070c15;
+    border:1px solid #202c40;
+    color:#aeb9ca;
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+    font-size:12px
+}
+
+.ok{
+    color:#62f6c2
+}
+
+.err{
+    color:#ff7889
+}
+
+.stats{
+    display:grid;
+    grid-template-columns:
+        repeat(
+            4,
+            1fr
+        );
+    gap:9px;
+    margin-top:14px
+}
+
+.stat{
+    padding:13px;
+    border-radius:12px;
+    background:#080e19;
+    border:1px solid #202c40
+}
+
+.stat b{
+    display:block;
+    font-size:23px
+}
+
+.stat span{
+    font-size:10px;
+    color:#78869a
+}
+
+.note{
+    margin-top:9px;
+    padding:10px 12px;
+    border-radius:10px;
+    background:#0b1322;
+    border:1px solid #1c2940;
+    color:#8d9bb0;
+    font-size:12px
+}
+
+.check{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#8e9aae;
+    font-size:12px;
+    margin-top:9px
+}
+
+.check input{
+    width:17px;
+    height:17px
+}
+
+.publish{
+    width:100%;
+    min-height:58px;
+    margin-top:16px;
+    font-size:16px
+}
+
+.preview{
+    display:none;
+    margin-top:16px
+}
+
+.preview iframe{
+    width:100%;
+    height:620px;
+    border:0;
+    border-radius:12px;
+    background:#fff
+}
+
+.code{
+    display:none;
+    width:100%;
+    min-height:360px;
+    font:12px monospace
+}
+
+.list{
+    display:grid;
+    gap:8px;
+    margin-top:12px
+}
+
+.item{
+    padding:12px;
+    border-radius:11px;
+    background:#0b1322;
+    border:1px solid #1c2940
+}
+
+.item strong{
+    display:block;
+    margin-bottom:4px
+}
+
+.item small{
+    color:#8d9bb0
+}
+
+.tool-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0,1fr)
+        );
+    gap:10px;
+    margin-top:14px
+}
+
+.tool{
+    padding:13px;
+    border-radius:12px;
+    border:1px solid #202c40;
+    background:#080e19
+}
+
+.tool strong{
+    display:block;
+    margin-bottom:4px
+}
+
+.pass{
+    color:#62f6c2
+}
+
+.warn{
+    color:#ffd66b
+}
+
+.fail{
+    color:#ff7889
+}
+
+.score{
+    font-size:42px;
+    font-weight:900;
+    margin:8px 0
+}
+
+footer{
+    text-align:center;
+    padding:35px;
+    color:#647085;
+    font-size:11px
+}
+
+@media(max-width:850px){
+
+    .grid{
+        grid-template-columns:1fr
+    }
+
+    .full{
+        grid-column:auto
+    }
+
+    .tool-grid{
+        grid-template-columns:1fr
+    }
+}
+
+@media(max-width:600px){
+
+    .wrap{
+        width:calc(100% - 14px)
+    }
+
+    .card{
+        padding:15px
+    }
+
+    .row{
+        flex-direction:column
+    }
+
+    .row button{
+        width:100%
+    }
+
+    .stats{
+        grid-template-columns:
+            repeat(
+                2,
+                1fr
+            )
+    }
+}
+
 </style>
+
 </head>
 
 <body>
 
 <header>
+
 <div class="wrap nav">
-<a class="logo" href="admin-control.html">Learn<span>Byte</span> <small>/ ADMIN</small></a>
-<div id="status" class="status">● Not connected</div>
+
+<a
+    class="logo"
+    href="admin-control.html"
+>
+    Learn<span>Byte</span>
+    <small>/ ADMIN</small>
+</a>
+
+<div
+    id="status"
+    class="status"
+>
+    ● Not connected
 </div>
+
+</div>
+
 </header>
+
 
 <main class="wrap">
 
 <section class="hero">
-<span class="badge">PRIVATE SEO ADMIN PANEL</span>
-<h1>LearnByte <span class="gradient">Control Center.</span></h1>
+
+<span class="badge">
+PRIVATE SEO ADMIN PANEL
+</span>
+
+<h1>
+LearnByte
+<span class="gradient">
+Control Center.
+</span>
+</h1>
+
 <p>
-Direct-publish articles, automatically apply the selected section theme,
-update category/homepage/sitemap, manage keywords, edit files and delete
-published articles from one panel.
+Publish, edit, delete, optimize and analyze your
+website from one private control panel.
 </p>
+
 </section>
+
 
 <div class="grid">
 
-<!-- CONNECTION -->
+
+<!-- =====================================================
+CONNECTION
+===================================================== -->
+
 <section class="card">
+
 <h2>🔐 Secure Connection</h2>
-<p class="desc">GitHub token stays on your Cloudflare Worker.</p>
+
+<p class="desc">
+Your GitHub token stays inside the Cloudflare Worker.
+</p>
 
 <div class="field">
-<label>Cloudflare Worker URL</label>
-<input id="workerUrl" value="https://learnbyte-seo-manager.learnbytehq.workers.dev">
+
+<label>
+Cloudflare Worker URL
+</label>
+
+<input
+id="workerUrl"
+value="https://learnbyte-seo-manager.learnbytehq.workers.dev"
+>
+
 </div>
 
 <div class="field">
-<label>Admin Key</label>
-<input id="adminKey" type="password" autocomplete="off" placeholder="Enter Admin Key">
+
+<label>
+Admin Key
+</label>
+
+<input
+id="adminKey"
+type="password"
+autocomplete="off"
+placeholder="Enter Admin Key"
+>
+
 </div>
 
 <label class="check">
-<input id="rememberKey" type="checkbox">
+
+<input
+id="rememberKey"
+type="checkbox"
+>
+
 Remember key on this device
+
 </label>
 
 <div class="row">
-<button onclick="testConnection()">Test Connection</button>
-<button class="secondary" onclick="clearSavedKey()">Clear Saved Key</button>
+
+<button
+onclick="testConnection()"
+>
+Test Connection
+</button>
+
+<button
+class="secondary"
+onclick="clearSavedKey()"
+>
+Clear Saved Key
+</button>
+
 </div>
 
-<div id="connectionResult" class="result">Not tested yet.</div>
+<div
+id="connectionResult"
+class="result"
+>
+Not tested yet.
+</div>
+
 </section>
 
-<!-- DASHBOARD -->
+
+<!-- =====================================================
+DASHBOARD
+===================================================== -->
+
 <section class="card">
+
 <h2>📊 Dashboard</h2>
-<p class="desc">Current publishing session.</p>
+
+<p class="desc">
+Current control-center session.
+</p>
 
 <div class="stats">
-<div class="stat"><b id="statStatus">—</b><span>Connection</span></div>
-<div class="stat"><b id="statFiles">0</b><span>Files Updated</span></div>
-<div class="stat"><b id="statArticles">0</b><span>Articles Published</span></div>
-<div class="stat"><b id="statKeywords">0</b><span>Keywords</span></div>
+
+<div class="stat">
+<b id="statStatus">—</b>
+<span>Connection</span>
 </div>
 
-<div id="publishSummary" class="result">No publish completed yet.</div>
+<div class="stat">
+<b id="statFiles">0</b>
+<span>Files Updated</span>
+</div>
+
+<div class="stat">
+<b id="statArticles">0</b>
+<span>Articles Published</span>
+</div>
+
+<div class="stat">
+<b id="statKeywords">0</b>
+<span>Keywords</span>
+</div>
+
+</div>
+
+<div
+id="publishSummary"
+class="result"
+>
+No publish completed yet.
+</div>
+
 </section>
 
-<!-- ARTICLE CREATOR -->
+
+<!-- =====================================================
+ARTICLE CREATOR
+===================================================== -->
+
 <section class="card full">
-<h2>📝 Direct Publish Article</h2>
+
+<h2>
+📝 Direct Publish Article
+</h2>
+
 <p class="desc">
-Select a website section, write your article and publish it directly.
-The article receives that section's visual theme and is added to the
-category page, homepage and sitemap.
+Create and publish an article directly to GitHub.
 </p>
 
 <div class="field">
-<label>Website Section / Theme *</label>
-<select id="articleSection" onchange="updateSectionInfo()">
-<option value="education">🎓 Education</option>
-<option value="technology">💻 Technology</option>
-<option value="seo" selected>🔎 SEO</option>
-<option value="gaming">🎮 Gaming</option>
+
+<label>
+Website Section / Theme *
+</label>
+
+<select
+id="articleSection"
+onchange="updateSectionInfo()"
+>
+
+<option value="education">
+🎓 Education
+</option>
+
+<option value="technology">
+💻 Technology
+</option>
+
+<option
+value="seo"
+selected
+>
+🔎 SEO
+</option>
+
+<option value="gaming">
+🎮 Gaming
+</option>
+
 </select>
+
 </div>
 
-<div id="sectionInfo" class="note"></div>
+<div
+id="sectionInfo"
+class="note"
+></div>
 
-<div class="field">
-<label>Article Title *</label>
-<input id="articleTitle" placeholder="What Is SEO? Complete Beginner Guide">
-</div>
-
-<div class="field">
-<label>URL / File Name *</label>
-<input id="articleSlug" placeholder="what-is-seo.html">
-</div>
 
 <div class="field">
-<label>Category / Subcategory</label>
-<input id="articleCategory" placeholder="SEO Basics">
+
+<label>
+Article Title *
+</label>
+
+<input
+id="articleTitle"
+placeholder="What Is SEO? Complete Beginner Guide"
+>
+
 </div>
 
-<div class="field">
-<label>Publish Date</label>
-<input id="articleDate" type="date">
-</div>
 
 <div class="field">
-<label>Meta Title</label>
-<input id="articleMetaTitle" placeholder="What Is SEO? Complete Beginner Guide | LearnByte">
+
+<label>
+URL / File Name *
+</label>
+
+<input
+id="articleSlug"
+placeholder="what-is-seo.html"
+>
+
 </div>
 
-<div class="field">
-<label>Meta Description *</label>
-<textarea id="articleMetaDescription" placeholder="Write an SEO-friendly meta description..."></textarea>
-</div>
 
 <div class="field">
-<label>Primary Keyword</label>
-<input id="articlePrimaryKeyword" placeholder="what is SEO">
+
+<label>
+Category / Subcategory
+</label>
+
+<input
+id="articleCategory"
+placeholder="SEO Basics"
+>
+
 </div>
 
-<div class="field">
-<label>Secondary Keywords</label>
-<input id="articleSecondaryKeywords" placeholder="SEO meaning, SEO basics, search engine optimization">
-</div>
 
 <div class="field">
-<label>Featured Image URL</label>
-<input id="articleImage" type="url" placeholder="https://...">
+
+<label>
+Publish Date
+</label>
+
+<input
+id="articleDate"
+type="date"
+>
+
 </div>
 
+
 <div class="field">
-<label>Introduction</label>
-<textarea id="articleIntro" placeholder="Write the introduction..."></textarea>
+
+<label>
+Meta Title
+</label>
+
+<input
+id="articleMetaTitle"
+placeholder="What Is SEO? Complete Beginner Guide | LearnByte"
+>
+
 </div>
+
+
+<div class="field">
+
+<label>
+Meta Description *
+</label>
+
+<textarea
+id="articleMetaDescription"
+placeholder="Write an SEO-friendly meta description..."
+></textarea>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Primary Keyword
+</label>
+
+<input
+id="articlePrimaryKeyword"
+placeholder="what is SEO"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Secondary Keywords
+</label>
+
+<input
+id="articleSecondaryKeywords"
+placeholder="SEO meaning, SEO basics, search engine optimization"
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Featured Image URL
+</label>
+
+<input
+id="articleImage"
+type="url"
+placeholder="https://..."
+>
+
+</div>
+
+
+<div class="field">
+
+<label>
+Introduction
+</label>
+
+<textarea
+id="articleIntro"
+placeholder="Write the introduction..."
+></textarea>
+
+</div>
+
 
 <div id="headingFields"></div>
 
+
 <div class="field">
-<label>Conclusion</label>
-<textarea id="articleConclusion" placeholder="Write the conclusion..."></textarea>
+
+<label>
+Conclusion
+</label>
+
+<textarea
+id="articleConclusion"
+placeholder="Write the conclusion..."
+></textarea>
+
 </div>
+
 
 <div class="row">
-<button class="secondary" onclick="previewArticle()">👁️ Preview</button>
-<button class="secondary" onclick="analyzeSEO()">📈 Analyze SEO</button>
-<button class="secondary" onclick="showGeneratedHTML()">🔍 Generated HTML</button>
-<button class="secondary" onclick="clearArticle()">🧹 Clear</button>
+
+<button
+class="secondary"
+onclick="previewArticle()"
+>
+👁️ Preview
+</button>
+
+<button
+class="secondary"
+onclick="analyzeSEO()"
+>
+📈 Analyze SEO
+</button>
+
+<button
+class="secondary"
+onclick="showGeneratedHTML()"
+>
+🔍 Generated HTML
+</button>
+
+<button
+class="secondary"
+onclick="clearArticle()"
+>
+🧹 Clear
+</button>
+
 </div>
 
-<button id="publishBtn" class="publish" onclick="directPublish()">
+
+<button
+id="publishBtn"
+class="publish"
+onclick="directPublish()"
+>
 🚀 DIRECT PUBLISH TO WEBSITE
 </button>
 
-<div id="articleResult" class="result">Ready to publish.</div>
-<div id="seoBox" class="result" style="display:none"></div>
 
-<div id="previewBox" class="preview">
-<h3>👁️ Article Preview</h3>
+<div
+id="articleResult"
+class="result"
+>
+Ready to publish.
+</div>
+
+<div
+id="seoBox"
+class="result"
+style="display:none"
+></div>
+
+
+<div
+id="previewBox"
+class="preview"
+>
+
+<h3>
+👁️ Article Preview
+</h3>
+
 <div id="previewArea"></div>
+
 </div>
 
-<div id="codeBox" style="display:none">
-<h3>🔍 Generated HTML</h3>
-<textarea id="articleCode" class="code" readonly></textarea>
+
+<div
+id="codeBox"
+style="display:none"
+>
+
+<h3>
+🔍 Generated HTML
+</h3>
+
+<textarea
+id="articleCode"
+class="code"
+readonly
+></textarea>
+
 </div>
+
 </section>
 
-<!-- DELETE -->
+
+<!-- =====================================================
+DELETE
+===================================================== -->
+
 <section class="card full">
-<h2>🗑️ Delete Published Article</h2>
+
+<h2>
+🗑️ Delete Published Article
+</h2>
+
 <p class="desc">
-Delete an article and remove its references from the category page,
-homepage, sitemap and SEO keyword file.
+Delete the article and clean category, homepage,
+sitemap and keyword references.
 </p>
 
 <div class="field">
-<label>Article File Path *</label>
-<input id="deletePath" placeholder="posts/what-is-seo.html">
+
+<label>
+Article File Path *
+</label>
+
+<input
+id="deletePath"
+placeholder="posts/what-is-seo.html"
+>
+
 </div>
 
+
 <div class="field">
-<label>Article Section *</label>
+
+<label>
+Article Section *
+</label>
+
 <select id="deleteSection">
-<option value="education">🎓 Education</option>
-<option value="technology">💻 Technology</option>
-<option value="seo">🔎 SEO</option>
-<option value="gaming">🎮 Gaming</option>
+
+<option value="education">
+🎓 Education
+</option>
+
+<option value="technology">
+💻 Technology
+</option>
+
+<option value="seo">
+🔎 SEO
+</option>
+
+<option value="gaming">
+🎮 Gaming
+</option>
+
 </select>
+
 </div>
 
+
 <div class="field">
-<label>Article Title / Text (optional)</label>
-<input id="deleteTitle" placeholder="What Is SEO?">
+
+<label>
+Article Title / Text
+</label>
+
+<input
+id="deleteTitle"
+placeholder="What Is SEO?"
+>
+
 </div>
+
 
 <div class="row">
-<button class="danger" onclick="deleteArticle()">🗑️ DELETE ARTICLE COMPLETELY</button>
+
+<button
+class="danger"
+onclick="deleteArticle()"
+>
+🗑️ DELETE ARTICLE COMPLETELY
+</button>
+
 </div>
 
-<div id="deleteResult" class="result">
+
+<div
+id="deleteResult"
+class="result"
+>
 Nothing deleted.
 </div>
+
 </section>
 
-<!-- FILE MANAGER -->
+
+<!-- =====================================================
+FILE MANAGER
+===================================================== -->
+
 <section class="card">
-<h2>📄 File Manager</h2>
-<p class="desc">Read a GitHub file and load it into the editor.</p>
+
+<h2>
+📄 File Manager
+</h2>
+
+<p class="desc">
+Read any GitHub file and load it into the editor.
+</p>
 
 <div class="field">
-<label>Repository File Path</label>
-<input id="filePath" placeholder="index.html">
+
+<label>
+Repository File Path
+</label>
+
+<input
+id="filePath"
+placeholder="index.html"
+>
+
 </div>
 
 <div class="row">
-<button onclick="readFile()">📖 Read File</button>
-<button class="secondary" onclick="loadIndex()">Load index.html</button>
+
+<button onclick="readFile()">
+📖 Read File
+</button>
+
+<button
+class="secondary"
+onclick="loadIndex()"
+>
+Load index.html
+</button>
+
 </div>
 
-<div id="fileResult" class="result">No file loaded.</div>
+<div
+id="fileResult"
+class="result"
+>
+No file loaded.
+</div>
+
 </section>
 
-<!-- EDITOR -->
+
+<!-- =====================================================
+EDITOR
+===================================================== -->
+
 <section class="card">
-<h2>✏️ GitHub Editor</h2>
-<p class="desc">Edit a loaded file and commit it.</p>
+
+<h2>
+✏️ GitHub Editor
+</h2>
+
+<p class="desc">
+Edit a loaded file and commit it.
+</p>
 
 <div class="field">
-<label>Current File</label>
-<input id="currentFile" readonly>
+
+<label>
+Current File
+</label>
+
+<input
+id="currentFile"
+readonly
+>
+
 </div>
 
 <div class="field">
-<label>Commit Message</label>
-<input id="commitMessage" value="Update file from LearnByte Control Center">
+
+<label>
+Commit Message
+</label>
+
+<input
+id="commitMessage"
+value="Update file from LearnByte Control Center"
+>
+
 </div>
 
 <div class="field">
-<label>File Content</label>
-<textarea id="editor" style="min-height:300px;font-family:monospace" spellcheck="false"></textarea>
+
+<label>
+File Content
+</label>
+
+<textarea
+id="editor"
+style="min-height:300px;font-family:monospace"
+spellcheck="false"
+></textarea>
+
 </div>
 
 <div class="row">
-<button onclick="saveFile()">💾 Save & Commit</button>
-<button class="secondary" onclick="clearEditor()">Clear</button>
+
+<button onclick="saveFile()">
+💾 Save & Commit
+</button>
+
+<button
+class="secondary"
+onclick="clearEditor()"
+>
+Clear
+</button>
+
 </div>
 
-<div id="saveResult" class="result">No changes made.</div>
+<div
+id="saveResult"
+class="result"
+>
+No changes made.
+</div>
+
 </section>
 
-<!-- KEYWORDS -->
+
+<!-- =====================================================
+KEYWORD MANAGER
+===================================================== -->
+
 <section class="card full">
-<h2>🔑 Keyword Manager</h2>
-<p class="desc">Stores page-wise SEO keywords in seo-keywords.json.</p>
+
+<h2>
+🔑 Keyword Manager
+</h2>
+
+<p class="desc">
+Keep a permanent record of primary and secondary keywords
+for every page.
+</p>
 
 <div class="field">
-<label>Page</label>
-<input id="keywordPage" placeholder="posts/my-article.html">
+
+<label>
+Page
+</label>
+
+<input
+id="keywordPage"
+placeholder="posts/my-article.html"
+>
+
 </div>
 
 <div class="field">
-<label>Primary Keyword</label>
-<input id="keywordPrimary" placeholder="primary keyword">
+
+<label>
+Primary Keyword
+</label>
+
+<input
+id="keywordPrimary"
+placeholder="primary keyword"
+>
+
 </div>
 
 <div class="field">
-<label>Secondary Keywords</label>
-<input id="keywordSecondary" placeholder="keyword one, keyword two">
+
+<label>
+Secondary Keywords
+</label>
+
+<input
+id="keywordSecondary"
+placeholder="keyword one, keyword two"
+>
+
 </div>
 
 <div class="row">
-<button onclick="addKeyword()">➕ Add Keyword</button>
-<button class="secondary" onclick="loadKeywords()">🔄 Load Keywords</button>
+
+<button onclick="addKeyword()">
+➕ Add Keyword
+</button>
+
+<button
+class="secondary"
+onclick="loadKeywords()"
+>
+🔄 Load Keywords
+</button>
+
 </div>
 
-<div id="keywordResult" class="result">Keyword manager ready.</div>
-<div id="keywordList" class="list"></div>
+<div
+id="keywordResult"
+class="result"
+>
+Keyword manager ready.
+</div>
+
+<div
+id="keywordList"
+class="list"
+></div>
+
 </section>
 
-<!-- INTERNAL LINK -->
+
+<!-- =====================================================
+INTERNAL LINKING
+===================================================== -->
+
 <section class="card">
-<h2>🔗 Internal Linking</h2>
-<p class="desc">Generate or apply a link to a source page.</p>
+
+<h2>
+🔗 Internal Linking
+</h2>
+
+<p class="desc">
+Connect one LearnByte page to another.
+</p>
 
 <div class="field">
-<label>Source Page</label>
-<input id="sourcePage" placeholder="posts/source.html">
+
+<label>
+Source Page
+</label>
+
+<input
+id="sourcePage"
+placeholder="posts/source.html"
+>
+
 </div>
 
 <div class="field">
-<label>Target Page</label>
-<input id="targetPage" placeholder="posts/target.html">
+
+<label>
+Target Page
+</label>
+
+<input
+id="targetPage"
+placeholder="posts/target.html"
+>
+
 </div>
 
 <div class="field">
-<label>Anchor Text</label>
-<input id="anchorText" placeholder="Read this guide">
+
+<label>
+Anchor Text
+</label>
+
+<input
+id="anchorText"
+placeholder="On-Page SEO Checklist"
+>
+
 </div>
 
 <div class="row">
-<button class="secondary" onclick="prepareLink()">Generate Link</button>
-<button onclick="applyInternalLink()">⚡ Apply & Commit</button>
+
+<button
+class="secondary"
+onclick="prepareLink()"
+>
+Generate Link
+</button>
+
+<button
+onclick="applyInternalLink()"
+>
+⚡ Apply & Commit
+</button>
+
 </div>
 
-<div id="linkResult" class="result">Internal linking ready.</div>
+<div
+id="linkResult"
+class="result"
+>
+Internal linking ready.
+</div>
+
 </section>
 
-<!-- REDIRECT -->
+
+<!-- =====================================================
+EXTERNAL LINKING
+===================================================== -->
+
 <section class="card">
-<h2>🔀 Redirect Manager</h2>
-<p class="desc">Create a redirect HTML file.</p>
+
+<h2>
+🌐 External Linking
+</h2>
+
+<p class="desc">
+Add an external website link with optional nofollow.
+</p>
 
 <div class="field">
-<label>Old URL / File</label>
-<input id="oldUrl" placeholder="/old-page.html">
+
+<label>
+Source Page
+</label>
+
+<input
+id="externalSource"
+placeholder="posts/seo-guide.html"
+>
+
 </div>
 
 <div class="field">
-<label>New URL</label>
-<input id="newUrl" placeholder="/new-page.html">
+
+<label>
+External URL
+</label>
+
+<input
+id="externalURL"
+placeholder="https://developers.google.com/search"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+Anchor Text
+</label>
+
+<input
+id="externalAnchor"
+placeholder="Google Search documentation"
+>
+
+</div>
+
+<label class="check">
+
+<input
+id="externalNofollow"
+type="checkbox"
+>
+
+Add rel="nofollow"
+
+</label>
+
+<div class="row">
+
+<button
+onclick="applyExternalLink()"
+>
+🌐 Add External Link
+</button>
+
+</div>
+
+<div
+id="externalResult"
+class="result"
+>
+External linking ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+REDIRECT
+===================================================== -->
+
+<section class="card">
+
+<h2>
+🔀 Redirect Manager
+</h2>
+
+<p class="desc">
+Create a redirect HTML file.
+</p>
+
+<div class="field">
+
+<label>
+Old URL / File
+</label>
+
+<input
+id="oldUrl"
+placeholder="/old-page.html"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+New URL
+</label>
+
+<input
+id="newUrl"
+placeholder="/new-page.html"
+>
+
 </div>
 
 <div class="row">
-<button onclick="createRedirect()">🚀 Create Redirect</button>
+
+<button onclick="createRedirect()">
+🚀 Create Redirect
+</button>
+
 </div>
 
-<div id="redirectResult" class="result">Redirect manager ready.</div>
+<div
+id="redirectResult"
+class="result"
+>
+Redirect manager ready.
+</div>
+
 </section>
 
-<!-- QUICK LINKS -->
+
+<!-- =====================================================
+ROBOTS.TXT
+===================================================== -->
+
+<section class="card">
+
+<h2>
+🤖 robots.txt Manager
+</h2>
+
+<p class="desc">
+Create, read and update robots.txt.
+</p>
+
+<div class="field">
+
+<label>
+robots.txt content
+</label>
+
+<textarea
+id="robotsContent"
+placeholder="User-agent: *
+Allow: /
+
+Sitemap: https://learnbtyehq.github.io/sitemap.xml"
+></textarea>
+
+</div>
+
+<div class="row">
+
+<button onclick="loadRobots()">
+📖 Load robots.txt
+</button>
+
+<button onclick="saveRobots()">
+💾 Save robots.txt
+</button>
+
+</div>
+
+<div
+id="robotsResult"
+class="result"
+>
+robots.txt manager ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+404
+===================================================== -->
+
+<section class="card">
+
+<h2>
+🚫 404 Error Page
+</h2>
+
+<p class="desc">
+Create and preview your custom 404 page.
+</p>
+
+<div class="field">
+
+<label>
+404 Heading
+</label>
+
+<input
+id="error404Title"
+value="Page Not Found"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+404 Message
+</label>
+
+<textarea
+id="error404Message"
+>Sorry, the page you are looking for does not exist.</textarea>
+
+</div>
+
+<div class="row">
+
+<button
+class="secondary"
+onclick="preview404()"
+>
+👁️ Preview
+</button>
+
+<button onclick="save404()">
+💾 Create / Update 404
+</button>
+
+</div>
+
+<div
+id="error404Result"
+class="result"
+>
+404 manager ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+META TITLE
+===================================================== -->
+
+<section class="card">
+
+<h2>
+🏷️ Meta Title Analyzer
+</h2>
+
+<p class="desc">
+Check title length and basic optimization.
+</p>
+
+<div class="field">
+
+<label>
+Page File
+</label>
+
+<input
+id="metaTitleFile"
+placeholder="posts/my-article.html"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="analyzeMetaTitle()">
+Analyze Meta Title
+</button>
+
+</div>
+
+<div
+id="metaTitleResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+META DESCRIPTION
+===================================================== -->
+
+<section class="card">
+
+<h2>
+📝 Meta Description Analyzer
+</h2>
+
+<p class="desc">
+Check description length and presence.
+</p>
+
+<div class="field">
+
+<label>
+Page File
+</label>
+
+<input
+id="metaDescriptionFile"
+placeholder="posts/my-article.html"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="analyzeMetaDescription()">
+Analyze Description
+</button>
+
+</div>
+
+<div
+id="metaDescriptionResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+URL OPTIMIZER
+===================================================== -->
+
+<section class="card">
+
+<h2>
+🔗 URL Optimization
+</h2>
+
+<p class="desc">
+Check a page URL/file name for SEO-friendly structure.
+</p>
+
+<div class="field">
+
+<label>
+URL / File
+</label>
+
+<input
+id="urlCheck"
+placeholder="posts/what-is-seo.html"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="analyzeURLStructure()">
+Analyze URL
+</button>
+
+</div>
+
+<div
+id="urlResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+HEADING ANALYZER
+===================================================== -->
+
+<section class="card">
+
+<h2>
+🔤 Heading Analyzer
+</h2>
+
+<p class="desc">
+Check H1, H2, H3, H4, H5 and H6 structure.
+</p>
+
+<div class="field">
+
+<label>
+Page File
+</label>
+
+<input
+id="headingFile"
+placeholder="posts/my-article.html"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="analyzeHeadings()">
+Analyze Headings
+</button>
+
+</div>
+
+<div
+id="headingResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+CANONICAL
+===================================================== -->
+
+<section class="card">
+
+<h2>
+🔗 Canonical Checker
+</h2>
+
+<p class="desc">
+Check whether a page has a canonical URL.
+</p>
+
+<div class="field">
+
+<label>
+Page File
+</label>
+
+<input
+id="canonicalFile"
+placeholder="posts/my-article.html"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="analyzeCanonical()">
+Check Canonical
+</button>
+
+</div>
+
+<div
+id="canonicalResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+OPEN GRAPH
+===================================================== -->
+
+<section class="card">
+
+<h2>
+📱 Open Graph / Social Preview
+</h2>
+
+<p class="desc">
+Check OG and Twitter metadata.
+</p>
+
+<div class="field">
+
+<label>
+Page File
+</label>
+
+<input
+id="socialFile"
+placeholder="posts/my-article.html"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="analyzeSocialMeta()">
+Check Social Meta
+</button>
+
+</div>
+
+<div
+id="socialResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SCHEMA
+===================================================== -->
+
 <section class="card full">
-<h2>🌐 Quick Links</h2>
-<div class="row">
-<button class="secondary" onclick="openWebsite()">Website</button>
-<button class="secondary" onclick="openGitHub()">GitHub</button>
-<button class="secondary" onclick="openWorker()">Worker</button>
-<button class="secondary" onclick="openSitemap()">Sitemap</button>
-</div>
-</section>
+
+<h2>
+🧩 Schema Markup
+</h2>
+
+<p class="desc">
+Check and add JSON-LD structured data to an HTML page.
+</p>
+
+<div class="field">
+
+<label>
+Page File
+</label>
+
+<input
+id="schemaFile"
+placeholder="posts/my-article.html"
+>
 
 </div>
+
+<div class="field">
+
+<label>
+Schema Type
+</label>
+
+<select id="schemaType">
+
+<option value="Article">
+Article
+</option>
+
+<option value="WebPage">
+WebPage
+</option>
+
+<option value="BlogPosting">
+BlogPosting
+</option>
+
+</select>
+
+</div>
+
+<div class="field">
+
+<label>
+Schema Name / Headline
+</label>
+
+<input
+id="schemaName"
+placeholder="What Is SEO?"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+Description
+</label>
+
+<textarea
+id="schemaDescription"
+placeholder="Description of the page..."
+></textarea>
+
+</div>
+
+<div class="row">
+
+<button
+class="secondary"
+onclick="checkSchema()"
+>
+🔍 Check Schema
+</button>
+
+<button
+onclick="addSchema()"
+>
+➕ Add Schema
+</button>
+
+</div>
+
+<div
+id="schemaResult"
+class="result"
+>
+Schema manager ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+IMAGE SEO
+===================================================== -->
+
+<section class="card">
+
+<h2>
+🖼️ Image SEO Analyzer
+</h2>
+
+<p class="desc">
+Find images with missing or empty ALT attributes.
+</p>
+
+<div class="field">
+
+<label>
+Page File
+</label>
+
+<input
+id="imageFile"
+placeholder="posts/my-article.html"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="analyzeImages()">
+Analyze Images
+</button>
+
+</div>
+
+<div
+id="imageResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+NOFOLLOW
+===================================================== -->
+
+<section class="card">
+
+<h2>
+🚫 Nofollow Manager
+</h2>
+
+<p class="desc">
+Add nofollow to a specific external link.
+</p>
+
+<div class="field">
+
+<label>
+Source Page
+</label>
+
+<input
+id="nofollowFile"
+placeholder="posts/my-article.html"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+Link URL
+</label>
+
+<input
+id="nofollowURL"
+placeholder="https://example.com/"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="addNofollow()">
+🚫 Add Nofollow
+</button>
+
+</div>
+
+<div
+id="nofollowResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+CONTENT QUALITY
+===================================================== -->
+
+<section class="card full">
+
+<h2>
+📚 Content Quality / SEO Analyzer
+</h2>
+
+<p class="desc">
+Analyze actual page content, keywords, headings,
+images, links and important metadata.
+</p>
+
+<div class="field">
+
+<label>
+Page File
+</label>
+
+<input
+id="contentFile"
+placeholder="posts/my-article.html"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+Primary Keyword
+</label>
+
+<input
+id="contentKeyword"
+placeholder="what is SEO"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="analyzeContentQuality()">
+📈 Analyze Content
+</button>
+
+</div>
+
+<div
+id="contentResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+SEMANTIC KEYWORDS
+===================================================== -->
+
+<section class="card">
+
+<h2>
+🧠 Related / Semantic Keywords
+</h2>
+
+<p class="desc">
+Check related words used inside an article.
+</p>
+
+<div class="field">
+
+<label>
+Page File
+</label>
+
+<input
+id="semanticFile"
+placeholder="posts/my-article.html"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+Related Keywords
+</label>
+
+<textarea
+id="semanticKeywords"
+placeholder="search engine, ranking, Google, optimization, keywords"
+></textarea>
+
+</div>
+
+<div class="row">
+
+<button onclick="analyzeSemanticKeywords()">
+🧠 Analyze
+</button>
+
+</div>
+
+<div
+id="semanticResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+LIVE WEBSITE ANALYZER
+===================================================== -->
+
+<section class="card full">
+
+<h2>
+⚡ Live Website Analyzer
+</h2>
+
+<p class="desc">
+Check the real published page for HTTP status,
+response time, mobile viewport, headings, metadata,
+images and links.
+</p>
+
+<div class="field">
+
+<label>
+Live URL
+</label>
+
+<input
+id="liveURL"
+placeholder="https://learnbtyehq.github.io/posts/my-article.html"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="analyzeLiveURL()">
+⚡ Analyze Live Page
+</button>
+
+</div>
+
+<div
+id="liveResult"
+class="result"
+>
+Ready.
+</div>
+
+<div
+id="liveTools"
+class="tool-grid"
+style="display:none"
+></div>
+
+</section>
+
+
+<!-- =====================================================
+SITEMAP CHECKER
+===================================================== -->
+
+<section class="card">
+
+<h2>
+🗺️ Sitemap Checker
+</h2>
+
+<p class="desc">
+Check sitemap.xml for URLs and formatting.
+</p>
+
+<div class="row">
+
+<button onclick="checkSitemap()">
+🔍 Check Sitemap
+</button>
+
+<button
+class="secondary"
+onclick="openSitemap()"
+>
+Open Sitemap
+</button>
+
+</div>
+
+<div
+id="sitemapResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+MOBILE CHECK
+===================================================== -->
+
+<section class="card">
+
+<h2>
+📱 Mobile-Friendly Checker
+</h2>
+
+<p class="desc">
+Check viewport and responsive basics from the actual page.
+</p>
+
+<div class="field">
+
+<label>
+Page File
+</label>
+
+<input
+id="mobileFile"
+placeholder="posts/my-article.html"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="analyzeMobile()">
+📱 Check Mobile
+</button>
+
+</div>
+
+<div
+id="mobileResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+PAGE SPEED
+===================================================== -->
+
+<section class="card">
+
+<h2>
+⚡ Page Speed Check
+</h2>
+
+<p class="desc">
+Measure the server response time from the Worker.
+This is not a replacement for Lighthouse/PageSpeed Insights.
+</p>
+
+<div class="field">
+
+<label>
+Live URL
+</label>
+
+<input
+id="speedURL"
+placeholder="https://learnbtyehq.github.io/"
+>
+
+</div>
+
+<div class="row">
+
+<button onclick="checkSpeed()">
+⚡ Check Speed
+</button>
+
+</div>
+
+<div
+id="speedResult"
+class="result"
+>
+Ready.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+QUICK LINKS
+===================================================== -->
+
+<section class="card full">
+
+<h2>
+🌐 Quick Links
+</h2>
+
+<div class="row">
+
+<button
+class="secondary"
+onclick="openWebsite()"
+>
+Website
+</button>
+
+<button
+class="secondary"
+onclick="openGitHub()"
+>
+GitHub
+</button>
+
+<button
+class="secondary"
+onclick="openWorker()"
+>
+Worker
+</button>
+
+<button
+class="secondary"
+onclick="openSitemap()"
+>
+Sitemap
+</button>
+
+</div>
+
+</section>
+
+
+</div>
+
 </main>
 
-<footer>LearnByte SEO Control · Private administration tool</footer>
+
+<footer>
+LearnByte SEO Control · Private administration tool
+</footer>
+
 
 <script>
+
+/* =========================================================
+CONFIG
+========================================================= */
+
 const CONFIG={
-base:"https://learnbtyehq.github.io/",
-repo:"learnbtyehq/learnbtyehq.github.io",
+
+base:
+"https://learnbtyehq.github.io/",
+
+repo:
+"learnbtyehq/learnbtyehq.github.io",
+
 sections:{
-education:{name:"Education",css:"education.css",category:"category/education.html",grid:"education-post-grid",icon:"🎓",label:"EDUCATION",read:"Read Guide →"},
-technology:{name:"Technology",css:"technology.css",category:"category/technology.html",grid:"tech-card-grid",icon:"💻",label:"TECHNOLOGY",read:"Open Guide →"},
-seo:{name:"SEO",css:"seo.css",category:"category/seo.html",grid:"seo-post-grid",icon:"🔎",label:"SEO",read:"Read Guide →"},
-gaming:{name:"Gaming",css:"gaming.css",category:"category/gaming.html",grid:"gaming-post-grid",icon:"🎮",label:"GAMING",read:"Read Article →"}
+
+education:{
+name:"Education",
+css:"education.css",
+category:"category/education.html",
+grid:"education-post-grid",
+icon:"🎓",
+read:"Read Guide →"
+},
+
+technology:{
+name:"Technology",
+css:"technology.css",
+category:"category/technology.html",
+grid:"tech-card-grid",
+icon:"💻",
+read:"Open Guide →"
+},
+
+seo:{
+name:"SEO",
+css:"seo.css",
+category:"category/seo.html",
+grid:"seo-post-grid",
+icon:"🔎",
+read:"Read Guide →"
+},
+
+gaming:{
+name:"Gaming",
+css:"gaming.css",
+category:"category/gaming.html",
+grid:"gaming-post-grid",
+icon:"🎮",
+read:"Read Article →"
 }
+
+}
+
 };
 
-let currentFileSha=null,currentFilePath=null,keywordSha=null;
-let keywordData={keywords:[]};
 
-const $=id=>document.getElementById(id);
-const worker=()=>$("workerUrl").value.trim().replace(/\/+$/,"");
-const key=()=>$("adminKey").value.trim();
-const headers=()=>({"Content-Type":"application/json","X-Admin-Key":key()});
+let currentFileSha=null;
+let currentFilePath=null;
+let keywordSha=null;
+
+let keywordData={
+keywords:[]
+};
+
+
+const $=id=>
+document.getElementById(id);
+
+
+const worker=()=>
+$("workerUrl")
+.value
+.trim()
+.replace(/\/+$/,"");
+
+
+const key=()=>
+$("adminKey")
+.value
+.trim();
+
+
+const headers=()=>({
+"Content-Type":"application/json",
+"X-Admin-Key":key()
+});
+
 
 function result(id,msg,type=""){
- const e=$(id);e.className="result "+type;e.textContent=msg;
+
+const e=$(id);
+
+if(!e)return;
+
+e.className="result "+type;
+
+e.textContent=msg;
+
 }
 
-function esc(v){
- return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;")
- .replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+
+/* =========================================================
+API
+========================================================= */
+
+async function api(
+path,
+method="GET",
+body
+){
+
+const r=await fetch(
+worker()+path,
+{
+method,
+headers:headers(),
+body:
+body===undefined
+?undefined
+:JSON.stringify(body)
+}
+);
+
+let d={};
+
+try{
+d=await r.json();
+}catch{}
+
+if(!r.ok){
+
+throw new Error(
+d.error ||
+d.message ||
+("Request failed: "+r.status)
+);
+
 }
 
-async function api(path,method="GET",body){
- const r=await fetch(worker()+path,{
-   method,
-   headers:headers(),
-   body:body===undefined?undefined:JSON.stringify(body)
- });
- let d={};
- try{d=await r.json()}catch{}
- if(!r.ok)throw new Error(d.error||d.message||("Request failed: "+r.status));
- return d;
+return d;
+
 }
+
 
 function setConnected(v){
- $("status").textContent=v?"● Connected":"● Not connected";
- $("status").classList.toggle("connected",v);
- $("statStatus").textContent=v?"OK":"—";
+
+$("status").textContent=
+v
+?"● Connected"
+:"● Not connected";
+
+$("status")
+.classList
+.toggle(
+"connected",
+v
+);
+
+$("statStatus").textContent=
+v?"OK":"—";
+
 }
+
 
 async function testConnection(){
- if(!key())return result("connectionResult","Enter Admin Key.","err");
- result("connectionResult","Testing...");
- try{
-  const d=await api("/github-test");
-  result("connectionResult",JSON.stringify(d,null,2),"ok");
-  setConnected(true);
-  if($("rememberKey").checked)localStorage.setItem("learnbyte_admin_key",key());
- }catch(e){
-  result("connectionResult",e.message,"err");
-  setConnected(false);
- }
+
+if(!key()){
+
+return result(
+"connectionResult",
+"Enter Admin Key.",
+"err"
+);
+
 }
+
+result(
+"connectionResult",
+"Testing..."
+);
+
+try{
+
+const d=
+await api("/github-test");
+
+result(
+"connectionResult",
+JSON.stringify(
+d,
+null,
+2
+),
+"ok"
+);
+
+setConnected(true);
+
+if(
+$("rememberKey").checked
+){
+
+localStorage.setItem(
+"learnbyte_admin_key",
+key()
+);
+
+}
+
+}catch(e){
+
+result(
+"connectionResult",
+e.message,
+"err"
+);
+
+setConnected(false);
+
+}
+
+}
+
 
 function clearSavedKey(){
- localStorage.removeItem("learnbyte_admin_key");
- $("adminKey").value="";
- $("rememberKey").checked=false;
- setConnected(false);
- result("connectionResult","Saved key cleared.");
+
+localStorage.removeItem(
+"learnbyte_admin_key"
+);
+
+$("adminKey").value="";
+$("rememberKey").checked=false;
+
+setConnected(false);
+
+result(
+"connectionResult",
+"Saved key cleared."
+);
+
 }
+
 
 function loadSavedKey(){
- const k=localStorage.getItem("learnbyte_admin_key");
- if(k){
-  $("adminKey").value=k;
-  $("rememberKey").checked=true;
- }
+
+const k=
+localStorage.getItem(
+"learnbyte_admin_key"
+);
+
+if(k){
+
+$("adminKey").value=k;
+$("rememberKey").checked=true;
+
 }
+
+}
+
+
+/* =========================================================
+GENERAL
+========================================================= */
+
+function esc(v){
+
+return String(v??"")
+.replace(/&/g,"&amp;")
+.replace(/</g,"&lt;")
+.replace(/>/g,"&gt;")
+.replace(/"/g,"&quot;")
+.replace(/'/g,"&#039;");
+
+}
+
 
 function updateSectionInfo(){
- const s=CONFIG.sections[$("articleSection").value];
- $("sectionInfo").textContent=
- `${s.icon} ${s.name} theme: ${s.css} · Category: ${s.category} · Articles: posts/`;
+
+const s=
+CONFIG.sections[
+$("articleSection").value
+];
+
+$("sectionInfo")
+.textContent=
+`${s.icon} ${s.name} theme: ${s.css} · Category: ${s.category} · Articles: posts/`;
+
 }
+
 
 function makeHeadingFields(){
- let h="";
- for(let i=1;i<=6;i++){
-  h+=`
-  <div class="field">
-  <label>Heading ${i}</label>
-  <input id="heading${i}" placeholder="Optional heading ${i}">
-  </div>
-  <div class="field">
-  <label>Content ${i}</label>
-  <textarea id="content${i}" placeholder="Content for this section..."></textarea>
-  </div>`;
- }
- $("headingFields").innerHTML=h;
+
+let h="";
+
+for(
+let i=1;
+i<=6;
+i++
+){
+
+h+=`
+
+<div class="field">
+
+<label>
+Heading ${i}
+</label>
+
+<input
+id="heading${i}"
+placeholder="Optional heading ${i}"
+>
+
+</div>
+
+<div class="field">
+
+<label>
+Content ${i}
+</label>
+
+<textarea
+id="content${i}"
+placeholder="Content for this section..."
+></textarea>
+
+</div>
+
+`;
+
 }
+
+$("headingFields").innerHTML=h;
+
+}
+
 
 function slugify(v){
- return String(v).toLowerCase().trim().replace(/\.html$/,"")
- .replace(/[^a-z0-9]+/g,"-").replace(/^-+|-+$/g,"")+".html";
+
+return String(v)
+.toLowerCase()
+.trim()
+.replace(/\.html$/,"")
+.replace(/[^a-z0-9]+/g,"-")
+.replace(/^-+|-+$/g,"")
++".html";
+
 }
+
 
 function articlePath(){
- let s=$("articleSlug").value.trim();
- if(!s)s=slugify($("articleTitle").value);
- if(!s)return "";
- if(!s.endsWith(".html"))s=slugify(s);
- return s.includes("/")?s:"posts/"+s;
+
+let s=
+$("articleSlug")
+.value
+.trim();
+
+if(!s)
+s=
+slugify(
+$("articleTitle")
+.value
+);
+
+if(!s)return"";
+
+if(!s.endsWith(".html"))
+s=slugify(s);
+
+return s.includes("/")
+?s
+:"posts/"+s;
+
 }
+
 
 function textParas(t){
- return String(t||"").trim().split(/\n\s*\n/).filter(Boolean)
- .map(x=>"<p>"+esc(x).replace(/\n/g,"<br>")+"</p>").join("\n");
+
+return String(t||"")
+.trim()
+.split(/\n\s*\n/)
+.filter(Boolean)
+.map(
+x=>
+"<p>"+
+esc(x)
+.replace(/\n/g,"<br>")+
+"</p>"
+)
+.join("\n");
+
 }
+
+
+/* =========================================================
+ARTICLE
+========================================================= */
 
 function data(){
- const hs=[];
- for(let i=1;i<=6;i++){
-  const h=$("heading"+i).value.trim();
-  const c=$("content"+i).value.trim();
-  if(h||c)hs.push({heading:h,content:c});
- }
- return{
-  section:$("articleSection").value,
-  title:$("articleTitle").value.trim(),
-  path:articlePath(),
-  category:$("articleCategory").value.trim()||CONFIG.sections[$("articleSection").value].name,
-  date:$("articleDate").value||new Date().toISOString().slice(0,10),
-  metaTitle:$("articleMetaTitle").value.trim(),
-  metaDescription:$("articleMetaDescription").value.trim(),
-  primary:$("articlePrimaryKeyword").value.trim(),
-  secondary:$("articleSecondaryKeywords").value.trim(),
-  image:$("articleImage").value.trim(),
-  intro:$("articleIntro").value.trim(),
-  headings:hs,
-  conclusion:$("articleConclusion").value.trim()
- };
+
+const hs=[];
+
+for(
+let i=1;
+i<=6;
+i++
+){
+
+const h=
+$("heading"+i)
+.value
+.trim();
+
+const c=
+$("content"+i)
+.value
+.trim();
+
+if(h||c){
+
+hs.push({
+heading:h,
+content:c
+});
+
 }
+
+}
+
+return{
+
+section:
+$("articleSection").value,
+
+title:
+$("articleTitle").value.trim(),
+
+path:
+articlePath(),
+
+category:
+$("articleCategory").value.trim()
+||
+CONFIG.sections[
+$("articleSection").value
+].name,
+
+date:
+$("articleDate").value
+||
+new Date()
+.toISOString()
+.slice(0,10),
+
+metaTitle:
+$("articleMetaTitle").value.trim(),
+
+metaDescription:
+$("articleMetaDescription")
+.value.trim(),
+
+primary:
+$("articlePrimaryKeyword")
+.value.trim(),
+
+secondary:
+$("articleSecondaryKeywords")
+.value.trim(),
+
+image:
+$("articleImage")
+.value.trim(),
+
+intro:
+$("articleIntro")
+.value.trim(),
+
+headings:hs,
+
+conclusion:
+$("articleConclusion")
+.value.trim()
+
+};
+
+}
+
 
 function validate(a){
- if(!a.title)return"Article Title is required.";
- if(!a.path)return"URL / File Name is required.";
- if(!a.metaDescription)return"Meta Description is required.";
- if(!a.intro&&!a.headings.length&&!a.conclusion)return"Write some article content.";
- return"";
+
+if(!a.title)
+return"Article Title is required.";
+
+if(!a.path)
+return"URL / File Name is required.";
+
+if(!a.metaDescription)
+return"Meta Description is required.";
+
+if(
+!a.intro &&
+!a.headings.length &&
+!a.conclusion
+)
+return"Write some article content.";
+
+return"";
+
 }
+
 
 function theme(section){
- if(section==="seo")return`
- <div class="seo-background"></div>`;
- if(section==="technology")return`
- <div class="technology-background"></div>`;
- return"";
+
+if(section==="seo")
+return`<div class="seo-background"></div>`;
+
+if(section==="technology")
+return`<div class="technology-background"></div>`;
+
+return"";
+
 }
+
 
 function generateHTML(){
- const a=data(),s=CONFIG.sections[a.section];
- let content="";
 
- if(a.intro)content+=`<section class="article-introduction">${textParas(a.intro)}</section>`;
+const a=data();
 
- a.headings.forEach(x=>{
-  if(x.heading)content+=`<h2>${esc(x.heading)}</h2>`;
-  if(x.content)content+=textParas(x.content);
- });
+const s=
+CONFIG.sections[
+a.section
+];
 
- if(a.conclusion)content+=`<h2>Conclusion</h2>${textParas(a.conclusion)}`;
+let content="";
 
- const keywords=[
-  a.primary,
-  ...a.secondary.split(",").map(x=>x.trim()).filter(Boolean)
- ].filter(Boolean).join(", ");
+if(a.intro){
 
- const img=a.image?`<img class="article-featured-image" src="${esc(a.image)}" alt="${esc(a.title)}" loading="lazy">`:"";
+content+=
+`<section class="article-introduction">
+${textParas(a.intro)}
+</section>`;
 
- return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>${esc(a.metaTitle||a.title)}</title>
-<meta name="description" content="${esc(a.metaDescription)}">
-<meta name="keywords" content="${esc(keywords)}">
-<meta name="author" content="LearnByte">
-<meta name="robots" content="index,follow,max-image-preview:large">
-<link rel="canonical" href="${CONFIG.base}${esc(a.path)}">
-<meta property="og:type" content="article">
-<meta property="og:title" content="${esc(a.metaTitle||a.title)}">
-<meta property="og:description" content="${esc(a.metaDescription)}">
-<meta property="og:url" content="${CONFIG.base}${esc(a.path)}">
-<meta property="og:site_name" content="LearnByte">
-<link rel="stylesheet" href="../style.css">
-<link rel="stylesheet" href="../${s.css}">
-<style>
-.lb-published-article{max-width:900px;margin:auto;padding:80px 20px}
-.lb-published-article h1{font-size:clamp(2.3rem,6vw,4.3rem);line-height:1.08}
-.lb-published-article h2{margin-top:42px}
-.lb-published-article p{font-size:1.08rem;line-height:1.85}
-.article-featured-image{display:block;width:100%;max-height:520px;object-fit:cover;border-radius:18px;margin:24px 0}
-.article-meta{opacity:.7}
-</style>
-</head>
-<body>
-${theme(a.section)}
-<header class="site-header">
-<div class="container navbar">
-<a href="../index.html" class="logo">Learn<span>Byte</span></a>
-<nav class="nav-menu">
-<a href="../index.html">Home</a>
-<a href="../category/education.html">Education</a>
-<a href="../category/technology.html">Technology</a>
-<a href="../category/seo.html">SEO</a>
-<a href="../category/gaming.html">Gaming</a>
-</nav>
-</div>
-</header>
-<main>
-<article class="lb-published-article">
-<div class="article-meta">${esc(a.category)} · ${esc(a.date)}</div>
-<h1>${esc(a.title)}</h1>
-${img}
-${content}
-<a href="../category/${a.section}.html">← Back to ${esc(s.name)}</a>
-</article>
-</main>
-<footer>LearnByte · ${esc(s.name)} Guides</footer>
-</body>
-</html>`;
 }
+
+a.headings.forEach(x=>{
+
+if(x.heading)
+content+=
+`<h2>${esc(x.heading)}</h2>`;
+
+if(x.content)
+content+=
+textParas(x.content);
+
+});
+
+
+if(a.conclusion){
+
+content+=
+`<h2>Conclusion</h2>
+${textParas(a.conclusion)}`;
+
+}
+
+
+const keywords=[
+
+a.primary,
+
+...a.secondary
+.split(",")
+.map(x=>x.trim())
+.filter(Boolean)
+
+]
+.filter(Boolean)
+.join(", ");
+
+
+const img=
+a.image
+?
+`<img
+class="article-featured-image"
+src="${esc(a.image)}"
+alt="${esc(a.title)}"
+loading="lazy"
+>`
+:"";
+
+
+return`<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1"
+>
+
+<title>
+${esc(a.metaTitle||a.title)}
+</title>
+
+<meta
+name="description"
+content="${esc(a.metaDescription)}"
+>
+
+<meta
+name="keywords"
+content="${esc(keywords)}"
+>
+
+<meta
+name="author"
+content="LearnByte"
+>
+
+<meta
+name="robots"
+content="index,follow,max-image-preview:large"
+>
+
+<link
+rel="canonical"
+href="${CONFIG.base}${esc(a.path)}"
+>
+
+<meta
+property="og:type"
+content="article"
+>
+
+<meta
+property="og:title"
+content="${esc(a.metaTitle||a.title)}"
+>
+
+<meta
+property="og:description"
+content="${esc(a.metaDescription)}"
+>
+
+<meta
+property="og:url"
+content="${CONFIG.base}${esc(a.path)}"
+>
+
+<meta
+property="og:site_name"
+content="LearnByte"
+>
+
+<link
+rel="stylesheet"
+href="../style.css"
+>
+
+<link
+rel="stylesheet"
+href="../${s.css}"
+>
+
+<style>
+
+.lb-published-article{
+max-width:900px;
+margin:auto;
+padding:80px 20px
+}
+
+.lb-published-article h1{
+font-size:
+clamp(
+2.3rem,
+6vw,
+4.3rem
+);
+line-height:1.08
+}
+
+.lb-published-article h2{
+margin-top:42px
+}
+
+.lb-published-article p{
+font-size:1.08rem;
+line-height:1.85
+}
+
+.article-featured-image{
+display:block;
+width:100%;
+max-height:520px;
+object-fit:cover;
+border-radius:18px;
+margin:24px 0
+}
+
+.article-meta{
+opacity:.7
+}
+
+</style>
+
+</head>
+
+<body>
+
+${theme(a.section)}
+
+<header class="site-header">
+
+<div class="container navbar">
+
+<a
+href="../index.html"
+class="logo"
+>
+Learn<span>Byte</span>
+</a>
+
+<nav class="nav-menu">
+
+<a href="../index.html">
+Home
+</a>
+
+<a href="../category/education.html">
+Education
+</a>
+
+<a href="../category/technology.html">
+Technology
+</a>
+
+<a href="../category/seo.html">
+SEO
+</a>
+
+<a href="../category/gaming.html">
+Gaming
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<main>
+
+<article
+class="lb-published-article"
+>
+
+<div class="article-meta">
+${esc(a.category)}
+·
+${esc(a.date)}
+</div>
+
+<h1>
+${esc(a.title)}
+</h1>
+
+${img}
+
+${content}
+
+<a
+href="../category/${a.section}.html"
+>
+← Back to ${esc(s.name)}
+</a>
+
+</article>
+
+</main>
+
+<footer>
+LearnByte · ${esc(s.name)} Guides
+</footer>
+
+</body>
+
+</html>`;
+
+}
+
 
 function previewArticle(){
- const a=data(),e=validate(a);
- if(e)return alert(e);
- const f=document.createElement("iframe");
- f.srcdoc=generateHTML();
- $("previewArea").innerHTML="";
- $("previewArea").appendChild(f);
- $("previewBox").style.display="block";
+
+const a=data();
+
+const e=validate(a);
+
+if(e)return alert(e);
+
+const f=
+document.createElement(
+"iframe"
+);
+
+f.srcdoc=
+generateHTML();
+
+$("previewArea")
+.innerHTML="";
+
+$("previewArea")
+.appendChild(f);
+
+$("previewBox")
+.style.display="block";
+
 }
+
 
 function showGeneratedHTML(){
- const a=data(),e=validate(a);
- if(e)return alert(e);
- $("articleCode").value=generateHTML();
- $("articleCode").style.display="block";
- $("codeBox").style.display="block";
+
+const a=data();
+
+const e=validate(a);
+
+if(e)return alert(e);
+
+$("articleCode")
+.value=
+generateHTML();
+
+$("articleCode")
+.style.display="block";
+
+$("codeBox")
+.style.display="block";
+
 }
 
+
 function analyzeSEO(){
- const a=data();
- const text=[a.intro,...a.headings.map(x=>x.content),a.conclusion].join(" ");
- const words=text.trim()?text.trim().split(/\s+/).length:0;
- const h2=a.headings.filter(x=>x.heading).length;
- const occ=a.primary?text.toLowerCase().split(a.primary.toLowerCase()).length-1:0;
- result("seoBox",
- `Words: ${words}
+
+const a=data();
+
+const text=[
+a.intro,
+...a.headings.map(
+x=>x.content
+),
+a.conclusion
+]
+.join(" ");
+
+const words=
+text.trim()
+?text.trim().split(/\s+/).length
+:0;
+
+const h2=
+a.headings.filter(
+x=>x.heading
+).length;
+
+const occ=
+a.primary
+?
+text
+.toLowerCase()
+.split(
+a.primary.toLowerCase()
+)
+.length-1
+:0;
+
+result(
+"seoBox",
+`Words: ${words}
 Title characters: ${a.title.length}
 Meta characters: ${a.metaDescription.length}
 H2 headings: ${h2}
 Primary keyword occurrences: ${occ}`,
- "");
- $("seoBox").style.display="block";
+""
+);
+
+$("seoBox")
+.style.display="block";
+
 }
+
 
 function clearArticle(){
- [
- "articleTitle","articleSlug","articleCategory","articleDate",
- "articleMetaTitle","articleMetaDescription","articlePrimaryKeyword",
- "articleSecondaryKeywords","articleImage","articleIntro","articleConclusion"
- ].forEach(id=>$(id).value="");
 
- for(let i=1;i<=6;i++){
-  $("heading"+i).value="";
-  $("content"+i).value="";
- }
+[
 
- $("previewBox").style.display="none";
- $("codeBox").style.display="none";
- $("seoBox").style.display="none";
- result("articleResult","Ready to publish.");
+"articleTitle",
+"articleSlug",
+"articleCategory",
+"articleDate",
+"articleMetaTitle",
+"articleMetaDescription",
+"articlePrimaryKeyword",
+"articleSecondaryKeywords",
+"articleImage",
+"articleIntro",
+"articleConclusion"
+
+]
+.forEach(
+id=>$(id).value=""
+);
+
+for(
+let i=1;
+i<=6;
+i++
+){
+
+$("heading"+i).value="";
+$("content"+i).value="";
+
 }
+
+$("previewBox")
+.style.display="none";
+
+$("codeBox")
+.style.display="none";
+
+$("seoBox")
+.style.display="none";
+
+result(
+"articleResult",
+"Ready to publish."
+);
+
+}
+
 
 async function getFile(path){
- return api("/get-file","POST",{path});
+
+return api(
+"/get-file",
+"POST",
+{path}
+);
+
 }
 
-async function putFile(path,content,message,sha){
- return api("/update-file","POST",{path,content,message,sha});
+
+async function putFile(
+path,
+content,
+message,
+sha
+){
+
+return api(
+"/update-file",
+"POST",
+{
+path,
+content,
+message,
+sha
 }
+);
+
+}
+
 
 /* =========================================================
-   CATEGORY CARDS
+CATEGORY / HOME / SITEMAP
 ========================================================= */
 
 function cardHTML(a,index){
- const s=CONFIG.sections[a.section];
- const n=String(index).padStart(2,"0");
- const href="../"+a.path;
- const desc=esc((a.intro||"").replace(/\s+/g," ").slice(0,180));
- const label=esc(a.category).toUpperCase();
 
- return `
+const s=
+CONFIG.sections[
+a.section
+];
+
+const n=
+String(index)
+.padStart(2,"0");
+
+const href=
+"../"+a.path;
+
+const desc=
+esc(
+(a.intro||"")
+.replace(/\s+/g," ")
+.slice(0,180)
+);
+
+const label=
+esc(a.category)
+.toUpperCase();
+
+return`
+
 <article class="${s.card||"post-card"}">
-<div class="post-number">${n}</div>
-<div class="post-icon">${s.icon}</div>
-<span class="post-category">${label}</span>
-<h3>${esc(a.title)}</h3>
-<p>${desc}</p>
-<a href="${href}">${s.read}</a>
-</article>`;
+
+<div class="post-number">
+${n}
+</div>
+
+<div class="post-icon">
+${s.icon}
+</div>
+
+<span class="post-category">
+${label}
+</span>
+
+<h3>
+${esc(a.title)}
+</h3>
+
+<p>
+${desc}
+</p>
+
+<a href="${href}">
+${s.read}
+</a>
+
+</article>
+
+`;
+
 }
 
-function updateCategoryHTML(html,a){
- const s=CONFIG.sections[a.section];
- if(html.includes(`href="../${a.path}"`)||html.includes(`href="${a.path}"`))return html;
 
- const re=new RegExp(`(<div\\s+class=["'][^"']*${s.grid}[^"']*["'][^>]*>)`,"i");
- if(!re.test(html))throw new Error(`Could not find ${s.grid} in ${s.category}.`);
+function updateCategoryHTML(
+html,
+a
+){
 
- const count=(html.match(/<article\b/gi)||[]).length+1;
+const s=
+CONFIG.sections[
+a.section
+];
 
- return html.replace(
-  re,
-  `$1\n${cardHTML(a,count)}`
- );
+if(
+html.includes(
+`href="../${a.path}"`
+)||
+html.includes(
+`href="${a.path}"`
+)
+)
+return html;
+
+const re=
+new RegExp(
+`(<div\\s+class=["'][^"']*${s.grid}[^"']*["'][^>]*>)`,
+"i"
+);
+
+if(!re.test(html))
+throw new Error(
+`Could not find ${s.grid} in ${s.category}.`
+);
+
+const count=
+(
+html.match(
+/<article\b/gi
+)||[]
+).length+1;
+
+return html.replace(
+re,
+`$1\n${cardHTML(a,count)}`
+);
+
 }
+
 
 async function updateCategory(a){
- const s=CONFIG.sections[a.section];
- const d=await getFile(s.category);
- const html=updateCategoryHTML(d.content,a);
- if(html===d.content)return d;
- return putFile(s.category,html,`Add article to ${s.name}: ${a.title}`,d.sha);
+
+const s=
+CONFIG.sections[
+a.section
+];
+
+const d=
+await getFile(
+s.category
+);
+
+const html=
+updateCategoryHTML(
+d.content,
+a
+);
+
+if(
+html===d.content
+)
+return d;
+
+return putFile(
+s.category,
+html,
+`Add article to ${s.name}: ${a.title}`,
+d.sha
+);
+
 }
 
-/* =========================================================
-   HOMEPAGE
-========================================================= */
 
-function updateHomeHTML(html,a){
- if(html.includes(`href="${a.path}"`)||html.includes(`href="./${a.path}"`))return html;
+function updateHomeHTML(
+html,
+a
+){
 
- const s=CONFIG.sections[a.section];
- const desc=esc((a.intro||"").replace(/\s+/g," ").slice(0,160));
+if(
+html.includes(
+`href="${a.path}"`
+)
+)
+return html;
 
- const card=`
+const s=
+CONFIG.sections[
+a.section
+];
+
+const desc=
+esc(
+(a.intro||"")
+.replace(/\s+/g," ")
+.slice(0,160)
+);
+
+const card=`
+
 <article class="post-card">
-<div class="post-image">${s.icon}</div>
-<div class="post-content">
-<span class="post-category">${esc(s.name)}</span>
-<h3>${esc(a.title)}</h3>
-<p>${desc}</p>
-<a href="${a.path}">Read Article →</a>
+
+<div class="post-image">
+${s.icon}
 </div>
-</article>`;
 
- const re=/<div\s+class=["']post-grid["'][^>]*>/i;
- if(!re.test(html))throw new Error("Could not find homepage post-grid.");
+<div class="post-content">
 
- return html.replace(re,m=>m+"\n"+card);
+<span class="post-category">
+${esc(s.name)}
+</span>
+
+<h3>
+${esc(a.title)}
+</h3>
+
+<p>
+${desc}
+</p>
+
+<a href="${a.path}">
+Read Article →
+</a>
+
+</div>
+
+</article>
+
+`;
+
+const re=
+/<div\s+class=["']post-grid["'][^>]*>/i;
+
+if(!re.test(html))
+throw new Error(
+"Could not find homepage post-grid."
+);
+
+return html.replace(
+re,
+m=>m+"\n"+card
+);
+
 }
+
 
 async function updateHome(a){
- const d=await getFile("index.html");
- const html=updateHomeHTML(d.content,a);
- if(html===d.content)return d;
- return putFile("index.html",html,`Add article to homepage: ${a.title}`,d.sha);
+
+const d=
+await getFile(
+"index.html"
+);
+
+const html=
+updateHomeHTML(
+d.content,
+a
+);
+
+if(
+html===d.content
+)
+return d;
+
+return putFile(
+"index.html",
+html,
+`Add article to homepage: ${a.title}`,
+d.sha
+);
+
 }
 
-/* =========================================================
-   SITEMAP
-========================================================= */
 
-function updateSitemapHTML(xml,a){
- const url=CONFIG.base+a.path;
- if(xml.includes(`<loc>${url}</loc>`))return xml;
+function updateSitemapHTML(
+xml,
+a
+){
 
- const entry=`<url><loc>${url}</loc><lastmod>${a.date}</lastmod></url>`;
+const url=
+CONFIG.base+a.path;
 
- if(!/<\/urlset>/i.test(xml))
-  throw new Error("Invalid sitemap.xml: </urlset> not found.");
+if(
+xml.includes(
+`<loc>${url}</loc>`
+)
+)
+return xml;
 
- return xml.replace(/<\/urlset>/i,entry+"</urlset>");
+const entry=
+`<url>
+<loc>${url}</loc>
+<lastmod>${a.date}</lastmod>
+</url>`;
+
+if(
+!/<\/urlset>/i.test(xml)
+)
+throw new Error(
+"Invalid sitemap.xml."
+);
+
+return xml.replace(
+/<\/urlset>/i,
+entry+"</urlset>"
+);
+
 }
+
 
 async function updateSitemap(a){
- const d=await getFile("sitemap.xml");
- const xml=updateSitemapHTML(d.content,a);
- if(xml===d.content)return d;
- return putFile("sitemap.xml",xml,`Add sitemap URL: ${a.title}`,d.sha);
+
+const d=
+await getFile(
+"sitemap.xml"
+);
+
+const xml=
+updateSitemapHTML(
+d.content,
+a
+);
+
+if(
+xml===d.content
+)
+return d;
+
+return putFile(
+"sitemap.xml",
+xml,
+`Add sitemap URL: ${a.title}`,
+d.sha
+);
+
 }
 
+
 /* =========================================================
-   KEYWORDS AUTO SAVE
+KEYWORDS
 ========================================================= */
 
 async function saveKeywordsForArticle(a){
- if(!a.primary)return;
 
- try{
-  const d=await getFile("seo-keywords.json");
-  let obj={keywords:[]};
+if(!a.primary)return;
 
-  try{obj=JSON.parse(d.content||'{"keywords":[]}')}catch{}
+try{
 
-  if(!Array.isArray(obj.keywords))obj.keywords=[];
+const d=
+await getFile(
+"seo-keywords.json"
+);
 
-  const existing=obj.keywords.find(x=>x.page===a.path);
+let obj={
+keywords:[]
+};
 
-  if(existing){
-   existing.primary=a.primary;
-   existing.secondary=a.secondary.split(",").map(x=>x.trim()).filter(Boolean);
-  }else{
-   obj.keywords.push({
-    page:a.path,
-    primary:a.primary,
-    secondary:a.secondary.split(",").map(x=>x.trim()).filter(Boolean)
-   });
-  }
+try{
+obj=
+JSON.parse(
+d.content ||
+'{"keywords":[]}'
+);
+}catch{}
 
-  await putFile(
-   "seo-keywords.json",
-   JSON.stringify(obj,null,2),
-   "Update SEO keywords: "+a.title,
-   d.sha
-  );
+if(
+!Array.isArray(
+obj.keywords
+)
+)
+obj.keywords=[];
 
- }catch(e){
-  console.warn("Keyword update skipped:",e);
- }
+const existing=
+obj.keywords.find(
+x=>x.page===a.path
+);
+
+if(existing){
+
+existing.primary=
+a.primary;
+
+existing.secondary=
+a.secondary
+.split(",")
+.map(x=>x.trim())
+.filter(Boolean);
+
+}else{
+
+obj.keywords.push({
+
+page:a.path,
+
+primary:a.primary,
+
+secondary:
+a.secondary
+.split(",")
+.map(x=>x.trim())
+.filter(Boolean)
+
+});
+
 }
 
+await putFile(
+"seo-keywords.json",
+JSON.stringify(
+obj,
+null,
+2
+),
+"Update SEO keywords: "+a.title,
+d.sha
+);
+
+}catch(e){
+
+console.warn(
+"Keyword update skipped:",
+e
+);
+
+}
+
+}
+
+
 /* =========================================================
-   DIRECT PUBLISH
+DIRECT PUBLISH
 ========================================================= */
 
 async function directPublish(){
- const a=data(),e=validate(a);
- if(e)return alert(e);
- if(!key())return alert("Enter Admin Key first.");
 
- if(!confirm(
- `DIRECT PUBLISH this article?\n\n${a.title}\n\n${a.path}\n\nSection: ${CONFIG.sections[a.section].name}`
- ))return;
+const a=data();
 
- const btn=$("publishBtn");
- btn.disabled=true;
- let steps=[];
+const e=validate(a);
 
- try{
-  result("articleResult","1/5 Creating article...");
-  const html=generateHTML();
+if(e)return alert(e);
 
-  await putFile(
-   a.path,
-   html,
-   "Publish article: "+a.title
-  );
-  steps.push("Article published");
+if(!key())
+return alert(
+"Enter Admin Key first."
+);
 
-  result("articleResult","2/5 Updating category...");
-  await updateCategory(a);
-  steps.push("Category updated");
+if(
+!confirm(
+`DIRECT PUBLISH this article?
 
-  result("articleResult","3/5 Updating homepage...");
-  await updateHome(a);
-  steps.push("Homepage updated");
+${a.title}
 
-  result("articleResult","4/5 Updating sitemap...");
-  await updateSitemap(a);
-  steps.push("Sitemap updated");
+${a.path}
 
-  result("articleResult","5/5 Saving SEO keywords...");
-  await saveKeywordsForArticle(a);
-  steps.push("SEO keywords saved");
+Section:
+${CONFIG.sections[a.section].name}`
+)
+)
+return;
 
-  $("articleCode").value=html;
-  $("articleCode").style.display="block";
-  $("codeBox").style.display="block";
+const btn=
+$("publishBtn");
 
-  $("statArticles").textContent=String(Number($("statArticles").textContent||0)+1);
-  $("statFiles").textContent=String(Number($("statFiles").textContent||0)+4);
+btn.disabled=true;
 
-  const live=CONFIG.base+a.path;
+let steps=[];
 
-  result(
-   "publishSummary",
-   `✅ DIRECT PUBLISH COMPLETE
+try{
+
+result(
+"articleResult",
+"1/5 Creating article..."
+);
+
+const html=
+generateHTML();
+
+await putFile(
+a.path,
+html,
+"Publish article: "+a.title
+);
+
+steps.push(
+"Article published"
+);
+
+
+result(
+"articleResult",
+"2/5 Updating category..."
+);
+
+await updateCategory(a);
+
+steps.push(
+"Category updated"
+);
+
+
+result(
+"articleResult",
+"3/5 Updating homepage..."
+);
+
+await updateHome(a);
+
+steps.push(
+"Homepage updated"
+);
+
+
+result(
+"articleResult",
+"4/5 Updating sitemap..."
+);
+
+await updateSitemap(a);
+
+steps.push(
+"Sitemap updated"
+);
+
+
+result(
+"articleResult",
+"5/5 Saving SEO keywords..."
+);
+
+await saveKeywordsForArticle(a);
+
+steps.push(
+"SEO keywords saved"
+);
+
+
+$("articleCode")
+.value=html;
+
+$("articleCode")
+.style.display="block";
+
+$("codeBox")
+.style.display="block";
+
+
+$("statArticles")
+.textContent=
+String(
+Number(
+$("statArticles")
+.textContent||0
+)+1
+);
+
+
+$("statFiles")
+.textContent=
+String(
+Number(
+$("statFiles")
+.textContent||0
+)+4
+);
+
+
+const live=
+CONFIG.base+a.path;
+
+
+result(
+"publishSummary",
+`✅ DIRECT PUBLISH COMPLETE
 
 Live URL:
 ${live}
 
-${steps.map(x=>"✓ "+x).join("\n")}`,
-   "ok"
-  );
+${steps.map(
+x=>"✓ "+x
+).join("\n")}`,
+"ok"
+);
 
-  result(
-   "articleResult",
-   `✅ Published successfully.
+
+result(
+"articleResult",
+`✅ Published successfully.
 
 Live URL:
 ${live}
 
 All automatic updates completed.`,
-   "ok"
-  );
+"ok"
+);
 
-  window.lastPublishedUrl=live;
 
- }catch(err){
+window.lastPublishedUrl=
+live;
 
-  result(
-   "articleResult",
-   `❌ PUBLISH STOPPED
+}catch(err){
+
+result(
+"articleResult",
+`❌ PUBLISH STOPPED
 
 ${err.message}
 
 Completed:
-${steps.map(x=>"✓ "+x).join("\n")||"None"}`,
-   "err"
-  );
+${
+steps.map(
+x=>"✓ "+x
+).join("\n")
+||
+"None"
+}`,
+"err"
+);
 
- }finally{
-  btn.disabled=false;
- }
+}finally{
+
+btn.disabled=false;
+
 }
+
+}
+
 
 /* =========================================================
-   DELETE HELPERS
+DELETE
 ========================================================= */
 
-function removeArticleFromHTML(html,path,title){
- const escaped=path.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+function removeArticleFromHTML(
+html,
+path,
+title
+){
 
- let out=html;
+const escaped=
+path.replace(
+/[.*+?^${}()|[\]\\]/g,
+"\\$&"
+);
 
- const patterns=[
-  new RegExp(
-   `<article\\b[^>]*>[\\s\\S]*?<a\\b[^>]*href=["'][^"']*${escaped}["'][^>]*>[\\s\\S]*?</article>`,
-   "gi"
-  ),
-  new RegExp(
-   `<article\\b[^>]*>[\\s\\S]*?href=["'][^"']*${escaped}["'][\\s\\S]*?</article>`,
-   "gi"
-  )
- ];
+let out=html;
 
- for(const p of patterns)out=out.replace(p,"");
+const patterns=[
 
- if(out===html&&title){
-  const t=title.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
-  out=out.replace(
-   new RegExp(`<article\\b[^>]*>[\\s\\S]*?${t}[\\s\\S]*?</article>`,"gi"),
-   ""
-  );
- }
+new RegExp(
+`<article\\b[^>]*>[\\s\\S]*?<a\\b[^>]*href=["'][^"']*${escaped}["'][^>]*>[\\s\\S]*?</article>`,
+"gi"
+),
 
- return out;
+new RegExp(
+`<article\\b[^>]*>[\\s\\S]*?href=["'][^"']*${escaped}["'][\\s\\S]*?</article>`,
+"gi"
+)
+
+];
+
+for(
+const p of patterns
+)
+out=
+out.replace(
+p,
+""
+);
+
+if(
+out===html &&
+title
+){
+
+const t=
+title.replace(
+/[.*+?^${}()|[\]\\]/g,
+"\\$&"
+);
+
+out=
+out.replace(
+new RegExp(
+`<article\\b[^>]*>[\\s\\S]*?${t}[\\s\\S]*?</article>`,
+"gi"
+),
+""
+);
+
 }
 
-function removeSitemapURL(xml,path){
- const url=CONFIG.base+path;
- const e=url.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+return out;
 
- return xml.replace(
-  new RegExp(`<url>\\s*<loc>\\s*${e}\\s*</loc>[\\s\\S]*?</url>`,"gi"),
-  ""
- );
 }
 
-function removeKeywordEntry(content,path){
- let obj;
 
- try{obj=JSON.parse(content||'{"keywords":[]}')}catch{return content}
+function removeSitemapURL(
+xml,
+path
+){
 
- if(!Array.isArray(obj.keywords))return content;
+const url=
+CONFIG.base+path;
 
- obj.keywords=obj.keywords.filter(x=>x.page!==path);
+const e=
+url.replace(
+/[.*+?^${}()|[\]\\]/g,
+"\\$&"
+);
 
- return JSON.stringify(obj,null,2);
+return xml.replace(
+new RegExp(
+`<url>\\s*<loc>\\s*${e}\\s*</loc>[\\s\\S]*?</url>`,
+"gi"
+),
+""
+);
+
 }
 
-/* =========================================================
-   COMPLETE DELETE
-========================================================= */
+
+function removeKeywordEntry(
+content,
+path
+){
+
+let obj;
+
+try{
+obj=
+JSON.parse(
+content ||
+'{"keywords":[]}'
+);
+}catch{
+return content;
+}
+
+if(
+!Array.isArray(
+obj.keywords
+)
+)
+return content;
+
+obj.keywords=
+obj.keywords.filter(
+x=>x.page!==path
+);
+
+return JSON.stringify(
+obj,
+null,
+2
+);
+
+}
+
 
 async function deleteArticle(){
 
- const path=$("deletePath").value.trim().replace(/^\/+/,"");
- const section=$("deleteSection").value;
- const title=$("deleteTitle").value.trim();
+const path=
+$("deletePath")
+.value
+.trim()
+.replace(/^\/+/,"");
 
- if(!path)return alert("Enter Article File Path.");
- if(!key())return alert("Enter Admin Key.");
+const section=
+$("deleteSection")
+.value;
 
- const s=CONFIG.sections[section];
+const title=
+$("deleteTitle")
+.value
+.trim();
 
- if(!confirm(
- `⚠️ PERMANENTLY DELETE ARTICLE?
+if(!path)
+return alert(
+"Enter Article File Path."
+);
+
+if(!key())
+return alert(
+"Enter Admin Key."
+);
+
+const s=
+CONFIG.sections[
+section
+];
+
+if(
+!confirm(
+`⚠️ PERMANENTLY DELETE ARTICLE?
 
 File:
 ${path}
@@ -1016,470 +4203,2754 @@ This will attempt to remove:
 ✓ Category card
 ✓ Homepage card
 ✓ Sitemap URL
-✓ SEO keyword entry
+✓ SEO keyword entry`
+)
+)
+return;
 
-This action creates GitHub commits and cannot be undone from this panel.`
- ))return;
+try{
 
- const btn=document.querySelector(
-  '#deleteResult'
- );
+result(
+"deleteResult",
+"1/5 Deleting article file..."
+);
 
- try{
+await api(
+"/delete-file",
+"POST",
+{
+path,
+message:
+"Delete article: "+path
+}
+);
 
-  result("deleteResult","1/5 Deleting article file...");
+let done=[
+"Article file deleted"
+];
 
-  await api(
-   "/delete-file",
-   "POST",
-   {
-    path,
-    message:"Delete article: "+path
-   }
-  );
 
-  let done=["Article file deleted"];
+result(
+"deleteResult",
+"2/5 Removing category card..."
+);
 
-  /* CATEGORY */
+try{
 
-  result("deleteResult","2/5 Removing category card...");
+const d=
+await getFile(
+s.category
+);
 
-  try{
-   const d=await getFile(s.category);
-   const html=removeArticleFromHTML(d.content,path,title);
+const html=
+removeArticleFromHTML(
+d.content,
+path,
+title
+);
 
-   if(html!==d.content){
-    await putFile(
-     s.category,
-     html,
-     "Remove deleted article from category: "+path,
-     d.sha
-    );
-    done.push("Category updated");
-   }else{
-    done.push("Category card not found");
-   }
-  }catch(e){
-   done.push("Category cleanup skipped: "+e.message);
-  }
+if(
+html!==d.content
+){
 
-  /* HOMEPAGE */
+await putFile(
+s.category,
+html,
+"Remove deleted article from category: "+path,
+d.sha
+);
 
-  result("deleteResult","3/5 Removing homepage card...");
+done.push(
+"Category updated"
+);
 
-  try{
-   const d=await getFile("index.html");
-   const html=removeArticleFromHTML(d.content,path,title);
+}else{
 
-   if(html!==d.content){
-    await putFile(
-     "index.html",
-     html,
-     "Remove deleted article from homepage: "+path,
-     d.sha
-    );
-    done.push("Homepage updated");
-   }else{
-    done.push("Homepage card not found");
-   }
-  }catch(e){
-   done.push("Homepage cleanup skipped: "+e.message);
-  }
+done.push(
+"Category card not found"
+);
 
-  /* SITEMAP */
+}
 
-  result("deleteResult","4/5 Removing sitemap URL...");
+}catch(e){
 
-  try{
-   const d=await getFile("sitemap.xml");
-   const xml=removeSitemapURL(d.content,path);
+done.push(
+"Category cleanup skipped: "+e.message
+);
 
-   if(xml!==d.content){
-    await putFile(
-     "sitemap.xml",
-     xml,
-     "Remove deleted article from sitemap: "+path,
-     d.sha
-    );
-    done.push("Sitemap updated");
-   }else{
-    done.push("Sitemap URL not found");
-   }
-  }catch(e){
-   done.push("Sitemap cleanup skipped: "+e.message);
-  }
+}
 
-  /* KEYWORDS */
 
-  result("deleteResult","5/5 Removing SEO keyword entry...");
+result(
+"deleteResult",
+"3/5 Removing homepage card..."
+);
 
-  try{
-   const d=await getFile("seo-keywords.json");
-   const content=removeKeywordEntry(d.content,path);
+try{
 
-   if(content!==d.content){
-    await putFile(
-     "seo-keywords.json",
-     content,
-     "Remove deleted article SEO keywords: "+path,
-     d.sha
-    );
-    done.push("SEO keywords updated");
-   }else{
-    done.push("SEO keyword entry not found");
-   }
-  }catch(e){
-   done.push("Keyword cleanup skipped: "+e.message);
-  }
+const d=
+await getFile(
+"index.html"
+);
 
-  $("statFiles").textContent=
-   String(Number($("statFiles").textContent||0)+1);
+const html=
+removeArticleFromHTML(
+d.content,
+path,
+title
+);
 
-  result(
-   "deleteResult",
-   `✅ DELETE COMPLETED
+if(
+html!==d.content
+){
+
+await putFile(
+"index.html",
+html,
+"Remove deleted article from homepage: "+path,
+d.sha
+);
+
+done.push(
+"Homepage updated"
+);
+
+}else{
+
+done.push(
+"Homepage card not found"
+);
+
+}
+
+}catch(e){
+
+done.push(
+"Homepage cleanup skipped: "+e.message
+);
+
+}
+
+
+result(
+"deleteResult",
+"4/5 Removing sitemap URL..."
+);
+
+try{
+
+const d=
+await getFile(
+"sitemap.xml"
+);
+
+const xml=
+removeSitemapURL(
+d.content,
+path
+);
+
+if(
+xml!==d.content
+){
+
+await putFile(
+"sitemap.xml",
+xml,
+"Remove deleted article from sitemap: "+path,
+d.sha
+);
+
+done.push(
+"Sitemap updated"
+);
+
+}else{
+
+done.push(
+"Sitemap URL not found"
+);
+
+}
+
+}catch(e){
+
+done.push(
+"Sitemap cleanup skipped: "+e.message
+);
+
+}
+
+
+result(
+"deleteResult",
+"5/5 Removing SEO keyword entry..."
+);
+
+try{
+
+const d=
+await getFile(
+"seo-keywords.json"
+);
+
+const content=
+removeKeywordEntry(
+d.content,
+path
+);
+
+if(
+content!==d.content
+){
+
+await putFile(
+"seo-keywords.json",
+content,
+"Remove deleted article SEO keywords: "+path,
+d.sha
+);
+
+done.push(
+"SEO keywords updated"
+);
+
+}else{
+
+done.push(
+"SEO keyword entry not found"
+);
+
+}
+
+}catch(e){
+
+done.push(
+"Keyword cleanup skipped: "+e.message
+);
+
+}
+
+
+result(
+"deleteResult",
+`✅ DELETE COMPLETED
 
 Deleted:
 ${path}
 
-${done.map(x=>"✓ "+x).join("\n")}`,
-   "ok"
-  );
+${done.map(
+x=>"✓ "+x
+).join("\n")}`,
+"ok"
+);
 
-  $("deletePath").value="";
-  $("deleteTitle").value="";
+$("deletePath").value="";
+$("deleteTitle").value="";
 
- }catch(e){
+}catch(e){
 
-  result(
-   "deleteResult",
-   `❌ DELETE FAILED
+result(
+"deleteResult",
+`❌ DELETE FAILED
 
-${e.message}
+${e.message}`,
+"err"
+);
 
-Check GitHub before retrying.`,
-   "err"
-  );
-
- }
 }
 
+}
+
+
 /* =========================================================
-   FILE MANAGER
+FILE MANAGER
 ========================================================= */
 
 async function readFile(){
- const p=$("filePath").value.trim();
- if(!p)return result("fileResult","Enter a file path.","err");
 
- try{
-  const d=await getFile(p);
+const p=
+$("filePath")
+.value
+.trim();
 
-  currentFileSha=d.sha;
-  currentFilePath=d.path;
+if(!p)
+return result(
+"fileResult",
+"Enter a file path.",
+"err"
+);
 
-  $("currentFile").value=d.path;
-  $("editor").value=d.content;
-  $("statFiles").textContent="1";
+try{
 
-  result(
-   "fileResult",
-   `Loaded: ${d.path}\nSHA: ${d.sha}`,
-   "ok"
-  );
+const d=
+await getFile(p);
 
- }catch(e){
-  result("fileResult",e.message,"err");
- }
+currentFileSha=
+d.sha;
+
+currentFilePath=
+d.path;
+
+$("currentFile")
+.value=d.path;
+
+$("editor")
+.value=d.content;
+
+$("statFiles")
+.textContent="1";
+
+result(
+"fileResult",
+`Loaded: ${d.path}
+SHA: ${d.sha}`,
+"ok"
+);
+
+}catch(e){
+
+result(
+"fileResult",
+e.message,
+"err"
+);
+
 }
+
+}
+
 
 async function saveFile(){
- if(!currentFilePath)return alert("Load a file first.");
 
- try{
-  const d=await putFile(
-   currentFilePath,
-   $("editor").value,
-   $("commitMessage").value.trim()||"Update file from LearnByte Control Center",
-   currentFileSha
-  );
+if(!currentFilePath)
+return alert(
+"Load a file first."
+);
 
-  currentFileSha=d.sha||currentFileSha;
+try{
 
-  result(
-   "saveResult",
-   JSON.stringify(d,null,2),
-   "ok"
-  );
+const d=
+await putFile(
+currentFilePath,
+$("editor").value,
+$("commitMessage")
+.value
+.trim() ||
+"Update file from LearnByte Control Center",
+currentFileSha
+);
 
- }catch(e){
-  result("saveResult",e.message,"err");
- }
+currentFileSha=
+d.sha ||
+currentFileSha;
+
+result(
+"saveResult",
+JSON.stringify(
+d,
+null,
+2
+),
+"ok"
+);
+
+}catch(e){
+
+result(
+"saveResult",
+e.message,
+"err"
+);
+
 }
+
+}
+
 
 function clearEditor(){
- currentFilePath=null;
- currentFileSha=null;
- $("currentFile").value="";
- $("editor").value="";
- result("fileResult","No file loaded.");
- result("saveResult","No changes made.");
+
+currentFilePath=null;
+currentFileSha=null;
+
+$("currentFile").value="";
+$("editor").value="";
+
+result(
+"fileResult",
+"No file loaded."
+);
+
+result(
+"saveResult",
+"No changes made."
+);
+
 }
+
 
 function loadIndex(){
- $("filePath").value="index.html";
- readFile();
+
+$("filePath").value=
+"index.html";
+
+readFile();
+
 }
 
+
 /* =========================================================
-   KEYWORDS
+KEYWORDS
 ========================================================= */
 
 async function loadKeywords(){
- try{
-  const d=await getFile("seo-keywords.json");
 
-  keywordSha=d.sha;
+try{
 
-  try{
-   keywordData=JSON.parse(d.content||'{"keywords":[]}');
-  }catch{
-   keywordData={keywords:[]};
-  }
+const d=
+await getFile(
+"seo-keywords.json"
+);
 
-  if(!Array.isArray(keywordData.keywords))
-   keywordData.keywords=[];
+keywordSha=
+d.sha;
 
-  renderKeywords();
+try{
 
-  $("statKeywords").textContent=keywordData.keywords.length;
+keywordData=
+JSON.parse(
+d.content ||
+'{"keywords":[]}'
+);
 
-  result("keywordResult","Keywords loaded.","ok");
+}catch{
 
- }catch(e){
-  result("keywordResult",e.message,"err");
- }
+keywordData={
+keywords:[]
+};
+
 }
+
+if(
+!Array.isArray(
+keywordData.keywords
+)
+)
+keywordData.keywords=[];
+
+renderKeywords();
+
+$("statKeywords")
+.textContent=
+keywordData.keywords.length;
+
+result(
+"keywordResult",
+"Keywords loaded.",
+"ok"
+);
+
+}catch(e){
+
+result(
+"keywordResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
 
 function renderKeywords(){
- $("keywordList").innerHTML=
- keywordData.keywords.length
- ?
- keywordData.keywords.map((x,i)=>`
- <div class="item">
- <strong>${esc(x.page)}</strong>
- <small>
- Primary: ${esc(x.primary)}
- <br>
- Secondary: ${esc(
-  Array.isArray(x.secondary)
-   ?x.secondary.join(", ")
-   :x.secondary||"None"
- )}
- </small>
- <div class="row">
- <button class="danger" onclick="deleteKeyword(${i})">Delete</button>
- </div>
- </div>`).join("")
- :
- '<div class="result">No keywords yet.</div>';
+
+$("keywordList")
+.innerHTML=
+keywordData.keywords.length
+
+?
+
+keywordData.keywords
+.map(
+(x,i)=>`
+
+<div class="item">
+
+<strong>
+${esc(x.page)}
+</strong>
+
+<small>
+
+Primary:
+${esc(x.primary)}
+
+<br>
+
+Secondary:
+${esc(
+Array.isArray(x.secondary)
+?x.secondary.join(", ")
+:x.secondary||"None"
+)}
+
+</small>
+
+<div class="row">
+
+<button
+class="danger"
+onclick="deleteKeyword(${i})"
+>
+Delete
+</button>
+
+</div>
+
+</div>
+
+`
+)
+.join("")
+
+:
+
+'<div class="result">No keywords yet.</div>';
+
 }
+
 
 async function addKeyword(){
- if(!keywordSha)await loadKeywords();
- if(!keywordSha)return;
 
- const p=$("keywordPage").value.trim();
- const k=$("keywordPrimary").value.trim();
+if(!keywordSha)
+await loadKeywords();
 
- if(!p||!k)return alert("Page and Primary Keyword are required.");
+if(!keywordSha)
+return;
 
- keywordData.keywords.push({
-  page:p,
-  primary:k,
-  secondary:$("keywordSecondary").value.split(",").map(x=>x.trim()).filter(Boolean)
- });
+const p=
+$("keywordPage")
+.value
+.trim();
 
- await saveKeywords();
+const k=
+$("keywordPrimary")
+.value
+.trim();
 
- $("keywordPage").value="";
- $("keywordPrimary").value="";
- $("keywordSecondary").value="";
-}
+if(!p||!k)
+return alert(
+"Page and Primary Keyword are required."
+);
 
-async function deleteKeyword(i){
- if(!confirm("Delete this keyword?"))return;
- keywordData.keywords.splice(i,1);
- await saveKeywords();
-}
+keywordData.keywords.push({
 
-async function saveKeywords(){
- try{
-  const d=await putFile(
-   "seo-keywords.json",
-   JSON.stringify(keywordData,null,2),
-   "Update SEO keywords",
-   keywordSha
-  );
+page:p,
 
-  keywordSha=d.sha||keywordSha;
-  renderKeywords();
-  $("statKeywords").textContent=keywordData.keywords.length;
-  result("keywordResult","✅ Keywords saved.","ok");
+primary:k,
 
- }catch(e){
-  result("keywordResult",e.message,"err");
- }
-}
-
-/* =========================================================
-   INTERNAL LINK
-========================================================= */
-
-function prepareLink(){
- const s=$("sourcePage").value.trim();
- const t=$("targetPage").value.trim();
- const a=$("anchorText").value.trim();
-
- if(!s||!t||!a)return alert("Fill all fields.");
-
- result(
-  "linkResult",
-  `Generated link:\n\n<a href="${esc(t)}">${esc(a)}</a>`,
-  "ok"
- );
-}
-
-async function applyInternalLink(){
- const s=$("sourcePage").value.trim();
- const t=$("targetPage").value.trim();
- const a=$("anchorText").value.trim();
-
- if(!s||!t||!a)return alert("Fill all fields.");
-
- try{
-  const d=await getFile(s);
-
-  const re=new RegExp(
-   "(?<![>])("+a.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")+
-   ")(?![^<]*>)",
-   "i"
-  );
-
-  const html=d.content.replace(
-   re,
-   `<a href="${esc(t)}">$1</a>`
-  );
-
-  if(html===d.content)
-   throw new Error("Anchor text was not found.");
-
-  const out=await putFile(
-   s,
-   html,
-   "Add internal link: "+a,
-   d.sha
-  );
-
-  result(
-   "linkResult",
-   "✅ Internal link applied and committed.\n\n"+
-   JSON.stringify(out,null,2),
-   "ok"
-  );
-
- }catch(e){
-  result("linkResult",e.message,"err");
- }
-}
-
-/* =========================================================
-   REDIRECT
-========================================================= */
-
-function redirectHTML(url){
- return `<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta http-equiv="refresh" content="0; url=${esc(url)}">
-<link rel="canonical" href="${esc(url)}">
-<title>Redirecting...</title>
-<script>location.replace(${JSON.stringify(url)})<\/script>
-</head>
-<body>
-<p>Redirecting...</p>
-<a href="${esc(url)}">Continue</a>
-</body>
-</html>`;
-}
-
-async function createRedirect(){
- const old=$("oldUrl").value.trim().replace(/^\/+/,"");
- const url=$("newUrl").value.trim();
-
- if(!old||!url)return alert("Fill Old URL and New URL.");
- if(!key())return alert("Enter Admin Key.");
-
- try{
-  const d=await putFile(
-   old,
-   redirectHTML(url),
-   "Create redirect: "+old+" -> "+url
-  );
-
-  result(
-   "redirectResult",
-   "✅ Redirect file created.\n\n"+JSON.stringify(d,null,2),
-   "ok"
-  );
-
- }catch(e){
-  result("redirectResult",e.message,"err");
- }
-}
-
-/* =========================================================
-   QUICK LINKS
-========================================================= */
-
-function openWebsite(){
- window.open(CONFIG.base,"_blank");
-}
-
-function openGitHub(){
- window.open("https://github.com/"+CONFIG.repo,"_blank");
-}
-
-function openWorker(){
- window.open(worker(),"_blank");
-}
-
-function openSitemap(){
- window.open(CONFIG.base+"sitemap.xml","_blank");
-}
-
-/* =========================================================
-   START
-========================================================= */
-
-document.addEventListener("DOMContentLoaded",()=>{
-
- makeHeadingFields();
- updateSectionInfo();
- loadSavedKey();
-
- $("articleDate").value=
- new Date().toISOString().slice(0,10);
-
- $("articleTitle").addEventListener("input",()=>{
-  if(!$("articleSlug").value)
-   $("articleSlug").value=slugify($("articleTitle").value);
- });
+secondary:
+$("keywordSecondary")
+.value
+.split(",")
+.map(x=>x.trim())
+.filter(Boolean)
 
 });
 
-</script>
+await saveKeywords();
+
+$("keywordPage").value="";
+$("keywordPrimary").value="";
+$("keywordSecondary").value="";
+
+}
+
+
+async function deleteKeyword(i){
+
+if(
+!confirm(
+"Delete this keyword?"
+)
+)
+return;
+
+keywordData.keywords.splice(
+i,
+1
+);
+
+await saveKeywords();
+
+}
+
+
+async function saveKeywords(){
+
+try{
+
+const d=
+await putFile(
+"seo-keywords.json",
+JSON.stringify(
+keywordData,
+null,
+2
+),
+"Update SEO keywords",
+keywordSha
+);
+
+keywordSha=
+d.sha ||
+keywordSha;
+
+renderKeywords();
+
+$("statKeywords")
+.textContent=
+keywordData.keywords.length;
+
+result(
+"keywordResult",
+"✅ Keywords saved.",
+"ok"
+);
+
+}catch(e){
+
+result(
+"keywordResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+INTERNAL LINK
+========================================================= */
+
+function prepareLink(){
+
+const s=
+$("sourcePage")
+.value
+.trim();
+
+const t=
+$("targetPage")
+.value
+.trim();
+
+const a=
+$("anchorText")
+.value
+.trim();
+
+if(!s||!t||!a)
+return alert(
+"Fill all fields."
+);
+
+result(
+"linkResult",
+`Generated link:
+
+<a href="${esc(t)}">${esc(a)}</a>`,
+"ok"
+);
+
+}
+
+
+async function applyInternalLink(){
+
+const s=
+$("sourcePage")
+.value
+.trim();
+
+const t=
+$("targetPage")
+.value
+.trim();
+
+const a=
+$("anchorText")
+.value
+.trim();
+
+if(!s||!t||!a)
+return alert(
+"Fill all fields."
+);
+
+try{
+
+const d=
+await getFile(s);
+
+const re=
+new RegExp(
+"("+a.replace(
+/[.*+?^${}()|[\]\\]/g,
+"\\$&"
+)+")",
+"i"
+);
+
+const html=
+d.content.replace(
+re,
+`<a href="${esc(t)}">$1</a>`
+);
+
+if(
+html===d.content
+)
+throw new Error(
+"Anchor text was not found."
+);
+
+const out=
+await putFile(
+s,
+html,
+"Add internal link: "+a,
+d.sha
+);
+
+result(
+"linkResult",
+"✅ Internal link applied and committed.\n\n"+
+JSON.stringify(
+out,
+null,
+2
+),
+"ok"
+);
+
+}catch(e){
+
+result(
+"linkResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+EXTERNAL LINK
+========================================================= */
+
+async function applyExternalLink(){
+
+const file=
+$("externalSource")
+.value
+.trim();
+
+const url=
+$("externalURL")
+.value
+.trim();
+
+const anchor=
+$("externalAnchor")
+.value
+.trim();
+
+if(!file||!url||!anchor)
+return alert(
+"Fill all fields."
+);
+
+try{
+
+const d=
+await getFile(file);
+
+const rel=
+$("externalNofollow")
+.checked
+?
+' rel="nofollow"'
+:"";
+
+const tag=
+`<a href="${esc(url)}"${rel}>${esc(anchor)}</a>`;
+
+const html=
+d.content.replace(
+new RegExp(
+"("+anchor.replace(
+/[.*+?^${}()|[\]\\]/g,
+"\\$&"
+)+")",
+"i"
+),
+tag
+);
+
+if(
+html===d.content
+)
+throw new Error(
+"Anchor text was not found in the source page."
+);
+
+const out=
+await putFile(
+file,
+html,
+"Add external link: "+anchor,
+d.sha
+);
+
+result(
+"externalResult",
+"✅ External link added.\n\n"+
+JSON.stringify(
+out,
+null,
+2
+),
+"ok"
+);
+
+}catch(e){
+
+result(
+"externalResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+REDIRECT
+========================================================= */
+
+function redirectHTML(url){
+
+return`<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1"
+>
+
+<meta
+http-equiv="refresh"
+content="0; url=${esc(url)}"
+>
+
+<link
+rel="canonical"
+href="${esc(url)}"
+>
+
+<title>
+Redirecting...
+</title>
+
+<script>
+location.replace(
+${JSON.stringify(url)}
+)
+<\/script>
+
+</head>
+
+<body>
+
+<p>
+Redirecting...
+</p>
+
+<a href="${esc(url)}">
+Continue
+</a>
+
 </body>
-    </html>
+
+</html>`;
+
+}
+
+
+async function createRedirect(){
+
+const old=
+$("oldUrl")
+.value
+.trim()
+.replace(/^\/+/,"");
+
+const url=
+$("newUrl")
+.value
+.trim();
+
+if(!old||!url)
+return alert(
+"Fill Old URL and New URL."
+);
+
+try{
+
+const d=
+await putFile(
+old,
+redirectHTML(url),
+"Create redirect: "+
+old+
+" -> "+
+url
+);
+
+result(
+"redirectResult",
+"✅ Redirect file created.\n\n"+
+JSON.stringify(
+d,
+null,
+2
+),
+"ok"
+);
+
+}catch(e){
+
+result(
+"redirectResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+ROBOTS
+========================================================= */
+
+async function loadRobots(){
+
+try{
+
+const d=
+await getFile(
+"robots.txt"
+);
+
+$("robotsContent")
+.value=d.content;
+
+result(
+"robotsResult",
+"✅ robots.txt loaded.",
+"ok"
+);
+
+}catch(e){
+
+result(
+"robotsResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+async function saveRobots(){
+
+const content=
+$("robotsContent")
+.value;
+
+if(!content.trim())
+return alert(
+"Enter robots.txt content."
+);
+
+try{
+
+const d=
+await putFile(
+"robots.txt",
+content,
+"Update robots.txt"
+);
+
+result(
+"robotsResult",
+"✅ robots.txt saved.\n\n"+
+JSON.stringify(
+d,
+null,
+2
+),
+"ok"
+);
+
+}catch(e){
+
+result(
+"robotsResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+404
+========================================================= */
+
+function make404HTML(){
+
+return`<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1"
+>
+
+<meta
+name="robots"
+content="noindex,follow"
+>
+
+<title>
+404 - ${esc(
+$("error404Title").value
+)}
+</title>
+
+<style>
+
+body{
+margin:0;
+min-height:100vh;
+display:grid;
+place-items:center;
+background:#050811;
+color:#fff;
+font-family:system-ui,sans-serif;
+text-align:center;
+padding:20px
+}
+
+main{
+max-width:700px
+}
+
+h1{
+font-size:clamp(
+3rem,
+10vw,
+7rem
+);
+margin:0
+}
+
+p{
+font-size:1.15rem;
+color:#aeb9ca
+}
+
+a{
+display:inline-block;
+margin-top:20px;
+padding:12px 20px;
+border-radius:10px;
+background:#20dff8;
+color:#031018;
+text-decoration:none;
+font-weight:800
+}
+
+</style>
+
+</head>
+
+<body>
+
+<main>
+
+<h1>
+404
+</h1>
+
+<h2>
+${esc(
+$("error404Title").value
+)}
+</h2>
+
+<p>
+${esc(
+$("error404Message").value
+)}
+</p>
+
+<a href="/">
+Back to LearnByte
+</a>
+
+</main>
+
+</body>
+
+</html>`;
+
+}
+
+
+function preview404(){
+
+const html=
+make404HTML();
+
+const w=
+window.open(
+"",
+"_blank"
+);
+
+if(w){
+
+w.document.open();
+w.document.write(html);
+w.document.close();
+
+}
+
+}
+
+
+async function save404(){
+
+try{
+
+const d=
+await putFile(
+"404.html",
+make404HTML(),
+"Create/update custom 404 page"
+);
+
+result(
+"error404Result",
+"✅ 404.html created/updated.\n\n"+
+JSON.stringify(
+d,
+null,
+2
+),
+"ok"
+);
+
+}catch(e){
+
+result(
+"error404Result",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+FILE SEO ANALYSIS
+========================================================= */
+
+async function loadAnalysisFile(
+file
+){
+
+if(!file)
+throw new Error(
+"Enter a page file."
+);
+
+return getFile(file);
+
+}
+
+
+function extractTitle(html){
+
+const m=
+html.match(
+/<title[^>]*>([\s\S]*?)<\/title>/i
+);
+
+return m
+?m[1].trim()
+:"";
+
+}
+
+
+function extractDescription(html){
+
+let m=
+html.match(
+/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i
+);
+
+if(!m){
+
+m=
+html.match(
+/<meta[^>]+content=["']([^"']*)["'][^>]+name=["']description["']/i
+);
+
+}
+
+return m
+?m[1].trim()
+:"";
+
+}
+
+
+function extractCanonical(html){
+
+const m=
+html.match(
+/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']*)["']/i
+);
+
+return m
+?m[1].trim()
+:"";
+
+}
+
+
+function countTagLocal(
+html,
+tag
+){
+
+return(
+html.match(
+new RegExp(
+`<${tag}\\b`,
+"gi"
+)
+)||[]
+).length;
+
+}
+
+
+function analyzeMetaTitle(){
+
+(async()=>{
+
+try{
+
+const d=
+await loadAnalysisFile(
+$("metaTitleFile").value.trim()
+);
+
+const title=
+extractTitle(
+d.content
+);
+
+const n=
+title.length;
+
+let status=
+"GOOD";
+
+if(!title)
+status=
+"MISSING";
+
+else if(n<30||n>60)
+status=
+"REVIEW";
+
+result(
+"metaTitleResult",
+`Title:
+${title||"(missing)"}
+
+Characters:
+${n}
+
+Status:
+${status}
+
+Recommended:
+Keep the title concise and descriptive.`,
+status==="GOOD"
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"metaTitleResult",
+e.message,
+"err"
+);
+
+}
+
+})();
+
+}
+
+
+function analyzeMetaDescription(){
+
+(async()=>{
+
+try{
+
+const d=
+await loadAnalysisFile(
+$("metaDescriptionFile").value.trim()
+);
+
+const desc=
+extractDescription(
+d.content
+);
+
+const n=
+desc.length;
+
+let status=
+"GOOD";
+
+if(!desc)
+status=
+"MISSING";
+
+else if(n<120||n>160)
+status=
+"REVIEW";
+
+result(
+"metaDescriptionResult",
+`Description:
+${desc||"(missing)"}
+
+Characters:
+${n}
+
+Status:
+${status}
+
+Recommended:
+Write a clear, useful description matching the page.`,
+status==="GOOD"
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"metaDescriptionResult",
+e.message,
+"err"
+);
+
+}
+
+})();
+
+}
+
+
+function analyzeURLStructure(){
+
+const raw=
+$("urlCheck")
+.value
+.trim()
+.replace(/^\/+/,"");
+
+if(!raw)
+return alert(
+"Enter a URL/file."
+);
+
+const file=
+raw
+.split("?")[0]
+.split("#")[0];
+
+const base=
+file
+.split("/")
+.pop()
+.toLowerCase();
+
+const noExtension=
+base
+.replace(/\.html$/,"");
+
+const checks=[];
+
+checks.push([
+"Lowercase",
+base===base.toLowerCase()
+]);
+
+checks.push([
+"Uses hyphens",
+!/[_.\s]/.test(noExtension)
+]);
+
+checks.push([
+"Reasonable length",
+noExtension.length<=60
+]);
+
+checks.push([
+"No unnecessary parameters",
+!/[?&]/.test(raw)
+]);
+
+checks.push([
+"Readable",
+/^[a-z0-9-]+(\.html)?$/.test(base)
+]);
+
+const text=
+checks
+.map(
+x=>
+`${x[1]?"✓":"✗"} ${x[0]}`
+)
+.join("\n");
+
+result(
+"urlResult",
+`${text}
+
+URL:
+${raw}`,
+checks.every(x=>x[1])
+?"ok"
+:""
+);
+
+}
+
+
+function analyzeHeadings(){
+
+(async()=>{
+
+try{
+
+const d=
+await loadAnalysisFile(
+$("headingFile").value.trim()
+);
+
+const html=
+d.content;
+
+const counts={};
+
+for(
+let i=1;
+i<=6;
+i++
+)
+counts["h"+i]=
+countTagLocal(
+html,
+"h"+i
+);
+
+const status=
+counts.h1===1;
+
+result(
+"headingResult",
+`H1: ${counts.h1}
+H2: ${counts.h2}
+H3: ${counts.h3}
+H4: ${counts.h4}
+H5: ${counts.h5}
+H6: ${counts.h6}
+
+H1 check:
+${status?"✓ Exactly one H1":"⚠ Review H1 count"}`,
+status
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"headingResult",
+e.message,
+"err"
+);
+
+}
+
+})();
+
+}
+
+
+function analyzeCanonical(){
+
+(async()=>{
+
+try{
+
+const d=
+await loadAnalysisFile(
+$("canonicalFile").value.trim()
+);
+
+const c=
+extractCanonical(
+d.content
+);
+
+result(
+"canonicalResult",
+`Canonical:
+${c||"(missing)"}
+
+Status:
+${c?"✓ Canonical found":"✗ Canonical missing"}`,
+c
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"canonicalResult",
+e.message,
+"err"
+);
+
+}
+
+})();
+
+}
+
+
+function analyzeSocialMeta(){
+
+(async()=>{
+
+try{
+
+const d=
+await loadAnalysisFile(
+$("socialFile").value.trim()
+);
+
+const h=
+d.content;
+
+const checks={
+
+"OG Title":
+/property=["']og:title["']/i.test(h),
+
+"OG Description":
+/property=["']og:description["']/i.test(h),
+
+"OG Image":
+/property=["']og:image["']/i.test(h),
+
+"Twitter Card":
+/name=["']twitter:card["']/i.test(h)
+
+};
+
+result(
+"socialResult",
+Object.entries(checks)
+.map(
+x=>
+`${x[1]?"✓":"✗"} ${x[0]}`
+)
+.join("\n"),
+Object.values(checks)
+.every(Boolean)
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"socialResult",
+e.message,
+"err"
+);
+
+}
+
+})();
+
+}
+
+
+/* =========================================================
+SCHEMA
+========================================================= */
+
+async function checkSchema(){
+
+try{
+
+const d=
+await loadAnalysisFile(
+$("schemaFile").value.trim()
+);
+
+const matches=
+[
+...d.content.matchAll(
+/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi
+)
+];
+
+if(!matches.length){
+
+return result(
+"schemaResult",
+"✗ No JSON-LD schema found.",
+""
+);
+
+}
+
+let valid=0;
+
+for(
+const m of matches
+){
+
+try{
+
+JSON.parse(
+m[1].trim()
+);
+
+valid++;
+
+}catch{}
+
+}
+
+result(
+"schemaResult",
+`Schema blocks:
+${matches.length}
+
+Valid JSON-LD:
+${valid}
+
+Status:
+${valid===matches.length
+?"✓ Valid JSON-LD found"
+:"⚠ Some schema blocks contain invalid JSON"}`,
+valid===matches.length
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"schemaResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+async function addSchema(){
+
+const file=
+$("schemaFile")
+.value
+.trim();
+
+const type=
+$("schemaType")
+.value;
+
+const name=
+$("schemaName")
+.value
+.trim();
+
+const description=
+$("schemaDescription")
+.value
+.trim();
+
+if(!file||!name)
+return alert(
+"Enter page file and schema name."
+);
+
+try{
+
+const d=
+await getFile(file);
+
+if(
+/<script[^>]+type=["']application\/ld\+json["']/i
+.test(d.content)
+){
+
+throw new Error(
+"JSON-LD schema already exists on this page. Use the editor to modify it."
+);
+
+}
+
+const schema={
+
+"@context":
+"https://schema.org",
+
+"@type":
+type,
+
+"headline":
+type==="Article"||
+type==="BlogPosting"
+?name
+:undefined,
+
+"name":
+name,
+
+"description":
+description,
+
+"url":
+CONFIG.base+
+file
+
+};
+
+Object.keys(schema)
+.forEach(
+k=>{
+if(
+schema[k]===undefined||
+schema[k]===""
+)
+delete schema[k];
+}
+);
+
+const block=
+`<script type="application/ld+json">
+${JSON.stringify(
+schema,
+null,
+2
+)}
+</script>`;
+
+const html=
+d.content
+.replace(
+/<\/head>/i,
+block+
+"\n</head>"
+);
+
+const out=
+await putFile(
+file,
+html,
+"Add JSON-LD schema",
+d.sha
+);
+
+result(
+"schemaResult",
+"✅ Schema added and committed.\n\n"+
+JSON.stringify(
+out,
+null,
+2
+),
+"ok"
+);
+
+}catch(e){
+
+result(
+"schemaResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+IMAGE ANALYZER
+========================================================= */
+
+async function analyzeImages(){
+
+try{
+
+const d=
+await loadAnalysisFile(
+$("imageFile")
+.value.trim()
+);
+
+const imgs=
+[
+...d.content.matchAll(
+/<img\b[^>]*>/gi
+)
+]
+.map(x=>x[0]);
+
+const missing=
+imgs.filter(
+x=>!/\balt\s*=/i.test(x)
+);
+
+const empty=
+imgs.filter(
+x=>/\balt\s*=\s*["']\s*["']/i.test(x)
+);
+
+result(
+"imageResult",
+`Images:
+${imgs.length}
+
+Missing ALT:
+${missing.length}
+
+Empty ALT:
+${empty.length}
+
+Usable ALT:
+${imgs.length-missing.length}
+
+Status:
+${
+missing.length===0
+?"✓ All images have ALT attributes"
+:"⚠ Some images need ALT text"
+}`,
+missing.length===0
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"imageResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+NOFOLLOW
+========================================================= */
+
+async function addNofollow(){
+
+const file=
+$("nofollowFile")
+.value
+.trim();
+
+const url=
+$("nofollowURL")
+.value
+.trim();
+
+if(!file||!url)
+return alert(
+"Enter page file and link URL."
+);
+
+try{
+
+const d=
+await getFile(file);
+
+const escaped=
+url.replace(
+/[.*+?^${}()|[\]\\]/g,
+"\\$&"
+);
+
+const re=
+new RegExp(
+`<a([^>]+href=["']${escaped}["'][^>]*)>`,
+"i"
+);
+
+const m=
+d.content.match(re);
+
+if(!m)
+throw new Error(
+"Link URL was not found on this page."
+);
+
+let tag=m[0];
+
+if(
+/rel=["'][^"']*nofollow/i
+.test(tag)
+){
+
+return result(
+"nofollowResult",
+"✓ This link already contains nofollow.",
+"ok"
+);
+
+}
+
+if(
+/rel=["'][^"']*["']/i.test(tag)
+){
+
+tag=
+tag.replace(
+/rel=["']([^"']*)["']/i,
+'rel="$1 nofollow"'
+);
+
+}else{
+
+tag=
+tag.replace(
+/<a\b/i,
+'<a rel="nofollow"'
+);
+
+}
+
+const html=
+d.content.replace(
+m[0],
+tag
+);
+
+const out=
+await putFile(
+file,
+html,
+"Add nofollow to external link",
+d.sha
+);
+
+result(
+"nofollowResult",
+"✅ Nofollow added and committed.\n\n"+
+JSON.stringify(
+out,
+null,
+2
+),
+"ok"
+);
+
+}catch(e){
+
+result(
+"nofollowResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+CONTENT QUALITY
+========================================================= */
+
+async function analyzeContentQuality(){
+
+try{
+
+const d=
+await loadAnalysisFile(
+$("contentFile")
+.value
+.trim()
+);
+
+const html=
+d.content;
+
+const keyword=
+$("contentKeyword")
+.value
+.trim()
+.toLowerCase();
+
+const text=
+html
+.replace(
+/<script[\s\S]*?<\/script>/gi,
+" "
+)
+.replace(
+/<style[\s\S]*?<\/style>/gi,
+" "
+)
+.replace(
+/<[^>]+>/g,
+" "
+)
+.replace(
+/\s+/g,
+" "
+)
+.trim();
+
+const words=
+text
+?text.split(/\s+/).length
+:0;
+
+const occurrences=
+keyword
+?
+(
+text
+.toLowerCase()
+.split(keyword)
+.length-1
+)
+:0;
+
+const title=
+extractTitle(html);
+
+const desc=
+extractDescription(html);
+
+const h1=
+countTagLocal(
+html,
+"h1"
+);
+
+const h2=
+countTagLocal(
+html,
+"h2"
+);
+
+const imgs=
+[
+...html.matchAll(
+/<img\b[^>]*>/gi
+)
+].length;
+
+const links=
+[
+...html.matchAll(
+/<a\b[^>]+href=/gi
+)
+].length;
+
+const scoreParts=[
+
+!!title,
+
+!!desc,
+
+h1===1,
+
+h2>0,
+
+words>=300,
+
+imgs===0||
+!new RegExp(
+"<img\\b(?![^>]*\\balt\\s*=)",
+"i"
+).test(html),
+
+links>0
+
+];
+
+const score=
+Math.round(
+scoreParts
+.filter(Boolean)
+.length /
+scoreParts.length *
+100
+);
+
+result(
+"contentResult",
+`SEO CONTENT SCORE:
+${score}/100
+
+Words:
+${words}
+
+Title:
+${title||"(missing)"}
+
+Meta Description:
+${desc?"Present":"Missing"}
+
+H1:
+${h1}
+
+H2:
+${h2}
+
+Images:
+${imgs}
+
+Links:
+${links}
+
+Primary Keyword Occurrences:
+${occurrences}`,
+score>=80
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"contentResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+SEMANTIC
+========================================================= */
+
+async function analyzeSemanticKeywords(){
+
+try{
+
+const d=
+await loadAnalysisFile(
+$("semanticFile")
+.value
+.trim()
+);
+
+const html=
+d.content
+.replace(
+/<[^>]+>/g,
+" "
+)
+.toLowerCase();
+
+const words=
+$("semanticKeywords")
+.value
+.split(",")
+.map(
+x=>x.trim()
+)
+.filter(Boolean);
+
+const output=
+words.map(
+word=>{
+
+const count=
+html.split(
+word.toLowerCase()
+).length-1;
+
+return`${count>0?"✓":"✗"} ${word}: ${count}`;
+
+}
+)
+.join("\n");
+
+result(
+"semanticResult",
+output||"Enter related keywords.",
+words.length&&
+words.every(
+w=>
+html.includes(
+w.toLowerCase()
+)
+)
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"semanticResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+LIVE ANALYZER
+========================================================= */
+
+async function analyzeLiveURL(){
+
+const url=
+$("liveURL")
+.value
+.trim();
+
+if(!url)
+return alert(
+"Enter live URL."
+);
+
+try{
+
+result(
+"liveResult",
+"Analyzing live page..."
+);
+
+const d=
+await api(
+"/analyze-url",
+"POST",
+{url}
+);
+
+const s=
+d.seo;
+
+const checks=[
+
+[
+"HTTP Status",
+d.status===200,
+String(d.status)
+],
+
+[
+"Response Time",
+d.responseTimeMs<1000,
+d.responseTimeMs+" ms"
+],
+
+[
+"Title",
+!!s.title,
+s.title||"Missing"
+],
+
+[
+"Meta Description",
+!!s.description,
+s.description?"Present":"Missing"
+],
+
+[
+"One H1",
+s.headings.h1===1,
+String(s.headings.h1)
+],
+
+[
+"Canonical",
+s.hasCanonical,
+s.canonical||"Missing"
+],
+
+[
+"Mobile Viewport",
+s.mobile.viewport,
+s.mobile.viewport
+?"Present"
+:"Missing"
+],
+
+[
+"Schema",
+s.meta.schema,
+s.meta.schema
+?"Present"
+:"Missing"
+],
+
+[
+"Images ALT",
+s.images.missingAlt===0,
+`${s.images.missingAlt} missing`
+]
+
+];
+
+const html=
+checks
+.map(
+x=>
+`${x[1]?"✓":"✗"} ${x[0]}: ${x[2]}`
+)
+.join("\n");
+
+result(
+"liveResult",
+`LIVE PAGE ANALYSIS
+
+URL:
+${d.url}
+
+Status:
+${d.status}
+
+Response:
+${d.responseTimeMs} ms
+
+Words:
+${s.content.words}
+
+Internal links:
+${s.links.internal}
+
+External links:
+${s.links.external}
+
+Nofollow:
+${s.links.nofollow}
+
+${html}`,
+checks
+.filter(x=>!x[1])
+.length===0
+?"ok"
+:""
+);
+
+
+$("liveTools")
+.style.display="grid";
+
+$("liveTools")
+.innerHTML=
+checks
+.map(
+x=>`
+
+<div class="tool">
+
+<strong>
+${x[1]?"✓":"⚠"} ${esc(x[0])}
+</strong>
+
+<span class="${
+x[1]?"pass":"warn"
+}">
+${esc(String(x[2]))}
+</span>
+
+</div>
+
+`
+)
+.join("");
+
+}catch(e){
+
+result(
+"liveResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+SITEMAP
+========================================================= */
+
+async function checkSitemap(){
+
+try{
+
+const d=
+await getFile(
+"sitemap.xml"
+);
+
+const xml=
+d.content;
+
+const urls=
+[
+...xml.matchAll(
+/<loc>\s*([^<]+)\s*<\/loc>/gi
+)
+]
+.map(
+x=>x[1]
+);
+
+const valid=
+/<urlset\b/i.test(xml) &&
+/<\/urlset>/i.test(xml);
+
+result(
+"sitemapResult",
+`Sitemap:
+${valid?"✓ Valid urlset structure":"✗ Invalid structure"}
+
+URLs:
+${urls.length}
+
+First URLs:
+${urls
+.slice(0,10)
+.join("\n")}`,
+valid
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"sitemapResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+MOBILE
+========================================================= */
+
+async function analyzeMobile(){
+
+try{
+
+const d=
+await loadAnalysisFile(
+$("mobileFile")
+.value.trim()
+);
+
+const viewport=
+/<meta[^>]+name=["']viewport["']/i
+.test(d.content);
+
+const responsiveCSS=
+/@media\b/i
+.test(d.content);
+
+result(
+"mobileResult",
+`Viewport meta:
+${viewport?"✓ Present":"✗ Missing"}
+
+Responsive CSS in page:
+${responsiveCSS?"✓ Found":"⚠ Not found in this file"}
+
+Recommendation:
+${viewport
+?"Page has the basic mobile viewport."
+:"Add <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">."}`,
+viewport
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"mobileResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+SPEED
+========================================================= */
+
+async function checkSpeed(){
+
+const url=
+$("speedURL")
+.value
+.trim();
+
+if(!url)
+return alert(
+"Enter live URL."
+);
+
+try{
+
+result(
+"speedResult",
+"Checking..."
+);
+
+const d=
+await api(
+"/analyze-url",
+"POST",
+{url}
+);
+
+let status=
+"GOOD";
+
+if(
+d.responseTimeMs>2000
+)
+status="SLOW";
+
+else if(
+d.responseTimeMs>1000
+)
+status="REVIEW";
+
+result(
+"speedResult",
+`URL:
+${d.url}
+
+HTTP:
+${d.status}
+
+Server response:
+${d.responseTimeMs} ms
+
+Downloaded HTML:
+${d.contentLength} bytes
+
+Status:
+${status}
+
+Note:
+This is a basic server-response test.
+For full Core Web Vitals and Lighthouse scoring,
+use Google PageSpeed Insights.`,
+status==="GOOD"
+?"ok"
+:""
+);
+
+}catch(e){
+
+result(
+"speedResult",
+e.message,
+"err"
+);
+
+}
+
+}
+
+
+/* =========================================================
+QUICK LINKS
+========================================================= */
+
+function openWebsite(){
+
+window.open(
+CONFIG.base,
+"_blank"
+);
+
+}
+
+
+function openGitHub(){
+
+window.open(
+"https://github.com/"+
+CONFIG.repo,
+"_blank"
+);
+
+}
+
+
+function openWorker(){
+
+window.open(
+worker(),
+"_blank"
+);
+
+}
+
+
+function openSitemap(){
+
+window.open(
+CONFIG.base+
+"sitemap.xml",
+"_blank"
+);
+
+}
+
+
+/* =========================================================
+START
+========================================================= */
+
+document.addEventListener(
+"DOMContentLoaded",
+()=>{
+
+makeHeadingFields();
+
+updateSectionInfo();
+
+loadSavedKey();
+
+$("articleDate")
+.value=
+new Date()
+.toISOString()
+.slice(0,10);
+
+$("articleTitle")
+.addEventListener(
+"input",
+()=>{
+
+if(
+!$("articleSlug")
+.value
+)
+$("articleSlug")
+.value=
+slugify(
+$("articleTitle")
+.value
+);
+
+}
+);
+
+}
+);
+
+</script>
+
+</body>
+
+ </html>
