@@ -38,10 +38,7 @@ body{
         ),
         #050811;
     color:#f5f7fb;
-    font-family:
-        Inter,
-        system-ui,
-        sans-serif;
+    font-family:Inter,system-ui,sans-serif;
     line-height:1.55
 }
 
@@ -84,15 +81,6 @@ button.danger{
     color:#fff
 }
 
-button.green{
-    background:
-        linear-gradient(
-            135deg,
-            #20e6a0,
-            #20a9ff
-        )
-}
-
 button:disabled{
     opacity:.5;
     cursor:not-allowed
@@ -115,8 +103,7 @@ header{
     top:0;
     z-index:50;
     background:#050811e8;
-    border-bottom:
-        1px solid #ffffff12;
+    border-bottom:1px solid #ffffff12;
     backdrop-filter:blur(18px)
 }
 
@@ -168,12 +155,11 @@ header{
 }
 
 .hero h1{
-    font-size:
-        clamp(
-            34px,
-            6vw,
-            58px
-        );
+    font-size:clamp(
+        34px,
+        6vw,
+        58px
+    );
     line-height:1.03;
     margin:15px 0 10px
 }
@@ -400,47 +386,6 @@ textarea{
     color:#8d9bb0
 }
 
-.tool-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
-    gap:10px;
-    margin-top:14px
-}
-
-.tool{
-    padding:13px;
-    border-radius:12px;
-    border:1px solid #202c40;
-    background:#080e19
-}
-
-.tool strong{
-    display:block;
-    margin-bottom:4px
-}
-
-.pass{
-    color:#62f6c2
-}
-
-.warn{
-    color:#ffd66b
-}
-
-.fail{
-    color:#ff7889
-}
-
-.score{
-    font-size:42px;
-    font-weight:900;
-    margin:8px 0
-}
-
 footer{
     text-align:center;
     padding:35px;
@@ -458,9 +403,6 @@ footer{
         grid-column:auto
     }
 
-    .tool-grid{
-        grid-template-columns:1fr
-    }
 }
 
 @media(max-width:600px){
@@ -488,6 +430,7 @@ footer{
                 1fr
             )
     }
+
 }
 
 </style>
@@ -519,7 +462,6 @@ footer{
 
 </header>
 
-
 <main class="wrap">
 
 <section class="hero">
@@ -536,26 +478,27 @@ Control Center.
 </h1>
 
 <p>
-Publish, edit, delete, optimize and analyze your
-website from one private control panel.
+Direct-publish articles, automatically apply the selected section theme,
+update category/homepage/sitemap, manage keywords, edit files and delete
+published articles from one panel.
 </p>
 
 </section>
 
-
 <div class="grid">
 
-
 <!-- =====================================================
-CONNECTION
+     CONNECTION
 ===================================================== -->
 
 <section class="card">
 
-<h2>🔐 Secure Connection</h2>
+<h2>
+🔐 Secure Connection
+</h2>
 
 <p class="desc">
-Your GitHub token stays inside the Cloudflare Worker.
+GitHub token stays on your Cloudflare Worker.
 </p>
 
 <div class="field">
@@ -565,8 +508,8 @@ Cloudflare Worker URL
 </label>
 
 <input
-id="workerUrl"
-value="https://learnbyte-seo-manager.learnbytehq.workers.dev"
+    id="workerUrl"
+    value="https://learnbyte-seo-manager.learnbytehq.workers.dev"
 >
 
 </div>
@@ -578,10 +521,10 @@ Admin Key
 </label>
 
 <input
-id="adminKey"
-type="password"
-autocomplete="off"
-placeholder="Enter Admin Key"
+    id="adminKey"
+    type="password"
+    autocomplete="off"
+    placeholder="Enter Admin Key"
 >
 
 </div>
@@ -589,8 +532,8 @@ placeholder="Enter Admin Key"
 <label class="check">
 
 <input
-id="rememberKey"
-type="checkbox"
+    id="rememberKey"
+    type="checkbox"
 >
 
 Remember key on this device
@@ -600,14 +543,16 @@ Remember key on this device
 <div class="row">
 
 <button
-onclick="testConnection()"
+    id="testConnectionBtn"
+    type="button"
 >
 Test Connection
 </button>
 
 <button
-class="secondary"
-onclick="clearSavedKey()"
+    id="clearSavedKeyBtn"
+    class="secondary"
+    type="button"
 >
 Clear Saved Key
 </button>
@@ -615,8 +560,8 @@ Clear Saved Key
 </div>
 
 <div
-id="connectionResult"
-class="result"
+    id="connectionResult"
+    class="result"
 >
 Not tested yet.
 </div>
@@ -625,44 +570,74 @@ Not tested yet.
 
 
 <!-- =====================================================
-DASHBOARD
+     DASHBOARD
 ===================================================== -->
 
 <section class="card">
 
-<h2>📊 Dashboard</h2>
+<h2>
+📊 Dashboard
+</h2>
 
 <p class="desc">
-Current control-center session.
+Current publishing session.
 </p>
 
 <div class="stats">
 
 <div class="stat">
-<b id="statStatus">—</b>
-<span>Connection</span>
+
+<b id="statStatus">
+—
+</b>
+
+<span>
+Connection
+</span>
+
 </div>
 
 <div class="stat">
-<b id="statFiles">0</b>
-<span>Files Updated</span>
+
+<b id="statFiles">
+0
+</b>
+
+<span>
+Files Updated
+</span>
+
 </div>
 
 <div class="stat">
-<b id="statArticles">0</b>
-<span>Articles Published</span>
+
+<b id="statArticles">
+0
+</b>
+
+<span>
+Articles Published
+</span>
+
 </div>
 
 <div class="stat">
-<b id="statKeywords">0</b>
-<span>Keywords</span>
+
+<b id="statKeywords">
+0
+</b>
+
+<span>
+Keywords
+</span>
+
 </div>
 
 </div>
 
 <div
-id="publishSummary"
-class="result"
+    id="publishSummary"
+    class="result"
 >
 No publish completed yet.
 </div>
@@ -671,7 +646,7 @@ No publish completed yet.
 
 
 <!-- =====================================================
-ARTICLE CREATOR
+     ARTICLE CREATOR
 ===================================================== -->
 
 <section class="card full">
@@ -681,7 +656,9 @@ ARTICLE CREATOR
 </h2>
 
 <p class="desc">
-Create and publish an article directly to GitHub.
+Select a website section, write your article and publish it directly.
+The article receives that section's visual theme and is added to the
+category page, homepage and sitemap.
 </p>
 
 <div class="field">
@@ -691,10 +668,8 @@ Website Section / Theme *
 </label>
 
 <select
-id="articleSection"
-onchange="updateSectionInfo()"
+    id="articleSection"
 >
-
 <option value="education">
 🎓 Education
 </option>
@@ -703,10 +678,7 @@ onchange="updateSectionInfo()"
 💻 Technology
 </option>
 
-<option
-value="seo"
-selected
->
+<option value="seo" selected>
 🔎 SEO
 </option>
 
@@ -719,8 +691,8 @@ selected
 </div>
 
 <div
-id="sectionInfo"
-class="note"
+    id="sectionInfo"
+    class="note"
 ></div>
 
 
@@ -731,8 +703,8 @@ Article Title *
 </label>
 
 <input
-id="articleTitle"
-placeholder="What Is SEO? Complete Beginner Guide"
+    id="articleTitle"
+    placeholder="What Is SEO? Complete Beginner Guide"
 >
 
 </div>
@@ -745,8 +717,8 @@ URL / File Name *
 </label>
 
 <input
-id="articleSlug"
-placeholder="what-is-seo.html"
+    id="articleSlug"
+    placeholder="what-is-seo.html"
 >
 
 </div>
@@ -759,8 +731,8 @@ Category / Subcategory
 </label>
 
 <input
-id="articleCategory"
-placeholder="SEO Basics"
+    id="articleCategory"
+    placeholder="SEO Basics"
 >
 
 </div>
@@ -773,8 +745,8 @@ Publish Date
 </label>
 
 <input
-id="articleDate"
-type="date"
+    id="articleDate"
+    type="date"
 >
 
 </div>
@@ -787,8 +759,8 @@ Meta Title
 </label>
 
 <input
-id="articleMetaTitle"
-placeholder="What Is SEO? Complete Beginner Guide | LearnByte"
+    id="articleMetaTitle"
+    placeholder="What Is SEO? Complete Beginner Guide | LearnByte"
 >
 
 </div>
@@ -801,8 +773,8 @@ Meta Description *
 </label>
 
 <textarea
-id="articleMetaDescription"
-placeholder="Write an SEO-friendly meta description..."
+    id="articleMetaDescription"
+    placeholder="Write an SEO-friendly meta description..."
 ></textarea>
 
 </div>
@@ -815,8 +787,8 @@ Primary Keyword
 </label>
 
 <input
-id="articlePrimaryKeyword"
-placeholder="what is SEO"
+    id="articlePrimaryKeyword"
+    placeholder="what is SEO"
 >
 
 </div>
@@ -829,8 +801,8 @@ Secondary Keywords
 </label>
 
 <input
-id="articleSecondaryKeywords"
-placeholder="SEO meaning, SEO basics, search engine optimization"
+    id="articleSecondaryKeywords"
+    placeholder="SEO meaning, SEO basics, search engine optimization"
 >
 
 </div>
@@ -843,9 +815,9 @@ Featured Image URL
 </label>
 
 <input
-id="articleImage"
-type="url"
-placeholder="https://..."
+    id="articleImage"
+    type="url"
+    placeholder="https://..."
 >
 
 </div>
@@ -858,8 +830,8 @@ Introduction
 </label>
 
 <textarea
-id="articleIntro"
-placeholder="Write the introduction..."
+    id="articleIntro"
+    placeholder="Write the introduction..."
 ></textarea>
 
 </div>
@@ -875,8 +847,8 @@ Conclusion
 </label>
 
 <textarea
-id="articleConclusion"
-placeholder="Write the conclusion..."
+    id="articleConclusion"
+    placeholder="Write the conclusion..."
 ></textarea>
 
 </div>
@@ -885,29 +857,33 @@ placeholder="Write the conclusion..."
 <div class="row">
 
 <button
-class="secondary"
-onclick="previewArticle()"
+    id="previewArticleBtn"
+    class="secondary"
+    type="button"
 >
 👁️ Preview
 </button>
 
 <button
-class="secondary"
-onclick="analyzeSEO()"
+    id="analyzeSeoBtn"
+    class="secondary"
+    type="button"
 >
 📈 Analyze SEO
 </button>
 
 <button
-class="secondary"
-onclick="showGeneratedHTML()"
+    id="generatedHtmlBtn"
+    class="secondary"
+    type="button"
 >
 🔍 Generated HTML
 </button>
 
 <button
-class="secondary"
-onclick="clearArticle()"
+    id="clearArticleBtn"
+    class="secondary"
+    type="button"
 >
 🧹 Clear
 </button>
@@ -916,31 +892,32 @@ onclick="clearArticle()"
 
 
 <button
-id="publishBtn"
-class="publish"
-onclick="directPublish()"
+    id="publishBtn"
+    class="publish"
+    type="button"
 >
 🚀 DIRECT PUBLISH TO WEBSITE
 </button>
 
 
 <div
-id="articleResult"
-class="result"
+    id="articleResult"
+    class="result"
 >
 Ready to publish.
 </div>
 
+
 <div
-id="seoBox"
-class="result"
-style="display:none"
+    id="seoBox"
+    class="result"
+    style="display:none"
 ></div>
 
 
 <div
-id="previewBox"
-class="preview"
+    id="previewBox"
+    class="preview"
 >
 
 <h3>
@@ -953,8 +930,8 @@ class="preview"
 
 
 <div
-id="codeBox"
-style="display:none"
+    id="codeBox"
+    style="display:none"
 >
 
 <h3>
@@ -962,9 +939,9 @@ style="display:none"
 </h3>
 
 <textarea
-id="articleCode"
-class="code"
-readonly
+    id="articleCode"
+    class="code"
+    readonly
 ></textarea>
 
 </div>
@@ -973,7 +950,7 @@ readonly
 
 
 <!-- =====================================================
-DELETE
+     DELETE
 ===================================================== -->
 
 <section class="card full">
@@ -983,9 +960,10 @@ DELETE
 </h2>
 
 <p class="desc">
-Delete the article and clean category, homepage,
-sitemap and keyword references.
+Delete an article and remove its references from the category page,
+homepage, sitemap and SEO keyword file.
 </p>
+
 
 <div class="field">
 
@@ -994,8 +972,8 @@ Article File Path *
 </label>
 
 <input
-id="deletePath"
-placeholder="posts/what-is-seo.html"
+    id="deletePath"
+    placeholder="posts/what-is-seo.html"
 >
 
 </div>
@@ -1033,12 +1011,12 @@ Article Section *
 <div class="field">
 
 <label>
-Article Title / Text
+Article Title / Text (optional)
 </label>
 
 <input
-id="deleteTitle"
-placeholder="What Is SEO?"
+    id="deleteTitle"
+    placeholder="What Is SEO?"
 >
 
 </div>
@@ -1047,8 +1025,9 @@ placeholder="What Is SEO?"
 <div class="row">
 
 <button
-class="danger"
-onclick="deleteArticle()"
+    id="deleteArticleBtn"
+    class="danger"
+    type="button"
 >
 🗑️ DELETE ARTICLE COMPLETELY
 </button>
@@ -1057,8 +1036,8 @@ onclick="deleteArticle()"
 
 
 <div
-id="deleteResult"
-class="result"
+    id="deleteResult"
+    class="result"
 >
 Nothing deleted.
 </div>
@@ -1067,7 +1046,7 @@ Nothing deleted.
 
 
 <!-- =====================================================
-FILE MANAGER
+     FILE MANAGER
 ===================================================== -->
 
 <section class="card">
@@ -1077,8 +1056,9 @@ FILE MANAGER
 </h2>
 
 <p class="desc">
-Read any GitHub file and load it into the editor.
+Read a GitHub file and load it into the editor.
 </p>
+
 
 <div class="field">
 
@@ -1087,30 +1067,36 @@ Repository File Path
 </label>
 
 <input
-id="filePath"
-placeholder="index.html"
+    id="filePath"
+    placeholder="index.html"
 >
 
 </div>
 
+
 <div class="row">
 
-<button onclick="readFile()">
+<button
+    id="readFileBtn"
+    type="button"
+>
 📖 Read File
 </button>
 
 <button
-class="secondary"
-onclick="loadIndex()"
+    id="loadIndexBtn"
+    class="secondary"
+    type="button"
 >
 Load index.html
 </button>
 
 </div>
 
+
 <div
-id="fileResult"
-class="result"
+    id="fileResult"
+    class="result"
 >
 No file loaded.
 </div>
@@ -1119,7 +1105,7 @@ No file loaded.
 
 
 <!-- =====================================================
-EDITOR
+     EDITOR
 ===================================================== -->
 
 <section class="card">
@@ -1132,6 +1118,7 @@ EDITOR
 Edit a loaded file and commit it.
 </p>
 
+
 <div class="field">
 
 <label>
@@ -1139,11 +1126,12 @@ Current File
 </label>
 
 <input
-id="currentFile"
-readonly
+    id="currentFile"
+    readonly
 >
 
 </div>
+
 
 <div class="field">
 
@@ -1152,11 +1140,12 @@ Commit Message
 </label>
 
 <input
-id="commitMessage"
-value="Update file from LearnByte Control Center"
+    id="commitMessage"
+    value="Update file from LearnByte Control Center"
 >
 
 </div>
+
 
 <div class="field">
 
@@ -1165,31 +1154,37 @@ File Content
 </label>
 
 <textarea
-id="editor"
-style="min-height:300px;font-family:monospace"
-spellcheck="false"
+    id="editor"
+    style="min-height:300px;font-family:monospace"
+    spellcheck="false"
 ></textarea>
 
 </div>
 
+
 <div class="row">
 
-<button onclick="saveFile()">
+<button
+    id="saveFileBtn"
+    type="button"
+>
 💾 Save & Commit
 </button>
 
 <button
-class="secondary"
-onclick="clearEditor()"
+    id="clearEditorBtn"
+    class="secondary"
+    type="button"
 >
 Clear
 </button>
 
 </div>
 
+
 <div
-id="saveResult"
-class="result"
+    id="saveResult"
+    class="result"
 >
 No changes made.
 </div>
@@ -1198,7 +1193,7 @@ No changes made.
 
 
 <!-- =====================================================
-KEYWORD MANAGER
+     KEYWORDS
 ===================================================== -->
 
 <section class="card full">
@@ -1208,9 +1203,9 @@ KEYWORD MANAGER
 </h2>
 
 <p class="desc">
-Keep a permanent record of primary and secondary keywords
-for every page.
+Stores page-wise SEO keywords in seo-keywords.json.
 </p>
+
 
 <div class="field">
 
@@ -1219,11 +1214,12 @@ Page
 </label>
 
 <input
-id="keywordPage"
-placeholder="posts/my-article.html"
+    id="keywordPage"
+    placeholder="posts/my-article.html"
 >
 
 </div>
+
 
 <div class="field">
 
@@ -1232,11 +1228,12 @@ Primary Keyword
 </label>
 
 <input
-id="keywordPrimary"
-placeholder="primary keyword"
+    id="keywordPrimary"
+    placeholder="primary keyword"
 >
 
 </div>
+
 
 <div class="field">
 
@@ -1245,44 +1242,51 @@ Secondary Keywords
 </label>
 
 <input
-id="keywordSecondary"
-placeholder="keyword one, keyword two"
+    id="keywordSecondary"
+    placeholder="keyword one, keyword two"
 >
 
 </div>
 
+
 <div class="row">
 
-<button onclick="addKeyword()">
+<button
+    id="addKeywordBtn"
+    type="button"
+>
 ➕ Add Keyword
 </button>
 
 <button
-class="secondary"
-onclick="loadKeywords()"
+    id="loadKeywordsBtn"
+    class="secondary"
+    type="button"
 >
 🔄 Load Keywords
 </button>
 
 </div>
 
+
 <div
-id="keywordResult"
-class="result"
+    id="keywordResult"
+    class="result"
 >
 Keyword manager ready.
 </div>
 
+
 <div
-id="keywordList"
-class="list"
+    id="keywordList"
+    class="list"
 ></div>
 
 </section>
 
 
 <!-- =====================================================
-INTERNAL LINKING
+     INTERNAL LINK
 ===================================================== -->
 
 <section class="card">
@@ -1292,8 +1296,9 @@ INTERNAL LINKING
 </h2>
 
 <p class="desc">
-Connect one LearnByte page to another.
+Generate or apply a link to a source page.
 </p>
+
 
 <div class="field">
 
@@ -1302,11 +1307,12 @@ Source Page
 </label>
 
 <input
-id="sourcePage"
-placeholder="posts/source.html"
+    id="sourcePage"
+    placeholder="posts/source.html"
 >
 
 </div>
+
 
 <div class="field">
 
@@ -1315,11 +1321,12 @@ Target Page
 </label>
 
 <input
-id="targetPage"
-placeholder="posts/target.html"
+    id="targetPage"
+    placeholder="posts/target.html"
 >
 
 </div>
+
 
 <div class="field">
 
@@ -1328,32 +1335,36 @@ Anchor Text
 </label>
 
 <input
-id="anchorText"
-placeholder="On-Page SEO Checklist"
+    id="anchorText"
+    placeholder="Read this guide"
 >
 
 </div>
 
+
 <div class="row">
 
 <button
-class="secondary"
-onclick="prepareLink()"
+    id="prepareLinkBtn"
+    class="secondary"
+    type="button"
 >
 Generate Link
 </button>
 
 <button
-onclick="applyInternalLink()"
+    id="applyInternalLinkBtn"
+    type="button"
 >
 ⚡ Apply & Commit
 </button>
 
 </div>
 
+
 <div
-id="linkResult"
-class="result"
+    id="linkResult"
+    class="result"
 >
 Internal linking ready.
 </div>
@@ -1362,91 +1373,7 @@ Internal linking ready.
 
 
 <!-- =====================================================
-EXTERNAL LINKING
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🌐 External Linking
-</h2>
-
-<p class="desc">
-Add an external website link with optional nofollow.
-</p>
-
-<div class="field">
-
-<label>
-Source Page
-</label>
-
-<input
-id="externalSource"
-placeholder="posts/seo-guide.html"
->
-
-</div>
-
-<div class="field">
-
-<label>
-External URL
-</label>
-
-<input
-id="externalURL"
-placeholder="https://developers.google.com/search"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Anchor Text
-</label>
-
-<input
-id="externalAnchor"
-placeholder="Google Search documentation"
->
-
-</div>
-
-<label class="check">
-
-<input
-id="externalNofollow"
-type="checkbox"
->
-
-Add rel="nofollow"
-
-</label>
-
-<div class="row">
-
-<button
-onclick="applyExternalLink()"
->
-🌐 Add External Link
-</button>
-
-</div>
-
-<div
-id="externalResult"
-class="result"
->
-External linking ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-REDIRECT
+     REDIRECT
 ===================================================== -->
 
 <section class="card">
@@ -1459,6 +1386,7 @@ REDIRECT
 Create a redirect HTML file.
 </p>
 
+
 <div class="field">
 
 <label>
@@ -1466,11 +1394,12 @@ Old URL / File
 </label>
 
 <input
-id="oldUrl"
-placeholder="/old-page.html"
+    id="oldUrl"
+    placeholder="/old-page.html"
 >
 
 </div>
+
 
 <div class="field">
 
@@ -1479,23 +1408,28 @@ New URL
 </label>
 
 <input
-id="newUrl"
-placeholder="/new-page.html"
+    id="newUrl"
+    placeholder="/new-page.html"
 >
 
 </div>
 
+
 <div class="row">
 
-<button onclick="createRedirect()">
+<button
+    id="createRedirectBtn"
+    type="button"
+>
 🚀 Create Redirect
 </button>
 
 </div>
 
+
 <div
-id="redirectResult"
-class="result"
+    id="redirectResult"
+    class="result"
 >
 Redirect manager ready.
 </div>
@@ -1504,900 +1438,7 @@ Redirect manager ready.
 
 
 <!-- =====================================================
-ROBOTS.TXT
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🤖 robots.txt Manager
-</h2>
-
-<p class="desc">
-Create, read and update robots.txt.
-</p>
-
-<div class="field">
-
-<label>
-robots.txt content
-</label>
-
-<textarea
-id="robotsContent"
-placeholder="User-agent: *
-Allow: /
-
-Sitemap: https://learnbtyehq.github.io/sitemap.xml"
-></textarea>
-
-</div>
-
-<div class="row">
-
-<button onclick="loadRobots()">
-📖 Load robots.txt
-</button>
-
-<button onclick="saveRobots()">
-💾 Save robots.txt
-</button>
-
-</div>
-
-<div
-id="robotsResult"
-class="result"
->
-robots.txt manager ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-404
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🚫 404 Error Page
-</h2>
-
-<p class="desc">
-Create and preview your custom 404 page.
-</p>
-
-<div class="field">
-
-<label>
-404 Heading
-</label>
-
-<input
-id="error404Title"
-value="Page Not Found"
->
-
-</div>
-
-<div class="field">
-
-<label>
-404 Message
-</label>
-
-<textarea
-id="error404Message"
->Sorry, the page you are looking for does not exist.</textarea>
-
-</div>
-
-<div class="row">
-
-<button
-class="secondary"
-onclick="preview404()"
->
-👁️ Preview
-</button>
-
-<button onclick="save404()">
-💾 Create / Update 404
-</button>
-
-</div>
-
-<div
-id="error404Result"
-class="result"
->
-404 manager ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-META TITLE
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🏷️ Meta Title Analyzer
-</h2>
-
-<p class="desc">
-Check title length and basic optimization.
-</p>
-
-<div class="field">
-
-<label>
-Page File
-</label>
-
-<input
-id="metaTitleFile"
-placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="analyzeMetaTitle()">
-Analyze Meta Title
-</button>
-
-</div>
-
-<div
-id="metaTitleResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-META DESCRIPTION
-===================================================== -->
-
-<section class="card">
-
-<h2>
-📝 Meta Description Analyzer
-</h2>
-
-<p class="desc">
-Check description length and presence.
-</p>
-
-<div class="field">
-
-<label>
-Page File
-</label>
-
-<input
-id="metaDescriptionFile"
-placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="analyzeMetaDescription()">
-Analyze Description
-</button>
-
-</div>
-
-<div
-id="metaDescriptionResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-URL OPTIMIZER
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🔗 URL Optimization
-</h2>
-
-<p class="desc">
-Check a page URL/file name for SEO-friendly structure.
-</p>
-
-<div class="field">
-
-<label>
-URL / File
-</label>
-
-<input
-id="urlCheck"
-placeholder="posts/what-is-seo.html"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="analyzeURLStructure()">
-Analyze URL
-</button>
-
-</div>
-
-<div
-id="urlResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-HEADING ANALYZER
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🔤 Heading Analyzer
-</h2>
-
-<p class="desc">
-Check H1, H2, H3, H4, H5 and H6 structure.
-</p>
-
-<div class="field">
-
-<label>
-Page File
-</label>
-
-<input
-id="headingFile"
-placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="analyzeHeadings()">
-Analyze Headings
-</button>
-
-</div>
-
-<div
-id="headingResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-CANONICAL
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🔗 Canonical Checker
-</h2>
-
-<p class="desc">
-Check whether a page has a canonical URL.
-</p>
-
-<div class="field">
-
-<label>
-Page File
-</label>
-
-<input
-id="canonicalFile"
-placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="analyzeCanonical()">
-Check Canonical
-</button>
-
-</div>
-
-<div
-id="canonicalResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-OPEN GRAPH
-===================================================== -->
-
-<section class="card">
-
-<h2>
-📱 Open Graph / Social Preview
-</h2>
-
-<p class="desc">
-Check OG and Twitter metadata.
-</p>
-
-<div class="field">
-
-<label>
-Page File
-</label>
-
-<input
-id="socialFile"
-placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="analyzeSocialMeta()">
-Check Social Meta
-</button>
-
-</div>
-
-<div
-id="socialResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-SCHEMA
-===================================================== -->
-
-<section class="card full">
-
-<h2>
-🧩 Schema Markup
-</h2>
-
-<p class="desc">
-Check and add JSON-LD structured data to an HTML page.
-</p>
-
-<div class="field">
-
-<label>
-Page File
-</label>
-
-<input
-id="schemaFile"
-placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Schema Type
-</label>
-
-<select id="schemaType">
-
-<option value="Article">
-Article
-</option>
-
-<option value="WebPage">
-WebPage
-</option>
-
-<option value="BlogPosting">
-BlogPosting
-</option>
-
-</select>
-
-</div>
-
-<div class="field">
-
-<label>
-Schema Name / Headline
-</label>
-
-<input
-id="schemaName"
-placeholder="What Is SEO?"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Description
-</label>
-
-<textarea
-id="schemaDescription"
-placeholder="Description of the page..."
-></textarea>
-
-</div>
-
-<div class="row">
-
-<button
-class="secondary"
-onclick="checkSchema()"
->
-🔍 Check Schema
-</button>
-
-<button
-onclick="addSchema()"
->
-➕ Add Schema
-</button>
-
-</div>
-
-<div
-id="schemaResult"
-class="result"
->
-Schema manager ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-IMAGE SEO
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🖼️ Image SEO Analyzer
-</h2>
-
-<p class="desc">
-Find images with missing or empty ALT attributes.
-</p>
-
-<div class="field">
-
-<label>
-Page File
-</label>
-
-<input
-id="imageFile"
-placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="analyzeImages()">
-Analyze Images
-</button>
-
-</div>
-
-<div
-id="imageResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-NOFOLLOW
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🚫 Nofollow Manager
-</h2>
-
-<p class="desc">
-Add nofollow to a specific external link.
-</p>
-
-<div class="field">
-
-<label>
-Source Page
-</label>
-
-<input
-id="nofollowFile"
-placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Link URL
-</label>
-
-<input
-id="nofollowURL"
-placeholder="https://example.com/"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="addNofollow()">
-🚫 Add Nofollow
-</button>
-
-</div>
-
-<div
-id="nofollowResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-CONTENT QUALITY
-===================================================== -->
-
-<section class="card full">
-
-<h2>
-📚 Content Quality / SEO Analyzer
-</h2>
-
-<p class="desc">
-Analyze actual page content, keywords, headings,
-images, links and important metadata.
-</p>
-
-<div class="field">
-
-<label>
-Page File
-</label>
-
-<input
-id="contentFile"
-placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Primary Keyword
-</label>
-
-<input
-id="contentKeyword"
-placeholder="what is SEO"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="analyzeContentQuality()">
-📈 Analyze Content
-</button>
-
-</div>
-
-<div
-id="contentResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-SEMANTIC KEYWORDS
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🧠 Related / Semantic Keywords
-</h2>
-
-<p class="desc">
-Check related words used inside an article.
-</p>
-
-<div class="field">
-
-<label>
-Page File
-</label>
-
-<input
-id="semanticFile"
-placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Related Keywords
-</label>
-
-<textarea
-id="semanticKeywords"
-placeholder="search engine, ranking, Google, optimization, keywords"
-></textarea>
-
-</div>
-
-<div class="row">
-
-<button onclick="analyzeSemanticKeywords()">
-🧠 Analyze
-</button>
-
-</div>
-
-<div
-id="semanticResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-LIVE WEBSITE ANALYZER
-===================================================== -->
-
-<section class="card full">
-
-<h2>
-⚡ Live Website Analyzer
-</h2>
-
-<p class="desc">
-Check the real published page for HTTP status,
-response time, mobile viewport, headings, metadata,
-images and links.
-</p>
-
-<div class="field">
-
-<label>
-Live URL
-</label>
-
-<input
-id="liveURL"
-placeholder="https://learnbtyehq.github.io/posts/my-article.html"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="analyzeLiveURL()">
-⚡ Analyze Live Page
-</button>
-
-</div>
-
-<div
-id="liveResult"
-class="result"
->
-Ready.
-</div>
-
-<div
-id="liveTools"
-class="tool-grid"
-style="display:none"
-></div>
-
-</section>
-
-
-<!-- =====================================================
-SITEMAP CHECKER
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🗺️ Sitemap Checker
-</h2>
-
-<p class="desc">
-Check sitemap.xml for URLs and formatting.
-</p>
-
-<div class="row">
-
-<button onclick="checkSitemap()">
-🔍 Check Sitemap
-</button>
-
-<button
-class="secondary"
-onclick="openSitemap()"
->
-Open Sitemap
-</button>
-
-</div>
-
-<div
-id="sitemapResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-MOBILE CHECK
-===================================================== -->
-
-<section class="card">
-
-<h2>
-📱 Mobile-Friendly Checker
-</h2>
-
-<p class="desc">
-Check viewport and responsive basics from the actual page.
-</p>
-
-<div class="field">
-
-<label>
-Page File
-</label>
-
-<input
-id="mobileFile"
-placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="analyzeMobile()">
-📱 Check Mobile
-</button>
-
-</div>
-
-<div
-id="mobileResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-PAGE SPEED
-===================================================== -->
-
-<section class="card">
-
-<h2>
-⚡ Page Speed Check
-</h2>
-
-<p class="desc">
-Measure the server response time from the Worker.
-This is not a replacement for Lighthouse/PageSpeed Insights.
-</p>
-
-<div class="field">
-
-<label>
-Live URL
-</label>
-
-<input
-id="speedURL"
-placeholder="https://learnbtyehq.github.io/"
->
-
-</div>
-
-<div class="row">
-
-<button onclick="checkSpeed()">
-⚡ Check Speed
-</button>
-
-</div>
-
-<div
-id="speedResult"
-class="result"
->
-Ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-QUICK LINKS
+     QUICK LINKS
 ===================================================== -->
 
 <section class="card full">
@@ -2409,29 +1450,33 @@ QUICK LINKS
 <div class="row">
 
 <button
-class="secondary"
-onclick="openWebsite()"
+    id="openWebsiteBtn"
+    class="secondary"
+    type="button"
 >
 Website
 </button>
 
 <button
-class="secondary"
-onclick="openGitHub()"
+    id="openGithubBtn"
+    class="secondary"
+    type="button"
 >
 GitHub
 </button>
 
 <button
-class="secondary"
-onclick="openWorker()"
+    id="openWorkerBtn"
+    class="secondary"
+    type="button"
 >
 Worker
 </button>
 
 <button
-class="secondary"
-onclick="openSitemap()"
+    id="openSitemapBtn"
+    class="secondary"
+    type="button"
 >
 Sitemap
 </button>
@@ -2440,11 +1485,9 @@ Sitemap
 
 </section>
 
-
 </div>
 
 </main>
-
 
 <footer>
 LearnByte SEO Control · Private administration tool
@@ -2454,597 +1497,844 @@ LearnByte SEO Control · Private administration tool
 <script>
 
 /* =========================================================
-CONFIG
+   CONFIG
 ========================================================= */
 
-const CONFIG={
+const CONFIG = {
 
-base:
-"https://learnbtyehq.github.io/",
+    base:
+        "https://learnbtyehq.github.io/",
 
-repo:
-"learnbtyehq/learnbtyehq.github.io",
+    repo:
+        "learnbtyehq/learnbtyehq.github.io",
 
-sections:{
+    sections: {
 
-education:{
-name:"Education",
-css:"education.css",
-category:"category/education.html",
-grid:"education-post-grid",
-icon:"🎓",
-read:"Read Guide →"
-},
+        education: {
+            name: "Education",
+            css: "education.css",
+            category: "category/education.html",
+            grid: "education-post-grid",
+            icon: "🎓",
+            label: "EDUCATION",
+            read: "Read Guide →"
+        },
 
-technology:{
-name:"Technology",
-css:"technology.css",
-category:"category/technology.html",
-grid:"tech-card-grid",
-icon:"💻",
-read:"Open Guide →"
-},
+        technology: {
+            name: "Technology",
+            css: "technology.css",
+            category: "category/technology.html",
+            grid: "tech-card-grid",
+            icon: "💻",
+            label: "TECHNOLOGY",
+            read: "Open Guide →"
+        },
 
-seo:{
-name:"SEO",
-css:"seo.css",
-category:"category/seo.html",
-grid:"seo-post-grid",
-icon:"🔎",
-read:"Read Guide →"
-},
+        seo: {
+            name: "SEO",
+            css: "seo.css",
+            category: "category/seo.html",
+            grid: "seo-post-grid",
+            icon: "🔎",
+            label: "SEO",
+            read: "Read Guide →"
+        },
 
-gaming:{
-name:"Gaming",
-css:"gaming.css",
-category:"category/gaming.html",
-grid:"gaming-post-grid",
-icon:"🎮",
-read:"Read Article →"
-}
+        gaming: {
+            name: "Gaming",
+            css: "gaming.css",
+            category: "category/gaming.html",
+            grid: "gaming-post-grid",
+            icon: "🎮",
+            label: "GAMING",
+            read: "Read Article →"
+        }
 
-}
+    }
 
 };
 
 
-let currentFileSha=null;
-let currentFilePath=null;
-let keywordSha=null;
+/* =========================================================
+   GLOBAL STATE
+========================================================= */
 
-let keywordData={
-keywords:[]
+let currentFileSha = null;
+let currentFilePath = null;
+
+let keywordSha = null;
+
+let keywordData = {
+    keywords: []
 };
 
 
-const $=id=>
-document.getElementById(id);
+/* =========================================================
+   HELPERS
+========================================================= */
+
+const $ = id =>
+    document.getElementById(id);
 
 
-const worker=()=>
-$("workerUrl")
-.value
-.trim()
-.replace(/\/+$/,"");
+const worker = () =>
+    $("workerUrl")
+        .value
+        .trim()
+        .replace(/\/+$/, "");
 
 
-const key=()=>
-$("adminKey")
-.value
-.trim();
+const key = () =>
+    $("adminKey")
+        .value
+        .trim();
 
 
-const headers=()=>({
-"Content-Type":"application/json",
-"X-Admin-Key":key()
+const headers = () => ({
+
+    "Content-Type":
+        "application/json",
+
+    "X-Admin-Key":
+        key()
+
 });
 
 
-function result(id,msg,type=""){
+function result(
+    id,
+    msg,
+    type = ""
+){
 
-const e=$(id);
+    const e = $(id);
 
-if(!e)return;
+    e.className =
+        "result " + type;
 
-e.className="result "+type;
-
-e.textContent=msg;
+    e.textContent =
+        msg;
 
 }
 
 
 /* =========================================================
-API
+   ESCAPE HTML
+========================================================= */
+
+function esc(v){
+
+    return String(v ?? "")
+        .replace(
+            /&/g,
+            "&amp;"
+        )
+        .replace(
+            /</g,
+            "&lt;"
+        )
+        .replace(
+            />/g,
+            "&gt;"
+        )
+        .replace(
+            /"/g,
+            "&quot;"
+        )
+        .replace(
+            /'/g,
+            "&#039;"
+        );
+
+}
+
+
+/* =========================================================
+   API
+   FIXED VERSION WITH TIMEOUT
 ========================================================= */
 
 async function api(
-path,
-method="GET",
-body
+    path,
+    method = "GET",
+    body
 ){
 
-const r=await fetch(
-worker()+path,
-{
-method,
-headers:headers(),
-body:
-body===undefined
-?undefined
-:JSON.stringify(body)
+    const controller =
+        new AbortController();
+
+    const timeout =
+        setTimeout(
+            () => {
+                controller.abort();
+            },
+            15000
+        );
+
+    try{
+
+        const r =
+            await fetch(
+                worker() + path,
+                {
+                    method,
+
+                    headers:
+                        headers(),
+
+                    body:
+                        body === undefined
+                            ? undefined
+                            : JSON.stringify(body),
+
+                    signal:
+                        controller.signal
+                }
+            );
+
+
+        let d = {};
+
+        try{
+
+            d =
+                await r.json();
+
+        }catch{
+
+            d = {};
+
+        }
+
+
+        if(!r.ok){
+
+            throw new Error(
+                d.error ||
+                d.message ||
+                (
+                    "Request failed: " +
+                    r.status
+                )
+            );
+
+        }
+
+
+        return d;
+
+
+    }catch(e){
+
+        if(
+            e.name ===
+            "AbortError"
+        ){
+
+            throw new Error(
+                "Connection timed out after 15 seconds."
+            );
+
+        }
+
+        throw e;
+
+
+    }finally{
+
+        clearTimeout(
+            timeout
+        );
+
+    }
+
 }
-);
 
-let d={};
 
-try{
-d=await r.json();
-}catch{}
-
-if(!r.ok){
-
-throw new Error(
-d.error ||
-d.message ||
-("Request failed: "+r.status)
-);
-
-}
-
-return d;
-
-}
-
+/* =========================================================
+   CONNECTION
+   FIXED VERSION
+========================================================= */
 
 function setConnected(v){
 
-$("status").textContent=
-v
-?"● Connected"
-:"● Not connected";
+    $("status").textContent =
+        v
+            ? "● Connected"
+            : "● Not connected";
 
-$("status")
-.classList
-.toggle(
-"connected",
-v
-);
+    $("status")
+        .classList
+        .toggle(
+            "connected",
+            v
+        );
 
-$("statStatus").textContent=
-v?"OK":"—";
+    $("statStatus").textContent =
+        v
+            ? "OK"
+            : "—";
 
 }
 
 
 async function testConnection(){
 
-if(!key()){
+    const box =
+        $("connectionResult");
 
-return result(
-"connectionResult",
-"Enter Admin Key.",
-"err"
-);
+
+    box.className =
+        "result";
+
+
+    box.textContent =
+        "🔄 Testing connection...";
+
+
+    $("statStatus").textContent =
+        "TESTING";
+
+
+    try{
+
+        if(!key()){
+
+            throw new Error(
+                "Enter Admin Key."
+            );
+
+        }
+
+
+        const d =
+            await api(
+                "/github-test",
+                "GET"
+            );
+
+
+        box.className =
+            "result ok";
+
+
+        box.textContent =
+`✅ CONNECTION SUCCESSFUL
+
+Repository:
+${d.repository || "Unknown"}
+
+Branch:
+${d.branch || "Unknown"}
+
+Default Branch:
+${d.default_branch || "Unknown"}
+
+GitHub connection is working correctly.`;
+
+
+        setConnected(true);
+
+
+    }catch(e){
+
+        box.className =
+            "result err";
+
+
+        box.textContent =
+`❌ CONNECTION FAILED
+
+${e.message}`;
+
+
+        setConnected(false);
+
+    }
 
 }
 
-result(
-"connectionResult",
-"Testing..."
-);
 
-try{
-
-const d=
-await api("/github-test");
-
-result(
-"connectionResult",
-JSON.stringify(
-d,
-null,
-2
-),
-"ok"
-);
-
-setConnected(true);
-
-if(
-$("rememberKey").checked
-){
-
-localStorage.setItem(
-"learnbyte_admin_key",
-key()
-);
-
-}
-
-}catch(e){
-
-result(
-"connectionResult",
-e.message,
-"err"
-);
-
-setConnected(false);
-
-}
-
-}
-
+/* =========================================================
+   SAVED KEY
+========================================================= */
 
 function clearSavedKey(){
 
-localStorage.removeItem(
-"learnbyte_admin_key"
-);
+    localStorage.removeItem(
+        "learnbyte_admin_key"
+    );
 
-$("adminKey").value="";
-$("rememberKey").checked=false;
+    $("adminKey").value =
+        "";
 
-setConnected(false);
+    $("rememberKey").checked =
+        false;
 
-result(
-"connectionResult",
-"Saved key cleared."
-);
+    setConnected(false);
+
+    result(
+        "connectionResult",
+        "Saved key cleared."
+    );
 
 }
 
 
 function loadSavedKey(){
 
-const k=
-localStorage.getItem(
-"learnbyte_admin_key"
-);
+    const k =
+        localStorage.getItem(
+            "learnbyte_admin_key"
+        );
 
-if(k){
+    if(k){
 
-$("adminKey").value=k;
-$("rememberKey").checked=true;
+        $("adminKey").value =
+            k;
 
-}
+        $("rememberKey").checked =
+            true;
+
+    }
 
 }
 
 
 /* =========================================================
-GENERAL
+   SECTION INFO
 ========================================================= */
-
-function esc(v){
-
-return String(v??"")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
 
 function updateSectionInfo(){
 
-const s=
-CONFIG.sections[
-$("articleSection").value
-];
+    const s =
+        CONFIG.sections[
+            $("articleSection").value
+        ];
 
-$("sectionInfo")
-.textContent=
-`${s.icon} ${s.name} theme: ${s.css} · Category: ${s.category} · Articles: posts/`;
+
+    $("sectionInfo")
+        .textContent =
+        `${s.icon} ${s.name} theme: ${s.css} · Category: ${s.category} · Articles: posts/`;
 
 }
 
+
+/* =========================================================
+   HEADING FIELDS
+========================================================= */
 
 function makeHeadingFields(){
 
-let h="";
+    let h = "";
 
-for(
-let i=1;
-i<=6;
-i++
-){
+    for(
+        let i = 1;
+        i <= 6;
+        i++
+    ){
 
-h+=`
+        h += `
 
-<div class="field">
+        <div class="field">
 
-<label>
-Heading ${i}
-</label>
+        <label>
+        Heading ${i}
+        </label>
 
-<input
-id="heading${i}"
-placeholder="Optional heading ${i}"
->
+        <input
+            id="heading${i}"
+            placeholder="Optional heading ${i}"
+        >
 
-</div>
+        </div>
 
-<div class="field">
+        <div class="field">
 
-<label>
-Content ${i}
-</label>
+        <label>
+        Content ${i}
+        </label>
 
-<textarea
-id="content${i}"
-placeholder="Content for this section..."
-></textarea>
+        <textarea
+            id="content${i}"
+            placeholder="Content for this section..."
+        ></textarea>
 
-</div>
+        </div>
 
-`;
+        `;
+
+    }
+
+    $("headingFields")
+        .innerHTML = h;
 
 }
 
-$("headingFields").innerHTML=h;
 
-}
-
+/* =========================================================
+   SLUG
+========================================================= */
 
 function slugify(v){
 
-return String(v)
-.toLowerCase()
-.trim()
-.replace(/\.html$/,"")
-.replace(/[^a-z0-9]+/g,"-")
-.replace(/^-+|-+$/g,"")
-+".html";
+    return String(v)
+        .toLowerCase()
+        .trim()
+        .replace(
+            /\.html$/,
+            ""
+        )
+        .replace(
+            /[^a-z0-9]+/g,
+            "-"
+        )
+        .replace(
+            /^-+|-+$/g,
+            ""
+        )
+        + ".html";
 
 }
 
 
 function articlePath(){
 
-let s=
-$("articleSlug")
-.value
-.trim();
-
-if(!s)
-s=
-slugify(
-$("articleTitle")
-.value
-);
-
-if(!s)return"";
-
-if(!s.endsWith(".html"))
-s=slugify(s);
-
-return s.includes("/")
-?s
-:"posts/"+s;
-
-}
+    let s =
+        $("articleSlug")
+            .value
+            .trim();
 
 
-function textParas(t){
+    if(!s){
 
-return String(t||"")
-.trim()
-.split(/\n\s*\n/)
-.filter(Boolean)
-.map(
-x=>
-"<p>"+
-esc(x)
-.replace(/\n/g,"<br>")+
-"</p>"
-)
-.join("\n");
+        s =
+            slugify(
+                $("articleTitle").value
+            );
+
+    }
+
+
+    if(!s){
+
+        return "";
+
+    }
+
+
+    if(
+        !s.endsWith(".html")
+    ){
+
+        s =
+            slugify(s);
+
+    }
+
+
+    return s.includes("/")
+        ? s
+        : "posts/" + s;
 
 }
 
 
 /* =========================================================
-ARTICLE
+   TEXT PARAGRAPHS
+========================================================= */
+
+function textParas(t){
+
+    return String(t || "")
+        .trim()
+        .split(
+            /\n\s*\n/
+        )
+        .filter(Boolean)
+        .map(
+            x =>
+                "<p>" +
+                esc(x)
+                    .replace(
+                        /\n/g,
+                        "<br>"
+                    ) +
+                "</p>"
+        )
+        .join("\n");
+
+}
+
+
+/* =========================================================
+   ARTICLE DATA
 ========================================================= */
 
 function data(){
 
-const hs=[];
+    const hs = [];
 
-for(
-let i=1;
-i<=6;
-i++
-){
 
-const h=
-$("heading"+i)
-.value
-.trim();
+    for(
+        let i = 1;
+        i <= 6;
+        i++
+    ){
 
-const c=
-$("content"+i)
-.value
-.trim();
+        const h =
+            $("heading" + i)
+                .value
+                .trim();
 
-if(h||c){
+        const c =
+            $("content" + i)
+                .value
+                .trim();
 
-hs.push({
-heading:h,
-content:c
-});
+
+        if(h || c){
+
+            hs.push({
+                heading: h,
+                content: c
+            });
+
+        }
+
+    }
+
+
+    return {
+
+        section:
+            $("articleSection")
+                .value,
+
+        title:
+            $("articleTitle")
+                .value
+                .trim(),
+
+        path:
+            articlePath(),
+
+        category:
+            $("articleCategory")
+                .value
+                .trim()
+            ||
+            CONFIG.sections[
+                $("articleSection").value
+            ].name,
+
+        date:
+            $("articleDate")
+                .value
+            ||
+            new Date()
+                .toISOString()
+                .slice(
+                    0,
+                    10
+                ),
+
+        metaTitle:
+            $("articleMetaTitle")
+                .value
+                .trim(),
+
+        metaDescription:
+            $("articleMetaDescription")
+                .value
+                .trim(),
+
+        primary:
+            $("articlePrimaryKeyword")
+                .value
+                .trim(),
+
+        secondary:
+            $("articleSecondaryKeywords")
+                .value
+                .trim(),
+
+        image:
+            $("articleImage")
+                .value
+                .trim(),
+
+        intro:
+            $("articleIntro")
+                .value
+                .trim(),
+
+        headings:
+            hs,
+
+        conclusion:
+            $("articleConclusion")
+                .value
+                .trim()
+
+    };
 
 }
 
-}
 
-return{
-
-section:
-$("articleSection").value,
-
-title:
-$("articleTitle").value.trim(),
-
-path:
-articlePath(),
-
-category:
-$("articleCategory").value.trim()
-||
-CONFIG.sections[
-$("articleSection").value
-].name,
-
-date:
-$("articleDate").value
-||
-new Date()
-.toISOString()
-.slice(0,10),
-
-metaTitle:
-$("articleMetaTitle").value.trim(),
-
-metaDescription:
-$("articleMetaDescription")
-.value.trim(),
-
-primary:
-$("articlePrimaryKeyword")
-.value.trim(),
-
-secondary:
-$("articleSecondaryKeywords")
-.value.trim(),
-
-image:
-$("articleImage")
-.value.trim(),
-
-intro:
-$("articleIntro")
-.value.trim(),
-
-headings:hs,
-
-conclusion:
-$("articleConclusion")
-.value.trim()
-
-};
-
-}
-
+/* =========================================================
+   VALIDATE
+========================================================= */
 
 function validate(a){
 
-if(!a.title)
-return"Article Title is required.";
+    if(!a.title)
+        return "Article Title is required.";
 
-if(!a.path)
-return"URL / File Name is required.";
+    if(!a.path)
+        return "URL / File Name is required.";
 
-if(!a.metaDescription)
-return"Meta Description is required.";
+    if(!a.metaDescription)
+        return "Meta Description is required.";
 
-if(
-!a.intro &&
-!a.headings.length &&
-!a.conclusion
-)
-return"Write some article content.";
+    if(
+        !a.intro &&
+        !a.headings.length &&
+        !a.conclusion
+    )
+        return "Write some article content.";
 
-return"";
+    return "";
 
 }
 
+
+/* =========================================================
+   THEME
+========================================================= */
 
 function theme(section){
 
-if(section==="seo")
-return`<div class="seo-background"></div>`;
+    if(
+        section ===
+        "seo"
+    )
+        return `
+        <div class="seo-background"></div>
+        `;
 
-if(section==="technology")
-return`<div class="technology-background"></div>`;
 
-return"";
+    if(
+        section ===
+        "technology"
+    )
+        return `
+        <div class="technology-background"></div>
+        `;
+
+
+    return "";
 
 }
 
+
+/* =========================================================
+   GENERATE ARTICLE HTML
+========================================================= */
 
 function generateHTML(){
 
-const a=data();
+    const a =
+        data();
 
-const s=
-CONFIG.sections[
-a.section
-];
-
-let content="";
-
-if(a.intro){
-
-content+=
-`<section class="article-introduction">
-${textParas(a.intro)}
-</section>`;
-
-}
-
-a.headings.forEach(x=>{
-
-if(x.heading)
-content+=
-`<h2>${esc(x.heading)}</h2>`;
-
-if(x.content)
-content+=
-textParas(x.content);
-
-});
+    const s =
+        CONFIG.sections[
+            a.section
+        ];
 
 
-if(a.conclusion){
-
-content+=
-`<h2>Conclusion</h2>
-${textParas(a.conclusion)}`;
-
-}
+    let content =
+        "";
 
 
-const keywords=[
+    if(a.intro){
 
-a.primary,
+        content +=
+            `<section class="article-introduction">
+            ${textParas(a.intro)}
+            </section>`;
 
-...a.secondary
-.split(",")
-.map(x=>x.trim())
-.filter(Boolean)
-
-]
-.filter(Boolean)
-.join(", ");
+    }
 
 
-const img=
-a.image
-?
-`<img
-class="article-featured-image"
-src="${esc(a.image)}"
-alt="${esc(a.title)}"
-loading="lazy"
->`
-:"";
+    a.headings.forEach(
+        x => {
+
+            if(x.heading){
+
+                content +=
+                    `<h2>${esc(
+                        x.heading
+                    )}</h2>`;
+
+            }
 
 
-return`<!DOCTYPE html>
+            if(x.content){
+
+                content +=
+                    textParas(
+                        x.content
+                    );
+
+            }
+
+        }
+    );
+
+
+    if(a.conclusion){
+
+        content +=
+            `<h2>Conclusion</h2>
+            ${textParas(
+                a.conclusion
+            )}`;
+
+    }
+
+
+    const keywords = [
+
+        a.primary,
+
+        ...a.secondary
+            .split(",")
+            .map(
+                x =>
+                    x.trim()
+            )
+            .filter(Boolean)
+
+    ]
+    .filter(Boolean)
+    .join(", ");
+
+
+    const img =
+        a.image
+            ? `
+            <img
+                class="article-featured-image"
+                src="${esc(a.image)}"
+                alt="${esc(a.title)}"
+                loading="lazy"
+            >
+            `
+            : "";
+
+
+    return `<!DOCTYPE html>
 
 <html lang="en">
 
@@ -3053,112 +2343,124 @@ return`<!DOCTYPE html>
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width,initial-scale=1"
+    name="viewport"
+    content="width=device-width,initial-scale=1"
 >
 
 <title>
-${esc(a.metaTitle||a.title)}
+${esc(
+    a.metaTitle ||
+    a.title
+)}
 </title>
 
 <meta
-name="description"
-content="${esc(a.metaDescription)}"
+    name="description"
+    content="${esc(
+        a.metaDescription
+    )}"
 >
 
 <meta
-name="keywords"
-content="${esc(keywords)}"
+    name="keywords"
+    content="${esc(
+        keywords
+    )}"
 >
 
 <meta
-name="author"
-content="LearnByte"
+    name="author"
+    content="LearnByte"
 >
 
 <meta
-name="robots"
-content="index,follow,max-image-preview:large"
+    name="robots"
+    content="index,follow,max-image-preview:large"
 >
 
 <link
-rel="canonical"
-href="${CONFIG.base}${esc(a.path)}"
+    rel="canonical"
+    href="${CONFIG.base}${esc(a.path)}"
 >
 
 <meta
-property="og:type"
-content="article"
+    property="og:type"
+    content="article"
 >
 
 <meta
-property="og:title"
-content="${esc(a.metaTitle||a.title)}"
+    property="og:title"
+    content="${esc(
+        a.metaTitle ||
+        a.title
+    )}"
 >
 
 <meta
-property="og:description"
-content="${esc(a.metaDescription)}"
+    property="og:description"
+    content="${esc(
+        a.metaDescription
+    )}"
 >
 
 <meta
-property="og:url"
-content="${CONFIG.base}${esc(a.path)}"
+    property="og:url"
+    content="${CONFIG.base}${esc(a.path)}"
 >
 
 <meta
-property="og:site_name"
-content="LearnByte"
+    property="og:site_name"
+    content="LearnByte"
 >
 
 <link
-rel="stylesheet"
-href="../style.css"
+    rel="stylesheet"
+    href="../style.css"
 >
 
 <link
-rel="stylesheet"
-href="../${s.css}"
+    rel="stylesheet"
+    href="../${s.css}"
 >
 
 <style>
 
 .lb-published-article{
-max-width:900px;
-margin:auto;
-padding:80px 20px
+    max-width:900px;
+    margin:auto;
+    padding:80px 20px
 }
 
 .lb-published-article h1{
-font-size:
-clamp(
-2.3rem,
-6vw,
-4.3rem
-);
-line-height:1.08
+    font-size:
+        clamp(
+            2.3rem,
+            6vw,
+            4.3rem
+        );
+    line-height:1.08
 }
 
 .lb-published-article h2{
-margin-top:42px
+    margin-top:42px
 }
 
 .lb-published-article p{
-font-size:1.08rem;
-line-height:1.85
+    font-size:1.08rem;
+    line-height:1.85
 }
 
 .article-featured-image{
-display:block;
-width:100%;
-max-height:520px;
-object-fit:cover;
-border-radius:18px;
-margin:24px 0
+    display:block;
+    width:100%;
+    max-height:520px;
+    object-fit:cover;
+    border-radius:18px;
+    margin:24px 0
 }
 
 .article-meta{
-opacity:.7
+    opacity:.7
 }
 
 </style>
@@ -3174,8 +2476,8 @@ ${theme(a.section)}
 <div class="container navbar">
 
 <a
-href="../index.html"
-class="logo"
+    href="../index.html"
+    class="logo"
 >
 Learn<span>Byte</span>
 </a>
@@ -3211,7 +2513,7 @@ Gaming
 <main>
 
 <article
-class="lb-published-article"
+    class="lb-published-article"
 >
 
 <div class="article-meta">
@@ -3229,7 +2531,7 @@ ${img}
 ${content}
 
 <a
-href="../category/${a.section}.html"
+    href="../category/${a.section}.html"
 >
 ← Back to ${esc(s.name)}
 </a>
@@ -3249,218 +2551,329 @@ LearnByte · ${esc(s.name)} Guides
 }
 
 
+/* =========================================================
+   PREVIEW
+========================================================= */
+
 function previewArticle(){
 
-const a=data();
+    const a =
+        data();
 
-const e=validate(a);
-
-if(e)return alert(e);
-
-const f=
-document.createElement(
-"iframe"
-);
-
-f.srcdoc=
-generateHTML();
-
-$("previewArea")
-.innerHTML="";
-
-$("previewArea")
-.appendChild(f);
-
-$("previewBox")
-.style.display="block";
-
-}
+    const e =
+        validate(a);
 
 
-function showGeneratedHTML(){
+    if(e){
 
-const a=data();
+        alert(e);
+        return;
 
-const e=validate(a);
-
-if(e)return alert(e);
-
-$("articleCode")
-.value=
-generateHTML();
-
-$("articleCode")
-.style.display="block";
-
-$("codeBox")
-.style.display="block";
-
-}
+    }
 
 
-function analyzeSEO(){
-
-const a=data();
-
-const text=[
-a.intro,
-...a.headings.map(
-x=>x.content
-),
-a.conclusion
-]
-.join(" ");
-
-const words=
-text.trim()
-?text.trim().split(/\s+/).length
-:0;
-
-const h2=
-a.headings.filter(
-x=>x.heading
-).length;
-
-const occ=
-a.primary
-?
-text
-.toLowerCase()
-.split(
-a.primary.toLowerCase()
-)
-.length-1
-:0;
-
-result(
-"seoBox",
-`Words: ${words}
-Title characters: ${a.title.length}
-Meta characters: ${a.metaDescription.length}
-H2 headings: ${h2}
-Primary keyword occurrences: ${occ}`,
-""
-);
-
-$("seoBox")
-.style.display="block";
-
-}
+    const f =
+        document.createElement(
+            "iframe"
+        );
 
 
-function clearArticle(){
-
-[
-
-"articleTitle",
-"articleSlug",
-"articleCategory",
-"articleDate",
-"articleMetaTitle",
-"articleMetaDescription",
-"articlePrimaryKeyword",
-"articleSecondaryKeywords",
-"articleImage",
-"articleIntro",
-"articleConclusion"
-
-]
-.forEach(
-id=>$(id).value=""
-);
-
-for(
-let i=1;
-i<=6;
-i++
-){
-
-$("heading"+i).value="";
-$("content"+i).value="";
-
-}
-
-$("previewBox")
-.style.display="none";
-
-$("codeBox")
-.style.display="none";
-
-$("seoBox")
-.style.display="none";
-
-result(
-"articleResult",
-"Ready to publish."
-);
-
-}
+    f.srcdoc =
+        generateHTML();
 
 
-async function getFile(path){
-
-return api(
-"/get-file",
-"POST",
-{path}
-);
-
-}
+    $("previewArea")
+        .innerHTML = "";
 
 
-async function putFile(
-path,
-content,
-message,
-sha
-){
+    $("previewArea")
+        .appendChild(f);
 
-return api(
-"/update-file",
-"POST",
-{
-path,
-content,
-message,
-sha
-}
-);
+
+    $("previewBox")
+        .style
+        .display = "block";
 
 }
 
 
 /* =========================================================
-CATEGORY / HOME / SITEMAP
+   GENERATED HTML
 ========================================================= */
 
-function cardHTML(a,index){
+function showGeneratedHTML(){
 
-const s=
-CONFIG.sections[
-a.section
-];
+    const a =
+        data();
 
-const n=
-String(index)
-.padStart(2,"0");
+    const e =
+        validate(a);
 
-const href=
-"../"+a.path;
 
-const desc=
-esc(
-(a.intro||"")
-.replace(/\s+/g," ")
-.slice(0,180)
-);
+    if(e){
 
-const label=
-esc(a.category)
-.toUpperCase();
+        alert(e);
+        return;
 
-return`
+    }
 
-<article class="${s.card||"post-card"}">
+
+    $("articleCode")
+        .value =
+        generateHTML();
+
+
+    $("articleCode")
+        .style
+        .display =
+        "block";
+
+
+    $("codeBox")
+        .style
+        .display =
+        "block";
+
+}
+
+
+/* =========================================================
+   SEO ANALYSIS
+========================================================= */
+
+function analyzeSEO(){
+
+    const a =
+        data();
+
+
+    const text = [
+
+        a.intro,
+
+        ...a.headings.map(
+            x =>
+                x.content
+        ),
+
+        a.conclusion
+
+    ].join(" ");
+
+
+    const words =
+        text.trim()
+            ? text
+                .trim()
+                .split(/\s+/)
+                .length
+            : 0;
+
+
+    const h2 =
+        a.headings
+            .filter(
+                x =>
+                    x.heading
+            )
+            .length;
+
+
+    const occ =
+        a.primary
+            ? text
+                .toLowerCase()
+                .split(
+                    a.primary
+                        .toLowerCase()
+                )
+                .length - 1
+            : 0;
+
+
+    result(
+        "seoBox",
+
+`Words: ${words}
+
+Title characters: ${a.title.length}
+
+Meta characters: ${a.metaDescription.length}
+
+H2 headings: ${h2}
+
+Primary keyword occurrences: ${occ}`
+
+    );
+
+
+    $("seoBox")
+        .style
+        .display =
+        "block";
+
+}
+
+
+/* =========================================================
+   CLEAR ARTICLE
+========================================================= */
+
+function clearArticle(){
+
+    [
+
+        "articleTitle",
+        "articleSlug",
+        "articleCategory",
+        "articleDate",
+        "articleMetaTitle",
+        "articleMetaDescription",
+        "articlePrimaryKeyword",
+        "articleSecondaryKeywords",
+        "articleImage",
+        "articleIntro",
+        "articleConclusion"
+
+    ].forEach(
+        id =>
+            $(id).value = ""
+    );
+
+
+    for(
+        let i = 1;
+        i <= 6;
+        i++
+    ){
+
+        $("heading" + i)
+            .value = "";
+
+        $("content" + i)
+            .value = "";
+
+    }
+
+
+    $("previewBox")
+        .style
+        .display =
+        "none";
+
+
+    $("codeBox")
+        .style
+        .display =
+        "none";
+
+
+    $("seoBox")
+        .style
+        .display =
+        "none";
+
+
+    result(
+        "articleResult",
+        "Ready to publish."
+    );
+
+}
+
+
+/* =========================================================
+   FILE API
+========================================================= */
+
+async function getFile(path){
+
+    return api(
+        "/get-file",
+        "POST",
+        {
+            path
+        }
+    );
+
+}
+
+
+async function putFile(
+    path,
+    content,
+    message,
+    sha
+){
+
+    return api(
+        "/update-file",
+        "POST",
+        {
+            path,
+            content,
+            message,
+            sha
+        }
+    );
+
+}
+
+
+/* =========================================================
+   CATEGORY
+========================================================= */
+
+function cardHTML(
+    a,
+    index
+){
+
+    const s =
+        CONFIG.sections[
+            a.section
+        ];
+
+
+    const n =
+        String(index)
+            .padStart(
+                2,
+                "0"
+            );
+
+
+    const href =
+        "../" + a.path;
+
+
+    const desc =
+        esc(
+            (
+                a.intro ||
+                ""
+            )
+            .replace(
+                /\s+/g,
+                " "
+            )
+            .slice(
+                0,
+                180
+            )
+        );
+
+
+    const label =
+        esc(
+            a.category
+        )
+        .toUpperCase();
+
+
+    return `
+
+<article class="${s.card || "post-card"}">
 
 <div class="post-number">
 ${n}
@@ -3494,109 +2907,156 @@ ${s.read}
 
 
 function updateCategoryHTML(
-html,
-a
+    html,
+    a
 ){
 
-const s=
-CONFIG.sections[
-a.section
-];
+    const s =
+        CONFIG.sections[
+            a.section
+        ];
 
-if(
-html.includes(
-`href="../${a.path}"`
-)||
-html.includes(
-`href="${a.path}"`
-)
-)
-return html;
 
-const re=
-new RegExp(
-`(<div\\s+class=["'][^"']*${s.grid}[^"']*["'][^>]*>)`,
-"i"
-);
+    if(
+        html.includes(
+            `href="../${a.path}"`
+        )
+        ||
+        html.includes(
+            `href="${a.path}"`
+        )
+    ){
 
-if(!re.test(html))
-throw new Error(
-`Could not find ${s.grid} in ${s.category}.`
-);
+        return html;
 
-const count=
-(
-html.match(
-/<article\b/gi
-)||[]
-).length+1;
+    }
 
-return html.replace(
-re,
-`$1\n${cardHTML(a,count)}`
-);
+
+    const re =
+        new RegExp(
+            `(<div\\s+class=["'][^"']*${s.grid}[^"']*["'][^>]*>)`,
+            "i"
+        );
+
+
+    if(!re.test(html)){
+
+        throw new Error(
+            `Could not find ${s.grid} in ${s.category}.`
+        );
+
+    }
+
+
+    const count =
+        (
+            html.match(
+                /<article\b/gi
+            ) ||
+            []
+        ).length + 1;
+
+
+    return html.replace(
+        re,
+        `$1\n${cardHTML(
+            a,
+            count
+        )}`
+    );
 
 }
 
 
 async function updateCategory(a){
 
-const s=
-CONFIG.sections[
-a.section
-];
+    const s =
+        CONFIG.sections[
+            a.section
+        ];
 
-const d=
-await getFile(
-s.category
-);
 
-const html=
-updateCategoryHTML(
-d.content,
-a
-);
+    const d =
+        await getFile(
+            s.category
+        );
 
-if(
-html===d.content
-)
-return d;
 
-return putFile(
-s.category,
-html,
-`Add article to ${s.name}: ${a.title}`,
-d.sha
-);
+    const html =
+        updateCategoryHTML(
+            d.content,
+            a
+        );
+
+
+    if(
+        html ===
+        d.content
+    ){
+
+        return d;
+
+    }
+
+
+    return putFile(
+        s.category,
+        html,
+        `Add article to ${s.name}: ${a.title}`,
+        d.sha
+    );
 
 }
 
 
+/* =========================================================
+   HOMEPAGE
+========================================================= */
+
 function updateHomeHTML(
-html,
-a
+    html,
+    a
 ){
 
-if(
-html.includes(
-`href="${a.path}"`
-)
-)
-return html;
+    if(
+        html.includes(
+            `href="${a.path}"`
+        )
+        ||
+        html.includes(
+            `href="./${a.path}"`
+        )
+    ){
 
-const s=
-CONFIG.sections[
-a.section
-];
+        return html;
 
-const desc=
-esc(
-(a.intro||"")
-.replace(/\s+/g," ")
-.slice(0,160)
-);
+    }
 
-const card=`
+
+    const s =
+        CONFIG.sections[
+            a.section
+        ];
+
+
+    const desc =
+        esc(
+            (
+                a.intro ||
+                ""
+            )
+            .replace(
+                /\s+/g,
+                " "
+            )
+            .slice(
+                0,
+                160
+            )
+        );
+
+
+    const card = `
 
 <article class="post-card">
 
@@ -3628,224 +3088,312 @@ Read Article →
 
 `;
 
-const re=
-/<div\s+class=["']post-grid["'][^>]*>/i;
 
-if(!re.test(html))
-throw new Error(
-"Could not find homepage post-grid."
-);
+    const re =
+        /<div\s+class=["']post-grid["'][^>]*>/i;
 
-return html.replace(
-re,
-m=>m+"\n"+card
-);
+
+    if(!re.test(html)){
+
+        throw new Error(
+            "Could not find homepage post-grid."
+        );
+
+    }
+
+
+    return html.replace(
+        re,
+        m =>
+            m + "\n" + card
+    );
 
 }
 
 
 async function updateHome(a){
 
-const d=
-await getFile(
-"index.html"
-);
+    const d =
+        await getFile(
+            "index.html"
+        );
 
-const html=
-updateHomeHTML(
-d.content,
-a
-);
 
-if(
-html===d.content
-)
-return d;
+    const html =
+        updateHomeHTML(
+            d.content,
+            a
+        );
 
-return putFile(
-"index.html",
-html,
-`Add article to homepage: ${a.title}`,
-d.sha
-);
+
+    if(
+        html ===
+        d.content
+    ){
+
+        return d;
+
+    }
+
+
+    return putFile(
+        "index.html",
+        html,
+        `Add article to homepage: ${a.title}`,
+        d.sha
+    );
 
 }
 
 
+/* =========================================================
+   SITEMAP
+========================================================= */
+
 function updateSitemapHTML(
-xml,
-a
+    xml,
+    a
 ){
 
-const url=
-CONFIG.base+a.path;
+    const url =
+        CONFIG.base +
+        a.path;
 
-if(
-xml.includes(
-`<loc>${url}</loc>`
-)
-)
-return xml;
 
-const entry=
-`<url>
-<loc>${url}</loc>
-<lastmod>${a.date}</lastmod>
-</url>`;
+    if(
+        xml.includes(
+            `<loc>${url}</loc>`
+        )
+    ){
 
-if(
-!/<\/urlset>/i.test(xml)
-)
-throw new Error(
-"Invalid sitemap.xml."
-);
+        return xml;
 
-return xml.replace(
-/<\/urlset>/i,
-entry+"</urlset>"
-);
+    }
+
+
+    const entry =
+        `<url><loc>${url}</loc><lastmod>${a.date}</lastmod></url>`;
+
+
+    if(
+        !/<\/urlset>/i.test(
+            xml
+        )
+    ){
+
+        throw new Error(
+            "Invalid sitemap.xml: </urlset> not found."
+        );
+
+    }
+
+
+    return xml.replace(
+        /<\/urlset>/i,
+        entry +
+        "</urlset>"
+    );
 
 }
 
 
 async function updateSitemap(a){
 
-const d=
-await getFile(
-"sitemap.xml"
-);
+    const d =
+        await getFile(
+            "sitemap.xml"
+        );
 
-const xml=
-updateSitemapHTML(
-d.content,
-a
-);
 
-if(
-xml===d.content
-)
-return d;
+    const xml =
+        updateSitemapHTML(
+            d.content,
+            a
+        );
 
-return putFile(
-"sitemap.xml",
-xml,
-`Add sitemap URL: ${a.title}`,
-d.sha
-);
+
+    if(
+        xml ===
+        d.content
+    ){
+
+        return d;
+
+    }
+
+
+    return putFile(
+        "sitemap.xml",
+        xml,
+        `Add sitemap URL: ${a.title}`,
+        d.sha
+    );
 
 }
 
 
 /* =========================================================
-KEYWORDS
+   KEYWORDS AUTO SAVE
 ========================================================= */
 
 async function saveKeywordsForArticle(a){
 
-if(!a.primary)return;
+    if(!a.primary)
+        return;
 
-try{
 
-const d=
-await getFile(
-"seo-keywords.json"
-);
+    try{
 
-let obj={
-keywords:[]
-};
+        const d =
+            await getFile(
+                "seo-keywords.json"
+            );
 
-try{
-obj=
-JSON.parse(
-d.content ||
-'{"keywords":[]}'
-);
-}catch{}
 
-if(
-!Array.isArray(
-obj.keywords
-)
-)
-obj.keywords=[];
+        let obj = {
+            keywords: []
+        };
 
-const existing=
-obj.keywords.find(
-x=>x.page===a.path
-);
 
-if(existing){
+        try{
 
-existing.primary=
-a.primary;
+            obj =
+                JSON.parse(
+                    d.content ||
+                    '{"keywords":[]}'
+                );
 
-existing.secondary=
-a.secondary
-.split(",")
-.map(x=>x.trim())
-.filter(Boolean);
+        }catch{
 
-}else{
+            obj = {
+                keywords: []
+            };
 
-obj.keywords.push({
+        }
 
-page:a.path,
 
-primary:a.primary,
+        if(
+            !Array.isArray(
+                obj.keywords
+            )
+        ){
 
-secondary:
-a.secondary
-.split(",")
-.map(x=>x.trim())
-.filter(Boolean)
+            obj.keywords = [];
 
-});
+        }
 
-}
 
-await putFile(
-"seo-keywords.json",
-JSON.stringify(
-obj,
-null,
-2
-),
-"Update SEO keywords: "+a.title,
-d.sha
-);
+        const existing =
+            obj.keywords.find(
+                x =>
+                    x.page ===
+                    a.path
+            );
 
-}catch(e){
 
-console.warn(
-"Keyword update skipped:",
-e
-);
+        if(existing){
 
-}
+            existing.primary =
+                a.primary;
+
+            existing.secondary =
+                a.secondary
+                    .split(",")
+                    .map(
+                        x =>
+                            x.trim()
+                    )
+                    .filter(Boolean);
+
+        }else{
+
+            obj.keywords.push({
+
+                page:
+                    a.path,
+
+                primary:
+                    a.primary,
+
+                secondary:
+                    a.secondary
+                        .split(",")
+                        .map(
+                            x =>
+                                x.trim()
+                        )
+                        .filter(Boolean)
+
+            });
+
+        }
+
+
+        await putFile(
+
+            "seo-keywords.json",
+
+            JSON.stringify(
+                obj,
+                null,
+                2
+            ),
+
+            "Update SEO keywords: " +
+            a.title,
+
+            d.sha
+
+        );
+
+
+    }catch(e){
+
+        console.warn(
+            "Keyword update skipped:",
+            e
+        );
+
+    }
 
 }
 
 
 /* =========================================================
-DIRECT PUBLISH
+   DIRECT PUBLISH
 ========================================================= */
 
 async function directPublish(){
 
-const a=data();
+    const a =
+        data();
 
-const e=validate(a);
 
-if(e)return alert(e);
+    const e =
+        validate(a);
 
-if(!key())
-return alert(
-"Enter Admin Key first."
-);
 
-if(
-!confirm(
+    if(e){
+
+        alert(e);
+        return;
+
+    }
+
+
+    if(!key()){
+
+        alert(
+            "Enter Admin Key first."
+        );
+
+        return;
+
+    }
+
+
+    if(
+        !confirm(
 `DIRECT PUBLISH this article?
 
 ${a.title}
@@ -3854,342 +3402,453 @@ ${a.path}
 
 Section:
 ${CONFIG.sections[a.section].name}`
-)
-)
-return;
+        )
+    ){
 
-const btn=
-$("publishBtn");
+        return;
 
-btn.disabled=true;
-
-let steps=[];
-
-try{
-
-result(
-"articleResult",
-"1/5 Creating article..."
-);
-
-const html=
-generateHTML();
-
-await putFile(
-a.path,
-html,
-"Publish article: "+a.title
-);
-
-steps.push(
-"Article published"
-);
+    }
 
 
-result(
-"articleResult",
-"2/5 Updating category..."
-);
-
-await updateCategory(a);
-
-steps.push(
-"Category updated"
-);
+    const btn =
+        $("publishBtn");
 
 
-result(
-"articleResult",
-"3/5 Updating homepage..."
-);
-
-await updateHome(a);
-
-steps.push(
-"Homepage updated"
-);
+    btn.disabled =
+        true;
 
 
-result(
-"articleResult",
-"4/5 Updating sitemap..."
-);
-
-await updateSitemap(a);
-
-steps.push(
-"Sitemap updated"
-);
+    let steps = [];
 
 
-result(
-"articleResult",
-"5/5 Saving SEO keywords..."
-);
+    try{
 
-await saveKeywordsForArticle(a);
-
-steps.push(
-"SEO keywords saved"
-);
+        result(
+            "articleResult",
+            "1/5 Creating article..."
+        );
 
 
-$("articleCode")
-.value=html;
-
-$("articleCode")
-.style.display="block";
-
-$("codeBox")
-.style.display="block";
+        const html =
+            generateHTML();
 
 
-$("statArticles")
-.textContent=
-String(
-Number(
-$("statArticles")
-.textContent||0
-)+1
-);
+        await putFile(
+
+            a.path,
+
+            html,
+
+            "Publish article: " +
+            a.title
+
+        );
 
 
-$("statFiles")
-.textContent=
-String(
-Number(
-$("statFiles")
-.textContent||0
-)+4
-);
+        steps.push(
+            "Article published"
+        );
 
 
-const live=
-CONFIG.base+a.path;
+        result(
+            "articleResult",
+            "2/5 Updating category..."
+        );
 
 
-result(
-"publishSummary",
+        await updateCategory(a);
+
+
+        steps.push(
+            "Category updated"
+        );
+
+
+        result(
+            "articleResult",
+            "3/5 Updating homepage..."
+        );
+
+
+        await updateHome(a);
+
+
+        steps.push(
+            "Homepage updated"
+        );
+
+
+        result(
+            "articleResult",
+            "4/5 Updating sitemap..."
+        );
+
+
+        await updateSitemap(a);
+
+
+        steps.push(
+            "Sitemap updated"
+        );
+
+
+        result(
+            "articleResult",
+            "5/5 Saving SEO keywords..."
+        );
+
+
+        await saveKeywordsForArticle(a);
+
+
+        steps.push(
+            "SEO keywords saved"
+        );
+
+
+        $("articleCode")
+            .value =
+            html;
+
+
+        $("articleCode")
+            .style
+            .display =
+            "block";
+
+
+        $("codeBox")
+            .style
+            .display =
+            "block";
+
+
+        $("statArticles")
+            .textContent =
+            String(
+                Number(
+                    $("statArticles")
+                        .textContent ||
+                    0
+                ) + 1
+            );
+
+
+        $("statFiles")
+            .textContent =
+            String(
+                Number(
+                    $("statFiles")
+                        .textContent ||
+                    0
+                ) + 4
+            );
+
+
+        const live =
+            CONFIG.base +
+            a.path;
+
+
+        result(
+
+            "publishSummary",
+
 `✅ DIRECT PUBLISH COMPLETE
 
 Live URL:
 ${live}
 
-${steps.map(
-x=>"✓ "+x
-).join("\n")}`,
-"ok"
-);
+${steps
+    .map(
+        x =>
+            "✓ " + x
+    )
+    .join("\n")}`,
+
+            "ok"
+
+        );
 
 
-result(
-"articleResult",
+        result(
+
+            "articleResult",
+
 `✅ Published successfully.
 
 Live URL:
 ${live}
 
 All automatic updates completed.`,
-"ok"
-);
+
+            "ok"
+
+        );
 
 
-window.lastPublishedUrl=
-live;
+        window.lastPublishedUrl =
+            live;
 
-}catch(err){
 
-result(
-"articleResult",
+    }catch(err){
+
+        result(
+
+            "articleResult",
+
 `❌ PUBLISH STOPPED
 
 ${err.message}
 
 Completed:
 ${
-steps.map(
-x=>"✓ "+x
-).join("\n")
-||
-"None"
+    steps
+        .map(
+            x =>
+                "✓ " + x
+        )
+        .join("\n")
+    ||
+    "None"
 }`,
-"err"
-);
 
-}finally{
+            "err"
 
-btn.disabled=false;
+        );
 
-}
+    }finally{
+
+        btn.disabled =
+            false;
+
+    }
 
 }
 
 
 /* =========================================================
-DELETE
+   DELETE HELPERS
 ========================================================= */
 
 function removeArticleFromHTML(
-html,
-path,
-title
+    html,
+    path,
+    title
 ){
 
-const escaped=
-path.replace(
-/[.*+?^${}()|[\]\\]/g,
-"\\$&"
-);
+    const escaped =
+        path.replace(
+            /[.*+?^${}()|[\]\\]/g,
+            "\\$&"
+        );
 
-let out=html;
 
-const patterns=[
+    let out =
+        html;
 
-new RegExp(
-`<article\\b[^>]*>[\\s\\S]*?<a\\b[^>]*href=["'][^"']*${escaped}["'][^>]*>[\\s\\S]*?</article>`,
-"gi"
-),
 
-new RegExp(
-`<article\\b[^>]*>[\\s\\S]*?href=["'][^"']*${escaped}["'][\\s\\S]*?</article>`,
-"gi"
-)
+    const patterns = [
 
-];
+        new RegExp(
+            `<article\\b[^>]*>[\\s\\S]*?<a\\b[^>]*href=["'][^"']*${escaped}["'][^>]*>[\\s\\S]*?</article>`,
+            "gi"
+        ),
 
-for(
-const p of patterns
-)
-out=
-out.replace(
-p,
-""
-);
+        new RegExp(
+            `<article\\b[^>]*>[\\s\\S]*?href=["'][^"']*${escaped}["'][\\s\\S]*?</article>`,
+            "gi"
+        )
 
-if(
-out===html &&
-title
-){
+    ];
 
-const t=
-title.replace(
-/[.*+?^${}()|[\]\\]/g,
-"\\$&"
-);
 
-out=
-out.replace(
-new RegExp(
-`<article\\b[^>]*>[\\s\\S]*?${t}[\\s\\S]*?</article>`,
-"gi"
-),
-""
-);
+    for(
+        const p of patterns
+    ){
 
-}
+        out =
+            out.replace(
+                p,
+                ""
+            );
 
-return out;
+    }
+
+
+    if(
+        out ===
+        html &&
+        title
+    ){
+
+        const t =
+            title.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+            );
+
+
+        out =
+            out.replace(
+
+                new RegExp(
+                    `<article\\b[^>]*>[\\s\\S]*?${t}[\\s\\S]*?</article>`,
+                    "gi"
+                ),
+
+                ""
+
+            );
+
+    }
+
+
+    return out;
 
 }
 
 
 function removeSitemapURL(
-xml,
-path
+    xml,
+    path
 ){
 
-const url=
-CONFIG.base+path;
+    const url =
+        CONFIG.base +
+        path;
 
-const e=
-url.replace(
-/[.*+?^${}()|[\]\\]/g,
-"\\$&"
-);
 
-return xml.replace(
-new RegExp(
-`<url>\\s*<loc>\\s*${e}\\s*</loc>[\\s\\S]*?</url>`,
-"gi"
-),
-""
-);
+    const e =
+        url.replace(
+            /[.*+?^${}()|[\]\\]/g,
+            "\\$&"
+        );
+
+
+    return xml.replace(
+
+        new RegExp(
+            `<url>\\s*<loc>\\s*${e}\\s*</loc>[\\s\\S]*?</url>`,
+            "gi"
+        ),
+
+        ""
+
+    );
 
 }
 
 
 function removeKeywordEntry(
-content,
-path
+    content,
+    path
 ){
 
-let obj;
+    let obj;
 
-try{
-obj=
-JSON.parse(
-content ||
-'{"keywords":[]}'
-);
-}catch{
-return content;
+
+    try{
+
+        obj =
+            JSON.parse(
+                content ||
+                '{"keywords":[]}'
+            );
+
+    }catch{
+
+        return content;
+
+    }
+
+
+    if(
+        !Array.isArray(
+            obj.keywords
+        )
+    ){
+
+        return content;
+
+    }
+
+
+    obj.keywords =
+        obj.keywords.filter(
+            x =>
+                x.page !==
+                path
+        );
+
+
+    return JSON.stringify(
+        obj,
+        null,
+        2
+    );
+
 }
 
-if(
-!Array.isArray(
-obj.keywords
-)
-)
-return content;
 
-obj.keywords=
-obj.keywords.filter(
-x=>x.page!==path
-);
-
-return JSON.stringify(
-obj,
-null,
-2
-);
-
-}
-
+/* =========================================================
+   COMPLETE DELETE
+========================================================= */
 
 async function deleteArticle(){
 
-const path=
-$("deletePath")
-.value
-.trim()
-.replace(/^\/+/,"");
+    const path =
+        $("deletePath")
+            .value
+            .trim()
+            .replace(
+                /^\/+/,
+                ""
+            );
 
-const section=
-$("deleteSection")
-.value;
 
-const title=
-$("deleteTitle")
-.value
-.trim();
+    const section =
+        $("deleteSection")
+            .value;
 
-if(!path)
-return alert(
-"Enter Article File Path."
-);
 
-if(!key())
-return alert(
-"Enter Admin Key."
-);
+    const title =
+        $("deleteTitle")
+            .value
+            .trim();
 
-const s=
-CONFIG.sections[
-section
-];
 
-if(
-!confirm(
+    if(!path){
+
+        alert(
+            "Enter Article File Path."
+        );
+
+        return;
+
+    }
+
+
+    if(!key()){
+
+        alert(
+            "Enter Admin Key."
+        );
+
+        return;
+
+    }
+
+
+    const s =
+        CONFIG.sections[
+            section
+        ];
+
+
+    if(
+        !confirm(
+
 `⚠️ PERMANENTLY DELETE ARTICLE?
 
 File:
@@ -4203,477 +3862,635 @@ This will attempt to remove:
 ✓ Category card
 ✓ Homepage card
 ✓ Sitemap URL
-✓ SEO keyword entry`
-)
-)
-return;
+✓ SEO keyword entry
 
-try{
+This action creates GitHub commits and cannot be undone from this panel.`
 
-result(
-"deleteResult",
-"1/5 Deleting article file..."
-);
+        )
+    ){
 
-await api(
-"/delete-file",
-"POST",
-{
-path,
-message:
-"Delete article: "+path
-}
-);
+        return;
 
-let done=[
-"Article file deleted"
-];
+    }
 
 
-result(
-"deleteResult",
-"2/5 Removing category card..."
-);
+    try{
 
-try{
-
-const d=
-await getFile(
-s.category
-);
-
-const html=
-removeArticleFromHTML(
-d.content,
-path,
-title
-);
-
-if(
-html!==d.content
-){
-
-await putFile(
-s.category,
-html,
-"Remove deleted article from category: "+path,
-d.sha
-);
-
-done.push(
-"Category updated"
-);
-
-}else{
-
-done.push(
-"Category card not found"
-);
-
-}
-
-}catch(e){
-
-done.push(
-"Category cleanup skipped: "+e.message
-);
-
-}
+        result(
+            "deleteResult",
+            "1/5 Deleting article file..."
+        );
 
 
-result(
-"deleteResult",
-"3/5 Removing homepage card..."
-);
-
-try{
-
-const d=
-await getFile(
-"index.html"
-);
-
-const html=
-removeArticleFromHTML(
-d.content,
-path,
-title
-);
-
-if(
-html!==d.content
-){
-
-await putFile(
-"index.html",
-html,
-"Remove deleted article from homepage: "+path,
-d.sha
-);
-
-done.push(
-"Homepage updated"
-);
-
-}else{
-
-done.push(
-"Homepage card not found"
-);
-
-}
-
-}catch(e){
-
-done.push(
-"Homepage cleanup skipped: "+e.message
-);
-
-}
+        await api(
+            "/delete-file",
+            "POST",
+            {
+                path,
+                message:
+                    "Delete article: " +
+                    path
+            }
+        );
 
 
-result(
-"deleteResult",
-"4/5 Removing sitemap URL..."
-);
-
-try{
-
-const d=
-await getFile(
-"sitemap.xml"
-);
-
-const xml=
-removeSitemapURL(
-d.content,
-path
-);
-
-if(
-xml!==d.content
-){
-
-await putFile(
-"sitemap.xml",
-xml,
-"Remove deleted article from sitemap: "+path,
-d.sha
-);
-
-done.push(
-"Sitemap updated"
-);
-
-}else{
-
-done.push(
-"Sitemap URL not found"
-);
-
-}
-
-}catch(e){
-
-done.push(
-"Sitemap cleanup skipped: "+e.message
-);
-
-}
+        let done = [
+            "Article file deleted"
+        ];
 
 
-result(
-"deleteResult",
-"5/5 Removing SEO keyword entry..."
-);
-
-try{
-
-const d=
-await getFile(
-"seo-keywords.json"
-);
-
-const content=
-removeKeywordEntry(
-d.content,
-path
-);
-
-if(
-content!==d.content
-){
-
-await putFile(
-"seo-keywords.json",
-content,
-"Remove deleted article SEO keywords: "+path,
-d.sha
-);
-
-done.push(
-"SEO keywords updated"
-);
-
-}else{
-
-done.push(
-"SEO keyword entry not found"
-);
-
-}
-
-}catch(e){
-
-done.push(
-"Keyword cleanup skipped: "+e.message
-);
-
-}
+        result(
+            "deleteResult",
+            "2/5 Removing category card..."
+        );
 
 
-result(
-"deleteResult",
+        try{
+
+            const d =
+                await getFile(
+                    s.category
+                );
+
+
+            const html =
+                removeArticleFromHTML(
+                    d.content,
+                    path,
+                    title
+                );
+
+
+            if(
+                html !==
+                d.content
+            ){
+
+                await putFile(
+
+                    s.category,
+
+                    html,
+
+                    "Remove deleted article from category: " +
+                    path,
+
+                    d.sha
+
+                );
+
+
+                done.push(
+                    "Category updated"
+                );
+
+            }else{
+
+                done.push(
+                    "Category card not found"
+                );
+
+            }
+
+        }catch(e){
+
+            done.push(
+                "Category cleanup skipped: " +
+                e.message
+            );
+
+        }
+
+
+        result(
+            "deleteResult",
+            "3/5 Removing homepage card..."
+        );
+
+
+        try{
+
+            const d =
+                await getFile(
+                    "index.html"
+                );
+
+
+            const html =
+                removeArticleFromHTML(
+                    d.content,
+                    path,
+                    title
+                );
+
+
+            if(
+                html !==
+                d.content
+            ){
+
+                await putFile(
+
+                    "index.html",
+
+                    html,
+
+                    "Remove deleted article from homepage: " +
+                    path,
+
+                    d.sha
+
+                );
+
+
+                done.push(
+                    "Homepage updated"
+                );
+
+            }else{
+
+                done.push(
+                    "Homepage card not found"
+                );
+
+            }
+
+        }catch(e){
+
+            done.push(
+                "Homepage cleanup skipped: " +
+                e.message
+            );
+
+        }
+
+
+        result(
+            "deleteResult",
+            "4/5 Removing sitemap URL..."
+        );
+
+
+        try{
+
+            const d =
+                await getFile(
+                    "sitemap.xml"
+                );
+
+
+            const xml =
+                removeSitemapURL(
+                    d.content,
+                    path
+                );
+
+
+            if(
+                xml !==
+                d.content
+            ){
+
+                await putFile(
+
+                    "sitemap.xml",
+
+                    xml,
+
+                    "Remove deleted article from sitemap: " +
+                    path,
+
+                    d.sha
+
+                );
+
+
+                done.push(
+                    "Sitemap updated"
+                );
+
+            }else{
+
+                done.push(
+                    "Sitemap URL not found"
+                );
+
+            }
+
+        }catch(e){
+
+            done.push(
+                "Sitemap cleanup skipped: " +
+                e.message
+            );
+
+        }
+
+
+        result(
+            "deleteResult",
+            "5/5 Removing SEO keyword entry..."
+        );
+
+
+        try{
+
+            const d =
+                await getFile(
+                    "seo-keywords.json"
+                );
+
+
+            const content =
+                removeKeywordEntry(
+                    d.content,
+                    path
+                );
+
+
+            if(
+                content !==
+                d.content
+            ){
+
+                await putFile(
+
+                    "seo-keywords.json",
+
+                    content,
+
+                    "Remove deleted article SEO keywords: " +
+                    path,
+
+                    d.sha
+
+                );
+
+
+                done.push(
+                    "SEO keywords updated"
+                );
+
+            }else{
+
+                done.push(
+                    "SEO keyword entry not found"
+                );
+
+            }
+
+        }catch(e){
+
+            done.push(
+                "Keyword cleanup skipped: " +
+                e.message
+            );
+
+        }
+
+
+        $("statFiles")
+            .textContent =
+            String(
+                Number(
+                    $("statFiles")
+                        .textContent ||
+                    0
+                ) + 1
+            );
+
+
+        result(
+
+            "deleteResult",
+
 `✅ DELETE COMPLETED
 
 Deleted:
 ${path}
 
-${done.map(
-x=>"✓ "+x
-).join("\n")}`,
-"ok"
-);
+${done
+    .map(
+        x =>
+            "✓ " + x
+    )
+    .join("\n")}`,
 
-$("deletePath").value="";
-$("deleteTitle").value="";
+            "ok"
 
-}catch(e){
+        );
 
-result(
-"deleteResult",
+
+        $("deletePath")
+            .value = "";
+
+
+        $("deleteTitle")
+            .value = "";
+
+
+    }catch(e){
+
+        result(
+
+            "deleteResult",
+
 `❌ DELETE FAILED
 
-${e.message}`,
-"err"
-);
+${e.message}
 
-}
+Check GitHub before retrying.`,
+
+            "err"
+
+        );
+
+    }
 
 }
 
 
 /* =========================================================
-FILE MANAGER
+   FILE MANAGER
 ========================================================= */
 
 async function readFile(){
 
-const p=
-$("filePath")
-.value
-.trim();
+    const p =
+        $("filePath")
+            .value
+            .trim();
 
-if(!p)
-return result(
-"fileResult",
-"Enter a file path.",
-"err"
-);
 
-try{
+    if(!p){
 
-const d=
-await getFile(p);
+        return result(
+            "fileResult",
+            "Enter a file path.",
+            "err"
+        );
 
-currentFileSha=
-d.sha;
+    }
 
-currentFilePath=
-d.path;
 
-$("currentFile")
-.value=d.path;
+    try{
 
-$("editor")
-.value=d.content;
+        const d =
+            await getFile(p);
 
-$("statFiles")
-.textContent="1";
 
-result(
-"fileResult",
-`Loaded: ${d.path}
-SHA: ${d.sha}`,
-"ok"
-);
+        currentFileSha =
+            d.sha;
 
-}catch(e){
 
-result(
-"fileResult",
-e.message,
-"err"
-);
+        currentFilePath =
+            d.path;
 
-}
+
+        $("currentFile")
+            .value =
+            d.path;
+
+
+        $("editor")
+            .value =
+            d.content;
+
+
+        $("statFiles")
+            .textContent =
+            "1";
+
+
+        result(
+
+            "fileResult",
+
+`Loaded:
+${d.path}
+
+SHA:
+${d.sha}`,
+
+            "ok"
+
+        );
+
+
+    }catch(e){
+
+        result(
+            "fileResult",
+            e.message,
+            "err"
+        );
+
+    }
 
 }
 
 
 async function saveFile(){
 
-if(!currentFilePath)
-return alert(
-"Load a file first."
-);
+    if(
+        !currentFilePath
+    ){
 
-try{
+        alert(
+            "Load a file first."
+        );
 
-const d=
-await putFile(
-currentFilePath,
-$("editor").value,
-$("commitMessage")
-.value
-.trim() ||
-"Update file from LearnByte Control Center",
-currentFileSha
-);
+        return;
 
-currentFileSha=
-d.sha ||
-currentFileSha;
+    }
 
-result(
-"saveResult",
-JSON.stringify(
-d,
-null,
-2
-),
-"ok"
-);
 
-}catch(e){
+    try{
 
-result(
-"saveResult",
-e.message,
-"err"
-);
+        const d =
+            await putFile(
 
-}
+                currentFilePath,
+
+                $("editor")
+                    .value,
+
+                $("commitMessage")
+                    .value
+                    .trim()
+                ||
+                "Update file from LearnByte Control Center",
+
+                currentFileSha
+
+            );
+
+
+        currentFileSha =
+            d.sha ||
+            currentFileSha;
+
+
+        result(
+            "saveResult",
+            JSON.stringify(
+                d,
+                null,
+                2
+            ),
+            "ok"
+        );
+
+
+    }catch(e){
+
+        result(
+            "saveResult",
+            e.message,
+            "err"
+        );
+
+    }
 
 }
 
 
 function clearEditor(){
 
-currentFilePath=null;
-currentFileSha=null;
+    currentFilePath =
+        null;
 
-$("currentFile").value="";
-$("editor").value="";
+    currentFileSha =
+        null;
 
-result(
-"fileResult",
-"No file loaded."
-);
 
-result(
-"saveResult",
-"No changes made."
-);
+    $("currentFile")
+        .value = "";
+
+
+    $("editor")
+        .value = "";
+
+
+    result(
+        "fileResult",
+        "No file loaded."
+    );
+
+
+    result(
+        "saveResult",
+        "No changes made."
+    );
 
 }
 
 
 function loadIndex(){
 
-$("filePath").value=
-"index.html";
+    $("filePath")
+        .value =
+        "index.html";
 
-readFile();
+
+    readFile();
 
 }
 
 
 /* =========================================================
-KEYWORDS
+   KEYWORDS
 ========================================================= */
 
 async function loadKeywords(){
 
-try{
+    try{
 
-const d=
-await getFile(
-"seo-keywords.json"
-);
+        const d =
+            await getFile(
+                "seo-keywords.json"
+            );
 
-keywordSha=
-d.sha;
 
-try{
+        keywordSha =
+            d.sha;
 
-keywordData=
-JSON.parse(
-d.content ||
-'{"keywords":[]}'
-);
 
-}catch{
+        try{
 
-keywordData={
-keywords:[]
-};
+            keywordData =
+                JSON.parse(
+                    d.content ||
+                    '{"keywords":[]}'
+                );
 
-}
+        }catch{
 
-if(
-!Array.isArray(
-keywordData.keywords
-)
-)
-keywordData.keywords=[];
+            keywordData = {
+                keywords: []
+            };
 
-renderKeywords();
+        }
 
-$("statKeywords")
-.textContent=
-keywordData.keywords.length;
 
-result(
-"keywordResult",
-"Keywords loaded.",
-"ok"
-);
+        if(
+            !Array.isArray(
+                keywordData.keywords
+            )
+        ){
 
-}catch(e){
+            keywordData.keywords =
+                [];
 
-result(
-"keywordResult",
-e.message,
-"err"
-);
+        }
 
-}
+
+        renderKeywords();
+
+
+        $("statKeywords")
+            .textContent =
+            keywordData
+                .keywords
+                .length;
+
+
+        result(
+            "keywordResult",
+            "Keywords loaded.",
+            "ok"
+        );
+
+
+    }catch(e){
+
+        result(
+            "keywordResult",
+            e.message,
+            "err"
+        );
+
+    }
 
 }
 
 
 function renderKeywords(){
 
-$("keywordList")
-.innerHTML=
-keywordData.keywords.length
+    $("keywordList")
+        .innerHTML =
 
-?
+        keywordData
+            .keywords
+            .length
 
-keywordData.keywords
-.map(
-(x,i)=>`
+        ?
+
+        keywordData
+            .keywords
+            .map(
+
+                (x,i) => `
 
 <div class="item">
 
@@ -4690,9 +4507,12 @@ ${esc(x.primary)}
 
 Secondary:
 ${esc(
-Array.isArray(x.secondary)
-?x.secondary.join(", ")
-:x.secondary||"None"
+    Array.isArray(
+        x.secondary
+    )
+    ? x.secondary.join(", ")
+    : x.secondary ||
+      "None"
 )}
 
 </small>
@@ -4700,8 +4520,9 @@ Array.isArray(x.secondary)
 <div class="row">
 
 <button
-class="danger"
-onclick="deleteKeyword(${i})"
+    class="danger"
+    type="button"
+    onclick="deleteKeyword(${i})"
 >
 Delete
 </button>
@@ -4711,344 +4532,362 @@ Delete
 </div>
 
 `
-)
-.join("")
 
-:
+            )
+            .join("")
 
-'<div class="result">No keywords yet.</div>';
+        :
+
+        '<div class="result">No keywords yet.</div>';
 
 }
 
 
 async function addKeyword(){
 
-if(!keywordSha)
-await loadKeywords();
+    if(!keywordSha){
 
-if(!keywordSha)
-return;
+        await loadKeywords();
 
-const p=
-$("keywordPage")
-.value
-.trim();
+    }
 
-const k=
-$("keywordPrimary")
-.value
-.trim();
 
-if(!p||!k)
-return alert(
-"Page and Primary Keyword are required."
-);
+    if(!keywordSha)
+        return;
 
-keywordData.keywords.push({
 
-page:p,
+    const p =
+        $("keywordPage")
+            .value
+            .trim();
 
-primary:k,
 
-secondary:
-$("keywordSecondary")
-.value
-.split(",")
-.map(x=>x.trim())
-.filter(Boolean)
+    const k =
+        $("keywordPrimary")
+            .value
+            .trim();
 
-});
 
-await saveKeywords();
+    if(
+        !p ||
+        !k
+    ){
 
-$("keywordPage").value="";
-$("keywordPrimary").value="";
-$("keywordSecondary").value="";
+        alert(
+            "Page and Primary Keyword are required."
+        );
+
+        return;
+
+    }
+
+
+    keywordData
+        .keywords
+        .push({
+
+            page: p,
+
+            primary: k,
+
+            secondary:
+                $("keywordSecondary")
+                    .value
+                    .split(",")
+                    .map(
+                        x =>
+                            x.trim()
+                    )
+                    .filter(Boolean)
+
+        });
+
+
+    await saveKeywords();
+
+
+    $("keywordPage")
+        .value = "";
+
+
+    $("keywordPrimary")
+        .value = "";
+
+
+    $("keywordSecondary")
+        .value = "";
 
 }
 
 
 async function deleteKeyword(i){
 
-if(
-!confirm(
-"Delete this keyword?"
-)
-)
-return;
+    if(
+        !confirm(
+            "Delete this keyword?"
+        )
+    ){
 
-keywordData.keywords.splice(
-i,
-1
-);
+        return;
 
-await saveKeywords();
+    }
+
+
+    keywordData
+        .keywords
+        .splice(
+            i,
+            1
+        );
+
+
+    await saveKeywords();
 
 }
 
 
 async function saveKeywords(){
 
-try{
+    try{
 
-const d=
-await putFile(
-"seo-keywords.json",
-JSON.stringify(
-keywordData,
-null,
-2
-),
-"Update SEO keywords",
-keywordSha
-);
+        const d =
+            await putFile(
 
-keywordSha=
-d.sha ||
-keywordSha;
+                "seo-keywords.json",
 
-renderKeywords();
+                JSON.stringify(
+                    keywordData,
+                    null,
+                    2
+                ),
 
-$("statKeywords")
-.textContent=
-keywordData.keywords.length;
+                "Update SEO keywords",
 
-result(
-"keywordResult",
-"✅ Keywords saved.",
-"ok"
-);
+                keywordSha
 
-}catch(e){
+            );
 
-result(
-"keywordResult",
-e.message,
-"err"
-);
 
-}
+        keywordSha =
+            d.sha ||
+            keywordSha;
+
+
+        renderKeywords();
+
+
+        $("statKeywords")
+            .textContent =
+            keywordData
+                .keywords
+                .length;
+
+
+        result(
+            "keywordResult",
+            "✅ Keywords saved.",
+            "ok"
+        );
+
+
+    }catch(e){
+
+        result(
+            "keywordResult",
+            e.message,
+            "err"
+        );
+
+    }
 
 }
 
 
 /* =========================================================
-INTERNAL LINK
+   INTERNAL LINKING
 ========================================================= */
 
 function prepareLink(){
 
-const s=
-$("sourcePage")
-.value
-.trim();
+    const s =
+        $("sourcePage")
+            .value
+            .trim();
 
-const t=
-$("targetPage")
-.value
-.trim();
 
-const a=
-$("anchorText")
-.value
-.trim();
+    const t =
+        $("targetPage")
+            .value
+            .trim();
 
-if(!s||!t||!a)
-return alert(
-"Fill all fields."
-);
 
-result(
-"linkResult",
+    const a =
+        $("anchorText")
+            .value
+            .trim();
+
+
+    if(
+        !s ||
+        !t ||
+        !a
+    ){
+
+        alert(
+            "Fill all fields."
+        );
+
+        return;
+
+    }
+
+
+    result(
+
+        "linkResult",
+
 `Generated link:
 
 <a href="${esc(t)}">${esc(a)}</a>`,
-"ok"
-);
+
+        "ok"
+
+    );
 
 }
 
 
 async function applyInternalLink(){
 
-const s=
-$("sourcePage")
-.value
-.trim();
-
-const t=
-$("targetPage")
-.value
-.trim();
-
-const a=
-$("anchorText")
-.value
-.trim();
-
-if(!s||!t||!a)
-return alert(
-"Fill all fields."
-);
-
-try{
-
-const d=
-await getFile(s);
-
-const re=
-new RegExp(
-"("+a.replace(
-/[.*+?^${}()|[\]\\]/g,
-"\\$&"
-)+")",
-"i"
-);
-
-const html=
-d.content.replace(
-re,
-`<a href="${esc(t)}">$1</a>`
-);
-
-if(
-html===d.content
-)
-throw new Error(
-"Anchor text was not found."
-);
-
-const out=
-await putFile(
-s,
-html,
-"Add internal link: "+a,
-d.sha
-);
-
-result(
-"linkResult",
-"✅ Internal link applied and committed.\n\n"+
-JSON.stringify(
-out,
-null,
-2
-),
-"ok"
-);
-
-}catch(e){
-
-result(
-"linkResult",
-e.message,
-"err"
-);
-
-}
-
-}
+    const s =
+        $("sourcePage")
+            .value
+            .trim();
 
 
-/* =========================================================
-EXTERNAL LINK
-========================================================= */
+    const t =
+        $("targetPage")
+            .value
+            .trim();
 
-async function applyExternalLink(){
 
-const file=
-$("externalSource")
-.value
-.trim();
+    const a =
+        $("anchorText")
+            .value
+            .trim();
 
-const url=
-$("externalURL")
-.value
-.trim();
 
-const anchor=
-$("externalAnchor")
-.value
-.trim();
+    if(
+        !s ||
+        !t ||
+        !a
+    ){
 
-if(!file||!url||!anchor)
-return alert(
-"Fill all fields."
-);
+        alert(
+            "Fill all fields."
+        );
 
-try{
+        return;
 
-const d=
-await getFile(file);
+    }
 
-const rel=
-$("externalNofollow")
-.checked
-?
-' rel="nofollow"'
-:"";
 
-const tag=
-`<a href="${esc(url)}"${rel}>${esc(anchor)}</a>`;
+    try{
 
-const html=
-d.content.replace(
-new RegExp(
-"("+anchor.replace(
-/[.*+?^${}()|[\]\\]/g,
-"\\$&"
-)+")",
-"i"
-),
-tag
-);
+        const d =
+            await getFile(s);
 
-if(
-html===d.content
-)
-throw new Error(
-"Anchor text was not found in the source page."
-);
 
-const out=
-await putFile(
-file,
-html,
-"Add external link: "+anchor,
-d.sha
-);
+        const re =
+            new RegExp(
 
-result(
-"externalResult",
-"✅ External link added.\n\n"+
-JSON.stringify(
-out,
-null,
-2
-),
-"ok"
-);
+                "(?<![>])(" +
 
-}catch(e){
+                a.replace(
+                    /[.*+?^${}()|[\]\\]/g,
+                    "\\$&"
+                ) +
 
-result(
-"externalResult",
-e.message,
-"err"
-);
+                ")(?![^<]*>)",
 
-}
+                "i"
+
+            );
+
+
+        const html =
+            d.content.replace(
+
+                re,
+
+                `<a href="${esc(t)}">$1</a>`
+
+            );
+
+
+        if(
+            html ===
+            d.content
+        ){
+
+            throw new Error(
+                "Anchor text was not found."
+            );
+
+        }
+
+
+        const out =
+            await putFile(
+
+                s,
+
+                html,
+
+                "Add internal link: " +
+                a,
+
+                d.sha
+
+            );
+
+
+        result(
+
+            "linkResult",
+
+            "✅ Internal link applied and committed.\n\n" +
+            JSON.stringify(
+                out,
+                null,
+                2
+            ),
+
+            "ok"
+
+        );
+
+
+    }catch(e){
+
+        result(
+            "linkResult",
+            e.message,
+            "err"
+        );
+
+    }
 
 }
 
 
 /* =========================================================
-REDIRECT
+   REDIRECT
 ========================================================= */
 
 function redirectHTML(url){
 
-return`<!DOCTYPE html>
+    return `<!DOCTYPE html>
 
 <html lang="en">
 
@@ -5057,18 +4896,18 @@ return`<!DOCTYPE html>
 <meta charset="UTF-8">
 
 <meta
-name="viewport"
-content="width=device-width,initial-scale=1"
+    name="viewport"
+    content="width=device-width,initial-scale=1"
 >
 
 <meta
-http-equiv="refresh"
-content="0; url=${esc(url)}"
+    http-equiv="refresh"
+    content="0; url=${esc(url)}"
 >
 
 <link
-rel="canonical"
-href="${esc(url)}"
+    rel="canonical"
+    href="${esc(url)}"
 >
 
 <title>
@@ -5077,7 +4916,7 @@ Redirecting...
 
 <script>
 location.replace(
-${JSON.stringify(url)}
+    ${JSON.stringify(url)}
 )
 <\/script>
 
@@ -5102,1855 +4941,364 @@ Continue
 
 async function createRedirect(){
 
-const old=
-$("oldUrl")
-.value
-.trim()
-.replace(/^\/+/,"");
-
-const url=
-$("newUrl")
-.value
-.trim();
-
-if(!old||!url)
-return alert(
-"Fill Old URL and New URL."
-);
-
-try{
-
-const d=
-await putFile(
-old,
-redirectHTML(url),
-"Create redirect: "+
-old+
-" -> "+
-url
-);
-
-result(
-"redirectResult",
-"✅ Redirect file created.\n\n"+
-JSON.stringify(
-d,
-null,
-2
-),
-"ok"
-);
-
-}catch(e){
-
-result(
-"redirectResult",
-e.message,
-"err"
-);
-
-}
-
-}
+    const old =
+        $("oldUrl")
+            .value
+            .trim()
+            .replace(
+                /^\/+/,
+                ""
+            );
 
 
-/* =========================================================
-ROBOTS
-========================================================= */
-
-async function loadRobots(){
-
-try{
-
-const d=
-await getFile(
-"robots.txt"
-);
-
-$("robotsContent")
-.value=d.content;
-
-result(
-"robotsResult",
-"✅ robots.txt loaded.",
-"ok"
-);
-
-}catch(e){
-
-result(
-"robotsResult",
-e.message,
-"err"
-);
-
-}
-
-}
+    const url =
+        $("newUrl")
+            .value
+            .trim();
 
 
-async function saveRobots(){
+    if(
+        !old ||
+        !url
+    ){
 
-const content=
-$("robotsContent")
-.value;
+        alert(
+            "Fill Old URL and New URL."
+        );
 
-if(!content.trim())
-return alert(
-"Enter robots.txt content."
-);
+        return;
 
-try{
+    }
 
-const d=
-await putFile(
-"robots.txt",
-content,
-"Update robots.txt"
-);
 
-result(
-"robotsResult",
-"✅ robots.txt saved.\n\n"+
-JSON.stringify(
-d,
-null,
-2
-),
-"ok"
-);
+    if(!key()){
 
-}catch(e){
+        alert(
+            "Enter Admin Key."
+        );
 
-result(
-"robotsResult",
-e.message,
-"err"
-);
+        return;
 
-}
+    }
+
+
+    try{
+
+        const d =
+            await putFile(
+
+                old,
+
+                redirectHTML(
+                    url
+                ),
+
+                "Create redirect: " +
+                old +
+                " -> " +
+                url
+
+            );
+
+
+        result(
+
+            "redirectResult",
+
+            "✅ Redirect file created.\n\n" +
+            JSON.stringify(
+                d,
+                null,
+                2
+            ),
+
+            "ok"
+
+        );
+
+
+    }catch(e){
+
+        result(
+            "redirectResult",
+            e.message,
+            "err"
+        );
+
+    }
 
 }
 
 
 /* =========================================================
-404
-========================================================= */
-
-function make404HTML(){
-
-return`<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta
-name="viewport"
-content="width=device-width,initial-scale=1"
->
-
-<meta
-name="robots"
-content="noindex,follow"
->
-
-<title>
-404 - ${esc(
-$("error404Title").value
-)}
-</title>
-
-<style>
-
-body{
-margin:0;
-min-height:100vh;
-display:grid;
-place-items:center;
-background:#050811;
-color:#fff;
-font-family:system-ui,sans-serif;
-text-align:center;
-padding:20px
-}
-
-main{
-max-width:700px
-}
-
-h1{
-font-size:clamp(
-3rem,
-10vw,
-7rem
-);
-margin:0
-}
-
-p{
-font-size:1.15rem;
-color:#aeb9ca
-}
-
-a{
-display:inline-block;
-margin-top:20px;
-padding:12px 20px;
-border-radius:10px;
-background:#20dff8;
-color:#031018;
-text-decoration:none;
-font-weight:800
-}
-
-</style>
-
-</head>
-
-<body>
-
-<main>
-
-<h1>
-404
-</h1>
-
-<h2>
-${esc(
-$("error404Title").value
-)}
-</h2>
-
-<p>
-${esc(
-$("error404Message").value
-)}
-</p>
-
-<a href="/">
-Back to LearnByte
-</a>
-
-</main>
-
-</body>
-
-</html>`;
-
-}
-
-
-function preview404(){
-
-const html=
-make404HTML();
-
-const w=
-window.open(
-"",
-"_blank"
-);
-
-if(w){
-
-w.document.open();
-w.document.write(html);
-w.document.close();
-
-}
-
-}
-
-
-async function save404(){
-
-try{
-
-const d=
-await putFile(
-"404.html",
-make404HTML(),
-"Create/update custom 404 page"
-);
-
-result(
-"error404Result",
-"✅ 404.html created/updated.\n\n"+
-JSON.stringify(
-d,
-null,
-2
-),
-"ok"
-);
-
-}catch(e){
-
-result(
-"error404Result",
-e.message,
-"err"
-);
-
-}
-
-}
-
-
-/* =========================================================
-FILE SEO ANALYSIS
-========================================================= */
-
-async function loadAnalysisFile(
-file
-){
-
-if(!file)
-throw new Error(
-"Enter a page file."
-);
-
-return getFile(file);
-
-}
-
-
-function extractTitle(html){
-
-const m=
-html.match(
-/<title[^>]*>([\s\S]*?)<\/title>/i
-);
-
-return m
-?m[1].trim()
-:"";
-
-}
-
-
-function extractDescription(html){
-
-let m=
-html.match(
-/<meta[^>]+name=["']description["'][^>]+content=["']([^"']*)["']/i
-);
-
-if(!m){
-
-m=
-html.match(
-/<meta[^>]+content=["']([^"']*)["'][^>]+name=["']description["']/i
-);
-
-}
-
-return m
-?m[1].trim()
-:"";
-
-}
-
-
-function extractCanonical(html){
-
-const m=
-html.match(
-/<link[^>]+rel=["']canonical["'][^>]+href=["']([^"']*)["']/i
-);
-
-return m
-?m[1].trim()
-:"";
-
-}
-
-
-function countTagLocal(
-html,
-tag
-){
-
-return(
-html.match(
-new RegExp(
-`<${tag}\\b`,
-"gi"
-)
-)||[]
-).length;
-
-}
-
-
-function analyzeMetaTitle(){
-
-(async()=>{
-
-try{
-
-const d=
-await loadAnalysisFile(
-$("metaTitleFile").value.trim()
-);
-
-const title=
-extractTitle(
-d.content
-);
-
-const n=
-title.length;
-
-let status=
-"GOOD";
-
-if(!title)
-status=
-"MISSING";
-
-else if(n<30||n>60)
-status=
-"REVIEW";
-
-result(
-"metaTitleResult",
-`Title:
-${title||"(missing)"}
-
-Characters:
-${n}
-
-Status:
-${status}
-
-Recommended:
-Keep the title concise and descriptive.`,
-status==="GOOD"
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"metaTitleResult",
-e.message,
-"err"
-);
-
-}
-
-})();
-
-}
-
-
-function analyzeMetaDescription(){
-
-(async()=>{
-
-try{
-
-const d=
-await loadAnalysisFile(
-$("metaDescriptionFile").value.trim()
-);
-
-const desc=
-extractDescription(
-d.content
-);
-
-const n=
-desc.length;
-
-let status=
-"GOOD";
-
-if(!desc)
-status=
-"MISSING";
-
-else if(n<120||n>160)
-status=
-"REVIEW";
-
-result(
-"metaDescriptionResult",
-`Description:
-${desc||"(missing)"}
-
-Characters:
-${n}
-
-Status:
-${status}
-
-Recommended:
-Write a clear, useful description matching the page.`,
-status==="GOOD"
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"metaDescriptionResult",
-e.message,
-"err"
-);
-
-}
-
-})();
-
-}
-
-
-function analyzeURLStructure(){
-
-const raw=
-$("urlCheck")
-.value
-.trim()
-.replace(/^\/+/,"");
-
-if(!raw)
-return alert(
-"Enter a URL/file."
-);
-
-const file=
-raw
-.split("?")[0]
-.split("#")[0];
-
-const base=
-file
-.split("/")
-.pop()
-.toLowerCase();
-
-const noExtension=
-base
-.replace(/\.html$/,"");
-
-const checks=[];
-
-checks.push([
-"Lowercase",
-base===base.toLowerCase()
-]);
-
-checks.push([
-"Uses hyphens",
-!/[_.\s]/.test(noExtension)
-]);
-
-checks.push([
-"Reasonable length",
-noExtension.length<=60
-]);
-
-checks.push([
-"No unnecessary parameters",
-!/[?&]/.test(raw)
-]);
-
-checks.push([
-"Readable",
-/^[a-z0-9-]+(\.html)?$/.test(base)
-]);
-
-const text=
-checks
-.map(
-x=>
-`${x[1]?"✓":"✗"} ${x[0]}`
-)
-.join("\n");
-
-result(
-"urlResult",
-`${text}
-
-URL:
-${raw}`,
-checks.every(x=>x[1])
-?"ok"
-:""
-);
-
-}
-
-
-function analyzeHeadings(){
-
-(async()=>{
-
-try{
-
-const d=
-await loadAnalysisFile(
-$("headingFile").value.trim()
-);
-
-const html=
-d.content;
-
-const counts={};
-
-for(
-let i=1;
-i<=6;
-i++
-)
-counts["h"+i]=
-countTagLocal(
-html,
-"h"+i
-);
-
-const status=
-counts.h1===1;
-
-result(
-"headingResult",
-`H1: ${counts.h1}
-H2: ${counts.h2}
-H3: ${counts.h3}
-H4: ${counts.h4}
-H5: ${counts.h5}
-H6: ${counts.h6}
-
-H1 check:
-${status?"✓ Exactly one H1":"⚠ Review H1 count"}`,
-status
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"headingResult",
-e.message,
-"err"
-);
-
-}
-
-})();
-
-}
-
-
-function analyzeCanonical(){
-
-(async()=>{
-
-try{
-
-const d=
-await loadAnalysisFile(
-$("canonicalFile").value.trim()
-);
-
-const c=
-extractCanonical(
-d.content
-);
-
-result(
-"canonicalResult",
-`Canonical:
-${c||"(missing)"}
-
-Status:
-${c?"✓ Canonical found":"✗ Canonical missing"}`,
-c
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"canonicalResult",
-e.message,
-"err"
-);
-
-}
-
-})();
-
-}
-
-
-function analyzeSocialMeta(){
-
-(async()=>{
-
-try{
-
-const d=
-await loadAnalysisFile(
-$("socialFile").value.trim()
-);
-
-const h=
-d.content;
-
-const checks={
-
-"OG Title":
-/property=["']og:title["']/i.test(h),
-
-"OG Description":
-/property=["']og:description["']/i.test(h),
-
-"OG Image":
-/property=["']og:image["']/i.test(h),
-
-"Twitter Card":
-/name=["']twitter:card["']/i.test(h)
-
-};
-
-result(
-"socialResult",
-Object.entries(checks)
-.map(
-x=>
-`${x[1]?"✓":"✗"} ${x[0]}`
-)
-.join("\n"),
-Object.values(checks)
-.every(Boolean)
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"socialResult",
-e.message,
-"err"
-);
-
-}
-
-})();
-
-}
-
-
-/* =========================================================
-SCHEMA
-========================================================= */
-
-async function checkSchema(){
-
-try{
-
-const d=
-await loadAnalysisFile(
-$("schemaFile").value.trim()
-);
-
-const matches=
-[
-...d.content.matchAll(
-/<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi
-)
-];
-
-if(!matches.length){
-
-return result(
-"schemaResult",
-"✗ No JSON-LD schema found.",
-""
-);
-
-}
-
-let valid=0;
-
-for(
-const m of matches
-){
-
-try{
-
-JSON.parse(
-m[1].trim()
-);
-
-valid++;
-
-}catch{}
-
-}
-
-result(
-"schemaResult",
-`Schema blocks:
-${matches.length}
-
-Valid JSON-LD:
-${valid}
-
-Status:
-${valid===matches.length
-?"✓ Valid JSON-LD found"
-:"⚠ Some schema blocks contain invalid JSON"}`,
-valid===matches.length
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"schemaResult",
-e.message,
-"err"
-);
-
-}
-
-}
-
-
-async function addSchema(){
-
-const file=
-$("schemaFile")
-.value
-.trim();
-
-const type=
-$("schemaType")
-.value;
-
-const name=
-$("schemaName")
-.value
-.trim();
-
-const description=
-$("schemaDescription")
-.value
-.trim();
-
-if(!file||!name)
-return alert(
-"Enter page file and schema name."
-);
-
-try{
-
-const d=
-await getFile(file);
-
-if(
-/<script[^>]+type=["']application\/ld\+json["']/i
-.test(d.content)
-){
-
-throw new Error(
-"JSON-LD schema already exists on this page. Use the editor to modify it."
-);
-
-}
-
-const schema={
-
-"@context":
-"https://schema.org",
-
-"@type":
-type,
-
-"headline":
-type==="Article"||
-type==="BlogPosting"
-?name
-:undefined,
-
-"name":
-name,
-
-"description":
-description,
-
-"url":
-CONFIG.base+
-file
-
-};
-
-Object.keys(schema)
-.forEach(
-k=>{
-if(
-schema[k]===undefined||
-schema[k]===""
-)
-delete schema[k];
-}
-);
-
-const block=
-`<script type="application/ld+json">
-${JSON.stringify(
-schema,
-null,
-2
-)}
-</script>`;
-
-const html=
-d.content
-.replace(
-/<\/head>/i,
-block+
-"\n</head>"
-);
-
-const out=
-await putFile(
-file,
-html,
-"Add JSON-LD schema",
-d.sha
-);
-
-result(
-"schemaResult",
-"✅ Schema added and committed.\n\n"+
-JSON.stringify(
-out,
-null,
-2
-),
-"ok"
-);
-
-}catch(e){
-
-result(
-"schemaResult",
-e.message,
-"err"
-);
-
-}
-
-}
-
-
-/* =========================================================
-IMAGE ANALYZER
-========================================================= */
-
-async function analyzeImages(){
-
-try{
-
-const d=
-await loadAnalysisFile(
-$("imageFile")
-.value.trim()
-);
-
-const imgs=
-[
-...d.content.matchAll(
-/<img\b[^>]*>/gi
-)
-]
-.map(x=>x[0]);
-
-const missing=
-imgs.filter(
-x=>!/\balt\s*=/i.test(x)
-);
-
-const empty=
-imgs.filter(
-x=>/\balt\s*=\s*["']\s*["']/i.test(x)
-);
-
-result(
-"imageResult",
-`Images:
-${imgs.length}
-
-Missing ALT:
-${missing.length}
-
-Empty ALT:
-${empty.length}
-
-Usable ALT:
-${imgs.length-missing.length}
-
-Status:
-${
-missing.length===0
-?"✓ All images have ALT attributes"
-:"⚠ Some images need ALT text"
-}`,
-missing.length===0
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"imageResult",
-e.message,
-"err"
-);
-
-}
-
-}
-
-
-/* =========================================================
-NOFOLLOW
-========================================================= */
-
-async function addNofollow(){
-
-const file=
-$("nofollowFile")
-.value
-.trim();
-
-const url=
-$("nofollowURL")
-.value
-.trim();
-
-if(!file||!url)
-return alert(
-"Enter page file and link URL."
-);
-
-try{
-
-const d=
-await getFile(file);
-
-const escaped=
-url.replace(
-/[.*+?^${}()|[\]\\]/g,
-"\\$&"
-);
-
-const re=
-new RegExp(
-`<a([^>]+href=["']${escaped}["'][^>]*)>`,
-"i"
-);
-
-const m=
-d.content.match(re);
-
-if(!m)
-throw new Error(
-"Link URL was not found on this page."
-);
-
-let tag=m[0];
-
-if(
-/rel=["'][^"']*nofollow/i
-.test(tag)
-){
-
-return result(
-"nofollowResult",
-"✓ This link already contains nofollow.",
-"ok"
-);
-
-}
-
-if(
-/rel=["'][^"']*["']/i.test(tag)
-){
-
-tag=
-tag.replace(
-/rel=["']([^"']*)["']/i,
-'rel="$1 nofollow"'
-);
-
-}else{
-
-tag=
-tag.replace(
-/<a\b/i,
-'<a rel="nofollow"'
-);
-
-}
-
-const html=
-d.content.replace(
-m[0],
-tag
-);
-
-const out=
-await putFile(
-file,
-html,
-"Add nofollow to external link",
-d.sha
-);
-
-result(
-"nofollowResult",
-"✅ Nofollow added and committed.\n\n"+
-JSON.stringify(
-out,
-null,
-2
-),
-"ok"
-);
-
-}catch(e){
-
-result(
-"nofollowResult",
-e.message,
-"err"
-);
-
-}
-
-}
-
-
-/* =========================================================
-CONTENT QUALITY
-========================================================= */
-
-async function analyzeContentQuality(){
-
-try{
-
-const d=
-await loadAnalysisFile(
-$("contentFile")
-.value
-.trim()
-);
-
-const html=
-d.content;
-
-const keyword=
-$("contentKeyword")
-.value
-.trim()
-.toLowerCase();
-
-const text=
-html
-.replace(
-/<script[\s\S]*?<\/script>/gi,
-" "
-)
-.replace(
-/<style[\s\S]*?<\/style>/gi,
-" "
-)
-.replace(
-/<[^>]+>/g,
-" "
-)
-.replace(
-/\s+/g,
-" "
-)
-.trim();
-
-const words=
-text
-?text.split(/\s+/).length
-:0;
-
-const occurrences=
-keyword
-?
-(
-text
-.toLowerCase()
-.split(keyword)
-.length-1
-)
-:0;
-
-const title=
-extractTitle(html);
-
-const desc=
-extractDescription(html);
-
-const h1=
-countTagLocal(
-html,
-"h1"
-);
-
-const h2=
-countTagLocal(
-html,
-"h2"
-);
-
-const imgs=
-[
-...html.matchAll(
-/<img\b[^>]*>/gi
-)
-].length;
-
-const links=
-[
-...html.matchAll(
-/<a\b[^>]+href=/gi
-)
-].length;
-
-const scoreParts=[
-
-!!title,
-
-!!desc,
-
-h1===1,
-
-h2>0,
-
-words>=300,
-
-imgs===0||
-!new RegExp(
-"<img\\b(?![^>]*\\balt\\s*=)",
-"i"
-).test(html),
-
-links>0
-
-];
-
-const score=
-Math.round(
-scoreParts
-.filter(Boolean)
-.length /
-scoreParts.length *
-100
-);
-
-result(
-"contentResult",
-`SEO CONTENT SCORE:
-${score}/100
-
-Words:
-${words}
-
-Title:
-${title||"(missing)"}
-
-Meta Description:
-${desc?"Present":"Missing"}
-
-H1:
-${h1}
-
-H2:
-${h2}
-
-Images:
-${imgs}
-
-Links:
-${links}
-
-Primary Keyword Occurrences:
-${occurrences}`,
-score>=80
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"contentResult",
-e.message,
-"err"
-);
-
-}
-
-}
-
-
-/* =========================================================
-SEMANTIC
-========================================================= */
-
-async function analyzeSemanticKeywords(){
-
-try{
-
-const d=
-await loadAnalysisFile(
-$("semanticFile")
-.value
-.trim()
-);
-
-const html=
-d.content
-.replace(
-/<[^>]+>/g,
-" "
-)
-.toLowerCase();
-
-const words=
-$("semanticKeywords")
-.value
-.split(",")
-.map(
-x=>x.trim()
-)
-.filter(Boolean);
-
-const output=
-words.map(
-word=>{
-
-const count=
-html.split(
-word.toLowerCase()
-).length-1;
-
-return`${count>0?"✓":"✗"} ${word}: ${count}`;
-
-}
-)
-.join("\n");
-
-result(
-"semanticResult",
-output||"Enter related keywords.",
-words.length&&
-words.every(
-w=>
-html.includes(
-w.toLowerCase()
-)
-)
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"semanticResult",
-e.message,
-"err"
-);
-
-}
-
-}
-
-
-/* =========================================================
-LIVE ANALYZER
-========================================================= */
-
-async function analyzeLiveURL(){
-
-const url=
-$("liveURL")
-.value
-.trim();
-
-if(!url)
-return alert(
-"Enter live URL."
-);
-
-try{
-
-result(
-"liveResult",
-"Analyzing live page..."
-);
-
-const d=
-await api(
-"/analyze-url",
-"POST",
-{url}
-);
-
-const s=
-d.seo;
-
-const checks=[
-
-[
-"HTTP Status",
-d.status===200,
-String(d.status)
-],
-
-[
-"Response Time",
-d.responseTimeMs<1000,
-d.responseTimeMs+" ms"
-],
-
-[
-"Title",
-!!s.title,
-s.title||"Missing"
-],
-
-[
-"Meta Description",
-!!s.description,
-s.description?"Present":"Missing"
-],
-
-[
-"One H1",
-s.headings.h1===1,
-String(s.headings.h1)
-],
-
-[
-"Canonical",
-s.hasCanonical,
-s.canonical||"Missing"
-],
-
-[
-"Mobile Viewport",
-s.mobile.viewport,
-s.mobile.viewport
-?"Present"
-:"Missing"
-],
-
-[
-"Schema",
-s.meta.schema,
-s.meta.schema
-?"Present"
-:"Missing"
-],
-
-[
-"Images ALT",
-s.images.missingAlt===0,
-`${s.images.missingAlt} missing`
-]
-
-];
-
-const html=
-checks
-.map(
-x=>
-`${x[1]?"✓":"✗"} ${x[0]}: ${x[2]}`
-)
-.join("\n");
-
-result(
-"liveResult",
-`LIVE PAGE ANALYSIS
-
-URL:
-${d.url}
-
-Status:
-${d.status}
-
-Response:
-${d.responseTimeMs} ms
-
-Words:
-${s.content.words}
-
-Internal links:
-${s.links.internal}
-
-External links:
-${s.links.external}
-
-Nofollow:
-${s.links.nofollow}
-
-${html}`,
-checks
-.filter(x=>!x[1])
-.length===0
-?"ok"
-:""
-);
-
-
-$("liveTools")
-.style.display="grid";
-
-$("liveTools")
-.innerHTML=
-checks
-.map(
-x=>`
-
-<div class="tool">
-
-<strong>
-${x[1]?"✓":"⚠"} ${esc(x[0])}
-</strong>
-
-<span class="${
-x[1]?"pass":"warn"
-}">
-${esc(String(x[2]))}
-</span>
-
-</div>
-
-`
-)
-.join("");
-
-}catch(e){
-
-result(
-"liveResult",
-e.message,
-"err"
-);
-
-}
-
-}
-
-
-/* =========================================================
-SITEMAP
-========================================================= */
-
-async function checkSitemap(){
-
-try{
-
-const d=
-await getFile(
-"sitemap.xml"
-);
-
-const xml=
-d.content;
-
-const urls=
-[
-...xml.matchAll(
-/<loc>\s*([^<]+)\s*<\/loc>/gi
-)
-]
-.map(
-x=>x[1]
-);
-
-const valid=
-/<urlset\b/i.test(xml) &&
-/<\/urlset>/i.test(xml);
-
-result(
-"sitemapResult",
-`Sitemap:
-${valid?"✓ Valid urlset structure":"✗ Invalid structure"}
-
-URLs:
-${urls.length}
-
-First URLs:
-${urls
-.slice(0,10)
-.join("\n")}`,
-valid
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"sitemapResult",
-e.message,
-"err"
-);
-
-}
-
-}
-
-
-/* =========================================================
-MOBILE
-========================================================= */
-
-async function analyzeMobile(){
-
-try{
-
-const d=
-await loadAnalysisFile(
-$("mobileFile")
-.value.trim()
-);
-
-const viewport=
-/<meta[^>]+name=["']viewport["']/i
-.test(d.content);
-
-const responsiveCSS=
-/@media\b/i
-.test(d.content);
-
-result(
-"mobileResult",
-`Viewport meta:
-${viewport?"✓ Present":"✗ Missing"}
-
-Responsive CSS in page:
-${responsiveCSS?"✓ Found":"⚠ Not found in this file"}
-
-Recommendation:
-${viewport
-?"Page has the basic mobile viewport."
-:"Add <meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">."}`,
-viewport
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"mobileResult",
-e.message,
-"err"
-);
-
-}
-
-}
-
-
-/* =========================================================
-SPEED
-========================================================= */
-
-async function checkSpeed(){
-
-const url=
-$("speedURL")
-.value
-.trim();
-
-if(!url)
-return alert(
-"Enter live URL."
-);
-
-try{
-
-result(
-"speedResult",
-"Checking..."
-);
-
-const d=
-await api(
-"/analyze-url",
-"POST",
-{url}
-);
-
-let status=
-"GOOD";
-
-if(
-d.responseTimeMs>2000
-)
-status="SLOW";
-
-else if(
-d.responseTimeMs>1000
-)
-status="REVIEW";
-
-result(
-"speedResult",
-`URL:
-${d.url}
-
-HTTP:
-${d.status}
-
-Server response:
-${d.responseTimeMs} ms
-
-Downloaded HTML:
-${d.contentLength} bytes
-
-Status:
-${status}
-
-Note:
-This is a basic server-response test.
-For full Core Web Vitals and Lighthouse scoring,
-use Google PageSpeed Insights.`,
-status==="GOOD"
-?"ok"
-:""
-);
-
-}catch(e){
-
-result(
-"speedResult",
-e.message,
-"err"
-);
-
-}
-
-}
-
-
-/* =========================================================
-QUICK LINKS
+   QUICK LINKS
 ========================================================= */
 
 function openWebsite(){
 
-window.open(
-CONFIG.base,
-"_blank"
-);
+    window.open(
+        CONFIG.base,
+        "_blank"
+    );
 
 }
 
 
 function openGitHub(){
 
-window.open(
-"https://github.com/"+
-CONFIG.repo,
-"_blank"
-);
+    window.open(
+        "https://github.com/" +
+        CONFIG.repo,
+        "_blank"
+    );
 
 }
 
 
 function openWorker(){
 
-window.open(
-worker(),
-"_blank"
-);
+    window.open(
+        worker(),
+        "_blank"
+    );
 
 }
 
 
 function openSitemap(){
 
-window.open(
-CONFIG.base+
-"sitemap.xml",
-"_blank"
-);
+    window.open(
+        CONFIG.base +
+        "sitemap.xml",
+        "_blank"
+    );
 
 }
 
 
 /* =========================================================
-START
+   EVENT LISTENERS
+   IMPORTANT: TEST CONNECTION IS DIRECTLY CONNECTED HERE
 ========================================================= */
 
 document.addEventListener(
-"DOMContentLoaded",
-()=>{
+    "DOMContentLoaded",
+    () => {
 
-makeHeadingFields();
+        makeHeadingFields();
 
-updateSectionInfo();
+        updateSectionInfo();
 
-loadSavedKey();
+        loadSavedKey();
 
-$("articleDate")
-.value=
-new Date()
-.toISOString()
-.slice(0,10);
 
-$("articleTitle")
-.addEventListener(
-"input",
-()=>{
+        $("articleDate")
+            .value =
+            new Date()
+                .toISOString()
+                .slice(
+                    0,
+                    10
+                );
 
-if(
-!$("articleSlug")
-.value
-)
-$("articleSlug")
-.value=
-slugify(
-$("articleTitle")
-.value
-);
 
-}
-);
+        $("articleTitle")
+            .addEventListener(
+                "input",
+                () => {
 
-}
+                    if(
+                        !$("articleSlug")
+                            .value
+                    ){
+
+                        $("articleSlug")
+                            .value =
+                            slugify(
+                                $("articleTitle")
+                                    .value
+                            );
+
+                    }
+
+                }
+            );
+
+
+        /* CONNECTION */
+
+        $("testConnectionBtn")
+            .addEventListener(
+                "click",
+                testConnection
+            );
+
+
+        $("clearSavedKeyBtn")
+            .addEventListener(
+                "click",
+                clearSavedKey
+            );
+
+
+        /* ARTICLE */
+
+        $("articleSection")
+            .addEventListener(
+                "change",
+                updateSectionInfo
+            );
+
+
+        $("previewArticleBtn")
+            .addEventListener(
+                "click",
+                previewArticle
+            );
+
+
+        $("analyzeSeoBtn")
+            .addEventListener(
+                "click",
+                analyzeSEO
+            );
+
+
+        $("generatedHtmlBtn")
+            .addEventListener(
+                "click",
+                showGeneratedHTML
+            );
+
+
+        $("clearArticleBtn")
+            .addEventListener(
+                "click",
+                clearArticle
+            );
+
+
+        $("publishBtn")
+            .addEventListener(
+                "click",
+                directPublish
+            );
+
+
+        /* DELETE */
+
+        $("deleteArticleBtn")
+            .addEventListener(
+                "click",
+                deleteArticle
+            );
+
+
+        /* FILE */
+
+        $("readFileBtn")
+            .addEventListener(
+                "click",
+                readFile
+            );
+
+
+        $("loadIndexBtn")
+            .addEventListener(
+                "click",
+                loadIndex
+            );
+
+
+        $("saveFileBtn")
+            .addEventListener(
+                "click",
+                saveFile
+            );
+
+
+        $("clearEditorBtn")
+            .addEventListener(
+                "click",
+                clearEditor
+            );
+
+
+        /* KEYWORDS */
+
+        $("addKeywordBtn")
+            .addEventListener(
+                "click",
+                addKeyword
+            );
+
+
+        $("loadKeywordsBtn")
+            .addEventListener(
+                "click",
+                loadKeywords
+            );
+
+
+        /* INTERNAL LINK */
+
+        $("prepareLinkBtn")
+            .addEventListener(
+                "click",
+                prepareLink
+            );
+
+
+        $("applyInternalLinkBtn")
+            .addEventListener(
+                "click",
+                applyInternalLink
+            );
+
+
+        /* REDIRECT */
+
+        $("createRedirectBtn")
+            .addEventListener(
+                "click",
+                createRedirect
+            );
+
+
+        /* QUICK LINKS */
+
+        $("openWebsiteBtn")
+            .addEventListener(
+                "click",
+                openWebsite
+            );
+
+
+        $("openGithubBtn")
+            .addEventListener(
+                "click",
+                openGitHub
+            );
+
+
+        $("openWorkerBtn")
+            .addEventListener(
+                "click",
+                openWorker
+            );
+
+
+        $("openSitemapBtn")
+            .addEventListener(
+                "click",
+                openSitemap
+            );
+
+    }
 );
 
 </script>
 
 </body>
 
- </html>
+    </html>
