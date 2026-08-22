@@ -29,6 +29,10 @@
         content="index, follow, max-image-preview:large"
     >
 
+    <meta
+        name="theme-color"
+        content="#071412"
+    >
 
     <!-- Canonical -->
 
@@ -66,9 +70,11 @@
     >
 
 
+    <!-- SEO Theme -->
+
     <link
         rel="stylesheet"
-        href="../style.css"
+        href="../seo.css"
     >
 
 
@@ -93,6 +99,27 @@
 
 
 <body>
+
+
+    <!-- ================= SEO BACKGROUND ================= -->
+
+    <div
+        class="seo-background"
+        aria-hidden="true"
+    >
+
+        <div class="seo-grid"></div>
+
+        <div class="seo-orb seo-orb-one"></div>
+
+        <div class="seo-orb seo-orb-two"></div>
+
+        <div class="seo-ring seo-ring-one"></div>
+
+        <div class="seo-ring seo-ring-two"></div>
+
+    </div>
+
 
 
     <!-- ================= HEADER ================= -->
@@ -141,7 +168,10 @@
                     Technology
                 </a>
 
-                <a href="seo.html">
+                <a
+                    href="seo.html"
+                    class="active"
+                >
                     SEO
                 </a>
 
@@ -163,24 +193,33 @@
         <!-- ================= HERO ================= -->
 
         <section
-            class="hero"
+            class="seo-hero"
             aria-labelledby="seo-title"
         >
 
-            <div class="container hero-content">
+            <div class="container seo-hero-content">
+
+
+                <div class="seo-badge">
+
+                    <span class="pulse-dot"></span>
+
+                    LEARNBYTE / SEO
+
+                </div>
 
 
                 <p class="hero-label">
-                    LearnByte SEO
+                    SEARCH • OPTIMIZE • GROW
                 </p>
 
 
                 <h1 id="seo-title">
 
-                    Learn SEO.
+                    Make your website
 
                     <span>
-                        Grow online.
+                        easier to find.
                     </span>
 
                 </h1>
@@ -188,13 +227,105 @@
 
                 <p class="hero-description">
 
-                    Learn search engine optimization through
-                    practical guides covering on-page SEO,
-                    technical SEO, website indexing and
-                    search visibility.
+                    Learn SEO through practical guides covering
+                    search visibility, on-page optimization,
+                    technical SEO, indexing and Google Search Console.
 
                 </p>
 
+
+                <div class="hero-actions">
+
+
+                    <a
+                        href="#seo-articles"
+                        class="seo-btn seo-btn-primary"
+                    >
+                        Explore SEO Guides
+                        <span>→</span>
+                    </a>
+
+
+                    <a
+                        href="#seo-topics"
+                        class="seo-btn seo-btn-secondary"
+                    >
+                        Explore Topics
+                    </a>
+
+
+                </div>
+
+
+                <!-- SEO SEARCH VISUAL -->
+
+                <div
+                    class="search-visual"
+                    aria-hidden="true"
+                >
+
+                    <div class="search-circle">
+
+                        <div class="search-icon"></div>
+
+                    </div>
+
+                    <div class="search-line line-one"></div>
+
+                    <div class="search-line line-two"></div>
+
+                    <div class="search-line line-three"></div>
+
+                    <span class="search-node node-one"></span>
+                    <span class="search-node node-two"></span>
+                    <span class="search-node node-three"></span>
+
+                </div>
+
+
+                <!-- STATS -->
+
+                <div class="seo-stats">
+
+                    <div class="seo-stat">
+
+                        <strong>
+                            03
+                        </strong>
+
+                        <span>
+                            GUIDES
+                        </span>
+
+                    </div>
+
+
+                    <div class="seo-stat">
+
+                        <strong>
+                            03
+                        </strong>
+
+                        <span>
+                            CORE AREAS
+                        </span>
+
+                    </div>
+
+
+                    <div class="seo-stat">
+
+                        <strong>
+                            100%
+                        </strong>
+
+                        <span>
+                            BEGINNER FRIENDLY
+                        </span>
+
+                    </div>
+
+                </div>
 
             </div>
 
@@ -205,176 +336,181 @@
         <!-- ================= ARTICLES ================= -->
 
         <section
-            class="section"
+            class="seo-section"
+            id="seo-articles"
             aria-labelledby="seo-articles-title"
         >
 
             <div class="container">
 
 
-                <div class="section-heading">
+                <div class="seo-section-heading">
 
+                    <div class="heading-number">
+                        01
+                    </div>
 
-                    <p class="section-label">
-                        SEO
-                    </p>
+                    <div>
 
+                        <p class="section-label">
+                            SEO KNOWLEDGE
+                        </p>
 
-                    <h2 id="seo-articles-title">
-                        Latest SEO Articles
-                    </h2>
+                        <h2 id="seo-articles-title">
+                            Latest SEO Guides
+                        </h2>
 
+                        <p>
+                            Practical SEO content focused on
+                            techniques you can actually use.
+                        </p>
 
-                    <p>
-                        Beginner-friendly SEO guides focused on
-                        practical techniques you can actually use.
-                    </p>
-
+                    </div>
 
                 </div>
 
 
 
-                <div class="post-grid">
+                <div class="seo-post-grid">
 
 
-                    <!-- ================= ARTICLE 1 ================= -->
+                    <!-- ARTICLE 1 -->
 
-                    <article class="post-card">
+                    <article class="seo-post-card">
 
+                        <div class="seo-card-top">
 
-                        <div
-                            class="post-image"
-                            aria-hidden="true"
-                        >
-                            🔎
-                        </div>
-
-
-                        <div class="post-content">
-
-
-                            <span class="post-category">
-                                On-Page SEO
+                            <span class="seo-card-number">
+                                01
                             </span>
 
-
-                            <h3>
-                                On-Page SEO Checklist:
-                                15 Things to Optimize
-                            </h3>
-
-
-                            <p>
-                                Learn how to optimize titles,
-                                headings, URLs, content, internal
-                                links, images and other important
-                                on-page elements.
-                            </p>
-
-
-                            <a
-                                href="../posts/on-page-seo-checklist.html"
-                            >
-                                Read Article →
-                            </a>
-
+                            <span class="seo-card-icon">
+                                🔎
+                            </span>
 
                         </div>
+
+
+                        <span class="post-category">
+                            ON-PAGE SEO
+                        </span>
+
+
+                        <h3>
+                            On-Page SEO Checklist:
+                            15 Things to Optimize
+                        </h3>
+
+
+                        <p>
+                            Learn how to optimize titles,
+                            headings, URLs, content, internal
+                            links, images and other important
+                            on-page elements.
+                        </p>
+
+
+                        <a
+                            href="../posts/on-page-seo-checklist.html"
+                            class="seo-read"
+                        >
+                            Read Guide
+                            <span>↗</span>
+                        </a>
 
                     </article>
 
 
 
-                    <!-- ================= ARTICLE 2 ================= -->
+                    <!-- ARTICLE 2 -->
 
-                    <article class="post-card">
+                    <article class="seo-post-card">
 
+                        <div class="seo-card-top">
 
-                        <div
-                            class="post-image"
-                            aria-hidden="true"
-                        >
-                            ⚙️
-                        </div>
-
-
-                        <div class="post-content">
-
-
-                            <span class="post-category">
-                                Technical SEO
+                            <span class="seo-card-number">
+                                02
                             </span>
 
-
-                            <h3>
-                                Technical SEO for Beginners:
-                                Complete Website Checklist
-                            </h3>
-
-
-                            <p>
-                                Check crawlability, indexing,
-                                sitemaps, robots.txt, canonical
-                                URLs, mobile usability and more.
-                            </p>
-
-
-                            <a
-                                href="../posts/technical-seo-checklist.html"
-                            >
-                                Read Article →
-                            </a>
-
+                            <span class="seo-card-icon">
+                                ⚙️
+                            </span>
 
                         </div>
+
+
+                        <span class="post-category">
+                            TECHNICAL SEO
+                        </span>
+
+
+                        <h3>
+                            Technical SEO for Beginners:
+                            Complete Website Checklist
+                        </h3>
+
+
+                        <p>
+                            Check crawlability, indexing,
+                            sitemaps, robots.txt, canonical
+                            URLs, mobile usability and more.
+                        </p>
+
+
+                        <a
+                            href="../posts/technical-seo-checklist.html"
+                            class="seo-read"
+                        >
+                            Read Guide
+                            <span>↗</span>
+                        </a>
 
                     </article>
 
 
 
-                    <!-- ================= ARTICLE 3 ================= -->
+                    <!-- ARTICLE 3 -->
 
-                    <article class="post-card">
+                    <article class="seo-post-card">
 
+                        <div class="seo-card-top">
 
-                        <div
-                            class="post-image"
-                            aria-hidden="true"
-                        >
-                            🔍
-                        </div>
-
-
-                        <div class="post-content">
-
-
-                            <span class="post-category">
-                                Google Indexing
+                            <span class="seo-card-number">
+                                03
                             </span>
 
-
-                            <h3>
-                                How to Get Your Website
-                                Indexed by Google
-                            </h3>
-
-
-                            <p>
-                                Learn how Google discovers pages
-                                and how to use sitemaps, Search
-                                Console and internal links properly.
-                            </p>
-
-
-                            <a
-                                href="../posts/how-to-get-website-indexed-by-google.html"
-                            >
-                                Read Article →
-                            </a>
-
+                            <span class="seo-card-icon">
+                                🌐
+                            </span>
 
                         </div>
+
+
+                        <span class="post-category">
+                            GOOGLE INDEXING
+                        </span>
+
+
+                        <h3>
+                            How to Get Your Website
+                            Indexed by Google
+                        </h3>
+
+
+                        <p>
+                            Learn how Google discovers pages
+                            and how to use sitemaps, Search
+                            Console and internal links properly.
+                        </p>
+
+
+                        <a
+                            href="../posts/how-to-get-website-indexed-by-google.html"
+                            class="seo-read"
+                        >
+                            Read Guide
+                            <span>↗</span>
+                        </a>
 
                     </article>
 
@@ -387,65 +523,76 @@
 
 
 
-        <!-- ================= SEO TOPICS ================= -->
+        <!-- ================= TOPICS ================= -->
 
         <section
-            class="categories section"
+            class="seo-topics"
+            id="seo-topics"
             aria-labelledby="seo-topics-title"
         >
 
             <div class="container">
 
 
-                <div class="section-heading">
+                <div class="seo-section-heading">
 
+                    <div class="heading-number">
+                        02
+                    </div>
 
-                    <p class="section-label">
-                        Explore SEO
-                    </p>
+                    <div>
 
+                        <p class="section-label">
+                            EXPLORE
+                        </p>
 
-                    <h2 id="seo-topics-title">
-                        SEO Topics
-                    </h2>
+                        <h2 id="seo-topics-title">
+                            SEO Topics
+                        </h2>
 
+                        <p>
+                            Build your SEO knowledge one area
+                            at a time.
+                        </p>
 
-                    <p>
-                        Explore different areas of SEO and
-                        continue learning through practical guides.
-                    </p>
-
+                    </div>
 
                 </div>
 
 
 
-                <div class="category-grid">
+                <div class="seo-topic-grid">
 
 
                     <a
                         href="../posts/on-page-seo-checklist.html"
-                        class="category-card"
+                        class="seo-topic-card"
                     >
 
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
+                        <span class="topic-icon">
                             📝
+                        </span>
+
+                        <div>
+
+                            <span>
+                                01 / CONTENT
+                            </span>
+
+                            <h3>
+                                On-Page SEO
+                            </h3>
+
+                            <p>
+                                Titles, headings, content,
+                                URLs, links and images.
+                            </p>
+
                         </div>
 
-
-                        <h3>
-                            On-Page SEO
-                        </h3>
-
-
-                        <p>
-                            Learn about titles, headings,
-                            content, URLs, internal links
-                            and images.
-                        </p>
+                        <strong>
+                            →
+                        </strong>
 
                     </a>
 
@@ -453,27 +600,33 @@
 
                     <a
                         href="../posts/technical-seo-checklist.html"
-                        class="category-card"
+                        class="seo-topic-card"
                     >
 
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
+                        <span class="topic-icon">
                             ⚙️
+                        </span>
+
+                        <div>
+
+                            <span>
+                                02 / WEBSITE
+                            </span>
+
+                            <h3>
+                                Technical SEO
+                            </h3>
+
+                            <p>
+                                Crawling, indexing, sitemaps,
+                                canonicals and redirects.
+                            </p>
+
                         </div>
 
-
-                        <h3>
-                            Technical SEO
-                        </h3>
-
-
-                        <p>
-                            Understand crawling, indexing,
-                            sitemaps, robots.txt, canonicals
-                            and redirects.
-                        </p>
+                        <strong>
+                            →
+                        </strong>
 
                     </a>
 
@@ -481,27 +634,33 @@
 
                     <a
                         href="../posts/how-to-get-website-indexed-by-google.html"
-                        class="category-card"
+                        class="seo-topic-card"
                     >
 
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
+                        <span class="topic-icon">
                             🔍
+                        </span>
+
+                        <div>
+
+                            <span>
+                                03 / SEARCH
+                            </span>
+
+                            <h3>
+                                Google Indexing
+                            </h3>
+
+                            <p>
+                                Understand discovery, indexing
+                                and Search Console.
+                            </p>
+
                         </div>
 
-
-                        <h3>
-                            Google Indexing
-                        </h3>
-
-
-                        <p>
-                            Learn how Google discovers pages
-                            and how to troubleshoot indexing
-                            problems.
-                        </p>
+                        <strong>
+                            →
+                        </strong>
 
                     </a>
 
@@ -509,26 +668,33 @@
 
                     <a
                         href="../index.html#categories"
-                        class="category-card"
+                        class="seo-topic-card"
                     >
 
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
-                            🌐
+                        <span class="topic-icon">
+                            ✦
+                        </span>
+
+                        <div>
+
+                            <span>
+                                04 / LEARN MORE
+                            </span>
+
+                            <h3>
+                                More Topics
+                            </h3>
+
+                            <p>
+                                Explore Education, Technology
+                                and Gaming on LearnByte.
+                            </p>
+
                         </div>
 
-
-                        <h3>
-                            More Topics
-                        </h3>
-
-
-                        <p>
-                            Explore Education, Technology
-                            and Gaming guides on LearnByte.
-                        </p>
+                        <strong>
+                            →
+                        </strong>
 
                     </a>
 
@@ -544,29 +710,38 @@
         <!-- ================= ABOUT ================= -->
 
         <section
-            class="about-section section"
+            class="seo-about"
             aria-labelledby="seo-about-title"
         >
 
-            <div class="container about-content">
+            <div class="container seo-about-inner">
 
 
-                <p class="section-label">
-                    LearnByte SEO
-                </p>
+                <div class="seo-about-mark">
+                    SEO
+                </div>
 
 
-                <h2 id="seo-about-title">
-                    SEO without the confusion.
-                </h2>
+                <div>
+
+                    <p class="section-label">
+                        LEARNBYTE SEO
+                    </p>
 
 
-                <p>
-                    LearnByte explains SEO concepts in simple,
-                    practical language so beginners can understand
-                    how search engines, websites and optimization
-                    work together.
-                </p>
+                    <h2 id="seo-about-title">
+                        SEO without the confusion.
+                    </h2>
+
+
+                    <p>
+                        LearnByte explains SEO concepts in simple,
+                        practical language so beginners can understand
+                        how search engines, websites and optimization
+                        work together.
+                    </p>
+
+                </div>
 
 
             </div>
@@ -588,7 +763,6 @@
 
             <div class="footer-brand">
 
-
                 <a
                     href="../index.html"
                     class="logo"
@@ -596,43 +770,35 @@
                     Learn<span>Byte</span>
                 </a>
 
-
                 <p>
                     Learn something useful, every day.
                 </p>
-
 
             </div>
 
 
 
             <div class="footer-links">
-
 
                 <h3>
                     Quick Links
                 </h3>
 
-
                 <a href="../about.html">
                     About
                 </a>
-
 
                 <a href="../contact.html">
                     Contact
                 </a>
 
-
                 <a href="../privacy-policy.html">
                     Privacy Policy
                 </a>
 
-
                 <a href="../disclaimer.html">
                     Disclaimer
                 </a>
-
 
             </div>
 
@@ -640,31 +806,28 @@
 
             <div class="footer-links">
 
-
                 <h3>
                     Categories
                 </h3>
-
 
                 <a href="education.html">
                     Education
                 </a>
 
-
                 <a href="technology.html">
                     Technology
                 </a>
 
-
-                <a href="seo.html">
+                <a
+                    href="seo.html"
+                    class="active"
+                >
                     SEO
                 </a>
-
 
                 <a href="gaming.html">
                     Gaming
                 </a>
-
 
             </div>
 
@@ -675,17 +838,13 @@
 
         <div class="footer-bottom">
 
-
             <div class="container">
-
 
                 <p>
                     © 2026 LearnByte. All rights reserved.
                 </p>
 
-
             </div>
-
 
         </div>
 
