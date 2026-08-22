@@ -11,12 +11,12 @@
     >
 
     <title>
-        Technology Guides - AI, Apps & Software | LearnByte
+        Technology Guides, AI & Digital Tools | LearnByte
     </title>
 
     <meta
         name="description"
-        content="Explore beginner-friendly technology guides about artificial intelligence, apps, software, gadgets and useful digital tools on LearnByte."
+        content="Explore practical technology guides covering artificial intelligence, apps, software, gadgets, digital tools and useful technology concepts on LearnByte."
     >
 
     <meta
@@ -44,12 +44,12 @@
 
     <meta
         property="og:title"
-        content="Technology Guides - AI, Apps & Software | LearnByte"
+        content="Technology Guides, AI & Digital Tools | LearnByte"
     >
 
     <meta
         property="og:description"
-        content="Explore practical and beginner-friendly technology guides about AI, apps, software and digital tools."
+        content="Practical technology guides covering AI, apps, software, gadgets and useful digital tools."
     >
 
     <meta
@@ -63,9 +63,11 @@
     >
 
 
+    <!-- Technology Theme -->
+
     <link
         rel="stylesheet"
-        href="../style.css"
+        href="../technology.css"
     >
 
 
@@ -75,8 +77,8 @@
     {
         "@context": "https://schema.org",
         "@type": "CollectionPage",
-        "name": "Technology Guides - LearnByte",
-        "description": "Beginner-friendly technology guides about artificial intelligence, apps, software and digital tools.",
+        "name": "Technology Guides, AI & Digital Tools - LearnByte",
+        "description": "Practical technology guides covering artificial intelligence, apps, software, gadgets and digital tools.",
         "url": "https://learnbtyehq.github.io/category/technology.html",
         "isPartOf": {
             "@type": "WebSite",
@@ -92,16 +94,37 @@
 <body>
 
 
+    <!-- ================= TECH BACKGROUND ================= -->
+
+    <div
+        class="tech-background"
+        aria-hidden="true"
+    >
+
+        <div class="tech-grid"></div>
+
+        <div class="tech-glow tech-glow-one"></div>
+
+        <div class="tech-glow tech-glow-two"></div>
+
+        <div class="tech-circle tech-circle-one"></div>
+
+        <div class="tech-circle tech-circle-two"></div>
+
+    </div>
+
+
+
     <!-- ================= HEADER ================= -->
 
-    <header class="site-header">
+    <header class="tech-header">
 
-        <div class="container navbar">
+        <div class="tech-container tech-navbar">
 
 
             <a
                 href="../index.html"
-                class="logo"
+                class="tech-logo"
                 aria-label="LearnByte Home"
             >
                 Learn<span>Byte</span>
@@ -109,7 +132,7 @@
 
 
             <button
-                class="menu-toggle"
+                class="tech-menu-toggle"
                 id="menuToggle"
                 aria-label="Open navigation menu"
                 aria-expanded="false"
@@ -121,7 +144,7 @@
 
 
             <nav
-                class="nav-menu"
+                class="tech-nav-menu"
                 id="navMenu"
                 aria-label="Main navigation"
             >
@@ -134,7 +157,10 @@
                     Education
                 </a>
 
-                <a href="technology.html">
+                <a
+                    href="technology.html"
+                    class="active"
+                >
                     Technology
                 </a>
 
@@ -160,15 +186,24 @@
         <!-- ================= HERO ================= -->
 
         <section
-            class="hero"
+            class="tech-hero"
             aria-labelledby="technology-title"
         >
 
-            <div class="container hero-content">
+            <div class="tech-container tech-hero-content">
 
 
-                <p class="hero-label">
-                    LearnByte Technology
+                <div class="tech-status">
+
+                    <span class="status-dot"></span>
+
+                    LEARNBYTE / TECHNOLOGY
+
+                </div>
+
+
+                <p class="tech-kicker">
+                    AI • SOFTWARE • DIGITAL WORLD
                 </p>
 
 
@@ -177,203 +212,334 @@
                     Understand
 
                     <span>
-                        technology.
+                        what's next.
                     </span>
 
                 </h1>
 
 
-                <p class="hero-description">
+                <p class="tech-description">
 
-                    Explore useful technology guides, artificial
-                    intelligence, apps, software, gadgets and
-                    practical digital tips explained in simple
-                    language.
+                    Explore practical technology guides,
+                    artificial intelligence, useful apps,
+                    software, gadgets and digital tools
+                    without the confusing jargon.
 
                 </p>
 
 
+                <div class="tech-actions">
+
+
+                    <a
+                        href="#technology-guides"
+                        class="tech-btn tech-btn-primary"
+                    >
+                        Explore Technology
+                        <span>↗</span>
+                    </a>
+
+
+                    <a
+                        href="#technology-topics"
+                        class="tech-btn tech-btn-secondary"
+                    >
+                        Browse Topics
+                    </a>
+
+
+                </div>
+
+
+
+                <!-- TECH TERMINAL -->
+
+                <div
+                    class="tech-terminal"
+                    aria-hidden="true"
+                >
+
+                    <div class="terminal-top">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                        <b>
+                            learnbyte.tech
+                        </b>
+
+                    </div>
+
+
+                    <div class="terminal-body">
+
+                        <p>
+                            <span class="terminal-symbol">
+                                &gt;
+                            </span>
+
+                            exploring technology...
+                        </p>
+
+                        <p class="terminal-line">
+                            AI systems
+                            <strong>
+                                ONLINE
+                            </strong>
+                        </p>
+
+                        <p class="terminal-line">
+                            Digital tools
+                            <strong>
+                                READY
+                            </strong>
+                        </p>
+
+                        <p class="terminal-line">
+                            Knowledge
+                            <strong>
+                                LOADED
+                            </strong>
+                        </p>
+
+                        <div class="terminal-cursor">
+                            _
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- TECH STATS -->
+
+                <div class="tech-stats">
+
+
+                    <div class="tech-stat">
+
+                        <strong>
+                            AI
+                        </strong>
+
+                        <span>
+                            ARTIFICIAL INTELLIGENCE
+                        </span>
+
+                    </div>
+
+
+                    <div class="tech-stat">
+
+                        <strong>
+                            APP
+                        </strong>
+
+                        <span>
+                            SOFTWARE & TOOLS
+                        </span>
+
+                    </div>
+
+
+                    <div class="tech-stat">
+
+                        <strong>
+                            WEB
+                        </strong>
+
+                        <span>
+                            DIGITAL TECHNOLOGY
+                        </span>
+
+                    </div>
+
+
+                </div>
+
             </div>
 
         </section>
 
 
 
-        <!-- ================= ARTICLES ================= -->
+        <!-- ================= GUIDES ================= -->
 
         <section
-            class="section"
-            aria-labelledby="technology-articles-title"
+            class="tech-section"
+            id="technology-guides"
+            aria-labelledby="technology-guides-title"
         >
 
-            <div class="container">
+            <div class="tech-container">
 
 
-                <div class="section-heading">
+                <div class="tech-heading">
 
+                    <div class="heading-code">
+                        01
+                    </div>
 
-                    <p class="section-label">
-                        Technology
-                    </p>
+                    <div>
 
+                        <p>
+                            TECHNOLOGY / GUIDES
+                        </p>
 
-                    <h2 id="technology-articles-title">
-                        Latest Technology Articles
-                    </h2>
+                        <h2 id="technology-guides-title">
+                            Latest Technology Guides
+                        </h2>
 
+                        <span>
+                            Useful technology explained in
+                            simple language.
+                        </span>
 
-                    <p>
-                        Practical technology content to help you
-                        understand and use digital tools better.
-                    </p>
-
+                    </div>
 
                 </div>
 
 
 
-                <div class="post-grid">
+                <div class="tech-card-grid">
 
 
-                    <!-- ================= AI ARTICLE ================= -->
+                    <!-- ARTICLE 1 -->
 
-                    <article class="post-card">
+                    <article class="tech-card">
 
+                        <div class="tech-card-top">
 
-                        <div
-                            class="post-image"
-                            aria-hidden="true"
-                        >
-                            🤖
-                        </div>
-
-
-                        <div class="post-content">
-
-
-                            <span class="post-category">
-                                Artificial Intelligence
+                            <span>
+                                001
                             </span>
 
-
-                            <h3>
-                                What Is Artificial Intelligence?
-                                A Beginner's Guide
-                            </h3>
-
-
-                            <p>
-                                Learn what artificial intelligence
-                                is, how AI works, machine learning,
-                                generative AI, real-world uses,
-                                benefits and limitations.
-                            </p>
-
-
-                            <a
-                                href="../posts/what-is-artificial-intelligence.html"
-                            >
-                                Read Article →
-                            </a>
-
+                            <div class="tech-icon">
+                                🤖
+                            </div>
 
                         </div>
+
+
+                        <div class="tech-tag">
+                            ARTIFICIAL INTELLIGENCE
+                        </div>
+
+
+                        <h3>
+                            What Is Artificial Intelligence?
+                            A Beginner's Guide
+                        </h3>
+
+
+                        <p>
+                            Learn what AI is, how it works,
+                            machine learning, generative AI,
+                            real-world applications and
+                            important limitations.
+                        </p>
+
+
+                        <a
+                            href="../posts/what-is-artificial-intelligence.html"
+                        >
+                            Open Guide
+                            <span>→</span>
+                        </a>
 
                     </article>
 
 
 
-                    <!-- ================= APPS ARTICLE ================= -->
+                    <!-- ARTICLE 2 -->
 
-                    <article class="post-card">
+                    <article class="tech-card">
 
+                        <div class="tech-card-top">
 
-                        <div
-                            class="post-image"
-                            aria-hidden="true"
-                        >
-                            📱
-                        </div>
-
-
-                        <div class="post-content">
-
-
-                            <span class="post-category">
-                                Apps
+                            <span>
+                                002
                             </span>
 
-
-                            <h3>
-                                10 Useful Apps Every Student
-                                Should Know
-                            </h3>
-
-
-                            <p>
-                                Discover useful apps for studying,
-                                notes, productivity, assignments,
-                                file storage and everyday student
-                                tasks.
-                            </p>
-
-
-                            <a
-                                href="../posts/useful-apps-for-students.html"
-                            >
-                                Read Article →
-                            </a>
-
+                            <div class="tech-icon">
+                                💻
+                            </div>
 
                         </div>
+
+
+                        <div class="tech-tag">
+                            DIGITAL TOOLS
+                        </div>
+
+
+                        <h3>
+                            Practical Technology Tools
+                            You Should Know
+                        </h3>
+
+
+                        <p>
+                            Discover useful software, digital
+                            tools and technologies that can
+                            make everyday tasks easier.
+                        </p>
+
+
+                        <a
+                            href="../posts/practical-technology-tools.html"
+                        >
+                            Open Guide
+                            <span>→</span>
+                        </a>
 
                     </article>
 
 
 
-                    <!-- ================= SOFTWARE ARTICLE ================= -->
+                    <!-- ARTICLE 3 -->
 
-                    <article class="post-card">
+                    <article class="tech-card">
 
+                        <div class="tech-card-top">
 
-                        <div
-                            class="post-image"
-                            aria-hidden="true"
-                        >
-                            💻
-                        </div>
-
-
-                        <div class="post-content">
-
-
-                            <span class="post-category">
-                                Software
+                            <span>
+                                003
                             </span>
 
-
-                            <h3>
-                                What Is Software?
-                                Types of Software Explained
-                            </h3>
-
-
-                            <p>
-                                Learn what software is, how it works
-                                and the main types of software used
-                                on computers, smartphones and other
-                                digital devices.
-                            </p>
-
-
-                            <a
-                                href="../posts/what-is-software.html"
-                            >
-                                Read Article →
-                            </a>
-
+                            <div class="tech-icon">
+                                ⚡
+                            </div>
 
                         </div>
+
+
+                        <div class="tech-tag">
+                            PRODUCTIVITY
+                        </div>
+
+
+                        <h3>
+                            How Technology Can Improve
+                            Everyday Productivity
+                        </h3>
+
+
+                        <p>
+                            Learn how modern apps, automation
+                            and digital workflows can help
+                            you work smarter and save time.
+                        </p>
+
+
+                        <a
+                            href="../posts/technology-for-productivity.html"
+                        >
+                            Open Guide
+                            <span>→</span>
+                        </a>
 
                     </article>
 
@@ -386,118 +552,144 @@
 
 
 
-        <!-- ================= TECHNOLOGY TOPICS ================= -->
+        <!-- ================= TOPICS ================= -->
 
         <section
-            class="categories section"
+            class="tech-topics"
+            id="technology-topics"
             aria-labelledby="technology-topics-title"
         >
 
-            <div class="container">
+            <div class="tech-container">
 
 
-                <div class="section-heading">
+                <div class="tech-heading">
 
+                    <div class="heading-code">
+                        02
+                    </div>
 
-                    <p class="section-label">
-                        Explore Technology
-                    </p>
+                    <div>
 
+                        <p>
+                            EXPLORE / TECHNOLOGY
+                        </p>
 
-                    <h2 id="technology-topics-title">
-                        Technology Topics
-                    </h2>
+                        <h2 id="technology-topics-title">
+                            Technology Topics
+                        </h2>
 
+                        <span>
+                            Explore different parts of the
+                            modern digital world.
+                        </span>
 
-                    <p>
-                        Explore different areas of technology
-                        covered by LearnByte.
-                    </p>
-
+                    </div>
 
                 </div>
 
 
 
-                <div class="category-grid">
+                <div class="tech-topic-grid">
 
 
                     <a
                         href="../posts/what-is-artificial-intelligence.html"
-                        class="category-card"
+                        class="tech-topic"
                     >
 
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
-                            🤖
+                        <div class="topic-icon">
+                            AI
                         </div>
 
+                        <div>
 
-                        <h3>
-                            Artificial Intelligence
-                        </h3>
+                            <small>
+                                01 / INTELLIGENCE
+                            </small>
 
+                            <h3>
+                                Artificial Intelligence
+                            </h3>
 
-                        <p>
-                            Learn the basics of AI, machine learning,
-                            generative AI and practical applications.
-                        </p>
+                            <p>
+                                Understand AI, machine learning
+                                and generative technologies.
+                            </p>
+
+                        </div>
+
+                        <strong>
+                            ↗
+                        </strong>
 
                     </a>
 
 
 
                     <a
-                        href="../posts/useful-apps-for-students.html"
-                        class="category-card"
+                        href="../posts/practical-technology-tools.html"
+                        class="tech-topic"
                     >
 
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
-                            📱
+                        <div class="topic-icon">
+                            APP
                         </div>
 
+                        <div>
 
-                        <h3>
-                            Apps
-                        </h3>
+                            <small>
+                                02 / SOFTWARE
+                            </small>
 
+                            <h3>
+                                Apps & Digital Tools
+                            </h3>
 
-                        <p>
-                            Discover useful apps and digital tools
-                            for students and everyday productivity.
-                        </p>
+                            <p>
+                                Explore useful software,
+                                applications and online tools.
+                            </p>
+
+                        </div>
+
+                        <strong>
+                            ↗
+                        </strong>
 
                     </a>
 
 
 
                     <a
-                        href="../posts/what-is-software.html"
-                        class="category-card"
+                        href="../posts/technology-for-productivity.html"
+                        class="tech-topic"
                     >
 
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
-                            💻
+                        <div class="topic-icon">
+                            ⚡
                         </div>
 
+                        <div>
 
-                        <h3>
-                            Software
-                        </h3>
+                            <small>
+                                03 / PRODUCTIVITY
+                            </small>
 
+                            <h3>
+                                Technology & Productivity
+                            </h3>
 
-                        <p>
-                            Understand software, operating systems,
-                            applications and programming tools.
-                        </p>
+                            <p>
+                                Use technology to simplify
+                                tasks and improve workflows.
+                            </p>
+
+                        </div>
+
+                        <strong>
+                            ↗
+                        </strong>
 
                     </a>
 
@@ -505,26 +697,33 @@
 
                     <a
                         href="../index.html#categories"
-                        class="category-card"
+                        class="tech-topic"
                     >
 
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
-                            🌐
+                        <div class="topic-icon">
+                            +
                         </div>
 
+                        <div>
 
-                        <h3>
-                            More Topics
-                        </h3>
+                            <small>
+                                04 / DISCOVER
+                            </small>
 
+                            <h3>
+                                More LearnByte Topics
+                            </h3>
 
-                        <p>
-                            Explore Education, SEO and Gaming
-                            guides on LearnByte.
-                        </p>
+                            <p>
+                                Explore Education, SEO and
+                                Gaming guides.
+                            </p>
+
+                        </div>
+
+                        <strong>
+                            ↗
+                        </strong>
 
                     </a>
 
@@ -540,31 +739,49 @@
         <!-- ================= ABOUT ================= -->
 
         <section
-            class="about-section section"
+            class="tech-about"
             aria-labelledby="technology-about-title"
         >
 
-            <div class="container about-content">
+            <div class="tech-container">
 
 
-                <p class="section-label">
-                    LearnByte Technology
-                </p>
+                <div class="tech-about-box">
 
 
-                <h2 id="technology-about-title">
-                    Technology without the confusion.
-                </h2>
+                    <div class="tech-about-label">
+
+                        <span>
+                            SYSTEM
+                        </span>
+
+                        <strong>
+                            LEARNBYTE
+                        </strong>
+
+                    </div>
 
 
-                <p>
-                    We explain useful technology topics in a simple,
-                    practical and beginner-friendly way. From
-                    artificial intelligence and apps to software
-                    and digital tools, LearnByte focuses on
-                    understandable technology guides.
-                </p>
+                    <div>
 
+                        <p>
+                            LEARNBYTE TECHNOLOGY
+                        </p>
+
+                        <h2 id="technology-about-title">
+                            Technology without the jargon.
+                        </h2>
+
+                        <span>
+                            LearnByte explains technology,
+                            AI and digital tools in practical,
+                            easy-to-understand language.
+                        </span>
+
+                    </div>
+
+
+                </div>
 
             </div>
 
@@ -577,91 +794,83 @@
 
     <!-- ================= FOOTER ================= -->
 
-    <footer class="site-footer">
+    <footer class="tech-footer">
 
 
-        <div class="container footer-content">
+        <div class="tech-container tech-footer-grid">
 
 
-            <div class="footer-brand">
-
+            <div>
 
                 <a
                     href="../index.html"
-                    class="logo"
+                    class="tech-logo"
                 >
                     Learn<span>Byte</span>
                 </a>
-
 
                 <p>
                     Learn something useful, every day.
                 </p>
 
-
             </div>
 
 
 
-            <div class="footer-links">
-
+            <div class="tech-footer-links">
 
                 <h3>
                     Quick Links
                 </h3>
 
-
                 <a href="../about.html">
                     About
                 </a>
-
 
                 <a href="../contact.html">
                     Contact
                 </a>
 
+                <a href="../write.html">
+                    Write for LearnByte
+                </a>
 
                 <a href="../privacy-policy.html">
                     Privacy Policy
                 </a>
 
-
                 <a href="../disclaimer.html">
                     Disclaimer
                 </a>
-
 
             </div>
 
 
 
-            <div class="footer-links">
-
+            <div class="tech-footer-links">
 
                 <h3>
                     Categories
                 </h3>
 
-
                 <a href="education.html">
                     Education
                 </a>
 
-
-                <a href="technology.html">
+                <a
+                    href="technology.html"
+                    class="active"
+                >
                     Technology
                 </a>
-
 
                 <a href="seo.html">
                     SEO
                 </a>
 
-
                 <a href="gaming.html">
                     Gaming
                 </a>
-
 
             </div>
 
@@ -670,19 +879,15 @@
 
 
 
-        <div class="footer-bottom">
+        <div class="tech-footer-bottom">
 
-
-            <div class="container">
-
+            <div class="tech-container">
 
                 <p>
                     © 2026 LearnByte. All rights reserved.
                 </p>
 
-
             </div>
-
 
         </div>
 
