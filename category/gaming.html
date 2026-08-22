@@ -31,7 +31,7 @@
 
     <meta
         name="theme-color"
-        content="#070b16"
+        content="#101510"
     >
 
     <link
@@ -68,14 +68,14 @@
     >
 
 
-    <!-- Main Theme -->
+    <!-- Main Styles -->
 
     <link
         rel="stylesheet"
         href="../style.css"
     >
 
-    <!-- Gaming Theme -->
+    <!-- Gaming Category Theme -->
 
     <link
         rel="stylesheet"
@@ -83,7 +83,7 @@
     >
 
 
-    <!-- Collection Page Structured Data -->
+    <!-- Structured Data -->
 
     <script type="application/ld+json">
     {
@@ -104,25 +104,6 @@
 
 
 <body>
-
-
-<!-- ========================================
-     GAMING BACKGROUND
-======================================== -->
-
-<div
-    class="gaming-background"
-    aria-hidden="true"
->
-
-    <div class="gaming-grid"></div>
-
-    <div class="gaming-glow gaming-glow-one"></div>
-
-    <div class="gaming-glow gaming-glow-two"></div>
-
-</div>
-
 
 
 <!-- ========================================
@@ -195,7 +176,7 @@
 
 
 <!-- ========================================
-     GAMING HERO
+     HERO
 ======================================== -->
 
 <section
@@ -203,100 +184,48 @@
     aria-labelledby="gaming-title"
 >
 
-    <div class="container gaming-hero-content">
+    <div class="container gaming-hero-inner">
 
 
-        <div class="gaming-status">
+        <div class="gaming-hero-copy">
 
-            <span class="status-dot"></span>
-
-            LEARNBYTE / GAMING
-
-        </div>
+            <p class="gaming-kicker">
+                LEARNBYTE / GAMING
+            </p>
 
 
-        <p class="hero-label">
-            GAMING HUB
-        </p>
+            <h1 id="gaming-title">
 
-
-        <h1 id="gaming-title">
-
-            Play smarter.
-
-            <span>
-                Game better.
-            </span>
-
-        </h1>
-
-
-        <p class="hero-description">
-
-            Practical gaming guides for players who want
-            better skills, smoother performance and smarter
-            gameplay.
-
-        </p>
-
-
-        <div class="gaming-hero-actions">
-
-            <a
-                href="#gaming-articles"
-                class="gaming-btn gaming-btn-primary"
-            >
-                Explore Guides
-                <span>→</span>
-            </a>
-
-
-            <a
-                href="#gaming-topics"
-                class="gaming-btn gaming-btn-secondary"
-            >
-                Gaming Topics
-            </a>
-
-        </div>
-
-
-        <div class="gaming-stats">
-
-            <div class="gaming-stat">
-
-                <strong>
-                    03
-                </strong>
+                Play smarter.
 
                 <span>
-                    Guides
+                    Game better.
                 </span>
 
-            </div>
+            </h1>
 
 
-            <div class="gaming-stat">
+            <p class="gaming-intro">
 
-                <strong>
-                    03
-                </strong>
+                Practical gaming guides covering beginner
+                tips, skill improvement, better settings
+                and smarter gameplay.
+
+            </p>
+
+
+            <div class="gaming-hero-meta">
 
                 <span>
-                    Topics
+                    🎮 Gaming Guides
                 </span>
 
-            </div>
-
-
-            <div class="gaming-stat">
-
-                <strong>
-                    01
-                </strong>
+                <span>
+                    •
+                </span>
 
                 <span>
-                    Gaming Hub
+                    Practical & Beginner-Friendly
                 </span>
 
             </div>
@@ -304,49 +233,30 @@
         </div>
 
 
-    </div>
+        <div
+            class="gaming-hero-card"
+            aria-hidden="true"
+        >
 
+            <div class="hero-card-label">
+                GAMING
+            </div>
 
-    <div
-        class="gaming-hero-visual"
-        aria-hidden="true"
-    >
-
-        <div class="gaming-ring ring-one"></div>
-
-        <div class="gaming-ring ring-two"></div>
-
-        <div class="gaming-ring ring-three"></div>
-
-
-        <div class="gaming-core">
-
-            <span>
+            <div class="hero-controller">
                 🎮
-            </span>
+            </div>
 
-            <strong>
-                PLAY
-            </strong>
+            <div class="hero-card-line"></div>
+
+            <p>
+                PLAY.
+                <span>
+                    LEARN.
+                </span>
+                IMPROVE.
+            </p>
 
         </div>
-
-
-        <span class="gaming-particle particle-one">
-            +
-        </span>
-
-        <span class="gaming-particle particle-two">
-            ×
-        </span>
-
-        <span class="gaming-particle particle-three">
-            ◆
-        </span>
-
-        <span class="gaming-particle particle-four">
-            +
-        </span>
 
     </div>
 
@@ -359,7 +269,7 @@
 ======================================== -->
 
 <section
-    class="gaming-section"
+    class="gaming-articles section"
     id="gaming-articles"
     aria-labelledby="gaming-articles-title"
 >
@@ -367,24 +277,24 @@
     <div class="container">
 
 
-        <div class="gaming-section-heading">
+        <div class="gaming-heading">
 
             <div>
 
-                <p class="gaming-section-label">
-                    PLAYER GUIDES
+                <p class="gaming-label">
+                    LATEST GUIDES
                 </p>
 
                 <h2 id="gaming-articles-title">
-                    Level up your gameplay.
+                    Gaming articles worth reading.
                 </h2>
 
             </div>
 
 
             <p>
-                Practical guides focused on skills,
-                strategies and better gaming performance.
+                Straightforward guides designed to help
+                you understand games and improve your play.
             </p>
 
         </div>
@@ -398,25 +308,24 @@
 
             <article class="gaming-post-card">
 
-                <div class="gaming-card-top">
+                <div class="gaming-post-top">
 
-                    <span class="gaming-card-number">
+                    <span class="gaming-post-number">
                         01
                     </span>
 
-                    <div class="gaming-card-icon">
+                    <span class="gaming-post-icon">
                         🎮
-                    </div>
+                    </span>
+
+                    <span class="gaming-post-type">
+                        GAMING TIPS
+                    </span>
 
                 </div>
 
 
                 <div class="gaming-post-content">
-
-                    <span class="gaming-category">
-                        GAMING TIPS
-                    </span>
-
 
                     <h3>
                         15 Gaming Tips for Beginners:
@@ -436,7 +345,7 @@
                         href="../posts/best-gaming-tips-for-beginners.html"
                         class="gaming-read"
                     >
-                        Read Guide
+                        Read Article
                         <span>→</span>
                     </a>
 
@@ -450,25 +359,24 @@
 
             <article class="gaming-post-card">
 
-                <div class="gaming-card-top">
+                <div class="gaming-post-top">
 
-                    <span class="gaming-card-number">
+                    <span class="gaming-post-number">
                         02
                     </span>
 
-                    <div class="gaming-card-icon">
+                    <span class="gaming-post-icon">
                         🏆
-                    </div>
+                    </span>
+
+                    <span class="gaming-post-type">
+                        GAMING SKILLS
+                    </span>
 
                 </div>
 
 
                 <div class="gaming-post-content">
-
-                    <span class="gaming-category">
-                        GAMING SKILLS
-                    </span>
-
 
                     <h3>
                         How to Improve Your Gaming Skills:
@@ -488,7 +396,7 @@
                         href="../posts/how-to-improve-gaming-skills.html"
                         class="gaming-read"
                     >
-                        Read Guide
+                        Read Article
                         <span>→</span>
                     </a>
 
@@ -502,25 +410,24 @@
 
             <article class="gaming-post-card">
 
-                <div class="gaming-card-top">
+                <div class="gaming-post-top">
 
-                    <span class="gaming-card-number">
+                    <span class="gaming-post-number">
                         03
                     </span>
 
-                    <div class="gaming-card-icon">
+                    <span class="gaming-post-icon">
                         ⚙️
-                    </div>
+                    </span>
+
+                    <span class="gaming-post-type">
+                        PERFORMANCE
+                    </span>
 
                 </div>
 
 
                 <div class="gaming-post-content">
-
-                    <span class="gaming-category">
-                        PERFORMANCE
-                    </span>
-
 
                     <h3>
                         Best Gaming Settings for
@@ -539,7 +446,7 @@
                         href="../posts/gaming-settings-for-better-performance.html"
                         class="gaming-read"
                     >
-                        Read Guide
+                        Read Article
                         <span>→</span>
                     </a>
 
@@ -561,7 +468,7 @@
 ======================================== -->
 
 <section
-    class="gaming-topics"
+    class="gaming-topics section"
     id="gaming-topics"
     aria-labelledby="gaming-topics-title"
 >
@@ -569,24 +476,24 @@
     <div class="container">
 
 
-        <div class="gaming-section-heading">
+        <div class="gaming-heading">
 
             <div>
 
-                <p class="gaming-section-label">
-                    EXPLORE
+                <p class="gaming-label">
+                    EXPLORE GAMING
                 </p>
 
                 <h2 id="gaming-topics-title">
-                    Choose your loadout.
+                    Find your next guide.
                 </h2>
 
             </div>
 
 
             <p>
-                Pick a gaming topic and start improving
-                one skill at a time.
+                Explore different gaming topics and
+                learn one useful skill at a time.
             </p>
 
         </div>
@@ -601,25 +508,32 @@
                 class="gaming-topic-card"
             >
 
-                <span class="topic-index">
-                    01
-                </span>
+                <div class="topic-top">
 
-                <div class="topic-icon">
-                    🎮
+                    <span>
+                        01
+                    </span>
+
+                    <strong>
+                        🎮
+                    </strong>
+
                 </div>
+
 
                 <h3>
                     Gaming Tips
                 </h3>
 
+
                 <p>
-                    Useful beginner strategies,
-                    habits and gameplay tips.
+                    Beginner strategies, useful habits
+                    and practical gameplay tips.
                 </p>
 
-                <span class="topic-arrow">
-                    →
+
+                <span class="topic-link">
+                    Explore →
                 </span>
 
             </a>
@@ -631,25 +545,32 @@
                 class="gaming-topic-card"
             >
 
-                <span class="topic-index">
-                    02
-                </span>
+                <div class="topic-top">
 
-                <div class="topic-icon">
-                    🏆
+                    <span>
+                        02
+                    </span>
+
+                    <strong>
+                        🏆
+                    </strong>
+
                 </div>
+
 
                 <h3>
                     Gaming Skills
                 </h3>
 
+
                 <p>
-                    Improve aim, movement,
-                    game sense and consistency.
+                    Improve aim, movement, game sense,
+                    decision-making and consistency.
                 </p>
 
-                <span class="topic-arrow">
-                    →
+
+                <span class="topic-link">
+                    Explore →
                 </span>
 
             </a>
@@ -661,25 +582,32 @@
                 class="gaming-topic-card"
             >
 
-                <span class="topic-index">
-                    03
-                </span>
+                <div class="topic-top">
 
-                <div class="topic-icon">
-                    ⚙️
+                    <span>
+                        03
+                    </span>
+
+                    <strong>
+                        ⚙️
+                    </strong>
+
                 </div>
+
 
                 <h3>
                     Performance
                 </h3>
 
+
                 <p>
-                    Optimize settings for smoother
-                    and more comfortable gameplay.
+                    Understand graphics and settings
+                    for smoother gameplay.
                 </p>
 
-                <span class="topic-arrow">
-                    →
+
+                <span class="topic-link">
+                    Explore →
                 </span>
 
             </a>
@@ -688,28 +616,35 @@
 
             <a
                 href="../index.html#categories"
-                class="gaming-topic-card gaming-topic-more"
+                class="gaming-topic-card"
             >
 
-                <span class="topic-index">
-                    +
-                </span>
+                <div class="topic-top">
 
-                <div class="topic-icon">
-                    🌐
+                    <span>
+                        +
+                    </span>
+
+                    <strong>
+                        🌐
+                    </strong>
+
                 </div>
+
 
                 <h3>
                     More Topics
                 </h3>
 
+
                 <p>
                     Explore Education, Technology
-                    and SEO on LearnByte.
+                    and SEO guides on LearnByte.
                 </p>
 
-                <span class="topic-arrow">
-                    →
+
+                <span class="topic-link">
+                    Explore →
                 </span>
 
             </a>
@@ -724,52 +659,50 @@
 
 
 <!-- ========================================
-     GAMING ABOUT
+     ABOUT
 ======================================== -->
 
 <section
-    class="gaming-about"
+    class="gaming-about section"
     aria-labelledby="gaming-about-title"
 >
 
-    <div class="container">
+    <div class="container gaming-about-inner">
 
 
-        <div class="gaming-about-box">
+        <div class="gaming-about-mark">
+            GB
+        </div>
 
 
-            <div class="gaming-about-icon">
-                ⚡
-            </div>
+        <div>
+
+            <p class="gaming-label">
+                LEARNBYTE GAMING
+            </p>
 
 
-            <div>
-
-                <p class="gaming-section-label">
-                    LEARNBYTE GAMING
-                </p>
+            <h2 id="gaming-about-title">
+                Gaming made easier.
+            </h2>
 
 
-                <h2 id="gaming-about-title">
-                    Gaming made easier.
-                </h2>
-
-
-                <p>
-                    LearnByte provides simple and practical
-                    gaming information to help players understand
-                    games, improve their skills and get more from
-                    their gaming experience.
-                </p>
-
-            </div>
-
+            <p>
+                LearnByte provides simple and practical
+                gaming information to help players understand
+                games, improve their skills and get more from
+                their gaming experience.
+            </p>
 
         </div>
+
 
     </div>
 
 </section>
+
+
+</main>
 
 
 
@@ -855,7 +788,6 @@
 
 
     </div>
-
 
 
     <div class="footer-bottom">
