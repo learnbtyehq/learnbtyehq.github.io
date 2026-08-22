@@ -11,12 +11,12 @@
     >
 
     <title>
-        Education Guides, Study Tips & Career Resources | LearnByte
+        Education Guides, Courses & Career Resources | LearnByte
     </title>
 
     <meta
         name="description"
-        content="Explore practical education guides, study tips, exam preparation resources, courses and career guidance for students on LearnByte."
+        content="Explore practical education guides covering courses, careers, scholarships, exams and useful resources for students after Class 12."
     >
 
     <meta
@@ -44,12 +44,12 @@
 
     <meta
         property="og:title"
-        content="Education Guides, Study Tips & Career Resources | LearnByte"
+        content="Education Guides, Courses & Career Resources | LearnByte"
     >
 
     <meta
         property="og:description"
-        content="Practical education guides, study tips, exam preparation resources and career guidance for students."
+        content="Practical education guides for students covering courses, careers, exams, scholarships and study resources."
     >
 
     <meta
@@ -70,22 +70,57 @@
         href="../education.css"
     >
 
+
+    <!-- Collection Page Structured Data -->
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": "Education Guides, Courses & Career Resources - LearnByte",
+        "description": "Practical education guides covering courses, careers, exams, scholarships and student resources.",
+        "url": "https://learnbtyehq.github.io/category/education.html",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "LearnByte",
+            "url": "https://learnbtyehq.github.io/"
+        }
+    }
+    </script>
+
 </head>
 
 
 <body>
 
 
+    <!-- ================= BACKGROUND ================= -->
+
+    <div
+        class="education-background"
+        aria-hidden="true"
+    >
+
+        <div class="paper-grid"></div>
+
+        <div class="paper-glow paper-glow-one"></div>
+
+        <div class="paper-glow paper-glow-two"></div>
+
+    </div>
+
+
+
     <!-- ================= HEADER ================= -->
 
     <header class="education-header">
 
-        <div class="education-container education-navbar">
+        <div class="edu-container edu-navbar">
 
 
             <a
                 href="../index.html"
-                class="education-logo"
+                class="edu-logo"
                 aria-label="LearnByte Home"
             >
                 Learn<span>Byte</span>
@@ -93,7 +128,7 @@
 
 
             <button
-                class="education-menu-toggle"
+                class="edu-menu-toggle"
                 id="menuToggle"
                 aria-label="Open navigation menu"
                 aria-expanded="false"
@@ -105,7 +140,7 @@
 
 
             <nav
-                class="education-nav-menu"
+                class="edu-nav"
                 id="navMenu"
                 aria-label="Main navigation"
             >
@@ -114,7 +149,10 @@
                     Home
                 </a>
 
-                <a href="education.html">
+                <a
+                    href="education.html"
+                    class="active"
+                >
                     Education
                 </a>
 
@@ -148,69 +186,113 @@
             aria-labelledby="education-title"
         >
 
-            <div class="education-container education-hero-content">
+            <div class="edu-container education-hero-inner">
 
 
-                <div class="education-badge">
+                <div class="edu-eyebrow">
                     <span>✦</span>
-                    LEARNBYTE / EDUCATION
+                    LEARNBYTE EDUCATION
                 </div>
-
-
-                <p class="education-kicker">
-                    STUDY • PREPARE • ACHIEVE
-                </p>
 
 
                 <h1 id="education-title">
 
                     Learn better.
 
-                    <span>
-                        Go further.
-                    </span>
+                    <em>
+                        Grow smarter.
+                    </em>
 
                 </h1>
 
 
-                <p class="education-description">
+                <p class="education-intro">
 
-                    Practical study guides, exam resources,
-                    course information and career-focused
-                    knowledge designed to help students move
-                    forward with confidence.
+                    Practical education guides for students
+                    navigating courses, careers, exams,
+                    scholarships and life after Class 12.
 
                 </p>
 
 
                 <div class="education-actions">
 
-
                     <a
-                        href="#education-guides"
-                        class="education-btn education-btn-primary"
+                        href="#education-articles"
+                        class="edu-button edu-button-primary"
                     >
-                        Explore Guides →
+                        Explore Guides
+                        <span>↓</span>
                     </a>
-
 
                     <a
                         href="#education-topics"
-                        class="education-btn education-btn-secondary"
+                        class="edu-button edu-button-secondary"
                     >
-                        Study Topics
+                        Browse Topics
                     </a>
-
 
                 </div>
 
 
-                <!-- Stats -->
+                <!-- NOTEBOOK -->
 
-                <div class="education-stats">
+                <div
+                    class="notebook"
+                    aria-hidden="true"
+                >
+
+                    <div class="notebook-binding">
+
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+
+                    </div>
 
 
-                    <div class="education-stat">
+                    <div class="notebook-page">
+
+                        <div class="page-small">
+                            LEARNBYTE / EDUCATION
+                        </div>
+
+                        <div class="page-line"></div>
+
+                        <strong>
+                            Your next step
+                            <br>
+                            starts here.
+                        </strong>
+
+                        <div class="page-check">
+                            ✓ Courses
+                        </div>
+
+                        <div class="page-check">
+                            ✓ Careers
+                        </div>
+
+                        <div class="page-check">
+                            ✓ Scholarships
+                        </div>
+
+                        <div class="page-check">
+                            ✓ Exams
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- STATS -->
+
+                <div class="edu-stats">
+
+                    <div>
 
                         <strong>
                             04+
@@ -223,7 +305,7 @@
                     </div>
 
 
-                    <div class="education-stat">
+                    <div>
 
                         <strong>
                             10+
@@ -236,18 +318,17 @@
                     </div>
 
 
-                    <div class="education-stat">
+                    <div>
 
                         <strong>
                             100%
                         </strong>
 
                         <span>
-                            FREE TO EXPLORE
+                            STUDENT FOCUSED
                         </span>
 
                     </div>
-
 
                 </div>
 
@@ -257,70 +338,79 @@
 
 
 
-        <!-- ================= GUIDES ================= -->
+        <!-- ================= ARTICLES ================= -->
 
         <section
-            class="education-section"
-            id="education-guides"
-            aria-labelledby="education-guides-title"
+            class="education-articles edu-section"
+            id="education-articles"
+            aria-labelledby="education-articles-title"
         >
 
-            <div class="education-container">
+            <div class="edu-container">
 
 
-                <div class="education-heading">
+                <div class="edu-section-heading">
 
-                    <p>
-                        EDUCATION
-                    </p>
+                    <div class="section-number">
+                        01
+                    </div>
 
-                    <h2 id="education-guides-title">
-                        Latest Education Guides
-                    </h2>
+                    <div>
 
-                    <span>
-                        Simple, practical information for
-                        students and learners.
-                    </span>
+                        <p>
+                            EDUCATION / GUIDES
+                        </p>
+
+                        <h2 id="education-articles-title">
+                            Latest Education Articles
+                        </h2>
+
+                        <span>
+                            Helpful information for making
+                            smarter education and career decisions.
+                        </span>
+
+                    </div>
 
                 </div>
 
 
 
-                <div class="education-grid">
+                <div class="education-card-grid">
 
 
                     <!-- ARTICLE 1 -->
 
                     <article class="education-card">
 
-                        <div class="education-card-icon">
-                            📚
+                        <div class="card-number">
+                            01
                         </div>
 
+                        <div class="card-icon">
+                            🎯
+                        </div>
 
-                        <span class="education-tag">
-                            STUDY TIPS
+                        <span class="card-tag">
+                            CAREER
                         </span>
 
-
                         <h3>
-                            How to Study Effectively:
-                            A Practical Student Guide
+                            Career Options After Class 12
                         </h3>
 
-
                         <p>
-                            Learn practical study techniques,
-                            better revision habits, time
-                            management and ways to stay focused.
+                            Explore different courses,
+                            career paths and opportunities
+                            students can consider after
+                            completing Class 12.
                         </p>
 
-
                         <a
-                            href="../posts/how-to-study-effectively.html"
+                            href="../posts/career-options-after-class-12.html"
                         >
-                            Read Guide →
+                            Read Guide
+                            <span>→</span>
                         </a>
 
                     </article>
@@ -329,35 +419,36 @@
 
                     <!-- ARTICLE 2 -->
 
-                    <article class="education-card">
+                    <article class="education-card featured-education-card">
 
-                        <div class="education-card-icon">
-                            📝
+                        <div class="card-number">
+                            02
                         </div>
 
+                        <div class="card-icon">
+                            🎓
+                        </div>
 
-                        <span class="education-tag">
-                            EXAMS
+                        <span class="card-tag">
+                            COURSES
                         </span>
 
-
                         <h3>
-                            How to Prepare for Exams:
-                            Complete Preparation Guide
+                            Courses After Class 12:
+                            What Should You Choose?
                         </h3>
 
-
                         <p>
-                            Build an effective exam strategy
-                            with planning, revision, practice
-                            and smart preparation techniques.
+                            Understand popular undergraduate
+                            courses and how to choose an option
+                            based on your interests and goals.
                         </p>
 
-
                         <a
-                            href="../posts/how-to-prepare-for-exams.html"
+                            href="../posts/courses-after-class-12.html"
                         >
-                            Read Guide →
+                            Read Guide
+                            <span>→</span>
                         </a>
 
                     </article>
@@ -368,70 +459,34 @@
 
                     <article class="education-card">
 
-                        <div class="education-card-icon">
-                            🎓
+                        <div class="card-number">
+                            03
                         </div>
 
-
-                        <span class="education-tag">
-                            CAREER
-                        </span>
-
-
-                        <h3>
-                            How to Choose the Right Course
-                            After Class 12
-                        </h3>
-
-
-                        <p>
-                            Understand how to compare courses,
-                            career options, eligibility,
-                            skills and future opportunities.
-                        </p>
-
-
-                        <a
-                            href="../posts/how-to-choose-course-after-class-12.html"
-                        >
-                            Read Guide →
-                        </a>
-
-                    </article>
-
-
-
-                    <!-- ARTICLE 4 -->
-
-                    <article class="education-card">
-
-                        <div class="education-card-icon">
-                            💡
+                        <div class="card-icon">
+                            💰
                         </div>
 
-
-                        <span class="education-tag">
-                            LEARNING
+                        <span class="card-tag">
+                            SCHOLARSHIPS
                         </span>
 
-
                         <h3>
-                            How to Learn New Skills
-                            More Effectively
+                            Scholarships for Students
                         </h3>
 
-
                         <p>
-                            Discover simple ways to learn,
-                            practice and retain new skills
-                            without getting overwhelmed.
+                            Learn about scholarships,
+                            financial support and useful
+                            resources that can help students
+                            plan their education.
                         </p>
 
-
                         <a
-                            href="../posts/how-to-learn-new-skills.html"
+                            href="../posts/scholarships-for-students.html"
                         >
-                            Read Guide →
+                            Read Guide
+                            <span>→</span>
                         </a>
 
                     </article>
@@ -448,28 +503,36 @@
         <!-- ================= TOPICS ================= -->
 
         <section
-            class="education-topics"
+            class="education-topics edu-section"
             id="education-topics"
             aria-labelledby="education-topics-title"
         >
 
-            <div class="education-container">
+            <div class="edu-container">
 
 
-                <div class="education-heading">
+                <div class="edu-section-heading">
 
-                    <p>
-                        EXPLORE
-                    </p>
+                    <div class="section-number">
+                        02
+                    </div>
 
-                    <h2 id="education-topics-title">
-                        Education Topics
-                    </h2>
+                    <div>
 
-                    <span>
-                        Explore different areas of learning
-                        and student life.
-                    </span>
+                        <p>
+                            EXPLORE / EDUCATION
+                        </p>
+
+                        <h2 id="education-topics-title">
+                            What do you want to learn?
+                        </h2>
+
+                        <span>
+                            Explore practical topics designed
+                            for students.
+                        </span>
+
+                    </div>
 
                 </div>
 
@@ -479,123 +542,170 @@
 
 
                     <a
-                        href="../posts/how-to-study-effectively.html"
+                        href="../posts/career-options-after-class-12.html"
                         class="education-topic"
                     >
 
-                        <span class="topic-number">
-                            01
-                        </span>
+                        <div class="topic-icon">
+                            🎯
+                        </div>
 
                         <div>
 
+                            <small>
+                                01 / FUTURE
+                            </small>
+
                             <h3>
-                                Study Skills
+                                Career Planning
                             </h3>
 
                             <p>
-                                Improve focus, revision,
-                                planning and learning habits.
+                                Find possible career paths
+                                and make better decisions.
                             </p>
 
                         </div>
 
-                        <span class="topic-arrow">
+                        <strong>
                             →
-                        </span>
+                        </strong>
 
                     </a>
 
 
 
                     <a
-                        href="../posts/how-to-prepare-for-exams.html"
+                        href="../posts/courses-after-class-12.html"
                         class="education-topic"
                     >
 
-                        <span class="topic-number">
-                            02
-                        </span>
+                        <div class="topic-icon">
+                            📚
+                        </div>
 
                         <div>
 
+                            <small>
+                                02 / COURSES
+                            </small>
+
                             <h3>
-                                Exam Preparation
+                                Courses & Degrees
                             </h3>
 
                             <p>
-                                Learn better ways to prepare
-                                for important examinations.
+                                Understand courses, degrees
+                                and study options.
                             </p>
 
                         </div>
 
-                        <span class="topic-arrow">
+                        <strong>
                             →
-                        </span>
+                        </strong>
 
                     </a>
 
 
 
                     <a
-                        href="../posts/how-to-choose-course-after-class-12.html"
+                        href="../posts/scholarships-for-students.html"
                         class="education-topic"
                     >
 
-                        <span class="topic-number">
-                            03
-                        </span>
+                        <div class="topic-icon">
+                            💰
+                        </div>
 
                         <div>
 
+                            <small>
+                                03 / SUPPORT
+                            </small>
+
                             <h3>
-                                Courses & Careers
+                                Scholarships
                             </h3>
 
                             <p>
-                                Explore courses, skills and
-                                future career possibilities.
+                                Discover financial support
+                                and scholarship resources.
                             </p>
 
                         </div>
 
-                        <span class="topic-arrow">
+                        <strong>
                             →
-                        </span>
+                        </strong>
 
                     </a>
 
 
 
                     <a
-                        href="../posts/how-to-learn-new-skills.html"
+                        href="../index.html#categories"
                         class="education-topic"
                     >
 
-                        <span class="topic-number">
-                            04
-                        </span>
+                        <div class="topic-icon">
+                            ✦
+                        </div>
 
                         <div>
 
+                            <small>
+                                04 / DISCOVER
+                            </small>
+
                             <h3>
-                                Learning Skills
+                                More LearnByte Topics
                             </h3>
 
                             <p>
-                                Discover practical ways to
-                                learn and develop new skills.
+                                Explore Technology, SEO
+                                and Gaming guides.
                             </p>
 
                         </div>
 
-                        <span class="topic-arrow">
+                        <strong>
                             →
-                        </span>
+                        </strong>
 
                     </a>
 
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= QUOTE ================= -->
+
+        <section class="education-quote">
+
+            <div class="edu-container">
+
+                <div class="quote-card">
+
+                    <span class="quote-mark">
+                        “
+                    </span>
+
+                    <h2>
+                        The right information
+                        can change your next step.
+                    </h2>
+
+                    <p>
+                        LearnByte makes important education
+                        information easier to understand,
+                        compare and use.
+                    </p>
 
                 </div>
 
@@ -612,33 +722,32 @@
             aria-labelledby="education-about-title"
         >
 
-            <div class="education-container">
+            <div class="edu-container">
 
+                <div class="about-paper">
 
-                <div class="education-about-box">
-
+                    <div class="paper-stamp">
+                        LB
+                    </div>
 
                     <div>
 
                         <p>
-                            LEARNBYTE EDUCATION
+                            ABOUT LEARNBYTE EDUCATION
                         </p>
 
                         <h2 id="education-about-title">
-                            Education made easier.
+                            Education without the confusion.
                         </h2>
 
+                        <span>
+                            LearnByte provides simple,
+                            practical and easy-to-understand
+                            education information for students
+                            planning their next step.
+                        </span>
+
                     </div>
-
-
-                    <p>
-                        LearnByte provides simple and practical
-                        educational information to help students
-                        understand subjects, prepare better,
-                        explore courses and make informed
-                        learning decisions.
-                    </p>
-
 
                 </div>
 
@@ -655,14 +764,14 @@
 
     <footer class="education-footer">
 
-        <div class="education-container education-footer-grid">
+        <div class="edu-container footer-grid">
 
 
             <div>
 
                 <a
                     href="../index.html"
-                    class="education-logo"
+                    class="edu-logo"
                 >
                     Learn<span>Byte</span>
                 </a>
@@ -675,7 +784,7 @@
 
 
 
-            <div class="education-footer-links">
+            <div class="footer-links">
 
                 <h3>
                     Quick Links
@@ -705,13 +814,16 @@
 
 
 
-            <div class="education-footer-links">
+            <div class="footer-links">
 
                 <h3>
                     Categories
                 </h3>
 
-                <a href="education.html">
+                <a
+                    href="education.html"
+                    class="active"
+                >
                     Education
                 </a>
 
@@ -733,10 +845,9 @@
         </div>
 
 
+        <div class="footer-bottom">
 
-        <div class="education-footer-bottom">
-
-            <div class="education-container">
+            <div class="edu-container">
 
                 <p>
                     © 2026 LearnByte. All rights reserved.
