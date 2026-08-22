@@ -1,0 +1,1184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        LearnByte SEO Control Center
+    </title>
+
+    <meta
+        name="robots"
+        content="noindex, nofollow, noarchive"
+    >
+
+    <link
+        rel="stylesheet"
+        href="admin.css"
+    >
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar" id="sidebar">
+
+        <div class="brand">
+
+            <a href="../index.html">
+                Learn<span>Byte</span>
+            </a>
+
+            <small>
+                SEO CONTROL CENTER
+            </small>
+
+        </div>
+
+
+        <nav class="admin-nav">
+
+            <button
+                class="nav-item active"
+                data-section="dashboard"
+                type="button"
+            >
+                <span>⌂</span>
+                Dashboard
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="links"
+                type="button"
+            >
+                <span>↗</span>
+                Internal Links
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="redirects"
+                type="button"
+            >
+                <span>↪</span>
+                Redirects
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="keywords"
+                type="button"
+            >
+                <span>⌕</span>
+                Keywords
+            </button>
+
+
+            <button
+                class="nav-item"
+                data-section="pages"
+                type="button"
+            >
+                <span>▤</span>
+                Pages
+            </button>
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+            <a
+                href="../index.html"
+                target="_blank"
+                rel="noopener"
+            >
+                ↗ View Website
+            </a>
+
+        </div>
+
+    </aside>
+
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main class="main-content">
+
+
+        <!-- ================= TOPBAR ================= -->
+
+        <header class="topbar">
+
+            <button
+                class="mobile-menu"
+                id="mobileMenu"
+                type="button"
+                aria-label="Open menu"
+            >
+                ☰
+            </button>
+
+
+            <div>
+
+                <p class="topbar-label">
+                    LEARNBYTE
+                </p>
+
+                <h1 id="pageTitle">
+                    SEO Control Center
+                </h1>
+
+            </div>
+
+
+            <div class="status">
+
+                <span class="status-dot"></span>
+
+                Local Dashboard
+
+            </div>
+
+        </header>
+
+
+
+        <!-- ================= DASHBOARD ================= -->
+
+        <section
+            class="admin-section active"
+            id="dashboard"
+        >
+
+            <div class="section-intro">
+
+                <span>
+                    OVERVIEW
+                </span>
+
+                <h2>
+                    Website SEO at a glance
+                </h2>
+
+                <p>
+                    Manage your internal linking, redirects,
+                    keywords and content from one place.
+                </p>
+
+            </div>
+
+
+            <div class="stats-grid">
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ↗
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Internal Links
+                        </span>
+
+                        <strong id="linkCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ↪
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Redirects
+                        </span>
+
+                        <strong id="redirectCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ⌕
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Keywords
+                        </span>
+
+                        <strong id="keywordCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <div class="stat-icon">
+                        ▤
+                    </div>
+
+                    <div>
+
+                        <span>
+                            Pages
+                        </span>
+
+                        <strong id="pageCount">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+            <div class="dashboard-grid">
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span>
+                                QUICK ACTIONS
+                            </span>
+
+                            <h3>
+                                SEO Management
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="quick-actions">
+
+
+                        <button
+                            type="button"
+                            data-open="links"
+                        >
+                            <strong>
+                                + Add Internal Link
+                            </strong>
+
+                            <small>
+                                Connect two LearnByte pages
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-open="redirects"
+                        >
+                            <strong>
+                                + Add Redirect
+                            </strong>
+
+                            <small>
+                                Map an old URL to a new URL
+                            </small>
+
+                        </button>
+
+
+                        <button
+                            type="button"
+                            data-open="keywords"
+                        >
+                            <strong>
+                                + Add Keyword
+                            </strong>
+
+                            <small>
+                                Track a target keyword
+                            </small>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="panel">
+
+                    <div class="panel-heading">
+
+                        <div>
+
+                            <span>
+                                WORKFLOW
+                            </span>
+
+                            <h3>
+                                How this works
+                            </h3>
+
+                        </div>
+
+                    </div>
+
+
+                    <ol class="workflow">
+
+                        <li>
+                            Select the SEO tool.
+                        </li>
+
+                        <li>
+                            Add or update the information.
+                        </li>
+
+                        <li>
+                            Save it in the dashboard.
+                        </li>
+
+                        <li>
+                            Later, GitHub integration will
+                            apply approved changes to the site.
+                        </li>
+
+                    </ol>
+
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= INTERNAL LINKS ================= -->
+
+        <section
+            class="admin-section"
+            id="links"
+        >
+
+            <div class="section-intro">
+
+                <span>
+                    INTERNAL LINKING
+                </span>
+
+                <h2>
+                    Connect your pages
+                </h2>
+
+                <p>
+                    Create a record of which LearnByte page
+                    should link to another page.
+                </p>
+
+            </div>
+
+
+            <div class="form-panel">
+
+                <form id="linkForm">
+
+
+                    <div class="form-group">
+
+                        <label for="linkFrom">
+                            Link From
+                        </label>
+
+                        <input
+                            id="linkFrom"
+                            name="linkFrom"
+                            type="text"
+                            placeholder="posts/article-one.html"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="linkTo">
+                            Link To
+                        </label>
+
+                        <input
+                            id="linkTo"
+                            name="linkTo"
+                            type="text"
+                            placeholder="posts/article-two.html"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="anchorText">
+                            Anchor Text
+                        </label>
+
+                        <input
+                            id="anchorText"
+                            name="anchorText"
+                            type="text"
+                            placeholder="Read our guide about..."
+                            required
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        type="submit"
+                    >
+                        Save Internal Link
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+            <div class="panel table-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span>
+                            SAVED LINKS
+                        </span>
+
+                        <h3>
+                            Internal Link Map
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="linksEmpty"
+                >
+
+                    <div>
+                        ↗
+                    </div>
+
+                    <h3>
+                        No internal links yet
+                    </h3>
+
+                    <p>
+                        Add your first internal link above.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="table-wrapper hidden"
+                    id="linksTableWrapper"
+                >
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    From
+                                </th>
+
+                                <th>
+                                    To
+                                </th>
+
+                                <th>
+                                    Anchor
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="linksTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= REDIRECTS ================= -->
+
+        <section
+            class="admin-section"
+            id="redirects"
+        >
+
+            <div class="section-intro">
+
+                <span>
+                    REDIRECT MANAGER
+                </span>
+
+                <h2>
+                    Manage URL changes
+                </h2>
+
+                <p>
+                    Keep a central record of old and new URLs.
+                </p>
+
+            </div>
+
+
+            <div class="form-panel">
+
+                <form id="redirectForm">
+
+
+                    <div class="form-group">
+
+                        <label for="oldUrl">
+                            Old URL
+                        </label>
+
+                        <input
+                            id="oldUrl"
+                            name="oldUrl"
+                            type="text"
+                            placeholder="/posts/old-article.html"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="newUrl">
+                            New URL
+                        </label>
+
+                        <input
+                            id="newUrl"
+                            name="newUrl"
+                            type="text"
+                            placeholder="/posts/new-article.html"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="redirectReason">
+                            Reason
+                        </label>
+
+                        <input
+                            id="redirectReason"
+                            name="redirectReason"
+                            type="text"
+                            placeholder="Article renamed"
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        type="submit"
+                    >
+                        Save Redirect
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+            <div class="panel table-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span>
+                            REDIRECTS
+                        </span>
+
+                        <h3>
+                            URL Map
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="redirectsEmpty"
+                >
+
+                    <div>
+                        ↪
+                    </div>
+
+                    <h3>
+                        No redirects yet
+                    </h3>
+
+                    <p>
+                        Add an old → new URL mapping above.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="table-wrapper hidden"
+                    id="redirectsTableWrapper"
+                >
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Old URL
+                                </th>
+
+                                <th>
+                                    New URL
+                                </th>
+
+                                <th>
+                                    Reason
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="redirectsTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= KEYWORDS ================= -->
+
+        <section
+            class="admin-section"
+            id="keywords"
+        >
+
+            <div class="section-intro">
+
+                <span>
+                    KEYWORD TRACKER
+                </span>
+
+                <h2>
+                    Track your target keywords
+                </h2>
+
+                <p>
+                    Keep your primary keywords, volume,
+                    competition and priority organized.
+                </p>
+
+            </div>
+
+
+            <div class="form-panel">
+
+                <form id="keywordForm">
+
+
+                    <div class="form-group">
+
+                        <label for="keyword">
+                            Keyword
+                        </label>
+
+                        <input
+                            id="keyword"
+                            name="keyword"
+                            type="text"
+                            placeholder="courses after 12th PCM without JEE"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-row">
+
+
+                        <div class="form-group">
+
+                            <label for="volume">
+                                Search Volume
+                            </label>
+
+                            <input
+                                id="volume"
+                                name="volume"
+                                type="text"
+                                placeholder="1000"
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="competition">
+                                Competition
+                            </label>
+
+                            <select
+                                id="competition"
+                                name="competition"
+                            >
+
+                                <option value="Unknown">
+                                    Unknown
+                                </option>
+
+                                <option value="Low">
+                                    Low
+                                </option>
+
+                                <option value="Medium">
+                                    Medium
+                                </option>
+
+                                <option value="High">
+                                    High
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="priority">
+                                Priority
+                            </label>
+
+                            <select
+                                id="priority"
+                                name="priority"
+                            >
+
+                                <option value="High">
+                                    High
+                                </option>
+
+                                <option value="Medium">
+                                    Medium
+                                </option>
+
+                                <option value="Low">
+                                    Low
+                                </option>
+
+                            </select>
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="keywordPage">
+                            Target Page
+                        </label>
+
+                        <input
+                            id="keywordPage"
+                            name="keywordPage"
+                            type="text"
+                            placeholder="posts/example.html"
+                        >
+
+                    </div>
+
+
+                    <button
+                        class="primary-button"
+                        type="submit"
+                    >
+                        Save Keyword
+                    </button>
+
+
+                </form>
+
+            </div>
+
+
+            <div class="panel table-panel">
+
+                <div class="panel-heading">
+
+                    <div>
+
+                        <span>
+                            KEYWORD DATABASE
+                        </span>
+
+                        <h3>
+                            Target Keywords
+                        </h3>
+
+                    </div>
+
+                </div>
+
+
+                <div
+                    class="empty-state"
+                    id="keywordsEmpty"
+                >
+
+                    <div>
+                        ⌕
+                    </div>
+
+                    <h3>
+                        No keywords yet
+                    </h3>
+
+                    <p>
+                        Add your first target keyword above.
+                    </p>
+
+                </div>
+
+
+                <div
+                    class="table-wrapper hidden"
+                    id="keywordsTableWrapper"
+                >
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    Keyword
+                                </th>
+
+                                <th>
+                                    Volume
+                                </th>
+
+                                <th>
+                                    Competition
+                                </th>
+
+                                <th>
+                                    Priority
+                                </th>
+
+                                <th>
+                                    Target Page
+                                </th>
+
+                                <th>
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+                        <tbody id="keywordsTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PAGES ================= -->
+
+        <section
+            class="admin-section"
+            id="pages"
+        >
+
+            <div class="section-intro">
+
+                <span>
+                    CONTENT DATABASE
+                </span>
+
+                <h2>
+                    LearnByte Pages
+                </h2>
+
+                <p>
+                    Keep track of important pages and articles.
+                </p>
+
+            </div>
+
+
+            <div class="panel">
+
+                <div class="page-list">
+
+
+                    <div class="page-item">
+
+                        <div>
+
+                            <span>
+                                HOME
+                            </span>
+
+                            <strong>
+                                index.html
+                            </strong>
+
+                        </div>
+
+                        <a
+                            href="../index.html"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Open →
+                        </a>
+
+                    </div>
+
+
+                    <div class="page-item">
+
+                        <div>
+
+                            <span>
+                                EDUCATION
+                            </span>
+
+                            <strong>
+                                category/education.html
+                            </strong>
+
+                        </div>
+
+                        <a
+                            href="../category/education.html"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Open →
+                        </a>
+
+                    </div>
+
+
+                    <div class="page-item">
+
+                        <div>
+
+                            <span>
+                                TECHNOLOGY
+                            </span>
+
+                            <strong>
+                                category/technology.html
+                            </strong>
+
+                        </div>
+
+                        <a
+                            href="../category/technology.html"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Open →
+                        </a>
+
+                    </div>
+
+
+                    <div class="page-item">
+
+                        <div>
+
+                            <span>
+                                SEO
+                            </span>
+
+                            <strong>
+                                category/seo.html
+                            </strong>
+
+                        </div>
+
+                        <a
+                            href="../category/seo.html"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Open →
+                        </a>
+
+                    </div>
+
+
+                    <div class="page-item">
+
+                        <div>
+
+                            <span>
+                                GAMING
+                            </span>
+
+                            <strong>
+                                category/gaming.html
+                            </strong>
+
+                        </div>
+
+                        <a
+                            href="../category/gaming.html"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            Open →
+                        </a>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- ================= TOAST ================= -->
+
+    <div
+        class="toast"
+        id="toast"
+        role="status"
+        aria-live="polite"
+    >
+        Saved successfully.
+    </div>
+
+
+
+    <script src="admin.js"></script>
+
+</body>
+
+              </html>
