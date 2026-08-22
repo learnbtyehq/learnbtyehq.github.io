@@ -108,7 +108,9 @@
 
 </head>
 
+
 <body>
+
 
 <!-- ========================================
      HEADER
@@ -126,6 +128,7 @@
             Learn<span>Byte</span>
         </a>
 
+
         <button
             class="menu-toggle"
             id="menuToggle"
@@ -137,13 +140,16 @@
             ☰
         </button>
 
+
         <nav
             class="nav-menu"
             id="navMenu"
             aria-label="Main navigation"
         >
 
-            <a href="index.html">Home</a>
+            <a href="index.html">
+                Home
+            </a>
 
             <a href="category/education.html">
                 Education
@@ -167,7 +173,10 @@
 
 </header>
 
+
+
 <main>
+
 
 <!-- ========================================
      HERO
@@ -184,6 +193,7 @@
             LEARN • EXPLORE • GROW
         </p>
 
+
         <h1 id="hero-title">
 
             Learn something useful,
@@ -194,6 +204,7 @@
 
         </h1>
 
+
         <p class="hero-description">
 
             Practical guides and useful knowledge for
@@ -202,14 +213,17 @@
 
         </p>
 
+
         <div class="hero-actions">
 
+            <!-- FIXED -->
             <a
                 href="#latest-posts"
                 class="btn btn-primary"
             >
                 Explore Articles →
             </a>
+
 
             <a
                 href="#categories"
@@ -220,21 +234,45 @@
 
         </div>
 
+
         <div class="hero-trust">
 
             <div>
-                <strong>4+</strong>
-                <span>Topics</span>
+
+                <strong>
+                    4+
+                </strong>
+
+                <span>
+                    Topics
+                </span>
+
             </div>
 
-            <div>
-                <strong>10+</strong>
-                <span>Guides</span>
-            </div>
 
             <div>
-                <strong>100%</strong>
-                <span>Free to Explore</span>
+
+                <strong>
+                    10+
+                </strong>
+
+                <span>
+                    Guides
+                </span>
+
+            </div>
+
+
+            <div>
+
+                <strong>
+                    100%
+                </strong>
+
+                <span>
+                    Free to Explore
+                </span>
+
             </div>
 
         </div>
@@ -242,6 +280,8 @@
     </div>
 
 </section>
+
+
 
 <!-- ========================================
      CATEGORY SECTION
@@ -254,6 +294,7 @@
 >
 
     <div class="container">
+
 
         <div class="section-heading">
 
@@ -272,7 +313,12 @@
 
         </div>
 
+
+
         <div class="category-grid">
+
+
+            <!-- EDUCATION -->
 
             <a
                 href="category/education.html"
@@ -305,6 +351,10 @@
 
             </a>
 
+
+
+            <!-- TECHNOLOGY -->
+
             <a
                 href="category/technology.html"
                 class="category-card"
@@ -336,6 +386,10 @@
 
             </a>
 
+
+
+            <!-- SEO -->
+
             <a
                 href="category/seo.html"
                 class="category-card"
@@ -366,6 +420,10 @@
                 </span>
 
             </a>
+
+
+
+            <!-- GAMING -->
 
             <a
                 href="category/gaming.html"
@@ -404,30 +462,65 @@
 
 </section>
 
+
+
 <!-- ========================================
-     FEATURED ARTICLE
+     LATEST ARTICLES
+     
+     IMPORTANT:
+     id="latest-posts"
+     class="post-grid"
+     
+     Control Panel DIRECT PUBLISH
+     isi .post-grid ke andar
+     automatically new article add karega.
 ======================================== -->
 
 <section
     class="featured section"
-    aria-labelledby="featured-title"
+    id="latest-posts"
+    aria-labelledby="latest-posts-title"
 >
 
     <div class="container">
 
+
         <div class="section-heading">
 
             <p class="section-label">
-                FEATURED
+                LATEST
             </p>
 
-            <h2 id="featured-title">
-                Start with this guide.
+            <h2 id="latest-posts-title">
+                Latest Articles
             </h2>
+
+            <p>
+                Explore the latest guides published
+                on LearnByte.
+            </p>
 
         </div>
 
-        
+
+
+        <!--
+            DO NOT REMOVE THIS CLASS.
+
+            Control Panel searches for:
+
+            .post-grid
+
+            New articles are automatically
+            inserted here.
+        -->
+
+        <div class="post-grid">
+
+
+            <!-- ==================================
+                 EXISTING FEATURED EDUCATION CARD
+            ================================== -->
 
             <article class="post-card">
 
@@ -438,21 +531,25 @@
                     🎓
                 </div>
 
+
                 <div class="post-content">
 
                     <span class="post-category">
                         Education
                     </span>
 
+
                     <h3>
                         Practical Education Guides
                     </h3>
+
 
                     <p>
                         Explore study resources,
                         exam preparation, courses
                         and career-focused information.
                     </p>
+
 
                     <a href="category/education.html">
                         Explore Education →
@@ -461,6 +558,12 @@
                 </div>
 
             </article>
+
+
+
+            <!-- ==================================
+                 EXISTING TECHNOLOGY CARD
+            ================================== -->
 
             <article class="post-card">
 
@@ -471,21 +574,25 @@
                     💻
                 </div>
 
+
                 <div class="post-content">
 
                     <span class="post-category">
                         Technology
                     </span>
 
+
                     <h3>
                         Practical Technology Guides
                     </h3>
+
 
                     <p>
                         Discover useful technology,
                         AI, apps, software and digital
                         guides on LearnByte.
                     </p>
+
 
                     <a href="category/technology.html">
                         Explore Technology →
@@ -495,11 +602,14 @@
 
             </article>
 
+
         </div>
 
     </div>
 
 </section>
+
+
 
 <!-- ========================================
      WHY LEARNBYTE
@@ -512,23 +622,34 @@
 
     <div class="container about-content">
 
+
         <p class="section-label">
             WHY LEARNBYTE
         </p>
 
+
         <h2 id="about-title">
+
             Useful knowledge.
+
             No unnecessary complexity.
+
         </h2>
 
+
         <p>
+
             LearnByte is built around one simple idea:
             useful information should be easy to understand.
             Explore practical guides across education,
             technology, artificial intelligence, SEO and gaming.
+
         </p>
 
+
+
         <div class="value-grid">
+
 
             <div class="value-item">
 
@@ -546,6 +667,8 @@
 
             </div>
 
+
+
             <div class="value-item">
 
                 <span>
@@ -561,6 +684,8 @@
                 </p>
 
             </div>
+
+
 
             <div class="value-item">
 
@@ -578,11 +703,14 @@
 
             </div>
 
+
         </div>
 
     </div>
 
 </section>
+
+
 
 <!-- ========================================
      FINAL CTA
@@ -594,19 +722,28 @@
 
         <div class="final-cta-box">
 
+
             <p class="section-label">
                 KEEP EXPLORING
             </p>
 
+
             <h2>
+
                 There is always
+
                 something new to learn.
+
             </h2>
 
+
             <p>
+
                 Pick a topic and start exploring
                 LearnByte today.
+
             </p>
+
 
             <a
                 href="#categories"
@@ -615,13 +752,17 @@
                 Explore LearnByte →
             </a>
 
+
         </div>
 
     </div>
 
 </section>
 
+
 </main>
+
+
 
 <!-- ========================================
      FOOTER
@@ -630,6 +771,7 @@
 <footer class="site-footer">
 
     <div class="container footer-content">
+
 
         <div class="footer-brand">
 
@@ -640,11 +782,14 @@
                 Learn<span>Byte</span>
             </a>
 
+
             <p>
                 Learn something useful, every day.
             </p>
 
         </div>
+
+
 
         <div class="footer-links">
 
@@ -652,17 +797,21 @@
                 Quick Links
             </h3>
 
+
             <a href="about.html">
                 About
             </a>
+
 
             <a href="contact.html">
                 Contact
             </a>
 
+
             <a href="privacy-policy.html">
                 Privacy Policy
             </a>
+
 
             <a href="disclaimer.html">
                 Disclaimer
@@ -670,23 +819,29 @@
 
         </div>
 
+
+
         <div class="footer-links">
 
             <h3>
                 Categories
             </h3>
 
+
             <a href="category/education.html">
                 Education
             </a>
+
 
             <a href="category/technology.html">
                 Technology
             </a>
 
+
             <a href="category/seo.html">
                 SEO
             </a>
+
 
             <a href="category/gaming.html">
                 Gaming
@@ -694,7 +849,10 @@
 
         </div>
 
+
     </div>
+
+
 
     <div class="footer-bottom">
 
@@ -710,7 +868,14 @@
 
 </footer>
 
+
+
+<!-- ========================================
+     MAIN WEBSITE JAVASCRIPT
+======================================== -->
+
 <script src="script.js"></script>
+
 
 <!-- Admin Panel GitHub commit test -->
 
