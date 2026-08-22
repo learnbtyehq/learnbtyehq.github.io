@@ -18,14 +18,14 @@
 
 <meta
     name="theme-color"
-    content="#070b14"
+    content="#050811"
 >
 
 <style>
 
-/* =====================================================
-   GLOBAL
-===================================================== */
+/* =========================================================
+   RESET
+========================================================= */
 
 *,
 *::before,
@@ -35,16 +35,13 @@
 
 html,
 body {
-    width: 100%;
-    max-width: 100%;
     margin: 0;
+    width: 100%;
+    min-height: 100%;
     overflow-x: hidden;
 }
 
 body {
-
-    min-height: 100vh;
-
     font-family:
         Inter,
         system-ui,
@@ -53,21 +50,22 @@ body {
         "Segoe UI",
         sans-serif;
 
+    color: #f5f7fb;
+
     background:
         radial-gradient(
-            circle at 10% 5%,
-            rgba(0,220,255,.12),
-            transparent 32%
+            circle at 5% 0%,
+            rgba(0,220,255,.13),
+            transparent 30%
         ),
         radial-gradient(
-            circle at 90% 15%,
-            rgba(110,80,255,.13),
-            transparent 32%
+            circle at 95% 5%,
+            rgba(115,75,255,.15),
+            transparent 30%
         ),
         #050811;
 
-    color: #f5f7fb;
-
+    line-height: 1.5;
 }
 
 button,
@@ -81,126 +79,82 @@ button {
     cursor: pointer;
 }
 
-a {
-    color: inherit;
+input,
+textarea,
+select {
+    outline: none;
 }
 
 h1,
 h2,
 h3,
+h4,
 p {
     overflow-wrap: anywhere;
 }
 
 
-/* =====================================================
-   LAYOUT
-===================================================== */
+/* =========================================================
+   CONTAINER
+========================================================= */
 
 .container {
-
-    width:
-        min(
-            1100px,
-            calc(100% - 32px)
-        );
-
-    margin:
-        0 auto;
-
-}
-
-.grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0, 1fr)
-        );
-
-    gap: 20px;
-
-}
-
-.full {
-    grid-column: 1 / -1;
+    width: min(1120px, calc(100% - 32px));
+    margin: 0 auto;
 }
 
 
-/* =====================================================
+/* =========================================================
    HEADER
-===================================================== */
+========================================================= */
 
 .site-header {
-
-    width: 100%;
-
     position: sticky;
-
     top: 0;
-
-    z-index: 100;
+    z-index: 1000;
 
     background:
-        rgba(5,10,20,.88);
+        rgba(5,9,18,.88);
 
     border-bottom:
         1px solid rgba(255,255,255,.07);
 
     backdrop-filter:
-        blur(18px);
-
+        blur(20px);
 }
 
 .navbar {
-
-    min-height: 74px;
+    min-height: 72px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
-    gap: 20px;
-
+    gap: 15px;
 }
 
 .logo {
-
+    color: white;
     text-decoration: none;
 
-    font-size: 24px;
-
-    font-weight: 850;
-
-    white-space: nowrap;
-
+    font-size: 23px;
+    font-weight: 900;
 }
 
 .logo span {
-    color: #29ddff;
+    color: #2ddfff;
 }
 
 .admin-label {
-
-    color: #7e8ba1;
-
-    font-size: 12px;
-
+    color: #738198;
+    font-size: 11px;
     margin-left: 6px;
-
 }
 
 .status {
+    padding: 8px 13px;
 
-    padding:
-        8px 13px;
-
-    border-radius:
-        999px;
+    border-radius: 999px;
 
     border:
         1px solid #27354d;
@@ -211,319 +165,228 @@ p {
     color:
         #9ba8bc;
 
-    font-size:
-        13px;
-
+    font-size: 12px;
 }
 
 .status.connected {
-
-    color:
-        #62f6c2;
+    color: #62f6c2;
 
     border-color:
-        rgba(0,255,170,.25);
+        rgba(0,255,170,.3);
 
     background:
         rgba(0,255,170,.08);
-
 }
 
 
-/* =====================================================
+/* =========================================================
    HERO
-===================================================== */
+========================================================= */
 
 .hero {
-
-    padding:
-        55px 0 30px;
-
+    padding: 52px 0 28px;
 }
 
 .badge {
+    display: inline-flex;
 
-    display:
-        inline-flex;
+    padding: 8px 13px;
 
-    padding:
-        8px 13px;
-
-    border-radius:
-        999px;
+    border-radius: 999px;
 
     background:
         rgba(32,223,248,.09);
 
     border:
-        1px solid rgba(32,223,248,.2);
+        1px solid rgba(32,223,248,.22);
 
     color:
         #32dcf8;
 
-    font-size:
-        12px;
-
-    font-weight:
-        800;
-
+    font-size: 11px;
+    font-weight: 850;
+    letter-spacing: .5px;
 }
 
 h1 {
-
-    margin:
-        18px 0 12px;
+    margin: 18px 0 12px;
 
     font-size:
-        clamp(
-            34px,
-            6vw,
-            60px
-        );
+        clamp(35px, 7vw, 62px);
 
-    line-height:
-        1.03;
-
+    line-height: 1.02;
 }
 
 .gradient {
-
     background:
         linear-gradient(
             90deg,
             #ffffff,
-            #48e5ff,
+            #42e5ff,
             #8171ff
         );
 
-    -webkit-background-clip:
-        text;
+    -webkit-background-clip: text;
+    background-clip: text;
 
-    background-clip:
-        text;
-
-    color:
-        transparent;
-
+    color: transparent;
 }
 
 .hero-description {
+    max-width: 790px;
 
-    max-width:
-        760px;
+    margin: 0;
 
-    margin:
-        0;
+    color: #8e9aae;
 
-    color:
-        #8e9aae;
-
-    font-size:
-        16px;
-
-    line-height:
-        1.7;
-
+    font-size: 16px;
+    line-height: 1.7;
 }
 
 
-/* =====================================================
-   CARDS
-===================================================== */
+/* =========================================================
+   MAIN GRID
+========================================================= */
+
+.grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+}
+
+.full {
+    grid-column: 1 / -1;
+}
+
+
+/* =========================================================
+   CARD
+========================================================= */
 
 .card {
-
-    width: 100%;
-
     min-width: 0;
 
-    padding:
-        22px;
+    padding: 22px;
 
-    border-radius:
-        20px;
+    border-radius: 20px;
 
     background:
         linear-gradient(
             145deg,
-            rgba(18,28,45,.94),
-            rgba(8,13,24,.94)
+            rgba(18,28,45,.95),
+            rgba(8,13,24,.96)
         );
 
     border:
         1px solid rgba(255,255,255,.08);
 
     box-shadow:
-        0 20px 60px
-        rgba(0,0,0,.23);
+        0 20px 60px rgba(0,0,0,.22);
 
-    overflow:
-        hidden;
-
+    overflow: hidden;
 }
 
 .card h2 {
+    margin: 0 0 7px;
 
-    margin:
-        0 0 7px;
-
-    font-size:
-        21px;
-
+    font-size: 21px;
 }
 
 .card-description {
+    margin: 0 0 18px;
 
-    margin:
-        0 0 18px;
+    color: #8f9bad;
 
-    color:
-        #8f9bad;
-
-    line-height:
-        1.55;
-
-    font-size:
-        14px;
-
+    font-size: 14px;
+    line-height: 1.6;
 }
 
 
-/* =====================================================
-   FORM
-===================================================== */
+/* =========================================================
+   FORMS
+========================================================= */
 
 label {
+    display: block;
 
-    display:
-        block;
+    margin: 15px 0 7px;
 
-    margin:
-        16px 0 7px;
+    color: #b9c4d5;
 
-    color:
-        #b9c4d5;
-
-    font-size:
-        13px;
-
-    font-weight:
-        700;
-
+    font-size: 13px;
+    font-weight: 750;
 }
 
 input,
 textarea,
 select {
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
 
-    display:
-        block;
-
-    width:
-        100%;
-
-    max-width:
-        100%;
-
-    min-width:
-        0;
-
-    padding:
-        13px 14px;
+    padding: 13px 14px;
 
     border:
         1px solid #27334a;
 
-    border-radius:
-        12px;
+    border-radius: 12px;
 
-    outline:
-        none;
+    background: #080e19;
 
-    background:
-        #080e19;
-
-    color:
-        #ffffff;
-
+    color: #fff;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
-
-    border-color:
-        #27dfff;
+    border-color: #27dfff;
 
     box-shadow:
         0 0 0 3px
         rgba(39,223,255,.08);
-
 }
 
 textarea {
+    min-height: 170px;
+    resize: vertical;
 
-    min-height:
-        180px;
-
-    resize:
-        vertical;
-
-    line-height:
-        1.6;
-
+    line-height: 1.65;
 }
 
-.article-content {
+.small-textarea {
+    min-height: 115px;
+}
 
-    min-height:
-        260px;
-
+.large-textarea {
+    min-height: 270px;
 }
 
 
-/* =====================================================
+/* =========================================================
    BUTTONS
-===================================================== */
+========================================================= */
 
 .button-row {
+    display: flex;
+    flex-wrap: wrap;
 
-    display:
-        flex;
+    gap: 10px;
 
-    flex-wrap:
-        wrap;
-
-    gap:
-        10px;
-
-    margin-top:
-        14px;
-
+    margin-top: 15px;
 }
 
 button {
+    min-height: 44px;
 
-    border:
-        0;
+    padding: 12px 18px;
 
-    border-radius:
-        12px;
+    border: 0;
+    border-radius: 12px;
 
-    padding:
-        12px 18px;
-
-    min-height:
-        44px;
-
-    font-weight:
-        750;
-
-    font-size:
-        14px;
-
-    color:
-        #031018;
+    color: #031018;
 
     background:
         linear-gradient(
@@ -532,25 +395,21 @@ button {
             #6d7cff
         );
 
+    font-size: 14px;
+    font-weight: 800;
 }
 
 button.secondary {
+    color: #dce5f3;
 
-    color:
-        #dce5f3;
-
-    background:
-        #182235;
+    background: #182235;
 
     border:
         1px solid #2b3952;
-
 }
 
 button.danger {
-
-    color:
-        #ffffff;
+    color: #fff;
 
     background:
         linear-gradient(
@@ -558,126 +417,51 @@ button.danger {
             #ff5d72,
             #ff3152
         );
+}
 
+button.success {
+    color: #031018;
+
+    background:
+        linear-gradient(
+            135deg,
+            #45f0b0,
+            #27dfff
+        );
 }
 
 button:disabled {
-
-    opacity:
-        .5;
-
-    cursor:
-        not-allowed;
-
+    opacity: .5;
+    cursor: not-allowed;
 }
 
 
-/* =====================================================
-   BIG ARTICLE BUTTON
-===================================================== */
-
-.upload-button {
-
-    width:
-        100%;
-
-    min-height:
-        64px;
-
-    margin-top:
-        22px;
-
-    font-size:
-        17px;
-
-    font-weight:
-        850;
-
-}
-
-
-/* =====================================================
-   CHECKBOX
-===================================================== */
-
-.remember-row {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    gap:
-        9px;
-
-    margin-top:
-        10px;
-
-    color:
-        #8e9aae;
-
-    font-size:
-        13px;
-
-}
-
-.remember-row input {
-
-    width:
-        18px;
-
-    height:
-        18px;
-
-    margin:
-        0;
-
-}
-
-
-/* =====================================================
+/* =========================================================
    RESULT
-===================================================== */
+========================================================= */
 
 .result {
+    margin-top: 14px;
 
-    width:
-        100%;
+    padding: 13px;
 
-    margin-top:
-        14px;
+    border-radius: 12px;
 
-    padding:
-        13px;
-
-    border-radius:
-        12px;
-
-    background:
-        #070c15;
+    background: #070c15;
 
     border:
         1px solid #202c40;
 
-    color:
-        #aeb9ca;
+    color: #aeb9ca;
 
-    white-space:
-        pre-wrap;
+    white-space: pre-wrap;
 
-    overflow-wrap:
-        anywhere;
+    overflow-wrap: anywhere;
 
-    word-break:
-        break-word;
+    word-break: break-word;
 
-    font-size:
-        13px;
-
-    line-height:
-        1.55;
-
+    font-size: 13px;
+    line-height: 1.55;
 }
 
 .success {
@@ -689,194 +473,166 @@ button:disabled {
 }
 
 
-/* =====================================================
+/* =========================================================
    DASHBOARD
-===================================================== */
+========================================================= */
 
 .dashboard-grid {
-
-    display:
-        grid;
+    display: grid;
 
     grid-template-columns:
-        repeat(
-            4,
-            minmax(0,1fr)
-        );
+        repeat(4, minmax(0, 1fr));
 
-    gap:
-        12px;
+    gap: 10px;
 
-    margin-top:
-        18px;
-
+    margin-top: 18px;
 }
 
 .stat {
+    min-width: 0;
 
-    min-width:
-        0;
+    padding: 16px;
 
-    padding:
-        17px;
+    border-radius: 14px;
 
-    border-radius:
-        14px;
-
-    background:
-        #080e19;
+    background: #080e19;
 
     border:
         1px solid #202c40;
-
 }
 
 .stat-number {
+    display: block;
 
-    display:
-        block;
-
-    font-size:
-        28px;
-
-    font-weight:
-        850;
-
+    font-size: 27px;
+    font-weight: 900;
 }
 
 .stat-label {
+    display: block;
 
-    display:
-        block;
+    margin-top: 4px;
 
-    margin-top:
-        4px;
+    color: #78869a;
 
-    color:
-        #78869a;
-
-    font-size:
-        12px;
-
+    font-size: 11px;
 }
 
 
-/* =====================================================
-   HEADING BOX
-===================================================== */
+/* =========================================================
+   ARTICLE HEADING BOX
+========================================================= */
 
 .heading-box {
+    margin-top: 15px;
 
-    margin-top:
-        16px;
+    padding: 18px;
 
-    padding:
-        18px;
-
-    border-radius:
-        16px;
+    border-radius: 16px;
 
     background:
-        #080e19;
+        linear-gradient(
+            145deg,
+            #0a1220,
+            #070c16
+        );
 
     border:
-        1px solid #202c40;
-
+        1px solid #202e45;
 }
 
 .heading-box h3 {
+    margin: 0 0 10px;
 
-    margin:
-        0 0 12px;
+    color: #48e5ff;
 
-    color:
-        #48e5ff;
-
-    font-size:
-        17px;
-
+    font-size: 16px;
 }
 
 
-/* =====================================================
-   ARTICLE PREVIEW
-===================================================== */
+/* =========================================================
+   BIG UPLOAD BUTTON
+========================================================= */
 
-.preview-wrapper {
+.upload-button {
+    width: 100%;
 
-    display:
-        none;
+    min-height: 62px;
 
-    margin-top:
-        20px;
+    margin-top: 20px;
 
+    font-size: 16px;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   CHECKBOX
+========================================================= */
+
+.remember-row {
+    display: flex;
+
+    align-items: center;
+
+    gap: 9px;
+
+    margin-top: 10px;
+
+    color: #8e9aae;
+
+    font-size: 13px;
+}
+
+.remember-row input {
+    width: 18px;
+    height: 18px;
+    margin: 0;
+}
+
+
+/* =========================================================
+   PREVIEW
+========================================================= */
+
+.preview-wrapper,
+.code-wrapper,
+.seo-wrapper {
+    display: none;
+
+    margin-top: 20px;
 }
 
 .article-preview {
+    padding: 22px;
 
-    padding:
-        22px;
+    border-radius: 15px;
 
-    border-radius:
-        15px;
+    background: #fff;
 
-    background:
-        #ffffff;
+    color: #172033;
 
-    color:
-        #172033;
+    line-height: 1.75;
 
-    line-height:
-        1.75;
-
+    overflow: hidden;
 }
 
-.article-preview h1 {
+.article-preview iframe {
+    width: 100%;
 
-    font-size:
-        36px;
+    min-height: 650px;
 
-}
+    border: 0;
 
-.article-preview h2 {
+    border-radius: 12px;
 
-    margin-top:
-        30px;
-
-}
-
-.article-preview img {
-
-    max-width:
-        100%;
-
-    height:
-        auto;
-
-    border-radius:
-        12px;
-
-}
-
-
-/* =====================================================
-   CODE PREVIEW
-===================================================== */
-
-.code-wrapper {
-
-    display:
-        none;
-
-    margin-top:
-        20px;
-
+    background: white;
 }
 
 .code-preview {
+    width: 100%;
 
-    min-height:
-        350px;
+    min-height: 360px;
 
     font-family:
         ui-monospace,
@@ -885,329 +641,253 @@ button:disabled {
         Consolas,
         monospace;
 
-    font-size:
-        12px;
+    font-size: 12px;
 
+    line-height: 1.55;
 }
 
 
-/* =====================================================
-   FILE / KEYWORD
-===================================================== */
+/* =========================================================
+   SEO ANALYZER
+========================================================= */
 
-.file-list {
-
-    display:
-        grid;
-
-    gap:
-        8px;
-
-    margin-top:
-        14px;
-
-}
-
-.keyword-item {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    align-items:
-        flex-start;
-
-    gap:
-        12px;
-
-    padding:
-        14px;
-
-    border-radius:
-        12px;
-
-    background:
-        #0b1322;
-
-    border:
-        1px solid #1c2940;
-
-}
-
-.keyword-info {
-
-    min-width:
-        0;
-
-}
-
-.keyword-info strong {
-
-    display:
-        block;
-
-    margin-bottom:
-        5px;
-
-}
-
-.keyword-info span {
-
-    display:
-        block;
-
-    color:
-        #8d9bb0;
-
-    font-size:
-        13px;
-
-    line-height:
-        1.5;
-
-    overflow-wrap:
-        anywhere;
-
-}
-
-
-/* =====================================================
-   INFO
-===================================================== */
-
-.info-grid {
-
-    display:
-        grid;
+.seo-grid {
+    display: grid;
 
     grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
+        repeat(4, minmax(0, 1fr));
 
-    gap:
-        12px;
+    gap: 10px;
 
+    margin-top: 15px;
 }
 
-.info-box {
+.seo-box {
+    padding: 14px;
 
-    padding:
-        15px;
+    border-radius: 13px;
 
-    border-radius:
-        13px;
-
-    background:
-        #080e19;
+    background: #080e19;
 
     border:
         1px solid #202c40;
+}
 
+.seo-box strong {
+    display: block;
+
+    font-size: 22px;
+}
+
+.seo-box span {
+    display: block;
+
+    margin-top: 3px;
+
+    color: #7f8ca0;
+
+    font-size: 11px;
+}
+
+
+/* =========================================================
+   LISTS
+========================================================= */
+
+.file-list {
+    display: grid;
+
+    gap: 8px;
+
+    margin-top: 14px;
+}
+
+.list-item {
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background: #0b1322;
+
+    border:
+        1px solid #1c2940;
+}
+
+.list-item strong {
+    display: block;
+
+    margin-bottom: 5px;
+}
+
+.list-item span {
+    color: #8d9bb0;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* =========================================================
+   INFO
+========================================================= */
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0,1fr));
+
+    gap: 10px;
+}
+
+.info-box {
+    padding: 15px;
+
+    border-radius: 13px;
+
+    background: #080e19;
+
+    border:
+        1px solid #202c40;
 }
 
 .info-box strong {
+    display: block;
 
-    display:
-        block;
-
-    margin-bottom:
-        5px;
-
+    margin-bottom: 5px;
 }
 
 .info-box span {
+    color: #8290a5;
 
-    color:
-        #8290a5;
+    font-size: 13px;
 
-    font-size:
-        13px;
+    line-height: 1.5;
 
-    line-height:
-        1.5;
-
-    overflow-wrap:
-        anywhere;
-
+    overflow-wrap: anywhere;
 }
 
 
-/* =====================================================
+/* =========================================================
+   DIVIDER
+========================================================= */
+
+.divider {
+    height: 1px;
+
+    margin: 22px 0;
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+
+/* =========================================================
    FOOTER
-===================================================== */
+========================================================= */
 
 footer {
+    padding: 35px 0 55px;
 
-    padding:
-        35px 0 55px;
+    text-align: center;
 
-    text-align:
-        center;
+    color: #647085;
 
-    color:
-        #647085;
-
-    font-size:
-        12px;
-
+    font-size: 12px;
 }
 
 
-/* =====================================================
-   RESPONSIVE
-===================================================== */
+/* =========================================================
+   MOBILE
+========================================================= */
 
-@media (max-width:900px) {
+@media (max-width: 900px) {
 
     .container {
-
-        width:
-            min(
-                100% - 28px,
-                760px
-            );
-
+        width: min(100% - 26px, 760px);
     }
 
     .grid {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
     }
 
     .full {
-
-        grid-column:
-            auto;
-
+        grid-column: auto;
     }
 
     .dashboard-grid {
-
         grid-template-columns:
-            repeat(
-                2,
-                minmax(0,1fr)
-            );
-
+            repeat(2, minmax(0,1fr));
     }
 
+    .seo-grid {
+        grid-template-columns:
+            repeat(2, minmax(0,1fr));
+    }
 }
 
-@media (max-width:600px) {
+@media (max-width: 600px) {
 
     .container {
-
-        width:
-            calc(100% - 20px);
-
+        width: calc(100% - 18px);
     }
 
     .navbar {
-
-        min-height:
-            68px;
-
+        min-height: 65px;
     }
 
     .logo {
-
-        font-size:
-            20px;
-
+        font-size: 20px;
     }
 
     .hero {
-
-        padding:
-            30px 0 20px;
-
+        padding: 30px 0 20px;
     }
 
     .card {
-
-        padding:
-            16px;
-
+        padding: 16px;
     }
 
     input,
     textarea,
     select {
-
-        font-size:
-            16px;
-
+        font-size: 16px;
     }
 
     .button-row {
-
-        flex-direction:
-            column;
-
+        flex-direction: column;
     }
 
     .button-row button {
-
-        width:
-            100%;
-
+        width: 100%;
     }
 
-    .dashboard-grid {
-
+    .dashboard-grid,
+    .seo-grid {
         grid-template-columns:
-            repeat(
-                2,
-                minmax(0,1fr)
-            );
-
+            repeat(2, minmax(0,1fr));
     }
 
     .info-grid {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
     }
-
-    .keyword-item {
-
-        flex-direction:
-            column;
-
-    }
-
 }
 
-@media (max-width:380px) {
+@media (max-width: 380px) {
 
     .container {
-
-        width:
-            calc(100% - 14px);
-
+        width: calc(100% - 12px);
     }
 
-    .dashboard-grid {
-
-        grid-template-columns:
-            1fr;
-
+    .dashboard-grid,
+    .seo-grid {
+        grid-template-columns: 1fr;
     }
 
     .status {
-
-        display:
-            none;
-
+        display: none;
     }
-
 }
 
 </style>
@@ -1217,9 +897,9 @@ footer {
 <body>
 
 
-<!-- =====================================================
+<!-- =========================================================
      HEADER
-===================================================== -->
+========================================================= -->
 
 <header class="site-header">
 
@@ -1253,9 +933,9 @@ footer {
 <div class="container">
 
 
-<!-- =====================================================
+<!-- =========================================================
      HERO
-===================================================== -->
+========================================================= -->
 
 <section class="hero">
 
@@ -1264,21 +944,16 @@ PRIVATE SEO ADMIN PANEL
 </span>
 
 <h1>
-
 LearnByte
-
 <span class="gradient">
 Control Center.
 </span>
-
 </h1>
 
 <p class="hero-description">
-
-Manage GitHub files, keywords, articles,
-internal links, redirects and website SEO
-from one private panel.
-
+Manage GitHub files, create articles, inspect SEO,
+manage keywords, prepare internal links and redirects
+from one private control panel.
 </p>
 
 </section>
@@ -1287,9 +962,9 @@ from one private panel.
 <div class="grid">
 
 
-<!-- =====================================================
+<!-- =========================================================
      CONNECTION
-===================================================== -->
+========================================================= -->
 
 <section class="card">
 
@@ -1298,10 +973,8 @@ from one private panel.
 </h2>
 
 <p class="card-description">
-
-Connect this panel with your Cloudflare Worker.
-Your GitHub token stays on the Worker.
-
+Connect this panel to your Cloudflare Worker.
+Your GitHub token remains on the Worker.
 </p>
 
 <label>
@@ -1314,7 +987,6 @@ type="url"
 value="https://learnbyte-seo-manager.learnbytehq.workers.dev"
 >
 
-
 <label>
 Admin Key
 </label>
@@ -1325,7 +997,6 @@ type="password"
 placeholder="Enter your admin key"
 autocomplete="off"
 >
-
 
 <label class="remember-row">
 
@@ -1339,7 +1010,6 @@ Remember key on this device
 </span>
 
 </label>
-
 
 <div class="button-row">
 
@@ -1360,7 +1030,6 @@ Clear Saved Key
 
 </div>
 
-
 <div
 class="result"
 id="connectionResult"
@@ -1371,9 +1040,9 @@ Not tested yet.
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      DASHBOARD
-===================================================== -->
+========================================================= -->
 
 <section class="card">
 
@@ -1382,9 +1051,8 @@ Not tested yet.
 </h2>
 
 <p class="card-description">
-Quick overview of your control system.
+Quick overview of your LearnByte control system.
 </p>
-
 
 <div class="dashboard-grid">
 
@@ -1403,7 +1071,6 @@ Connection
 
 </div>
 
-
 <div class="stat">
 
 <span
@@ -1418,7 +1085,6 @@ Files Loaded
 </span>
 
 </div>
-
 
 <div class="stat">
 
@@ -1435,7 +1101,6 @@ Keywords
 
 </div>
 
-
 <div class="stat">
 
 <span
@@ -1446,7 +1111,7 @@ id="statArticles"
 </span>
 
 <span class="stat-label">
-Articles Uploaded
+Articles Created
 </span>
 
 </div>
@@ -1456,9 +1121,9 @@ Articles Uploaded
 </section>
 
 
-<!-- =====================================================
-     NEW ARTICLE CREATOR
-===================================================== -->
+<!-- =========================================================
+     ARTICLE CREATOR
+========================================================= -->
 
 <section class="card full">
 
@@ -1467,14 +1132,9 @@ Articles Uploaded
 </h2>
 
 <p class="card-description">
-
-Write your article normally.
-You do NOT need to write HTML.
-The panel will automatically generate
-the HTML file and send it to GitHub.
-
+Write your article normally. You do not need to write HTML.
+The panel generates the HTML automatically.
 </p>
-
 
 <label>
 Article Title *
@@ -1485,7 +1145,6 @@ id="articleTitle"
 placeholder="What Is SEO? Complete Beginner Guide"
 >
 
-
 <label>
 URL / File Name *
 </label>
@@ -1494,7 +1153,6 @@ URL / File Name *
 id="articleSlug"
 placeholder="what-is-seo.html"
 >
-
 
 <label>
 Category
@@ -1505,7 +1163,6 @@ id="articleCategory"
 placeholder="SEO"
 >
 
-
 <label>
 Publish Date
 </label>
@@ -1514,7 +1171,6 @@ Publish Date
 id="articleDate"
 type="date"
 >
-
 
 <label>
 Meta Title
@@ -1525,17 +1181,15 @@ id="articleMetaTitle"
 placeholder="What Is SEO? Complete Beginner Guide | LearnByte"
 >
 
-
 <label>
 Meta Description *
 </label>
 
 <textarea
 id="articleMetaDescription"
-style="min-height:120px"
+class="small-textarea"
 placeholder="Write an SEO-friendly meta description..."
 ></textarea>
-
 
 <label>
 Primary Keyword
@@ -1546,7 +1200,6 @@ id="articlePrimaryKeyword"
 placeholder="what is SEO"
 >
 
-
 <label>
 Secondary Keywords
 </label>
@@ -1556,7 +1209,6 @@ id="articleSecondaryKeywords"
 placeholder="SEO meaning, search engine optimization, SEO basics"
 >
 
-
 <label>
 Featured Image URL
 </label>
@@ -1564,9 +1216,8 @@ Featured Image URL
 <input
 id="articleImage"
 type="url"
-placeholder="https://..."
+placeholder="https://example.com/image.jpg"
 >
-
 
 <label>
 Introduction
@@ -1574,13 +1225,11 @@ Introduction
 
 <textarea
 id="articleIntro"
-placeholder="Write your article introduction here..."
+placeholder="Write your article introduction..."
 ></textarea>
 
 
-<!-- =====================================================
-     HEADING 1
-===================================================== -->
+<!-- HEADING 1 -->
 
 <div class="heading-box">
 
@@ -1604,15 +1253,13 @@ Article Content
 <textarea
 id="content1"
 class="article-content"
-placeholder="Write the content for Heading 1..."
+placeholder="Write the content for this heading..."
 ></textarea>
 
 </div>
 
 
-<!-- =====================================================
-     HEADING 2
-===================================================== -->
+<!-- HEADING 2 -->
 
 <div class="heading-box">
 
@@ -1642,9 +1289,7 @@ placeholder="Optional. Leave blank if not needed."
 </div>
 
 
-<!-- =====================================================
-     HEADING 3
-===================================================== -->
+<!-- HEADING 3 -->
 
 <div class="heading-box">
 
@@ -1674,9 +1319,7 @@ placeholder="Optional. Leave blank if not needed."
 </div>
 
 
-<!-- =====================================================
-     HEADING 4
-===================================================== -->
+<!-- HEADING 4 -->
 
 <div class="heading-box">
 
@@ -1706,9 +1349,7 @@ placeholder="Optional. Leave blank if not needed."
 </div>
 
 
-<!-- =====================================================
-     HEADING 5
-===================================================== -->
+<!-- HEADING 5 -->
 
 <div class="heading-box">
 
@@ -1738,9 +1379,7 @@ placeholder="Optional. Leave blank if not needed."
 </div>
 
 
-<!-- =====================================================
-     HEADING 6
-===================================================== -->
+<!-- HEADING 6 -->
 
 <div class="heading-box">
 
@@ -1787,7 +1426,7 @@ type="button"
 class="secondary"
 onclick="previewArticle()"
 >
-👁️ Preview Article
+👁️ Preview
 </button>
 
 <button
@@ -1795,7 +1434,15 @@ type="button"
 class="secondary"
 onclick="showGeneratedHTML()"
 >
-🔍 Show Generated HTML
+🔍 Generated HTML
+</button>
+
+<button
+type="button"
+class="secondary"
+onclick="analyzeSEO()"
+>
+📈 Analyze SEO
 </button>
 
 <button
@@ -1803,7 +1450,7 @@ type="button"
 class="secondary"
 onclick="clearArticle()"
 >
-🧹 Clear Article
+🧹 Clear
 </button>
 
 </div>
@@ -1826,13 +1473,88 @@ Article Creator ready.
 </div>
 
 
+<!-- SEO -->
+
+<div
+class="seo-wrapper"
+id="seoWrapper"
+>
+
+<h3>
+📈 SEO Analysis
+</h3>
+
+<div class="seo-grid">
+
+<div class="seo-box">
+
+<strong id="seoWords">
+0
+</strong>
+
+<span>
+Words
+</span>
+
+</div>
+
+<div class="seo-box">
+
+<strong id="seoTitle">
+0
+</strong>
+
+<span>
+Title characters
+</span>
+
+</div>
+
+<div class="seo-box">
+
+<strong id="seoMeta">
+0
+</strong>
+
+<span>
+Meta characters
+</span>
+
+</div>
+
+<div class="seo-box">
+
+<strong id="seoHeadings">
+0
+</strong>
+
+<span>
+H2 headings
+</span>
+
+</div>
+
+</div>
+
+<div
+class="result"
+id="seoResult"
+>
+SEO analysis not run.
+</div>
+
+</div>
+
+
+<!-- PREVIEW -->
+
 <div
 class="preview-wrapper"
 id="previewWrapper"
 >
 
 <h3>
-Article Preview
+👁️ Article Preview
 </h3>
 
 <div
@@ -1844,13 +1566,15 @@ id="articlePreview"
 </div>
 
 
+<!-- CODE -->
+
 <div
 class="code-wrapper"
 id="codeWrapper"
 >
 
 <h3>
-Generated HTML
+🔍 Generated HTML
 </h3>
 
 <textarea
@@ -1864,9 +1588,9 @@ readonly
 </section>
 
 
-<!-- =====================================================
-     FILE MANAGER
-===================================================== -->
+<!-- =========================================================
+     EXISTING FILE MANAGER
+========================================================= -->
 
 <section class="card">
 
@@ -1875,7 +1599,7 @@ readonly
 </h2>
 
 <p class="card-description">
-Read a file directly from GitHub.
+Read any allowed file directly from GitHub.
 </p>
 
 <label>
@@ -1893,7 +1617,15 @@ placeholder="index.html"
 type="button"
 onclick="readFile()"
 >
-Read File
+📖 Read File
+</button>
+
+<button
+type="button"
+class="secondary"
+onclick="loadIndex()"
+>
+Load index.html
 </button>
 
 </div>
@@ -1908,9 +1640,9 @@ No file loaded.
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      GITHUB EDITOR
-===================================================== -->
+========================================================= -->
 
 <section class="card">
 
@@ -1919,8 +1651,18 @@ No file loaded.
 </h2>
 
 <p class="card-description">
-Edit the loaded file and commit directly to GitHub.
+Edit the loaded file and commit it directly to GitHub.
 </p>
+
+<label>
+Current File
+</label>
+
+<input
+id="currentFileDisplay"
+readonly
+placeholder="No file loaded"
+>
 
 <label>
 Commit Message
@@ -1937,7 +1679,7 @@ File Content
 
 <textarea
 id="editor"
-class="code-preview"
+class="large-textarea"
 spellcheck="false"
 placeholder="Load a file first..."
 ></textarea>
@@ -1971,9 +1713,9 @@ No changes made.
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      KEYWORD MANAGER
-===================================================== -->
+========================================================= -->
 
 <section class="card full">
 
@@ -1982,14 +1724,11 @@ No changes made.
 </h2>
 
 <p class="card-description">
-
 Store page-wise SEO keywords inside
 <strong>seo-keywords.json</strong>.
-This does NOT blindly insert keywords
-into article text.
-
+Keywords are stored as data and are NOT blindly
+inserted into article text.
 </p>
-
 
 <label>
 Page
@@ -2000,7 +1739,6 @@ id="keywordPage"
 placeholder="posts/what-is-seo.html"
 >
 
-
 <label>
 Primary Keyword
 </label>
@@ -2010,7 +1748,6 @@ id="keywordPrimary"
 placeholder="what is SEO"
 >
 
-
 <label>
 Secondary Keywords
 </label>
@@ -2019,7 +1756,6 @@ Secondary Keywords
 id="keywordSecondary"
 placeholder="SEO meaning, SEO basics"
 >
-
 
 <div class="button-row">
 
@@ -2040,14 +1776,12 @@ onclick="loadKeywords()"
 
 </div>
 
-
 <div
 class="result"
 id="keywordResult"
 >
 Keyword Manager ready.
 </div>
-
 
 <div
 class="file-list"
@@ -2058,9 +1792,9 @@ id="keywordList"
 </section>
 
 
-<!-- =====================================================
-     INTERNAL LINKING
-===================================================== -->
+<!-- =========================================================
+     INTERNAL LINK MANAGER
+========================================================= -->
 
 <section class="card">
 
@@ -2069,7 +1803,7 @@ id="keywordList"
 </h2>
 
 <p class="card-description">
-Prepare an internal link with anchor text.
+Create an internal link or apply it to a loaded source file.
 </p>
 
 <label>
@@ -2078,7 +1812,7 @@ Source Page
 
 <input
 id="sourcePage"
-placeholder="category/education.html"
+placeholder="posts/seo.html"
 >
 
 <label>
@@ -2091,7 +1825,7 @@ placeholder="posts/career.html"
 >
 
 <label>
-Anchor Text / Keyword
+Anchor Text
 </label>
 
 <input
@@ -2106,7 +1840,14 @@ type="button"
 class="secondary"
 onclick="prepareLink()"
 >
-Prepare Link
+🔗 Generate Link
+</button>
+
+<button
+type="button"
+onclick="applyInternalLink()"
+>
+⚡ Apply To Source File
 </button>
 
 </div>
@@ -2115,15 +1856,15 @@ Prepare Link
 class="result"
 id="linkResult"
 >
-Link generator ready.
+Internal linking ready.
 </div>
 
 </section>
 
 
-<!-- =====================================================
-     REDIRECT
-===================================================== -->
+<!-- =========================================================
+     REDIRECT MANAGER
+========================================================= -->
 
 <section class="card">
 
@@ -2132,11 +1873,11 @@ Link generator ready.
 </h2>
 
 <p class="card-description">
-Prepare 301 redirect rules.
+Create a simple redirect HTML file for an old page.
 </p>
 
 <label>
-Old URL
+Old URL / File
 </label>
 
 <input
@@ -2160,7 +1901,14 @@ type="button"
 class="secondary"
 onclick="prepareRedirect()"
 >
-Prepare Redirect
+🔍 Preview Redirect
+</button>
+
+<button
+type="button"
+onclick="createRedirect()"
+>
+🚀 Create Redirect File
 </button>
 
 </div>
@@ -2169,15 +1917,15 @@ Prepare Redirect
 class="result"
 id="redirectResult"
 >
-Redirect manager ready.
+Redirect Manager ready.
 </div>
 
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      SITEMAP
-===================================================== -->
+========================================================= -->
 
 <section class="card">
 
@@ -2186,7 +1934,7 @@ Redirect manager ready.
 </h2>
 
 <p class="card-description">
-Open and inspect your website sitemap.
+Open your current XML sitemap.
 </p>
 
 <label>
@@ -2205,7 +1953,7 @@ value="https://learnbtyehq.github.io/sitemap.xml"
 type="button"
 onclick="openSitemap()"
 >
-Open Sitemap
+🗺️ Open Sitemap
 </button>
 
 </div>
@@ -2213,9 +1961,9 @@ Open Sitemap
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      WEBSITE INFO
-===================================================== -->
+========================================================= -->
 
 <section class="card">
 
@@ -2224,7 +1972,7 @@ Open Sitemap
 </h2>
 
 <p class="card-description">
-LearnByte website information.
+LearnByte website and control-system information.
 </p>
 
 <div class="info-grid">
@@ -2241,7 +1989,6 @@ https://learnbtyehq.github.io/
 
 </div>
 
-
 <div class="info-box">
 
 <strong>
@@ -2253,7 +2000,6 @@ learnbtyehq/learnbtyehq.github.io
 </span>
 
 </div>
-
 
 <div class="info-box">
 
@@ -2267,15 +2013,14 @@ main
 
 </div>
 
-
 <div class="info-box">
 
 <strong>
-Control System
+Backend
 </strong>
 
 <span>
-Cloudflare Worker + GitHub
+Cloudflare Worker + GitHub API
 </span>
 
 </div>
@@ -2285,9 +2030,9 @@ Cloudflare Worker + GitHub
 </section>
 
 
-<!-- =====================================================
+<!-- =========================================================
      QUICK ACTIONS
-===================================================== -->
+========================================================= -->
 
 <section class="card full">
 
@@ -2296,7 +2041,7 @@ Cloudflare Worker + GitHub
 </h2>
 
 <p class="card-description">
-Useful shortcuts.
+Useful shortcuts for managing the website.
 </p>
 
 <div class="button-row">
@@ -2305,7 +2050,7 @@ Useful shortcuts.
 type="button"
 onclick="loadIndex()"
 >
-Load index.html
+📄 Load index.html
 </button>
 
 <button
@@ -2313,7 +2058,7 @@ type="button"
 class="secondary"
 onclick="openWebsite()"
 >
-Open Website
+🌐 Open Website
 </button>
 
 <button
@@ -2321,7 +2066,7 @@ type="button"
 class="secondary"
 onclick="openGitHub()"
 >
-Open GitHub
+🐙 Open GitHub
 </button>
 
 <button
@@ -2329,7 +2074,7 @@ type="button"
 class="secondary"
 onclick="openWorker()"
 >
-Open Worker
+☁️ Open Worker
 </button>
 
 </div>
@@ -2347,9 +2092,7 @@ Open Worker
 <footer>
 
 <div class="container">
-
 LearnByte SEO Control · Private administration tool
-
 </div>
 
 </footer>
@@ -2357,12 +2100,11 @@ LearnByte SEO Control · Private administration tool
 
 <script>
 
-/* =====================================================
+/* =========================================================
    GLOBAL STATE
-===================================================== */
+========================================================= */
 
 let currentFileSha = null;
-
 let currentFilePath = null;
 
 let keywordSha = null;
@@ -2372,14 +2114,12 @@ let keywordData = {
 };
 
 
-/* =====================================================
-   HELPERS
-===================================================== */
+/* =========================================================
+   HELPER
+========================================================= */
 
 function $(id) {
-
     return document.getElementById(id);
-
 }
 
 
@@ -2405,30 +2145,35 @@ function getAdminKey() {
 function authHeaders() {
 
     return {
-
-        "Content-Type":
-            "application/json",
-
-        "X-Admin-Key":
-            getAdminKey()
-
+        "Content-Type": "application/json",
+        "X-Admin-Key": getAdminKey()
     };
 
 }
 
 
-/* =====================================================
+function setResult(id, message, type = "") {
+
+    const box = $(id);
+
+    box.className =
+        type
+        ? "result " + type
+        : "result";
+
+    box.textContent = message;
+
+}
+
+
+/* =========================================================
    CONNECTION
-===================================================== */
+========================================================= */
 
 function setConnected(value) {
 
-    const status =
-        $("status");
-
-    const stat =
-        $("statStatus");
-
+    const status = $("status");
+    const stat = $("statStatus");
 
     if (value) {
 
@@ -2461,17 +2206,13 @@ function setConnected(value) {
 
 async function testConnection() {
 
-    const box =
-        $("connectionResult");
-
-
     if (!getAdminKey()) {
 
-        box.className =
-            "result error";
-
-        box.textContent =
-            "Please enter your Admin Key.";
+        setResult(
+            "connectionResult",
+            "Please enter your Admin Key.",
+            "error"
+        );
 
         setConnected(false);
 
@@ -2479,13 +2220,10 @@ async function testConnection() {
 
     }
 
-
-    box.className =
-        "result";
-
-    box.textContent =
-        "Testing connection...";
-
+    setResult(
+        "connectionResult",
+        "Testing connection..."
+    );
 
     try {
 
@@ -2494,20 +2232,13 @@ async function testConnection() {
                 getWorkerUrl() +
                 "/github-test",
                 {
-
-                    method:
-                        "GET",
-
-                    headers:
-                        authHeaders()
-
+                    method: "GET",
+                    headers: authHeaders()
                 }
             );
 
-
         const data =
             await response.json();
-
 
         if (!response.ok) {
 
@@ -2518,20 +2249,17 @@ async function testConnection() {
 
         }
 
-
-        box.className =
-            "result success";
-
-        box.textContent =
+        setResult(
+            "connectionResult",
             JSON.stringify(
                 data,
                 null,
                 2
-            );
-
+            ),
+            "success"
+        );
 
         setConnected(true);
-
 
         if (
             $("rememberKey").checked
@@ -2546,11 +2274,11 @@ async function testConnection() {
 
     } catch (error) {
 
-        box.className =
-            "result error";
-
-        box.textContent =
-            error.message;
+        setResult(
+            "connectionResult",
+            error.message,
+            "error"
+        );
 
         setConnected(false);
 
@@ -2565,7 +2293,6 @@ function loadSavedKey() {
         localStorage.getItem(
             "learnbyte_admin_key"
         );
-
 
     if (saved) {
 
@@ -2592,20 +2319,19 @@ function clearSavedKey() {
     $("rememberKey").checked =
         false;
 
-    $("connectionResult").className =
-        "result";
-
-    $("connectionResult").textContent =
-        "Saved key cleared.";
+    setResult(
+        "connectionResult",
+        "Saved key cleared."
+    );
 
     setConnected(false);
 
 }
 
 
-/* =====================================================
+/* =========================================================
    FILE MANAGER
-===================================================== */
+========================================================= */
 
 async function readFile() {
 
@@ -2614,42 +2340,34 @@ async function readFile() {
             .value
             .trim();
 
-    const box =
-        $("fileResult");
-
-
     if (!path) {
 
-        box.className =
-            "result error";
-
-        box.textContent =
-            "Enter a file path.";
+        setResult(
+            "fileResult",
+            "Enter a file path.",
+            "error"
+        );
 
         return;
 
     }
-
 
     if (!getAdminKey()) {
 
-        box.className =
-            "result error";
-
-        box.textContent =
-            "Enter your Admin Key first.";
+        setResult(
+            "fileResult",
+            "Enter your Admin Key first.",
+            "error"
+        );
 
         return;
 
     }
 
-
-    box.className =
-        "result";
-
-    box.textContent =
-        "Reading file...";
-
+    setResult(
+        "fileResult",
+        "Reading file..."
+    );
 
     try {
 
@@ -2658,25 +2376,16 @@ async function readFile() {
                 getWorkerUrl() +
                 "/get-file",
                 {
-
-                    method:
-                        "POST",
-
-                    headers:
-                        authHeaders(),
-
-                    body:
-                        JSON.stringify({
-                            path: path
-                        })
-
+                    method: "POST",
+                    headers: authHeaders(),
+                    body: JSON.stringify({
+                        path: path
+                    })
                 }
             );
 
-
         const data =
             await response.json();
-
 
         if (!response.ok) {
 
@@ -2687,48 +2396,46 @@ async function readFile() {
 
         }
 
-
         currentFileSha =
             data.sha;
 
         currentFilePath =
             data.path;
 
-
         $("editor").value =
             data.content;
 
+        $("currentFileDisplay").value =
+            data.path;
 
         $("statFiles").textContent =
             "1";
 
-
-        box.className =
-            "result success";
-
-        box.textContent =
+        setResult(
+            "fileResult",
             "Loaded: " +
             data.path +
-            "\nSHA: " +
-            data.sha;
-
+            "\n\nSHA: " +
+            data.sha,
+            "success"
+        );
 
     } catch (error) {
 
-        box.className =
-            "result error";
-
-        box.textContent =
-            error.message;
+        setResult(
+            "fileResult",
+            error.message,
+            "error"
+        );
 
     }
 
 }
 
 
-/* =====================================================
-   SAVE EXISTING FILE
-===================================================== */
+/* =========================================================
+   SAVE FILE
+========================================================= */
 
 async function saveFile() {
 
@@ -2742,7 +2449,6 @@ async function saveFile() {
 
     }
 
-
     if (!getAdminKey()) {
 
         alert(
@@ -2753,17 +2459,10 @@ async function saveFile() {
 
     }
 
-
-    const box =
-        $("saveResult");
-
-
-    box.className =
-        "result";
-
-    box.textContent =
-        "Saving to GitHub...";
-
+    setResult(
+        "saveResult",
+        "Saving to GitHub..."
+    );
 
     try {
 
@@ -2772,39 +2471,32 @@ async function saveFile() {
                 getWorkerUrl() +
                 "/update-file",
                 {
+                    method: "POST",
+                    headers: authHeaders(),
 
-                    method:
-                        "POST",
+                    body: JSON.stringify({
 
-                    headers:
-                        authHeaders(),
+                        path:
+                            currentFilePath,
 
-                    body:
-                        JSON.stringify({
+                        content:
+                            $("editor").value,
 
-                            path:
-                                currentFilePath,
+                        message:
+                            $("commitMessage")
+                                .value
+                                .trim() ||
+                            "Update file from LearnByte SEO Control",
 
-                            content:
-                                $("editor").value,
+                        sha:
+                            currentFileSha
 
-                            message:
-                                $("commitMessage")
-                                    .value
-                                    .trim(),
-
-                            sha:
-                                currentFileSha
-
-                        })
-
+                    })
                 }
             );
 
-
         const data =
             await response.json();
-
 
         if (!response.ok) {
 
@@ -2815,30 +2507,28 @@ async function saveFile() {
 
         }
 
-
         currentFileSha =
             data.sha ||
             currentFileSha;
 
-
-        box.className =
-            "result success";
-
-        box.textContent =
+        setResult(
+            "saveResult",
+            "✅ File saved and committed.\n\n" +
             JSON.stringify(
                 data,
                 null,
                 2
-            );
-
+            ),
+            "success"
+        );
 
     } catch (error) {
 
-        box.className =
-            "result error";
-
-        box.textContent =
-            error.message;
+        setResult(
+            "saveResult",
+            error.message,
+            "error"
+        );
 
     }
 
@@ -2850,50 +2540,50 @@ function clearEditor() {
     $("editor").value =
         "";
 
+    $("currentFileDisplay").value =
+        "";
+
     currentFileSha =
         null;
 
     currentFilePath =
         null;
 
-    $("fileResult").textContent =
-        "No file loaded.";
+    setResult(
+        "fileResult",
+        "No file loaded."
+    );
 
-    $("saveResult").textContent =
-        "No changes made.";
+    setResult(
+        "saveResult",
+        "No changes made."
+    );
 
 }
 
 
-/* =====================================================
-   KEYWORD MANAGER
-===================================================== */
+/* =========================================================
+   KEYWORDS
+========================================================= */
 
 async function loadKeywords() {
 
-    const box =
-        $("keywordResult");
-
-
     if (!getAdminKey()) {
 
-        box.className =
-            "result error";
-
-        box.textContent =
-            "Enter your Admin Key first.";
+        setResult(
+            "keywordResult",
+            "Enter your Admin Key first.",
+            "error"
+        );
 
         return;
 
     }
 
-
-    box.className =
-        "result";
-
-    box.textContent =
-        "Loading keywords...";
-
+    setResult(
+        "keywordResult",
+        "Loading keywords..."
+    );
 
     try {
 
@@ -2902,49 +2592,36 @@ async function loadKeywords() {
                 getWorkerUrl() +
                 "/get-file",
                 {
+                    method: "POST",
+                    headers: authHeaders(),
 
-                    method:
-                        "POST",
-
-                    headers:
-                        authHeaders(),
-
-                    body:
-                        JSON.stringify({
-
-                            path:
-                                "seo-keywords.json"
-
-                        })
-
+                    body: JSON.stringify({
+                        path:
+                            "seo-keywords.json"
+                    })
                 }
             );
 
-
         const data =
             await response.json();
-
 
         if (!response.ok) {
 
             throw new Error(
                 data.error ||
-                "Could not load seo-keywords.json."
+                "Could not load keywords."
             );
 
         }
 
-
         keywordSha =
             data.sha;
-
 
         keywordData =
             JSON.parse(
                 data.content ||
                 '{"keywords":[]}'
             );
-
 
         if (
             !Array.isArray(
@@ -2957,30 +2634,25 @@ async function loadKeywords() {
 
         }
 
-
         renderKeywords();
-
 
         $("statKeywords").textContent =
             keywordData.keywords.length;
 
-
-        box.className =
-            "result success";
-
-        box.textContent =
-            "Keywords loaded successfully.\n" +
-            "Total entries: " +
-            keywordData.keywords.length;
-
+        setResult(
+            "keywordResult",
+            "Keywords loaded.\nTotal entries: " +
+            keywordData.keywords.length,
+            "success"
+        );
 
     } catch (error) {
 
-        box.className =
-            "result error";
-
-        box.textContent =
-            error.message;
+        setResult(
+            "keywordResult",
+            error.message,
+            "error"
+        );
 
     }
 
@@ -3004,7 +2676,6 @@ async function addKeyword() {
             .value
             .trim();
 
-
     if (!page || !primary) {
 
         alert(
@@ -3014,7 +2685,6 @@ async function addKeyword() {
         return;
 
     }
-
 
     if (!keywordSha) {
 
@@ -3028,14 +2698,11 @@ async function addKeyword() {
 
     }
 
-
     keywordData.keywords.push({
 
-        page:
-            page,
+        page: page,
 
-        primary:
-            primary,
+        primary: primary,
 
         secondary:
             secondary
@@ -3047,9 +2714,7 @@ async function addKeyword() {
 
     });
 
-
     await saveKeywords();
-
 
     $("keywordPage").value =
         "";
@@ -3059,119 +2724,6 @@ async function addKeyword() {
 
     $("keywordSecondary").value =
         "";
-
-}
-
-
-function escapeHtml(value) {
-
-    return String(value)
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
-
-}
-
-
-function renderKeywords() {
-
-    const list =
-        $("keywordList");
-
-
-    list.innerHTML =
-        "";
-
-
-    if (
-        !keywordData.keywords.length
-    ) {
-
-        list.innerHTML =
-            `<div class="result">
-                No keywords added yet.
-            </div>`;
-
-        return;
-
-    }
-
-
-    keywordData.keywords.forEach(
-        (item,index) => {
-
-            const div =
-                document.createElement(
-                    "div"
-                );
-
-            div.className =
-                "keyword-item";
-
-
-            const secondary =
-                Array.isArray(
-                    item.secondary
-                )
-                ? item.secondary.join(", ")
-                : "";
-
-
-            div.innerHTML = `
-
-                <div class="keyword-info">
-
-                    <strong>
-                        ${escapeHtml(item.page)}
-                    </strong>
-
-                    <span>
-                        <b>Primary:</b>
-                        ${escapeHtml(item.primary)}
-                    </span>
-
-                    <span>
-                        <b>Secondary:</b>
-                        ${escapeHtml(
-                            secondary ||
-                            "None"
-                        )}
-                    </span>
-
-                </div>
-
-                <button
-                    type="button"
-                    class="danger"
-                    onclick="deleteKeyword(${index})"
-                >
-                    Delete
-                </button>
-
-            `;
-
-
-            list.appendChild(div);
-
-        }
-    );
 
 }
 
@@ -3188,12 +2740,10 @@ async function deleteKeyword(index) {
 
     }
 
-
     keywordData.keywords.splice(
         index,
         1
     );
-
 
     await saveKeywords();
 
@@ -3202,29 +2752,22 @@ async function deleteKeyword(index) {
 
 async function saveKeywords() {
 
-    const box =
-        $("keywordResult");
-
-
     if (!getAdminKey()) {
 
-        box.className =
-            "result error";
-
-        box.textContent =
-            "Enter your Admin Key first.";
+        setResult(
+            "keywordResult",
+            "Enter your Admin Key first.",
+            "error"
+        );
 
         return;
 
     }
 
-
-    box.className =
-        "result";
-
-    box.textContent =
-        "Saving keywords to GitHub...";
-
+    setResult(
+        "keywordResult",
+        "Saving keywords..."
+    );
 
     try {
 
@@ -3233,41 +2776,33 @@ async function saveKeywords() {
                 getWorkerUrl() +
                 "/update-file",
                 {
+                    method: "POST",
+                    headers: authHeaders(),
 
-                    method:
-                        "POST",
+                    body: JSON.stringify({
 
-                    headers:
-                        authHeaders(),
+                        path:
+                            "seo-keywords.json",
 
-                    body:
-                        JSON.stringify({
+                        content:
+                            JSON.stringify(
+                                keywordData,
+                                null,
+                                2
+                            ),
 
-                            path:
-                                "seo-keywords.json",
+                        message:
+                            "Update SEO keywords",
 
-                            content:
-                                JSON.stringify(
-                                    keywordData,
-                                    null,
-                                    2
-                                ),
+                        sha:
+                            keywordSha
 
-                            message:
-                                "Update SEO keywords",
-
-                            sha:
-                                keywordSha
-
-                        })
-
+                    })
                 }
             );
 
-
         const data =
             await response.json();
-
 
         if (!response.ok) {
 
@@ -3278,46 +2813,140 @@ async function saveKeywords() {
 
         }
 
-
         keywordSha =
             data.sha ||
             keywordSha;
 
-
         renderKeywords();
-
 
         $("statKeywords").textContent =
             keywordData.keywords.length;
 
-
-        box.className =
-            "result success";
-
-        box.textContent =
-            "✅ Keywords saved and committed to GitHub.";
-
+        setResult(
+            "keywordResult",
+            "✅ Keywords saved successfully.",
+            "success"
+        );
 
     } catch (error) {
 
-        box.className =
-            "result error";
-
-        box.textContent =
-            error.message;
+        setResult(
+            "keywordResult",
+            error.message,
+            "error"
+        );
 
     }
 
 }
 
 
-/* =====================================================
-   ARTICLE CREATOR
-===================================================== */
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+function renderKeywords() {
+
+    const list =
+        $("keywordList");
+
+    list.innerHTML =
+        "";
+
+    if (
+        !keywordData.keywords.length
+    ) {
+
+        list.innerHTML =
+            `<div class="result">
+                No keywords added yet.
+            </div>`;
+
+        return;
+
+    }
+
+    keywordData.keywords.forEach(
+        (item, index) => {
+
+            const div =
+                document.createElement(
+                    "div"
+                );
+
+            div.className =
+                "list-item";
+
+            const secondary =
+                Array.isArray(
+                    item.secondary
+                )
+                ? item.secondary.join(", ")
+                : "";
+
+            div.innerHTML = `
+
+                <strong>
+                    ${escapeHtml(
+                        item.page
+                    )}
+                </strong>
+
+                <span>
+                    <b>Primary:</b>
+                    ${escapeHtml(
+                        item.primary
+                    )}
+                </span>
+
+                <br>
+
+                <span>
+                    <b>Secondary:</b>
+                    ${escapeHtml(
+                        secondary ||
+                        "None"
+                    )}
+                </span>
+
+                <div class="button-row">
+
+                    <button
+                        type="button"
+                        class="danger"
+                        onclick="deleteKeyword(${index})"
+                    >
+                        Delete
+                    </button>
+
+                </div>
+            `;
+
+            list.appendChild(
+                div
+            );
+
+        }
+    );
+
+}
+
+
+/* =========================================================
+   ARTICLE
+========================================================= */
 
 function slugify(value) {
 
-    return value
+    return String(value)
         .toLowerCase()
         .trim()
         .replace(
@@ -3365,7 +2994,6 @@ function getArticlePath() {
             .value
             .trim();
 
-
     if (!slug) {
 
         slug =
@@ -3376,13 +3004,9 @@ function getArticlePath() {
 
     }
 
-
     if (!slug) {
-
         return "";
-
     }
-
 
     if (
         !slug.endsWith(".html")
@@ -3393,7 +3017,6 @@ function getArticlePath() {
 
     }
 
-
     if (
         !slug.includes("/")
     ) {
@@ -3403,7 +3026,6 @@ function getArticlePath() {
             slug;
 
     }
-
 
     return slug;
 
@@ -3444,7 +3066,6 @@ function getArticleData() {
 
     const headings = [];
 
-
     for (
         let i = 1;
         i <= 6;
@@ -3461,26 +3082,22 @@ function getArticleData() {
                 .value
                 .trim();
 
-
         if (
             heading ||
             content
         ) {
 
             headings.push({
-
                 heading:
                     heading,
 
                 content:
                     content
-
             });
 
         }
 
     }
-
 
     return {
 
@@ -3502,10 +3119,7 @@ function getArticleData() {
                 .value ||
             new Date()
                 .toISOString()
-                .slice(
-                    0,
-                    10
-                ),
+                .slice(0,10),
 
         metaTitle:
             $("articleMetaTitle")
@@ -3558,20 +3172,17 @@ function validateArticle(article) {
 
     }
 
-
     if (!article.path) {
 
         return "URL / File Name is required.";
 
     }
 
-
     if (!article.metaDescription) {
 
         return "Meta Description is required.";
 
     }
-
 
     if (
         !article.intro &&
@@ -3583,7 +3194,6 @@ function validateArticle(article) {
 
     }
 
-
     return "";
 
 }
@@ -3594,24 +3204,25 @@ function generateArticleHTML() {
     const article =
         getArticleData();
 
-
     let content =
         "";
-
 
     if (
         article.intro
     ) {
 
         content +=
-            "\n<section class=\"article-introduction\">\n" +
-            textToParagraphs(
-                article.intro
-            ) +
-            "\n</section>\n";
+            `
+<section class="article-introduction">
+
+${textToParagraphs(
+    article.intro
+)}
+
+</section>
+`;
 
     }
-
 
     article.headings.forEach(
         section => {
@@ -3621,14 +3232,15 @@ function generateArticleHTML() {
             ) {
 
                 content +=
-                    "\n<h2>" +
-                    escapeHtml(
-                        section.heading
-                    ) +
-                    "</h2>\n";
+                    `
+<h2>
+${escapeHtml(
+    section.heading
+)}
+</h2>
+`;
 
             }
-
 
             if (
                 section.content
@@ -3645,19 +3257,22 @@ function generateArticleHTML() {
         }
     );
 
-
     if (
         article.conclusion
     ) {
 
         content +=
-            "\n<h2>Conclusion</h2>\n" +
-            textToParagraphs(
-                article.conclusion
-            );
+            `
+<h2>
+Conclusion
+</h2>
+
+${textToParagraphs(
+    article.conclusion
+)}
+`;
 
     }
-
 
     const keywords = [
 
@@ -3666,8 +3281,7 @@ function generateArticleHTML() {
         ...article.secondary
             .split(",")
             .map(
-                item =>
-                    item.trim()
+                x => x.trim()
             )
             .filter(Boolean)
 
@@ -3675,24 +3289,27 @@ function generateArticleHTML() {
     .filter(Boolean)
     .join(", ");
 
-
     let imageHTML =
         "";
-
 
     if (
         article.image
     ) {
 
         imageHTML =
-            `<img
-                src="${escapeHtml(article.image)}"
-                alt="${escapeHtml(article.title)}"
-                loading="lazy"
-            >`;
+            `
+<img
+    src="${escapeHtml(
+        article.image
+    )}"
+    alt="${escapeHtml(
+        article.title
+    )}"
+    loading="lazy"
+>
+`;
 
     }
-
 
     return `<!DOCTYPE html>
 
@@ -3743,88 +3360,46 @@ ${escapeHtml(
 <style>
 
 body {
-
     margin: 0;
-
     font-family:
         system-ui,
         -apple-system,
         "Segoe UI",
         sans-serif;
-
-    color:
-        #172033;
-
-    line-height:
-        1.75;
-
+    color: #172033;
+    line-height: 1.75;
 }
 
 main {
-
-    max-width:
-        850px;
-
-    margin:
-        auto;
-
-    padding:
-        30px 20px 60px;
-
+    max-width: 850px;
+    margin: auto;
+    padding: 30px 20px 60px;
 }
 
 article h1 {
-
     font-size:
-        clamp(
-            32px,
-            6vw,
-            52px
-        );
-
-    line-height:
-        1.15;
-
+        clamp(32px,6vw,52px);
+    line-height: 1.15;
 }
 
 article h2 {
-
-    margin-top:
-        34px;
-
-    line-height:
-        1.25;
-
+    margin-top: 34px;
+    line-height: 1.25;
 }
 
 article p {
-
-    font-size:
-        17px;
-
+    font-size: 17px;
 }
 
 article img {
-
-    max-width:
-        100%;
-
-    height:
-        auto;
-
-    border-radius:
-        12px;
-
+    max-width: 100%;
+    height: auto;
+    border-radius: 12px;
 }
 
 .article-meta {
-
-    color:
-        #68758a;
-
-    font-size:
-        14px;
-
+    color: #68758a;
+    font-size: 14px;
 }
 
 </style>
@@ -3870,17 +3445,19 @@ ${content}
 }
 
 
+/* =========================================================
+   ARTICLE PREVIEW
+========================================================= */
+
 function previewArticle() {
 
     const article =
         getArticleData();
 
-
     const error =
         validateArticle(
             article
         );
-
 
     if (error) {
 
@@ -3890,48 +3467,26 @@ function previewArticle() {
 
     }
 
-
     const html =
         generateArticleHTML();
 
-
-    const temporary =
+    const iframe =
         document.createElement(
             "iframe"
         );
 
-
-    temporary.style.width =
-        "100%";
-
-    temporary.style.minHeight =
-        "500px";
-
-    temporary.style.border =
-        "0";
-
-    temporary.style.background =
-        "#ffffff";
-
-    temporary.style.borderRadius =
-        "12px";
-
-
-    temporary.srcdoc =
+    iframe.srcdoc =
         html;
-
 
     const preview =
         $("articlePreview");
-
 
     preview.innerHTML =
         "";
 
     preview.appendChild(
-        temporary
+        iframe
     );
-
 
     $("previewWrapper")
         .style.display =
@@ -3940,17 +3495,19 @@ function previewArticle() {
 }
 
 
+/* =========================================================
+   SHOW HTML
+========================================================= */
+
 function showGeneratedHTML() {
 
     const article =
         getArticleData();
 
-
     const error =
         validateArticle(
             article
         );
-
 
     if (error) {
 
@@ -3960,10 +3517,8 @@ function showGeneratedHTML() {
 
     }
 
-
     $("articleCode").value =
         generateArticleHTML();
-
 
     $("codeWrapper")
         .style.display =
@@ -3971,6 +3526,187 @@ function showGeneratedHTML() {
 
 }
 
+
+/* =========================================================
+   SEO ANALYZER
+========================================================= */
+
+function analyzeSEO() {
+
+    const article =
+        getArticleData();
+
+    const textParts = [
+
+        article.intro,
+
+        ...article.headings.map(
+            x => x.content
+        ),
+
+        article.conclusion
+
+    ];
+
+    const text =
+        textParts
+            .join(" ")
+            .trim();
+
+    const words =
+        text
+            ? text.split(/\s+/).length
+            : 0;
+
+    const titleLength =
+        article.title.length;
+
+    const metaLength =
+        article.metaDescription.length;
+
+    const headingCount =
+        article.headings.filter(
+            x => x.heading
+        ).length;
+
+    $("seoWords").textContent =
+        words;
+
+    $("seoTitle").textContent =
+        titleLength;
+
+    $("seoMeta").textContent =
+        metaLength;
+
+    $("seoHeadings").textContent =
+        headingCount;
+
+    const notes = [];
+
+    if (
+        titleLength < 30
+    ) {
+
+        notes.push(
+            "⚠️ Title is quite short."
+        );
+
+    } else if (
+        titleLength > 65
+    ) {
+
+        notes.push(
+            "⚠️ Title may be too long."
+        );
+
+    } else {
+
+        notes.push(
+            "✅ Title length looks reasonable."
+        );
+
+    }
+
+    if (
+        metaLength < 120
+    ) {
+
+        notes.push(
+            "⚠️ Meta description is short."
+        );
+
+    } else if (
+        metaLength > 170
+    ) {
+
+        notes.push(
+            "⚠️ Meta description may be too long."
+        );
+
+    } else {
+
+        notes.push(
+            "✅ Meta description length looks reasonable."
+        );
+
+    }
+
+    if (
+        headingCount === 0
+    ) {
+
+        notes.push(
+            "⚠️ No H2 heading added."
+        );
+
+    } else {
+
+        notes.push(
+            "✅ H2 headings detected: " +
+            headingCount
+        );
+
+    }
+
+    if (
+        words < 300
+    ) {
+
+        notes.push(
+            "⚠️ Article content is under 300 words."
+        );
+
+    } else {
+
+        notes.push(
+            "✅ Article has " +
+            words +
+            " words."
+        );
+
+    }
+
+    if (
+        !article.primary
+    ) {
+
+        notes.push(
+            "⚠️ Primary keyword is empty."
+        );
+
+    } else {
+
+        const count =
+            text
+                .toLowerCase()
+                .split(
+                    article.primary
+                        .toLowerCase()
+                )
+                .length - 1;
+
+        notes.push(
+            "Primary keyword occurrences in text: " +
+            count
+        );
+
+    }
+
+    setResult(
+        "seoResult",
+        notes.join("\n")
+    );
+
+    $("seoWrapper")
+        .style.display =
+        "block";
+
+}
+
+
+/* =========================================================
+   CLEAR ARTICLE
+========================================================= */
 
 function clearArticle() {
 
@@ -3990,7 +3726,6 @@ function clearArticle() {
 
     ];
 
-
     ids.forEach(
         id => {
 
@@ -4000,31 +3735,24 @@ function clearArticle() {
         }
     );
 
-
     for (
         let i = 1;
         i <= 6;
         i++
     ) {
 
-        $("heading" + i)
-            .value =
+        $("heading" + i).value =
             "";
 
-        $("content" + i)
-            .value =
+        $("content" + i).value =
             "";
 
     }
 
-
-    $("articleResult")
-        .className =
-        "result";
-
-    $("articleResult")
-        .textContent =
-        "Article Creator ready.";
+    setResult(
+        "articleResult",
+        "Article Creator ready."
+    );
 
     $("previewWrapper")
         .style.display =
@@ -4034,24 +3762,26 @@ function clearArticle() {
         .style.display =
         "none";
 
+    $("seoWrapper")
+        .style.display =
+        "none";
+
 }
 
 
-/* =====================================================
-   UPLOAD NEW ARTICLE
-===================================================== */
+/* =========================================================
+   UPLOAD ARTICLE
+========================================================= */
 
 async function uploadArticle() {
 
     const article =
         getArticleData();
 
-
     const error =
         validateArticle(
             article
         );
-
 
     if (error) {
 
@@ -4060,7 +3790,6 @@ async function uploadArticle() {
         return;
 
     }
-
 
     if (!getAdminKey()) {
 
@@ -4072,74 +3801,53 @@ async function uploadArticle() {
 
     }
 
-
-    const confirmed =
-        confirm(
-            "Create and upload:\n\n" +
-            article.path +
-            "\n\n" +
-            "to GitHub?"
-        );
-
-
-    if (!confirmed) {
+    if (
+        !confirm(
+            "Create and upload this article?\n\n" +
+            article.path
+        )
+    ) {
 
         return;
 
     }
 
-
-    const box =
-        $("articleResult");
-
-
-    box.className =
-        "result";
-
-    box.textContent =
-        "Generating HTML and uploading to GitHub...";
-
-
-    const html =
-        generateArticleHTML();
-
+    setResult(
+        "articleResult",
+        "Generating HTML and uploading..."
+    );
 
     try {
+
+        const html =
+            generateArticleHTML();
 
         const response =
             await fetch(
                 getWorkerUrl() +
                 "/update-file",
                 {
+                    method: "POST",
+                    headers: authHeaders(),
 
-                    method:
-                        "POST",
+                    body: JSON.stringify({
 
-                    headers:
-                        authHeaders(),
+                        path:
+                            article.path,
 
-                    body:
-                        JSON.stringify({
+                        content:
+                            html,
 
-                            path:
-                                article.path,
+                        message:
+                            "Add new article: " +
+                            article.title
 
-                            content:
-                                html,
-
-                            message:
-                                "Add new article: " +
-                                article.title
-
-                        })
-
+                    })
                 }
             );
 
-
         const data =
             await response.json();
-
 
         if (!response.ok) {
 
@@ -4150,7 +3858,6 @@ async function uploadArticle() {
 
         }
 
-
         $("articleCode").value =
             html;
 
@@ -4158,58 +3865,53 @@ async function uploadArticle() {
             .style.display =
             "block";
 
-
-        box.className =
-            "result success";
-
-        box.textContent =
-            "✅ ARTICLE UPLOADED SUCCESSFULLY\n\n" +
-
-            "File:\n" +
-            article.path +
-            "\n\n" +
-
-            "Title:\n" +
-            article.title +
-            "\n\n" +
-
-            "GitHub Response:\n" +
-            JSON.stringify(
-                data,
-                null,
-                2
-            );
-
+        const current =
+            Number(
+                $("statArticles")
+                    .textContent
+            ) || 0;
 
         $("statArticles")
             .textContent =
             String(
-                Number(
-                    $("statArticles")
-                        .textContent
-                ) + 1
+                current + 1
             );
 
+        setResult(
+            "articleResult",
+
+            "✅ ARTICLE UPLOADED SUCCESSFULLY\n\n" +
+            "File: " +
+            article.path +
+            "\n\n" +
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+
+            "success"
+        );
 
     } catch (error) {
 
-        box.className =
-            "result error";
+        setResult(
+            "articleResult",
 
-        box.textContent =
             "❌ ARTICLE UPLOAD FAILED\n\n" +
-            error.message +
-            "\n\n" +
-            "The article was NOT confirmed as uploaded.";
+            error.message,
+
+            "error"
+        );
 
     }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    INTERNAL LINK
-===================================================== */
+========================================================= */
 
 function prepareLink() {
 
@@ -4228,7 +3930,6 @@ function prepareLink() {
             .value
             .trim();
 
-
     if (
         !source ||
         !target ||
@@ -4243,7 +3944,6 @@ function prepareLink() {
 
     }
 
-
     const html =
         `<a href="${escapeHtml(
             target
@@ -4251,14 +3951,8 @@ function prepareLink() {
             anchor
         )}</a>`;
 
-
-    $("linkResult")
-        .className =
-        "result success";
-
-
-    $("linkResult")
-        .textContent =
+    setResult(
+        "linkResult",
 
         "Source:\n" +
         source +
@@ -4270,14 +3964,236 @@ function prepareLink() {
         anchor +
 
         "\n\nGenerated Link:\n" +
-        html;
+        html,
+
+        "success"
+    );
 
 }
 
 
-/* =====================================================
+/* =========================================================
+   APPLY INTERNAL LINK
+========================================================= */
+
+async function applyInternalLink() {
+
+    const source =
+        $("sourcePage")
+            .value
+            .trim();
+
+    const target =
+        $("targetPage")
+            .value
+            .trim();
+
+    const anchor =
+        $("anchorText")
+            .value
+            .trim();
+
+    if (
+        !source ||
+        !target ||
+        !anchor
+    ) {
+
+        alert(
+            "Fill Source Page, Target Page and Anchor Text."
+        );
+
+        return;
+
+    }
+
+    if (!getAdminKey()) {
+
+        alert(
+            "Enter your Admin Key first."
+        );
+
+        return;
+
+    }
+
+    setResult(
+        "linkResult",
+        "Loading source page..."
+    );
+
+    try {
+
+        const response =
+            await fetch(
+                getWorkerUrl() +
+                "/get-file",
+                {
+                    method: "POST",
+                    headers: authHeaders(),
+
+                    body: JSON.stringify({
+                        path: source
+                    })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Could not load source page."
+            );
+
+        }
+
+        const oldContent =
+            data.content;
+
+        if (
+            oldContent
+                .toLowerCase()
+                .includes(
+                    anchor.toLowerCase()
+                )
+        ) {
+
+            const escapedAnchor =
+                anchor.replace(
+                    /[.*+?^${}()|[\]\\]/g,
+                    "\\$&"
+                );
+
+            const pattern =
+                new RegExp(
+                    "(?<![>])(" +
+                    escapedAnchor +
+                    ")(?![^<]*>)",
+                    "i"
+                );
+
+            const replacement =
+                `<a href="${escapeHtml(
+                    target
+                )}">$1</a>`;
+
+            const newContent =
+                oldContent.replace(
+                    pattern,
+                    replacement
+                );
+
+            if (
+                newContent === oldContent
+            ) {
+
+                throw new Error(
+                    "Anchor text was found, but it could not be safely linked automatically. Use the File Editor instead."
+                );
+
+            }
+
+            if (
+                !confirm(
+                    "Apply this internal link to:\n\n" +
+                    source +
+                    "\n\nAnchor:\n" +
+                    anchor +
+                    "\n\nTarget:\n" +
+                    target
+                )
+            ) {
+
+                return;
+
+            }
+
+            const saveResponse =
+                await fetch(
+                    getWorkerUrl() +
+                    "/update-file",
+                    {
+                        method: "POST",
+                        headers: authHeaders(),
+
+                        body: JSON.stringify({
+
+                            path:
+                                source,
+
+                            content:
+                                newContent,
+
+                            message:
+                                "Add internal link: " +
+                                anchor,
+
+                            sha:
+                                data.sha
+
+                        })
+                    }
+                );
+
+            const saveData =
+                await saveResponse.json();
+
+            if (!saveResponse.ok) {
+
+                throw new Error(
+                    saveData.error ||
+                    "Could not save source page."
+                );
+
+            }
+
+            setResult(
+                "linkResult",
+                "✅ Internal link applied and committed.\n\n" +
+                JSON.stringify(
+                    saveData,
+                    null,
+                    2
+                ),
+                "success"
+            );
+
+            return;
+
+        }
+
+        throw new Error(
+            "Anchor text was not found in the source page."
+        );
+
+    } catch (error) {
+
+        setResult(
+            "linkResult",
+            error.message,
+            "error"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
    REDIRECT
-===================================================== */
+========================================================= */
+
+function cleanPath(value) {
+
+    return String(value)
+        .trim()
+        .replace(/^\/+/, "");
+
+}
+
 
 function prepareRedirect() {
 
@@ -4291,6 +4207,113 @@ function prepareRedirect() {
             .value
             .trim();
 
+    if (
+        !oldUrl ||
+        !newUrl
+    ) {
+
+        alert(
+            "Fill Old URL and New URL."
+        );
+
+        return;
+
+    }
+
+    const html =
+        createRedirectHTML(
+            newUrl
+        );
+
+    setResult(
+        "redirectResult",
+
+        "Redirect file:\n" +
+        cleanPath(oldUrl) +
+
+        "\n\nDestination:\n" +
+        newUrl +
+
+        "\n\nA redirect HTML file will be generated when you create it.",
+
+        "success"
+    );
+
+}
+
+
+function createRedirectHTML(destination) {
+
+    const safeDestination =
+        escapeHtml(
+            destination
+        );
+
+    return `<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<meta
+    http-equiv="refresh"
+    content="0; url=${safeDestination}"
+>
+
+<link
+    rel="canonical"
+    href="${safeDestination}"
+>
+
+<title>
+Redirecting...
+</title>
+
+<script>
+window.location.replace(
+    ${JSON.stringify(destination)}
+);
+<\/script>
+
+</head>
+
+<body>
+
+<p>
+Redirecting...
+</p>
+
+<p>
+<a href="${safeDestination}">
+Continue
+</a>
+</p>
+
+</body>
+
+</html>`;
+
+}
+
+
+async function createRedirect() {
+
+    const oldUrl =
+        $("oldUrl")
+            .value
+            .trim();
+
+    const newUrl =
+        $("newUrl")
+            .value
+            .trim();
 
     if (
         !oldUrl ||
@@ -4298,52 +4321,126 @@ function prepareRedirect() {
     ) {
 
         alert(
-            "Fill both URLs."
+            "Fill Old URL and New URL."
         );
 
         return;
 
     }
 
+    if (!getAdminKey()) {
 
-    const cleanOld =
-        oldUrl
-            .replace(
-                /^\//,
-                ""
-            )
-            .replace(
-                /[.*+?^${}()|[\]\\]/g,
-                "\\$&"
+        alert(
+            "Enter your Admin Key first."
+        );
+
+        return;
+
+    }
+
+    const path =
+        cleanPath(oldUrl);
+
+    if (!path) {
+
+        alert(
+            "Invalid old URL."
+        );
+
+        return;
+
+    }
+
+    if (
+        !confirm(
+            "Create redirect file?\n\n" +
+            path +
+            "\n→\n" +
+            newUrl
+        )
+    ) {
+
+        return;
+
+    }
+
+    setResult(
+        "redirectResult",
+        "Creating redirect file..."
+    );
+
+    try {
+
+        const html =
+            createRedirectHTML(
+                newUrl
             );
 
+        const response =
+            await fetch(
+                getWorkerUrl() +
+                "/update-file",
+                {
+                    method: "POST",
+                    headers: authHeaders(),
 
-    const rule =
-        `RewriteRule ^${cleanOld}$ ${newUrl} [R=301,L]`;
+                    body: JSON.stringify({
 
+                        path:
+                            path,
 
-    $("redirectResult")
-        .className =
-        "result success";
+                        content:
+                            html,
 
+                        message:
+                            "Create redirect: " +
+                            oldUrl +
+                            " -> " +
+                            newUrl
 
-    $("redirectResult")
-        .textContent =
-        "Old URL:\n" +
-        oldUrl +
+                    })
+                }
+            );
 
-        "\n\nNew URL:\n" +
-        newUrl +
+        const data =
+            await response.json();
 
-        "\n\nPrepared Redirect:\n" +
-        rule;
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Could not create redirect."
+            );
+
+        }
+
+        setResult(
+            "redirectResult",
+            "✅ Redirect file created.\n\n" +
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            "success"
+        );
+
+    } catch (error) {
+
+        setResult(
+            "redirectResult",
+            error.message,
+            "error"
+        );
+
+    }
 
 }
 
 
-/* =====================================================
+/* =========================================================
    QUICK ACTIONS
-===================================================== */
+========================================================= */
 
 function loadIndex() {
 
@@ -4392,7 +4489,6 @@ function openSitemap() {
             .value
             .trim();
 
-
     if (!url) {
 
         alert(
@@ -4403,7 +4499,6 @@ function openSitemap() {
 
     }
 
-
     window.open(
         url,
         "_blank"
@@ -4412,9 +4507,9 @@ function openSitemap() {
 }
 
 
-/* =====================================================
+/* =========================================================
    START
-===================================================== */
+========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
