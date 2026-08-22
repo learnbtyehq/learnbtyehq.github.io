@@ -1,2596 +1,1955 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0, viewport-fit=cover"
-    >
-
-    <title>LearnByte Control Center</title>
-
-    <meta
-        name="robots"
-        content="noindex,nofollow,noarchive"
-    >
-
-    <meta
-        name="theme-color"
-        content="#070b14"
-    >
-
-    <style>
-
-        /* =====================================================
-           GLOBAL RESET
-        ===================================================== */
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html {
-            width: 100%;
-            max-width: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            width: 100%;
-            max-width: 100%;
-            min-height: 100vh;
-            margin: 0;
-
-            font-family:
-                Inter,
-                system-ui,
-                -apple-system,
-                BlinkMacSystemFont,
-                "Segoe UI",
-                sans-serif;
-
-            background:
-                radial-gradient(
-                    circle at 10% 5%,
-                    rgba(0, 220, 255, .12),
-                    transparent 32%
-                ),
-                radial-gradient(
-                    circle at 90% 15%,
-                    rgba(110, 80, 255, .13),
-                    transparent 32%
-                ),
-                #050811;
-
-            color: #f5f7fb;
-
-            overflow-x: hidden;
-        }
-
-        img,
-        video,
-        iframe {
-            max-width: 100%;
-        }
-
-        button,
-        input,
-        textarea,
-        select {
-            font: inherit;
-        }
-
-        button {
-            cursor: pointer;
-        }
-
-        a {
-            color: inherit;
-        }
-
-        h1,
-        h2,
-        h3,
-        h4,
-        p {
-            overflow-wrap: anywhere;
-        }
-
-
-        /* =====================================================
-           LAYOUT
-        ===================================================== */
-
-        .container {
-
-            width: min(
-                1100px,
-                calc(100% - 32px)
-            );
-
-            max-width: 1100px;
-
-            margin-left: auto;
-            margin-right: auto;
-
-        }
-
-
-        /* =====================================================
-           HEADER
-        ===================================================== */
-
-        .site-header {
-
-            width: 100%;
-
-            background:
-                rgba(5, 10, 20, .88);
-
-            border-bottom:
-                1px solid rgba(255,255,255,.07);
-
-            backdrop-filter:
-                blur(18px);
-
-            position: sticky;
-            top: 0;
-            z-index: 100;
-
-        }
-
-        .navbar {
-
-            min-height: 74px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 20px;
-
-        }
-
-        .logo {
-
-            text-decoration: none;
-
-            font-size: 24px;
-
-            font-weight: 850;
-
-            white-space: nowrap;
-
-        }
-
-        .logo span {
-
-            color: #29ddff;
-
-        }
-
-        .admin-label {
-
-            color: #7e8ba1;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            margin-left: 6px;
-
-        }
-
-        .status {
-
-            padding: 8px 13px;
-
-            border-radius: 999px;
-
-            border: 1px solid #27354d;
-
-            background: #0b1220;
-
-            color: #9ba8bc;
-
-            font-size: 13px;
-
-            white-space: nowrap;
-
-        }
-
-        .status.connected {
-
-            color: #62f6c2;
-
-            border-color:
-                rgba(0,255,170,.25);
-
-            background:
-                rgba(0,255,170,.08);
-
-        }
-
-
-        /* =====================================================
-           MAIN
-        ===================================================== */
-
-        main {
-
-            width: 100%;
-
-            overflow: hidden;
-
-        }
-
-        .hero {
-
-            padding:
-                55px 0 30px;
-
-        }
-
-        .badge {
-
-            display: inline-flex;
-
-            align-items: center;
-
-            padding: 8px 13px;
-
-            border-radius: 999px;
-
-            background:
-                rgba(32,223,248,.09);
-
-            border:
-                1px solid rgba(32,223,248,.2);
-
-            color: #32dcf8;
-
-            font-size: 12px;
-
-            font-weight: 800;
-
-            letter-spacing: .04em;
-
-        }
-
-        h1 {
-
-            margin:
-                18px 0 12px;
-
-            font-size:
-                clamp(34px, 6vw, 60px);
-
-            line-height: 1.03;
-
-            letter-spacing: -.035em;
-
-        }
-
-        .gradient {
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #ffffff,
-                    #48e5ff,
-                    #8171ff
-                );
-
-            -webkit-background-clip: text;
-
-            background-clip: text;
-
-            color: transparent;
-
-        }
-
-        .hero-description {
-
-            max-width: 760px;
-
-            margin: 0;
-
-            color: #8e9aae;
-
-            font-size: 16px;
-
-            line-height: 1.7;
-
-        }
-
-
-        /* =====================================================
-           GRID
-        ===================================================== */
-
-        .grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    2,
-                    minmax(0, 1fr)
-                );
-
-            gap: 20px;
-
-            width: 100%;
-
-            min-width: 0;
-
-        }
-
-        .full {
-
-            grid-column:
-                1 / -1;
-
-        }
-
-
-        /* =====================================================
-           CARDS
-        ===================================================== */
-
-        .card {
-
-            width: 100%;
-
-            min-width: 0;
-
-            max-width: 100%;
-
-            padding: 22px;
-
-            border-radius: 20px;
-
-            background:
-                linear-gradient(
-                    145deg,
-                    rgba(18,28,45,.94),
-                    rgba(8,13,24,.94)
-                );
-
-            border:
-                1px solid rgba(255,255,255,.08);
-
-            box-shadow:
-                0 20px 60px
-                rgba(0,0,0,.23);
-
-            overflow: hidden;
-
-        }
-
-        .card h2 {
-
-            margin:
-                0 0 7px;
-
-            font-size: 21px;
-
-        }
-
-        .card-description {
-
-            margin:
-                0 0 18px;
-
-            color: #8f9bad;
-
-            line-height: 1.55;
-
-            font-size: 14px;
-
-        }
-
-
-        /* =====================================================
-           FORM ELEMENTS
-        ===================================================== */
-
-        label {
-
-            display: block;
-
-            margin:
-                16px 0 7px;
-
-            color: #b9c4d5;
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-        }
-
-        input,
-        textarea,
-        select {
-
-            display: block;
-
-            width: 100%;
-
-            max-width: 100%;
-
-            min-width: 0;
-
-            padding:
-                13px 14px;
-
-            border:
-                1px solid #27334a;
-
-            border-radius: 12px;
-
-            outline: none;
-
-            background:
-                #080e19;
-
-            color: #ffffff;
-
-        }
-
-        input:focus,
-        textarea:focus,
-        select:focus {
-
-            border-color:
-                #27dfff;
-
-            box-shadow:
-                0 0 0 3px
-                rgba(39,223,255,.08);
-
-        }
-
-        textarea {
-
-            min-height: 360px;
-
-            resize: vertical;
-
-            font-family:
-                ui-monospace,
-                SFMono-Regular,
-                Menlo,
-                Consolas,
-                monospace;
-
-            font-size: 13px;
-
-            line-height: 1.55;
-
-            overflow-x: auto;
-
-        }
-
-
-        /* =====================================================
-           BUTTONS
-        ===================================================== */
-
-        .button-row {
-
-            display: flex;
-
-            flex-wrap: wrap;
-
-            gap: 10px;
-
-            width: 100%;
-
-            max-width: 100%;
-
-            margin-top: 14px;
-
-        }
-
-        button {
-
-            border: 0;
-
-            border-radius: 12px;
-
-            padding:
-                12px 18px;
-
-            min-height: 44px;
-
-            font-weight: 750;
-
-            font-size: 14px;
-
-            color: #031018;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #20dff8,
-                    #6d7cff
-                );
-
-            max-width: 100%;
-
-        }
-
-        button.secondary {
-
-            color: #dce5f3;
-
-            background:
-                #182235;
-
-            border:
-                1px solid #2b3952;
-
-        }
-
-        button.danger {
-
-            color: #ffffff;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #ff5d72,
-                    #ff3152
-                );
-
-        }
-
-        button:disabled {
-
-            opacity: .5;
-
-            cursor:
-                not-allowed;
-
-        }
-
-
-        /* =====================================================
-           CHECKBOX
-        ===================================================== */
-
-        .remember-row {
-
-            display: flex;
-
-            align-items: center;
-
-            gap: 9px;
-
-            margin-top: 10px;
-
-            color: #8e9aae;
-
-            font-size: 13px;
-
-        }
-
-        .remember-row input {
-
-            width: 18px;
-
-            height: 18px;
-
-            margin: 0;
-
-            flex: 0 0 auto;
-
-        }
-
-
-        /* =====================================================
-           RESULT BOX
-        ===================================================== */
-
-        .result {
-
-            width: 100%;
-
-            max-width: 100%;
-
-            margin-top: 14px;
-
-            padding: 13px;
-
-            border-radius: 12px;
-
-            background:
-                #070c15;
-
-            border:
-                1px solid #202c40;
-
-            color: #aeb9ca;
-
-            white-space: pre-wrap;
-
-            overflow-wrap: anywhere;
-
-            word-break: break-word;
-
-            font-size: 13px;
-
-            line-height: 1.55;
-
-        }
-
-        .success {
-
-            color: #62f6c2;
-
-        }
-
-        .error {
-
-            color: #ff7889;
-
-        }
-
-
-        /* =====================================================
-           DASHBOARD
-        ===================================================== */
-
-        .dashboard-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    4,
-                    minmax(0, 1fr)
-                );
-
-            gap: 12px;
-
-            margin-top: 18px;
-
-        }
-
-        .stat {
-
-            min-width: 0;
-
-            padding: 17px;
-
-            border-radius: 14px;
-
-            background:
-                #080e19;
-
-            border:
-                1px solid #202c40;
-
-        }
-
-        .stat-number {
-
-            display: block;
-
-            font-size: 28px;
-
-            font-weight: 850;
-
-            color: #ffffff;
-
-            overflow-wrap: anywhere;
-
-        }
-
-        .stat-label {
-
-            display: block;
-
-            margin-top: 4px;
-
-            color: #78869a;
-
-            font-size: 12px;
-
-        }
-
-
-        /* =====================================================
-           SECTION SPACING
-        ===================================================== */
-
-        .section {
-
-            margin-top: 20px;
-
-        }
-
-
-        /* =====================================================
-           FILE LIST
-        ===================================================== */
-
-        .file-list {
-
-            display: grid;
-
-            gap: 8px;
-
-            width: 100%;
-
-            margin-top: 14px;
-
-        }
-
-        .file-item {
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: space-between;
-
-            gap: 12px;
-
-            min-width: 0;
-
-            padding: 12px 14px;
-
-            border-radius: 10px;
-
-            background:
-                #0b1322;
-
-            border:
-                1px solid #1c2940;
-
-        }
-
-        .file-item code {
-
-            min-width: 0;
-
-            max-width: 100%;
-
-            color: #83eaff;
-
-            overflow-wrap: anywhere;
-
-            word-break: break-word;
-
-        }
-
-
-        /* =====================================================
-           INFORMATION PANELS
-        ===================================================== */
-
-        .info-grid {
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(
-                    2,
-                    minmax(0, 1fr)
-                );
-
-            gap: 12px;
-
-            margin-top: 15px;
-
-        }
-
-        .info-box {
-
-            min-width: 0;
-
-            padding: 15px;
-
-            border-radius: 13px;
-
-            background:
-                #080e19;
-
-            border:
-                1px solid #202c40;
-
-        }
-
-        .info-box strong {
-
-            display: block;
-
-            margin-bottom: 5px;
-
-            color: #ffffff;
-
-        }
-
-        .info-box span {
-
-            color: #8290a5;
-
-            font-size: 13px;
-
-            line-height: 1.5;
-
-            overflow-wrap: anywhere;
-
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-
-            padding:
-                35px 0 55px;
-
-            text-align: center;
-
-            color: #647085;
-
-            font-size: 12px;
-
-        }
-
-
-        /* =====================================================
-           TABLET
-        ===================================================== */
-
-        @media (max-width: 900px) {
-
-            .container {
-
-                width:
-                    min(
-                        100% - 28px,
-                        760px
-                    );
-
-            }
-
-            .grid {
-
-                grid-template-columns:
-                    minmax(0, 1fr);
-
-            }
-
-            .full {
-
-                grid-column: auto;
-
-            }
-
-            .dashboard-grid {
-
-                grid-template-columns:
-                    repeat(
-                        2,
-                        minmax(0, 1fr)
-                    );
-
-            }
-
-            .navbar {
-
-                min-height: 68px;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
-        @media (max-width: 600px) {
-
-            .container {
-
-                width:
-                    calc(100% - 20px);
-
-                max-width: 100%;
-
-            }
-
-            .navbar {
-
-                gap: 10px;
-
-            }
-
-            .logo {
-
-                font-size: 20px;
-
-            }
-
-            .admin-label {
-
-                font-size: 10px;
-
-            }
-
-            .status {
-
-                padding:
-                    7px 9px;
-
-                font-size: 11px;
-
-            }
-
-            .hero {
-
-                padding:
-                    30px 0 20px;
-
-            }
-
-            h1 {
-
-                font-size:
-                    clamp(
-                        31px,
-                        10vw,
-                        43px
-                    );
-
-            }
-
-            .hero-description {
-
-                font-size: 14px;
-
-            }
-
-            .grid {
-
-                grid-template-columns:
-                    minmax(0, 1fr);
-
-                gap: 14px;
-
-            }
-
-            .card {
-
-                padding: 16px;
-
-                border-radius: 16px;
-
-            }
-
-            .card h2 {
-
-                font-size: 19px;
-
-            }
-
-            input,
-            textarea,
-            select {
-
-                font-size: 16px;
-
-            }
-
-            .button-row {
-
-                flex-direction: column;
-
-            }
-
-            .button-row button,
-            button {
-
-                width: 100%;
-
-                max-width: 100%;
-
-            }
-
-            .dashboard-grid {
-
-                grid-template-columns:
-                    repeat(
-                        2,
-                        minmax(0, 1fr)
-                    );
-
-            }
-
-            .info-grid {
-
-                grid-template-columns:
-                    minmax(0, 1fr);
-
-            }
-
-            .file-item {
-
-                align-items:
-                    flex-start;
-
-                flex-direction:
-                    column;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           VERY SMALL MOBILE
-        ===================================================== */
-
-        @media (max-width: 380px) {
-
-            .container {
-
-                width:
-                    calc(100% - 14px);
-
-            }
-
-            .card {
-
-                padding: 13px;
-
-            }
-
-            .dashboard-grid {
-
-                grid-template-columns:
-                    minmax(0, 1fr);
-
-            }
-
-            .logo {
-
-                font-size: 18px;
-
-            }
-
-            .status {
-
-                display: none;
-
-            }
-
-        }
-
-
-        /* =====================================================
-           LANDSCAPE MOBILE
-        ===================================================== */
-
-        @media (
-            max-width: 900px
-        ) and (
-            orientation: landscape
-        ) {
-
-            .hero {
-
-                padding-top: 25px;
-
-            }
-
-            .container {
-
-                width:
-                    calc(100% - 28px);
-
-            }
-
-        }
-
-
-        /* =====================================================
-           DESKTOP
-        ===================================================== */
-
-        @media (min-width: 1200px) {
-
-            .container {
-
-                width:
-                    min(
-                        1100px,
-                        calc(100% - 60px)
-                    );
-
-            }
-
-        }
-
-
-        /* =====================================================
-           ACCESSIBILITY / SAFETY
-        ===================================================== */
-
-        :focus-visible {
-
-            outline:
-                2px solid #27dfff;
-
-            outline-offset: 2px;
-
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+
+<title>LearnByte Control Center</title>
+
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#070b14">
+
+<style>
+*,
+*::before,
+*::after {
+    box-sizing:border-box;
+}
+
+html,
+body {
+    width:100%;
+    max-width:100%;
+    margin:0;
+    overflow-x:hidden;
+}
+
+body {
+    min-height:100vh;
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    background:
+        radial-gradient(circle at 10% 5%,rgba(0,220,255,.12),transparent 32%),
+        radial-gradient(circle at 90% 15%,rgba(110,80,255,.13),transparent 32%),
+        #050811;
+
+    color:#f5f7fb;
+}
+
+button,
+input,
+textarea,
+select {
+    font:inherit;
+}
+
+button {
+    cursor:pointer;
+}
+
+a {
+    color:inherit;
+}
+
+h1,
+h2,
+h3,
+p {
+    overflow-wrap:anywhere;
+}
+
+.container {
+    width:min(1100px,calc(100% - 32px));
+    margin:auto;
+}
+
+.site-header {
+    width:100%;
+    background:rgba(5,10,20,.88);
+    border-bottom:1px solid rgba(255,255,255,.07);
+    backdrop-filter:blur(18px);
+    position:sticky;
+    top:0;
+    z-index:100;
+}
+
+.navbar {
+    min-height:74px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.logo {
+    text-decoration:none;
+    font-size:24px;
+    font-weight:850;
+    white-space:nowrap;
+}
+
+.logo span {
+    color:#29ddff;
+}
+
+.admin-label {
+    color:#7e8ba1;
+    font-size:12px;
+    margin-left:6px;
+}
+
+.status {
+    padding:8px 13px;
+    border-radius:999px;
+    border:1px solid #27354d;
+    background:#0b1220;
+    color:#9ba8bc;
+    font-size:13px;
+}
+
+.status.connected {
+    color:#62f6c2;
+    border-color:rgba(0,255,170,.25);
+    background:rgba(0,255,170,.08);
+}
+
+main {
+    width:100%;
+}
+
+.hero {
+    padding:55px 0 30px;
+}
+
+.badge {
+    display:inline-flex;
+    padding:8px 13px;
+    border-radius:999px;
+    background:rgba(32,223,248,.09);
+    border:1px solid rgba(32,223,248,.2);
+    color:#32dcf8;
+    font-size:12px;
+    font-weight:800;
+}
+
+h1 {
+    margin:18px 0 12px;
+    font-size:clamp(34px,6vw,60px);
+    line-height:1.03;
+}
+
+.gradient {
+    background:linear-gradient(90deg,#fff,#48e5ff,#8171ff);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.hero-description {
+    max-width:760px;
+    margin:0;
+    color:#8e9aae;
+    font-size:16px;
+    line-height:1.7;
+}
+
+.grid {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:20px;
+}
+
+.full {
+    grid-column:1/-1;
+}
+
+.card {
+    width:100%;
+    min-width:0;
+    padding:22px;
+    border-radius:20px;
+    background:linear-gradient(145deg,rgba(18,28,45,.94),rgba(8,13,24,.94));
+    border:1px solid rgba(255,255,255,.08);
+    box-shadow:0 20px 60px rgba(0,0,0,.23);
+    overflow:hidden;
+}
+
+.card h2 {
+    margin:0 0 7px;
+    font-size:21px;
+}
+
+.card-description {
+    margin:0 0 18px;
+    color:#8f9bad;
+    line-height:1.55;
+    font-size:14px;
+}
+
+label {
+    display:block;
+    margin:16px 0 7px;
+    color:#b9c4d5;
+    font-size:13px;
+    font-weight:700;
+}
+
+input,
+textarea,
+select {
+    display:block;
+    width:100%;
+    max-width:100%;
+    min-width:0;
+    padding:13px 14px;
+    border:1px solid #27334a;
+    border-radius:12px;
+    outline:none;
+    background:#080e19;
+    color:#fff;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    border-color:#27dfff;
+    box-shadow:0 0 0 3px rgba(39,223,255,.08);
+}
+
+textarea {
+    min-height:360px;
+    resize:vertical;
+    font-family:
+        ui-monospace,
+        SFMono-Regular,
+        Menlo,
+        Consolas,
+        monospace;
+    font-size:13px;
+    line-height:1.55;
+}
+
+.button-row {
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:14px;
+}
+
+button {
+    border:0;
+    border-radius:12px;
+    padding:12px 18px;
+    min-height:44px;
+    font-weight:750;
+    font-size:14px;
+    color:#031018;
+    background:linear-gradient(135deg,#20dff8,#6d7cff);
+}
+
+button.secondary {
+    color:#dce5f3;
+    background:#182235;
+    border:1px solid #2b3952;
+}
+
+button.danger {
+    color:#fff;
+    background:linear-gradient(135deg,#ff5d72,#ff3152);
+}
+
+button:disabled {
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+.remember-row {
+    display:flex;
+    align-items:center;
+    gap:9px;
+    margin-top:10px;
+    color:#8e9aae;
+    font-size:13px;
+}
+
+.remember-row input {
+    width:18px;
+    height:18px;
+    margin:0;
+}
+
+.result {
+    width:100%;
+    margin-top:14px;
+    padding:13px;
+    border-radius:12px;
+    background:#070c15;
+    border:1px solid #202c40;
+    color:#aeb9ca;
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+    font-size:13px;
+    line-height:1.55;
+}
+
+.success {
+    color:#62f6c2;
+}
+
+.error {
+    color:#ff7889;
+}
+
+.dashboard-grid {
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0,1fr));
+    gap:12px;
+    margin-top:18px;
+}
+
+.stat {
+    min-width:0;
+    padding:17px;
+    border-radius:14px;
+    background:#080e19;
+    border:1px solid #202c40;
+}
+
+.stat-number {
+    display:block;
+    font-size:28px;
+    font-weight:850;
+}
+
+.stat-label {
+    display:block;
+    margin-top:4px;
+    color:#78869a;
+    font-size:12px;
+}
+
+.file-list {
+    display:grid;
+    gap:8px;
+    margin-top:14px;
+}
+
+.file-item {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    min-width:0;
+    padding:12px 14px;
+    border-radius:10px;
+    background:#0b1322;
+    border:1px solid #1c2940;
+}
+
+.file-item code {
+    min-width:0;
+    color:#83eaff;
+    overflow-wrap:anywhere;
+    word-break:break-word;
+}
+
+.keyword-item {
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+    gap:12px;
+    padding:15px;
+    border-radius:12px;
+    background:#0b1322;
+    border:1px solid #1c2940;
+}
+
+.keyword-info {
+    min-width:0;
+}
+
+.keyword-info strong {
+    display:block;
+    color:#fff;
+    margin-bottom:5px;
+}
+
+.keyword-info span {
+    display:block;
+    color:#8d9bb0;
+    font-size:13px;
+    line-height:1.5;
+    overflow-wrap:anywhere;
+}
+
+.info-grid {
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+    margin-top:15px;
+}
+
+.info-box {
+    padding:15px;
+    border-radius:13px;
+    background:#080e19;
+    border:1px solid #202c40;
+}
+
+.info-box strong {
+    display:block;
+    margin-bottom:5px;
+}
+
+.info-box span {
+    color:#8290a5;
+    font-size:13px;
+    line-height:1.5;
+    overflow-wrap:anywhere;
+}
+
+footer {
+    padding:35px 0 55px;
+    text-align:center;
+    color:#647085;
+    font-size:12px;
+}
+
+@media(max-width:900px) {
+    .container {
+        width:min(100% - 28px,760px);
+    }
+
+    .grid {
+        grid-template-columns:1fr;
+    }
+
+    .full {
+        grid-column:auto;
+    }
+
+    .dashboard-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+}
+
+@media(max-width:600px) {
+    .container {
+        width:calc(100% - 20px);
+    }
+
+    .navbar {
+        min-height:68px;
+    }
+
+    .logo {
+        font-size:20px;
+    }
+
+    .admin-label {
+        font-size:10px;
+    }
+
+    .status {
+        padding:7px 9px;
+        font-size:11px;
+    }
+
+    .hero {
+        padding:30px 0 20px;
+    }
+
+    h1 {
+        font-size:clamp(31px,10vw,43px);
+    }
+
+    .hero-description {
+        font-size:14px;
+    }
+
+    .card {
+        padding:16px;
+        border-radius:16px;
+    }
+
+    input,
+    textarea,
+    select {
+        font-size:16px;
+    }
+
+    .button-row {
+        flex-direction:column;
+    }
+
+    .button-row button,
+    button {
+        width:100%;
+    }
+
+    .dashboard-grid {
+        grid-template-columns:repeat(2,minmax(0,1fr));
+    }
+
+    .info-grid {
+        grid-template-columns:1fr;
+    }
+
+    .file-item,
+    .keyword-item {
+        flex-direction:column;
+        align-items:stretch;
+    }
+}
+
+@media(max-width:380px) {
+    .container {
+        width:calc(100% - 14px);
+    }
+
+    .dashboard-grid {
+        grid-template-columns:1fr;
+    }
+
+    .status {
+        display:none;
+    }
+}
+</style>
 </head>
-
 
 <body>
 
-
-<!-- =====================================================
-     HEADER
-===================================================== -->
-
 <header class="site-header">
+<div class="container navbar">
 
-    <div class="container navbar">
+<a href="admin-control.html" class="logo">
+Learn<span>Byte</span>
+<small class="admin-label">/ ADMIN</small>
+</a>
 
-        <a
-            href="admin-control.html"
-            class="logo"
-        >
-            Learn<span>Byte</span>
-            <small class="admin-label">
-                / ADMIN
-            </small>
-        </a>
+<div class="status" id="status">
+● Not connected
+</div>
 
-        <div
-            class="status"
-            id="status"
-        >
-            ● Not connected
-        </div>
-
-    </div>
-
+</div>
 </header>
 
 
-<!-- =====================================================
-     MAIN
-===================================================== -->
-
 <main>
+<div class="container">
 
-    <div class="container">
+<section class="hero">
 
+<span class="badge">
+PRIVATE SEO ADMIN PANEL
+</span>
 
-        <!-- HERO -->
+<h1>
+LearnByte
+<span class="gradient">
+Control Center.
+</span>
+</h1>
 
-        <section class="hero">
+<p class="hero-description">
+Manage GitHub files, keywords, internal links,
+redirects and website SEO from one private panel.
+</p>
 
-            <span class="badge">
-                PRIVATE SEO ADMIN PANEL
-            </span>
+</section>
 
-            <h1>
-                LearnByte
-                <span class="gradient">
-                    Control Center.
-                </span>
-            </h1>
 
-            <p class="hero-description">
-                Manage GitHub files, inspect internal links,
-                prepare redirects, check sitemap files and
-                maintain your LearnByte website from one panel.
-            </p>
+<div class="grid">
 
-        </section>
 
+<!-- CONNECTION -->
 
+<section class="card">
 
-        <div class="grid">
+<h2>🔐 Secure Connection</h2>
 
+<p class="card-description">
+Connect this panel with your Cloudflare Worker.
+Your GitHub token stays on the Worker.
+</p>
 
-            <!-- =================================================
-                 CONNECTION
-            ================================================= -->
+<label for="workerUrl">
+Cloudflare Worker URL
+</label>
 
-            <section class="card">
+<input
+id="workerUrl"
+type="url"
+value="https://learnbyte-seo-manager.learnbytehq.workers.dev"
+placeholder="https://your-worker.workers.dev"
+>
 
-                <h2>
-                    🔐 Secure Connection
-                </h2>
+<label for="adminKey">
+Admin Key
+</label>
 
-                <p class="card-description">
-                    Connect this panel with your Cloudflare Worker.
-                    Your GitHub token stays on the Worker and is
-                    never stored inside this webpage.
-                </p>
+<input
+id="adminKey"
+type="password"
+placeholder="Enter your admin key"
+autocomplete="off"
+>
 
+<label class="remember-row">
+<input
+type="checkbox"
+id="rememberKey"
+>
+<span>Remember key on this device</span>
+</label>
 
-                <label for="workerUrl">
-                    Cloudflare Worker URL
-                </label>
+<div class="button-row">
 
-                <input
-                    id="workerUrl"
-                    type="url"
-                    value="https://learnbyte-seo-control.learnbytehq.workers.dev"
-                    placeholder="https://your-worker.workers.dev"
-                    autocomplete="url"
-                >
+<button
+type="button"
+onclick="testConnection()"
+>
+Test Connection
+</button>
 
+<button
+type="button"
+class="secondary"
+onclick="clearSavedKey()"
+>
+Clear Saved Key
+</button>
 
-                <label for="adminKey">
-                    Admin Key
-                </label>
+</div>
 
-                <input
-                    id="adminKey"
-                    type="password"
-                    placeholder="Enter your admin key"
-                    autocomplete="off"
-                >
+<div class="result" id="connectionResult">
+Not tested yet.
+</div>
 
+</section>
 
-                <label class="remember-row">
 
-                    <input
-                        type="checkbox"
-                        id="rememberKey"
-                    >
+<!-- DASHBOARD -->
 
-                    <span>
-                        Remember key on this device
-                    </span>
+<section class="card">
 
-                </label>
+<h2>📊 Dashboard</h2>
 
+<p class="card-description">
+Quick overview of your control system.
+</p>
 
-                <div class="button-row">
+<div class="dashboard-grid">
 
-                    <button
-                        type="button"
-                        onclick="testConnection()"
-                    >
-                        Test Connection
-                    </button>
+<div class="stat">
+<span class="stat-number" id="statStatus">—</span>
+<span class="stat-label">Connection</span>
+</div>
 
-                    <button
-                        type="button"
-                        class="secondary"
-                        onclick="clearSavedKey()"
-                    >
-                        Clear Saved Key
-                    </button>
+<div class="stat">
+<span class="stat-number" id="statFiles">0</span>
+<span class="stat-label">Files Loaded</span>
+</div>
 
-                </div>
+<div class="stat">
+<span class="stat-number" id="statKeywords">0</span>
+<span class="stat-label">Keywords</span>
+</div>
 
+<div class="stat">
+<span class="stat-number" id="statLinks">—</span>
+<span class="stat-label">Internal Links</span>
+</div>
 
-                <div
-                    class="result"
-                    id="connectionResult"
-                >
-                    Not tested yet.
-                </div>
+</div>
 
-            </section>
+</section>
 
 
+<!-- FILE MANAGER -->
 
-            <!-- =================================================
-                 DASHBOARD
-            ================================================= -->
+<section class="card">
 
-            <section class="card">
+<h2>📄 File Manager</h2>
 
-                <h2>
-                    📊 Dashboard
-                </h2>
+<p class="card-description">
+Read a file directly from GitHub.
+</p>
 
-                <p class="card-description">
-                    Quick overview of the SEO control system.
-                </p>
+<label for="filePath">
+Repository File Path
+</label>
 
+<input
+id="filePath"
+placeholder="index.html"
+>
 
-                <div class="dashboard-grid">
+<div class="button-row">
 
-                    <div class="stat">
+<button
+type="button"
+onclick="readFile()"
+>
+Read File
+</button>
 
-                        <span
-                            class="stat-number"
-                            id="statStatus"
-                        >
-                            —
-                        </span>
+</div>
 
-                        <span class="stat-label">
-                            Connection
-                        </span>
+<div class="result" id="fileResult">
+No file loaded.
+</div>
 
-                    </div>
+</section>
 
 
-                    <div class="stat">
+<!-- EDITOR -->
 
-                        <span
-                            class="stat-number"
-                            id="statFiles"
-                        >
-                            0
-                        </span>
+<section class="card">
 
-                        <span class="stat-label">
-                            Files Loaded
-                        </span>
+<h2>✏️ GitHub File Editor</h2>
 
-                    </div>
+<p class="card-description">
+Edit the loaded file and commit directly to GitHub.
+</p>
 
+<label for="commitMessage">
+Commit Message
+</label>
 
-                    <div class="stat">
+<input
+id="commitMessage"
+value="Update file from LearnByte SEO Control"
+>
 
-                        <span
-                            class="stat-number"
-                            id="statLinks"
-                        >
-                            —
-                        </span>
+<label for="editor">
+File Content
+</label>
 
-                        <span class="stat-label">
-                            Internal Links
-                        </span>
+<textarea
+id="editor"
+spellcheck="false"
+placeholder="Load a file first..."
+></textarea>
 
-                    </div>
+<div class="button-row">
 
+<button
+type="button"
+onclick="saveFile()"
+>
+💾 Save & Commit
+</button>
 
-                    <div class="stat">
+<button
+type="button"
+class="secondary"
+onclick="clearEditor()"
+>
+Clear
+</button>
 
-                        <span
-                            class="stat-number"
-                            id="statRedirects"
-                        >
-                            —
-                        </span>
+</div>
 
-                        <span class="stat-label">
-                            Redirects
-                        </span>
+<div class="result" id="saveResult">
+No changes made.
+</div>
 
-                    </div>
+</section>
 
-                </div>
 
-            </section>
+<!-- KEYWORD MANAGER -->
 
+<section class="card full">
 
+<h2>🔑 Keyword Manager</h2>
 
-            <!-- =================================================
-                 FILE MANAGER
-            ================================================= -->
+<p class="card-description">
+Store and manage page-wise primary and secondary SEO keywords.
+Changes are saved to <strong>seo-keywords.json</strong> in GitHub.
+</p>
 
-            <section class="card">
+<label for="keywordPage">
+Page
+</label>
 
-                <h2>
-                    📄 File Manager
-                </h2>
+<input
+id="keywordPage"
+placeholder="index.html"
+>
 
-                <p class="card-description">
-                    Read a file directly from your GitHub repository.
-                </p>
+<label for="keywordPrimary">
+Primary Keyword
+</label>
 
+<input
+id="keywordPrimary"
+placeholder="percentage calculator"
+>
 
-                <label for="filePath">
-                    Repository File Path
-                </label>
+<label for="keywordSecondary">
+Secondary Keywords
+</label>
 
-                <input
-                    id="filePath"
-                    placeholder="index.html"
-                    autocomplete="off"
-                >
+<input
+id="keywordSecondary"
+placeholder="calculator, percentage, marks calculator"
+>
 
+<div class="button-row">
 
-                <div class="button-row">
+<button
+type="button"
+onclick="addKeyword()"
+>
+➕ Add Keyword
+</button>
 
-                    <button
-                        type="button"
-                        onclick="readFile()"
-                    >
-                        Read File
-                    </button>
+<button
+type="button"
+class="secondary"
+onclick="loadKeywords()"
+>
+🔄 Load Keywords
+</button>
 
-                </div>
+</div>
 
+<div class="result" id="keywordResult">
+Keyword Manager ready.
+</div>
 
-                <div
-                    class="result"
-                    id="fileResult"
-                >
-                    No file loaded.
-                </div>
+<div class="file-list" id="keywordList"></div>
 
-            </section>
+</section>
 
 
+<!-- INTERNAL LINKS -->
 
-            <!-- =================================================
-                 GITHUB EDITOR
-            ================================================= -->
+<section class="card">
 
-            <section class="card">
+<h2>🔗 Internal Linking</h2>
 
-                <h2>
-                    ✏️ GitHub File Editor
-                </h2>
+<p class="card-description">
+Prepare an internal link with keyword/anchor text.
+</p>
 
-                <p class="card-description">
-                    Edit the loaded file and commit changes
-                    directly to GitHub.
-                </p>
+<label for="sourcePage">
+Source Page
+</label>
 
+<input
+id="sourcePage"
+placeholder="category/education.html"
+>
 
-                <label for="commitMessage">
-                    Commit Message
-                </label>
+<label for="targetPage">
+Target Page
+</label>
 
-                <input
-                    id="commitMessage"
-                    value="Update file from LearnByte SEO Control"
-                >
+<input
+id="targetPage"
+placeholder="posts/career.html"
+>
 
+<label for="anchorText">
+Anchor Text / Keyword
+</label>
 
-                <label for="editor">
-                    File Content
-                </label>
+<input
+id="anchorText"
+placeholder="Career Options After Class 12"
+>
 
-                <textarea
-                    id="editor"
-                    spellcheck="false"
-                    placeholder="Load a file first..."
-                ></textarea>
+<div class="button-row">
 
+<button
+type="button"
+class="secondary"
+onclick="prepareLink()"
+>
+Prepare Link
+</button>
 
-                <div class="button-row">
+</div>
 
-                    <button
-                        type="button"
-                        onclick="saveFile()"
-                    >
-                        💾 Save & Commit
-                    </button>
+<div class="result" id="linkResult">
+Link generator ready.
+</div>
 
-                    <button
-                        type="button"
-                        class="secondary"
-                        onclick="clearEditor()"
-                    >
-                        Clear
-                    </button>
+</section>
 
-                </div>
 
+<!-- REDIRECT -->
 
-                <div
-                    class="result"
-                    id="saveResult"
-                >
-                    No changes made.
-                </div>
+<section class="card">
 
-            </section>
+<h2>🔀 Redirect Manager</h2>
 
+<p class="card-description">
+Prepare 301 redirect rules.
+</p>
 
+<label for="oldUrl">
+Old URL
+</label>
 
-            <!-- =================================================
-                 INTERNAL LINKS
-            ================================================= -->
+<input
+id="oldUrl"
+placeholder="/old-page.html"
+>
 
-            <section class="card">
+<label for="newUrl">
+New URL
+</label>
 
-                <h2>
-                    🔗 Internal Linking
-                </h2>
+<input
+id="newUrl"
+placeholder="/new-page.html"
+>
 
-                <p class="card-description">
-                    Prepare and inspect internal links
-                    between LearnByte pages.
-                </p>
+<div class="button-row">
 
+<button
+type="button"
+class="secondary"
+onclick="prepareRedirect()"
+>
+Prepare Redirect
+</button>
 
-                <label for="sourcePage">
-                    Source Page
-                </label>
+</div>
 
-                <input
-                    id="sourcePage"
-                    placeholder="category/education.html"
-                >
+<div class="result" id="redirectResult">
+Redirect manager ready.
+</div>
 
+</section>
 
-                <label for="targetPage">
-                    Target Page
-                </label>
 
-                <input
-                    id="targetPage"
-                    placeholder="posts/career.html"
-                >
+<!-- SITEMAP -->
 
+<section class="card">
 
-                <label for="anchorText">
-                    Anchor Text / Keyword
-                </label>
+<h2>🗺️ Sitemap</h2>
 
-                <input
-                    id="anchorText"
-                    placeholder="Career Options After Class 12"
-                >
+<p class="card-description">
+Open and inspect your website sitemap.
+</p>
 
+<label for="sitemapUrl">
+Sitemap URL
+</label>
 
-                <div class="button-row">
+<input
+id="sitemapUrl"
+type="url"
+value="https://learnbtyehq.github.io/sitemap.xml"
+>
 
-                    <button
-                        type="button"
-                        class="secondary"
-                        onclick="prepareLink()"
-                    >
-                        Prepare Link
-                    </button>
+<div class="button-row">
 
-                </div>
+<button
+type="button"
+onclick="openSitemap()"
+>
+Open Sitemap
+</button>
 
+</div>
 
-                <div
-                    class="result"
-                    id="linkResult"
-                >
-                    Link generator ready.
-                </div>
+<div class="result">
+Sitemap URL is ready.
+</div>
 
-            </section>
+</section>
 
 
+<!-- WEBSITE -->
 
-            <!-- =================================================
-                 REDIRECT
-            ================================================= -->
+<section class="card">
 
-            <section class="card">
+<h2>🌐 Website</h2>
 
-                <h2>
-                    🔀 Redirect Manager
-                </h2>
+<p class="card-description">
+LearnByte website information.
+</p>
 
-                <p class="card-description">
-                    Prepare redirect rules for old and new URLs.
-                </p>
+<div class="info-grid">
 
+<div class="info-box">
+<strong>Website</strong>
+<span>https://learnbtyehq.github.io/</span>
+</div>
 
-                <label for="oldUrl">
-                    Old URL
-                </label>
+<div class="info-box">
+<strong>Repository</strong>
+<span>learnbtyehq/learnbtyehq.github.io</span>
+</div>
 
-                <input
-                    id="oldUrl"
-                    placeholder="/old-page.html"
-                >
+<div class="info-box">
+<strong>Branch</strong>
+<span>main</span>
+</div>
 
+<div class="info-box">
+<strong>Control System</strong>
+<span>Cloudflare Worker + GitHub</span>
+</div>
 
-                <label for="newUrl">
-                    New URL
-                </label>
+</div>
 
-                <input
-                    id="newUrl"
-                    placeholder="/new-page.html"
-                >
+</section>
 
 
-                <div class="button-row">
+<!-- QUICK ACTIONS -->
 
-                    <button
-                        type="button"
-                        class="secondary"
-                        onclick="prepareRedirect()"
-                    >
-                        Prepare Redirect
-                    </button>
+<section class="card full">
 
-                </div>
+<h2>⚡ Quick Actions</h2>
 
+<p class="card-description">
+Useful shortcuts.
+</p>
 
-                <div
-                    class="result"
-                    id="redirectResult"
-                >
-                    Redirect manager ready.
-                </div>
+<div class="button-row">
 
-            </section>
+<button
+type="button"
+onclick="loadIndex()"
+>
+Load index.html
+</button>
 
+<button
+type="button"
+class="secondary"
+onclick="openWebsite()"
+>
+Open Website
+</button>
 
+<button
+type="button"
+class="secondary"
+onclick="openGitHub()"
+>
+Open GitHub
+</button>
 
-            <!-- =================================================
-                 SITE MAP
-            ================================================= -->
+<button
+type="button"
+class="secondary"
+onclick="openWorker()"
+>
+Open Worker
+</button>
 
-            <section class="card">
+</div>
 
-                <h2>
-                    🗺️ Sitemap
-                </h2>
+</section>
 
-                <p class="card-description">
-                    Quickly open and inspect your website sitemap.
-                </p>
-
-
-                <label for="sitemapUrl">
-                    Sitemap URL
-                </label>
-
-                <input
-                    id="sitemapUrl"
-                    type="url"
-                    value="https://learnbtyehq.github.io/sitemap.xml"
-                >
-
-
-                <div class="button-row">
-
-                    <button
-                        type="button"
-                        onclick="openSitemap()"
-                    >
-                        Open Sitemap
-                    </button>
-
-                </div>
-
-
-                <div class="result">
-                    Sitemap URL is ready.
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 WEBSITE INFORMATION
-            ================================================= -->
-
-            <section class="card">
-
-                <h2>
-                    🌐 Website
-                </h2>
-
-                <p class="card-description">
-                    LearnByte website information.
-                </p>
-
-
-                <div class="info-grid">
-
-                    <div class="info-box">
-
-                        <strong>
-                            Website
-                        </strong>
-
-                        <span>
-                            https://learnbtyehq.github.io/
-                        </span>
-
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <strong>
-                            Repository
-                        </strong>
-
-                        <span>
-                            learnbtyehq/learnbtyehq.github.io
-                        </span>
-
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <strong>
-                            Branch
-                        </strong>
-
-                        <span>
-                            main
-                        </span>
-
-                    </div>
-
-
-                    <div class="info-box">
-
-                        <strong>
-                            Control System
-                        </strong>
-
-                        <span>
-                            Cloudflare Worker + GitHub
-                        </span>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-
-
-            <!-- =================================================
-                 QUICK ACTIONS
-            ================================================= -->
-
-            <section class="card full">
-
-                <h2>
-                    ⚡ Quick Actions
-                </h2>
-
-                <p class="card-description">
-                    Useful shortcuts for managing your website.
-                </p>
-
-
-                <div class="button-row">
-
-                    <button
-                        type="button"
-                        onclick="loadIndex()"
-                    >
-                        Load index.html
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="secondary"
-                        onclick="openWebsite()"
-                    >
-                        Open Website
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="secondary"
-                        onclick="openGitHub()"
-                    >
-                        Open GitHub
-                    </button>
-
-
-                    <button
-                        type="button"
-                        class="secondary"
-                        onclick="openWorker()"
-                    >
-                        Open Worker
-                    </button>
-
-                </div>
-
-            </section>
-
-
-        </div>
-
-    </div>
-
+</div>
+</div>
 </main>
 
 
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
 <footer>
-
-    <div class="container">
-
-        LearnByte SEO Control · Private administration tool
-
-    </div>
-
+<div class="container">
+LearnByte SEO Control · Private administration tool
+</div>
 </footer>
-
 
 
 <script>
 
-    /* =====================================================
-       STATE
-    ===================================================== */
+let currentFileSha = null;
+let currentFilePath = null;
 
-    let currentFileSha = null;
+let keywordSha = null;
 
-    let currentFilePath = null;
-
-    let filesLoaded = 0;
-
-
-    /* =====================================================
-       DOM HELPERS
-    ===================================================== */
-
-    function $(id) {
-
-        return document.getElementById(id);
-
-    }
+let keywordData = {
+    keywords: []
+};
 
 
-    /* =====================================================
-       WORKER URL
-    ===================================================== */
-
-    function getWorkerUrl() {
-
-        return $("workerUrl")
-            .value
-            .trim()
-            .replace(/\/+$/, "");
-
-    }
+function $(id) {
+    return document.getElementById(id);
+}
 
 
-    /* =====================================================
-       ADMIN KEY
-    ===================================================== */
+function getWorkerUrl() {
 
-    function getAdminKey() {
+    return $("workerUrl")
+        .value
+        .trim()
+        .replace(/\/+$/, "");
 
-        return $("adminKey")
-            .value
-            .trim();
-
-    }
+}
 
 
-    /* =====================================================
-       HEADERS
-    ===================================================== */
+function getAdminKey() {
 
-    function authHeaders() {
+    return $("adminKey")
+        .value
+        .trim();
 
-        return {
+}
 
-            "Content-Type":
-                "application/json",
 
-            "X-Admin-Key":
-                getAdminKey()
+function authHeaders() {
 
-        };
+    return {
+        "Content-Type": "application/json",
+        "X-Admin-Key": getAdminKey()
+    };
+
+}
+
+
+function setConnected(value) {
+
+    const status = $("status");
+    const stat = $("statStatus");
+
+    if (value) {
+
+        status.textContent = "● Connected";
+        status.classList.add("connected");
+        stat.textContent = "OK";
+
+    } else {
+
+        status.textContent = "● Not connected";
+        status.classList.remove("connected");
+        stat.textContent = "—";
 
     }
 
-
-    /* =====================================================
-       CONNECTION STATUS
-    ===================================================== */
-
-    function setConnected(connected) {
-
-        const status =
-            $("status");
-
-        const stat =
-            $("statStatus");
+}
 
 
-        if (connected) {
+async function testConnection() {
 
-            status.textContent =
-                "● Connected";
+    const box = $("connectionResult");
 
-            status.classList.add(
-                "connected"
+    if (!getAdminKey()) {
+
+        box.className = "result error";
+        box.textContent = "Please enter your Admin Key.";
+        setConnected(false);
+        return;
+
+    }
+
+    box.className = "result";
+    box.textContent = "Testing connection...";
+
+    try {
+
+        const response =
+            await fetch(
+                getWorkerUrl() + "/github-test",
+                {
+                    method: "GET",
+                    headers: authHeaders()
+                }
             );
 
-            stat.textContent =
-                "OK";
+        const data =
+            await response.json();
 
-        } else {
+        if (!response.ok) {
 
-            status.textContent =
-                "● Not connected";
-
-            status.classList.remove(
-                "connected"
+            throw new Error(
+                data.error || "Connection failed."
             );
-
-            stat.textContent =
-                "—";
 
         }
 
-    }
-
-
-    /* =====================================================
-       TEST CONNECTION
-    ===================================================== */
-
-    async function testConnection() {
-
-        const box =
-            $("connectionResult");
-
-        const key =
-            getAdminKey();
-
-
-        if (!key) {
-
-            box.className =
-                "result error";
-
-            box.textContent =
-                "Please enter your Admin Key.";
-
-            setConnected(false);
-
-            return;
-
-        }
-
-
-        box.className =
-            "result";
+        box.className = "result success";
 
         box.textContent =
-            "Testing connection...";
-
-
-        try {
-
-            const response =
-                await fetch(
-                    getWorkerUrl() +
-                    "/github-test",
-                    {
-                        method: "GET",
-                        headers:
-                            authHeaders()
-                    }
-                );
-
-
-            const data =
-                await response.json();
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    data.error ||
-                    "Connection failed."
-                );
-
-            }
-
-
-            box.className =
-                "result success";
-
-            box.textContent =
-                JSON.stringify(
-                    data,
-                    null,
-                    2
-                );
-
-
-            setConnected(true);
-
-
-            if (
-                $("rememberKey").checked
-            ) {
-
-                localStorage.setItem(
-                    "learnbyte_admin_key",
-                    key
-                );
-
-            }
-
-
-        } catch (error) {
-
-            box.className =
-                "result error";
-
-            box.textContent =
-                error.message;
-
-            setConnected(false);
-
-        }
-
-    }
-
-
-    /* =====================================================
-       LOAD SAVED KEY
-    ===================================================== */
-
-    function loadSavedKey() {
-
-        const saved =
-            localStorage.getItem(
-                "learnbyte_admin_key"
+            JSON.stringify(
+                data,
+                null,
+                2
             );
 
+        setConnected(true);
 
-        if (saved) {
+        if ($("rememberKey").checked) {
 
-            $("adminKey").value =
-                saved;
-
-            $("rememberKey").checked =
-                true;
+            localStorage.setItem(
+                "learnbyte_admin_key",
+                getAdminKey()
+            );
 
         }
 
-    }
+    } catch (error) {
 
-
-    /* =====================================================
-       CLEAR SAVED KEY
-    ===================================================== */
-
-    function clearSavedKey() {
-
-        localStorage.removeItem(
-            "learnbyte_admin_key"
-        );
-
-        $("adminKey").value =
-            "";
-
-        $("rememberKey").checked =
-            false;
-
-        $("connectionResult").className =
-            "result";
-
-        $("connectionResult").textContent =
-            "Saved key cleared.";
-
+        box.className = "result error";
+        box.textContent = error.message;
         setConnected(false);
 
     }
 
-
-    /* =====================================================
-       READ FILE
-    ===================================================== */
-
-    async function readFile() {
-
-        const path =
-            $("filePath")
-                .value
-                .trim();
-
-        const box =
-            $("fileResult");
+}
 
 
-        if (!path) {
+function loadSavedKey() {
 
-            box.className =
-                "result error";
+    const key =
+        localStorage.getItem(
+            "learnbyte_admin_key"
+        );
 
-            box.textContent =
-                "Enter a file path.";
+    if (key) {
 
-            return;
-
-        }
-
-
-        if (!getAdminKey()) {
-
-            box.className =
-                "result error";
-
-            box.textContent =
-                "Enter your Admin Key first.";
-
-            return;
-
-        }
-
-
-        box.className =
-            "result";
-
-        box.textContent =
-            "Reading file...";
-
-
-        try {
-
-            const response =
-                await fetch(
-                    getWorkerUrl() +
-                    "/get-file",
-                    {
-
-                        method: "POST",
-
-                        headers:
-                            authHeaders(),
-
-                        body:
-                            JSON.stringify({
-                                path: path
-                            })
-
-                    }
-                );
-
-
-            const data =
-                await response.json();
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    data.error ||
-                    "Could not read file."
-                );
-
-            }
-
-
-            currentFileSha =
-                data.sha;
-
-            currentFilePath =
-                data.path;
-
-
-            $("editor").value =
-                data.content;
-
-
-            filesLoaded++;
-
-            $("statFiles").textContent =
-                filesLoaded;
-
-
-            box.className =
-                "result success";
-
-            box.textContent =
-                "Loaded: " +
-                data.path +
-                "\nSHA: " +
-                data.sha;
-
-
-        } catch (error) {
-
-            box.className =
-                "result error";
-
-            box.textContent =
-                error.message;
-
-        }
+        $("adminKey").value = key;
+        $("rememberKey").checked = true;
 
     }
 
-
-    /* =====================================================
-       SAVE FILE
-    ===================================================== */
-
-    async function saveFile() {
-
-        if (!currentFilePath) {
-
-            alert(
-                "First load a file."
-            );
-
-            return;
-
-        }
+}
 
 
-        if (!getAdminKey()) {
+function clearSavedKey() {
 
-            alert(
-                "Enter your Admin Key first."
-            );
+    localStorage.removeItem(
+        "learnbyte_admin_key"
+    );
 
-            return;
+    $("adminKey").value = "";
+    $("rememberKey").checked = false;
 
-        }
+    $("connectionResult").textContent =
+        "Saved key cleared.";
 
+    $("connectionResult").className =
+        "result";
 
-        const content =
-            $("editor").value;
+    setConnected(false);
 
-
-        const message =
-            $("commitMessage")
-                .value
-                .trim();
-
-
-        const box =
-            $("saveResult");
+}
 
 
-        box.className =
-            "result";
+async function readFile() {
 
-        box.textContent =
-            "Saving to GitHub...";
+    const path =
+        $("filePath")
+            .value
+            .trim();
 
+    const box =
+        $("fileResult");
 
-        try {
+    if (!path) {
 
-            const response =
-                await fetch(
-                    getWorkerUrl() +
-                    "/update-file",
-                    {
-
-                        method: "POST",
-
-                        headers:
-                            authHeaders(),
-
-                        body:
-                            JSON.stringify({
-
-                                path:
-                                    currentFilePath,
-
-                                content:
-                                    content,
-
-                                message:
-                                    message,
-
-                                sha:
-                                    currentFileSha
-
-                            })
-
-                    }
-                );
-
-
-            const data =
-                await response.json();
-
-
-            if (!response.ok) {
-
-                throw new Error(
-                    data.error ||
-                    "Could not update file."
-                );
-
-            }
-
-
-            currentFileSha =
-                data.sha ||
-                currentFileSha;
-
-
-            box.className =
-                "result success";
-
-            box.textContent =
-                JSON.stringify(
-                    data,
-                    null,
-                    2
-                );
-
-        } catch (error) {
-
-            box.className =
-                "result error";
-
-            box.textContent =
-                error.message;
-
-        }
+        box.className = "result error";
+        box.textContent = "Enter a file path.";
+        return;
 
     }
 
+    if (!getAdminKey()) {
 
-    /* =====================================================
-       CLEAR EDITOR
-    ===================================================== */
+        box.className = "result error";
+        box.textContent = "Enter your Admin Key first.";
+        return;
 
-    function clearEditor() {
+    }
+
+    box.className = "result";
+    box.textContent = "Reading file...";
+
+    try {
+
+        const response =
+            await fetch(
+                getWorkerUrl() + "/get-file",
+                {
+                    method: "POST",
+                    headers: authHeaders(),
+                    body: JSON.stringify({
+                        path: path
+                    })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Could not read file."
+            );
+
+        }
+
+        currentFileSha = data.sha;
+        currentFilePath = data.path;
 
         $("editor").value =
-            "";
+            data.content;
+
+        $("statFiles").textContent = "1";
+
+        box.className =
+            "result success";
+
+        box.textContent =
+            "Loaded: " +
+            data.path +
+            "\nSHA: " +
+            data.sha;
+
+    } catch (error) {
+
+        box.className = "result error";
+        box.textContent = error.message;
+
+    }
+
+}
+
+
+async function saveFile() {
+
+    if (!currentFilePath) {
+
+        alert("First load a file.");
+        return;
+
+    }
+
+    if (!getAdminKey()) {
+
+        alert("Enter your Admin Key first.");
+        return;
+
+    }
+
+    const box =
+        $("saveResult");
+
+    box.className = "result";
+    box.textContent = "Saving to GitHub...";
+
+    try {
+
+        const response =
+            await fetch(
+                getWorkerUrl() + "/update-file",
+                {
+                    method: "POST",
+                    headers: authHeaders(),
+                    body: JSON.stringify({
+
+                        path: currentFilePath,
+
+                        content:
+                            $("editor").value,
+
+                        message:
+                            $("commitMessage")
+                                .value
+                                .trim(),
+
+                        sha: currentFileSha
+
+                    })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Could not update file."
+            );
+
+        }
 
         currentFileSha =
-            null;
+            data.sha ||
+            currentFileSha;
 
-        currentFilePath =
-            null;
-
-        $("fileResult").className =
-            "result";
-
-        $("fileResult").textContent =
-            "No file loaded.";
-
-        $("saveResult").className =
-            "result";
-
-        $("saveResult").textContent =
-            "No changes made.";
-
-    }
-
-
-    /* =====================================================
-       INTERNAL LINK
-    ===================================================== */
-
-    function prepareLink() {
-
-        const source =
-            $("sourcePage")
-                .value
-                .trim();
-
-        const target =
-            $("targetPage")
-                .value
-                .trim();
-
-        const anchor =
-            $("anchorText")
-                .value
-                .trim();
-
-
-        if (
-            !source ||
-            !target ||
-            !anchor
-        ) {
-
-            alert(
-                "Fill all internal-link fields."
-            );
-
-            return;
-
-        }
-
-
-        const html =
-            `<a href="${target}">${anchor}</a>`;
-
-
-        $("linkResult").className =
+        box.className =
             "result success";
 
-        $("linkResult").textContent =
-            "Source:\n" +
-            source +
-            "\n\n" +
-            "Target:\n" +
-            target +
-            "\n\n" +
-            "Keyword / Anchor:\n" +
-            anchor +
-            "\n\n" +
-            "Generated Link:\n" +
-            html;
+        box.textContent =
+            JSON.stringify(
+                data,
+                null,
+                2
+            );
+
+    } catch (error) {
+
+        box.className =
+            "result error";
+
+        box.textContent =
+            error.message;
 
     }
 
-
-    /* =====================================================
-       REDIRECT
-    ===================================================== */
-
-    function prepareRedirect() {
-
-        const oldUrl =
-            $("oldUrl")
-                .value
-                .trim();
-
-        const newUrl =
-            $("newUrl")
-                .value
-                .trim();
+}
 
 
-        if (
-            !oldUrl ||
-            !newUrl
-        ) {
+function clearEditor() {
 
-            alert(
-                "Fill both URLs."
+    $("editor").value = "";
+
+    currentFileSha = null;
+    currentFilePath = null;
+
+    $("fileResult").textContent =
+        "No file loaded.";
+
+    $("saveResult").textContent =
+        "No changes made.";
+
+}
+
+
+async function loadKeywords() {
+
+    const box =
+        $("keywordResult");
+
+    if (!getAdminKey()) {
+
+        box.className =
+            "result error";
+
+        box.textContent =
+            "Enter your Admin Key first.";
+
+        return;
+
+    }
+
+    box.className =
+        "result";
+
+    box.textContent =
+        "Loading keywords...";
+
+    try {
+
+        const response =
+            await fetch(
+                getWorkerUrl() + "/get-file",
+                {
+                    method: "POST",
+                    headers: authHeaders(),
+                    body: JSON.stringify({
+                        path:
+                            "seo-keywords.json"
+                    })
+                }
             );
 
-            return;
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Could not load seo-keywords.json."
+            );
 
         }
 
+        keywordSha = data.sha;
 
-        const cleanOld =
-            oldUrl
-                .replace(
-                    /^\//,
-                    ""
-                )
-                .replace(
-                    /[.*+?^${}()|[\]\\]/g,
-                    "\\$&"
+        keywordData =
+            JSON.parse(
+                data.content ||
+                '{"keywords":[]}'
+            );
+
+        if (
+            !Array.isArray(
+                keywordData.keywords
+            )
+        ) {
+
+            keywordData.keywords = [];
+
+        }
+
+        renderKeywords();
+
+        $("statKeywords").textContent =
+            keywordData.keywords.length;
+
+        box.className =
+            "result success";
+
+        box.textContent =
+            "Keywords loaded successfully.\n" +
+            "Total entries: " +
+            keywordData.keywords.length;
+
+    } catch (error) {
+
+        box.className =
+            "result error";
+
+        box.textContent =
+            error.message;
+
+    }
+
+}
+
+
+async function addKeyword() {
+
+    const page =
+        $("keywordPage")
+            .value
+            .trim();
+
+    const primary =
+        $("keywordPrimary")
+            .value
+            .trim();
+
+    const secondaryText =
+        $("keywordSecondary")
+            .value
+            .trim();
+
+    if (!page || !primary) {
+
+        alert(
+            "Page and Primary Keyword are required."
+        );
+
+        return;
+
+    }
+
+    if (!keywordSha) {
+
+        await loadKeywords();
+
+        if (!keywordSha) {
+            return;
+        }
+
+    }
+
+    const secondary =
+        secondaryText
+            ? secondaryText
+                .split(",")
+                .map(x => x.trim())
+                .filter(Boolean)
+            : [];
+
+    keywordData.keywords.push({
+
+        page: page,
+
+        primary: primary,
+
+        secondary: secondary
+
+    });
+
+    await saveKeywords();
+
+    $("keywordPage").value = "";
+    $("keywordPrimary").value = "";
+    $("keywordSecondary").value = "";
+
+}
+
+
+function renderKeywords() {
+
+    const list =
+        $("keywordList");
+
+    list.innerHTML = "";
+
+    if (!keywordData.keywords.length) {
+
+        list.innerHTML =
+            `<div class="result">
+                No keywords added yet.
+            </div>`;
+
+        return;
+
+    }
+
+    keywordData.keywords.forEach(
+        (item,index) => {
+
+            const div =
+                document.createElement(
+                    "div"
                 );
 
+            div.className =
+                "keyword-item";
 
-        const rule =
-            `RewriteRule ^${cleanOld}$ ${newUrl} [R=301,L]`;
+            const secondary =
+                Array.isArray(
+                    item.secondary
+                )
+                ? item.secondary.join(", ")
+                : "";
 
+            div.innerHTML = `
 
-        $("redirectResult").className =
-            "result success";
+                <div class="keyword-info">
 
-        $("redirectResult").textContent =
-            "Old URL:\n" +
-            oldUrl +
-            "\n\n" +
-            "New URL:\n" +
-            newUrl +
-            "\n\n" +
-            "Prepared Redirect:\n" +
-            rule;
+                    <strong>
+                        ${escapeHtml(item.page)}
+                    </strong>
 
-    }
+                    <span>
+                        <b>Primary:</b>
+                        ${escapeHtml(item.primary)}
+                    </span>
 
+                    <span>
+                        <b>Secondary:</b>
+                        ${escapeHtml(secondary || "None")}
+                    </span>
 
-    /* =====================================================
-       QUICK ACTIONS
-    ===================================================== */
+                </div>
 
-    function loadIndex() {
+                <button
+                    type="button"
+                    class="danger"
+                    onclick="deleteKeyword(${index})"
+                >
+                    Delete
+                </button>
 
-        $("filePath").value =
-            "index.html";
+            `;
 
-        readFile();
-
-    }
-
-
-    function openWebsite() {
-
-        window.open(
-            "https://learnbtyehq.github.io/",
-            "_blank"
-        );
-
-    }
-
-
-    function openGitHub() {
-
-        window.open(
-            "https://github.com/learnbtyehq/learnbtyehq.github.io",
-            "_blank"
-        );
-
-    }
-
-
-    function openWorker() {
-
-        window.open(
-            getWorkerUrl(),
-            "_blank"
-        );
-
-    }
-
-
-    function openSitemap() {
-
-        const url =
-            $("sitemapUrl")
-                .value
-                .trim();
-
-
-        if (!url) {
-
-            alert(
-                "Enter sitemap URL."
-            );
-
-            return;
-
-        }
-
-
-        window.open(
-            url,
-            "_blank"
-        );
-
-    }
-
-
-    /* =====================================================
-       STARTUP
-    ===================================================== */
-
-    document.addEventListener(
-        "DOMContentLoaded",
-        function () {
-
-            loadSavedKey();
+            list.appendChild(div);
 
         }
     );
 
+}
+
+
+async function deleteKeyword(index) {
+
+    if (
+        !confirm(
+            "Delete this keyword entry?"
+        )
+    ) {
+
+        return;
+
+    }
+
+    keywordData.keywords.splice(
+        index,
+        1
+    );
+
+    await saveKeywords();
+
+}
+
+
+async function saveKeywords() {
+
+    const box =
+        $("keywordResult");
+
+    if (!getAdminKey()) {
+
+        box.className =
+            "result error";
+
+        box.textContent =
+            "Enter your Admin Key first.";
+
+        return;
+
+    }
+
+    box.className =
+        "result";
+
+    box.textContent =
+        "Saving keywords to GitHub...";
+
+    try {
+
+        const response =
+            await fetch(
+                getWorkerUrl() +
+                "/update-file",
+                {
+                    method: "POST",
+
+                    headers:
+                        authHeaders(),
+
+                    body:
+                        JSON.stringify({
+
+                            path:
+                                "seo-keywords.json",
+
+                            content:
+                                JSON.stringify(
+                                    keywordData,
+                                    null,
+                                    2
+                                ),
+
+                            message:
+                                "Update SEO keywords",
+
+                            sha:
+                                keywordSha
+
+                        })
+                }
+            );
+
+        const data =
+            await response.json();
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Could not save keywords."
+            );
+
+        }
+
+        keywordSha =
+            data.sha ||
+            keywordSha;
+
+        renderKeywords();
+
+        $("statKeywords").textContent =
+            keywordData.keywords.length;
+
+        box.className =
+            "result success";
+
+        box.textContent =
+            "✅ Keywords saved and committed to GitHub.\n\n" +
+            "Entries: " +
+            keywordData.keywords.length;
+
+    } catch (error) {
+
+        box.className =
+            "result error";
+
+        box.textContent =
+            error.message;
+
+    }
+
+}
+
+
+function escapeHtml(value) {
+
+    return String(value)
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+function prepareLink() {
+
+    const source =
+        $("sourcePage").value.trim();
+
+    const target =
+        $("targetPage").value.trim();
+
+    const anchor =
+        $("anchorText").value.trim();
+
+    if (!source || !target || !anchor) {
+
+        alert(
+            "Fill all internal-link fields."
+        );
+
+        return;
+
+    }
+
+    const html =
+        `<a href="${target}">${anchor}</a>`;
+
+    $("linkResult").className =
+        "result success";
+
+    $("linkResult").textContent =
+        "Source:\n" +
+        source +
+        "\n\nTarget:\n" +
+        target +
+        "\n\nKeyword / Anchor:\n" +
+        anchor +
+        "\n\nGenerated Link:\n" +
+        html;
+
+}
+
+
+function prepareRedirect() {
+
+    const oldUrl =
+        $("oldUrl").value.trim();
+
+    const newUrl =
+        $("newUrl").value.trim();
+
+    if (!oldUrl || !newUrl) {
+
+        alert(
+            "Fill both URLs."
+        );
+
+        return;
+
+    }
+
+    const cleanOld =
+        oldUrl
+            .replace(/^\//,"")
+            .replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+            );
+
+    const rule =
+        `RewriteRule ^${cleanOld}$ ${newUrl} [R=301,L]`;
+
+    $("redirectResult").className =
+        "result success";
+
+    $("redirectResult").textContent =
+        "Old URL:\n" +
+        oldUrl +
+        "\n\nNew URL:\n" +
+        newUrl +
+        "\n\nPrepared Redirect:\n" +
+        rule;
+
+}
+
+
+function loadIndex() {
+
+    $("filePath").value =
+        "index.html";
+
+    readFile();
+
+}
+
+
+function openWebsite() {
+
+    window.open(
+        "https://learnbtyehq.github.io/",
+        "_blank"
+    );
+
+}
+
+
+function openGitHub() {
+
+    window.open(
+        "https://github.com/learnbtyehq/learnbtyehq.github.io",
+        "_blank"
+    );
+
+}
+
+
+function openWorker() {
+
+    window.open(
+        getWorkerUrl(),
+        "_blank"
+    );
+
+}
+
+
+function openSitemap() {
+
+    const url =
+        $("sitemapUrl").value.trim();
+
+    if (!url) {
+
+        alert(
+            "Enter sitemap URL."
+        );
+
+        return;
+
+    }
+
+    window.open(
+        url,
+        "_blank"
+    );
+
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadSavedKey();
+
+    }
+);
+
 </script>
 
-
 </body>
-
 </html>
