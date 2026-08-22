@@ -29,6 +29,11 @@
         content="index, follow, max-image-preview:large"
     >
 
+    <meta
+        name="theme-color"
+        content="#070b16"
+    >
+
     <link
         rel="canonical"
         href="https://learnbtyehq.github.io/category/gaming.html"
@@ -63,9 +68,18 @@
     >
 
 
+    <!-- Main Theme -->
+
     <link
         rel="stylesheet"
         href="../style.css"
+    >
+
+    <!-- Gaming Theme -->
+
+    <link
+        rel="stylesheet"
+        href="../gaming.css"
     >
 
 
@@ -92,461 +106,647 @@
 <body>
 
 
-    <!-- ================= HEADER ================= -->
+<!-- ========================================
+     GAMING BACKGROUND
+======================================== -->
 
-    <header class="site-header">
+<div
+    class="gaming-background"
+    aria-hidden="true"
+>
 
-        <div class="container navbar">
+    <div class="gaming-grid"></div>
+
+    <div class="gaming-glow gaming-glow-one"></div>
+
+    <div class="gaming-glow gaming-glow-two"></div>
+
+</div>
 
 
-            <a
-                href="../index.html"
-                class="logo"
-                aria-label="LearnByte Home"
-            >
-                Learn<span>Byte</span>
+
+<!-- ========================================
+     HEADER
+======================================== -->
+
+<header class="site-header">
+
+    <div class="container navbar">
+
+        <a
+            href="../index.html"
+            class="logo"
+            aria-label="LearnByte Home"
+        >
+            Learn<span>Byte</span>
+        </a>
+
+
+        <button
+            class="menu-toggle"
+            id="menuToggle"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+            aria-controls="navMenu"
+            type="button"
+        >
+            ☰
+        </button>
+
+
+        <nav
+            class="nav-menu"
+            id="navMenu"
+            aria-label="Main navigation"
+        >
+
+            <a href="../index.html">
+                Home
             </a>
 
+            <a href="education.html">
+                Education
+            </a>
 
-            <button
-                class="menu-toggle"
-                id="menuToggle"
-                aria-label="Open navigation menu"
-                aria-expanded="false"
-                aria-controls="navMenu"
-                type="button"
+            <a href="technology.html">
+                Technology
+            </a>
+
+            <a href="seo.html">
+                SEO
+            </a>
+
+            <a
+                href="gaming.html"
+                class="gaming-active"
             >
-                ☰
-            </button>
+                Gaming
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
 
 
-            <nav
-                class="nav-menu"
-                id="navMenu"
-                aria-label="Main navigation"
-            >
 
-                <a href="../index.html">
-                    Home
-                </a>
+<main>
 
-                <a href="education.html">
-                    Education
-                </a>
 
-                <a href="technology.html">
-                    Technology
-                </a>
+<!-- ========================================
+     GAMING HERO
+======================================== -->
 
-                <a href="seo.html">
-                    SEO
-                </a>
+<section
+    class="gaming-hero"
+    aria-labelledby="gaming-title"
+>
 
-                <a href="gaming.html">
-                    Gaming
-                </a>
+    <div class="container gaming-hero-content">
 
-            </nav>
+
+        <div class="gaming-status">
+
+            <span class="status-dot"></span>
+
+            LEARNBYTE / GAMING
 
         </div>
 
-    </header>
+
+        <p class="hero-label">
+            GAMING HUB
+        </p>
+
+
+        <h1 id="gaming-title">
+
+            Play smarter.
+
+            <span>
+                Game better.
+            </span>
+
+        </h1>
+
+
+        <p class="hero-description">
+
+            Practical gaming guides for players who want
+            better skills, smoother performance and smarter
+            gameplay.
+
+        </p>
+
+
+        <div class="gaming-hero-actions">
+
+            <a
+                href="#gaming-articles"
+                class="gaming-btn gaming-btn-primary"
+            >
+                Explore Guides
+                <span>→</span>
+            </a>
+
+
+            <a
+                href="#gaming-topics"
+                class="gaming-btn gaming-btn-secondary"
+            >
+                Gaming Topics
+            </a>
+
+        </div>
+
+
+        <div class="gaming-stats">
+
+            <div class="gaming-stat">
+
+                <strong>
+                    03
+                </strong>
+
+                <span>
+                    Guides
+                </span>
+
+            </div>
+
+
+            <div class="gaming-stat">
+
+                <strong>
+                    03
+                </strong>
+
+                <span>
+                    Topics
+                </span>
+
+            </div>
+
+
+            <div class="gaming-stat">
+
+                <strong>
+                    01
+                </strong>
+
+                <span>
+                    Gaming Hub
+                </span>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+
+    <div
+        class="gaming-hero-visual"
+        aria-hidden="true"
+    >
+
+        <div class="gaming-ring ring-one"></div>
+
+        <div class="gaming-ring ring-two"></div>
+
+        <div class="gaming-ring ring-three"></div>
+
+
+        <div class="gaming-core">
+
+            <span>
+                🎮
+            </span>
+
+            <strong>
+                PLAY
+            </strong>
+
+        </div>
+
+
+        <span class="gaming-particle particle-one">
+            +
+        </span>
+
+        <span class="gaming-particle particle-two">
+            ×
+        </span>
+
+        <span class="gaming-particle particle-three">
+            ◆
+        </span>
+
+        <span class="gaming-particle particle-four">
+            +
+        </span>
+
+    </div>
+
+</section>
 
 
 
-    <main>
+<!-- ========================================
+     ARTICLES
+======================================== -->
+
+<section
+    class="gaming-section"
+    id="gaming-articles"
+    aria-labelledby="gaming-articles-title"
+>
+
+    <div class="container">
 
 
-        <!-- ================= HERO ================= -->
+        <div class="gaming-section-heading">
 
-        <section
-            class="hero"
-            aria-labelledby="gaming-title"
-        >
+            <div>
 
-            <div class="container hero-content">
-
-
-                <p class="hero-label">
-                    LearnByte Gaming
+                <p class="gaming-section-label">
+                    PLAYER GUIDES
                 </p>
 
+                <h2 id="gaming-articles-title">
+                    Level up your gameplay.
+                </h2>
 
-                <h1 id="gaming-title">
+            </div>
 
-                    Play smarter.
 
-                    <span>
-                        Game better.
+            <p>
+                Practical guides focused on skills,
+                strategies and better gaming performance.
+            </p>
+
+        </div>
+
+
+
+        <div class="gaming-post-grid">
+
+
+            <!-- ARTICLE 1 -->
+
+            <article class="gaming-post-card">
+
+                <div class="gaming-card-top">
+
+                    <span class="gaming-card-number">
+                        01
                     </span>
 
-                </h1>
+                    <div class="gaming-card-icon">
+                        🎮
+                    </div>
+
+                </div>
 
 
-                <p class="hero-description">
+                <div class="gaming-post-content">
 
-                    Explore practical gaming guides covering
-                    beginner tips, skill improvement, game
-                    performance and useful gaming strategies.
-
-                </p>
+                    <span class="gaming-category">
+                        GAMING TIPS
+                    </span>
 
 
-            </div>
-
-        </section>
-
-
-
-        <!-- ================= ARTICLES ================= -->
-
-        <section
-            class="section"
-            aria-labelledby="gaming-articles-title"
-        >
-
-            <div class="container">
-
-
-                <div class="section-heading">
-
-
-                    <p class="section-label">
-                        Gaming
-                    </p>
-
-
-                    <h2 id="gaming-articles-title">
-                        Latest Gaming Articles
-                    </h2>
+                    <h3>
+                        15 Gaming Tips for Beginners:
+                        Play Better and Smarter
+                    </h3>
 
 
                     <p>
-                        Practical gaming content designed to help
-                        players learn, improve and enjoy their games.
+                        Learn practical gaming tips covering
+                        controls, objectives, practice,
+                        game awareness, resource management
+                        and better gaming habits.
                     </p>
-
-
-                </div>
-
-
-
-                <div class="post-grid">
-
-
-                    <!-- ================= ARTICLE 1 ================= -->
-
-                    <article class="post-card">
-
-
-                        <div
-                            class="post-image"
-                            aria-hidden="true"
-                        >
-                            🎮
-                        </div>
-
-
-                        <div class="post-content">
-
-
-                            <span class="post-category">
-                                Gaming Tips
-                            </span>
-
-
-                            <h3>
-                                15 Gaming Tips for Beginners:
-                                Play Better and Smarter
-                            </h3>
-
-
-                            <p>
-                                Learn practical gaming tips covering
-                                controls, game objectives, practice,
-                                game awareness, resource management
-                                and better gaming habits.
-                            </p>
-
-
-                            <a
-                                href="../posts/best-gaming-tips-for-beginners.html"
-                            >
-                                Read Article →
-                            </a>
-
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- ================= ARTICLE 2 ================= -->
-
-                    <article class="post-card">
-
-
-                        <div
-                            class="post-image"
-                            aria-hidden="true"
-                        >
-                            🏆
-                        </div>
-
-
-                        <div class="post-content">
-
-
-                            <span class="post-category">
-                                Gaming Skills
-                            </span>
-
-
-                            <h3>
-                                How to Improve Your Gaming Skills:
-                                A Practical Guide
-                            </h3>
-
-
-                            <p>
-                                Discover practical ways to improve
-                                aim, movement, game sense,
-                                decision-making, consistency and
-                                overall gameplay.
-                            </p>
-
-
-                            <a
-                                href="../posts/how-to-improve-gaming-skills.html"
-                            >
-                                Read Article →
-                            </a>
-
-
-                        </div>
-
-                    </article>
-
-
-
-                    <!-- ================= ARTICLE 3 ================= -->
-
-                    <article class="post-card">
-
-
-                        <div
-                            class="post-image"
-                            aria-hidden="true"
-                        >
-                            🕹️
-                        </div>
-
-
-                        <div class="post-content">
-
-
-                            <span class="post-category">
-                                Performance
-                            </span>
-
-
-                            <h3>
-                                Best Gaming Settings for
-                                Better Performance
-                            </h3>
-
-
-                            <p>
-                                Learn how to adjust resolution,
-                                graphics, shadows, textures and
-                                other settings for smoother gameplay.
-                            </p>
-
-
-                            <a
-                                href="../posts/gaming-settings-for-better-performance.html"
-                            >
-                                Read Article →
-                            </a>
-
-
-                        </div>
-
-                    </article>
-
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- ================= GAMING TOPICS ================= -->
-
-        <section
-            class="categories section"
-            aria-labelledby="gaming-topics-title"
-        >
-
-            <div class="container">
-
-
-                <div class="section-heading">
-
-
-                    <p class="section-label">
-                        Explore Gaming
-                    </p>
-
-
-                    <h2 id="gaming-topics-title">
-                        Gaming Topics
-                    </h2>
-
-
-                    <p>
-                        Explore practical gaming topics covered
-                        by LearnByte.
-                    </p>
-
-
-                </div>
-
-
-
-                <div class="category-grid">
 
 
                     <a
                         href="../posts/best-gaming-tips-for-beginners.html"
-                        class="category-card"
+                        class="gaming-read"
                     >
-
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
-                            🎮
-                        </div>
-
-
-                        <h3>
-                            Gaming Tips
-                        </h3>
-
-
-                        <p>
-                            Learn useful gaming tips, beginner
-                            strategies and better gaming habits.
-                        </p>
-
+                        Read Guide
+                        <span>→</span>
                     </a>
 
+                </div>
+
+            </article>
+
+
+
+            <!-- ARTICLE 2 -->
+
+            <article class="gaming-post-card">
+
+                <div class="gaming-card-top">
+
+                    <span class="gaming-card-number">
+                        02
+                    </span>
+
+                    <div class="gaming-card-icon">
+                        🏆
+                    </div>
+
+                </div>
+
+
+                <div class="gaming-post-content">
+
+                    <span class="gaming-category">
+                        GAMING SKILLS
+                    </span>
+
+
+                    <h3>
+                        How to Improve Your Gaming Skills:
+                        A Practical Guide
+                    </h3>
+
+
+                    <p>
+                        Discover practical ways to improve
+                        aim, movement, game sense,
+                        decision-making, consistency and
+                        overall gameplay.
+                    </p>
 
 
                     <a
                         href="../posts/how-to-improve-gaming-skills.html"
-                        class="category-card"
+                        class="gaming-read"
                     >
-
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
-                            🏆
-                        </div>
-
-
-                        <h3>
-                            Gaming Skills
-                        </h3>
-
-
-                        <p>
-                            Improve your gameplay through practice,
-                            game sense, decision-making and consistency.
-                        </p>
-
+                        Read Guide
+                        <span>→</span>
                     </a>
 
+                </div>
+
+            </article>
+
+
+
+            <!-- ARTICLE 3 -->
+
+            <article class="gaming-post-card">
+
+                <div class="gaming-card-top">
+
+                    <span class="gaming-card-number">
+                        03
+                    </span>
+
+                    <div class="gaming-card-icon">
+                        ⚙️
+                    </div>
+
+                </div>
+
+
+                <div class="gaming-post-content">
+
+                    <span class="gaming-category">
+                        PERFORMANCE
+                    </span>
+
+
+                    <h3>
+                        Best Gaming Settings for
+                        Better Performance
+                    </h3>
+
+
+                    <p>
+                        Learn how to adjust resolution,
+                        graphics, shadows, textures and
+                        other settings for smoother gameplay.
+                    </p>
 
 
                     <a
                         href="../posts/gaming-settings-for-better-performance.html"
-                        class="category-card"
+                        class="gaming-read"
                     >
-
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
-                            ⚙️
-                        </div>
-
-
-                        <h3>
-                            Performance
-                        </h3>
-
-
-                        <p>
-                            Learn how to optimize gaming settings
-                            for smoother and more comfortable gameplay.
-                        </p>
-
+                        Read Guide
+                        <span>→</span>
                     </a>
-
-
-
-                    <a
-                        href="../index.html#categories"
-                        class="category-card"
-                    >
-
-                        <div
-                            class="category-icon"
-                            aria-hidden="true"
-                        >
-                            🌐
-                        </div>
-
-
-                        <h3>
-                            More Topics
-                        </h3>
-
-
-                        <p>
-                            Explore Education, Technology and SEO
-                            guides on LearnByte.
-                        </p>
-
-                    </a>
-
 
                 </div>
 
+            </article>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================
+     GAMING TOPICS
+======================================== -->
+
+<section
+    class="gaming-topics"
+    id="gaming-topics"
+    aria-labelledby="gaming-topics-title"
+>
+
+    <div class="container">
+
+
+        <div class="gaming-section-heading">
+
+            <div>
+
+                <p class="gaming-section-label">
+                    EXPLORE
+                </p>
+
+                <h2 id="gaming-topics-title">
+                    Choose your loadout.
+                </h2>
+
             </div>
 
-        </section>
+
+            <p>
+                Pick a gaming topic and start improving
+                one skill at a time.
+            </p>
+
+        </div>
 
 
 
-        <!-- ================= ABOUT ================= -->
-
-        <section
-            class="about-section section"
-            aria-labelledby="gaming-about-title"
-        >
-
-            <div class="container about-content">
+        <div class="gaming-topic-grid">
 
 
-                <p class="section-label">
-                    LearnByte Gaming
+            <a
+                href="../posts/best-gaming-tips-for-beginners.html"
+                class="gaming-topic-card"
+            >
+
+                <span class="topic-index">
+                    01
+                </span>
+
+                <div class="topic-icon">
+                    🎮
+                </div>
+
+                <h3>
+                    Gaming Tips
+                </h3>
+
+                <p>
+                    Useful beginner strategies,
+                    habits and gameplay tips.
+                </p>
+
+                <span class="topic-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+
+            <a
+                href="../posts/how-to-improve-gaming-skills.html"
+                class="gaming-topic-card"
+            >
+
+                <span class="topic-index">
+                    02
+                </span>
+
+                <div class="topic-icon">
+                    🏆
+                </div>
+
+                <h3>
+                    Gaming Skills
+                </h3>
+
+                <p>
+                    Improve aim, movement,
+                    game sense and consistency.
+                </p>
+
+                <span class="topic-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+
+            <a
+                href="../posts/gaming-settings-for-better-performance.html"
+                class="gaming-topic-card"
+            >
+
+                <span class="topic-index">
+                    03
+                </span>
+
+                <div class="topic-icon">
+                    ⚙️
+                </div>
+
+                <h3>
+                    Performance
+                </h3>
+
+                <p>
+                    Optimize settings for smoother
+                    and more comfortable gameplay.
+                </p>
+
+                <span class="topic-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+
+            <a
+                href="../index.html#categories"
+                class="gaming-topic-card gaming-topic-more"
+            >
+
+                <span class="topic-index">
+                    +
+                </span>
+
+                <div class="topic-icon">
+                    🌐
+                </div>
+
+                <h3>
+                    More Topics
+                </h3>
+
+                <p>
+                    Explore Education, Technology
+                    and SEO on LearnByte.
+                </p>
+
+                <span class="topic-arrow">
+                    →
+                </span>
+
+            </a>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- ========================================
+     GAMING ABOUT
+======================================== -->
+
+<section
+    class="gaming-about"
+    aria-labelledby="gaming-about-title"
+>
+
+    <div class="container">
+
+
+        <div class="gaming-about-box">
+
+
+            <div class="gaming-about-icon">
+                ⚡
+            </div>
+
+
+            <div>
+
+                <p class="gaming-section-label">
+                    LEARNBYTE GAMING
                 </p>
 
 
@@ -556,143 +756,125 @@
 
 
                 <p>
-                    LearnByte provides simple and practical gaming
-                    information to help players understand games,
-                    improve their skills and get more from their
-                    gaming experience.
+                    LearnByte provides simple and practical
+                    gaming information to help players understand
+                    games, improve their skills and get more from
+                    their gaming experience.
                 </p>
-
-
-            </div>
-
-        </section>
-
-
-    </main>
-
-
-
-    <!-- ================= FOOTER ================= -->
-
-    <footer class="site-footer">
-
-
-        <div class="container footer-content">
-
-
-            <div class="footer-brand">
-
-
-                <a
-                    href="../index.html"
-                    class="logo"
-                >
-                    Learn<span>Byte</span>
-                </a>
-
-
-                <p>
-                    Learn something useful, every day.
-                </p>
-
-
-            </div>
-
-
-
-            <div class="footer-links">
-
-
-                <h3>
-                    Quick Links
-                </h3>
-
-
-                <a href="../about.html">
-                    About
-                </a>
-
-
-                <a href="../contact.html">
-                    Contact
-                </a>
-
-
-                <a href="../write.html">
-                    Write for LearnByte
-                </a>
-
-
-                <a href="../privacy-policy.html">
-                    Privacy Policy
-                </a>
-
-
-                <a href="../disclaimer.html">
-                    Disclaimer
-                </a>
-
-
-            </div>
-
-
-
-            <div class="footer-links">
-
-
-                <h3>
-                    Categories
-                </h3>
-
-
-                <a href="education.html">
-                    Education
-                </a>
-
-
-                <a href="technology.html">
-                    Technology
-                </a>
-
-
-                <a href="seo.html">
-                    SEO
-                </a>
-
-
-                <a href="gaming.html">
-                    Gaming
-                </a>
-
 
             </div>
 
 
         </div>
 
+    </div>
+
+</section>
 
 
-        <div class="footer-bottom">
+
+<!-- ========================================
+     FOOTER
+======================================== -->
+
+<footer class="site-footer">
+
+    <div class="container footer-content">
 
 
-            <div class="container">
+        <div class="footer-brand">
 
+            <a
+                href="../index.html"
+                class="logo"
+            >
+                Learn<span>Byte</span>
+            </a>
 
-                <p>
-                    © 2026 LearnByte. All rights reserved.
-                </p>
-
-
-            </div>
+            <p>
+                Learn something useful, every day.
+            </p>
 
         </div>
 
 
-    </footer>
+
+        <div class="footer-links">
+
+            <h3>
+                Quick Links
+            </h3>
+
+            <a href="../about.html">
+                About
+            </a>
+
+            <a href="../contact.html">
+                Contact
+            </a>
+
+            <a href="../write.html">
+                Write for LearnByte
+            </a>
+
+            <a href="../privacy-policy.html">
+                Privacy Policy
+            </a>
+
+            <a href="../disclaimer.html">
+                Disclaimer
+            </a>
+
+        </div>
 
 
 
-    <script src="../script.js"></script>
+        <div class="footer-links">
+
+            <h3>
+                Categories
+            </h3>
+
+            <a href="education.html">
+                Education
+            </a>
+
+            <a href="technology.html">
+                Technology
+            </a>
+
+            <a href="seo.html">
+                SEO
+            </a>
+
+            <a href="gaming.html">
+                Gaming
+            </a>
+
+        </div>
+
+
+    </div>
+
+
+
+    <div class="footer-bottom">
+
+        <div class="container">
+
+            <p>
+                © 2026 LearnByte. All rights reserved.
+            </p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+
+<script src="../script.js"></script>
 
 </body>
 
