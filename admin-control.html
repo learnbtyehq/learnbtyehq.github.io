@@ -2,2749 +2,1160 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>LearnByte SEO Manager</title>
-
-<meta
-    name="description"
-    content="LearnByte SEO Manager admin control panel."
->
+<title>LearnByte Admin Control Center</title>
+<meta name="robots" content="noindex,nofollow">
 
 <style>
-:root {
-    --bg: #f5f7fb;
-    --card: #ffffff;
-    --text: #172033;
-    --muted: #687386;
-    --border: #e5e9f0;
-    --primary: #2563eb;
-    --primary-dark: #1d4ed8;
-    --danger: #dc2626;
-    --success: #16a34a;
-    --warning: #d97706;
-    --sidebar: #111827;
-    --sidebar-text: #dbe4f0;
-    --shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
-    --radius: 16px;
-}
-
-* {
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    margin: 0;
-    font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-    background: var(--bg);
-    color: var(--text);
-}
-
-button,
-input,
-textarea {
-    font: inherit;
-}
-
-button {
-    cursor: pointer;
-}
-
-.app {
-    min-height: 100vh;
-    display: flex;
-}
-
-/* =========================
-   SIDEBAR
-========================= */
-
-.sidebar {
-    width: 270px;
-    min-width: 270px;
-    background: var(--sidebar);
-    color: white;
-    padding: 22px 16px;
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    overflow-y: auto;
-    z-index: 1000;
-}
-
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 8px 10px 22px;
-    border-bottom: 1px solid rgba(255,255,255,.08);
-    margin-bottom: 18px;
-}
-
-.brand-logo {
-    width: 42px;
-    height: 42px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: linear-gradient(135deg,#2563eb,#7c3aed);
-    font-size: 21px;
-    font-weight: 800;
-}
-
-.brand-title {
-    font-size: 17px;
-    font-weight: 800;
-}
-
-.brand-subtitle {
-    font-size: 11px;
-    color: #9ca3af;
-    margin-top: 2px;
-}
-
-.nav-title {
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: .08em;
-    color: #6b7280;
-    padding: 10px 12px;
-}
-
-.nav-item {
-    width: 100%;
-    border: 0;
-    background: transparent;
-    color: var(--sidebar-text);
-    padding: 11px 12px;
-    border-radius: 10px;
-    display: flex;
-    align-items: center;
-    gap: 11px;
-    text-align: left;
-    margin-bottom: 3px;
-}
-
-.nav-item:hover,
-.nav-item.active {
-    background: rgba(255,255,255,.09);
-    color: white;
-}
-
-.nav-icon {
-    width: 22px;
-    text-align: center;
-    font-size: 17px;
-}
-
-.nav-label {
-    font-size: 13px;
-    font-weight: 600;
-}
-
-.sidebar-bottom {
-    margin-top: 20px;
-    padding: 12px;
-    border-radius: 12px;
-    background: rgba(255,255,255,.05);
-}
-
-.connection-small {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 12px;
-    color: #a7f3d0;
-}
-
-.dot {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: #22c55e;
-}
-
-/* =========================
-   MAIN
-========================= */
-
-.main {
-    margin-left: 270px;
-    width: calc(100% - 270px);
-    min-width: 0;
-}
-
-.topbar {
-    position: sticky;
-    top: 0;
-    z-index: 500;
-    background: rgba(245,247,251,.92);
-    backdrop-filter: blur(12px);
-    border-bottom: 1px solid var(--border);
-    padding: 16px 24px;
-}
-
-.topbar-inner {
-    max-width: 1500px;
-    margin: auto;
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.menu-btn {
-    display: none;
-    width: 42px;
-    height: 42px;
-    border: 1px solid var(--border);
-    background: white;
-    border-radius: 10px;
-}
-
-.page-title {
-    flex: 1;
-}
-
-.page-title h1 {
-    margin: 0;
-    font-size: 22px;
-}
-
-.page-title p {
-    margin: 3px 0 0;
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.search {
-    width: 280px;
-    position: relative;
-}
-
-.search input {
-    width: 100%;
-    padding: 11px 14px 11px 38px;
-    border: 1px solid var(--border);
-    border-radius: 11px;
-    background: white;
-    outline: none;
-}
-
-.search-icon {
-    position: absolute;
-    left: 13px;
-    top: 10px;
-    color: #9ca3af;
-}
-
-/* =========================
-   CONTENT
-========================= */
-
-.content {
-    max-width: 1500px;
-    margin: auto;
-    padding: 24px;
-}
-
-.hero {
-    background: linear-gradient(135deg,#172554,#2563eb);
-    color: white;
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 20px;
-    box-shadow: var(--shadow);
-}
-
-.hero h2 {
-    margin: 0 0 7px;
-    font-size: 24px;
-}
-
-.hero p {
-    margin: 0;
-    color: #dbeafe;
-    font-size: 14px;
-}
-
-.hero-row {
-    display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    align-items: center;
-}
-
-.worker-status {
-    min-width: 210px;
-    padding: 12px 14px;
-    border-radius: 12px;
-    background: rgba(255,255,255,.12);
-    border: 1px solid rgba(255,255,255,.16);
-}
-
-.worker-status-title {
-    font-size: 11px;
-    color: #bfdbfe;
-}
-
-.worker-status-url {
-    margin-top: 4px;
-    font-size: 12px;
-    word-break: break-all;
-}
-
-/* =========================
-   CONFIG
-========================= */
-
-.config-card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 18px;
-    margin-bottom: 22px;
-    box-shadow: var(--shadow);
-}
-
-.config-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr auto;
-    gap: 12px;
-    align-items: end;
-}
-
-.field label {
-    display: block;
-    font-size: 12px;
-    font-weight: 700;
-    margin-bottom: 6px;
-}
-
-.field input,
-.field textarea,
-.json-input {
-    width: 100%;
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 11px 12px;
-    outline: none;
-    background: #fafbfc;
-}
-
-.field input:focus,
-.field textarea:focus,
-.json-input:focus {
-    border-color: var(--primary);
-    background: white;
-}
-
-.btn {
-    border: 0;
-    border-radius: 10px;
-    padding: 11px 15px;
-    font-weight: 700;
-    transition: .15s;
-}
-
-.btn:hover {
-    transform: translateY(-1px);
-}
-
-.btn-primary {
-    background: var(--primary);
-    color: white;
-}
-
-.btn-primary:hover {
-    background: var(--primary-dark);
-}
-
-.btn-secondary {
-    background: #eef2f7;
-    color: #334155;
-}
-
-.btn-success {
-    background: #dcfce7;
-    color: #166534;
-}
-
-.btn-danger {
-    background: #fee2e2;
-    color: #991b1b;
-}
-
-.btn-warning {
-    background: #fef3c7;
-    color: #92400e;
-}
-
-/* =========================
-   STATS
-========================= */
-
-.stats {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    gap: 14px;
-    margin-bottom: 24px;
-}
-
-.stat {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 17px;
-}
-
-.stat-icon {
-    font-size: 20px;
-}
-
-.stat-value {
-    font-size: 25px;
-    font-weight: 800;
-    margin-top: 5px;
-}
-
-.stat-label {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-/* =========================
-   TOOL SECTION
-========================= */
-
-.section {
-    margin-bottom: 28px;
-    scroll-margin-top: 90px;
-}
-
-.section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
-}
-
-.section-head h2 {
-    margin: 0;
-    font-size: 18px;
-}
-
-.section-head span {
-    color: var(--muted);
-    font-size: 12px;
-}
-
-.tools-grid {
-    display: grid;
-    grid-template-columns: repeat(3,1fr);
-    gap: 14px;
-}
-
-.tool-card {
-    background: white;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    padding: 17px;
-    box-shadow: 0 4px 18px rgba(15,23,42,.04);
-    transition: .18s;
-}
-
-.tool-card:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow);
-    border-color: #cbd5e1;
-}
-
-.tool-top {
-    display: flex;
-    gap: 12px;
-    align-items: flex-start;
-}
-
-.tool-icon {
-    width: 44px;
-    height: 44px;
-    min-width: 44px;
-    border-radius: 12px;
-    background: #eff6ff;
-    color: var(--primary);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 21px;
-}
-
-.tool-name {
-    font-size: 14px;
-    font-weight: 800;
-}
-
-.tool-route {
-    color: #64748b;
-    font-family: monospace;
-    font-size: 11px;
-    margin-top: 3px;
-}
-
-.tool-description {
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.55;
-    margin: 12px 0;
-    min-height: 38px;
-}
-
-.tool-actions {
-    display: flex;
-    gap: 7px;
-}
-
-.tool-actions .btn {
-    flex: 1;
-    padding: 9px 10px;
-    font-size: 12px;
-}
-
-/* =========================
-   MODAL
-========================= */
-
-.modal {
-    position: fixed;
-    inset: 0;
-    background: rgba(15,23,42,.55);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 18px;
-    z-index: 2000;
-}
-
-.modal.show {
-    display: flex;
-}
-
-.modal-box {
-    width: min(850px,100%);
-    max-height: 92vh;
-    overflow-y: auto;
-    background: white;
-    border-radius: 18px;
-    box-shadow: 0 25px 70px rgba(0,0,0,.25);
-}
-
-.modal-head {
-    padding: 18px 20px;
-    border-bottom: 1px solid var(--border);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.modal-head h3 {
-    margin: 0;
-    font-size: 17px;
-}
-
-.close-btn {
-    border: 0;
-    background: #f1f5f9;
-    width: 36px;
-    height: 36px;
-    border-radius: 9px;
-    font-size: 18px;
-}
-
-.modal-body {
-    padding: 20px;
-}
-
-.modal-route {
-    font-family: monospace;
-    font-size: 12px;
-    color: var(--primary);
-    margin-bottom: 14px;
-}
-
-.json-label {
-    font-size: 12px;
-    font-weight: 800;
-    margin-bottom: 6px;
-}
-
-.json-input {
-    min-height: 180px;
-    resize: vertical;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 12px;
-    line-height: 1.5;
-}
-
-.modal-actions {
-    display: flex;
-    gap: 8px;
-    margin-top: 12px;
-}
-
-.response-box {
-    margin-top: 18px;
-}
-
-.response-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 7px;
-}
-
-.response-head strong {
-    font-size: 12px;
-}
-
-.response {
-    background: #0f172a;
-    color: #dbeafe;
-    border-radius: 12px;
-    padding: 15px;
-    min-height: 120px;
-    max-height: 380px;
-    overflow: auto;
-    white-space: pre-wrap;
-    word-break: break-word;
-    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-    font-size: 11px;
-}
-
-.response.success {
-    border-left: 4px solid #22c55e;
-}
-
-.response.error {
-    border-left: 4px solid #ef4444;
-}
-
-/* =========================
-   TOAST
-========================= */
-
-.toast {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
-    background: #111827;
-    color: white;
-    padding: 12px 16px;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,.2);
-    font-size: 13px;
-    opacity: 0;
-    transform: translateY(15px);
-    pointer-events: none;
-    transition: .2s;
-    z-index: 3000;
-}
-
-.toast.show {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 1100px) {
-    .tools-grid {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .stats {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .config-grid {
-        grid-template-columns: 1fr 1fr;
-    }
-}
-
-@media (max-width: 760px) {
-    .sidebar {
-        transform: translateX(-100%);
-        transition: .2s;
-    }
-
-    .sidebar.open {
-        transform: translateX(0);
-    }
-
-    .main {
-        margin-left: 0;
-        width: 100%;
-    }
-
-    .menu-btn {
-        display: block;
-    }
-
-    .topbar {
-        padding: 12px 14px;
-    }
-
-    .topbar-inner {
-        flex-wrap: wrap;
-    }
-
-    .page-title h1 {
-        font-size: 18px;
-    }
-
-    .search {
-        order: 3;
-        width: 100%;
-    }
-
-    .content {
-        padding: 15px;
-    }
-
-    .hero {
-        padding: 18px;
-    }
-
-    .hero-row {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .worker-status {
-        width: 100%;
-    }
-
-    .config-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .tools-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .stats {
-        grid-template-columns: 1fr 1fr;
-        gap: 9px;
-    }
-
-    .stat {
-        padding: 13px;
-    }
-
-    .stat-value {
-        font-size: 21px;
-    }
+*{box-sizing:border-box}
+body{
+    margin:0;
+    font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    background:#0b1020;
+    color:#eef2ff;
+}
+button,input,textarea{font:inherit}
+.top{
+    position:sticky;
+    top:0;
+    z-index:100;
+    background:#11182d;
+    border-bottom:1px solid #293452;
+    padding:15px;
+}
+.topbar{
+    max-width:1450px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:15px;
+    flex-wrap:wrap;
+}
+.brand{
+    font-size:21px;
+    font-weight:800;
+}
+.badge{
+    display:inline-block;
+    margin-top:5px;
+    padding:4px 8px;
+    border-radius:20px;
+    background:#202d4d;
+    color:#9eb5ff;
+    font-size:11px;
+}
+.keybox{
+    display:flex;
+    gap:8px;
+    width:100%;
+    max-width:650px;
+}
+input,textarea{
+    width:100%;
+    background:#080d19;
+    color:#fff;
+    border:1px solid #303c5e;
+    border-radius:9px;
+    padding:10px;
+}
+input:focus,textarea:focus{
+    outline:2px solid #536dfe;
+}
+button{
+    border:0;
+    border-radius:9px;
+    padding:10px 14px;
+    background:#536dfe;
+    color:white;
+    font-weight:700;
+    cursor:pointer;
+}
+button:hover{filter:brightness(1.12)}
+button.secondary{background:#293554}
+button.danger{background:#b93750}
+
+main{
+    max-width:1450px;
+    margin:25px auto;
+    padding:0 16px;
+}
+.hero{
+    background:linear-gradient(135deg,#151f3b,#10172a);
+    border:1px solid #29375a;
+    border-radius:16px;
+    padding:20px;
+    margin-bottom:18px;
+}
+.hero h1{
+    margin:0 0 6px;
+    font-size:25px;
+}
+.hero p{
+    margin:0;
+    color:#a5b0cd;
+}
+.status{
+    margin-top:12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+}
+.dot{
+    width:10px;
+    height:10px;
+    border-radius:50%;
+    background:#777;
+}
+.dot.ok{background:#28d17c}
+.dot.bad{background:#ff526b}
+
+.search{
+    margin-bottom:18px;
+}
+
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:15px;
+}
+
+.card{
+    background:#11182b;
+    border:1px solid #293654;
+    border-radius:14px;
+    padding:15px;
+    min-height:220px;
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+.card h3{
+    margin:0;
+    font-size:16px;
+}
+.number{
+    color:#809cff;
+    margin-right:5px;
+}
+.desc{
+    color:#9ba8c7;
+    font-size:13px;
+    min-height:35px;
+}
+.endpoint{
+    color:#6f7da0;
+    font-size:11px;
+    word-break:break-all;
+}
+.method{
+    display:inline-block;
+    width:max-content;
+    padding:4px 7px;
+    border-radius:6px;
+    background:#263353;
+    font-size:10px;
+    font-weight:800;
+}
+.form{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+.form textarea{
+    min-height:75px;
+    resize:vertical;
+    font-family:monospace;
+    font-size:12px;
+}
+.actions{
+    display:flex;
+    gap:7px;
+}
+.result{
+    margin:0;
+    background:#070c17;
+    border:1px solid #27314a;
+    border-radius:9px;
+    padding:10px;
+    max-height:270px;
+    overflow:auto;
+    white-space:pre-wrap;
+    font:12px/1.5 monospace;
+    color:#cbd5ff;
+}
+.hidden{display:none!important}
+
+footer{
+    max-width:1450px;
+    margin:20px auto;
+    padding:0 16px 35px;
+    color:#707e9e;
+    font-size:12px;
+}
+
+@media(max-width:600px){
+    .keybox{max-width:none}
+    .grid{grid-template-columns:1fr}
+    .hero h1{font-size:21px}
 }
 </style>
 </head>
 
 <body>
 
-<div class="app">
-
-<!-- =========================
-     SIDEBAR
-========================= -->
-
-<aside class="sidebar" id="sidebar">
-
-    <div class="brand">
-        <div class="brand-logo">LB</div>
-
-        <div>
-            <div class="brand-title">
-                LearnByte
-            </div>
-
-            <div class="brand-subtitle">
-                SEO Control Center
-            </div>
-        </div>
-    </div>
-
-    <div class="nav-title">
-        Dashboard
-    </div>
-
-    <button class="nav-item active" onclick="scrollToSection('overview')">
-        <span class="nav-icon">📊</span>
-        <span class="nav-label">Overview</span>
-    </button>
-
-    <div class="nav-title">
-        Repository
-    </div>
-
-    <button class="nav-item" onclick="scrollToSection('repository')">
-        <span class="nav-icon">📁</span>
-        <span class="nav-label">Repository Tools</span>
-    </button>
-
-    <div class="nav-title">
-        SEO
-    </div>
-
-    <button class="nav-item" onclick="scrollToSection('seo')">
-        <span class="nav-icon">🔍</span>
-        <span class="nav-label">SEO Tools</span>
-    </button>
-
-    <div class="nav-title">
-        Content
-    </div>
-
-    <button class="nav-item" onclick="scrollToSection('content')">
-        <span class="nav-icon">📝</span>
-        <span class="nav-label">Content Tools</span>
-    </button>
-
-    <div class="nav-title">
-        Management
-    </div>
-
-    <button class="nav-item" onclick="scrollToSection('management')">
-        <span class="nav-icon">⚙️</span>
-        <span class="nav-label">Management</span>
-    </button>
-
-    <div class="sidebar-bottom">
-        <div class="connection-small">
-            <span class="dot"></span>
-            Worker configured
-        </div>
-    </div>
-
-</aside>
-
-<!-- =========================
-     MAIN
-========================= -->
-
-<main class="main">
-
-<header class="topbar">
-
-    <div class="topbar-inner">
-
-        <button
-            class="menu-btn"
-            onclick="toggleSidebar()"
-        >
-            ☰
-        </button>
-
-        <div class="page-title">
-            <h1>SEO Control Center</h1>
-            <p>LearnByte website management panel</p>
-        </div>
-
-        <div class="search">
-            <span class="search-icon">🔎</span>
-
-            <input
-                id="searchInput"
-                type="search"
-                placeholder="Search tools..."
-                oninput="filterTools()"
-            >
-        </div>
-
-    </div>
-
-</header>
-
-<div class="content">
-
-<!-- =========================
-     OVERVIEW
-========================= -->
-
-<section class="section" id="overview">
-
-    <div class="hero">
-
-        <div class="hero-row">
-
-            <div>
-                <h2>LearnByte Admin Control</h2>
-
-                <p>
-                    Manage your GitHub website, SEO, sitemap,
-                    content and repository from one panel.
-                </p>
-            </div>
-
-            <div class="worker-status">
-
-                <div class="worker-status-title">
-                    CONNECTED WORKER
-                </div>
-
-                <div class="worker-status-url">
-                    learnbyte-seo-manager.learnbytehq.workers.dev
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <div class="stats">
-
-        <div class="stat">
-            <div class="stat-icon">🛠️</div>
-            <div class="stat-value">35</div>
-            <div class="stat-label">Available Tools</div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-icon">🐙</div>
-            <div class="stat-value">GitHub</div>
-            <div class="stat-label">Repository Backend</div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-icon">☁️</div>
-            <div class="stat-value">Worker</div>
-            <div class="stat-label">Cloudflare Backend</div>
-        </div>
-
-        <div class="stat">
-            <div class="stat-icon">🔐</div>
-            <div class="stat-value">Protected</div>
-            <div class="stat-label">Admin Key Required</div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================
-     CONFIGURATION
-========================= -->
-
-<section class="config-card">
-
-    <div class="config-grid">
-
-        <div class="field">
-            <label>Worker URL</label>
-
-            <input
-                id="workerUrl"
-                value="https://learnbyte-seo-manager.learnbytehq.workers.dev"
-            >
-        </div>
-
-        <div class="field">
-            <label>ADMIN_KEY</label>
-
-            <input
-                id="adminKey"
-                type="password"
-                placeholder="Enter your Admin Key"
-                autocomplete="off"
-            >
-        </div>
-
-        <button
-            class="btn btn-primary"
-            onclick="saveConfig()"
-        >
-            💾 Save
-        </button>
-
-    </div>
-
-</section>
-
-<!-- =========================
-     REPOSITORY TOOLS
-========================= -->
-
-<section
-    class="section tool-section"
-    id="repository"
->
-
-    <div class="section-head">
-        <h2>📁 Repository Tools</h2>
-        <span>GitHub & file management</span>
-    </div>
-
-    <div class="tools-grid">
-
-        <div class="tool-card" data-search="github test connection github">
-            <div class="tool-top">
-                <div class="tool-icon">🐙</div>
-                <div>
-                    <div class="tool-name">GitHub Test</div>
-                    <div class="tool-route">GET /github-test</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Test connection with your GitHub repository.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-success" onclick="runTool(1)">▶ Test</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="get file read file github">
-            <div class="tool-top">
-                <div class="tool-icon">📄</div>
-                <div>
-                    <div class="tool-name">Get File</div>
-                    <div class="tool-route">POST /get-file</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Read any file from the GitHub repository.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(2)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="update create file github">
-            <div class="tool-top">
-                <div class="tool-icon">✏️</div>
-                <div>
-                    <div class="tool-name">Update / Create File</div>
-                    <div class="tool-route">POST /update-file</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Create a new file or update an existing repository file.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(3)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="delete file github">
-            <div class="tool-top">
-                <div class="tool-icon">🗑️</div>
-                <div>
-                    <div class="tool-name">Delete File</div>
-                    <div class="tool-route">POST /delete-file</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Delete a file from your GitHub repository.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-danger" onclick="openTool(4)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="health repository files">
-            <div class="tool-top">
-                <div class="tool-icon">❤️</div>
-                <div>
-                    <div class="tool-name">Health Check</div>
-                    <div class="tool-route">GET /health</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Check important website files and repository health.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-success" onclick="runTool(6)">Check</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="repository list folder files">
-            <div class="tool-top">
-                <div class="tool-icon">📂</div>
-                <div>
-                    <div class="tool-name">Repository List</div>
-                    <div class="tool-route">POST /repo-list</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Browse files and folders inside the repository.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(7)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="articles posts list">
-            <div class="tool-top">
-                <div class="tool-icon">📰</div>
-                <div>
-                    <div class="tool-name">Article List</div>
-                    <div class="tool-route">GET /list-articles</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                List all HTML articles stored in the posts folder.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="runTool(8)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="commits history github">
-            <div class="tool-top">
-                <div class="tool-icon">📜</div>
-                <div>
-                    <div class="tool-name">Commit History</div>
-                    <div class="tool-route">GET /commits</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                View the latest GitHub commits for your website.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="runTool(13)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="backup file">
-            <div class="tool-top">
-                <div class="tool-icon">💾</div>
-                <div>
-                    <div class="tool-name">File Backup</div>
-                    <div class="tool-route">POST /backup</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Create a backup of a repository file.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-warning" onclick="openTool(14)">Open</button>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================
-     SEO TOOLS
-========================= -->
-
-<section
-    class="section tool-section"
-    id="seo"
->
-
-    <div class="section-head">
-        <h2>🔍 SEO Tools</h2>
-        <span>Auditing, sitemap and technical SEO</span>
-    </div>
-
-    <div class="tools-grid">
-
-        <div class="tool-card" data-search="analyze url seo analyzer live">
-            <div class="tool-top">
-                <div class="tool-icon">🔬</div>
-                <div>
-                    <div class="tool-name">Live SEO Analyzer</div>
-                    <div class="tool-route">POST /analyze-url</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Analyze a live URL for title, meta, headings, links and content.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(5)">Analyze</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="live url check status">
-            <div class="tool-top">
-                <div class="tool-icon">🌐</div>
-                <div>
-                    <div class="tool-name">Live URL Check</div>
-                    <div class="tool-route">POST /check-live</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Check HTTP status, response time and redirects.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(9)">Check</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="404 broken page check">
-            <div class="tool-top">
-                <div class="tool-icon">🚫</div>
-                <div>
-                    <div class="tool-name">404 Check</div>
-                    <div class="tool-route">POST /check-404</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Test whether a fake URL correctly returns HTTP 404.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(10)">Check</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="sitemap audit">
-            <div class="tool-top">
-                <div class="tool-icon">🗺️</div>
-                <div>
-                    <div class="tool-name">Sitemap Audit</div>
-                    <div class="tool-route">GET /sitemap-audit</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Check sitemap URLs and duplicate entries.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="runTool(11)">Audit</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="sitemap rebuild">
-            <div class="tool-top">
-                <div class="tool-icon">🔄</div>
-                <div>
-                    <div class="tool-name">Sitemap Rebuild</div>
-                    <div class="tool-route">POST /sitemap-rebuild</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Rebuild sitemap using the site's article files.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-warning" onclick="openTool(12)">Rebuild</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="image alt audit">
-            <div class="tool-top">
-                <div class="tool-icon">🖼️</div>
-                <div>
-                    <div class="tool-name">Image / ALT Audit</div>
-                    <div class="tool-route">POST /image-audit</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Find missing and empty image ALT attributes.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(16)">Audit</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="broken internal links">
-            <div class="tool-top">
-                <div class="tool-icon">🔗</div>
-                <div>
-                    <div class="tool-name">Broken Links</div>
-                    <div class="tool-route">POST /broken-links</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Find broken internal links across your articles.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(17)">Audit</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="link opportunities internal seo">
-            <div class="tool-top">
-                <div class="tool-icon">🧲</div>
-                <div>
-                    <div class="tool-name">Link Opportunities</div>
-                    <div class="tool-route">POST /link-opportunities</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Find pages where a target keyword can receive an internal link.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(18)">Find</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="page seo individual audit">
-            <div class="tool-top">
-                <div class="tool-icon">📈</div>
-                <div>
-                    <div class="tool-name">Individual Page SEO</div>
-                    <div class="tool-route">POST /page-seo</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Generate an SEO score and detailed analysis for one page.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(24)">Analyze</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="meta check title description canonical">
-            <div class="tool-top">
-                <div class="tool-icon">🏷️</div>
-                <div>
-                    <div class="tool-name">Meta Check</div>
-                    <div class="tool-route">POST /meta-check</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Check title, description, canonical, Open Graph and Twitter tags.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(26)">Check</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="heading h1 h2 seo">
-            <div class="tool-top">
-                <div class="tool-icon">🔠</div>
-                <div>
-                    <div class="tool-name">Heading Check</div>
-                    <div class="tool-route">POST /headings-check</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Check H1 and H2 heading structure.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(27)">Check</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="robots txt seo">
-            <div class="tool-top">
-                <div class="tool-icon">🤖</div>
-                <div>
-                    <div class="tool-name">Robots.txt Check</div>
-                    <div class="tool-route">GET /robots-check</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Inspect robots.txt directives and sitemap declaration.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="runTool(28)">Check</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="sitemap add url">
-            <div class="tool-top">
-                <div class="tool-icon">➕</div>
-                <div>
-                    <div class="tool-name">Sitemap URL Add</div>
-                    <div class="tool-route">POST /sitemap-add</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Add an individual URL to sitemap.xml.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(29)">Add</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="sitemap remove url">
-            <div class="tool-top">
-                <div class="tool-icon">➖</div>
-                <div>
-                    <div class="tool-name">Sitemap URL Remove</div>
-                    <div class="tool-route">POST /sitemap-remove</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Remove an individual URL from sitemap.xml.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-danger" onclick="openTool(30)">Remove</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="bulk seo audit pages">
-            <div class="tool-top">
-                <div class="tool-icon">📊</div>
-                <div>
-                    <div class="tool-name">Bulk Page SEO Audit</div>
-                    <div class="tool-route">POST /bulk-audit</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Audit multiple pages and calculate an average SEO score.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(32)">Audit</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="site statistics">
-            <div class="tool-top">
-                <div class="tool-icon">📊</div>
-                <div>
-                    <div class="tool-name">Site Statistics</div>
-                    <div class="tool-route">GET /site-statistics</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                View articles, keywords, repository files and file types.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="runTool(33)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="site overview complete">
-            <div class="tool-top">
-                <div class="tool-icon">🧭</div>
-                <div>
-                    <div class="tool-name">Complete Site Overview</div>
-                    <div class="tool-route">GET /site-overview</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Get a complete high-level overview of your website.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-success" onclick="runTool(35)">Open</button>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================
-     CONTENT TOOLS
-========================= -->
-
-<section
-    class="section tool-section"
-    id="content"
->
-
-    <div class="section-head">
-        <h2>📝 Content Tools</h2>
-        <span>Articles, links, drafts and keywords</span>
-    </div>
-
-    <div class="tools-grid">
-
-        <div class="tool-card" data-search="audit history seo">
-            <div class="tool-top">
-                <div class="tool-icon">📚</div>
-                <div>
-                    <div class="tool-name">Audit History</div>
-                    <div class="tool-route">GET/POST /audit-history</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Save and view previous SEO audit records.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(15)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="draft manager drafts">
-            <div class="tool-top">
-                <div class="tool-icon">📝</div>
-                <div>
-                    <div class="tool-name">Draft Manager</div>
-                    <div class="tool-route">POST /drafts</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                List, save and delete article drafts.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(19)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="keyword plans planning">
-            <div class="tool-top">
-                <div class="tool-icon">🗂️</div>
-                <div>
-                    <div class="tool-name">Keyword Plans</div>
-                    <div class="tool-route">POST /keyword-plans</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Create and manage planned keyword targets.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(20)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="keyword manager seo keywords">
-            <div class="tool-top">
-                <div class="tool-icon">🔑</div>
-                <div>
-                    <div class="tool-name">Keyword Manager</div>
-                    <div class="tool-route">POST /keywords</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Save, list and delete primary and secondary keywords.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(21)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="apply internal link">
-            <div class="tool-top">
-                <div class="tool-icon">🔗</div>
-                <div>
-                    <div class="tool-name">Apply Internal Link</div>
-                    <div class="tool-route">POST /apply-link</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Automatically add an internal link around matching anchor text.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-warning" onclick="openTool(22)">Apply</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="redirect manager redirects">
-            <div class="tool-top">
-                <div class="tool-icon">↪️</div>
-                <div>
-                    <div class="tool-name">Redirect Manager</div>
-                    <div class="tool-route">POST /redirect</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Create redirect HTML pages for old URLs.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-warning" onclick="openTool(23)">Open</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="content statistics words">
-            <div class="tool-top">
-                <div class="tool-icon">🧮</div>
-                <div>
-                    <div class="tool-name">Content Statistics</div>
-                    <div class="tool-route">POST /content-stats</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Count words, headings, paragraphs, images and links.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(25)">Analyze</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="page backup">
-            <div class="tool-top">
-                <div class="tool-icon">🛡️</div>
-                <div>
-                    <div class="tool-name">Page Backup</div>
-                    <div class="tool-route">POST /page-backup</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Create a dedicated backup of an individual page.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-warning" onclick="openTool(31)">Backup</button>
-            </div>
-        </div>
-
-
-        <div class="tool-card" data-search="repository search find">
-            <div class="tool-top">
-                <div class="tool-icon">🔎</div>
-                <div>
-                    <div class="tool-name">Repository Search</div>
-                    <div class="tool-route">POST /repo-search</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Search text across supported repository files.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="openTool(34)">Search</button>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<!-- =========================
-     MANAGEMENT
-========================= -->
-
-<section
-    class="section tool-section"
-    id="management"
->
-
-    <div class="section-head">
-        <h2>⚙️ Management</h2>
-        <span>Administrative controls</span>
-    </div>
-
-    <div class="tools-grid">
-
-        <div class="tool-card" data-search="system endpoint list">
-            <div class="tool-top">
-                <div class="tool-icon">🧰</div>
-                <div>
-                    <div class="tool-name">Worker Endpoint List</div>
-                    <div class="tool-route">GET /</div>
-                </div>
-            </div>
-
-            <div class="tool-description">
-                Show all available Worker endpoints.
-            </div>
-
-            <div class="tool-actions">
-                <button class="btn btn-primary" onclick="runRoot()">Open</button>
-            </div>
-        </div>
-
-    </div>
-
-</section>
+<header class="top">
+<div class="topbar">
+
+<div>
+    <div class="brand">⚡ LearnByte Admin Control Center</div>
+    <div class="badge">35 Tools • Cloudflare Worker • GitHub</div>
+</div>
+
+<div class="keybox">
+    <input
+        id="adminKey"
+        type="password"
+        placeholder="Enter ADMIN_KEY"
+    >
+    <button onclick="saveKey()">Save</button>
+    <button class="secondary" onclick="testWorker()">Test Worker</button>
+</div>
 
 </div>
+</header>
+
+<main>
+
+<section class="hero">
+
+<h1>Website SEO & Repository Control Center</h1>
+
+<p>
+Manage your LearnByte GitHub website through the Cloudflare Worker.
+All 35 Worker endpoints are available below.
+</p>
+
+<div class="status">
+    <span id="dot" class="dot"></span>
+    <span id="statusText">Worker not tested</span>
+</div>
+
+</section>
+
+<input
+    id="search"
+    class="search"
+    type="search"
+    placeholder="🔎 Search any tool..."
+    oninput="filterTools()"
+>
+
+<div id="grid" class="grid"></div>
 
 </main>
 
-</div>
+<footer>
+LearnByte Admin Control Center • Secure requests through Cloudflare Worker
+</footer>
 
-<!-- =========================
-     MODAL
-========================= -->
+<script>
 
-<div
-    class="modal"
-    id="toolModal"
-    onclick="modalOutside(event)"
->
+const WORKER =
+"https://learnbyte-seo-manager.learnbytehq.workers.dev";
 
-    <div class="modal-box">
+const tools = [
 
-        <div class="modal-head">
+{
+    n:1,
+    name:"GitHub Test",
+    path:"/github-test",
+    method:"GET",
+    desc:"Test GitHub repository connection."
+},
 
-            <h3 id="modalTitle">
-                Tool
-            </h3>
+{
+    n:2,
+    name:"Get File",
+    path:"/get-file",
+    method:"POST",
+    desc:"Read any file from the repository.",
+    sample:{
+        path:"index.html"
+    }
+},
 
-            <button
-                class="close-btn"
-                onclick="closeModal()"
-            >
-                ×
-            </button>
+{
+    n:3,
+    name:"Update / Create File",
+    path:"/update-file",
+    method:"POST",
+    desc:"Create or update a repository file.",
+    sample:{
+        path:"example.html",
+        content:"<h1>Hello LearnByte</h1>",
+        message:"Update example"
+    }
+},
 
-        </div>
+{
+    n:4,
+    name:"Delete File",
+    path:"/delete-file",
+    method:"POST",
+    desc:"Delete a repository file.",
+    sample:{
+        path:"example.html",
+        message:"Delete example"
+    }
+},
 
-        <div class="modal-body">
+{
+    n:5,
+    name:"Live SEO Analyzer",
+    path:"/analyze-url",
+    method:"POST",
+    desc:"Analyze a live webpage for SEO.",
+    sample:{
+        url:"https://learnbtyehq.github.io"
+    }
+},
 
-            <div
-                class="modal-route"
-                id="modalRoute"
-            ></div>
+{
+    n:6,
+    name:"Health Check",
+    path:"/health",
+    method:"GET",
+    desc:"Check important website files."
+},
 
-            <div
-                class="field"
-                id="bodyField"
-            >
+{
+    n:7,
+    name:"Repository File List",
+    path:"/repo-list",
+    method:"POST",
+    desc:"List files inside a repository folder.",
+    sample:{
+        path:""
+    }
+},
 
-                <div class="json-label">
-                    Request Body JSON
-                </div>
+{
+    n:8,
+    name:"Article List",
+    path:"/list-articles",
+    method:"GET",
+    desc:"List HTML articles from /posts."
+},
+
+{
+    n:9,
+    name:"Live URL Check",
+    path:"/check-live",
+    method:"POST",
+    desc:"Check HTTP status and redirects.",
+    sample:{
+        url:"https://learnbtyehq.github.io"
+    }
+},
+
+{
+    n:10,
+    name:"404 Check",
+    path:"/check-404",
+    method:"POST",
+    desc:"Verify website 404 response.",
+    sample:{
+        base:"https://learnbtyehq.github.io"
+    }
+},
+
+{
+    n:11,
+    name:"Sitemap Audit",
+    path:"/sitemap-audit",
+    method:"GET",
+    desc:"Audit sitemap URLs and duplicates."
+},
+
+{
+    n:12,
+    name:"Sitemap Rebuild",
+    path:"/sitemap-rebuild",
+    method:"POST",
+    desc:"Rebuild sitemap from website posts.",
+    sample:{}
+},
+
+{
+    n:13,
+    name:"Commit History",
+    path:"/commits",
+    method:"GET",
+    desc:"View latest GitHub commits."
+},
+
+{
+    n:14,
+    name:"File Backup",
+    path:"/backup",
+    method:"POST",
+    desc:"Create a backup of a repository file.",
+    sample:{
+        path:"index.html"
+    }
+},
+
+{
+    n:15,
+    name:"Audit History",
+    path:"/audit-history",
+    method:"GET",
+    desc:"View saved SEO audit history."
+},
+
+{
+    n:16,
+    name:"Image / ALT Audit",
+    path:"/image-audit",
+    method:"POST",
+    desc:"Find missing and empty image ALT attributes.",
+    sample:{}
+},
+
+{
+    n:17,
+    name:"Broken Internal Links",
+    path:"/broken-links",
+    method:"POST",
+    desc:"Find broken internal repository links.",
+    sample:{}
+},
+
+{
+    n:18,
+    name:"Link Opportunities",
+    path:"/link-opportunities",
+    method:"POST",
+    desc:"Find pages containing an anchor phrase.",
+    sample:{
+        anchor:"percentage calculator",
+        target:"posts/percentage-calculator.html"
+    }
+},
+
+{
+    n:19,
+    name:"Draft Manager",
+    path:"/drafts",
+    method:"POST",
+    desc:"List, save or delete article drafts.",
+    sample:{
+        action:"list"
+    }
+},
+
+{
+    n:20,
+    name:"Keyword Plans",
+    path:"/keyword-plans",
+    method:"POST",
+    desc:"Manage keyword planning records.",
+    sample:{
+        action:"list"
+    }
+},
+
+{
+    n:21,
+    name:"Keyword Manager",
+    path:"/keywords",
+    method:"POST",
+    desc:"Manage page primary and secondary keywords.",
+    sample:{
+        action:"list"
+    }
+},
+
+{
+    n:22,
+    name:"Apply Internal Link",
+    path:"/apply-link",
+    method:"POST",
+    desc:"Apply an internal link to anchor text.",
+    sample:{
+        source:"index.html",
+        target:"posts/example.html",
+        anchor:"example"
+    }
+},
+
+{
+    n:23,
+    name:"Redirect Manager",
+    path:"/redirect",
+    method:"POST",
+    desc:"Create an HTML redirect page.",
+    sample:{
+        old:"old-page.html",
+        new:"https://learnbtyehq.github.io/new-page.html"
+    }
+},
+
+{
+    n:24,
+    name:"Individual Page SEO",
+    path:"/page-seo",
+    method:"POST",
+    desc:"Run SEO analysis on one repository page.",
+    sample:{
+        path:"index.html"
+    }
+},
+
+{
+    n:25,
+    name:"Content Statistics",
+    path:"/content-stats",
+    method:"POST",
+    desc:"Count words, headings, images and links.",
+    sample:{
+        path:"index.html"
+    }
+},
+
+{
+    n:26,
+    name:"Meta Check",
+    path:"/meta-check",
+    method:"POST",
+    desc:"Check title, description, canonical, OG and Twitter.",
+    sample:{
+        path:"index.html"
+    }
+},
+
+{
+    n:27,
+    name:"Heading Check",
+    path:"/headings-check",
+    method:"POST",
+    desc:"Check H1 and H2 structure.",
+    sample:{
+        path:"index.html"
+    }
+},
+
+{
+    n:28,
+    name:"Robots.txt Check",
+    path:"/robots-check",
+    method:"GET",
+    desc:"Inspect robots.txt."
+},
+
+{
+    n:29,
+    name:"Sitemap URL Add",
+    path:"/sitemap-add",
+    method:"POST",
+    desc:"Add a URL to sitemap.xml.",
+    sample:{
+        url:"https://learnbtyehq.github.io/example.html"
+    }
+},
+
+{
+    n:30,
+    name:"Sitemap URL Remove",
+    path:"/sitemap-remove",
+    method:"POST",
+    desc:"Remove a URL from sitemap.xml.",
+    sample:{
+        url:"https://learnbtyehq.github.io/example.html"
+    }
+},
+
+{
+    n:31,
+    name:"Page Backup",
+    path:"/page-backup",
+    method:"POST",
+    desc:"Create a page backup.",
+    sample:{
+        path:"index.html"
+    }
+},
+
+{
+    n:32,
+    name:"Bulk Page SEO Audit",
+    path:"/bulk-audit",
+    method:"POST",
+    desc:"Audit multiple pages or all posts.",
+    sample:{}
+},
+
+{
+    n:33,
+    name:"Site Statistics",
+    path:"/site-statistics",
+    method:"GET",
+    desc:"Show repository and website statistics."
+},
+
+{
+    n:34,
+    name:"Repository File Search",
+    path:"/repo-search",
+    method:"POST",
+    desc:"Search repository file contents.",
+    sample:{
+        query:"canonical"
+    }
+},
+
+{
+    n:35,
+    name:"Complete Site Overview",
+    path:"/site-overview",
+    method:"GET",
+    desc:"Show complete website overview."
+}
+
+];
+
+function escapeHTML(value){
+
+    return String(value)
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
+}
+
+function buildPanel(){
+
+    const grid =
+    document.getElementById("grid");
+
+    grid.innerHTML="";
+
+    tools.forEach(tool=>{
+
+        const card =
+        document.createElement("article");
+
+        card.className="card tool";
+
+        card.dataset.search =
+        (
+            tool.n+" "+
+            tool.name+" "+
+            tool.path+" "+
+            tool.desc
+        ).toLowerCase();
+
+        let body="";
+
+        if(tool.method==="POST"){
+
+            body=`
+
+            <div class="form">
 
                 <textarea
-                    class="json-input"
-                    id="jsonInput"
+                    id="body-${tool.n}"
                     spellcheck="false"
-                ></textarea>
+                >${escapeHTML(
+                    JSON.stringify(
+                        tool.sample || {},
+                        null,
+                        2
+                    )
+                )}</textarea>
 
-            </div>
-
-            <div class="modal-actions">
-
-                <button
-                    class="btn btn-primary"
-                    id="executeBtn"
-                    onclick="executeTool()"
-                >
-                    ▶ Execute
-                </button>
-
-                <button
-                    class="btn btn-secondary"
-                    onclick="formatJSON()"
-                >
-                    Format JSON
-                </button>
-
-                <button
-                    class="btn btn-secondary"
-                    onclick="clearResponse()"
-                >
-                    Clear
-                </button>
-
-            </div>
-
-            <div class="response-box">
-
-                <div class="response-head">
-
-                    <strong>
-                        Response
-                    </strong>
+                <div class="actions">
 
                     <button
-                        class="btn btn-secondary"
-                        onclick="copyResponse()"
+                        onclick="runTool(${tool.n})"
                     >
-                        📋 Copy
+                        ▶ Run
+                    </button>
+
+                    <button
+                        class="secondary"
+                        onclick="resetTool(${tool.n})"
+                    >
+                        Reset
                     </button>
 
                 </div>
 
-                <pre
-                    class="response"
-                    id="response"
-                >No request executed yet.</pre>
+            </div>
+
+            `;
+
+        }else{
+
+            body=`
+
+            <div class="actions">
+
+                <button
+                    onclick="runTool(${tool.n})"
+                >
+                    ▶ Run GET
+                </button>
 
             </div>
 
-        </div>
+            `;
 
-    </div>
-
-</div>
-
-<div
-    class="toast"
-    id="toast"
-></div>
-
-<script>
-
-/* =========================================================
-   CONFIG
-========================================================= */
-
-const DEFAULT_WORKER =
-    "https://learnbyte-seo-manager.learnbytehq.workers.dev";
-
-const tools = {
-
-    1: {
-        name: "GitHub Test",
-        method: "GET",
-        route: "/github-test",
-        body: null
-    },
-
-    2: {
-        name: "Get File",
-        method: "POST",
-        route: "/get-file",
-        body: {
-            path: "index.html"
         }
-    },
 
-    3: {
-        name: "Update / Create File",
-        method: "POST",
-        route: "/update-file",
-        body: {
-            path: "example.html",
-            content: "<!DOCTYPE html><html><body><h1>Example</h1></body></html>",
-            message: "Update example.html"
-        }
-    },
+        card.innerHTML=`
 
-    4: {
-        name: "Delete File",
-        method: "POST",
-        route: "/delete-file",
-        body: {
-            path: "example.html",
-            message: "Delete example.html"
-        }
-    },
+            <span class="method">
+                ${tool.method}
+            </span>
 
-    5: {
-        name: "Live SEO Analyzer",
-        method: "POST",
-        route: "/analyze-url",
-        body: {
-            url: "https://learnbtyehq.github.io"
-        }
-    },
+            <h3>
+                <span class="number">
+                    ${tool.n}.
+                </span>
+                ${escapeHTML(tool.name)}
+            </h3>
 
-    6: {
-        name: "Health Check",
-        method: "GET",
-        route: "/health",
-        body: null
-    },
+            <div class="desc">
+                ${escapeHTML(tool.desc)}
+            </div>
 
-    7: {
-        name: "Repository File List",
-        method: "POST",
-        route: "/repo-list",
-        body: {
-            path: ""
-        }
-    },
+            <div class="endpoint">
+                ${escapeHTML(tool.path)}
+            </div>
 
-    8: {
-        name: "Article List",
-        method: "GET",
-        route: "/list-articles",
-        body: null
-    },
+            ${body}
 
-    9: {
-        name: "Live URL Check",
-        method: "POST",
-        route: "/check-live",
-        body: {
-            url: "https://learnbtyehq.github.io"
-        }
-    },
+            <pre
+                id="result-${tool.n}"
+                class="result hidden"
+            ></pre>
 
-    10: {
-        name: "404 Check",
-        method: "POST",
-        route: "/check-404",
-        body: {
-            base: "https://learnbtyehq.github.io"
-        }
-    },
+        `;
 
-    11: {
-        name: "Sitemap Audit",
-        method: "GET",
-        route: "/sitemap-audit",
-        body: null
-    },
+        grid.appendChild(card);
 
-    12: {
-        name: "Sitemap Rebuild",
-        method: "POST",
-        route: "/sitemap-rebuild",
-        body: {}
-    },
+    });
 
-    13: {
-        name: "Commit History",
-        method: "GET",
-        route: "/commits",
-        body: null
-    },
-
-    14: {
-        name: "File Backup",
-        method: "POST",
-        route: "/backup",
-        body: {
-            path: "index.html"
-        }
-    },
-
-    15: {
-        name: "Audit History",
-        method: "GET",
-        route: "/audit-history",
-        body: null
-    },
-
-    16: {
-        name: "Image / ALT Audit",
-        method: "POST",
-        route: "/image-audit",
-        body: {}
-    },
-
-    17: {
-        name: "Broken Internal Links",
-        method: "POST",
-        route: "/broken-links",
-        body: {}
-    },
-
-    18: {
-        name: "Link Opportunities",
-        method: "POST",
-        route: "/link-opportunities",
-        body: {
-            anchor: "calculator",
-            target: "percentage-calculator.html"
-        }
-    },
-
-    19: {
-        name: "Draft Manager",
-        method: "POST",
-        route: "/drafts",
-        body: {
-            action: "list"
-        }
-    },
-
-    20: {
-        name: "Keyword Plans",
-        method: "POST",
-        route: "/keyword-plans",
-        body: {
-            action: "list"
-        }
-    },
-
-    21: {
-        name: "Keyword Manager",
-        method: "POST",
-        route: "/keywords",
-        body: {
-            action: "list"
-        }
-    },
-
-    22: {
-        name: "Apply Internal Link",
-        method: "POST",
-        route: "/apply-link",
-        body: {
-            source: "index.html",
-            target: "percentage-calculator.html",
-            anchor: "calculator"
-        }
-    },
-
-    23: {
-        name: "Redirect Manager",
-        method: "POST",
-        route: "/redirect",
-        body: {
-            old: "old-page.html",
-            new: "https://learnbtyehq.github.io/"
-        }
-    },
-
-    24: {
-        name: "Individual Page SEO",
-        method: "POST",
-        route: "/page-seo",
-        body: {
-            path: "index.html"
-        }
-    },
-
-    25: {
-        name: "Content Statistics",
-        method: "POST",
-        route: "/content-stats",
-        body: {
-            path: "index.html"
-        }
-    },
-
-    26: {
-        name: "Meta Check",
-        method: "POST",
-        route: "/meta-check",
-        body: {
-            path: "index.html"
-        }
-    },
-
-    27: {
-        name: "Heading Check",
-        method: "POST",
-        route: "/headings-check",
-        body: {
-            path: "index.html"
-        }
-    },
-
-    28: {
-        name: "Robots.txt Check",
-        method: "GET",
-        route: "/robots-check",
-        body: null
-    },
-
-    29: {
-        name: "Sitemap URL Add",
-        method: "POST",
-        route: "/sitemap-add",
-        body: {
-            url: "example.html"
-        }
-    },
-
-    30: {
-        name: "Sitemap URL Remove",
-        method: "POST",
-        route: "/sitemap-remove",
-        body: {
-            url: "example.html"
-        }
-    },
-
-    31: {
-        name: "Page Backup",
-        method: "POST",
-        route: "/page-backup",
-        body: {
-            path: "index.html"
-        }
-    },
-
-    32: {
-        name: "Bulk Page SEO Audit",
-        method: "POST",
-        route: "/bulk-audit",
-        body: {}
-    },
-
-    33: {
-        name: "Site Statistics",
-        method: "GET",
-        route: "/site-statistics",
-        body: null
-    },
-
-    34: {
-        name: "Repository File Search",
-        method: "POST",
-        route: "/repo-search",
-        body: {
-            query: "calculator"
-        }
-    },
-
-    35: {
-        name: "Complete Site Overview",
-        method: "GET",
-        route: "/site-overview",
-        body: null
-    }
-
-};
-
-/* =========================================================
-   STATE
-========================================================= */
-
-let currentTool = null;
-
-const savedWorker =
-    localStorage.getItem("learnbyte_worker_url");
-
-const savedKey =
-    localStorage.getItem("learnbyte_admin_key");
-
-if (savedWorker) {
-    document.getElementById("workerUrl").value =
-        savedWorker;
 }
 
-if (savedKey) {
-    document.getElementById("adminKey").value =
-        savedKey;
-}
-
-/* =========================================================
-   CONFIG
-========================================================= */
-
-function saveConfig() {
-
-    const worker =
-        document.getElementById("workerUrl").value
-        .trim()
-        .replace(/\/+$/, "");
+function saveKey(){
 
     const key =
-        document.getElementById("adminKey").value.trim();
+    document.getElementById("adminKey")
+    .value
+    .trim();
 
-    if (!worker) {
-        showToast("Worker URL required.");
+    if(!key){
+
+        alert("ADMIN_KEY enter karein.");
+
         return;
+
     }
 
-    localStorage.setItem(
-        "learnbyte_worker_url",
-        worker
+    sessionStorage.setItem(
+        "learnbyte_admin_key",
+        key
     );
 
-    if (key) {
-        localStorage.setItem(
-            "learnbyte_admin_key",
-            key
-        );
-    }
+    setStatus(
+        "ADMIN_KEY saved. Ab Test Worker karein.",
+        null
+    );
 
-    showToast("Configuration saved.");
 }
 
-/* =========================================================
-   TOOL MODAL
-========================================================= */
-
-function openTool(id) {
-
-    currentTool = id;
-
-    const tool = tools[id];
-
-    if (!tool) {
-        return;
-    }
-
-    document.getElementById("modalTitle").textContent =
-        tool.name;
-
-    document.getElementById("modalRoute").textContent =
-        `${tool.method} ${tool.route}`;
-
-    const bodyField =
-        document.getElementById("bodyField");
-
-    const jsonInput =
-        document.getElementById("jsonInput");
-
-    if (tool.method === "GET") {
-
-        bodyField.style.display = "none";
-
-        jsonInput.value = "";
-
-    } else {
-
-        bodyField.style.display = "block";
-
-        jsonInput.value =
-            JSON.stringify(tool.body || {}, null, 2);
-
-    }
-
-    document.getElementById("response").textContent =
-        "No request executed yet.";
-
-    document.getElementById("response").className =
-        "response";
-
-    document.getElementById("toolModal")
-        .classList.add("show");
-}
-
-function closeModal() {
-
-    document.getElementById("toolModal")
-        .classList.remove("show");
-
-    currentTool = null;
-}
-
-function modalOutside(event) {
-
-    if (event.target.id === "toolModal") {
-        closeModal();
-    }
-}
-
-/* =========================================================
-   RUN SIMPLE TOOL
-========================================================= */
-
-function runTool(id) {
-
-    openTool(id);
-
-    setTimeout(() => {
-        executeTool();
-    }, 80);
-}
-
-/* =========================================================
-   ROOT
-========================================================= */
-
-async function runRoot() {
-
-    const worker =
-        getWorkerUrl();
-
-    const key =
-        getAdminKey();
-
-    if (!key) {
-        showToast("Enter ADMIN_KEY first.");
-        return;
-    }
-
-    try {
-
-        const response =
-            await fetch(worker + "/", {
-                method: "GET",
-                headers: {
-                    "X-Admin-Key": key
-                }
-            });
-
-        const text =
-            await response.text();
-
-        let output;
-
-        try {
-            output = JSON.stringify(
-                JSON.parse(text),
-                null,
-                2
-            );
-        } catch {
-            output = text;
-        }
-
-        openToolLikeResult(
-            "Worker Endpoint List",
-            "GET /",
-            output,
-            response.ok
-        );
-
-    } catch (error) {
-
-        openToolLikeResult(
-            "Worker Endpoint List",
-            "GET /",
-            error.message,
-            false
-        );
-    }
-}
-
-/* =========================================================
-   EXECUTE TOOL
-========================================================= */
-
-async function executeTool() {
-
-    if (!currentTool) {
-        return;
-    }
-
-    const tool =
-        tools[currentTool];
-
-    const worker =
-        getWorkerUrl();
-
-    const key =
-        getAdminKey();
-
-    if (!worker) {
-        showToast("Worker URL required.");
-        return;
-    }
-
-    if (!key) {
-        showToast("Enter ADMIN_KEY first.");
-        return;
-    }
-
-    const responseBox =
-        document.getElementById("response");
-
-    const executeBtn =
-        document.getElementById("executeBtn");
-
-    executeBtn.disabled = true;
-
-    executeBtn.textContent =
-        "⏳ Running...";
-
-    responseBox.className =
-        "response";
-
-    responseBox.textContent =
-        "Sending request...";
-
-    try {
-
-        const options = {
-            method: tool.method,
-            headers: {
-                "X-Admin-Key": key
-            }
-        };
-
-        if (tool.method !== "GET") {
-
-            let body;
-
-            try {
-
-                body =
-                    JSON.parse(
-                        document
-                            .getElementById("jsonInput")
-                            .value
-                    );
-
-            } catch {
-
-                throw new Error(
-                    "Invalid JSON in request body."
-                );
-            }
-
-            options.headers["Content-Type"] =
-                "application/json";
-
-            options.body =
-                JSON.stringify(body);
-        }
-
-        const response =
-            await fetch(
-                worker + tool.route,
-                options
-            );
-
-        const text =
-            await response.text();
-
-        let output;
-
-        try {
-
-            output =
-                JSON.stringify(
-                    JSON.parse(text),
-                    null,
-                    2
-                );
-
-        } catch {
-
-            output = text;
-        }
-
-        responseBox.textContent =
-            `HTTP ${response.status}\n\n${output}`;
-
-        responseBox.className =
-            response.ok
-                ? "response success"
-                : "response error";
-
-        if (response.ok) {
-            showToast("Request successful.");
-        } else {
-            showToast(
-                `Request returned ${response.status}.`
-            );
-        }
-
-    } catch (error) {
-
-        responseBox.textContent =
-            `Request failed:\n\n${error.message}`;
-
-        responseBox.className =
-            "response error";
-
-        showToast("Request failed.");
-
-    } finally {
-
-        executeBtn.disabled = false;
-
-        executeBtn.textContent =
-            "▶ Execute";
-    }
-}
-
-/* =========================================================
-   OPEN RESULT MODAL
-========================================================= */
-
-function openToolLikeResult(
-    title,
-    route,
-    output,
-    success
-) {
-
-    document.getElementById("modalTitle")
-        .textContent = title;
-
-    document.getElementById("modalRoute")
-        .textContent = route;
-
-    document.getElementById("bodyField")
-        .style.display = "none";
-
-    document.getElementById("response")
-        .textContent = output;
-
-    document.getElementById("response")
-        .className =
-            success
-                ? "response success"
-                : "response error";
-
-    document.getElementById("toolModal")
-        .classList.add("show");
-}
-
-/* =========================================================
-   JSON
-========================================================= */
-
-function formatJSON() {
-
-    const input =
-        document.getElementById("jsonInput");
-
-    try {
-
-        const value =
-            JSON.parse(input.value);
-
-        input.value =
-            JSON.stringify(value, null, 2);
-
-        showToast("JSON formatted.");
-
-    } catch {
-
-        showToast("Invalid JSON.");
-    }
-}
-
-function clearResponse() {
-
-    const response =
-        document.getElementById("response");
-
-    response.textContent =
-        "No response.";
-
-    response.className =
-        "response";
-}
-
-async function copyResponse() {
-
-    const text =
-        document.getElementById("response")
-            .textContent;
-
-    try {
-
-        await navigator.clipboard.writeText(text);
-
-        showToast("Response copied.");
-
-    } catch {
-
-        showToast("Could not copy.");
-    }
-}
-
-/* =========================================================
-   URL / KEY
-========================================================= */
-
-function getWorkerUrl() {
+function getKey(){
 
     return (
         document
-            .getElementById("workerUrl")
-            .value
-            .trim()
-            .replace(/\/+$/, "")
-        || DEFAULT_WORKER
-    );
-}
-
-function getAdminKey() {
-
-    return document
         .getElementById("adminKey")
         .value
-        .trim();
+        .trim()
+        ||
+        sessionStorage.getItem(
+            "learnbyte_admin_key"
+        )
+        ||
+        ""
+    );
+
 }
 
-/* =========================================================
-   SEARCH
-========================================================= */
-
-function filterTools() {
-
-    const query =
-        document
-            .getElementById("searchInput")
-            .value
-            .toLowerCase()
-            .trim();
+function setStatus(text,ok){
 
     document
-        .querySelectorAll(".tool-card")
-        .forEach(card => {
+    .getElementById("statusText")
+    .textContent=text;
 
-            const text =
-                card.dataset.search || "";
+    const dot =
+    document.getElementById("dot");
 
-            const visible =
-                !query ||
-                text.includes(query);
+    dot.className="dot";
 
-            card.style.display =
-                visible ? "" : "none";
-        });
+    if(ok===true)
+        dot.classList.add("ok");
+
+    if(ok===false)
+        dot.classList.add("bad");
+
 }
 
-/* =========================================================
-   NAVIGATION
-========================================================= */
+function resetTool(n){
 
-function scrollToSection(id) {
+    const tool =
+    tools.find(x=>x.n===n);
 
-    const element =
-        document.getElementById(id);
+    const box =
+    document.getElementById(
+        "body-"+n
+    );
 
-    if (element) {
+    if(box){
 
-        element.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }
-
-    document
-        .querySelectorAll(".nav-item")
-        .forEach(x =>
-            x.classList.remove("active")
+        box.value =
+        JSON.stringify(
+            tool.sample || {},
+            null,
+            2
         );
 
-    if (
-        event &&
-        event.currentTarget &&
-        event.currentTarget.classList
-    ) {
-        event.currentTarget
-            .classList.add("active");
     }
 
-    if (window.innerWidth <= 760) {
-        toggleSidebar(false);
+    const result =
+    document.getElementById(
+        "result-"+n
+    );
+
+    if(result){
+
+        result.classList.add("hidden");
+        result.textContent="";
+
     }
+
 }
 
-function toggleSidebar(force) {
+async function runTool(n){
 
-    const sidebar =
-        document.getElementById("sidebar");
+    const tool =
+    tools.find(x=>x.n===n);
 
-    if (typeof force === "boolean") {
+    if(!tool)
+        return;
 
-        sidebar.classList.toggle(
-            "open",
-            force
+    const result =
+    document.getElementById(
+        "result-"+n
+    );
+
+    result.classList.remove("hidden");
+
+    result.textContent=
+    "Loading...";
+
+    const key=getKey();
+
+    if(!key){
+
+        result.textContent=
+        "ERROR: ADMIN_KEY missing.";
+
+        setStatus(
+            "ADMIN_KEY missing",
+            false
         );
 
         return;
+
     }
 
-    sidebar.classList.toggle("open");
-}
+    let body={};
 
-/* =========================================================
-   TOAST
-========================================================= */
+    if(tool.method==="POST"){
 
-let toastTimer;
+        try{
 
-function showToast(message) {
+            const raw =
+            document
+            .getElementById(
+                "body-"+n
+            )
+            .value
+            .trim();
 
-    const toast =
-        document.getElementById("toast");
+            body =
+            raw
+            ? JSON.parse(raw)
+            : {};
 
-    toast.textContent =
-        message;
+        }catch(error){
 
-    toast.classList.add("show");
+            result.textContent=
+            "Invalid JSON.\n\n"+
+            error.message;
 
-    clearTimeout(toastTimer);
+            return;
 
-    toastTimer =
-        setTimeout(() => {
-
-            toast.classList.remove("show");
-
-        }, 2500);
-}
-
-/* =========================================================
-   KEYBOARD
-========================================================= */
-
-document.addEventListener(
-    "keydown",
-    event => {
-
-        if (event.key === "Escape") {
-            closeModal();
         }
 
     }
-);
+
+    try{
+
+        const options={
+
+            method:tool.method,
+
+            headers:{
+                "X-Admin-Key":key,
+                "Accept":"application/json"
+            }
+
+        };
+
+        if(tool.method==="POST"){
+
+            options.headers[
+                "Content-Type"
+            ]="application/json";
+
+            options.body =
+            JSON.stringify(body);
+
+        }
+
+        const response =
+        await fetch(
+            WORKER+tool.path,
+            options
+        );
+
+        const text =
+        await response.text();
+
+        let data;
+
+        try{
+
+            data=JSON.parse(text);
+
+        }catch{
+
+            data=text;
+
+        }
+
+        result.textContent =
+        "HTTP "+response.status+
+        "\n\n"+
+        (
+            typeof data==="string"
+            ? data
+            : JSON.stringify(
+                data,
+                null,
+                2
+            )
+        );
+
+        if(response.ok){
+
+            setStatus(
+                tool.name+
+                " — Success",
+                true
+            );
+
+        }else{
+
+            setStatus(
+                tool.name+
+                " — HTTP "+
+                response.status,
+                false
+            );
+
+        }
+
+    }catch(error){
+
+        result.textContent=
+        "REQUEST ERROR\n\n"+
+        error.message+
+        "\n\n"+
+        "Check Worker URL, deployment and CORS.";
+
+        setStatus(
+            "Worker request failed",
+            false
+        );
+
+    }
+
+}
+
+async function testWorker(){
+
+    const key=getKey();
+
+    if(!key){
+
+        alert(
+            "Pehle ADMIN_KEY enter karein."
+        );
+
+        return;
+
+    }
+
+    setStatus(
+        "Testing Worker...",
+        null
+    );
+
+    try{
+
+        const response =
+        await fetch(
+            WORKER+"/github-test",
+            {
+                method:"GET",
+                headers:{
+                    "X-Admin-Key":key,
+                    "Accept":
+                    "application/json"
+                }
+            }
+        );
+
+        const text =
+        await response.text();
+
+        let data;
+
+        try{
+
+            data=JSON.parse(text);
+
+        }catch{
+
+            data=text;
+
+        }
+
+        if(response.ok){
+
+            setStatus(
+                "Worker + GitHub connected",
+                true
+            );
+
+            alert(
+                "✅ Worker connected!\n\n"+
+                "Repository: "+
+                (
+                    data.repository ||
+                    "Connected"
+                )+
+                "\nBranch: "+
+                (
+                    data.branch ||
+                    "main"
+                )
+            );
+
+        }else{
+
+            setStatus(
+                "Worker returned HTTP "+
+                response.status,
+                false
+            );
+
+            alert(
+                "❌ HTTP "+
+                response.status+
+                "\n\n"+
+                (
+                    typeof data==="string"
+                    ? data
+                    : JSON.stringify(
+                        data,
+                        null,
+                        2
+                    )
+                )
+            );
+
+        }
+
+    }catch(error){
+
+        setStatus(
+            "Worker unreachable",
+            false
+        );
+
+        alert(
+            "❌ Worker request failed:\n\n"+
+            error.message
+        );
+
+    }
+
+}
+
+function filterTools(){
+
+    const query =
+    document
+    .getElementById("search")
+    .value
+    .toLowerCase()
+    .trim();
+
+    document
+    .querySelectorAll(".tool")
+    .forEach(card=>{
+
+        card.classList.toggle(
+            "hidden",
+            Boolean(
+                query &&
+                !card.dataset.search
+                .includes(query)
+            )
+        );
+
+    });
+
+}
+
+document
+.getElementById("adminKey")
+.value =
+sessionStorage.getItem(
+    "learnbyte_admin_key"
+) || "";
+
+buildPanel();
 
 </script>
 
 </body>
-    </html>
+</html>
