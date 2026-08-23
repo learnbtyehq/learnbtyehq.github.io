@@ -1,1790 +1,1745 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>LearnByte Control Center</title>
+<title>LearnByte SEO Manager</title>
 
 <meta
-    name="robots"
-    content="noindex,nofollow,noarchive"
+    name="description"
+    content="LearnByte SEO Manager admin control panel."
 >
 
 <style>
-
-*{
-    box-sizing:border-box;
+:root {
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #172033;
+    --muted: #687386;
+    --border: #e5e9f0;
+    --primary: #2563eb;
+    --primary-dark: #1d4ed8;
+    --danger: #dc2626;
+    --success: #16a34a;
+    --warning: #d97706;
+    --sidebar: #111827;
+    --sidebar-text: #dbe4f0;
+    --shadow: 0 8px 30px rgba(15, 23, 42, 0.07);
+    --radius: 16px;
 }
 
-body{
-    margin:0;
-    background:
-        radial-gradient(
-            circle at 5% 0%,
-            #102b38,
-            transparent 30%
-        ),
-        radial-gradient(
-            circle at 95% 0%,
-            #24154b,
-            transparent 30%
-        ),
-        #050811;
-    color:#f5f7fb;
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
     font-family:
         Inter,
+        ui-sans-serif,
         system-ui,
         -apple-system,
         BlinkMacSystemFont,
         "Segoe UI",
         sans-serif;
-    line-height:1.55;
+    background: var(--bg);
+    color: var(--text);
 }
 
 button,
 input,
-textarea,
-select{
-    font:inherit;
+textarea {
+    font: inherit;
 }
 
-button{
-    cursor:pointer;
-    border:0;
-    border-radius:11px;
-    padding:11px 16px;
-    min-height:43px;
-    font-weight:800;
-    background:
-        linear-gradient(
-            135deg,
-            #20dff8,
-            #6d7cff
-        );
-    color:#031018;
+button {
+    cursor: pointer;
 }
 
-button.secondary{
-    background:#182235;
-    border:1px solid #2b3952;
-    color:#dce5f3;
+.app {
+    min-height: 100vh;
+    display: flex;
 }
 
-button.danger{
-    background:
-        linear-gradient(
-            135deg,
-            #ff5d72,
-            #ff3152
-        );
-    color:#fff;
+/* =========================
+   SIDEBAR
+========================= */
+
+.sidebar {
+    width: 270px;
+    min-width: 270px;
+    background: var(--sidebar);
+    color: white;
+    padding: 22px 16px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 1000;
 }
 
-button:disabled{
-    opacity:.5;
-    cursor:not-allowed;
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 10px 22px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    margin-bottom: 18px;
 }
 
-a{
-    color:inherit;
+.brand-logo {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg,#2563eb,#7c3aed);
+    font-size: 21px;
+    font-weight: 800;
 }
 
-.wrap{
-    width:min(
-        1150px,
-        calc(100% - 20px)
-    );
-    margin:auto;
+.brand-title {
+    font-size: 17px;
+    font-weight: 800;
 }
 
-header{
-    position:sticky;
-    top:0;
-    z-index:50;
-    background:#050811ee;
-    border-bottom:1px solid #ffffff12;
-    backdrop-filter:blur(18px);
+.brand-subtitle {
+    font-size: 11px;
+    color: #9ca3af;
+    margin-top: 2px;
 }
 
-.nav{
-    min-height:68px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+.nav-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    color: #6b7280;
+    padding: 10px 12px;
 }
 
-.logo{
-    font-size:22px;
-    font-weight:900;
-    text-decoration:none;
+.nav-item {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: var(--sidebar-text);
+    padding: 11px 12px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    text-align: left;
+    margin-bottom: 3px;
 }
 
-.logo span{
-    color:#29ddff;
+.nav-item:hover,
+.nav-item.active {
+    background: rgba(255,255,255,.09);
+    color: white;
 }
 
-.logo small{
-    color:#78869a;
-    font-size:10px;
+.nav-icon {
+    width: 22px;
+    text-align: center;
+    font-size: 17px;
 }
 
-.status{
-    padding:7px 11px;
-    border-radius:99px;
-    border:1px solid #27354d;
-    color:#9ba8bc;
-    background:#0b1220;
-    font-size:12px;
+.nav-label {
+    font-size: 13px;
+    font-weight: 600;
 }
 
-.status.connected{
-    color:#62f6c2;
-    border-color:#00ffaa55;
-    background:#00ffaa12;
+.sidebar-bottom {
+    margin-top: 20px;
+    padding: 12px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.05);
 }
 
-.hero{
-    padding:38px 0 22px;
+.connection-small {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #a7f3d0;
 }
 
-.badge{
-    display:inline-block;
-    padding:7px 11px;
-    border-radius:99px;
-    background:#20dff814;
-    border:1px solid #20dff838;
-    color:#32dcf8;
-    font-size:11px;
-    font-weight:800;
+.dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #22c55e;
 }
 
-.hero h1{
-    font-size:clamp(
-        34px,
-        6vw,
-        58px
-    );
-    line-height:1.03;
-    margin:15px 0 10px;
+/* =========================
+   MAIN
+========================= */
+
+.main {
+    margin-left: 270px;
+    width: calc(100% - 270px);
+    min-width: 0;
 }
 
-.gradient{
-    background:
-        linear-gradient(
-            90deg,
-            #fff,
-            #48e5ff,
-            #8171ff
-        );
-    background-clip:text;
-    -webkit-background-clip:text;
-    color:transparent;
+.topbar {
+    position: sticky;
+    top: 0;
+    z-index: 500;
+    background: rgba(245,247,251,.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 24px;
 }
 
-.hero p,
-.desc{
-    color:#8e9aae;
+.topbar-inner {
+    max-width: 1500px;
+    margin: auto;
+    display: flex;
+    align-items: center;
+    gap: 15px;
 }
 
-.grid{
-    display:grid;
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
-    gap:18px;
+.menu-btn {
+    display: none;
+    width: 42px;
+    height: 42px;
+    border: 1px solid var(--border);
+    background: white;
+    border-radius: 10px;
 }
 
-.full{
-    grid-column:1/-1;
+.page-title {
+    flex: 1;
 }
 
-.card{
-    min-width:0;
-    padding:20px;
-    border-radius:18px;
-    background:
-        linear-gradient(
-            145deg,
-            #121c2df2,
-            #080d18f5
-        );
-    border:1px solid #ffffff12;
-    box-shadow:
-        0 20px 60px #00000038;
+.page-title h1 {
+    margin: 0;
+    font-size: 22px;
 }
 
-.card h2{
-    margin:0 0 6px;
-    font-size:20px;
+.page-title p {
+    margin: 3px 0 0;
+    color: var(--muted);
+    font-size: 12px;
 }
 
-.card h3{
-    margin-top:22px;
+.search {
+    width: 280px;
+    position: relative;
 }
 
-.desc{
-    margin:0 0 15px;
-    font-size:13px;
+.search input {
+    width: 100%;
+    padding: 11px 14px 11px 38px;
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    background: white;
+    outline: none;
 }
 
-.field{
-    margin-top:13px;
+.search-icon {
+    position: absolute;
+    left: 13px;
+    top: 10px;
+    color: #9ca3af;
 }
 
-.field label{
-    display:block;
-    margin-bottom:6px;
-    color:#b9c4d5;
-    font-size:12px;
-    font-weight:750;
+/* =========================
+   CONTENT
+========================= */
+
+.content {
+    max-width: 1500px;
+    margin: auto;
+    padding: 24px;
 }
 
-input,
-textarea,
-select{
-    width:100%;
-    padding:12px 13px;
-    border:1px solid #27334a;
-    border-radius:11px;
-    background:#080e19;
-    color:#fff;
-    outline:0;
+.hero {
+    background: linear-gradient(135deg,#172554,#2563eb);
+    color: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow);
 }
 
-input:focus,
-textarea:focus,
-select:focus{
-    border-color:#27dfff;
-    box-shadow:
-        0 0 0 3px #27dfff14;
+.hero h2 {
+    margin: 0 0 7px;
+    font-size: 24px;
 }
 
-textarea{
-    min-height:120px;
-    resize:vertical;
+.hero p {
+    margin: 0;
+    color: #dbeafe;
+    font-size: 14px;
 }
 
-.row{
-    display:flex;
-    flex-wrap:wrap;
-    gap:9px;
-    margin-top:13px;
+.hero-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    align-items: center;
 }
 
-.result{
-    margin-top:12px;
-    padding:12px;
-    border-radius:11px;
-    background:#070c15;
-    border:1px solid #202c40;
-    color:#aeb9ca;
-    white-space:pre-wrap;
-    overflow-wrap:anywhere;
-    font-size:12px;
+.worker-status {
+    min-width: 210px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.16);
 }
 
-.ok{
-    color:#62f6c2;
+.worker-status-title {
+    font-size: 11px;
+    color: #bfdbfe;
 }
 
-.err{
-    color:#ff7889;
+.worker-status-url {
+    margin-top: 4px;
+    font-size: 12px;
+    word-break: break-all;
 }
 
-.stats{
-    display:grid;
-    grid-template-columns:
-        repeat(
-            4,
-            1fr
-        );
-    gap:9px;
-    margin-top:14px;
+/* =========================
+   CONFIG
+========================= */
+
+.config-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 22px;
+    box-shadow: var(--shadow);
 }
 
-.stat{
-    padding:13px;
-    border-radius:12px;
-    background:#080e19;
-    border:1px solid #202c40;
+.config-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 12px;
+    align-items: end;
 }
 
-.stat b{
-    display:block;
-    font-size:23px;
+.field label {
+    display: block;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
 }
 
-.stat span{
-    font-size:10px;
-    color:#78869a;
+.field input,
+.field textarea,
+.json-input {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 11px 12px;
+    outline: none;
+    background: #fafbfc;
 }
 
-.note{
-    margin-top:9px;
-    padding:10px 12px;
-    border-radius:10px;
-    background:#0b1322;
-    border:1px solid #1c2940;
-    color:#8d9bb0;
-    font-size:12px;
+.field input:focus,
+.field textarea:focus,
+.json-input:focus {
+    border-color: var(--primary);
+    background: white;
 }
 
-.check{
-    display:flex;
-    align-items:center;
-    gap:8px;
-    color:#8e9aae;
-    font-size:12px;
-    margin-top:9px;
+.btn {
+    border: 0;
+    border-radius: 10px;
+    padding: 11px 15px;
+    font-weight: 700;
+    transition: .15s;
 }
 
-.check input{
-    width:17px;
-    height:17px;
+.btn:hover {
+    transform: translateY(-1px);
 }
 
-.publish{
-    width:100%;
-    min-height:58px;
-    margin-top:16px;
-    font-size:16px;
+.btn-primary {
+    background: var(--primary);
+    color: white;
 }
 
-.preview{
-    display:none;
-    margin-top:16px;
+.btn-primary:hover {
+    background: var(--primary-dark);
 }
 
-.preview iframe{
-    width:100%;
-    height:620px;
-    border:0;
-    border-radius:12px;
-    background:#fff;
+.btn-secondary {
+    background: #eef2f7;
+    color: #334155;
 }
 
-.code{
-    display:none;
-    width:100%;
-    min-height:360px;
-    font:12px monospace;
+.btn-success {
+    background: #dcfce7;
+    color: #166534;
 }
 
-.list{
-    display:grid;
-    gap:8px;
-    margin-top:12px;
+.btn-danger {
+    background: #fee2e2;
+    color: #991b1b;
 }
 
-.item{
-    padding:12px;
-    border-radius:11px;
-    background:#0b1322;
-    border:1px solid #1c2940;
+.btn-warning {
+    background: #fef3c7;
+    color: #92400e;
 }
 
-.item strong{
-    display:block;
-    margin-bottom:4px;
+/* =========================
+   STATS
+========================= */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap: 14px;
+    margin-bottom: 24px;
 }
 
-.item small{
-    color:#8d9bb0;
+.stat {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 17px;
 }
 
-.audit-grid{
-    display:grid;
-    grid-template-columns:
-        repeat(
-            2,
-            minmax(0,1fr)
-        );
-    gap:10px;
-    margin-top:15px;
+.stat-icon {
+    font-size: 20px;
 }
 
-.audit-card{
-    padding:15px;
-    border-radius:13px;
-    background:#080e19;
-    border:1px solid #202c40;
+.stat-value {
+    font-size: 25px;
+    font-weight: 800;
+    margin-top: 5px;
 }
 
-.audit-card h3{
-    margin:0 0 9px;
-    font-size:14px;
+.stat-label {
+    color: var(--muted);
+    font-size: 12px;
 }
 
-.audit-card pre{
-    margin:0;
-    white-space:pre-wrap;
-    overflow-wrap:anywhere;
-    font:12px/1.7 system-ui,sans-serif;
-    color:#aeb9ca;
+/* =========================
+   TOOL SECTION
+========================= */
+
+.section {
+    margin-bottom: 28px;
+    scroll-margin-top: 90px;
 }
 
-.score-big{
-    font-size:42px;
-    font-weight:900;
-    margin-top:4px;
+.section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
 }
 
-.pass{
-    color:#62f6c2;
+.section-head h2 {
+    margin: 0;
+    font-size: 18px;
 }
 
-.warn{
-    color:#ffd166;
+.section-head span {
+    color: var(--muted);
+    font-size: 12px;
 }
 
-.fail{
-    color:#ff7889;
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 14px;
 }
 
-.loading{
-    animation:pulse 1.2s infinite;
+.tool-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 17px;
+    box-shadow: 0 4px 18px rgba(15,23,42,.04);
+    transition: .18s;
 }
 
-@keyframes pulse{
-    50%{
-        opacity:.45;
+.tool-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+    border-color: #cbd5e1;
+}
+
+.tool-top {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+}
+
+.tool-icon {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 12px;
+    background: #eff6ff;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 21px;
+}
+
+.tool-name {
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.tool-route {
+    color: #64748b;
+    font-family: monospace;
+    font-size: 11px;
+    margin-top: 3px;
+}
+
+.tool-description {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.55;
+    margin: 12px 0;
+    min-height: 38px;
+}
+
+.tool-actions {
+    display: flex;
+    gap: 7px;
+}
+
+.tool-actions .btn {
+    flex: 1;
+    padding: 9px 10px;
+    font-size: 12px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(15,23,42,.55);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    z-index: 2000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-box {
+    width: min(850px,100%);
+    max-height: 92vh;
+    overflow-y: auto;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 25px 70px rgba(0,0,0,.25);
+}
+
+.modal-head {
+    padding: 18px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.modal-head h3 {
+    margin: 0;
+    font-size: 17px;
+}
+
+.close-btn {
+    border: 0;
+    background: #f1f5f9;
+    width: 36px;
+    height: 36px;
+    border-radius: 9px;
+    font-size: 18px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.modal-route {
+    font-family: monospace;
+    font-size: 12px;
+    color: var(--primary);
+    margin-bottom: 14px;
+}
+
+.json-label {
+    font-size: 12px;
+    font-weight: 800;
+    margin-bottom: 6px;
+}
+
+.json-input {
+    min-height: 180px;
+    resize: vertical;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.response-box {
+    margin-top: 18px;
+}
+
+.response-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7px;
+}
+
+.response-head strong {
+    font-size: 12px;
+}
+
+.response {
+    background: #0f172a;
+    color: #dbeafe;
+    border-radius: 12px;
+    padding: 15px;
+    min-height: 120px;
+    max-height: 380px;
+    overflow: auto;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px;
+}
+
+.response.success {
+    border-left: 4px solid #22c55e;
+}
+
+.response.error {
+    border-left: 4px solid #ef4444;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    background: #111827;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,.2);
+    font-size: 13px;
+    opacity: 0;
+    transform: translateY(15px);
+    pointer-events: none;
+    transition: .2s;
+    z-index: 3000;
+}
+
+.toast.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 1100px) {
+    .tools-grid {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .stats {
+        grid-template-columns: repeat(2,1fr);
+    }
+
+    .config-grid {
+        grid-template-columns: 1fr 1fr;
     }
 }
 
-footer{
-    text-align:center;
-    padding:35px;
-    color:#647085;
-    font-size:11px;
+@media (max-width: 760px) {
+    .sidebar {
+        transform: translateX(-100%);
+        transition: .2s;
+    }
+
+    .sidebar.open {
+        transform: translateX(0);
+    }
+
+    .main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    .topbar {
+        padding: 12px 14px;
+    }
+
+    .topbar-inner {
+        flex-wrap: wrap;
+    }
+
+    .page-title h1 {
+        font-size: 18px;
+    }
+
+    .search {
+        order: 3;
+        width: 100%;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .hero {
+        padding: 18px;
+    }
+
+    .hero-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .worker-status {
+        width: 100%;
+    }
+
+    .config-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stats {
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }
+
+    .stat {
+        padding: 13px;
+    }
+
+    .stat-value {
+        font-size: 21px;
+    }
 }
-
-@media(max-width:850px){
-
-    .grid{
-        grid-template-columns:1fr;
-    }
-
-    .full{
-        grid-column:auto;
-    }
-
-    .audit-grid{
-        grid-template-columns:1fr;
-    }
-
-}
-
-@media(max-width:600px){
-
-    .wrap{
-        width:calc(100% - 14px);
-    }
-
-    .card{
-        padding:15px;
-    }
-
-    .row{
-        flex-direction:column;
-    }
-
-    .row button{
-        width:100%;
-    }
-
-    .stats{
-        grid-template-columns:
-            repeat(
-                2,
-                1fr
-            );
-    }
-
-}
-
 </style>
-
 </head>
 
 <body>
 
-<header>
+<div class="app">
 
-<div class="wrap nav">
+<!-- =========================
+     SIDEBAR
+========================= -->
 
-<a
-    class="logo"
-    href="admin-control.html"
->
-    Learn<span>Byte</span>
-    <small>/ ADMIN</small>
-</a>
+<aside class="sidebar" id="sidebar">
 
-<div
-    id="status"
-    class="status"
->
-    ● Not connected
-</div>
+    <div class="brand">
+        <div class="brand-logo">LB</div>
 
-</div>
+        <div>
+            <div class="brand-title">
+                LearnByte
+            </div>
+
+            <div class="brand-subtitle">
+                SEO Control Center
+            </div>
+        </div>
+    </div>
+
+    <div class="nav-title">
+        Dashboard
+    </div>
+
+    <button class="nav-item active" onclick="scrollToSection('overview')">
+        <span class="nav-icon">📊</span>
+        <span class="nav-label">Overview</span>
+    </button>
+
+    <div class="nav-title">
+        Repository
+    </div>
+
+    <button class="nav-item" onclick="scrollToSection('repository')">
+        <span class="nav-icon">📁</span>
+        <span class="nav-label">Repository Tools</span>
+    </button>
+
+    <div class="nav-title">
+        SEO
+    </div>
+
+    <button class="nav-item" onclick="scrollToSection('seo')">
+        <span class="nav-icon">🔍</span>
+        <span class="nav-label">SEO Tools</span>
+    </button>
+
+    <div class="nav-title">
+        Content
+    </div>
+
+    <button class="nav-item" onclick="scrollToSection('content')">
+        <span class="nav-icon">📝</span>
+        <span class="nav-label">Content Tools</span>
+    </button>
+
+    <div class="nav-title">
+        Management
+    </div>
+
+    <button class="nav-item" onclick="scrollToSection('management')">
+        <span class="nav-icon">⚙️</span>
+        <span class="nav-label">Management</span>
+    </button>
+
+    <div class="sidebar-bottom">
+        <div class="connection-small">
+            <span class="dot"></span>
+            Worker configured
+        </div>
+    </div>
+
+</aside>
+
+<!-- =========================
+     MAIN
+========================= -->
+
+<main class="main">
+
+<header class="topbar">
+
+    <div class="topbar-inner">
+
+        <button
+            class="menu-btn"
+            onclick="toggleSidebar()"
+        >
+            ☰
+        </button>
+
+        <div class="page-title">
+            <h1>SEO Control Center</h1>
+            <p>LearnByte website management panel</p>
+        </div>
+
+        <div class="search">
+            <span class="search-icon">🔎</span>
+
+            <input
+                id="searchInput"
+                type="search"
+                placeholder="Search tools..."
+                oninput="filterTools()"
+            >
+        </div>
+
+    </div>
 
 </header>
 
+<div class="content">
 
-<main class="wrap">
+<!-- =========================
+     OVERVIEW
+========================= -->
 
+<section class="section" id="overview">
 
-<section class="hero">
+    <div class="hero">
 
-<span class="badge">
-PRIVATE SEO ADMIN PANEL
-</span>
+        <div class="hero-row">
 
-<h1>
-LearnByte
-<span class="gradient">
-Control Center.
-</span>
-</h1>
+            <div>
+                <h2>LearnByte Admin Control</h2>
 
-<p>
-Direct publishing, GitHub file management, SEO auditing,
-keywords, internal links, redirects and website management
-from one private control panel.
-</p>
+                <p>
+                    Manage your GitHub website, SEO, sitemap,
+                    content and repository from one panel.
+                </p>
+            </div>
 
-</section>
+            <div class="worker-status">
 
+                <div class="worker-status-title">
+                    CONNECTED WORKER
+                </div>
 
-<div class="grid">
+                <div class="worker-status-url">
+                    learnbyte-seo-manager.learnbytehq.workers.dev
+                </div>
 
+            </div>
 
-<!-- =====================================================
-     CONNECTION
-===================================================== -->
+        </div>
 
-<section class="card">
+    </div>
 
-<h2>
-🔐 Secure Connection
-</h2>
+    <div class="stats">
 
-<p class="desc">
-GitHub token stays safely inside the Cloudflare Worker.
-</p>
+        <div class="stat">
+            <div class="stat-icon">🛠️</div>
+            <div class="stat-value">35</div>
+            <div class="stat-label">Available Tools</div>
+        </div>
 
-<div class="field">
+        <div class="stat">
+            <div class="stat-icon">🐙</div>
+            <div class="stat-value">GitHub</div>
+            <div class="stat-label">Repository Backend</div>
+        </div>
 
-<label>
-Cloudflare Worker URL
-</label>
+        <div class="stat">
+            <div class="stat-icon">☁️</div>
+            <div class="stat-value">Worker</div>
+            <div class="stat-label">Cloudflare Backend</div>
+        </div>
 
-<input
-    id="workerUrl"
-    value="https://learnbyte-seo-manager.learnbytehq.workers.dev"
->
+        <div class="stat">
+            <div class="stat-icon">🔐</div>
+            <div class="stat-value">Protected</div>
+            <div class="stat-label">Admin Key Required</div>
+        </div>
 
-</div>
-
-<div class="field">
-
-<label>
-Admin Key
-</label>
-
-<input
-    id="adminKey"
-    type="password"
-    autocomplete="off"
-    placeholder="Enter Admin Key"
->
-
-</div>
-
-<label class="check">
-
-<input
-    id="rememberKey"
-    type="checkbox"
->
-
-Remember key on this device
-
-</label>
-
-<div class="row">
-
-<button
-    id="testConnectionBtn"
-    type="button"
->
-Test Connection
-</button>
-
-<button
-    id="clearSavedKeyBtn"
-    class="secondary"
-    type="button"
->
-Clear Saved Key
-</button>
-
-</div>
-
-<div
-    id="connectionResult"
-    class="result"
->
-Not tested yet.
-</div>
+    </div>
 
 </section>
 
+<!-- =========================
+     CONFIGURATION
+========================= -->
 
-<!-- =====================================================
-     DASHBOARD
-===================================================== -->
+<section class="config-card">
 
-<section class="card">
+    <div class="config-grid">
 
-<h2>
-📊 Dashboard
-</h2>
+        <div class="field">
+            <label>Worker URL</label>
 
-<p class="desc">
-Current publishing and SEO session.
-</p>
+            <input
+                id="workerUrl"
+                value="https://learnbyte-seo-manager.learnbytehq.workers.dev"
+            >
+        </div>
 
-<div class="stats">
+        <div class="field">
+            <label>ADMIN_KEY</label>
 
-<div class="stat">
-<b id="statStatus">—</b>
-<span>Connection</span>
-</div>
+            <input
+                id="adminKey"
+                type="password"
+                placeholder="Enter your Admin Key"
+                autocomplete="off"
+            >
+        </div>
 
-<div class="stat">
-<b id="statFiles">0</b>
-<span>Files Updated</span>
-</div>
+        <button
+            class="btn btn-primary"
+            onclick="saveConfig()"
+        >
+            💾 Save
+        </button>
 
-<div class="stat">
-<b id="statArticles">0</b>
-<span>Articles Published</span>
-</div>
-
-<div class="stat">
-<b id="statKeywords">0</b>
-<span>Keywords</span>
-</div>
-
-</div>
-
-<div
-    id="publishSummary"
-    class="result"
->
-No publish completed yet.
-</div>
+    </div>
 
 </section>
 
+<!-- =========================
+     REPOSITORY TOOLS
+========================= -->
 
-<!-- =====================================================
-     FULL SEO AUDIT
-===================================================== -->
-
-<section class="card full">
-
-<h2>
-🔍 Full SEO Audit Center
-</h2>
-
-<p class="desc">
-Enter any live page URL. The panel checks on-page SEO,
-technical SEO, links, images, mobile readiness, content,
-sitemap, robots.txt and 404 availability.
-</p>
-
-<div class="field">
-
-<label>
-Website / Page URL
-</label>
-
-<input
-    id="auditUrl"
-    type="url"
-    placeholder="https://learnbtyehq.github.io/"
+<section
+    class="section tool-section"
+    id="repository"
 >
 
-</div>
+    <div class="section-head">
+        <h2>📁 Repository Tools</h2>
+        <span>GitHub & file management</span>
+    </div>
+
+    <div class="tools-grid">
+
+        <div class="tool-card" data-search="github test connection github">
+            <div class="tool-top">
+                <div class="tool-icon">🐙</div>
+                <div>
+                    <div class="tool-name">GitHub Test</div>
+                    <div class="tool-route">GET /github-test</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Test connection with your GitHub repository.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-success" onclick="runTool(1)">▶ Test</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="get file read file github">
+            <div class="tool-top">
+                <div class="tool-icon">📄</div>
+                <div>
+                    <div class="tool-name">Get File</div>
+                    <div class="tool-route">POST /get-file</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Read any file from the GitHub repository.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(2)">Open</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="update create file github">
+            <div class="tool-top">
+                <div class="tool-icon">✏️</div>
+                <div>
+                    <div class="tool-name">Update / Create File</div>
+                    <div class="tool-route">POST /update-file</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Create a new file or update an existing repository file.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(3)">Open</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="delete file github">
+            <div class="tool-top">
+                <div class="tool-icon">🗑️</div>
+                <div>
+                    <div class="tool-name">Delete File</div>
+                    <div class="tool-route">POST /delete-file</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Delete a file from your GitHub repository.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-danger" onclick="openTool(4)">Open</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="health repository files">
+            <div class="tool-top">
+                <div class="tool-icon">❤️</div>
+                <div>
+                    <div class="tool-name">Health Check</div>
+                    <div class="tool-route">GET /health</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Check important website files and repository health.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-success" onclick="runTool(6)">Check</button>
+            </div>
+        </div>
+
 
-<div class="row">
-
-<button
-    id="runAuditBtn"
-    type="button"
->
-🔍 RUN FULL SEO AUDIT
-</button>
-
-<button
-    id="clearAuditBtn"
-    class="secondary"
-    type="button"
->
-🧹 Clear Audit
-</button>
-
-</div>
-
-<div
-    id="auditStatus"
-    class="result"
->
-Ready to analyze.
-</div>
-
-
-<div
-    id="auditDashboard"
-    style="display:none"
->
-
-<div class="stats">
-
-<div class="stat">
-
-<b
-    id="auditScore"
->
-—
-</b>
-
-<span>
-SEO SCORE
-</span>
-
-</div>
-
-<div class="stat">
-
-<b
-    id="auditPassed"
->
-0
-</b>
-
-<span>
-PASSED
-</span>
-
-</div>
-
-<div class="stat">
-
-<b
-    id="auditWarnings"
->
-0
-</b>
-
-<span>
-WARNINGS
-</span>
-
-</div>
-
-<div class="stat">
-
-<b
-    id="auditErrors"
->
-0
-</b>
-
-<span>
-ERRORS
-</span>
-
-</div>
-
-</div>
-
-</div>
-
-
-<div
-    id="auditResults"
-    class="audit-grid"
-    style="display:none"
->
-
-<div class="audit-card">
-
-<h3>
-🌐 HTTP + PAGE SPEED
-</h3>
-
-<pre id="auditHttp"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-📝 META TITLE + DESCRIPTION
-</h3>
-
-<pre id="auditMeta"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-🔗 URL OPTIMIZATION
-</h3>
-
-<pre id="auditUrlCheck"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-📑 H1–H6 HEADINGS
-</h3>
-
-<pre id="auditHeadings"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-⚙️ TECHNICAL SEO
-</h3>
-
-<pre id="auditTechnical"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-🌐 OPEN GRAPH + SCHEMA
-</h3>
-
-<pre id="auditSocial"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-🖼️ IMAGES + ALT
-</h3>
-
-<pre id="auditImages"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-🔗 LINKS + NOFOLLOW
-</h3>
-
-<pre id="auditLinks"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-📱 MOBILE FRIENDLINESS
-</h3>
-
-<pre id="auditMobile"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-📚 CONTENT + KEYWORDS
-</h3>
-
-<pre id="auditContent"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-🗺️ SITEMAP + ROBOTS
-</h3>
-
-<pre id="auditFiles"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-🚨 404 PAGE
-</h3>
-
-<pre id="audit404"></pre>
-
-</div>
-
-
-<div class="audit-card">
-
-<h3>
-💡 RECOMMENDATIONS
-</h3>
-
-<pre id="auditRecommendations"></pre>
-
-</div>
-
-</div>
+        <div class="tool-card" data-search="repository list folder files">
+            <div class="tool-top">
+                <div class="tool-icon">📂</div>
+                <div>
+                    <div class="tool-name">Repository List</div>
+                    <div class="tool-route">POST /repo-list</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Browse files and folders inside the repository.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(7)">Open</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="articles posts list">
+            <div class="tool-top">
+                <div class="tool-icon">📰</div>
+                <div>
+                    <div class="tool-name">Article List</div>
+                    <div class="tool-route">GET /list-articles</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                List all HTML articles stored in the posts folder.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="runTool(8)">Open</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="commits history github">
+            <div class="tool-top">
+                <div class="tool-icon">📜</div>
+                <div>
+                    <div class="tool-name">Commit History</div>
+                    <div class="tool-route">GET /commits</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                View the latest GitHub commits for your website.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="runTool(13)">Open</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="backup file">
+            <div class="tool-top">
+                <div class="tool-icon">💾</div>
+                <div>
+                    <div class="tool-name">File Backup</div>
+                    <div class="tool-route">POST /backup</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Create a backup of a repository file.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-warning" onclick="openTool(14)">Open</button>
+            </div>
+        </div>
+
+    </div>
 
 </section>
 
+<!-- =========================
+     SEO TOOLS
+========================= -->
 
-<!-- =====================================================
-     ARTICLE CREATOR
-===================================================== -->
-
-<section class="card full">
-
-<h2>
-📝 Direct Publish Article
-</h2>
-
-<p class="desc">
-Create an article and automatically publish it to GitHub,
-category page, homepage, sitemap and SEO keyword storage.
-</p>
-
-<div class="field">
-
-<label>
-Website Section / Theme *
-</label>
-
-<select id="articleSection">
-
-<option value="education">
-🎓 Education
-</option>
-
-<option value="technology">
-💻 Technology
-</option>
-
-<option value="seo" selected>
-🔎 SEO
-</option>
-
-<option value="gaming">
-🎮 Gaming
-</option>
-
-</select>
-
-</div>
-
-<div
-    id="sectionInfo"
-    class="note"
-></div>
-
-
-<div class="field">
-
-<label>
-Article Title *
-</label>
-
-<input
-    id="articleTitle"
-    placeholder="What Is SEO? Complete Beginner Guide"
+<section
+    class="section tool-section"
+    id="seo"
 >
 
-</div>
+    <div class="section-head">
+        <h2>🔍 SEO Tools</h2>
+        <span>Auditing, sitemap and technical SEO</span>
+    </div>
+
+    <div class="tools-grid">
+
+        <div class="tool-card" data-search="analyze url seo analyzer live">
+            <div class="tool-top">
+                <div class="tool-icon">🔬</div>
+                <div>
+                    <div class="tool-name">Live SEO Analyzer</div>
+                    <div class="tool-route">POST /analyze-url</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Analyze a live URL for title, meta, headings, links and content.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(5)">Analyze</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="live url check status">
+            <div class="tool-top">
+                <div class="tool-icon">🌐</div>
+                <div>
+                    <div class="tool-name">Live URL Check</div>
+                    <div class="tool-route">POST /check-live</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Check HTTP status, response time and redirects.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(9)">Check</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="404 broken page check">
+            <div class="tool-top">
+                <div class="tool-icon">🚫</div>
+                <div>
+                    <div class="tool-name">404 Check</div>
+                    <div class="tool-route">POST /check-404</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Test whether a fake URL correctly returns HTTP 404.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(10)">Check</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="sitemap audit">
+            <div class="tool-top">
+                <div class="tool-icon">🗺️</div>
+                <div>
+                    <div class="tool-name">Sitemap Audit</div>
+                    <div class="tool-route">GET /sitemap-audit</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Check sitemap URLs and duplicate entries.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="runTool(11)">Audit</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="sitemap rebuild">
+            <div class="tool-top">
+                <div class="tool-icon">🔄</div>
+                <div>
+                    <div class="tool-name">Sitemap Rebuild</div>
+                    <div class="tool-route">POST /sitemap-rebuild</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Rebuild sitemap using the site's article files.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-warning" onclick="openTool(12)">Rebuild</button>
+            </div>
+        </div>
+
 
-
-<div class="field">
-
-<label>
-URL / File Name *
-</label>
-
-<input
-    id="articleSlug"
-    placeholder="what-is-seo.html"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Category / Subcategory
-</label>
-
-<input
-    id="articleCategory"
-    placeholder="SEO Basics"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Publish Date
-</label>
-
-<input
-    id="articleDate"
-    type="date"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Meta Title
-</label>
-
-<input
-    id="articleMetaTitle"
-    placeholder="What Is SEO? Complete Beginner Guide | LearnByte"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Meta Description *
-</label>
-
-<textarea
-    id="articleMetaDescription"
-    placeholder="Write an SEO-friendly meta description..."
-></textarea>
-
-</div>
-
-
-<div class="field">
-
-<label>
-Primary Keyword
-</label>
-
-<input
-    id="articlePrimaryKeyword"
-    placeholder="what is SEO"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Secondary Keywords
-</label>
-
-<input
-    id="articleSecondaryKeywords"
-    placeholder="SEO meaning, SEO basics, search engine optimization"
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Featured Image URL
-</label>
-
-<input
-    id="articleImage"
-    type="url"
-    placeholder="https://..."
->
-
-</div>
-
-
-<div class="field">
-
-<label>
-Introduction
-</label>
-
-<textarea
-    id="articleIntro"
-    placeholder="Write the introduction..."
-></textarea>
-
-</div>
-
-
-<div id="headingFields"></div>
-
-
-<div class="field">
-
-<label>
-Conclusion
-</label>
-
-<textarea
-    id="articleConclusion"
-    placeholder="Write the conclusion..."
-></textarea>
-
-</div>
-
-
-<div class="row">
-
-<button
-    id="previewArticleBtn"
-    class="secondary"
-    type="button"
->
-👁️ Preview
-</button>
-
-<button
-    id="analyzeSeoBtn"
-    class="secondary"
-    type="button"
->
-📈 Analyze SEO
-</button>
-
-<button
-    id="generatedHtmlBtn"
-    class="secondary"
-    type="button"
->
-🔍 Generated HTML
-</button>
-
-<button
-    id="clearArticleBtn"
-    class="secondary"
-    type="button"
->
-🧹 Clear
-</button>
-
-</div>
-
-
-<button
-    id="publishBtn"
-    class="publish"
-    type="button"
->
-🚀 DIRECT PUBLISH TO WEBSITE
-</button>
-
-
-<div
-    id="articleResult"
-    class="result"
->
-Ready to publish.
-</div>
-
-
-<div
-    id="seoBox"
-    class="result"
-    style="display:none"
-></div>
-
-
-<div
-    id="previewBox"
-    class="preview"
->
-
-<h3>
-👁️ Article Preview
-</h3>
-
-<div id="previewArea"></div>
-
-</div>
-
-
-<div
-    id="codeBox"
-    style="display:none"
->
-
-<h3>
-🔍 Generated HTML
-</h3>
-
-<textarea
-    id="articleCode"
-    class="code"
-    readonly
-></textarea>
-
-</div>
+        <div class="tool-card" data-search="image alt audit">
+            <div class="tool-top">
+                <div class="tool-icon">🖼️</div>
+                <div>
+                    <div class="tool-name">Image / ALT Audit</div>
+                    <div class="tool-route">POST /image-audit</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Find missing and empty image ALT attributes.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(16)">Audit</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="broken internal links">
+            <div class="tool-top">
+                <div class="tool-icon">🔗</div>
+                <div>
+                    <div class="tool-name">Broken Links</div>
+                    <div class="tool-route">POST /broken-links</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Find broken internal links across your articles.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(17)">Audit</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="link opportunities internal seo">
+            <div class="tool-top">
+                <div class="tool-icon">🧲</div>
+                <div>
+                    <div class="tool-name">Link Opportunities</div>
+                    <div class="tool-route">POST /link-opportunities</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Find pages where a target keyword can receive an internal link.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(18)">Find</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="page seo individual audit">
+            <div class="tool-top">
+                <div class="tool-icon">📈</div>
+                <div>
+                    <div class="tool-name">Individual Page SEO</div>
+                    <div class="tool-route">POST /page-seo</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Generate an SEO score and detailed analysis for one page.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(24)">Analyze</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="meta check title description canonical">
+            <div class="tool-top">
+                <div class="tool-icon">🏷️</div>
+                <div>
+                    <div class="tool-name">Meta Check</div>
+                    <div class="tool-route">POST /meta-check</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Check title, description, canonical, Open Graph and Twitter tags.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(26)">Check</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="heading h1 h2 seo">
+            <div class="tool-top">
+                <div class="tool-icon">🔠</div>
+                <div>
+                    <div class="tool-name">Heading Check</div>
+                    <div class="tool-route">POST /headings-check</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Check H1 and H2 heading structure.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(27)">Check</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="robots txt seo">
+            <div class="tool-top">
+                <div class="tool-icon">🤖</div>
+                <div>
+                    <div class="tool-name">Robots.txt Check</div>
+                    <div class="tool-route">GET /robots-check</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Inspect robots.txt directives and sitemap declaration.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="runTool(28)">Check</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="sitemap add url">
+            <div class="tool-top">
+                <div class="tool-icon">➕</div>
+                <div>
+                    <div class="tool-name">Sitemap URL Add</div>
+                    <div class="tool-route">POST /sitemap-add</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Add an individual URL to sitemap.xml.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(29)">Add</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="sitemap remove url">
+            <div class="tool-top">
+                <div class="tool-icon">➖</div>
+                <div>
+                    <div class="tool-name">Sitemap URL Remove</div>
+                    <div class="tool-route">POST /sitemap-remove</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Remove an individual URL from sitemap.xml.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-danger" onclick="openTool(30)">Remove</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="bulk seo audit pages">
+            <div class="tool-top">
+                <div class="tool-icon">📊</div>
+                <div>
+                    <div class="tool-name">Bulk Page SEO Audit</div>
+                    <div class="tool-route">POST /bulk-audit</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Audit multiple pages and calculate an average SEO score.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(32)">Audit</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="site statistics">
+            <div class="tool-top">
+                <div class="tool-icon">📊</div>
+                <div>
+                    <div class="tool-name">Site Statistics</div>
+                    <div class="tool-route">GET /site-statistics</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                View articles, keywords, repository files and file types.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="runTool(33)">Open</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="site overview complete">
+            <div class="tool-top">
+                <div class="tool-icon">🧭</div>
+                <div>
+                    <div class="tool-name">Complete Site Overview</div>
+                    <div class="tool-route">GET /site-overview</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Get a complete high-level overview of your website.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-success" onclick="runTool(35)">Open</button>
+            </div>
+        </div>
+
+    </div>
 
 </section>
 
+<!-- =========================
+     CONTENT TOOLS
+========================= -->
 
-<!-- =====================================================
-     DELETE
-===================================================== -->
-
-<section class="card full">
-
-<h2>
-🗑️ Delete Published Article
-</h2>
-
-<p class="desc">
-Delete an article and remove its category, homepage,
-sitemap and SEO keyword references.
-</p>
-
-<div class="field">
-
-<label>
-Article File Path *
-</label>
-
-<input
-    id="deletePath"
-    placeholder="posts/what-is-seo.html"
+<section
+    class="section tool-section"
+    id="content"
 >
 
-</div>
+    <div class="section-head">
+        <h2>📝 Content Tools</h2>
+        <span>Articles, links, drafts and keywords</span>
+    </div>
 
-<div class="field">
+    <div class="tools-grid">
 
-<label>
-Article Section *
-</label>
+        <div class="tool-card" data-search="audit history seo">
+            <div class="tool-top">
+                <div class="tool-icon">📚</div>
+                <div>
+                    <div class="tool-name">Audit History</div>
+                    <div class="tool-route">GET/POST /audit-history</div>
+                </div>
+            </div>
 
-<select id="deleteSection">
+            <div class="tool-description">
+                Save and view previous SEO audit records.
+            </div>
 
-<option value="education">
-🎓 Education
-</option>
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(15)">Open</button>
+            </div>
+        </div>
 
-<option value="technology">
-💻 Technology
-</option>
 
-<option value="seo">
-🔎 SEO
-</option>
+        <div class="tool-card" data-search="draft manager drafts">
+            <div class="tool-top">
+                <div class="tool-icon">📝</div>
+                <div>
+                    <div class="tool-name">Draft Manager</div>
+                    <div class="tool-route">POST /drafts</div>
+                </div>
+            </div>
 
-<option value="gaming">
-🎮 Gaming
-</option>
+            <div class="tool-description">
+                List, save and delete article drafts.
+            </div>
 
-</select>
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(19)">Open</button>
+            </div>
+        </div>
 
-</div>
 
-<div class="field">
+        <div class="tool-card" data-search="keyword plans planning">
+            <div class="tool-top">
+                <div class="tool-icon">🗂️</div>
+                <div>
+                    <div class="tool-name">Keyword Plans</div>
+                    <div class="tool-route">POST /keyword-plans</div>
+                </div>
+            </div>
 
-<label>
-Article Title / Text
-</label>
+            <div class="tool-description">
+                Create and manage planned keyword targets.
+            </div>
 
-<input
-    id="deleteTitle"
-    placeholder="What Is SEO?"
->
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(20)">Open</button>
+            </div>
+        </div>
 
-</div>
 
-<div class="row">
+        <div class="tool-card" data-search="keyword manager seo keywords">
+            <div class="tool-top">
+                <div class="tool-icon">🔑</div>
+                <div>
+                    <div class="tool-name">Keyword Manager</div>
+                    <div class="tool-route">POST /keywords</div>
+                </div>
+            </div>
 
-<button
-    id="deleteArticleBtn"
-    class="danger"
-    type="button"
->
-🗑️ DELETE ARTICLE COMPLETELY
-</button>
+            <div class="tool-description">
+                Save, list and delete primary and secondary keywords.
+            </div>
 
-</div>
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(21)">Open</button>
+            </div>
+        </div>
 
-<div
-    id="deleteResult"
-    class="result"
->
-Nothing deleted.
-</div>
+
+        <div class="tool-card" data-search="apply internal link">
+            <div class="tool-top">
+                <div class="tool-icon">🔗</div>
+                <div>
+                    <div class="tool-name">Apply Internal Link</div>
+                    <div class="tool-route">POST /apply-link</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Automatically add an internal link around matching anchor text.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-warning" onclick="openTool(22)">Apply</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="redirect manager redirects">
+            <div class="tool-top">
+                <div class="tool-icon">↪️</div>
+                <div>
+                    <div class="tool-name">Redirect Manager</div>
+                    <div class="tool-route">POST /redirect</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Create redirect HTML pages for old URLs.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-warning" onclick="openTool(23)">Open</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="content statistics words">
+            <div class="tool-top">
+                <div class="tool-icon">🧮</div>
+                <div>
+                    <div class="tool-name">Content Statistics</div>
+                    <div class="tool-route">POST /content-stats</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Count words, headings, paragraphs, images and links.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(25)">Analyze</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="page backup">
+            <div class="tool-top">
+                <div class="tool-icon">🛡️</div>
+                <div>
+                    <div class="tool-name">Page Backup</div>
+                    <div class="tool-route">POST /page-backup</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Create a dedicated backup of an individual page.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-warning" onclick="openTool(31)">Backup</button>
+            </div>
+        </div>
+
+
+        <div class="tool-card" data-search="repository search find">
+            <div class="tool-top">
+                <div class="tool-icon">🔎</div>
+                <div>
+                    <div class="tool-name">Repository Search</div>
+                    <div class="tool-route">POST /repo-search</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Search text across supported repository files.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="openTool(34)">Search</button>
+            </div>
+        </div>
+
+    </div>
 
 </section>
 
+<!-- =========================
+     MANAGEMENT
+========================= -->
 
-<!-- =====================================================
-     FILE MANAGER
-===================================================== -->
-
-<section class="card">
-
-<h2>
-📄 File Manager
-</h2>
-
-<p class="desc">
-Read a GitHub file and load it into the editor.
-</p>
-
-<div class="field">
-
-<label>
-Repository File Path
-</label>
-
-<input
-    id="filePath"
-    placeholder="index.html"
+<section
+    class="section tool-section"
+    id="management"
 >
 
-</div>
-
-<div class="row">
-
-<button
-    id="readFileBtn"
-    type="button"
->
-📖 Read File
-</button>
-
-<button
-    id="loadIndexBtn"
-    class="secondary"
-    type="button"
->
-Load index.html
-</button>
-
-</div>
-
-<div
-    id="fileResult"
-    class="result"
->
-No file loaded.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     EDITOR
-===================================================== -->
-
-<section class="card">
-
-<h2>
-✏️ GitHub Editor
-</h2>
-
-<p class="desc">
-Edit a loaded file and commit it directly.
-</p>
-
-<div class="field">
-
-<label>
-Current File
-</label>
-
-<input
-    id="currentFile"
-    readonly
->
-
-</div>
-
-<div class="field">
-
-<label>
-Commit Message
-</label>
-
-<input
-    id="commitMessage"
-    value="Update file from LearnByte Control Center"
->
-
-</div>
-
-<div class="field">
-
-<label>
-File Content
-</label>
-
-<textarea
-    id="editor"
-    style="min-height:300px;font-family:monospace"
-    spellcheck="false"
-></textarea>
-
-</div>
-
-<div class="row">
-
-<button
-    id="saveFileBtn"
-    type="button"
->
-💾 Save & Commit
-</button>
-
-<button
-    id="clearEditorBtn"
-    class="secondary"
-    type="button"
->
-Clear
-</button>
-
-</div>
-
-<div
-    id="saveResult"
-    class="result"
->
-No changes made.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     KEYWORDS
-===================================================== -->
-
-<section class="card full">
-
-<h2>
-🔑 Keyword Manager
-</h2>
-
-<p class="desc">
-Store page-wise primary and secondary SEO keywords.
-</p>
-
-<div class="field">
-
-<label>
-Page
-</label>
-
-<input
-    id="keywordPage"
-    placeholder="posts/my-article.html"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Primary Keyword
-</label>
-
-<input
-    id="keywordPrimary"
-    placeholder="primary keyword"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Secondary Keywords
-</label>
-
-<input
-    id="keywordSecondary"
-    placeholder="keyword one, keyword two"
->
-
-</div>
-
-<div class="row">
-
-<button
-    id="addKeywordBtn"
-    type="button"
->
-➕ Add Keyword
-</button>
-
-<button
-    id="loadKeywordsBtn"
-    class="secondary"
-    type="button"
->
-🔄 Load Keywords
-</button>
-
-</div>
-
-<div
-    id="keywordResult"
-    class="result"
->
-Keyword manager ready.
-</div>
-
-<div
-    id="keywordList"
-    class="list"
-></div>
-
-</section>
-
-
-<!-- =====================================================
-     INTERNAL LINK
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🔗 Internal Linking
-</h2>
-
-<p class="desc">
-Find anchor text in a source page and link it to a target page.
-</p>
-
-<div class="field">
-
-<label>
-Source Page
-</label>
-
-<input
-    id="sourcePage"
-    placeholder="posts/source.html"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Target Page
-</label>
-
-<input
-    id="targetPage"
-    placeholder="posts/target.html"
->
-
-</div>
-
-<div class="field">
-
-<label>
-Anchor Text
-</label>
-
-<input
-    id="anchorText"
-    placeholder="Read this guide"
->
-
-</div>
-
-<div class="row">
-
-<button
-    id="prepareLinkBtn"
-    class="secondary"
-    type="button"
->
-Generate Link
-</button>
-
-<button
-    id="applyInternalLinkBtn"
-    type="button"
->
-⚡ Apply & Commit
-</button>
-
-</div>
-
-<div
-    id="linkResult"
-    class="result"
->
-Internal linking ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     REDIRECT
-===================================================== -->
-
-<section class="card">
-
-<h2>
-🔀 Redirect Manager
-</h2>
-
-<p class="desc">
-Create an HTML redirect file.
-</p>
-
-<div class="field">
-
-<label>
-Old URL / File
-</label>
-
-<input
-    id="oldUrl"
-    placeholder="/old-page.html"
->
-
-</div>
-
-<div class="field">
-
-<label>
-New URL
-</label>
-
-<input
-    id="newUrl"
-    placeholder="/new-page.html"
->
-
-</div>
-
-<div class="row">
-
-<button
-    id="createRedirectBtn"
-    type="button"
->
-🚀 Create Redirect
-</button>
-
-</div>
-
-<div
-    id="redirectResult"
-    class="result"
->
-Redirect manager ready.
-</div>
-
-</section>
-
-
-<!-- =====================================================
-     QUICK LINKS
-===================================================== -->
-
-<section class="card full">
-
-<h2>
-🌐 Quick Links
-</h2>
-
-<div class="row">
-
-<button
-    id="openWebsiteBtn"
-    class="secondary"
-    type="button"
->
-Website
-</button>
-
-<button
-    id="openGithubBtn"
-    class="secondary"
-    type="button"
->
-GitHub
-</button>
-
-<button
-    id="openWorkerBtn"
-    class="secondary"
-    type="button"
->
-Worker
-</button>
-
-<button
-    id="openSitemapBtn"
-    class="secondary"
-    type="button"
->
-Sitemap
-</button>
-
-</div>
+    <div class="section-head">
+        <h2>⚙️ Management</h2>
+        <span>Administrative controls</span>
+    </div>
+
+    <div class="tools-grid">
+
+        <div class="tool-card" data-search="system endpoint list">
+            <div class="tool-top">
+                <div class="tool-icon">🧰</div>
+                <div>
+                    <div class="tool-name">Worker Endpoint List</div>
+                    <div class="tool-route">GET /</div>
+                </div>
+            </div>
+
+            <div class="tool-description">
+                Show all available Worker endpoints.
+            </div>
+
+            <div class="tool-actions">
+                <button class="btn btn-primary" onclick="runRoot()">Open</button>
+            </div>
+        </div>
+
+    </div>
 
 </section>
 
@@ -1792,11 +1747,119 @@ Sitemap
 
 </main>
 
+</div>
 
-<footer>
-LearnByte SEO Control · Private administration tool
-</footer>
+<!-- =========================
+     MODAL
+========================= -->
 
+<div
+    class="modal"
+    id="toolModal"
+    onclick="modalOutside(event)"
+>
+
+    <div class="modal-box">
+
+        <div class="modal-head">
+
+            <h3 id="modalTitle">
+                Tool
+            </h3>
+
+            <button
+                class="close-btn"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+        </div>
+
+        <div class="modal-body">
+
+            <div
+                class="modal-route"
+                id="modalRoute"
+            ></div>
+
+            <div
+                class="field"
+                id="bodyField"
+            >
+
+                <div class="json-label">
+                    Request Body JSON
+                </div>
+
+                <textarea
+                    class="json-input"
+                    id="jsonInput"
+                    spellcheck="false"
+                ></textarea>
+
+            </div>
+
+            <div class="modal-actions">
+
+                <button
+                    class="btn btn-primary"
+                    id="executeBtn"
+                    onclick="executeTool()"
+                >
+                    ▶ Execute
+                </button>
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="formatJSON()"
+                >
+                    Format JSON
+                </button>
+
+                <button
+                    class="btn btn-secondary"
+                    onclick="clearResponse()"
+                >
+                    Clear
+                </button>
+
+            </div>
+
+            <div class="response-box">
+
+                <div class="response-head">
+
+                    <strong>
+                        Response
+                    </strong>
+
+                    <button
+                        class="btn btn-secondary"
+                        onclick="copyResponse()"
+                    >
+                        📋 Copy
+                    </button>
+
+                </div>
+
+                <pre
+                    class="response"
+                    id="response"
+                >No request executed yet.</pre>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<div
+    class="toast"
+    id="toast"
+></div>
 
 <script>
 
@@ -1804,4482 +1867,879 @@ LearnByte SEO Control · Private administration tool
    CONFIG
 ========================================================= */
 
-const CONFIG = {
+const DEFAULT_WORKER =
+    "https://learnbyte-seo-manager.learnbytehq.workers.dev";
 
-    base:
-        "https://learnbtyehq.github.io/",
+const tools = {
 
-    repo:
-        "learnbtyehq/learnbtyehq.github.io",
+    1: {
+        name: "GitHub Test",
+        method: "GET",
+        route: "/github-test",
+        body: null
+    },
 
-    sections: {
-
-        education:{
-            name:"Education",
-            css:"education.css",
-            category:"category/education.html",
-            grid:"education-post-grid",
-            icon:"🎓",
-            read:"Read Guide →"
-        },
-
-        technology:{
-            name:"Technology",
-            css:"technology.css",
-            category:"category/technology.html",
-            grid:"tech-card-grid",
-            icon:"💻",
-            read:"Open Guide →"
-        },
-
-        seo:{
-            name:"SEO",
-            css:"seo.css",
-            category:"category/seo.html",
-            grid:"seo-post-grid",
-            icon:"🔎",
-            read:"Read Guide →"
-        },
-
-        gaming:{
-            name:"Gaming",
-            css:"gaming.css",
-            category:"category/gaming.html",
-            grid:"gaming-post-grid",
-            icon:"🎮",
-            read:"Read Article →"
+    2: {
+        name: "Get File",
+        method: "POST",
+        route: "/get-file",
+        body: {
+            path: "index.html"
         }
+    },
 
+    3: {
+        name: "Update / Create File",
+        method: "POST",
+        route: "/update-file",
+        body: {
+            path: "example.html",
+            content: "<!DOCTYPE html><html><body><h1>Example</h1></body></html>",
+            message: "Update example.html"
+        }
+    },
+
+    4: {
+        name: "Delete File",
+        method: "POST",
+        route: "/delete-file",
+        body: {
+            path: "example.html",
+            message: "Delete example.html"
+        }
+    },
+
+    5: {
+        name: "Live SEO Analyzer",
+        method: "POST",
+        route: "/analyze-url",
+        body: {
+            url: "https://learnbtyehq.github.io"
+        }
+    },
+
+    6: {
+        name: "Health Check",
+        method: "GET",
+        route: "/health",
+        body: null
+    },
+
+    7: {
+        name: "Repository File List",
+        method: "POST",
+        route: "/repo-list",
+        body: {
+            path: ""
+        }
+    },
+
+    8: {
+        name: "Article List",
+        method: "GET",
+        route: "/list-articles",
+        body: null
+    },
+
+    9: {
+        name: "Live URL Check",
+        method: "POST",
+        route: "/check-live",
+        body: {
+            url: "https://learnbtyehq.github.io"
+        }
+    },
+
+    10: {
+        name: "404 Check",
+        method: "POST",
+        route: "/check-404",
+        body: {
+            base: "https://learnbtyehq.github.io"
+        }
+    },
+
+    11: {
+        name: "Sitemap Audit",
+        method: "GET",
+        route: "/sitemap-audit",
+        body: null
+    },
+
+    12: {
+        name: "Sitemap Rebuild",
+        method: "POST",
+        route: "/sitemap-rebuild",
+        body: {}
+    },
+
+    13: {
+        name: "Commit History",
+        method: "GET",
+        route: "/commits",
+        body: null
+    },
+
+    14: {
+        name: "File Backup",
+        method: "POST",
+        route: "/backup",
+        body: {
+            path: "index.html"
+        }
+    },
+
+    15: {
+        name: "Audit History",
+        method: "GET",
+        route: "/audit-history",
+        body: null
+    },
+
+    16: {
+        name: "Image / ALT Audit",
+        method: "POST",
+        route: "/image-audit",
+        body: {}
+    },
+
+    17: {
+        name: "Broken Internal Links",
+        method: "POST",
+        route: "/broken-links",
+        body: {}
+    },
+
+    18: {
+        name: "Link Opportunities",
+        method: "POST",
+        route: "/link-opportunities",
+        body: {
+            anchor: "calculator",
+            target: "percentage-calculator.html"
+        }
+    },
+
+    19: {
+        name: "Draft Manager",
+        method: "POST",
+        route: "/drafts",
+        body: {
+            action: "list"
+        }
+    },
+
+    20: {
+        name: "Keyword Plans",
+        method: "POST",
+        route: "/keyword-plans",
+        body: {
+            action: "list"
+        }
+    },
+
+    21: {
+        name: "Keyword Manager",
+        method: "POST",
+        route: "/keywords",
+        body: {
+            action: "list"
+        }
+    },
+
+    22: {
+        name: "Apply Internal Link",
+        method: "POST",
+        route: "/apply-link",
+        body: {
+            source: "index.html",
+            target: "percentage-calculator.html",
+            anchor: "calculator"
+        }
+    },
+
+    23: {
+        name: "Redirect Manager",
+        method: "POST",
+        route: "/redirect",
+        body: {
+            old: "old-page.html",
+            new: "https://learnbtyehq.github.io/"
+        }
+    },
+
+    24: {
+        name: "Individual Page SEO",
+        method: "POST",
+        route: "/page-seo",
+        body: {
+            path: "index.html"
+        }
+    },
+
+    25: {
+        name: "Content Statistics",
+        method: "POST",
+        route: "/content-stats",
+        body: {
+            path: "index.html"
+        }
+    },
+
+    26: {
+        name: "Meta Check",
+        method: "POST",
+        route: "/meta-check",
+        body: {
+            path: "index.html"
+        }
+    },
+
+    27: {
+        name: "Heading Check",
+        method: "POST",
+        route: "/headings-check",
+        body: {
+            path: "index.html"
+        }
+    },
+
+    28: {
+        name: "Robots.txt Check",
+        method: "GET",
+        route: "/robots-check",
+        body: null
+    },
+
+    29: {
+        name: "Sitemap URL Add",
+        method: "POST",
+        route: "/sitemap-add",
+        body: {
+            url: "example.html"
+        }
+    },
+
+    30: {
+        name: "Sitemap URL Remove",
+        method: "POST",
+        route: "/sitemap-remove",
+        body: {
+            url: "example.html"
+        }
+    },
+
+    31: {
+        name: "Page Backup",
+        method: "POST",
+        route: "/page-backup",
+        body: {
+            path: "index.html"
+        }
+    },
+
+    32: {
+        name: "Bulk Page SEO Audit",
+        method: "POST",
+        route: "/bulk-audit",
+        body: {}
+    },
+
+    33: {
+        name: "Site Statistics",
+        method: "GET",
+        route: "/site-statistics",
+        body: null
+    },
+
+    34: {
+        name: "Repository File Search",
+        method: "POST",
+        route: "/repo-search",
+        body: {
+            query: "calculator"
+        }
+    },
+
+    35: {
+        name: "Complete Site Overview",
+        method: "GET",
+        route: "/site-overview",
+        body: null
     }
 
 };
 
-
 /* =========================================================
-   GLOBAL STATE
+   STATE
 ========================================================= */
 
-let currentFileSha = null;
-let currentFilePath = null;
+let currentTool = null;
 
-let keywordSha = null;
+const savedWorker =
+    localStorage.getItem("learnbyte_worker_url");
 
-let keywordData = {
-    keywords:[]
-};
+const savedKey =
+    localStorage.getItem("learnbyte_admin_key");
 
+if (savedWorker) {
+    document.getElementById("workerUrl").value =
+        savedWorker;
+}
+
+if (savedKey) {
+    document.getElementById("adminKey").value =
+        savedKey;
+}
 
 /* =========================================================
-   HELPERS
+   CONFIG
 ========================================================= */
 
-const $ =
-    id =>
-    document.getElementById(id);
+function saveConfig() {
 
-
-function worker(){
-
-    return $("workerUrl")
-        .value
+    const worker =
+        document.getElementById("workerUrl").value
         .trim()
-        .replace(/\/+$/,"");
+        .replace(/\/+$/, "");
 
-}
+    const key =
+        document.getElementById("adminKey").value.trim();
 
-
-function key(){
-
-    return $("adminKey")
-        .value
-        .trim();
-
-}
-
-
-function headers(){
-
-    return {
-
-        "Content-Type":
-            "application/json",
-
-        "X-Admin-Key":
-            key()
-
-    };
-
-}
-
-
-function result(
-    id,
-    msg,
-    type=""
-){
-
-    const e =
-        $(id);
-
-    if(!e)
+    if (!worker) {
+        showToast("Worker URL required.");
         return;
+    }
 
-    e.className =
-        "result " + type;
+    localStorage.setItem(
+        "learnbyte_worker_url",
+        worker
+    );
 
-    e.textContent =
-        msg;
-
-}
-
-
-/* =========================================================
-   ESCAPE
-========================================================= */
-
-function esc(v){
-
-    return String(v ?? "")
-        .replace(/&/g,"&amp;")
-        .replace(/</g,"&lt;")
-        .replace(/>/g,"&gt;")
-        .replace(/"/g,"&quot;")
-        .replace(/'/g,"&#039;");
-
-}
-
-
-/* =========================================================
-   API
-========================================================= */
-
-async function api(
-    path,
-    method="GET",
-    body
-){
-
-    const controller =
-        new AbortController();
-
-    const timeout =
-        setTimeout(
-            ()=>{
-                controller.abort();
-            },
-            30000
+    if (key) {
+        localStorage.setItem(
+            "learnbyte_admin_key",
+            key
         );
+    }
 
-    try{
+    showToast("Configuration saved.");
+}
 
-        const r =
-            await fetch(
-                worker()+path,
-                {
-                    method,
+/* =========================================================
+   TOOL MODAL
+========================================================= */
 
-                    headers:
-                        headers(),
+function openTool(id) {
 
-                    body:
-                        body === undefined
-                            ? undefined
-                            : JSON.stringify(body),
+    currentTool = id;
 
-                    signal:
-                        controller.signal
+    const tool = tools[id];
+
+    if (!tool) {
+        return;
+    }
+
+    document.getElementById("modalTitle").textContent =
+        tool.name;
+
+    document.getElementById("modalRoute").textContent =
+        `${tool.method} ${tool.route}`;
+
+    const bodyField =
+        document.getElementById("bodyField");
+
+    const jsonInput =
+        document.getElementById("jsonInput");
+
+    if (tool.method === "GET") {
+
+        bodyField.style.display = "none";
+
+        jsonInput.value = "";
+
+    } else {
+
+        bodyField.style.display = "block";
+
+        jsonInput.value =
+            JSON.stringify(tool.body || {}, null, 2);
+
+    }
+
+    document.getElementById("response").textContent =
+        "No request executed yet.";
+
+    document.getElementById("response").className =
+        "response";
+
+    document.getElementById("toolModal")
+        .classList.add("show");
+}
+
+function closeModal() {
+
+    document.getElementById("toolModal")
+        .classList.remove("show");
+
+    currentTool = null;
+}
+
+function modalOutside(event) {
+
+    if (event.target.id === "toolModal") {
+        closeModal();
+    }
+}
+
+/* =========================================================
+   RUN SIMPLE TOOL
+========================================================= */
+
+function runTool(id) {
+
+    openTool(id);
+
+    setTimeout(() => {
+        executeTool();
+    }, 80);
+}
+
+/* =========================================================
+   ROOT
+========================================================= */
+
+async function runRoot() {
+
+    const worker =
+        getWorkerUrl();
+
+    const key =
+        getAdminKey();
+
+    if (!key) {
+        showToast("Enter ADMIN_KEY first.");
+        return;
+    }
+
+    try {
+
+        const response =
+            await fetch(worker + "/", {
+                method: "GET",
+                headers: {
+                    "X-Admin-Key": key
                 }
-            );
-
-
-        let d={};
-
-        try{
-
-            d =
-                await r.json();
-
-        }catch{
-
-            d={};
-
-        }
-
-
-        if(!r.ok){
-
-            throw new Error(
-                d.error ||
-                d.message ||
-                "Request failed: "+r.status
-            );
-
-        }
-
-
-        return d;
-
-    }catch(e){
-
-        if(
-            e.name ===
-            "AbortError"
-        ){
-
-            throw new Error(
-                "Request timed out after 30 seconds."
-            );
-
-        }
-
-        throw e;
-
-    }finally{
-
-        clearTimeout(timeout);
-
-    }
-
-}
-
-
-/* =========================================================
-   CONNECTION
-========================================================= */
-
-function setConnected(v){
-
-    $("status").textContent =
-        v
-            ? "● Connected"
-            : "● Not connected";
-
-    $("status")
-        .classList
-        .toggle(
-            "connected",
-            v
-        );
-
-    $("statStatus").textContent =
-        v
-            ? "OK"
-            : "—";
-
-}
-
-
-async function testConnection(){
-
-    const box =
-        $("connectionResult");
-
-    box.className =
-        "result loading";
-
-    box.textContent =
-        "🔄 Testing connection...";
-
-    $("statStatus").textContent =
-        "TESTING";
-
-    try{
-
-        if(!key()){
-
-            throw new Error(
-                "Enter Admin Key."
-            );
-
-        }
-
-        const d =
-            await api(
-                "/github-test",
-                "GET"
-            );
-
-
-        box.className =
-            "result ok";
-
-        box.textContent =
-`✅ CONNECTION SUCCESSFUL
-
-Repository:
-${d.repository || "Unknown"}
-
-Branch:
-${d.branch || "Unknown"}
-
-Default Branch:
-${d.default_branch || "Unknown"}
-
-GitHub connection is working correctly.`;
-
-        setConnected(true);
-
-        if(
-            $("rememberKey").checked
-        ){
-
-            localStorage.setItem(
-                "learnbyte_admin_key",
-                key()
-            );
-
-        }
-
-    }catch(e){
-
-        box.className =
-            "result err";
-
-        box.textContent =
-`❌ CONNECTION FAILED
-
-${e.message}`;
-
-        setConnected(false);
-
-    }
-
-}
-
-
-/* =========================================================
-   SAVED KEY
-========================================================= */
-
-function clearSavedKey(){
-
-    localStorage.removeItem(
-        "learnbyte_admin_key"
-    );
-
-    $("adminKey").value =
-        "";
-
-    $("rememberKey").checked =
-        false;
-
-    setConnected(false);
-
-    result(
-        "connectionResult",
-        "Saved key cleared."
-    );
-
-}
-
-
-function loadSavedKey(){
-
-    const k =
-        localStorage.getItem(
-            "learnbyte_admin_key"
-        );
-
-    if(k){
-
-        $("adminKey").value =
-            k;
-
-        $("rememberKey").checked =
-            true;
-
-    }
-
-}
-
-
-/* =========================================================
-   SECTION INFO
-========================================================= */
-
-function updateSectionInfo(){
-
-    const s =
-        CONFIG.sections[
-            $("articleSection").value
-        ];
-
-    $("sectionInfo").textContent =
-        `${s.icon} ${s.name} theme: ${s.css} · Category: ${s.category} · Articles: posts/`;
-
-}
-
-
-/* =========================================================
-   HEADING FIELDS
-========================================================= */
-
-function makeHeadingFields(){
-
-    let h="";
-
-    for(
-        let i=1;
-        i<=6;
-        i++
-    ){
-
-        h+=`
-
-        <div class="field">
-
-        <label>
-        Heading ${i}
-        </label>
-
-        <input
-            id="heading${i}"
-            placeholder="Optional heading ${i}"
-        >
-
-        </div>
-
-        <div class="field">
-
-        <label>
-        Content ${i}
-        </label>
-
-        <textarea
-            id="content${i}"
-            placeholder="Content for this section..."
-        ></textarea>
-
-        </div>
-
-        `;
-
-    }
-
-    $("headingFields").innerHTML =
-        h;
-
-}
-
-
-/* =========================================================
-   SLUG
-========================================================= */
-
-function slugify(v){
-
-    return String(v)
-        .toLowerCase()
-        .trim()
-        .replace(/\.html$/,"")
-        .replace(/[^a-z0-9]+/g,"-")
-        .replace(/^-+|-+$/g,"")
-        + ".html";
-
-}
-
-
-function articlePath(){
-
-    let s =
-        $("articleSlug")
-            .value
-            .trim();
-
-    if(!s){
-
-        s =
-            slugify(
-                $("articleTitle").value
-            );
-
-    }
-
-    if(!s)
-        return "";
-
-    if(
-        !s.endsWith(".html")
-    ){
-
-        s =
-            slugify(s);
-
-    }
-
-    return s.includes("/")
-        ? s
-        : "posts/"+s;
-
-}
-
-
-/* =========================================================
-   TEXT
-========================================================= */
-
-function textParas(t){
-
-    return String(t||"")
-        .trim()
-        .split(/\n\s*\n/)
-        .filter(Boolean)
-        .map(
-            x =>
-            "<p>"+
-            esc(x)
-                .replace(/\n/g,"<br>")+
-            "</p>"
-        )
-        .join("\n");
-
-}
-
-
-/* =========================================================
-   ARTICLE DATA
-========================================================= */
-
-function articleData(){
-
-    const hs=[];
-
-    for(
-        let i=1;
-        i<=6;
-        i++
-    ){
-
-        const h =
-            $("heading"+i)
-                .value
-                .trim();
-
-        const c =
-            $("content"+i)
-                .value
-                .trim();
-
-        if(h||c){
-
-            hs.push({
-                heading:h,
-                content:c
             });
 
-        }
+        const text =
+            await response.text();
 
-    }
+        let output;
 
-
-    return {
-
-        section:
-            $("articleSection").value,
-
-        title:
-            $("articleTitle")
-                .value
-                .trim(),
-
-        path:
-            articlePath(),
-
-        category:
-            $("articleCategory")
-                .value
-                .trim()
-            ||
-            CONFIG.sections[
-                $("articleSection").value
-            ].name,
-
-        date:
-            $("articleDate").value
-            ||
-            new Date()
-                .toISOString()
-                .slice(0,10),
-
-        metaTitle:
-            $("articleMetaTitle")
-                .value
-                .trim(),
-
-        metaDescription:
-            $("articleMetaDescription")
-                .value
-                .trim(),
-
-        primary:
-            $("articlePrimaryKeyword")
-                .value
-                .trim(),
-
-        secondary:
-            $("articleSecondaryKeywords")
-                .value
-                .trim(),
-
-        image:
-            $("articleImage")
-                .value
-                .trim(),
-
-        intro:
-            $("articleIntro")
-                .value
-                .trim(),
-
-        headings:hs,
-
-        conclusion:
-            $("articleConclusion")
-                .value
-                .trim()
-
-    };
-
-}
-
-
-/* =========================================================
-   VALIDATE
-========================================================= */
-
-function validate(a){
-
-    if(!a.title)
-        return "Article Title is required.";
-
-    if(!a.path)
-        return "URL / File Name is required.";
-
-    if(!a.metaDescription)
-        return "Meta Description is required.";
-
-    if(
-        !a.intro &&
-        !a.headings.length &&
-        !a.conclusion
-    ){
-
-        return "Write some article content.";
-
-    }
-
-    return "";
-
-}
-
-
-/* =========================================================
-   THEME
-========================================================= */
-
-function theme(section){
-
-    if(section==="seo")
-        return `<div class="seo-background"></div>`;
-
-    if(section==="technology")
-        return `<div class="technology-background"></div>`;
-
-    return "";
-
-}
-
-
-/* =========================================================
-   GENERATE ARTICLE
-========================================================= */
-
-function generateHTML(){
-
-    const a =
-        articleData();
-
-    const s =
-        CONFIG.sections[
-            a.section
-        ];
-
-    let content="";
-
-
-    if(a.intro){
-
-        content +=
-        `<section class="article-introduction">
-        ${textParas(a.intro)}
-        </section>`;
-
-    }
-
-
-    a.headings.forEach(x=>{
-
-        if(x.heading){
-
-            content +=
-                `<h2>${esc(x.heading)}</h2>`;
-
-        }
-
-        if(x.content){
-
-            content +=
-                textParas(x.content);
-
-        }
-
-    });
-
-
-    if(a.conclusion){
-
-        content +=
-            `<h2>Conclusion</h2>
-            ${textParas(a.conclusion)}`;
-
-    }
-
-
-    const keywords =
-        [
-            a.primary,
-
-            ...a.secondary
-                .split(",")
-                .map(x=>x.trim())
-                .filter(Boolean)
-
-        ]
-        .filter(Boolean)
-        .join(", ");
-
-
-    const img =
-        a.image
-        ? `
-        <img
-            class="article-featured-image"
-            src="${esc(a.image)}"
-            alt="${esc(a.title)}"
-            loading="lazy"
-        >
-        `
-        : "";
-
-
-    return `<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
->
-
-<title>
-${esc(
-    a.metaTitle ||
-    a.title
-)}
-</title>
-
-<meta
-    name="description"
-    content="${esc(a.metaDescription)}"
->
-
-<meta
-    name="keywords"
-    content="${esc(keywords)}"
->
-
-<meta
-    name="author"
-    content="LearnByte"
->
-
-<meta
-    name="robots"
-    content="index,follow,max-image-preview:large"
->
-
-<link
-    rel="canonical"
-    href="${CONFIG.base}${esc(a.path)}"
->
-
-<meta
-    property="og:type"
-    content="article"
->
-
-<meta
-    property="og:title"
-    content="${esc(
-        a.metaTitle ||
-        a.title
-    )}"
->
-
-<meta
-    property="og:description"
-    content="${esc(a.metaDescription)}"
->
-
-<meta
-    property="og:url"
-    content="${CONFIG.base}${esc(a.path)}"
->
-
-<meta
-    property="og:site_name"
-    content="LearnByte"
->
-
-<meta
-    name="twitter:card"
-    content="summary_large_image"
->
-
-<link
-    rel="stylesheet"
-    href="../style.css"
->
-
-<link
-    rel="stylesheet"
-    href="../${s.css}"
->
-
-<style>
-
-.lb-published-article{
-    max-width:900px;
-    margin:auto;
-    padding:80px 20px;
-}
-
-.lb-published-article h1{
-    font-size:clamp(
-        2.3rem,
-        6vw,
-        4.3rem
-    );
-    line-height:1.08;
-}
-
-.lb-published-article h2{
-    margin-top:42px;
-}
-
-.lb-published-article p{
-    font-size:1.08rem;
-    line-height:1.85;
-}
-
-.article-featured-image{
-    display:block;
-    width:100%;
-    max-height:520px;
-    object-fit:cover;
-    border-radius:18px;
-    margin:24px 0;
-}
-
-.article-meta{
-    opacity:.7;
-}
-
-</style>
-
-</head>
-
-<body>
-
-${theme(a.section)}
-
-<header class="site-header">
-
-<div class="container navbar">
-
-<a
-    href="../index.html"
-    class="logo"
->
-Learn<span>Byte</span>
-</a>
-
-<nav class="nav-menu">
-
-<a href="../index.html">
-Home
-</a>
-
-<a href="../category/education.html">
-Education
-</a>
-
-<a href="../category/technology.html">
-Technology
-</a>
-
-<a href="../category/seo.html">
-SEO
-</a>
-
-<a href="../category/gaming.html">
-Gaming
-</a>
-
-</nav>
-
-</div>
-
-</header>
-
-<main>
-
-<article
-    class="lb-published-article"
->
-
-<div class="article-meta">
-${esc(a.category)}
-·
-${esc(a.date)}
-</div>
-
-<h1>
-${esc(a.title)}
-</h1>
-
-${img}
-
-${content}
-
-<a
-    href="../category/${a.section}.html"
->
-← Back to ${esc(s.name)}
-</a>
-
-</article>
-
-</main>
-
-<footer>
-LearnByte · ${esc(s.name)} Guides
-</footer>
-
-</body>
-
-</html>`;
-
-}
-
-
-/* =========================================================
-   ARTICLE PREVIEW
-========================================================= */
-
-function previewArticle(){
-
-    const a =
-        articleData();
-
-    const e =
-        validate(a);
-
-    if(e){
-
-        alert(e);
-        return;
-
-    }
-
-    const iframe =
-        document.createElement("iframe");
-
-    iframe.srcdoc =
-        generateHTML();
-
-    $("previewArea")
-        .innerHTML="";
-
-    $("previewArea")
-        .appendChild(iframe);
-
-    $("previewBox")
-        .style.display="block";
-
-}
-
-
-function showGeneratedHTML(){
-
-    const a =
-        articleData();
-
-    const e =
-        validate(a);
-
-    if(e){
-
-        alert(e);
-        return;
-
-    }
-
-    $("articleCode").value =
-        generateHTML();
-
-    $("articleCode")
-        .style.display="block";
-
-    $("codeBox")
-        .style.display="block";
-
-}
-
-
-/* =========================================================
-   ARTICLE SEO
-========================================================= */
-
-function analyzeSEO(){
-
-    const a =
-        articleData();
-
-    const text =
-        [
-            a.intro,
-            ...a.headings.map(
-                x=>x.content
-            ),
-            a.conclusion
-        ].join(" ");
-
-    const words =
-        text.trim()
-        ? text.trim().split(/\s+/).length
-        : 0;
-
-    const h2 =
-        a.headings.filter(
-            x=>x.heading
-        ).length;
-
-    const occ =
-        a.primary
-        ? text
-            .toLowerCase()
-            .split(
-                a.primary.toLowerCase()
-            ).length-1
-        : 0;
-
-
-    result(
-        "seoBox",
-
-`WORDS:
-${words}
-
-TITLE CHARACTERS:
-${a.title.length}
-
-META DESCRIPTION CHARACTERS:
-${a.metaDescription.length}
-
-H2 HEADINGS:
-${h2}
-
-PRIMARY KEYWORD OCCURRENCES:
-${occ}`
-
-    );
-
-    $("seoBox")
-        .style.display="block";
-
-}
-
-
-/* =========================================================
-   CLEAR ARTICLE
-========================================================= */
-
-function clearArticle(){
-
-    [
-        "articleTitle",
-        "articleSlug",
-        "articleCategory",
-        "articleDate",
-        "articleMetaTitle",
-        "articleMetaDescription",
-        "articlePrimaryKeyword",
-        "articleSecondaryKeywords",
-        "articleImage",
-        "articleIntro",
-        "articleConclusion"
-    ].forEach(
-        id=>{
-            $(id).value="";
-        }
-    );
-
-
-    for(
-        let i=1;
-        i<=6;
-        i++
-    ){
-
-        $("heading"+i).value="";
-        $("content"+i).value="";
-
-    }
-
-
-    $("previewBox")
-        .style.display="none";
-
-    $("codeBox")
-        .style.display="none";
-
-    $("seoBox")
-        .style.display="none";
-
-    result(
-        "articleResult",
-        "Ready to publish."
-    );
-
-}
-
-
-/* =========================================================
-   FILE API
-========================================================= */
-
-async function getFile(path){
-
-    return api(
-        "/get-file",
-        "POST",
-        {path}
-    );
-
-}
-
-
-async function putFile(
-    path,
-    content,
-    message,
-    sha
-){
-
-    return api(
-        "/update-file",
-        "POST",
-        {
-            path,
-            content,
-            message,
-            sha
-        }
-    );
-
-}
-
-
-/* =========================================================
-   CATEGORY
-========================================================= */
-
-function cardHTML(
-    a,
-    index
-){
-
-    const s =
-        CONFIG.sections[
-            a.section
-        ];
-
-    const n =
-        String(index)
-            .padStart(2,"0");
-
-    const href =
-        "../"+a.path;
-
-    const desc =
-        esc(
-            (a.intro||"")
-                .replace(/\s+/g," ")
-                .slice(0,180)
-        );
-
-    return `
-
-<article class="post-card">
-
-<div class="post-number">
-${n}
-</div>
-
-<div class="post-icon">
-${s.icon}
-</div>
-
-<span class="post-category">
-${esc(a.category).toUpperCase()}
-</span>
-
-<h3>
-${esc(a.title)}
-</h3>
-
-<p>
-${desc}
-</p>
-
-<a href="${href}">
-${s.read}
-</a>
-
-</article>
-
-`;
-
-}
-
-
-function updateCategoryHTML(
-    html,
-    a
-){
-
-    const s =
-        CONFIG.sections[
-            a.section
-        ];
-
-    if(
-        html.includes(
-            `href="../${a.path}"`
-        ) ||
-        html.includes(
-            `href="${a.path}"`
-        )
-    ){
-
-        return html;
-
-    }
-
-
-    const re =
-        new RegExp(
-            `(<div\\s+class=["'][^"']*${s.grid}[^"']*["'][^>]*>)`,
-            "i"
-        );
-
-
-    if(!re.test(html)){
-
-        throw new Error(
-            `Could not find ${s.grid} in ${s.category}.`
-        );
-
-    }
-
-
-    const count =
-        (
-            html.match(
-                /<article\b/gi
-            )||[]
-        ).length+1;
-
-
-    return html.replace(
-        re,
-        `$1\n${cardHTML(a,count)}`
-    );
-
-}
-
-
-async function updateCategory(a){
-
-    const s =
-        CONFIG.sections[
-            a.section
-        ];
-
-    const d =
-        await getFile(
-            s.category
-        );
-
-    const html =
-        updateCategoryHTML(
-            d.content,
-            a
-        );
-
-    if(html===d.content)
-        return d;
-
-    return putFile(
-        s.category,
-        html,
-        `Add article to ${s.name}: ${a.title}`,
-        d.sha
-    );
-
-}
-
-
-/* =========================================================
-   HOMEPAGE
-========================================================= */
-
-function updateHomeHTML(
-    html,
-    a
-){
-
-    if(
-        html.includes(
-            `href="${a.path}"`
-        ) ||
-        html.includes(
-            `href="./${a.path}"`
-        )
-    ){
-
-        return html;
-
-    }
-
-
-    const s =
-        CONFIG.sections[
-            a.section
-        ];
-
-    const desc =
-        esc(
-            (a.intro||"")
-                .replace(/\s+/g," ")
-                .slice(0,160)
-        );
-
-
-    const card = `
-
-<article class="post-card">
-
-<div class="post-image">
-${s.icon}
-</div>
-
-<div class="post-content">
-
-<span class="post-category">
-${esc(s.name)}
-</span>
-
-<h3>
-${esc(a.title)}
-</h3>
-
-<p>
-${desc}
-</p>
-
-<a href="${a.path}">
-Read Article →
-</a>
-
-</div>
-
-</article>
-
-`;
-
-
-    const re =
-        /<div\s+class=["']post-grid["'][^>]*>/i;
-
-
-    if(!re.test(html)){
-
-        throw new Error(
-            "Could not find homepage post-grid."
-        );
-
-    }
-
-
-    return html.replace(
-        re,
-        m=>m+"\n"+card
-    );
-
-}
-
-
-async function updateHome(a){
-
-    const d =
-        await getFile(
-            "index.html"
-        );
-
-    const html =
-        updateHomeHTML(
-            d.content,
-            a
-        );
-
-    if(html===d.content)
-        return d;
-
-    return putFile(
-        "index.html",
-        html,
-        `Add article to homepage: ${a.title}`,
-        d.sha
-    );
-
-}
-
-
-/* =========================================================
-   SITEMAP
-========================================================= */
-
-function updateSitemapHTML(
-    xml,
-    a
-){
-
-    const url =
-        CONFIG.base+a.path;
-
-    if(
-        xml.includes(
-            `<loc>${url}</loc>`
-        )
-    )
-        return xml;
-
-
-    const entry =
-        `<url><loc>${url}</loc><lastmod>${a.date}</lastmod></url>`;
-
-
-    if(
-        !/<\/urlset>/i.test(xml)
-    ){
-
-        throw new Error(
-            "Invalid sitemap.xml."
-        );
-
-    }
-
-
-    return xml.replace(
-        /<\/urlset>/i,
-        entry+"</urlset>"
-    );
-
-}
-
-
-async function updateSitemap(a){
-
-    const d =
-        await getFile(
-            "sitemap.xml"
-        );
-
-    const xml =
-        updateSitemapHTML(
-            d.content,
-            a
-        );
-
-    if(xml===d.content)
-        return d;
-
-    return putFile(
-        "sitemap.xml",
-        xml,
-        `Add sitemap URL: ${a.title}`,
-        d.sha
-    );
-
-}
-
-
-/* =========================================================
-   KEYWORDS AUTO SAVE
-========================================================= */
-
-async function saveKeywordsForArticle(a){
-
-    if(!a.primary)
-        return;
-
-    try{
-
-        const d =
-            await getFile(
-                "seo-keywords.json"
-            );
-
-        let obj={
-            keywords:[]
-        };
-
-
-        try{
-
-            obj =
-                JSON.parse(
-                    d.content ||
-                    '{"keywords":[]}'
-                );
-
-        }catch{
-
-            obj={
-                keywords:[]
-            };
-
-        }
-
-
-        if(
-            !Array.isArray(
-                obj.keywords
-            )
-        ){
-
-            obj.keywords=[];
-
-        }
-
-
-        const existing =
-            obj.keywords.find(
-                x=>x.page===a.path
-            );
-
-
-        if(existing){
-
-            existing.primary =
-                a.primary;
-
-            existing.secondary =
-                a.secondary
-                    .split(",")
-                    .map(x=>x.trim())
-                    .filter(Boolean);
-
-        }else{
-
-            obj.keywords.push({
-
-                page:a.path,
-
-                primary:a.primary,
-
-                secondary:
-                    a.secondary
-                        .split(",")
-                        .map(x=>x.trim())
-                        .filter(Boolean)
-
-            });
-
-        }
-
-
-        await putFile(
-            "seo-keywords.json",
-            JSON.stringify(
-                obj,
+        try {
+            output = JSON.stringify(
+                JSON.parse(text),
                 null,
                 2
-            ),
-            "Update SEO keywords: "+a.title,
-            d.sha
+            );
+        } catch {
+            output = text;
+        }
+
+        openToolLikeResult(
+            "Worker Endpoint List",
+            "GET /",
+            output,
+            response.ok
         );
 
-    }catch(e){
+    } catch (error) {
 
-        console.warn(
-            "Keyword update skipped:",
-            e
+        openToolLikeResult(
+            "Worker Endpoint List",
+            "GET /",
+            error.message,
+            false
         );
-
     }
-
 }
-
 
 /* =========================================================
-   DIRECT PUBLISH
+   EXECUTE TOOL
 ========================================================= */
 
-async function directPublish(){
+async function executeTool() {
 
-    const a =
-        articleData();
-
-    const e =
-        validate(a);
-
-    if(e){
-
-        alert(e);
+    if (!currentTool) {
         return;
-
     }
 
-    if(!key()){
+    const tool =
+        tools[currentTool];
 
-        alert(
-            "Enter Admin Key first."
-        );
+    const worker =
+        getWorkerUrl();
 
+    const key =
+        getAdminKey();
+
+    if (!worker) {
+        showToast("Worker URL required.");
         return;
-
     }
 
-
-    if(
-        !confirm(
-`DIRECT PUBLISH this article?
-
-${a.title}
-
-${a.path}
-
-Section:
-${CONFIG.sections[a.section].name}`
-        )
-    ){
-
+    if (!key) {
+        showToast("Enter ADMIN_KEY first.");
         return;
-
     }
 
+    const responseBox =
+        document.getElementById("response");
 
-    const btn =
-        $("publishBtn");
+    const executeBtn =
+        document.getElementById("executeBtn");
 
-    btn.disabled=true;
+    executeBtn.disabled = true;
 
-    const steps=[];
+    executeBtn.textContent =
+        "⏳ Running...";
 
+    responseBox.className =
+        "response";
 
-    try{
+    responseBox.textContent =
+        "Sending request...";
 
-        result(
-            "articleResult",
-            "1/5 Creating article..."
-        );
+    try {
 
-        const html =
-            generateHTML();
-
-        await putFile(
-            a.path,
-            html,
-            "Publish article: "+a.title
-        );
-
-        steps.push(
-            "Article published"
-        );
-
-
-        result(
-            "articleResult",
-            "2/5 Updating category..."
-        );
-
-        await updateCategory(a);
-
-        steps.push(
-            "Category updated"
-        );
-
-
-        result(
-            "articleResult",
-            "3/5 Updating homepage..."
-        );
-
-        await updateHome(a);
-
-        steps.push(
-            "Homepage updated"
-        );
-
-
-        result(
-            "articleResult",
-            "4/5 Updating sitemap..."
-        );
-
-        await updateSitemap(a);
-
-        steps.push(
-            "Sitemap updated"
-        );
-
-
-        result(
-            "articleResult",
-            "5/5 Saving SEO keywords..."
-        );
-
-        await saveKeywordsForArticle(a);
-
-        steps.push(
-            "SEO keywords saved"
-        );
-
-
-        $("articleCode").value =
-            html;
-
-        $("articleCode")
-            .style.display="block";
-
-        $("codeBox")
-            .style.display="block";
-
-
-        $("statArticles")
-            .textContent =
-            String(
-                Number(
-                    $("statArticles")
-                        .textContent||0
-                )+1
-            );
-
-
-        $("statFiles")
-            .textContent =
-            String(
-                Number(
-                    $("statFiles")
-                        .textContent||0
-                )+4
-            );
-
-
-        const live =
-            CONFIG.base+a.path;
-
-
-        result(
-            "publishSummary",
-
-`✅ DIRECT PUBLISH COMPLETE
-
-Live URL:
-${live}
-
-${steps
-    .map(x=>"✓ "+x)
-    .join("\n")}`,
-            "ok"
-        );
-
-
-        result(
-            "articleResult",
-
-`✅ Published successfully.
-
-Live URL:
-${live}
-
-All automatic updates completed.`,
-            "ok"
-        );
-
-
-    }catch(err){
-
-        result(
-            "articleResult",
-
-`❌ PUBLISH STOPPED
-
-${err.message}
-
-Completed:
-${
-    steps.length
-    ? steps.map(x=>"✓ "+x).join("\n")
-    : "None"
-}`,
-            "err"
-        );
-
-    }finally{
-
-        btn.disabled=false;
-
-    }
-
-}
-
-
-/* =========================================================
-   DELETE HELPERS
-========================================================= */
-
-function removeArticleFromHTML(
-    html,
-    path,
-    title
-){
-
-    const escaped =
-        path.replace(
-            /[.*+?^${}()|[\]\\]/g,
-            "\\$&"
-        );
-
-    let out=html;
-
-
-    const patterns=[
-
-        new RegExp(
-            `<article\\b[^>]*>[\\s\\S]*?<a\\b[^>]*href=["'][^"']*${escaped}["'][^>]*>[\\s\\S]*?</article>`,
-            "gi"
-        ),
-
-        new RegExp(
-            `<article\\b[^>]*>[\\s\\S]*?href=["'][^"']*${escaped}["'][\\s\\S]*?</article>`,
-            "gi"
-        )
-
-    ];
-
-
-    for(
-        const p of patterns
-    ){
-
-        out =
-            out.replace(
-                p,
-                ""
-            );
-
-    }
-
-
-    if(
-        out===html &&
-        title
-    ){
-
-        const t =
-            title.replace(
-                /[.*+?^${}()|[\]\\]/g,
-                "\\$&"
-            );
-
-        out =
-            out.replace(
-                new RegExp(
-                    `<article\\b[^>]*>[\\s\\S]*?${t}[\\s\\S]*?</article>`,
-                    "gi"
-                ),
-                ""
-            );
-
-    }
-
-
-    return out;
-
-}
-
-
-function removeSitemapURL(
-    xml,
-    path
-){
-
-    const url =
-        CONFIG.base+path;
-
-    const e =
-        url.replace(
-            /[.*+?^${}()|[\]\\]/g,
-            "\\$&"
-        );
-
-    return xml.replace(
-        new RegExp(
-            `<url>\\s*<loc>\\s*${e}\\s*</loc>[\\s\\S]*?</url>`,
-            "gi"
-        ),
-        ""
-    );
-
-}
-
-
-function removeKeywordEntry(
-    content,
-    path
-){
-
-    let obj;
-
-    try{
-
-        obj =
-            JSON.parse(
-                content ||
-                '{"keywords":[]}'
-            );
-
-    }catch{
-
-        return content;
-
-    }
-
-
-    if(
-        !Array.isArray(
-            obj.keywords
-        )
-    )
-        return content;
-
-
-    obj.keywords =
-        obj.keywords.filter(
-            x=>x.page!==path
-        );
-
-
-    return JSON.stringify(
-        obj,
-        null,
-        2
-    );
-
-}
-
-
-/* =========================================================
-   DELETE ARTICLE
-========================================================= */
-
-async function deleteArticle(){
-
-    const path =
-        $("deletePath")
-            .value
-            .trim()
-            .replace(/^\/+/,"");
-
-    const section =
-        $("deleteSection")
-            .value;
-
-    const title =
-        $("deleteTitle")
-            .value
-            .trim();
-
-
-    if(!path){
-
-        alert(
-            "Enter Article File Path."
-        );
-
-        return;
-
-    }
-
-
-    if(!key()){
-
-        alert(
-            "Enter Admin Key."
-        );
-
-        return;
-
-    }
-
-
-    const s =
-        CONFIG.sections[
-            section
-        ];
-
-
-    if(
-        !confirm(
-`⚠️ PERMANENTLY DELETE ARTICLE?
-
-File:
-${path}
-
-Section:
-${s.name}
-
-This will attempt to remove:
-✓ Article file
-✓ Category card
-✓ Homepage card
-✓ Sitemap URL
-✓ SEO keyword entry`
-        )
-    )
-        return;
-
-
-    try{
-
-        result(
-            "deleteResult",
-            "1/5 Deleting article file..."
-        );
-
-
-        await api(
-            "/delete-file",
-            "POST",
-            {
-                path,
-                message:
-                    "Delete article: "+path
+        const options = {
+            method: tool.method,
+            headers: {
+                "X-Admin-Key": key
             }
-        );
-
-
-        const done=[
-            "Article file deleted"
-        ];
-
-
-        result(
-            "deleteResult",
-            "2/5 Removing category card..."
-        );
-
-
-        try{
-
-            const d =
-                await getFile(
-                    s.category
-                );
-
-            const html =
-                removeArticleFromHTML(
-                    d.content,
-                    path,
-                    title
-                );
-
-
-            if(html!==d.content){
-
-                await putFile(
-                    s.category,
-                    html,
-                    "Remove deleted article from category: "+path,
-                    d.sha
-                );
-
-                done.push(
-                    "Category updated"
-                );
-
-            }else{
-
-                done.push(
-                    "Category card not found"
-                );
-
-            }
-
-        }catch(e){
-
-            done.push(
-                "Category cleanup skipped: "+e.message
-            );
-
-        }
-
-
-        result(
-            "deleteResult",
-            "3/5 Removing homepage card..."
-        );
-
-
-        try{
-
-            const d =
-                await getFile(
-                    "index.html"
-                );
-
-            const html =
-                removeArticleFromHTML(
-                    d.content,
-                    path,
-                    title
-                );
-
-
-            if(html!==d.content){
-
-                await putFile(
-                    "index.html",
-                    html,
-                    "Remove deleted article from homepage: "+path,
-                    d.sha
-                );
-
-                done.push(
-                    "Homepage updated"
-                );
-
-            }else{
-
-                done.push(
-                    "Homepage card not found"
-                );
-
-            }
-
-        }catch(e){
-
-            done.push(
-                "Homepage cleanup skipped: "+e.message
-            );
-
-        }
-
-
-        result(
-            "deleteResult",
-            "4/5 Removing sitemap URL..."
-        );
-
-
-        try{
-
-            const d =
-                await getFile(
-                    "sitemap.xml"
-                );
-
-            const xml =
-                removeSitemapURL(
-                    d.content,
-                    path
-                );
-
-
-            if(xml!==d.content){
-
-                await putFile(
-                    "sitemap.xml",
-                    xml,
-                    "Remove deleted article from sitemap: "+path,
-                    d.sha
-                );
-
-                done.push(
-                    "Sitemap updated"
-                );
-
-            }else{
-
-                done.push(
-                    "Sitemap URL not found"
-                );
-
-            }
-
-        }catch(e){
-
-            done.push(
-                "Sitemap cleanup skipped: "+e.message
-            );
-
-        }
-
-
-        result(
-            "deleteResult",
-            "5/5 Removing SEO keyword entry..."
-        );
-
-
-        try{
-
-            const d =
-                await getFile(
-                    "seo-keywords.json"
-                );
-
-            const content =
-                removeKeywordEntry(
-                    d.content,
-                    path
-                );
-
-
-            if(content!==d.content){
-
-                await putFile(
-                    "seo-keywords.json",
-                    content,
-                    "Remove deleted article SEO keywords: "+path,
-                    d.sha
-                );
-
-                done.push(
-                    "SEO keywords updated"
-                );
-
-            }else{
-
-                done.push(
-                    "SEO keyword entry not found"
-                );
-
-            }
-
-        }catch(e){
-
-            done.push(
-                "Keyword cleanup skipped: "+e.message
-            );
-
-        }
-
-
-        result(
-            "deleteResult",
-
-`✅ DELETE COMPLETED
-
-Deleted:
-${path}
-
-${done
-    .map(x=>"✓ "+x)
-    .join("\n")}`,
-            "ok"
-        );
-
-
-        $("deletePath").value="";
-        $("deleteTitle").value="";
-
-
-    }catch(e){
-
-        result(
-            "deleteResult",
-
-`❌ DELETE FAILED
-
-${e.message}
-
-Check GitHub before retrying.`,
-            "err"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   FILE MANAGER
-========================================================= */
-
-async function readFile(){
-
-    const p =
-        $("filePath")
-            .value
-            .trim();
-
-    if(!p){
-
-        return result(
-            "fileResult",
-            "Enter a file path.",
-            "err"
-        );
-
-    }
-
-
-    try{
-
-        const d =
-            await getFile(p);
-
-        currentFileSha =
-            d.sha;
-
-        currentFilePath =
-            d.path;
-
-        $("currentFile").value =
-            d.path;
-
-        $("editor").value =
-            d.content;
-
-
-        result(
-            "fileResult",
-
-`Loaded:
-${d.path}
-
-SHA:
-${d.sha}`,
-            "ok"
-        );
-
-    }catch(e){
-
-        result(
-            "fileResult",
-            e.message,
-            "err"
-        );
-
-    }
-
-}
-
-
-async function saveFile(){
-
-    if(!currentFilePath){
-
-        alert(
-            "Load a file first."
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        const d =
-            await putFile(
-                currentFilePath,
-                $("editor").value,
-                $("commitMessage")
-                    .value
-                    .trim()
-                ||
-                "Update file from LearnByte Control Center",
-                currentFileSha
-            );
-
-
-        currentFileSha =
-            d.sha ||
-            currentFileSha;
-
-
-        result(
-            "saveResult",
-            JSON.stringify(
-                d,
-                null,
-                2
-            ),
-            "ok"
-        );
-
-    }catch(e){
-
-        result(
-            "saveResult",
-            e.message,
-            "err"
-        );
-
-    }
-
-}
-
-
-function clearEditor(){
-
-    currentFilePath=null;
-    currentFileSha=null;
-
-    $("currentFile").value="";
-    $("editor").value="";
-
-    result(
-        "fileResult",
-        "No file loaded."
-    );
-
-    result(
-        "saveResult",
-        "No changes made."
-    );
-
-}
-
-
-function loadIndex(){
-
-    $("filePath").value=
-        "index.html";
-
-    readFile();
-
-}
-
-
-/* =========================================================
-   KEYWORDS
-========================================================= */
-
-async function loadKeywords(){
-
-    try{
-
-        const d =
-            await getFile(
-                "seo-keywords.json"
-            );
-
-        keywordSha =
-            d.sha;
-
-
-        try{
-
-            keywordData =
-                JSON.parse(
-                    d.content ||
-                    '{"keywords":[]}'
-                );
-
-        }catch{
-
-            keywordData={
-                keywords:[]
-            };
-
-        }
-
-
-        if(
-            !Array.isArray(
-                keywordData.keywords
-            )
-        ){
-
-            keywordData.keywords=[];
-
-        }
-
-
-        renderKeywords();
-
-
-        $("statKeywords")
-            .textContent =
-            keywordData
-                .keywords
-                .length;
-
-
-        result(
-            "keywordResult",
-            "Keywords loaded.",
-            "ok"
-        );
-
-    }catch(e){
-
-        result(
-            "keywordResult",
-            e.message,
-            "err"
-        );
-
-    }
-
-}
-
-
-function renderKeywords(){
-
-    $("keywordList")
-        .innerHTML =
-
-        keywordData
-            .keywords
-            .length
-
-        ?
-
-        keywordData
-            .keywords
-            .map(
-                (x,i)=>`
-
-<div class="item">
-
-<strong>
-${esc(x.page)}
-</strong>
-
-<small>
-
-Primary:
-${esc(x.primary)}
-
-<br>
-
-Secondary:
-${esc(
-    Array.isArray(x.secondary)
-    ? x.secondary.join(", ")
-    : x.secondary || "None"
-)}
-
-</small>
-
-<div class="row">
-
-<button
-    class="danger"
-    type="button"
-    onclick="deleteKeyword(${i})"
->
-Delete
-</button>
-
-</div>
-
-</div>
-
-`
-            )
-            .join("")
-
-        :
-
-        '<div class="result">No keywords yet.</div>';
-
-}
-
-
-async function addKeyword(){
-
-    if(!keywordSha){
-
-        await loadKeywords();
-
-    }
-
-    if(!keywordSha)
-        return;
-
-
-    const p =
-        $("keywordPage")
-            .value
-            .trim();
-
-    const k =
-        $("keywordPrimary")
-            .value
-            .trim();
-
-
-    if(!p||!k){
-
-        alert(
-            "Page and Primary Keyword are required."
-        );
-
-        return;
-
-    }
-
-
-    keywordData
-        .keywords
-        .push({
-
-            page:p,
-
-            primary:k,
-
-            secondary:
-                $("keywordSecondary")
-                    .value
-                    .split(",")
-                    .map(x=>x.trim())
-                    .filter(Boolean)
-
-        });
-
-
-    await saveKeywords();
-
-
-    $("keywordPage").value="";
-    $("keywordPrimary").value="";
-    $("keywordSecondary").value="";
-
-}
-
-
-async function deleteKeyword(i){
-
-    if(
-        !confirm(
-            "Delete this keyword?"
-        )
-    )
-        return;
-
-
-    keywordData
-        .keywords
-        .splice(
-            i,
-            1
-        );
-
-    await saveKeywords();
-
-}
-
-
-async function saveKeywords(){
-
-    try{
-
-        const d =
-            await putFile(
-                "seo-keywords.json",
-                JSON.stringify(
-                    keywordData,
-                    null,
-                    2
-                ),
-                "Update SEO keywords",
-                keywordSha
-            );
-
-
-        keywordSha =
-            d.sha ||
-            keywordSha;
-
-
-        renderKeywords();
-
-
-        $("statKeywords")
-            .textContent =
-            keywordData
-                .keywords
-                .length;
-
-
-        result(
-            "keywordResult",
-            "✅ Keywords saved.",
-            "ok"
-        );
-
-    }catch(e){
-
-        result(
-            "keywordResult",
-            e.message,
-            "err"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   INTERNAL LINKING
-========================================================= */
-
-function prepareLink(){
-
-    const s =
-        $("sourcePage")
-            .value
-            .trim();
-
-    const t =
-        $("targetPage")
-            .value
-            .trim();
-
-    const a =
-        $("anchorText")
-            .value
-            .trim();
-
-
-    if(!s||!t||!a){
-
-        alert(
-            "Fill all fields."
-        );
-
-        return;
-
-    }
-
-
-    result(
-        "linkResult",
-
-`Generated link:
-
-<a href="${esc(t)}">${esc(a)}</a>`,
-        "ok"
-    );
-
-}
-
-
-async function applyInternalLink(){
-
-    const s =
-        $("sourcePage")
-            .value
-            .trim();
-
-    const t =
-        $("targetPage")
-            .value
-            .trim();
-
-    const a =
-        $("anchorText")
-            .value
-            .trim();
-
-
-    if(!s||!t||!a){
-
-        alert(
-            "Fill all fields."
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        const d =
-            await getFile(s);
-
-
-        const escaped =
-            a.replace(
-                /[.*+?^${}()|[\]\\]/g,
-                "\\$&"
-            );
-
-
-        const re =
-            new RegExp(
-                "(?<![>])("+
-                escaped+
-                ")(?![^<]*>)",
-                "i"
-            );
-
-
-        const html =
-            d.content.replace(
-                re,
-                `<a href="${esc(t)}">$1</a>`
-            );
-
-
-        if(
-            html===d.content
-        ){
-
-            throw new Error(
-                "Anchor text was not found."
-            );
-
-        }
-
-
-        const out =
-            await putFile(
-                s,
-                html,
-                "Add internal link: "+a,
-                d.sha
-            );
-
-
-        result(
-            "linkResult",
-            "✅ Internal link applied and committed.\n\n"+
-            JSON.stringify(
-                out,
-                null,
-                2
-            ),
-            "ok"
-        );
-
-    }catch(e){
-
-        result(
-            "linkResult",
-            e.message,
-            "err"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   REDIRECT
-========================================================= */
-
-function redirectHTML(url){
-
-    return `<!DOCTYPE html>
-
-<html lang="en">
-
-<head>
-
-<meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width,initial-scale=1"
->
-
-<meta
-    http-equiv="refresh"
-    content="0; url=${esc(url)}"
->
-
-<link
-    rel="canonical"
-    href="${esc(url)}"
->
-
-<title>
-Redirecting...
-</title>
-
-<script>
-location.replace(
-    ${JSON.stringify(url)}
-)
-<\/script>
-
-</head>
-
-<body>
-
-<p>
-Redirecting...
-</p>
-
-<a href="${esc(url)}">
-Continue
-</a>
-
-</body>
-
-</html>`;
-
-}
-
-
-async function createRedirect(){
-
-    const old =
-        $("oldUrl")
-            .value
-            .trim()
-            .replace(/^\/+/,"");
-
-    const url =
-        $("newUrl")
-            .value
-            .trim();
-
-
-    if(!old||!url){
-
-        alert(
-            "Fill Old URL and New URL."
-        );
-
-        return;
-
-    }
-
-
-    if(!key()){
-
-        alert(
-            "Enter Admin Key."
-        );
-
-        return;
-
-    }
-
-
-    try{
-
-        const d =
-            await putFile(
-                old,
-                redirectHTML(url),
-                "Create redirect: "+
-                old+
-                " -> "+
-                url
-            );
-
-
-        result(
-            "redirectResult",
-            "✅ Redirect file created.\n\n"+
-            JSON.stringify(
-                d,
-                null,
-                2
-            ),
-            "ok"
-        );
-
-    }catch(e){
-
-        result(
-            "redirectResult",
-            e.message,
-            "err"
-        );
-
-    }
-
-}
-
-
-/* =========================================================
-   SEO AUDIT HELPERS
-========================================================= */
-
-function formatBytes(bytes){
-
-    const n =
-        Number(bytes||0);
-
-    if(n<1024)
-        return n+" B";
-
-    if(n<1024*1024)
-        return (
-            n/1024
-        ).toFixed(1)+" KB";
-
-    return (
-        n/(1024*1024)
-    ).toFixed(2)+" MB";
-
-}
-
-
-function urlAudit(url){
-
-    const lines=[];
-
-    let pass=0;
-    let warn=0;
-
-    try{
-
-        const u =
-            new URL(url);
-
-        const path =
-            u.pathname;
-
-
-        if(
-            path.length<=100
-        ){
-
-            lines.push(
-                "✅ URL length looks good."
-            );
-
-            pass++;
-
-        }else{
-
-            lines.push(
-                "⚠️ URL is long."
-            );
-
-            warn++;
-
-        }
-
-
-        if(
-            !/[A-Z]/.test(path)
-        ){
-
-            lines.push(
-                "✅ Lowercase URL."
-            );
-
-            pass++;
-
-        }else{
-
-            lines.push(
-                "⚠️ Uppercase letters found."
-            );
-
-            warn++;
-
-        }
-
-
-        if(
-            !/\s/.test(path)
-        ){
-
-            lines.push(
-                "✅ No spaces."
-            );
-
-            pass++;
-
-        }else{
-
-            lines.push(
-                "❌ Spaces found."
-            );
-
-            warn++;
-
-        }
-
-
-        if(
-            !/[^a-zA-Z0-9_\-\/.]/.test(path)
-        ){
-
-            lines.push(
-                "✅ Clean URL characters."
-            );
-
-            pass++;
-
-        }else{
-
-            lines.push(
-                "⚠️ Special characters found."
-            );
-
-            warn++;
-
-        }
-
-
-        if(
-            !path.includes("_")
-        ){
-
-            lines.push(
-                "✅ Hyphen-style URL preferred."
-            );
-
-            pass++;
-
-        }else{
-
-            lines.push(
-                "⚠️ Underscore detected."
-            );
-
-            warn++;
-
-        }
-
-
-    }catch{
-
-        lines.push(
-            "❌ Invalid URL."
-        );
-
-        warn++;
-
-    }
-
-
-    return {
-        pass,
-        warn,
-        lines
-    };
-
-}
-
-
-/* =========================================================
-   CHECK LIVE FILE
-========================================================= */
-
-async function checkLiveFile(
-    base,
-    file
-){
-
-    try{
-
-        const start =
-            Date.now();
-
-        const r =
-            await fetch(
-                base+
-                file+
-                "?lb_check="+
-                Date.now(),
-                {
-                    method:"GET",
-                    cache:"no-store"
-                }
-            );
-
-        const ms =
-            Date.now()-start;
-
-        return {
-            ok:r.ok,
-            status:r.status,
-            ms
         };
 
-    }catch(e){
+        if (tool.method !== "GET") {
 
-        return {
-            ok:false,
-            status:0,
-            ms:0,
-            error:e.message
-        };
+            let body;
 
-    }
+            try {
 
-}
-
-
-/* =========================================================
-   404 CHECK
-========================================================= */
-
-async function check404(base){
-
-    const fake =
-        "/learnbyte-404-test-"+
-        Date.now()+
-        ".html";
-
-    try{
-
-        const r =
-            await fetch(
-                base+
-                fake,
-                {
-                    method:"GET",
-                    redirect:"manual",
-                    cache:"no-store"
-                }
-            );
-
-
-        return {
-
-            status:
-                r.status,
-
-            ok:
-                r.status===404
-
-        };
-
-    }catch(e){
-
-        return {
-
-            status:0,
-            ok:false,
-            error:e.message
-
-        };
-
-    }
-
-}
-
-
-/* =========================================================
-   RUN FULL SEO AUDIT
-========================================================= */
-
-async function runFullSEOAudit(){
-
-    const target =
-        $("auditUrl")
-            .value
-            .trim();
-
-
-    if(!target){
-
-        result(
-            "auditStatus",
-            "Enter a website/page URL first.",
-            "err"
-        );
-
-        return;
-
-    }
-
-
-    if(!key()){
-
-        result(
-            "auditStatus",
-            "Enter Admin Key first.",
-            "err"
-        );
-
-        return;
-
-    }
-
-
-    result(
-        "auditStatus",
-        "🔄 Running full SEO audit..."
-    );
-
-
-    $("auditDashboard")
-        .style.display="none";
-
-    $("auditResults")
-        .style.display="none";
-
-
-    try{
-
-        const d =
-            await api(
-                "/analyze-url",
-                "POST",
-                {
-                    url:target
-                }
-            );
-
-
-        if(!d.success){
-
-            throw new Error(
-                d.error ||
-                "Audit failed."
-            );
-
-        }
-
-
-        const seo =
-            d.seo || {};
-
-
-        let passed=0;
-        let warnings=0;
-        let errors=0;
-
-        const rec=[];
-
-
-        /* HTTP */
-
-        const httpOK =
-            d.status>=200 &&
-            d.status<400;
-
-
-        if(httpOK)
-            passed++;
-        else
-            errors++;
-
-
-        const responseTime =
-            Number(
-                d.responseTimeMs||0
-            );
-
-
-        if(responseTime<=1000){
-
-            passed++;
-
-        }else if(responseTime<=2000){
-
-            warnings++;
-
-            rec.push(
-                "Improve server/page response time."
-            );
-
-        }else{
-
-            errors++;
-
-            rec.push(
-                "Page response time is slow."
-            );
-
-        }
-
-
-        $("auditHttp").textContent =
-
-`HTTP STATUS:
-${d.status} ${d.statusText||""}
-
-FINAL URL:
-${d.url}
-
-RESPONSE TIME:
-${responseTime} ms
-
-CONTENT SIZE:
-${formatBytes(d.contentLength||0)}
-
-${
-    httpOK
-    ? "✅ Page returned a successful HTTP response."
-    : "❌ Page returned an error HTTP status."
-}
-
-${
-    responseTime<=1000
-    ? "⚡ Fast basic response."
-    : responseTime<=2000
-    ? "⚠️ Moderate response time."
-    : "❌ Slow response time."
-}`;
-
-
-        /* TITLE */
-
-        const title =
-            seo.title||"";
-
-        const titleLength =
-            Number(
-                seo.titleLength||0
-            );
-
-        const titleOK =
-            titleLength>=30 &&
-            titleLength<=60;
-
-
-        if(titleOK)
-            passed++;
-        else{
-
-            warnings++;
-
-            rec.push(
-                "Optimize Meta Title to roughly 30–60 characters."
-            );
-
-        }
-
-
-        /* DESCRIPTION */
-
-        const description =
-            seo.description||"";
-
-        const descriptionLength =
-            Number(
-                seo.descriptionLength||0
-            );
-
-        const descriptionOK =
-            descriptionLength>=120 &&
-            descriptionLength<=160;
-
-
-        if(descriptionOK)
-            passed++;
-        else{
-
-            warnings++;
-
-            rec.push(
-                "Optimize Meta Description to roughly 120–160 characters."
-            );
-
-        }
-
-
-        $("auditMeta").textContent =
-
-`META TITLE:
-${title||"❌ MISSING"}
-
-TITLE LENGTH:
-${titleLength}
-
-${
-    titleOK
-    ? "✅ Recommended length."
-    : "⚠️ Review title length."
-}
-
---------------------------------
-
-META DESCRIPTION:
-${description||"❌ MISSING"}
-
-DESCRIPTION LENGTH:
-${descriptionLength}
-
-${
-    descriptionOK
-    ? "✅ Recommended length."
-    : "⚠️ Review description length."
-}`;
-
-
-        /* URL */
-
-        const ua =
-            urlAudit(d.url);
-
-        passed +=
-            ua.pass;
-
-        warnings +=
-            ua.warn;
-
-        rec.push(
-            ...(
-                ua.warn
-                ? ["Review URL structure."]
-                : []
-            )
-        );
-
-
-        $("auditUrlCheck").textContent =
-            ua.lines.join("\n");
-
-
-        /* HEADINGS */
-
-        const h =
-            seo.headings||{};
-
-        const h1 =
-            Number(h.h1||0);
-
-
-        if(h1===1)
-            passed++;
-        else{
-
-            warnings++;
-
-            rec.push(
-                "Use one clear H1 heading."
-            );
-
-        }
-
-
-        $("auditHeadings").textContent =
-
-`H1:
-${h1}
-
-H2:
-${h.h2||0}
-
-H3:
-${h.h3||0}
-
-H4:
-${h.h4||0}
-
-H5:
-${h.h5||0}
-
-H6:
-${h.h6||0}
-
-${
-    h1===1
-    ? "✅ Exactly one H1 detected."
-    : "⚠️ H1 structure needs attention."
-}`;
-
-
-        /* CANONICAL / ROBOTS */
-
-        const canonical =
-            !!seo.hasCanonical;
-
-        const robots =
-            !!seo.meta?.robots;
-
-
-        if(canonical)
-            passed++;
-        else{
-
-            warnings++;
-
-            rec.push(
-                "Add a canonical URL."
-            );
-
-        }
-
-
-        if(robots)
-            passed++;
-        else{
-
-            warnings++;
-
-            rec.push(
-                "Check robots meta configuration."
-            );
-
-        }
-
-
-        $("auditTechnical").textContent =
-
-`CANONICAL:
-${
-    canonical
-    ? "✅ "+seo.canonical
-    : "❌ Missing"
-}
-
-ROBOTS META:
-${
-    robots
-    ? "✅ Detected"
-    : "⚠️ Not detected"
-}
-
-CONTENT TYPE:
-${d.contentType||"Unknown"}`;
-
-        
-        /* SOCIAL / SCHEMA */
-
-        const meta =
-            seo.meta||{};
-
-        const social=[
-            ["ogTitle","Open Graph Title"],
-            ["ogDescription","Open Graph Description"],
-            ["ogImage","Open Graph Image"],
-            ["twitterCard","Twitter Card"],
-            ["schema","Schema / JSON-LD"]
-        ];
-
-
-        let socialText="";
-
-
-        social.forEach(
-            x=>{
-
-                if(meta[x[0]]){
-
-                    passed++;
-
-                    socialText +=
-                        "✅ "+
-                        x[1]+
-                        "\n";
-
-                }else{
-
-                    warnings++;
-
-                    socialText +=
-                        "⚠️ "+
-                        x[1]+
-                        " missing\n";
-
-                    rec.push(
-                        "Consider adding "+
-                        x[1]+"."
+                body =
+                    JSON.parse(
+                        document
+                            .getElementById("jsonInput")
+                            .value
                     );
 
-                }
+            } catch {
 
+                throw new Error(
+                    "Invalid JSON in request body."
+                );
             }
-        );
 
+            options.headers["Content-Type"] =
+                "application/json";
 
-        $("auditSocial").textContent =
-            socialText;
-
-
-        /* IMAGES */
-
-        const images =
-            seo.images||{};
-
-        const totalImages =
-            Number(
-                images.total||0
-            );
-
-        const missingAlt =
-            Number(
-                images.missingAlt||0
-            );
-
-        const emptyAlt =
-            Number(
-                images.emptyAlt||0
-            );
-
-
-        if(totalImages===0){
-
-            warnings++;
-
-            rec.push(
-                "No images were detected on this page."
-            );
-
-        }else if(missingAlt===0){
-
-            passed++;
-
-        }else{
-
-            errors++;
-
-            rec.push(
-                "Add ALT attributes to images missing ALT text."
-            );
-
+            options.body =
+                JSON.stringify(body);
         }
 
-
-        $("auditImages").textContent =
-
-`TOTAL IMAGES:
-${totalImages}
-
-MISSING ALT:
-${missingAlt}
-
-EMPTY ALT:
-${emptyAlt}
-
-USABLE ALT:
-${images.usableAlt||0}
-
-${
-    totalImages===0
-    ? "⚠️ No images detected."
-    : missingAlt===0
-    ? "✅ No missing ALT attributes detected."
-    : "❌ Images are missing ALT attributes."
-}`;
-
-
-        /* LINKS */
-
-        const links =
-            seo.links||{};
-
-        const internal =
-            Number(
-                links.internal||0
+        const response =
+            await fetch(
+                worker + tool.route,
+                options
             );
 
-        const external =
-            Number(
-                links.external||0
-            );
+        const text =
+            await response.text();
 
-        const nofollow =
-            Number(
-                links.nofollow||0
-            );
+        let output;
 
+        try {
 
-        if(internal>0)
-            passed++;
-        else{
+            output =
+                JSON.stringify(
+                    JSON.parse(text),
+                    null,
+                    2
+                );
 
-            warnings++;
+        } catch {
 
-            rec.push(
-                "Add relevant internal links."
-            );
-
+            output = text;
         }
 
+        responseBox.textContent =
+            `HTTP ${response.status}\n\n${output}`;
 
-        $("auditLinks").textContent =
+        responseBox.className =
+            response.ok
+                ? "response success"
+                : "response error";
 
-`TOTAL LINKS:
-${links.total||0}
-
-INTERNAL:
-${internal}
-
-EXTERNAL:
-${external}
-
-NOFOLLOW:
-${nofollow}
-
-${
-    internal>0
-    ? "✅ Internal links detected."
-    : "⚠️ No internal links detected."
-}`;
-
-
-        /* MOBILE */
-
-        const mobile =
-            seo.mobile||{};
-
-
-        if(mobile.viewport)
-            passed++;
-        else{
-
-            errors++;
-
-            rec.push(
-                "Add a responsive viewport meta tag."
+        if (response.ok) {
+            showToast("Request successful.");
+        } else {
+            showToast(
+                `Request returned ${response.status}.`
             );
-
         }
 
+    } catch (error) {
 
-        $("auditMobile").textContent =
+        responseBox.textContent =
+            `Request failed:\n\n${error.message}`;
 
-`VIEWPORT META:
-${
-    mobile.viewport
-    ? "✅ Detected"
-    : "❌ Missing"
+        responseBox.className =
+            "response error";
+
+        showToast("Request failed.");
+
+    } finally {
+
+        executeBtn.disabled = false;
+
+        executeBtn.textContent =
+            "▶ Execute";
+    }
 }
 
-BASIC MOBILE READINESS:
-${
-    mobile.viewport
-    ? "PASS"
-    : "FAIL"
-}`;
+/* =========================================================
+   OPEN RESULT MODAL
+========================================================= */
 
+function openToolLikeResult(
+    title,
+    route,
+    output,
+    success
+) {
 
-        /* CONTENT */
+    document.getElementById("modalTitle")
+        .textContent = title;
 
-        const words =
-            Number(
-                seo.content?.words||0
-            );
+    document.getElementById("modalRoute")
+        .textContent = route;
 
+    document.getElementById("bodyField")
+        .style.display = "none";
 
-        if(words>=300){
+    document.getElementById("response")
+        .textContent = output;
 
-            passed++;
+    document.getElementById("response")
+        .className =
+            success
+                ? "response success"
+                : "response error";
 
-        }else if(words>0){
+    document.getElementById("toolModal")
+        .classList.add("show");
+}
 
-            warnings++;
+/* =========================================================
+   JSON
+========================================================= */
 
-            rec.push(
-                "Content is relatively short; expand where useful."
-            );
+function formatJSON() {
 
-        }else{
+    const input =
+        document.getElementById("jsonInput");
 
-            errors++;
+    try {
 
-            rec.push(
-                "No readable page content detected."
-            );
+        const value =
+            JSON.parse(input.value);
 
-        }
+        input.value =
+            JSON.stringify(value, null, 2);
 
+        showToast("JSON formatted.");
 
-        $("auditContent").textContent =
+    } catch {
 
-`READABLE WORDS:
-${words}
+        showToast("Invalid JSON.");
+    }
+}
 
-PRIMARY KEYWORD:
-Use Keyword Manager for page-wise tracking.
+function clearResponse() {
 
-SECONDARY KEYWORDS:
-Use Keyword Manager for page-wise tracking.
+    const response =
+        document.getElementById("response");
 
-${
-    words>=300
-    ? "✅ Reasonable amount of readable content detected."
-    : "⚠️ Content appears relatively short."
-}`;
+    response.textContent =
+        "No response.";
 
+    response.className =
+        "response";
+}
 
-        /* SITEMAP */
+async function copyResponse() {
 
-        let filesText="";
+    const text =
+        document.getElementById("response")
+            .textContent;
 
+    try {
 
-        try{
+        await navigator.clipboard.writeText(text);
 
-            const base =
-                new URL(d.url).origin;
+        showToast("Response copied.");
 
-            const sitemap =
-                await checkLiveFile(
-                    base,
-                    "/sitemap.xml"
-                );
+    } catch {
 
+        showToast("Could not copy.");
+    }
+}
 
-            if(sitemap.ok){
+/* =========================================================
+   URL / KEY
+========================================================= */
 
-                passed++;
+function getWorkerUrl() {
 
-                filesText +=
-`SITEMAP:
-✅ Reachable
-HTTP: ${sitemap.status}
-Response: ${sitemap.ms} ms`;
+    return (
+        document
+            .getElementById("workerUrl")
+            .value
+            .trim()
+            .replace(/\/+$/, "")
+        || DEFAULT_WORKER
+    );
+}
 
-            }else{
+function getAdminKey() {
 
-                warnings++;
+    return document
+        .getElementById("adminKey")
+        .value
+        .trim();
+}
 
-                filesText +=
-`SITEMAP:
-⚠️ Not confirmed
-HTTP: ${sitemap.status}`;
+/* =========================================================
+   SEARCH
+========================================================= */
 
-                rec.push(
-                    "Check sitemap.xml availability."
-                );
+function filterTools() {
 
-            }
+    const query =
+        document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase()
+            .trim();
 
-        }catch(e){
+    document
+        .querySelectorAll(".tool-card")
+        .forEach(card => {
 
-            warnings++;
+            const text =
+                card.dataset.search || "";
 
-            filesText +=
-                "SITEMAP: ⚠️ Check failed";
+            const visible =
+                !query ||
+                text.includes(query);
 
-        }
+            card.style.display =
+                visible ? "" : "none";
+        });
+}
 
+/* =========================================================
+   NAVIGATION
+========================================================= */
 
-        /* ROBOTS */
+function scrollToSection(id) {
 
-        try{
+    const element =
+        document.getElementById(id);
 
-            const base =
-                new URL(d.url).origin;
+    if (element) {
 
-            const robotsFile =
-                await checkLiveFile(
-                    base,
-                    "/robots.txt"
-                );
-
-
-            if(robotsFile.ok){
-
-                passed++;
-
-                filesText +=
-`\n\nROBOTS.TXT:
-✅ Reachable
-HTTP: ${robotsFile.status}
-Response: ${robotsFile.ms} ms`;
-
-            }else{
-
-                warnings++;
-
-                filesText +=
-`\n\nROBOTS.TXT:
-⚠️ Not confirmed
-HTTP: ${robotsFile.status}`;
-
-                rec.push(
-                    "Check robots.txt availability."
-                );
-
-            }
-
-        }catch{
-
-            warnings++;
-
-            filesText +=
-                "\n\nROBOTS.TXT: ⚠️ Check failed";
-
-        }
-
-
-        $("auditFiles").textContent =
-            filesText;
-
-
-        /* 404 */
-
-        try{
-
-            const base =
-                new URL(d.url).origin;
-
-            const four =
-                await check404(base);
-
-
-            if(four.ok){
-
-                passed++;
-
-                $("audit404").textContent =
-`✅ CUSTOM 404 CHECK PASSED
-
-Random invalid URL returned:
-HTTP ${four.status}
-
-The website is returning a 404 response
-for a non-existing page.`;
-
-            }else{
-
-                warnings++;
-
-                $("audit404").textContent =
-`⚠️ 404 CHECK NEEDS REVIEW
-
-Random invalid URL returned:
-HTTP ${four.status||"Unknown"}
-
-A proper 404 response was not confirmed.`;
-
-                rec.push(
-                    "Verify that non-existing pages return a proper 404 response."
-                );
-
-            }
-
-        }catch(e){
-
-            warnings++;
-
-            $("audit404").textContent =
-`⚠️ 404 CHECK COULD NOT COMPLETE
-
-${e.message}`;
-
-        }
-
-
-        /* SCORE */
-
-        const total =
-            passed+
-            warnings+
-            errors;
-
-
-        const score =
-            total
-            ? Math.round(
-                (
-                    passed+
-                    warnings*.5
-                )/
-                total*
-                100
-            )
-            : 0;
-
-
-        $("auditScore").textContent =
-            score+"/100";
-
-        $("auditPassed").textContent =
-            passed;
-
-        $("auditWarnings").textContent =
-            warnings;
-
-        $("auditErrors").textContent =
-            errors;
-
-
-        $("auditDashboard")
-            .style.display="block";
-
-        $("auditResults")
-            .style.display="grid";
-
-
-        const uniqueRec =
-            [
-                ...new Set(rec)
-            ];
-
-
-        $("auditRecommendations").textContent =
-
-uniqueRec.length
-?
-uniqueRec
-    .map(
-        x=>"⚠️ "+x
-    )
-    .join("\n\n")
-:
-"🎉 No major recommendations from the checks.";
-
-
-        result(
-
-            "auditStatus",
-
-`✅ FULL SEO AUDIT COMPLETED
-
-URL:
-${d.url}
-
-SEO SCORE:
-${score}/100
-
-PASSED:
-${passed}
-
-WARNINGS:
-${warnings}
-
-ERRORS:
-${errors}`,
-
-            "ok"
-
-        );
-
-
-    }catch(e){
-
-        result(
-            "auditStatus",
-
-`❌ SEO AUDIT FAILED
-
-${e.message}`,
-
-            "err"
-        );
-
+        element.scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
     }
 
+    document
+        .querySelectorAll(".nav-item")
+        .forEach(x =>
+            x.classList.remove("active")
+        );
+
+    if (
+        event &&
+        event.currentTarget &&
+        event.currentTarget.classList
+    ) {
+        event.currentTarget
+            .classList.add("active");
+    }
+
+    if (window.innerWidth <= 760) {
+        toggleSidebar(false);
+    }
 }
 
+function toggleSidebar(force) {
+
+    const sidebar =
+        document.getElementById("sidebar");
+
+    if (typeof force === "boolean") {
+
+        sidebar.classList.toggle(
+            "open",
+            force
+        );
+
+        return;
+    }
+
+    sidebar.classList.toggle("open");
+}
 
 /* =========================================================
-   CLEAR AUDIT
+   TOAST
 ========================================================= */
 
-function clearFullSEOAudit(){
+let toastTimer;
 
-    $("auditUrl").value="";
+function showToast(message) {
 
-    $("auditDashboard")
-        .style.display="none";
+    const toast =
+        document.getElementById("toast");
 
-    $("auditResults")
-        .style.display="none";
+    toast.textContent =
+        message;
 
-    result(
-        "auditStatus",
-        "Ready to analyze."
-    );
+    toast.classList.add("show");
 
+    clearTimeout(toastTimer);
+
+    toastTimer =
+        setTimeout(() => {
+
+            toast.classList.remove("show");
+
+        }, 2500);
 }
-
 
 /* =========================================================
-   QUICK LINKS
-========================================================= */
-
-function openWebsite(){
-
-    window.open(
-        CONFIG.base,
-        "_blank"
-    );
-
-}
-
-
-function openGitHub(){
-
-    window.open(
-        "https://github.com/"+
-        CONFIG.repo,
-        "_blank"
-    );
-
-}
-
-
-function openWorker(){
-
-    window.open(
-        worker(),
-        "_blank"
-    );
-
-}
-
-
-function openSitemap(){
-
-    window.open(
-        CONFIG.base+
-        "sitemap.xml",
-        "_blank"
-    );
-
-}
-
-
-/* =========================================================
-   DOM READY
+   KEYBOARD
 ========================================================= */
 
 document.addEventListener(
-    "DOMContentLoaded",
-    ()=>{
+    "keydown",
+    event => {
 
-        makeHeadingFields();
-
-        updateSectionInfo();
-
-        loadSavedKey();
-
-
-        $("articleDate")
-            .value =
-            new Date()
-                .toISOString()
-                .slice(0,10);
-
-
-        /* TITLE -> SLUG */
-
-        $("articleTitle")
-            .addEventListener(
-                "input",
-                ()=>{
-
-                    if(
-                        !$("articleSlug")
-                            .value
-                    ){
-
-                        $("articleSlug")
-                            .value =
-                            slugify(
-                                $("articleTitle")
-                                    .value
-                            );
-
-                    }
-
-                }
-            );
-
-
-        /* CONNECTION */
-
-        $("testConnectionBtn")
-            .addEventListener(
-                "click",
-                testConnection
-            );
-
-        $("clearSavedKeyBtn")
-            .addEventListener(
-                "click",
-                clearSavedKey
-            );
-
-
-        /* ARTICLE */
-
-        $("articleSection")
-            .addEventListener(
-                "change",
-                updateSectionInfo
-            );
-
-        $("previewArticleBtn")
-            .addEventListener(
-                "click",
-                previewArticle
-            );
-
-        $("analyzeSeoBtn")
-            .addEventListener(
-                "click",
-                analyzeSEO
-            );
-
-        $("generatedHtmlBtn")
-            .addEventListener(
-                "click",
-                showGeneratedHTML
-            );
-
-        $("clearArticleBtn")
-            .addEventListener(
-                "click",
-                clearArticle
-            );
-
-        $("publishBtn")
-            .addEventListener(
-                "click",
-                directPublish
-            );
-
-
-        /* DELETE */
-
-        $("deleteArticleBtn")
-            .addEventListener(
-                "click",
-                deleteArticle
-            );
-
-
-        /* FILE */
-
-        $("readFileBtn")
-            .addEventListener(
-                "click",
-                readFile
-            );
-
-        $("loadIndexBtn")
-            .addEventListener(
-                "click",
-                loadIndex
-            );
-
-        $("saveFileBtn")
-            .addEventListener(
-                "click",
-                saveFile
-            );
-
-        $("clearEditorBtn")
-            .addEventListener(
-                "click",
-                clearEditor
-            );
-
-
-        /* KEYWORDS */
-
-        $("addKeywordBtn")
-            .addEventListener(
-                "click",
-                addKeyword
-            );
-
-        $("loadKeywordsBtn")
-            .addEventListener(
-                "click",
-                loadKeywords
-            );
-
-
-        /* INTERNAL LINK */
-
-        $("prepareLinkBtn")
-            .addEventListener(
-                "click",
-                prepareLink
-            );
-
-        $("applyInternalLinkBtn")
-            .addEventListener(
-                "click",
-                applyInternalLink
-            );
-
-
-        /* REDIRECT */
-
-        $("createRedirectBtn")
-            .addEventListener(
-                "click",
-                createRedirect
-            );
-
-
-        /* SEO AUDIT */
-
-        $("runAuditBtn")
-            .addEventListener(
-                "click",
-                runFullSEOAudit
-            );
-
-        $("clearAuditBtn")
-            .addEventListener(
-                "click",
-                clearFullSEOAudit
-            );
-
-
-        /* QUICK LINKS */
-
-        $("openWebsiteBtn")
-            .addEventListener(
-                "click",
-                openWebsite
-            );
-
-        $("openGithubBtn")
-            .addEventListener(
-                "click",
-                openGitHub
-            );
-
-        $("openWorkerBtn")
-            .addEventListener(
-                "click",
-                openWorker
-            );
-
-        $("openSitemapBtn")
-            .addEventListener(
-                "click",
-                openSitemap
-            );
+        if (event.key === "Escape") {
+            closeModal();
+        }
 
     }
 );
@@ -6287,5 +2747,4 @@ document.addEventListener(
 </script>
 
 </body>
-
     </html>
