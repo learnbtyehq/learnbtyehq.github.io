@@ -20,7 +20,7 @@
 <style>
 
 *{
-    box-sizing:border-box
+    box-sizing:border-box;
 }
 
 body{
@@ -38,15 +38,21 @@ body{
         ),
         #050811;
     color:#f5f7fb;
-    font-family:Inter,system-ui,sans-serif;
-    line-height:1.55
+    font-family:
+        Inter,
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+    line-height:1.55;
 }
 
 button,
 input,
 textarea,
 select{
-    font:inherit
+    font:inherit;
 }
 
 button{
@@ -62,13 +68,13 @@ button{
             #20dff8,
             #6d7cff
         );
-    color:#031018
+    color:#031018;
 }
 
 button.secondary{
     background:#182235;
     border:1px solid #2b3952;
-    color:#dce5f3
+    color:#dce5f3;
 }
 
 button.danger{
@@ -78,50 +84,56 @@ button.danger{
             #ff5d72,
             #ff3152
         );
-    color:#fff
+    color:#fff;
 }
 
 button:disabled{
     opacity:.5;
-    cursor:not-allowed
+    cursor:not-allowed;
 }
 
 a{
-    color:inherit
+    color:inherit;
 }
 
 .wrap{
     width:min(
-        1120px,
+        1150px,
         calc(100% - 20px)
     );
-    margin:auto
+    margin:auto;
 }
 
 header{
     position:sticky;
     top:0;
     z-index:50;
-    background:#050811e8;
+    background:#050811ee;
     border-bottom:1px solid #ffffff12;
-    backdrop-filter:blur(18px)
+    backdrop-filter:blur(18px);
 }
 
 .nav{
     min-height:68px;
     display:flex;
     align-items:center;
-    justify-content:space-between
+    justify-content:space-between;
+    gap:15px;
 }
 
 .logo{
     font-size:22px;
     font-weight:900;
-    text-decoration:none
+    text-decoration:none;
 }
 
 .logo span{
-    color:#29ddff
+    color:#29ddff;
+}
+
+.logo small{
+    color:#78869a;
+    font-size:10px;
 }
 
 .status{
@@ -130,17 +142,17 @@ header{
     border:1px solid #27354d;
     color:#9ba8bc;
     background:#0b1220;
-    font-size:12px
+    font-size:12px;
 }
 
 .status.connected{
     color:#62f6c2;
     border-color:#00ffaa55;
-    background:#00ffaa12
+    background:#00ffaa12;
 }
 
 .hero{
-    padding:38px 0 22px
+    padding:38px 0 22px;
 }
 
 .badge{
@@ -151,7 +163,7 @@ header{
     border:1px solid #20dff838;
     color:#32dcf8;
     font-size:11px;
-    font-weight:800
+    font-weight:800;
 }
 
 .hero h1{
@@ -161,7 +173,7 @@ header{
         58px
     );
     line-height:1.03;
-    margin:15px 0 10px
+    margin:15px 0 10px;
 }
 
 .gradient{
@@ -174,12 +186,12 @@ header{
         );
     background-clip:text;
     -webkit-background-clip:text;
-    color:transparent
+    color:transparent;
 }
 
 .hero p,
 .desc{
-    color:#8e9aae
+    color:#8e9aae;
 }
 
 .grid{
@@ -189,11 +201,11 @@ header{
             2,
             minmax(0,1fr)
         );
-    gap:18px
+    gap:18px;
 }
 
 .full{
-    grid-column:1/-1
+    grid-column:1/-1;
 }
 
 .card{
@@ -208,21 +220,25 @@ header{
         );
     border:1px solid #ffffff12;
     box-shadow:
-        0 20px 60px #00000038
+        0 20px 60px #00000038;
 }
 
 .card h2{
     margin:0 0 6px;
-    font-size:20px
+    font-size:20px;
+}
+
+.card h3{
+    margin-top:22px;
 }
 
 .desc{
     margin:0 0 15px;
-    font-size:13px
+    font-size:13px;
 }
 
 .field{
-    margin-top:13px
+    margin-top:13px;
 }
 
 .field label{
@@ -230,7 +246,7 @@ header{
     margin-bottom:6px;
     color:#b9c4d5;
     font-size:12px;
-    font-weight:750
+    font-weight:750;
 }
 
 input,
@@ -242,7 +258,7 @@ select{
     border-radius:11px;
     background:#080e19;
     color:#fff;
-    outline:0
+    outline:0;
 }
 
 input:focus,
@@ -250,19 +266,19 @@ textarea:focus,
 select:focus{
     border-color:#27dfff;
     box-shadow:
-        0 0 0 3px #27dfff14
+        0 0 0 3px #27dfff14;
 }
 
 textarea{
     min-height:120px;
-    resize:vertical
+    resize:vertical;
 }
 
 .row{
     display:flex;
     flex-wrap:wrap;
     gap:9px;
-    margin-top:13px
+    margin-top:13px;
 }
 
 .result{
@@ -274,15 +290,15 @@ textarea{
     color:#aeb9ca;
     white-space:pre-wrap;
     overflow-wrap:anywhere;
-    font-size:12px
+    font-size:12px;
 }
 
 .ok{
-    color:#62f6c2
+    color:#62f6c2;
 }
 
 .err{
-    color:#ff7889
+    color:#ff7889;
 }
 
 .stats{
@@ -293,24 +309,24 @@ textarea{
             1fr
         );
     gap:9px;
-    margin-top:14px
+    margin-top:14px;
 }
 
 .stat{
     padding:13px;
     border-radius:12px;
     background:#080e19;
-    border:1px solid #202c40
+    border:1px solid #202c40;
 }
 
 .stat b{
     display:block;
-    font-size:23px
+    font-size:23px;
 }
 
 .stat span{
     font-size:10px;
-    color:#78869a
+    color:#78869a;
 }
 
 .note{
@@ -320,7 +336,7 @@ textarea{
     background:#0b1322;
     border:1px solid #1c2940;
     color:#8d9bb0;
-    font-size:12px
+    font-size:12px;
 }
 
 .check{
@@ -329,24 +345,24 @@ textarea{
     gap:8px;
     color:#8e9aae;
     font-size:12px;
-    margin-top:9px
+    margin-top:9px;
 }
 
 .check input{
     width:17px;
-    height:17px
+    height:17px;
 }
 
 .publish{
     width:100%;
     min-height:58px;
     margin-top:16px;
-    font-size:16px
+    font-size:16px;
 }
 
 .preview{
     display:none;
-    margin-top:16px
+    margin-top:16px;
 }
 
 .preview iframe{
@@ -354,53 +370,116 @@ textarea{
     height:620px;
     border:0;
     border-radius:12px;
-    background:#fff
+    background:#fff;
 }
 
 .code{
     display:none;
     width:100%;
     min-height:360px;
-    font:12px monospace
+    font:12px monospace;
 }
 
 .list{
     display:grid;
     gap:8px;
-    margin-top:12px
+    margin-top:12px;
 }
 
 .item{
     padding:12px;
     border-radius:11px;
     background:#0b1322;
-    border:1px solid #1c2940
+    border:1px solid #1c2940;
 }
 
 .item strong{
     display:block;
-    margin-bottom:4px
+    margin-bottom:4px;
 }
 
 .item small{
-    color:#8d9bb0
+    color:#8d9bb0;
+}
+
+.audit-grid{
+    display:grid;
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0,1fr)
+        );
+    gap:10px;
+    margin-top:15px;
+}
+
+.audit-card{
+    padding:15px;
+    border-radius:13px;
+    background:#080e19;
+    border:1px solid #202c40;
+}
+
+.audit-card h3{
+    margin:0 0 9px;
+    font-size:14px;
+}
+
+.audit-card pre{
+    margin:0;
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+    font:12px/1.7 system-ui,sans-serif;
+    color:#aeb9ca;
+}
+
+.score-big{
+    font-size:42px;
+    font-weight:900;
+    margin-top:4px;
+}
+
+.pass{
+    color:#62f6c2;
+}
+
+.warn{
+    color:#ffd166;
+}
+
+.fail{
+    color:#ff7889;
+}
+
+.loading{
+    animation:pulse 1.2s infinite;
+}
+
+@keyframes pulse{
+    50%{
+        opacity:.45;
+    }
 }
 
 footer{
     text-align:center;
     padding:35px;
     color:#647085;
-    font-size:11px
+    font-size:11px;
 }
 
 @media(max-width:850px){
 
     .grid{
-        grid-template-columns:1fr
+        grid-template-columns:1fr;
     }
 
     .full{
-        grid-column:auto
+        grid-column:auto;
+    }
+
+    .audit-grid{
+        grid-template-columns:1fr;
     }
 
 }
@@ -408,19 +487,19 @@ footer{
 @media(max-width:600px){
 
     .wrap{
-        width:calc(100% - 14px)
+        width:calc(100% - 14px);
     }
 
     .card{
-        padding:15px
+        padding:15px;
     }
 
     .row{
-        flex-direction:column
+        flex-direction:column;
     }
 
     .row button{
-        width:100%
+        width:100%;
     }
 
     .stats{
@@ -428,7 +507,7 @@ footer{
             repeat(
                 2,
                 1fr
-            )
+            );
     }
 
 }
@@ -462,7 +541,9 @@ footer{
 
 </header>
 
+
 <main class="wrap">
+
 
 <section class="hero">
 
@@ -478,14 +559,16 @@ Control Center.
 </h1>
 
 <p>
-Direct-publish articles, automatically apply the selected section theme,
-update category/homepage/sitemap, manage keywords, edit files and delete
-published articles from one panel.
+Direct publishing, GitHub file management, SEO auditing,
+keywords, internal links, redirects and website management
+from one private control panel.
 </p>
 
 </section>
 
+
 <div class="grid">
+
 
 <!-- =====================================================
      CONNECTION
@@ -498,7 +581,7 @@ published articles from one panel.
 </h2>
 
 <p class="desc">
-GitHub token stays on your Cloudflare Worker.
+GitHub token stays safely inside the Cloudflare Worker.
 </p>
 
 <div class="field">
@@ -580,57 +663,29 @@ Not tested yet.
 </h2>
 
 <p class="desc">
-Current publishing session.
+Current publishing and SEO session.
 </p>
 
 <div class="stats">
 
 <div class="stat">
-
-<b id="statStatus">
-—
-</b>
-
-<span>
-Connection
-</span>
-
+<b id="statStatus">—</b>
+<span>Connection</span>
 </div>
 
 <div class="stat">
-
-<b id="statFiles">
-0
-</b>
-
-<span>
-Files Updated
-</span>
-
+<b id="statFiles">0</b>
+<span>Files Updated</span>
 </div>
 
 <div class="stat">
-
-<b id="statArticles">
-0
-</b>
-
-<span>
-Articles Published
-</span>
-
+<b id="statArticles">0</b>
+<span>Articles Published</span>
 </div>
 
 <div class="stat">
-
-<b id="statKeywords">
-0
-</b>
-
-<span>
-Keywords
-</span>
-
+<b id="statKeywords">0</b>
+<span>Keywords</span>
 </div>
 
 </div>
@@ -640,6 +695,284 @@ Keywords
     class="result"
 >
 No publish completed yet.
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     FULL SEO AUDIT
+===================================================== -->
+
+<section class="card full">
+
+<h2>
+🔍 Full SEO Audit Center
+</h2>
+
+<p class="desc">
+Enter any live page URL. The panel checks on-page SEO,
+technical SEO, links, images, mobile readiness, content,
+sitemap, robots.txt and 404 availability.
+</p>
+
+<div class="field">
+
+<label>
+Website / Page URL
+</label>
+
+<input
+    id="auditUrl"
+    type="url"
+    placeholder="https://learnbtyehq.github.io/"
+>
+
+</div>
+
+<div class="row">
+
+<button
+    id="runAuditBtn"
+    type="button"
+>
+🔍 RUN FULL SEO AUDIT
+</button>
+
+<button
+    id="clearAuditBtn"
+    class="secondary"
+    type="button"
+>
+🧹 Clear Audit
+</button>
+
+</div>
+
+<div
+    id="auditStatus"
+    class="result"
+>
+Ready to analyze.
+</div>
+
+
+<div
+    id="auditDashboard"
+    style="display:none"
+>
+
+<div class="stats">
+
+<div class="stat">
+
+<b
+    id="auditScore"
+>
+—
+</b>
+
+<span>
+SEO SCORE
+</span>
+
+</div>
+
+<div class="stat">
+
+<b
+    id="auditPassed"
+>
+0
+</b>
+
+<span>
+PASSED
+</span>
+
+</div>
+
+<div class="stat">
+
+<b
+    id="auditWarnings"
+>
+0
+</b>
+
+<span>
+WARNINGS
+</span>
+
+</div>
+
+<div class="stat">
+
+<b
+    id="auditErrors"
+>
+0
+</b>
+
+<span>
+ERRORS
+</span>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div
+    id="auditResults"
+    class="audit-grid"
+    style="display:none"
+>
+
+<div class="audit-card">
+
+<h3>
+🌐 HTTP + PAGE SPEED
+</h3>
+
+<pre id="auditHttp"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+📝 META TITLE + DESCRIPTION
+</h3>
+
+<pre id="auditMeta"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+🔗 URL OPTIMIZATION
+</h3>
+
+<pre id="auditUrlCheck"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+📑 H1–H6 HEADINGS
+</h3>
+
+<pre id="auditHeadings"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+⚙️ TECHNICAL SEO
+</h3>
+
+<pre id="auditTechnical"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+🌐 OPEN GRAPH + SCHEMA
+</h3>
+
+<pre id="auditSocial"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+🖼️ IMAGES + ALT
+</h3>
+
+<pre id="auditImages"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+🔗 LINKS + NOFOLLOW
+</h3>
+
+<pre id="auditLinks"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+📱 MOBILE FRIENDLINESS
+</h3>
+
+<pre id="auditMobile"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+📚 CONTENT + KEYWORDS
+</h3>
+
+<pre id="auditContent"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+🗺️ SITEMAP + ROBOTS
+</h3>
+
+<pre id="auditFiles"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+🚨 404 PAGE
+</h3>
+
+<pre id="audit404"></pre>
+
+</div>
+
+
+<div class="audit-card">
+
+<h3>
+💡 RECOMMENDATIONS
+</h3>
+
+<pre id="auditRecommendations"></pre>
+
+</div>
+
 </div>
 
 </section>
@@ -656,9 +989,8 @@ No publish completed yet.
 </h2>
 
 <p class="desc">
-Select a website section, write your article and publish it directly.
-The article receives that section's visual theme and is added to the
-category page, homepage and sitemap.
+Create an article and automatically publish it to GitHub,
+category page, homepage, sitemap and SEO keyword storage.
 </p>
 
 <div class="field">
@@ -667,9 +999,8 @@ category page, homepage and sitemap.
 Website Section / Theme *
 </label>
 
-<select
-    id="articleSection"
->
+<select id="articleSection">
+
 <option value="education">
 🎓 Education
 </option>
@@ -960,10 +1291,9 @@ Ready to publish.
 </h2>
 
 <p class="desc">
-Delete an article and remove its references from the category page,
-homepage, sitemap and SEO keyword file.
+Delete an article and remove its category, homepage,
+sitemap and SEO keyword references.
 </p>
-
 
 <div class="field">
 
@@ -977,7 +1307,6 @@ Article File Path *
 >
 
 </div>
-
 
 <div class="field">
 
@@ -1007,11 +1336,10 @@ Article Section *
 
 </div>
 
-
 <div class="field">
 
 <label>
-Article Title / Text (optional)
+Article Title / Text
 </label>
 
 <input
@@ -1020,7 +1348,6 @@ Article Title / Text (optional)
 >
 
 </div>
-
 
 <div class="row">
 
@@ -1033,7 +1360,6 @@ Article Title / Text (optional)
 </button>
 
 </div>
-
 
 <div
     id="deleteResult"
@@ -1059,7 +1385,6 @@ Nothing deleted.
 Read a GitHub file and load it into the editor.
 </p>
 
-
 <div class="field">
 
 <label>
@@ -1072,7 +1397,6 @@ Repository File Path
 >
 
 </div>
-
 
 <div class="row">
 
@@ -1092,7 +1416,6 @@ Load index.html
 </button>
 
 </div>
-
 
 <div
     id="fileResult"
@@ -1115,9 +1438,8 @@ No file loaded.
 </h2>
 
 <p class="desc">
-Edit a loaded file and commit it.
+Edit a loaded file and commit it directly.
 </p>
-
 
 <div class="field">
 
@@ -1132,7 +1454,6 @@ Current File
 
 </div>
 
-
 <div class="field">
 
 <label>
@@ -1145,7 +1466,6 @@ Commit Message
 >
 
 </div>
-
 
 <div class="field">
 
@@ -1160,7 +1480,6 @@ File Content
 ></textarea>
 
 </div>
-
 
 <div class="row">
 
@@ -1180,7 +1499,6 @@ Clear
 </button>
 
 </div>
-
 
 <div
     id="saveResult"
@@ -1203,9 +1521,8 @@ No changes made.
 </h2>
 
 <p class="desc">
-Stores page-wise SEO keywords in seo-keywords.json.
+Store page-wise primary and secondary SEO keywords.
 </p>
-
 
 <div class="field">
 
@@ -1220,7 +1537,6 @@ Page
 
 </div>
 
-
 <div class="field">
 
 <label>
@@ -1234,7 +1550,6 @@ Primary Keyword
 
 </div>
 
-
 <div class="field">
 
 <label>
@@ -1247,7 +1562,6 @@ Secondary Keywords
 >
 
 </div>
-
 
 <div class="row">
 
@@ -1268,14 +1582,12 @@ Secondary Keywords
 
 </div>
 
-
 <div
     id="keywordResult"
     class="result"
 >
 Keyword manager ready.
 </div>
-
 
 <div
     id="keywordList"
@@ -1296,9 +1608,8 @@ Keyword manager ready.
 </h2>
 
 <p class="desc">
-Generate or apply a link to a source page.
+Find anchor text in a source page and link it to a target page.
 </p>
-
 
 <div class="field">
 
@@ -1313,7 +1624,6 @@ Source Page
 
 </div>
 
-
 <div class="field">
 
 <label>
@@ -1327,7 +1637,6 @@ Target Page
 
 </div>
 
-
 <div class="field">
 
 <label>
@@ -1340,7 +1649,6 @@ Anchor Text
 >
 
 </div>
-
 
 <div class="row">
 
@@ -1360,7 +1668,6 @@ Generate Link
 </button>
 
 </div>
-
 
 <div
     id="linkResult"
@@ -1383,9 +1690,8 @@ Internal linking ready.
 </h2>
 
 <p class="desc">
-Create a redirect HTML file.
+Create an HTML redirect file.
 </p>
-
 
 <div class="field">
 
@@ -1400,7 +1706,6 @@ Old URL / File
 
 </div>
 
-
 <div class="field">
 
 <label>
@@ -1414,7 +1719,6 @@ New URL
 
 </div>
 
-
 <div class="row">
 
 <button
@@ -1425,7 +1729,6 @@ New URL
 </button>
 
 </div>
-
 
 <div
     id="redirectResult"
@@ -1489,6 +1792,7 @@ Sitemap
 
 </main>
 
+
 <footer>
 LearnByte SEO Control · Private administration tool
 </footer>
@@ -1510,44 +1814,40 @@ const CONFIG = {
 
     sections: {
 
-        education: {
-            name: "Education",
-            css: "education.css",
-            category: "category/education.html",
-            grid: "education-post-grid",
-            icon: "🎓",
-            label: "EDUCATION",
-            read: "Read Guide →"
+        education:{
+            name:"Education",
+            css:"education.css",
+            category:"category/education.html",
+            grid:"education-post-grid",
+            icon:"🎓",
+            read:"Read Guide →"
         },
 
-        technology: {
-            name: "Technology",
-            css: "technology.css",
-            category: "category/technology.html",
-            grid: "tech-card-grid",
-            icon: "💻",
-            label: "TECHNOLOGY",
-            read: "Open Guide →"
+        technology:{
+            name:"Technology",
+            css:"technology.css",
+            category:"category/technology.html",
+            grid:"tech-card-grid",
+            icon:"💻",
+            read:"Open Guide →"
         },
 
-        seo: {
-            name: "SEO",
-            css: "seo.css",
-            category: "category/seo.html",
-            grid: "seo-post-grid",
-            icon: "🔎",
-            label: "SEO",
-            read: "Read Guide →"
+        seo:{
+            name:"SEO",
+            css:"seo.css",
+            category:"category/seo.html",
+            grid:"seo-post-grid",
+            icon:"🔎",
+            read:"Read Guide →"
         },
 
-        gaming: {
-            name: "Gaming",
-            css: "gaming.css",
-            category: "category/gaming.html",
-            grid: "gaming-post-grid",
-            icon: "🎮",
-            label: "GAMING",
-            read: "Read Article →"
+        gaming:{
+            name:"Gaming",
+            css:"gaming.css",
+            category:"category/gaming.html",
+            grid:"gaming-post-grid",
+            icon:"🎮",
+            read:"Read Article →"
         }
 
     }
@@ -1565,7 +1865,7 @@ let currentFilePath = null;
 let keywordSha = null;
 
 let keywordData = {
-    keywords: []
+    keywords:[]
 };
 
 
@@ -1573,41 +1873,56 @@ let keywordData = {
    HELPERS
 ========================================================= */
 
-const $ = id =>
+const $ =
+    id =>
     document.getElementById(id);
 
 
-const worker = () =>
-    $("workerUrl")
+function worker(){
+
+    return $("workerUrl")
         .value
         .trim()
-        .replace(/\/+$/, "");
+        .replace(/\/+$/,"");
+
+}
 
 
-const key = () =>
-    $("adminKey")
+function key(){
+
+    return $("adminKey")
         .value
         .trim();
 
+}
 
-const headers = () => ({
 
-    "Content-Type":
-        "application/json",
+function headers(){
 
-    "X-Admin-Key":
-        key()
+    return {
 
-});
+        "Content-Type":
+            "application/json",
+
+        "X-Admin-Key":
+            key()
+
+    };
+
+}
 
 
 function result(
     id,
     msg,
-    type = ""
+    type=""
 ){
 
-    const e = $(id);
+    const e =
+        $(id);
+
+    if(!e)
+        return;
 
     e.className =
         "result " + type;
@@ -1619,44 +1934,28 @@ function result(
 
 
 /* =========================================================
-   ESCAPE HTML
+   ESCAPE
 ========================================================= */
 
 function esc(v){
 
     return String(v ?? "")
-        .replace(
-            /&/g,
-            "&amp;"
-        )
-        .replace(
-            /</g,
-            "&lt;"
-        )
-        .replace(
-            />/g,
-            "&gt;"
-        )
-        .replace(
-            /"/g,
-            "&quot;"
-        )
-        .replace(
-            /'/g,
-            "&#039;"
-        );
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 
 }
 
 
 /* =========================================================
    API
-   FIXED VERSION WITH TIMEOUT
 ========================================================= */
 
 async function api(
     path,
-    method = "GET",
+    method="GET",
     body
 ){
 
@@ -1665,17 +1964,17 @@ async function api(
 
     const timeout =
         setTimeout(
-            () => {
+            ()=>{
                 controller.abort();
             },
-            15000
+            30000
         );
 
     try{
 
         const r =
             await fetch(
-                worker() + path,
+                worker()+path,
                 {
                     method,
 
@@ -1693,7 +1992,7 @@ async function api(
             );
 
 
-        let d = {};
+        let d={};
 
         try{
 
@@ -1702,7 +2001,7 @@ async function api(
 
         }catch{
 
-            d = {};
+            d={};
 
         }
 
@@ -1712,17 +2011,13 @@ async function api(
             throw new Error(
                 d.error ||
                 d.message ||
-                (
-                    "Request failed: " +
-                    r.status
-                )
+                "Request failed: "+r.status
             );
 
         }
 
 
         return d;
-
 
     }catch(e){
 
@@ -1732,19 +2027,16 @@ async function api(
         ){
 
             throw new Error(
-                "Connection timed out after 15 seconds."
+                "Request timed out after 30 seconds."
             );
 
         }
 
         throw e;
 
-
     }finally{
 
-        clearTimeout(
-            timeout
-        );
+        clearTimeout(timeout);
 
     }
 
@@ -1753,7 +2045,6 @@ async function api(
 
 /* =========================================================
    CONNECTION
-   FIXED VERSION
 ========================================================= */
 
 function setConnected(v){
@@ -1783,18 +2074,14 @@ async function testConnection(){
     const box =
         $("connectionResult");
 
-
     box.className =
-        "result";
-
+        "result loading";
 
     box.textContent =
         "🔄 Testing connection...";
 
-
     $("statStatus").textContent =
         "TESTING";
-
 
     try{
 
@@ -1806,7 +2093,6 @@ async function testConnection(){
 
         }
 
-
         const d =
             await api(
                 "/github-test",
@@ -1816,7 +2102,6 @@ async function testConnection(){
 
         box.className =
             "result ok";
-
 
         box.textContent =
 `✅ CONNECTION SUCCESSFUL
@@ -1832,21 +2117,28 @@ ${d.default_branch || "Unknown"}
 
 GitHub connection is working correctly.`;
 
-
         setConnected(true);
 
+        if(
+            $("rememberKey").checked
+        ){
+
+            localStorage.setItem(
+                "learnbyte_admin_key",
+                key()
+            );
+
+        }
 
     }catch(e){
 
         box.className =
             "result err";
 
-
         box.textContent =
 `❌ CONNECTION FAILED
 
 ${e.message}`;
-
 
         setConnected(false);
 
@@ -1912,9 +2204,7 @@ function updateSectionInfo(){
             $("articleSection").value
         ];
 
-
-    $("sectionInfo")
-        .textContent =
+    $("sectionInfo").textContent =
         `${s.icon} ${s.name} theme: ${s.css} · Category: ${s.category} · Articles: posts/`;
 
 }
@@ -1926,15 +2216,15 @@ function updateSectionInfo(){
 
 function makeHeadingFields(){
 
-    let h = "";
+    let h="";
 
     for(
-        let i = 1;
-        i <= 6;
+        let i=1;
+        i<=6;
         i++
     ){
 
-        h += `
+        h+=`
 
         <div class="field">
 
@@ -1966,8 +2256,8 @@ function makeHeadingFields(){
 
     }
 
-    $("headingFields")
-        .innerHTML = h;
+    $("headingFields").innerHTML =
+        h;
 
 }
 
@@ -1981,18 +2271,9 @@ function slugify(v){
     return String(v)
         .toLowerCase()
         .trim()
-        .replace(
-            /\.html$/,
-            ""
-        )
-        .replace(
-            /[^a-z0-9]+/g,
-            "-"
-        )
-        .replace(
-            /^-+|-+$/g,
-            ""
-        )
+        .replace(/\.html$/,"")
+        .replace(/[^a-z0-9]+/g,"-")
+        .replace(/^-+|-+$/g,"")
         + ".html";
 
 }
@@ -2005,7 +2286,6 @@ function articlePath(){
             .value
             .trim();
 
-
     if(!s){
 
         s =
@@ -2015,13 +2295,8 @@ function articlePath(){
 
     }
 
-
-    if(!s){
-
+    if(!s)
         return "";
-
-    }
-
 
     if(
         !s.endsWith(".html")
@@ -2032,35 +2307,29 @@ function articlePath(){
 
     }
 
-
     return s.includes("/")
         ? s
-        : "posts/" + s;
+        : "posts/"+s;
 
 }
 
 
 /* =========================================================
-   TEXT PARAGRAPHS
+   TEXT
 ========================================================= */
 
 function textParas(t){
 
-    return String(t || "")
+    return String(t||"")
         .trim()
-        .split(
-            /\n\s*\n/
-        )
+        .split(/\n\s*\n/)
         .filter(Boolean)
         .map(
             x =>
-                "<p>" +
-                esc(x)
-                    .replace(
-                        /\n/g,
-                        "<br>"
-                    ) +
-                "</p>"
+            "<p>"+
+            esc(x)
+                .replace(/\n/g,"<br>")+
+            "</p>"
         )
         .join("\n");
 
@@ -2071,33 +2340,31 @@ function textParas(t){
    ARTICLE DATA
 ========================================================= */
 
-function data(){
+function articleData(){
 
-    const hs = [];
-
+    const hs=[];
 
     for(
-        let i = 1;
-        i <= 6;
+        let i=1;
+        i<=6;
         i++
     ){
 
         const h =
-            $("heading" + i)
+            $("heading"+i)
                 .value
                 .trim();
 
         const c =
-            $("content" + i)
+            $("content"+i)
                 .value
                 .trim();
 
-
-        if(h || c){
+        if(h||c){
 
             hs.push({
-                heading: h,
-                content: c
+                heading:h,
+                content:c
             });
 
         }
@@ -2108,8 +2375,7 @@ function data(){
     return {
 
         section:
-            $("articleSection")
-                .value,
+            $("articleSection").value,
 
         title:
             $("articleTitle")
@@ -2129,15 +2395,11 @@ function data(){
             ].name,
 
         date:
-            $("articleDate")
-                .value
+            $("articleDate").value
             ||
             new Date()
                 .toISOString()
-                .slice(
-                    0,
-                    10
-                ),
+                .slice(0,10),
 
         metaTitle:
             $("articleMetaTitle")
@@ -2169,8 +2431,7 @@ function data(){
                 .value
                 .trim(),
 
-        headings:
-            hs,
+        headings:hs,
 
         conclusion:
             $("articleConclusion")
@@ -2201,8 +2462,11 @@ function validate(a){
         !a.intro &&
         !a.headings.length &&
         !a.conclusion
-    )
+    ){
+
         return "Write some article content.";
+
+    }
 
     return "";
 
@@ -2215,23 +2479,11 @@ function validate(a){
 
 function theme(section){
 
-    if(
-        section ===
-        "seo"
-    )
-        return `
-        <div class="seo-background"></div>
-        `;
+    if(section==="seo")
+        return `<div class="seo-background"></div>`;
 
-
-    if(
-        section ===
-        "technology"
-    )
-        return `
-        <div class="technology-background"></div>
-        `;
-
+    if(section==="technology")
+        return `<div class="technology-background"></div>`;
 
     return "";
 
@@ -2239,99 +2491,85 @@ function theme(section){
 
 
 /* =========================================================
-   GENERATE ARTICLE HTML
+   GENERATE ARTICLE
 ========================================================= */
 
 function generateHTML(){
 
     const a =
-        data();
+        articleData();
 
     const s =
         CONFIG.sections[
             a.section
         ];
 
-
-    let content =
-        "";
+    let content="";
 
 
     if(a.intro){
 
         content +=
-            `<section class="article-introduction">
-            ${textParas(a.intro)}
-            </section>`;
+        `<section class="article-introduction">
+        ${textParas(a.intro)}
+        </section>`;
 
     }
 
 
-    a.headings.forEach(
-        x => {
+    a.headings.forEach(x=>{
 
-            if(x.heading){
+        if(x.heading){
 
-                content +=
-                    `<h2>${esc(
-                        x.heading
-                    )}</h2>`;
-
-            }
-
-
-            if(x.content){
-
-                content +=
-                    textParas(
-                        x.content
-                    );
-
-            }
+            content +=
+                `<h2>${esc(x.heading)}</h2>`;
 
         }
-    );
+
+        if(x.content){
+
+            content +=
+                textParas(x.content);
+
+        }
+
+    });
 
 
     if(a.conclusion){
 
         content +=
             `<h2>Conclusion</h2>
-            ${textParas(
-                a.conclusion
-            )}`;
+            ${textParas(a.conclusion)}`;
 
     }
 
 
-    const keywords = [
+    const keywords =
+        [
+            a.primary,
 
-        a.primary,
+            ...a.secondary
+                .split(",")
+                .map(x=>x.trim())
+                .filter(Boolean)
 
-        ...a.secondary
-            .split(",")
-            .map(
-                x =>
-                    x.trim()
-            )
-            .filter(Boolean)
-
-    ]
-    .filter(Boolean)
-    .join(", ");
+        ]
+        .filter(Boolean)
+        .join(", ");
 
 
     const img =
         a.image
-            ? `
-            <img
-                class="article-featured-image"
-                src="${esc(a.image)}"
-                alt="${esc(a.title)}"
-                loading="lazy"
-            >
-            `
-            : "";
+        ? `
+        <img
+            class="article-featured-image"
+            src="${esc(a.image)}"
+            alt="${esc(a.title)}"
+            loading="lazy"
+        >
+        `
+        : "";
 
 
     return `<!DOCTYPE html>
@@ -2356,16 +2594,12 @@ ${esc(
 
 <meta
     name="description"
-    content="${esc(
-        a.metaDescription
-    )}"
+    content="${esc(a.metaDescription)}"
 >
 
 <meta
     name="keywords"
-    content="${esc(
-        keywords
-    )}"
+    content="${esc(keywords)}"
 >
 
 <meta
@@ -2398,9 +2632,7 @@ ${esc(
 
 <meta
     property="og:description"
-    content="${esc(
-        a.metaDescription
-    )}"
+    content="${esc(a.metaDescription)}"
 >
 
 <meta
@@ -2411,6 +2643,11 @@ ${esc(
 <meta
     property="og:site_name"
     content="LearnByte"
+>
+
+<meta
+    name="twitter:card"
+    content="summary_large_image"
 >
 
 <link
@@ -2428,26 +2665,25 @@ ${esc(
 .lb-published-article{
     max-width:900px;
     margin:auto;
-    padding:80px 20px
+    padding:80px 20px;
 }
 
 .lb-published-article h1{
-    font-size:
-        clamp(
-            2.3rem,
-            6vw,
-            4.3rem
-        );
-    line-height:1.08
+    font-size:clamp(
+        2.3rem,
+        6vw,
+        4.3rem
+    );
+    line-height:1.08;
 }
 
 .lb-published-article h2{
-    margin-top:42px
+    margin-top:42px;
 }
 
 .lb-published-article p{
     font-size:1.08rem;
-    line-height:1.85
+    line-height:1.85;
 }
 
 .article-featured-image{
@@ -2456,11 +2692,11 @@ ${esc(
     max-height:520px;
     object-fit:cover;
     border-radius:18px;
-    margin:24px 0
+    margin:24px 0;
 }
 
 .article-meta{
-    opacity:.7
+    opacity:.7;
 }
 
 </style>
@@ -2552,17 +2788,16 @@ LearnByte · ${esc(s.name)} Guides
 
 
 /* =========================================================
-   PREVIEW
+   ARTICLE PREVIEW
 ========================================================= */
 
 function previewArticle(){
 
     const a =
-        data();
+        articleData();
 
     const e =
         validate(a);
-
 
     if(e){
 
@@ -2571,44 +2806,31 @@ function previewArticle(){
 
     }
 
+    const iframe =
+        document.createElement("iframe");
 
-    const f =
-        document.createElement(
-            "iframe"
-        );
-
-
-    f.srcdoc =
+    iframe.srcdoc =
         generateHTML();
 
+    $("previewArea")
+        .innerHTML="";
 
     $("previewArea")
-        .innerHTML = "";
-
-
-    $("previewArea")
-        .appendChild(f);
-
+        .appendChild(iframe);
 
     $("previewBox")
-        .style
-        .display = "block";
+        .style.display="block";
 
 }
 
-
-/* =========================================================
-   GENERATED HTML
-========================================================= */
 
 function showGeneratedHTML(){
 
     const a =
-        data();
+        articleData();
 
     const e =
         validate(a);
-
 
     if(e){
 
@@ -2617,100 +2839,78 @@ function showGeneratedHTML(){
 
     }
 
-
-    $("articleCode")
-        .value =
+    $("articleCode").value =
         generateHTML();
 
-
     $("articleCode")
-        .style
-        .display =
-        "block";
-
+        .style.display="block";
 
     $("codeBox")
-        .style
-        .display =
-        "block";
+        .style.display="block";
 
 }
 
 
 /* =========================================================
-   SEO ANALYSIS
+   ARTICLE SEO
 ========================================================= */
 
 function analyzeSEO(){
 
     const a =
-        data();
+        articleData();
 
-
-    const text = [
-
-        a.intro,
-
-        ...a.headings.map(
-            x =>
-                x.content
-        ),
-
-        a.conclusion
-
-    ].join(" ");
-
+    const text =
+        [
+            a.intro,
+            ...a.headings.map(
+                x=>x.content
+            ),
+            a.conclusion
+        ].join(" ");
 
     const words =
         text.trim()
-            ? text
-                .trim()
-                .split(/\s+/)
-                .length
-            : 0;
-
+        ? text.trim().split(/\s+/).length
+        : 0;
 
     const h2 =
-        a.headings
-            .filter(
-                x =>
-                    x.heading
-            )
-            .length;
-
+        a.headings.filter(
+            x=>x.heading
+        ).length;
 
     const occ =
         a.primary
-            ? text
-                .toLowerCase()
-                .split(
-                    a.primary
-                        .toLowerCase()
-                )
-                .length - 1
-            : 0;
+        ? text
+            .toLowerCase()
+            .split(
+                a.primary.toLowerCase()
+            ).length-1
+        : 0;
 
 
     result(
         "seoBox",
 
-`Words: ${words}
+`WORDS:
+${words}
 
-Title characters: ${a.title.length}
+TITLE CHARACTERS:
+${a.title.length}
 
-Meta characters: ${a.metaDescription.length}
+META DESCRIPTION CHARACTERS:
+${a.metaDescription.length}
 
-H2 headings: ${h2}
+H2 HEADINGS:
+${h2}
 
-Primary keyword occurrences: ${occ}`
+PRIMARY KEYWORD OCCURRENCES:
+${occ}`
 
     );
 
-
     $("seoBox")
-        .style
-        .display =
-        "block";
+        .style.display="block";
 
 }
 
@@ -2722,7 +2922,6 @@ Primary keyword occurrences: ${occ}`
 function clearArticle(){
 
     [
-
         "articleTitle",
         "articleSlug",
         "articleCategory",
@@ -2734,45 +2933,33 @@ function clearArticle(){
         "articleImage",
         "articleIntro",
         "articleConclusion"
-
     ].forEach(
-        id =>
-            $(id).value = ""
+        id=>{
+            $(id).value="";
+        }
     );
 
 
     for(
-        let i = 1;
-        i <= 6;
+        let i=1;
+        i<=6;
         i++
     ){
 
-        $("heading" + i)
-            .value = "";
-
-        $("content" + i)
-            .value = "";
+        $("heading"+i).value="";
+        $("content"+i).value="";
 
     }
 
 
     $("previewBox")
-        .style
-        .display =
-        "none";
-
+        .style.display="none";
 
     $("codeBox")
-        .style
-        .display =
-        "none";
-
+        .style.display="none";
 
     $("seoBox")
-        .style
-        .display =
-        "none";
-
+        .style.display="none";
 
     result(
         "articleResult",
@@ -2791,9 +2978,7 @@ async function getFile(path){
     return api(
         "/get-file",
         "POST",
-        {
-            path
-        }
+        {path}
     );
 
 }
@@ -2834,46 +3019,23 @@ function cardHTML(
             a.section
         ];
 
-
     const n =
         String(index)
-            .padStart(
-                2,
-                "0"
-            );
-
+            .padStart(2,"0");
 
     const href =
-        "../" + a.path;
-
+        "../"+a.path;
 
     const desc =
         esc(
-            (
-                a.intro ||
-                ""
-            )
-            .replace(
-                /\s+/g,
-                " "
-            )
-            .slice(
-                0,
-                180
-            )
+            (a.intro||"")
+                .replace(/\s+/g," ")
+                .slice(0,180)
         );
-
-
-    const label =
-        esc(
-            a.category
-        )
-        .toUpperCase();
-
 
     return `
 
-<article class="${s.card || "post-card"}">
+<article class="post-card">
 
 <div class="post-number">
 ${n}
@@ -2884,7 +3046,7 @@ ${s.icon}
 </div>
 
 <span class="post-category">
-${label}
+${esc(a.category).toUpperCase()}
 </span>
 
 <h3>
@@ -2916,12 +3078,10 @@ function updateCategoryHTML(
             a.section
         ];
 
-
     if(
         html.includes(
             `href="../${a.path}"`
-        )
-        ||
+        ) ||
         html.includes(
             `href="${a.path}"`
         )
@@ -2952,17 +3112,13 @@ function updateCategoryHTML(
         (
             html.match(
                 /<article\b/gi
-            ) ||
-            []
-        ).length + 1;
+            )||[]
+        ).length+1;
 
 
     return html.replace(
         re,
-        `$1\n${cardHTML(
-            a,
-            count
-        )}`
+        `$1\n${cardHTML(a,count)}`
     );
 
 }
@@ -2975,12 +3131,10 @@ async function updateCategory(a){
             a.section
         ];
 
-
     const d =
         await getFile(
             s.category
         );
-
 
     const html =
         updateCategoryHTML(
@@ -2988,16 +3142,8 @@ async function updateCategory(a){
             a
         );
 
-
-    if(
-        html ===
-        d.content
-    ){
-
+    if(html===d.content)
         return d;
-
-    }
-
 
     return putFile(
         s.category,
@@ -3021,8 +3167,7 @@ function updateHomeHTML(
     if(
         html.includes(
             `href="${a.path}"`
-        )
-        ||
+        ) ||
         html.includes(
             `href="./${a.path}"`
         )
@@ -3038,21 +3183,11 @@ function updateHomeHTML(
             a.section
         ];
 
-
     const desc =
         esc(
-            (
-                a.intro ||
-                ""
-            )
-            .replace(
-                /\s+/g,
-                " "
-            )
-            .slice(
-                0,
-                160
-            )
+            (a.intro||"")
+                .replace(/\s+/g," ")
+                .slice(0,160)
         );
 
 
@@ -3104,8 +3239,7 @@ Read Article →
 
     return html.replace(
         re,
-        m =>
-            m + "\n" + card
+        m=>m+"\n"+card
     );
 
 }
@@ -3118,23 +3252,14 @@ async function updateHome(a){
             "index.html"
         );
 
-
     const html =
         updateHomeHTML(
             d.content,
             a
         );
 
-
-    if(
-        html ===
-        d.content
-    ){
-
+    if(html===d.content)
         return d;
-
-    }
-
 
     return putFile(
         "index.html",
@@ -3156,19 +3281,14 @@ function updateSitemapHTML(
 ){
 
     const url =
-        CONFIG.base +
-        a.path;
-
+        CONFIG.base+a.path;
 
     if(
         xml.includes(
             `<loc>${url}</loc>`
         )
-    ){
-
+    )
         return xml;
-
-    }
 
 
     const entry =
@@ -3176,13 +3296,11 @@ function updateSitemapHTML(
 
 
     if(
-        !/<\/urlset>/i.test(
-            xml
-        )
+        !/<\/urlset>/i.test(xml)
     ){
 
         throw new Error(
-            "Invalid sitemap.xml: </urlset> not found."
+            "Invalid sitemap.xml."
         );
 
     }
@@ -3190,8 +3308,7 @@ function updateSitemapHTML(
 
     return xml.replace(
         /<\/urlset>/i,
-        entry +
-        "</urlset>"
+        entry+"</urlset>"
     );
 
 }
@@ -3204,23 +3321,14 @@ async function updateSitemap(a){
             "sitemap.xml"
         );
 
-
     const xml =
         updateSitemapHTML(
             d.content,
             a
         );
 
-
-    if(
-        xml ===
-        d.content
-    ){
-
+    if(xml===d.content)
         return d;
-
-    }
-
 
     return putFile(
         "sitemap.xml",
@@ -3241,7 +3349,6 @@ async function saveKeywordsForArticle(a){
     if(!a.primary)
         return;
 
-
     try{
 
         const d =
@@ -3249,9 +3356,8 @@ async function saveKeywordsForArticle(a){
                 "seo-keywords.json"
             );
 
-
-        let obj = {
-            keywords: []
+        let obj={
+            keywords:[]
         };
 
 
@@ -3265,8 +3371,8 @@ async function saveKeywordsForArticle(a){
 
         }catch{
 
-            obj = {
-                keywords: []
+            obj={
+                keywords:[]
             };
 
         }
@@ -3278,16 +3384,14 @@ async function saveKeywordsForArticle(a){
             )
         ){
 
-            obj.keywords = [];
+            obj.keywords=[];
 
         }
 
 
         const existing =
             obj.keywords.find(
-                x =>
-                    x.page ===
-                    a.path
+                x=>x.page===a.path
             );
 
 
@@ -3299,29 +3403,21 @@ async function saveKeywordsForArticle(a){
             existing.secondary =
                 a.secondary
                     .split(",")
-                    .map(
-                        x =>
-                            x.trim()
-                    )
+                    .map(x=>x.trim())
                     .filter(Boolean);
 
         }else{
 
             obj.keywords.push({
 
-                page:
-                    a.path,
+                page:a.path,
 
-                primary:
-                    a.primary,
+                primary:a.primary,
 
                 secondary:
                     a.secondary
                         .split(",")
-                        .map(
-                            x =>
-                                x.trim()
-                        )
+                        .map(x=>x.trim())
                         .filter(Boolean)
 
             });
@@ -3330,22 +3426,15 @@ async function saveKeywordsForArticle(a){
 
 
         await putFile(
-
             "seo-keywords.json",
-
             JSON.stringify(
                 obj,
                 null,
                 2
             ),
-
-            "Update SEO keywords: " +
-            a.title,
-
+            "Update SEO keywords: "+a.title,
             d.sha
-
         );
-
 
     }catch(e){
 
@@ -3366,12 +3455,10 @@ async function saveKeywordsForArticle(a){
 async function directPublish(){
 
     const a =
-        data();
-
+        articleData();
 
     const e =
         validate(a);
-
 
     if(e){
 
@@ -3379,7 +3466,6 @@ async function directPublish(){
         return;
 
     }
-
 
     if(!key()){
 
@@ -3413,12 +3499,9 @@ ${CONFIG.sections[a.section].name}`
     const btn =
         $("publishBtn");
 
+    btn.disabled=true;
 
-    btn.disabled =
-        true;
-
-
-    let steps = [];
+    const steps=[];
 
 
     try{
@@ -3428,22 +3511,14 @@ ${CONFIG.sections[a.section].name}`
             "1/5 Creating article..."
         );
 
-
         const html =
             generateHTML();
 
-
         await putFile(
-
             a.path,
-
             html,
-
-            "Publish article: " +
-            a.title
-
+            "Publish article: "+a.title
         );
-
 
         steps.push(
             "Article published"
@@ -3455,9 +3530,7 @@ ${CONFIG.sections[a.section].name}`
             "2/5 Updating category..."
         );
 
-
         await updateCategory(a);
-
 
         steps.push(
             "Category updated"
@@ -3469,9 +3542,7 @@ ${CONFIG.sections[a.section].name}`
             "3/5 Updating homepage..."
         );
 
-
         await updateHome(a);
-
 
         steps.push(
             "Homepage updated"
@@ -3483,9 +3554,7 @@ ${CONFIG.sections[a.section].name}`
             "4/5 Updating sitemap..."
         );
 
-
         await updateSitemap(a);
-
 
         steps.push(
             "Sitemap updated"
@@ -3497,30 +3566,21 @@ ${CONFIG.sections[a.section].name}`
             "5/5 Saving SEO keywords..."
         );
 
-
         await saveKeywordsForArticle(a);
-
 
         steps.push(
             "SEO keywords saved"
         );
 
 
-        $("articleCode")
-            .value =
+        $("articleCode").value =
             html;
 
-
         $("articleCode")
-            .style
-            .display =
-            "block";
-
+            .style.display="block";
 
         $("codeBox")
-            .style
-            .display =
-            "block";
+            .style.display="block";
 
 
         $("statArticles")
@@ -3528,9 +3588,8 @@ ${CONFIG.sections[a.section].name}`
             String(
                 Number(
                     $("statArticles")
-                        .textContent ||
-                    0
-                ) + 1
+                        .textContent||0
+                )+1
             );
 
 
@@ -3539,19 +3598,16 @@ ${CONFIG.sections[a.section].name}`
             String(
                 Number(
                     $("statFiles")
-                        .textContent ||
-                    0
-                ) + 4
+                        .textContent||0
+                )+4
             );
 
 
         const live =
-            CONFIG.base +
-            a.path;
+            CONFIG.base+a.path;
 
 
         result(
-
             "publishSummary",
 
 `✅ DIRECT PUBLISH COMPLETE
@@ -3560,19 +3616,13 @@ Live URL:
 ${live}
 
 ${steps
-    .map(
-        x =>
-            "✓ " + x
-    )
+    .map(x=>"✓ "+x)
     .join("\n")}`,
-
             "ok"
-
         );
 
 
         result(
-
             "articleResult",
 
 `✅ Published successfully.
@@ -3581,20 +3631,13 @@ Live URL:
 ${live}
 
 All automatic updates completed.`,
-
             "ok"
-
         );
-
-
-        window.lastPublishedUrl =
-            live;
 
 
     }catch(err){
 
         result(
-
             "articleResult",
 
 `❌ PUBLISH STOPPED
@@ -3603,24 +3646,16 @@ ${err.message}
 
 Completed:
 ${
-    steps
-        .map(
-            x =>
-                "✓ " + x
-        )
-        .join("\n")
-    ||
-    "None"
+    steps.length
+    ? steps.map(x=>"✓ "+x).join("\n")
+    : "None"
 }`,
-
             "err"
-
         );
 
     }finally{
 
-        btn.disabled =
-            false;
+        btn.disabled=false;
 
     }
 
@@ -3643,12 +3678,10 @@ function removeArticleFromHTML(
             "\\$&"
         );
 
-
-    let out =
-        html;
+    let out=html;
 
 
-    const patterns = [
+    const patterns=[
 
         new RegExp(
             `<article\\b[^>]*>[\\s\\S]*?<a\\b[^>]*href=["'][^"']*${escaped}["'][^>]*>[\\s\\S]*?</article>`,
@@ -3677,8 +3710,7 @@ function removeArticleFromHTML(
 
 
     if(
-        out ===
-        html &&
+        out===html &&
         title
     ){
 
@@ -3688,17 +3720,13 @@ function removeArticleFromHTML(
                 "\\$&"
             );
 
-
         out =
             out.replace(
-
                 new RegExp(
                     `<article\\b[^>]*>[\\s\\S]*?${t}[\\s\\S]*?</article>`,
                     "gi"
                 ),
-
                 ""
-
             );
 
     }
@@ -3715,9 +3743,7 @@ function removeSitemapURL(
 ){
 
     const url =
-        CONFIG.base +
-        path;
-
+        CONFIG.base+path;
 
     const e =
         url.replace(
@@ -3725,16 +3751,12 @@ function removeSitemapURL(
             "\\$&"
         );
 
-
     return xml.replace(
-
         new RegExp(
             `<url>\\s*<loc>\\s*${e}\\s*</loc>[\\s\\S]*?</url>`,
             "gi"
         ),
-
         ""
-
     );
 
 }
@@ -3746,7 +3768,6 @@ function removeKeywordEntry(
 ){
 
     let obj;
-
 
     try{
 
@@ -3767,18 +3788,13 @@ function removeKeywordEntry(
         !Array.isArray(
             obj.keywords
         )
-    ){
-
+    )
         return content;
-
-    }
 
 
     obj.keywords =
         obj.keywords.filter(
-            x =>
-                x.page !==
-                path
+            x=>x.page!==path
         );
 
 
@@ -3792,7 +3808,7 @@ function removeKeywordEntry(
 
 
 /* =========================================================
-   COMPLETE DELETE
+   DELETE ARTICLE
 ========================================================= */
 
 async function deleteArticle(){
@@ -3801,16 +3817,11 @@ async function deleteArticle(){
         $("deletePath")
             .value
             .trim()
-            .replace(
-                /^\/+/,
-                ""
-            );
-
+            .replace(/^\/+/,"");
 
     const section =
         $("deleteSection")
             .value;
-
 
     const title =
         $("deleteTitle")
@@ -3848,7 +3859,6 @@ async function deleteArticle(){
 
     if(
         !confirm(
-
 `⚠️ PERMANENTLY DELETE ARTICLE?
 
 File:
@@ -3862,16 +3872,10 @@ This will attempt to remove:
 ✓ Category card
 ✓ Homepage card
 ✓ Sitemap URL
-✓ SEO keyword entry
-
-This action creates GitHub commits and cannot be undone from this panel.`
-
+✓ SEO keyword entry`
         )
-    ){
-
+    )
         return;
-
-    }
 
 
     try{
@@ -3888,13 +3892,12 @@ This action creates GitHub commits and cannot be undone from this panel.`
             {
                 path,
                 message:
-                    "Delete article: " +
-                    path
+                    "Delete article: "+path
             }
         );
 
 
-        let done = [
+        const done=[
             "Article file deleted"
         ];
 
@@ -3912,7 +3915,6 @@ This action creates GitHub commits and cannot be undone from this panel.`
                     s.category
                 );
 
-
             const html =
                 removeArticleFromHTML(
                     d.content,
@@ -3921,24 +3923,14 @@ This action creates GitHub commits and cannot be undone from this panel.`
                 );
 
 
-            if(
-                html !==
-                d.content
-            ){
+            if(html!==d.content){
 
                 await putFile(
-
                     s.category,
-
                     html,
-
-                    "Remove deleted article from category: " +
-                    path,
-
+                    "Remove deleted article from category: "+path,
                     d.sha
-
                 );
-
 
                 done.push(
                     "Category updated"
@@ -3955,8 +3947,7 @@ This action creates GitHub commits and cannot be undone from this panel.`
         }catch(e){
 
             done.push(
-                "Category cleanup skipped: " +
-                e.message
+                "Category cleanup skipped: "+e.message
             );
 
         }
@@ -3975,7 +3966,6 @@ This action creates GitHub commits and cannot be undone from this panel.`
                     "index.html"
                 );
 
-
             const html =
                 removeArticleFromHTML(
                     d.content,
@@ -3984,24 +3974,14 @@ This action creates GitHub commits and cannot be undone from this panel.`
                 );
 
 
-            if(
-                html !==
-                d.content
-            ){
+            if(html!==d.content){
 
                 await putFile(
-
                     "index.html",
-
                     html,
-
-                    "Remove deleted article from homepage: " +
-                    path,
-
+                    "Remove deleted article from homepage: "+path,
                     d.sha
-
                 );
-
 
                 done.push(
                     "Homepage updated"
@@ -4018,8 +3998,7 @@ This action creates GitHub commits and cannot be undone from this panel.`
         }catch(e){
 
             done.push(
-                "Homepage cleanup skipped: " +
-                e.message
+                "Homepage cleanup skipped: "+e.message
             );
 
         }
@@ -4038,7 +4017,6 @@ This action creates GitHub commits and cannot be undone from this panel.`
                     "sitemap.xml"
                 );
 
-
             const xml =
                 removeSitemapURL(
                     d.content,
@@ -4046,24 +4024,14 @@ This action creates GitHub commits and cannot be undone from this panel.`
                 );
 
 
-            if(
-                xml !==
-                d.content
-            ){
+            if(xml!==d.content){
 
                 await putFile(
-
                     "sitemap.xml",
-
                     xml,
-
-                    "Remove deleted article from sitemap: " +
-                    path,
-
+                    "Remove deleted article from sitemap: "+path,
                     d.sha
-
                 );
-
 
                 done.push(
                     "Sitemap updated"
@@ -4080,8 +4048,7 @@ This action creates GitHub commits and cannot be undone from this panel.`
         }catch(e){
 
             done.push(
-                "Sitemap cleanup skipped: " +
-                e.message
+                "Sitemap cleanup skipped: "+e.message
             );
 
         }
@@ -4100,7 +4067,6 @@ This action creates GitHub commits and cannot be undone from this panel.`
                     "seo-keywords.json"
                 );
 
-
             const content =
                 removeKeywordEntry(
                     d.content,
@@ -4108,24 +4074,14 @@ This action creates GitHub commits and cannot be undone from this panel.`
                 );
 
 
-            if(
-                content !==
-                d.content
-            ){
+            if(content!==d.content){
 
                 await putFile(
-
                     "seo-keywords.json",
-
                     content,
-
-                    "Remove deleted article SEO keywords: " +
-                    path,
-
+                    "Remove deleted article SEO keywords: "+path,
                     d.sha
-
                 );
-
 
                 done.push(
                     "SEO keywords updated"
@@ -4142,26 +4098,13 @@ This action creates GitHub commits and cannot be undone from this panel.`
         }catch(e){
 
             done.push(
-                "Keyword cleanup skipped: " +
-                e.message
+                "Keyword cleanup skipped: "+e.message
             );
 
         }
 
 
-        $("statFiles")
-            .textContent =
-            String(
-                Number(
-                    $("statFiles")
-                        .textContent ||
-                    0
-                ) + 1
-            );
-
-
         result(
-
             "deleteResult",
 
 `✅ DELETE COMPLETED
@@ -4170,29 +4113,19 @@ Deleted:
 ${path}
 
 ${done
-    .map(
-        x =>
-            "✓ " + x
-    )
+    .map(x=>"✓ "+x)
     .join("\n")}`,
-
             "ok"
-
         );
 
 
-        $("deletePath")
-            .value = "";
-
-
-        $("deleteTitle")
-            .value = "";
+        $("deletePath").value="";
+        $("deleteTitle").value="";
 
 
     }catch(e){
 
         result(
-
             "deleteResult",
 
 `❌ DELETE FAILED
@@ -4200,9 +4133,7 @@ ${done
 ${e.message}
 
 Check GitHub before retrying.`,
-
             "err"
-
         );
 
     }
@@ -4221,7 +4152,6 @@ async function readFile(){
             .value
             .trim();
 
-
     if(!p){
 
         return result(
@@ -4238,32 +4168,20 @@ async function readFile(){
         const d =
             await getFile(p);
 
-
         currentFileSha =
             d.sha;
-
 
         currentFilePath =
             d.path;
 
-
-        $("currentFile")
-            .value =
+        $("currentFile").value =
             d.path;
 
-
-        $("editor")
-            .value =
+        $("editor").value =
             d.content;
 
 
-        $("statFiles")
-            .textContent =
-            "1";
-
-
         result(
-
             "fileResult",
 
 `Loaded:
@@ -4271,11 +4189,8 @@ ${d.path}
 
 SHA:
 ${d.sha}`,
-
             "ok"
-
         );
-
 
     }catch(e){
 
@@ -4292,9 +4207,7 @@ ${d.sha}`,
 
 async function saveFile(){
 
-    if(
-        !currentFilePath
-    ){
+    if(!currentFilePath){
 
         alert(
             "Load a file first."
@@ -4309,20 +4222,14 @@ async function saveFile(){
 
         const d =
             await putFile(
-
                 currentFilePath,
-
-                $("editor")
-                    .value,
-
+                $("editor").value,
                 $("commitMessage")
                     .value
                     .trim()
                 ||
                 "Update file from LearnByte Control Center",
-
                 currentFileSha
-
             );
 
 
@@ -4341,7 +4248,6 @@ async function saveFile(){
             "ok"
         );
 
-
     }catch(e){
 
         result(
@@ -4357,26 +4263,16 @@ async function saveFile(){
 
 function clearEditor(){
 
-    currentFilePath =
-        null;
+    currentFilePath=null;
+    currentFileSha=null;
 
-    currentFileSha =
-        null;
-
-
-    $("currentFile")
-        .value = "";
-
-
-    $("editor")
-        .value = "";
-
+    $("currentFile").value="";
+    $("editor").value="";
 
     result(
         "fileResult",
         "No file loaded."
     );
-
 
     result(
         "saveResult",
@@ -4388,10 +4284,8 @@ function clearEditor(){
 
 function loadIndex(){
 
-    $("filePath")
-        .value =
+    $("filePath").value=
         "index.html";
-
 
     readFile();
 
@@ -4411,7 +4305,6 @@ async function loadKeywords(){
                 "seo-keywords.json"
             );
 
-
         keywordSha =
             d.sha;
 
@@ -4426,8 +4319,8 @@ async function loadKeywords(){
 
         }catch{
 
-            keywordData = {
-                keywords: []
+            keywordData={
+                keywords:[]
             };
 
         }
@@ -4439,8 +4332,7 @@ async function loadKeywords(){
             )
         ){
 
-            keywordData.keywords =
-                [];
+            keywordData.keywords=[];
 
         }
 
@@ -4460,7 +4352,6 @@ async function loadKeywords(){
             "Keywords loaded.",
             "ok"
         );
-
 
     }catch(e){
 
@@ -4489,8 +4380,7 @@ function renderKeywords(){
         keywordData
             .keywords
             .map(
-
-                (x,i) => `
+                (x,i)=>`
 
 <div class="item">
 
@@ -4507,12 +4397,9 @@ ${esc(x.primary)}
 
 Secondary:
 ${esc(
-    Array.isArray(
-        x.secondary
-    )
+    Array.isArray(x.secondary)
     ? x.secondary.join(", ")
-    : x.secondary ||
-      "None"
+    : x.secondary || "None"
 )}
 
 </small>
@@ -4532,7 +4419,6 @@ Delete
 </div>
 
 `
-
             )
             .join("")
 
@@ -4551,7 +4437,6 @@ async function addKeyword(){
 
     }
 
-
     if(!keywordSha)
         return;
 
@@ -4561,17 +4446,13 @@ async function addKeyword(){
             .value
             .trim();
 
-
     const k =
         $("keywordPrimary")
             .value
             .trim();
 
 
-    if(
-        !p ||
-        !k
-    ){
+    if(!p||!k){
 
         alert(
             "Page and Primary Keyword are required."
@@ -4586,18 +4467,15 @@ async function addKeyword(){
         .keywords
         .push({
 
-            page: p,
+            page:p,
 
-            primary: k,
+            primary:k,
 
             secondary:
                 $("keywordSecondary")
                     .value
                     .split(",")
-                    .map(
-                        x =>
-                            x.trim()
-                    )
+                    .map(x=>x.trim())
                     .filter(Boolean)
 
         });
@@ -4606,16 +4484,9 @@ async function addKeyword(){
     await saveKeywords();
 
 
-    $("keywordPage")
-        .value = "";
-
-
-    $("keywordPrimary")
-        .value = "";
-
-
-    $("keywordSecondary")
-        .value = "";
+    $("keywordPage").value="";
+    $("keywordPrimary").value="";
+    $("keywordSecondary").value="";
 
 }
 
@@ -4626,11 +4497,8 @@ async function deleteKeyword(i){
         !confirm(
             "Delete this keyword?"
         )
-    ){
-
+    )
         return;
-
-    }
 
 
     keywordData
@@ -4639,7 +4507,6 @@ async function deleteKeyword(i){
             i,
             1
         );
-
 
     await saveKeywords();
 
@@ -4652,19 +4519,14 @@ async function saveKeywords(){
 
         const d =
             await putFile(
-
                 "seo-keywords.json",
-
                 JSON.stringify(
                     keywordData,
                     null,
                     2
                 ),
-
                 "Update SEO keywords",
-
                 keywordSha
-
             );
 
 
@@ -4688,7 +4550,6 @@ async function saveKeywords(){
             "✅ Keywords saved.",
             "ok"
         );
-
 
     }catch(e){
 
@@ -4714,12 +4575,10 @@ function prepareLink(){
             .value
             .trim();
 
-
     const t =
         $("targetPage")
             .value
             .trim();
-
 
     const a =
         $("anchorText")
@@ -4727,11 +4586,7 @@ function prepareLink(){
             .trim();
 
 
-    if(
-        !s ||
-        !t ||
-        !a
-    ){
+    if(!s||!t||!a){
 
         alert(
             "Fill all fields."
@@ -4743,15 +4598,12 @@ function prepareLink(){
 
 
     result(
-
         "linkResult",
 
 `Generated link:
 
 <a href="${esc(t)}">${esc(a)}</a>`,
-
         "ok"
-
     );
 
 }
@@ -4764,12 +4616,10 @@ async function applyInternalLink(){
             .value
             .trim();
 
-
     const t =
         $("targetPage")
             .value
             .trim();
-
 
     const a =
         $("anchorText")
@@ -4777,11 +4627,7 @@ async function applyInternalLink(){
             .trim();
 
 
-    if(
-        !s ||
-        !t ||
-        !a
-    ){
+    if(!s||!t||!a){
 
         alert(
             "Fill all fields."
@@ -4798,36 +4644,31 @@ async function applyInternalLink(){
             await getFile(s);
 
 
+        const escaped =
+            a.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+            );
+
+
         const re =
             new RegExp(
-
-                "(?<![>])(" +
-
-                a.replace(
-                    /[.*+?^${}()|[\]\\]/g,
-                    "\\$&"
-                ) +
-
+                "(?<![>])("+
+                escaped+
                 ")(?![^<]*>)",
-
                 "i"
-
             );
 
 
         const html =
             d.content.replace(
-
                 re,
-
                 `<a href="${esc(t)}">$1</a>`
-
             );
 
 
         if(
-            html ===
-            d.content
+            html===d.content
         ){
 
             throw new Error(
@@ -4839,34 +4680,23 @@ async function applyInternalLink(){
 
         const out =
             await putFile(
-
                 s,
-
                 html,
-
-                "Add internal link: " +
-                a,
-
+                "Add internal link: "+a,
                 d.sha
-
             );
 
 
         result(
-
             "linkResult",
-
-            "✅ Internal link applied and committed.\n\n" +
+            "✅ Internal link applied and committed.\n\n"+
             JSON.stringify(
                 out,
                 null,
                 2
             ),
-
             "ok"
-
         );
-
 
     }catch(e){
 
@@ -4945,11 +4775,7 @@ async function createRedirect(){
         $("oldUrl")
             .value
             .trim()
-            .replace(
-                /^\/+/,
-                ""
-            );
-
+            .replace(/^\/+/,"");
 
     const url =
         $("newUrl")
@@ -4957,10 +4783,7 @@ async function createRedirect(){
             .trim();
 
 
-    if(
-        !old ||
-        !url
-    ){
+    if(!old||!url){
 
         alert(
             "Fill Old URL and New URL."
@@ -4986,36 +4809,25 @@ async function createRedirect(){
 
         const d =
             await putFile(
-
                 old,
-
-                redirectHTML(
-                    url
-                ),
-
-                "Create redirect: " +
-                old +
-                " -> " +
+                redirectHTML(url),
+                "Create redirect: "+
+                old+
+                " -> "+
                 url
-
             );
 
 
         result(
-
             "redirectResult",
-
-            "✅ Redirect file created.\n\n" +
+            "✅ Redirect file created.\n\n"+
             JSON.stringify(
                 d,
                 null,
                 2
             ),
-
             "ok"
-
         );
-
 
     }catch(e){
 
@@ -5026,6 +4838,1182 @@ async function createRedirect(){
         );
 
     }
+
+}
+
+
+/* =========================================================
+   SEO AUDIT HELPERS
+========================================================= */
+
+function formatBytes(bytes){
+
+    const n =
+        Number(bytes||0);
+
+    if(n<1024)
+        return n+" B";
+
+    if(n<1024*1024)
+        return (
+            n/1024
+        ).toFixed(1)+" KB";
+
+    return (
+        n/(1024*1024)
+    ).toFixed(2)+" MB";
+
+}
+
+
+function urlAudit(url){
+
+    const lines=[];
+
+    let pass=0;
+    let warn=0;
+
+    try{
+
+        const u =
+            new URL(url);
+
+        const path =
+            u.pathname;
+
+
+        if(
+            path.length<=100
+        ){
+
+            lines.push(
+                "✅ URL length looks good."
+            );
+
+            pass++;
+
+        }else{
+
+            lines.push(
+                "⚠️ URL is long."
+            );
+
+            warn++;
+
+        }
+
+
+        if(
+            !/[A-Z]/.test(path)
+        ){
+
+            lines.push(
+                "✅ Lowercase URL."
+            );
+
+            pass++;
+
+        }else{
+
+            lines.push(
+                "⚠️ Uppercase letters found."
+            );
+
+            warn++;
+
+        }
+
+
+        if(
+            !/\s/.test(path)
+        ){
+
+            lines.push(
+                "✅ No spaces."
+            );
+
+            pass++;
+
+        }else{
+
+            lines.push(
+                "❌ Spaces found."
+            );
+
+            warn++;
+
+        }
+
+
+        if(
+            !/[^a-zA-Z0-9_\-\/.]/.test(path)
+        ){
+
+            lines.push(
+                "✅ Clean URL characters."
+            );
+
+            pass++;
+
+        }else{
+
+            lines.push(
+                "⚠️ Special characters found."
+            );
+
+            warn++;
+
+        }
+
+
+        if(
+            !path.includes("_")
+        ){
+
+            lines.push(
+                "✅ Hyphen-style URL preferred."
+            );
+
+            pass++;
+
+        }else{
+
+            lines.push(
+                "⚠️ Underscore detected."
+            );
+
+            warn++;
+
+        }
+
+
+    }catch{
+
+        lines.push(
+            "❌ Invalid URL."
+        );
+
+        warn++;
+
+    }
+
+
+    return {
+        pass,
+        warn,
+        lines
+    };
+
+}
+
+
+/* =========================================================
+   CHECK LIVE FILE
+========================================================= */
+
+async function checkLiveFile(
+    base,
+    file
+){
+
+    try{
+
+        const start =
+            Date.now();
+
+        const r =
+            await fetch(
+                base+
+                file+
+                "?lb_check="+
+                Date.now(),
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
+        const ms =
+            Date.now()-start;
+
+        return {
+            ok:r.ok,
+            status:r.status,
+            ms
+        };
+
+    }catch(e){
+
+        return {
+            ok:false,
+            status:0,
+            ms:0,
+            error:e.message
+        };
+
+    }
+
+}
+
+
+/* =========================================================
+   404 CHECK
+========================================================= */
+
+async function check404(base){
+
+    const fake =
+        "/learnbyte-404-test-"+
+        Date.now()+
+        ".html";
+
+    try{
+
+        const r =
+            await fetch(
+                base+
+                fake,
+                {
+                    method:"GET",
+                    redirect:"manual",
+                    cache:"no-store"
+                }
+            );
+
+
+        return {
+
+            status:
+                r.status,
+
+            ok:
+                r.status===404
+
+        };
+
+    }catch(e){
+
+        return {
+
+            status:0,
+            ok:false,
+            error:e.message
+
+        };
+
+    }
+
+}
+
+
+/* =========================================================
+   RUN FULL SEO AUDIT
+========================================================= */
+
+async function runFullSEOAudit(){
+
+    const target =
+        $("auditUrl")
+            .value
+            .trim();
+
+
+    if(!target){
+
+        result(
+            "auditStatus",
+            "Enter a website/page URL first.",
+            "err"
+        );
+
+        return;
+
+    }
+
+
+    if(!key()){
+
+        result(
+            "auditStatus",
+            "Enter Admin Key first.",
+            "err"
+        );
+
+        return;
+
+    }
+
+
+    result(
+        "auditStatus",
+        "🔄 Running full SEO audit..."
+    );
+
+
+    $("auditDashboard")
+        .style.display="none";
+
+    $("auditResults")
+        .style.display="none";
+
+
+    try{
+
+        const d =
+            await api(
+                "/analyze-url",
+                "POST",
+                {
+                    url:target
+                }
+            );
+
+
+        if(!d.success){
+
+            throw new Error(
+                d.error ||
+                "Audit failed."
+            );
+
+        }
+
+
+        const seo =
+            d.seo || {};
+
+
+        let passed=0;
+        let warnings=0;
+        let errors=0;
+
+        const rec=[];
+
+
+        /* HTTP */
+
+        const httpOK =
+            d.status>=200 &&
+            d.status<400;
+
+
+        if(httpOK)
+            passed++;
+        else
+            errors++;
+
+
+        const responseTime =
+            Number(
+                d.responseTimeMs||0
+            );
+
+
+        if(responseTime<=1000){
+
+            passed++;
+
+        }else if(responseTime<=2000){
+
+            warnings++;
+
+            rec.push(
+                "Improve server/page response time."
+            );
+
+        }else{
+
+            errors++;
+
+            rec.push(
+                "Page response time is slow."
+            );
+
+        }
+
+
+        $("auditHttp").textContent =
+
+`HTTP STATUS:
+${d.status} ${d.statusText||""}
+
+FINAL URL:
+${d.url}
+
+RESPONSE TIME:
+${responseTime} ms
+
+CONTENT SIZE:
+${formatBytes(d.contentLength||0)}
+
+${
+    httpOK
+    ? "✅ Page returned a successful HTTP response."
+    : "❌ Page returned an error HTTP status."
+}
+
+${
+    responseTime<=1000
+    ? "⚡ Fast basic response."
+    : responseTime<=2000
+    ? "⚠️ Moderate response time."
+    : "❌ Slow response time."
+}`;
+
+
+        /* TITLE */
+
+        const title =
+            seo.title||"";
+
+        const titleLength =
+            Number(
+                seo.titleLength||0
+            );
+
+        const titleOK =
+            titleLength>=30 &&
+            titleLength<=60;
+
+
+        if(titleOK)
+            passed++;
+        else{
+
+            warnings++;
+
+            rec.push(
+                "Optimize Meta Title to roughly 30–60 characters."
+            );
+
+        }
+
+
+        /* DESCRIPTION */
+
+        const description =
+            seo.description||"";
+
+        const descriptionLength =
+            Number(
+                seo.descriptionLength||0
+            );
+
+        const descriptionOK =
+            descriptionLength>=120 &&
+            descriptionLength<=160;
+
+
+        if(descriptionOK)
+            passed++;
+        else{
+
+            warnings++;
+
+            rec.push(
+                "Optimize Meta Description to roughly 120–160 characters."
+            );
+
+        }
+
+
+        $("auditMeta").textContent =
+
+`META TITLE:
+${title||"❌ MISSING"}
+
+TITLE LENGTH:
+${titleLength}
+
+${
+    titleOK
+    ? "✅ Recommended length."
+    : "⚠️ Review title length."
+}
+
+--------------------------------
+
+META DESCRIPTION:
+${description||"❌ MISSING"}
+
+DESCRIPTION LENGTH:
+${descriptionLength}
+
+${
+    descriptionOK
+    ? "✅ Recommended length."
+    : "⚠️ Review description length."
+}`;
+
+
+        /* URL */
+
+        const ua =
+            urlAudit(d.url);
+
+        passed +=
+            ua.pass;
+
+        warnings +=
+            ua.warn;
+
+        rec.push(
+            ...(
+                ua.warn
+                ? ["Review URL structure."]
+                : []
+            )
+        );
+
+
+        $("auditUrlCheck").textContent =
+            ua.lines.join("\n");
+
+
+        /* HEADINGS */
+
+        const h =
+            seo.headings||{};
+
+        const h1 =
+            Number(h.h1||0);
+
+
+        if(h1===1)
+            passed++;
+        else{
+
+            warnings++;
+
+            rec.push(
+                "Use one clear H1 heading."
+            );
+
+        }
+
+
+        $("auditHeadings").textContent =
+
+`H1:
+${h1}
+
+H2:
+${h.h2||0}
+
+H3:
+${h.h3||0}
+
+H4:
+${h.h4||0}
+
+H5:
+${h.h5||0}
+
+H6:
+${h.h6||0}
+
+${
+    h1===1
+    ? "✅ Exactly one H1 detected."
+    : "⚠️ H1 structure needs attention."
+}`;
+
+
+        /* CANONICAL / ROBOTS */
+
+        const canonical =
+            !!seo.hasCanonical;
+
+        const robots =
+            !!seo.meta?.robots;
+
+
+        if(canonical)
+            passed++;
+        else{
+
+            warnings++;
+
+            rec.push(
+                "Add a canonical URL."
+            );
+
+        }
+
+
+        if(robots)
+            passed++;
+        else{
+
+            warnings++;
+
+            rec.push(
+                "Check robots meta configuration."
+            );
+
+        }
+
+
+        $("auditTechnical").textContent =
+
+`CANONICAL:
+${
+    canonical
+    ? "✅ "+seo.canonical
+    : "❌ Missing"
+}
+
+ROBOTS META:
+${
+    robots
+    ? "✅ Detected"
+    : "⚠️ Not detected"
+}
+
+CONTENT TYPE:
+${d.contentType||"Unknown"}`;
+
+        
+        /* SOCIAL / SCHEMA */
+
+        const meta =
+            seo.meta||{};
+
+        const social=[
+            ["ogTitle","Open Graph Title"],
+            ["ogDescription","Open Graph Description"],
+            ["ogImage","Open Graph Image"],
+            ["twitterCard","Twitter Card"],
+            ["schema","Schema / JSON-LD"]
+        ];
+
+
+        let socialText="";
+
+
+        social.forEach(
+            x=>{
+
+                if(meta[x[0]]){
+
+                    passed++;
+
+                    socialText +=
+                        "✅ "+
+                        x[1]+
+                        "\n";
+
+                }else{
+
+                    warnings++;
+
+                    socialText +=
+                        "⚠️ "+
+                        x[1]+
+                        " missing\n";
+
+                    rec.push(
+                        "Consider adding "+
+                        x[1]+"."
+                    );
+
+                }
+
+            }
+        );
+
+
+        $("auditSocial").textContent =
+            socialText;
+
+
+        /* IMAGES */
+
+        const images =
+            seo.images||{};
+
+        const totalImages =
+            Number(
+                images.total||0
+            );
+
+        const missingAlt =
+            Number(
+                images.missingAlt||0
+            );
+
+        const emptyAlt =
+            Number(
+                images.emptyAlt||0
+            );
+
+
+        if(totalImages===0){
+
+            warnings++;
+
+            rec.push(
+                "No images were detected on this page."
+            );
+
+        }else if(missingAlt===0){
+
+            passed++;
+
+        }else{
+
+            errors++;
+
+            rec.push(
+                "Add ALT attributes to images missing ALT text."
+            );
+
+        }
+
+
+        $("auditImages").textContent =
+
+`TOTAL IMAGES:
+${totalImages}
+
+MISSING ALT:
+${missingAlt}
+
+EMPTY ALT:
+${emptyAlt}
+
+USABLE ALT:
+${images.usableAlt||0}
+
+${
+    totalImages===0
+    ? "⚠️ No images detected."
+    : missingAlt===0
+    ? "✅ No missing ALT attributes detected."
+    : "❌ Images are missing ALT attributes."
+}`;
+
+
+        /* LINKS */
+
+        const links =
+            seo.links||{};
+
+        const internal =
+            Number(
+                links.internal||0
+            );
+
+        const external =
+            Number(
+                links.external||0
+            );
+
+        const nofollow =
+            Number(
+                links.nofollow||0
+            );
+
+
+        if(internal>0)
+            passed++;
+        else{
+
+            warnings++;
+
+            rec.push(
+                "Add relevant internal links."
+            );
+
+        }
+
+
+        $("auditLinks").textContent =
+
+`TOTAL LINKS:
+${links.total||0}
+
+INTERNAL:
+${internal}
+
+EXTERNAL:
+${external}
+
+NOFOLLOW:
+${nofollow}
+
+${
+    internal>0
+    ? "✅ Internal links detected."
+    : "⚠️ No internal links detected."
+}`;
+
+
+        /* MOBILE */
+
+        const mobile =
+            seo.mobile||{};
+
+
+        if(mobile.viewport)
+            passed++;
+        else{
+
+            errors++;
+
+            rec.push(
+                "Add a responsive viewport meta tag."
+            );
+
+        }
+
+
+        $("auditMobile").textContent =
+
+`VIEWPORT META:
+${
+    mobile.viewport
+    ? "✅ Detected"
+    : "❌ Missing"
+}
+
+BASIC MOBILE READINESS:
+${
+    mobile.viewport
+    ? "PASS"
+    : "FAIL"
+}`;
+
+
+        /* CONTENT */
+
+        const words =
+            Number(
+                seo.content?.words||0
+            );
+
+
+        if(words>=300){
+
+            passed++;
+
+        }else if(words>0){
+
+            warnings++;
+
+            rec.push(
+                "Content is relatively short; expand where useful."
+            );
+
+        }else{
+
+            errors++;
+
+            rec.push(
+                "No readable page content detected."
+            );
+
+        }
+
+
+        $("auditContent").textContent =
+
+`READABLE WORDS:
+${words}
+
+PRIMARY KEYWORD:
+Use Keyword Manager for page-wise tracking.
+
+SECONDARY KEYWORDS:
+Use Keyword Manager for page-wise tracking.
+
+${
+    words>=300
+    ? "✅ Reasonable amount of readable content detected."
+    : "⚠️ Content appears relatively short."
+}`;
+
+
+        /* SITEMAP */
+
+        let filesText="";
+
+
+        try{
+
+            const base =
+                new URL(d.url).origin;
+
+            const sitemap =
+                await checkLiveFile(
+                    base,
+                    "/sitemap.xml"
+                );
+
+
+            if(sitemap.ok){
+
+                passed++;
+
+                filesText +=
+`SITEMAP:
+✅ Reachable
+HTTP: ${sitemap.status}
+Response: ${sitemap.ms} ms`;
+
+            }else{
+
+                warnings++;
+
+                filesText +=
+`SITEMAP:
+⚠️ Not confirmed
+HTTP: ${sitemap.status}`;
+
+                rec.push(
+                    "Check sitemap.xml availability."
+                );
+
+            }
+
+        }catch(e){
+
+            warnings++;
+
+            filesText +=
+                "SITEMAP: ⚠️ Check failed";
+
+        }
+
+
+        /* ROBOTS */
+
+        try{
+
+            const base =
+                new URL(d.url).origin;
+
+            const robotsFile =
+                await checkLiveFile(
+                    base,
+                    "/robots.txt"
+                );
+
+
+            if(robotsFile.ok){
+
+                passed++;
+
+                filesText +=
+`\n\nROBOTS.TXT:
+✅ Reachable
+HTTP: ${robotsFile.status}
+Response: ${robotsFile.ms} ms`;
+
+            }else{
+
+                warnings++;
+
+                filesText +=
+`\n\nROBOTS.TXT:
+⚠️ Not confirmed
+HTTP: ${robotsFile.status}`;
+
+                rec.push(
+                    "Check robots.txt availability."
+                );
+
+            }
+
+        }catch{
+
+            warnings++;
+
+            filesText +=
+                "\n\nROBOTS.TXT: ⚠️ Check failed";
+
+        }
+
+
+        $("auditFiles").textContent =
+            filesText;
+
+
+        /* 404 */
+
+        try{
+
+            const base =
+                new URL(d.url).origin;
+
+            const four =
+                await check404(base);
+
+
+            if(four.ok){
+
+                passed++;
+
+                $("audit404").textContent =
+`✅ CUSTOM 404 CHECK PASSED
+
+Random invalid URL returned:
+HTTP ${four.status}
+
+The website is returning a 404 response
+for a non-existing page.`;
+
+            }else{
+
+                warnings++;
+
+                $("audit404").textContent =
+`⚠️ 404 CHECK NEEDS REVIEW
+
+Random invalid URL returned:
+HTTP ${four.status||"Unknown"}
+
+A proper 404 response was not confirmed.`;
+
+                rec.push(
+                    "Verify that non-existing pages return a proper 404 response."
+                );
+
+            }
+
+        }catch(e){
+
+            warnings++;
+
+            $("audit404").textContent =
+`⚠️ 404 CHECK COULD NOT COMPLETE
+
+${e.message}`;
+
+        }
+
+
+        /* SCORE */
+
+        const total =
+            passed+
+            warnings+
+            errors;
+
+
+        const score =
+            total
+            ? Math.round(
+                (
+                    passed+
+                    warnings*.5
+                )/
+                total*
+                100
+            )
+            : 0;
+
+
+        $("auditScore").textContent =
+            score+"/100";
+
+        $("auditPassed").textContent =
+            passed;
+
+        $("auditWarnings").textContent =
+            warnings;
+
+        $("auditErrors").textContent =
+            errors;
+
+
+        $("auditDashboard")
+            .style.display="block";
+
+        $("auditResults")
+            .style.display="grid";
+
+
+        const uniqueRec =
+            [
+                ...new Set(rec)
+            ];
+
+
+        $("auditRecommendations").textContent =
+
+uniqueRec.length
+?
+uniqueRec
+    .map(
+        x=>"⚠️ "+x
+    )
+    .join("\n\n")
+:
+"🎉 No major recommendations from the checks.";
+
+
+        result(
+
+            "auditStatus",
+
+`✅ FULL SEO AUDIT COMPLETED
+
+URL:
+${d.url}
+
+SEO SCORE:
+${score}/100
+
+PASSED:
+${passed}
+
+WARNINGS:
+${warnings}
+
+ERRORS:
+${errors}`,
+
+            "ok"
+
+        );
+
+
+    }catch(e){
+
+        result(
+            "auditStatus",
+
+`❌ SEO AUDIT FAILED
+
+${e.message}`,
+
+            "err"
+        );
+
+    }
+
+}
+
+
+/* =========================================================
+   CLEAR AUDIT
+========================================================= */
+
+function clearFullSEOAudit(){
+
+    $("auditUrl").value="";
+
+    $("auditDashboard")
+        .style.display="none";
+
+    $("auditResults")
+        .style.display="none";
+
+    result(
+        "auditStatus",
+        "Ready to analyze."
+    );
 
 }
 
@@ -5047,7 +6035,7 @@ function openWebsite(){
 function openGitHub(){
 
     window.open(
-        "https://github.com/" +
+        "https://github.com/"+
         CONFIG.repo,
         "_blank"
     );
@@ -5068,7 +6056,7 @@ function openWorker(){
 function openSitemap(){
 
     window.open(
-        CONFIG.base +
+        CONFIG.base+
         "sitemap.xml",
         "_blank"
     );
@@ -5077,13 +6065,12 @@ function openSitemap(){
 
 
 /* =========================================================
-   EVENT LISTENERS
-   IMPORTANT: TEST CONNECTION IS DIRECTLY CONNECTED HERE
+   DOM READY
 ========================================================= */
 
 document.addEventListener(
     "DOMContentLoaded",
-    () => {
+    ()=>{
 
         makeHeadingFields();
 
@@ -5096,16 +6083,15 @@ document.addEventListener(
             .value =
             new Date()
                 .toISOString()
-                .slice(
-                    0,
-                    10
-                );
+                .slice(0,10);
 
+
+        /* TITLE -> SLUG */
 
         $("articleTitle")
             .addEventListener(
                 "input",
-                () => {
+                ()=>{
 
                     if(
                         !$("articleSlug")
@@ -5133,7 +6119,6 @@ document.addEventListener(
                 testConnection
             );
 
-
         $("clearSavedKeyBtn")
             .addEventListener(
                 "click",
@@ -5149,13 +6134,11 @@ document.addEventListener(
                 updateSectionInfo
             );
 
-
         $("previewArticleBtn")
             .addEventListener(
                 "click",
                 previewArticle
             );
-
 
         $("analyzeSeoBtn")
             .addEventListener(
@@ -5163,20 +6146,17 @@ document.addEventListener(
                 analyzeSEO
             );
 
-
         $("generatedHtmlBtn")
             .addEventListener(
                 "click",
                 showGeneratedHTML
             );
 
-
         $("clearArticleBtn")
             .addEventListener(
                 "click",
                 clearArticle
             );
-
 
         $("publishBtn")
             .addEventListener(
@@ -5202,20 +6182,17 @@ document.addEventListener(
                 readFile
             );
 
-
         $("loadIndexBtn")
             .addEventListener(
                 "click",
                 loadIndex
             );
 
-
         $("saveFileBtn")
             .addEventListener(
                 "click",
                 saveFile
             );
-
 
         $("clearEditorBtn")
             .addEventListener(
@@ -5232,7 +6209,6 @@ document.addEventListener(
                 addKeyword
             );
 
-
         $("loadKeywordsBtn")
             .addEventListener(
                 "click",
@@ -5247,7 +6223,6 @@ document.addEventListener(
                 "click",
                 prepareLink
             );
-
 
         $("applyInternalLinkBtn")
             .addEventListener(
@@ -5265,6 +6240,21 @@ document.addEventListener(
             );
 
 
+        /* SEO AUDIT */
+
+        $("runAuditBtn")
+            .addEventListener(
+                "click",
+                runFullSEOAudit
+            );
+
+        $("clearAuditBtn")
+            .addEventListener(
+                "click",
+                clearFullSEOAudit
+            );
+
+
         /* QUICK LINKS */
 
         $("openWebsiteBtn")
@@ -5273,20 +6263,17 @@ document.addEventListener(
                 openWebsite
             );
 
-
         $("openGithubBtn")
             .addEventListener(
                 "click",
                 openGitHub
             );
 
-
         $("openWorkerBtn")
             .addEventListener(
                 "click",
                 openWorker
             );
-
 
         $("openSitemapBtn")
             .addEventListener(
