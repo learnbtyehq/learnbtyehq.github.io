@@ -2,1160 +2,6758 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LearnByte Admin Control Center</title>
-<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LearnByte Control Center</title>
+<meta name="robots" content="noindex,nofollow,noarchive">
 
 <style>
 *{box-sizing:border-box}
+
 body{
     margin:0;
+    background:
+        radial-gradient(circle at 5% 0%,#102b38,transparent 30%),
+        radial-gradient(circle at 95% 0%,#24154b,transparent 30%),
+        #050811;
+    color:#f5f7fb;
     font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    background:#0b1020;
-    color:#eef2ff;
+    line-height:1.55;
 }
-button,input,textarea{font:inherit}
-.top{
+
+button,input,textarea,select{font:inherit}
+
+button{
+    cursor:pointer;
+    border:0;
+    border-radius:11px;
+    padding:11px 16px;
+    min-height:43px;
+    font-weight:800;
+    background:linear-gradient(135deg,#20dff8,#6d7cff);
+    color:#031018;
+}
+
+button.secondary{
+    background:#182235;
+    border:1px solid #2b3952;
+    color:#dce5f3;
+}
+
+button.danger{
+    background:linear-gradient(135deg,#ff5d72,#ff3152);
+    color:#fff;
+}
+
+button:disabled{
+    opacity:.5;
+    cursor:not-allowed;
+}
+
+a{color:inherit}
+
+.wrap{
+    width:min(1200px,calc(100% - 20px));
+    margin:auto;
+}
+
+header{
     position:sticky;
     top:0;
-    z-index:100;
-    background:#11182d;
-    border-bottom:1px solid #293452;
-    padding:15px;
+    z-index:50;
+    background:#050811ee;
+    border-bottom:1px solid #ffffff12;
+    backdrop-filter:blur(18px);
 }
-.topbar{
-    max-width:1450px;
-    margin:auto;
+
+.nav{
+    min-height:68px;
     display:flex;
     align-items:center;
     justify-content:space-between;
     gap:15px;
-    flex-wrap:wrap;
 }
-.brand{
-    font-size:21px;
-    font-weight:800;
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    text-decoration:none;
 }
+
+.logo span{color:#29ddff}
+
+.logo small{
+    color:#78869a;
+    font-size:10px;
+}
+
+.status{
+    padding:7px 11px;
+    border-radius:99px;
+    border:1px solid #27354d;
+    color:#9ba8bc;
+    background:#0b1220;
+    font-size:12px;
+}
+
+.status.connected{
+    color:#62f6c2;
+    border-color:#00ffaa55;
+    background:#00ffaa12;
+}
+
+.hero{
+    padding:38px 0 22px;
+}
+
 .badge{
     display:inline-block;
-    margin-top:5px;
-    padding:4px 8px;
-    border-radius:20px;
-    background:#202d4d;
-    color:#9eb5ff;
+    padding:7px 11px;
+    border-radius:99px;
+    background:#20dff814;
+    border:1px solid #20dff838;
+    color:#32dcf8;
     font-size:11px;
+    font-weight:800;
 }
-.keybox{
-    display:flex;
-    gap:8px;
-    width:100%;
-    max-width:650px;
-}
-input,textarea{
-    width:100%;
-    background:#080d19;
-    color:#fff;
-    border:1px solid #303c5e;
-    border-radius:9px;
-    padding:10px;
-}
-input:focus,textarea:focus{
-    outline:2px solid #536dfe;
-}
-button{
-    border:0;
-    border-radius:9px;
-    padding:10px 14px;
-    background:#536dfe;
-    color:white;
-    font-weight:700;
-    cursor:pointer;
-}
-button:hover{filter:brightness(1.12)}
-button.secondary{background:#293554}
-button.danger{background:#b93750}
 
-main{
-    max-width:1450px;
-    margin:25px auto;
-    padding:0 16px;
-}
-.hero{
-    background:linear-gradient(135deg,#151f3b,#10172a);
-    border:1px solid #29375a;
-    border-radius:16px;
-    padding:20px;
-    margin-bottom:18px;
-}
 .hero h1{
-    margin:0 0 6px;
-    font-size:25px;
+    font-size:clamp(34px,6vw,58px);
+    line-height:1.03;
+    margin:15px 0 10px;
 }
-.hero p{
-    margin:0;
-    color:#a5b0cd;
-}
-.status{
-    margin-top:12px;
-    display:flex;
-    align-items:center;
-    gap:8px;
-}
-.dot{
-    width:10px;
-    height:10px;
-    border-radius:50%;
-    background:#777;
-}
-.dot.ok{background:#28d17c}
-.dot.bad{background:#ff526b}
 
-.search{
-    margin-bottom:18px;
+.gradient{
+    background:linear-gradient(90deg,#fff,#48e5ff,#8171ff);
+    background-clip:text;
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p,
+.desc{
+    color:#8e9aae;
 }
 
 .grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:15px;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:18px;
+}
+
+.full{
+    grid-column:1/-1;
 }
 
 .card{
-    background:#11182b;
-    border:1px solid #293654;
-    border-radius:14px;
-    padding:15px;
-    min-height:220px;
-    display:flex;
-    flex-direction:column;
-    gap:9px;
+    min-width:0;
+    padding:20px;
+    border-radius:18px;
+    background:linear-gradient(145deg,#121c2df2,#080d18f5);
+    border:1px solid #ffffff12;
+    box-shadow:0 20px 60px #00000038;
 }
+
+.card h2{
+    margin:0 0 6px;
+    font-size:20px;
+}
+
 .card h3{
-    margin:0;
+    margin-top:22px;
+}
+
+.desc{
+    margin:0 0 15px;
+    font-size:13px;
+}
+
+.field{
+    margin-top:13px;
+}
+
+.field label{
+    display:block;
+    margin-bottom:6px;
+    color:#b9c4d5;
+    font-size:12px;
+    font-weight:750;
+}
+
+input,
+textarea,
+select{
+    width:100%;
+    padding:12px 13px;
+    border:1px solid #27334a;
+    border-radius:11px;
+    background:#080e19;
+    color:#fff;
+    outline:0;
+}
+
+input:focus,
+textarea:focus,
+select:focus{
+    border-color:#27dfff;
+    box-shadow:0 0 0 3px #27dfff14;
+}
+
+textarea{
+    min-height:120px;
+    resize:vertical;
+}
+
+.row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:9px;
+    margin-top:13px;
+}
+
+.result{
+    margin-top:12px;
+    padding:12px;
+    border-radius:11px;
+    background:#070c15;
+    border:1px solid #202c40;
+    color:#aeb9ca;
+    white-space:pre-wrap;
+    overflow-wrap:anywhere;
+    font-size:12px;
+}
+
+.ok{color:#62f6c2}
+.err{color:#ff7889}
+.warn{color:#ffd166}
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:9px;
+    margin-top:14px;
+}
+
+.stat{
+    padding:13px;
+    border-radius:12px;
+    background:#080e19;
+    border:1px solid #202c40;
+}
+
+.stat b{
+    display:block;
+    font-size:23px;
+}
+
+.stat span{
+    font-size:10px;
+    color:#78869a;
+}
+
+.note{
+    margin-top:9px;
+    padding:10px 12px;
+    border-radius:10px;
+    background:#0b1322;
+    border:1px solid #1c2940;
+    color:#8d9bb0;
+    font-size:12px;
+}
+
+.check{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    color:#8e9aae;
+    font-size:12px;
+    margin-top:9px;
+}
+
+.check input{
+    width:17px;
+    height:17px;
+}
+
+.publish{
+    width:100%;
+    min-height:58px;
+    margin-top:16px;
     font-size:16px;
 }
-.number{
-    color:#809cff;
-    margin-right:5px;
+
+.preview{
+    display:none;
+    margin-top:16px;
 }
-.desc{
-    color:#9ba8c7;
-    font-size:13px;
-    min-height:35px;
+
+.preview iframe{
+    width:100%;
+    height:620px;
+    border:0;
+    border-radius:12px;
+    background:#fff;
 }
-.endpoint{
-    color:#6f7da0;
-    font-size:11px;
-    word-break:break-all;
+
+.code{
+    display:none;
+    width:100%;
+    min-height:360px;
+    font:12px monospace;
 }
-.method{
-    display:inline-block;
-    width:max-content;
-    padding:4px 7px;
-    border-radius:6px;
-    background:#263353;
-    font-size:10px;
-    font-weight:800;
+
+.list{
+    display:grid;
+    gap:8px;
+    margin-top:12px;
 }
-.form{
-    display:flex;
-    flex-direction:column;
-    gap:7px;
+
+.item{
+    padding:12px;
+    border-radius:11px;
+    background:#0b1322;
+    border:1px solid #1c2940;
 }
-.form textarea{
-    min-height:75px;
-    resize:vertical;
-    font-family:monospace;
-    font-size:12px;
+
+.item strong{
+    display:block;
+    margin-bottom:4px;
 }
-.actions{
-    display:flex;
-    gap:7px;
+
+.item small{
+    color:#8d9bb0;
 }
-.result{
+
+.audit-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:10px;
+    margin-top:15px;
+}
+
+.audit-card{
+    padding:15px;
+    border-radius:13px;
+    background:#080e19;
+    border:1px solid #202c40;
+}
+
+.audit-card h3{
+    margin:0 0 9px;
+    font-size:14px;
+}
+
+.audit-card pre{
     margin:0;
-    background:#070c17;
-    border:1px solid #27314a;
-    border-radius:9px;
-    padding:10px;
-    max-height:270px;
-    overflow:auto;
     white-space:pre-wrap;
-    font:12px/1.5 monospace;
-    color:#cbd5ff;
+    overflow-wrap:anywhere;
+    font:12px/1.7 system-ui,sans-serif;
+    color:#aeb9ca;
 }
-.hidden{display:none!important}
+
+.hidden{
+    display:none!important;
+}
+
+.table-wrap{
+    overflow:auto;
+    margin-top:12px;
+}
+
+.data-table{
+    width:100%;
+    border-collapse:collapse;
+    min-width:650px;
+}
+
+.data-table th,
+.data-table td{
+    padding:10px;
+    border-bottom:1px solid #202c40;
+    text-align:left;
+    font-size:12px;
+    vertical-align:top;
+}
+
+.data-table th{
+    color:#8d9bb0;
+}
+
+.pill{
+    display:inline-block;
+    padding:3px 7px;
+    border-radius:99px;
+    background:#182235;
+    border:1px solid #2b3952;
+    font-size:10px;
+}
+
+.module-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:10px;
+}
+
+.module{
+    padding:13px;
+    border:1px solid #202c40;
+    border-radius:12px;
+    background:#080e19;
+}
+
+.module b{
+    display:block;
+}
+
+.module small{
+    color:#8d9bb0;
+}
+
+.split{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
 
 footer{
-    max-width:1450px;
-    margin:20px auto;
-    padding:0 16px 35px;
-    color:#707e9e;
-    font-size:12px;
+    text-align:center;
+    padding:35px;
+    color:#647085;
+    font-size:11px;
+}
+
+@keyframes pulse{
+    50%{opacity:.45}
+}
+
+.loading{
+    animation:pulse 1.2s infinite;
+}
+
+@media(max-width:900px){
+    .grid,
+    .audit-grid,
+    .module-grid{
+        grid-template-columns:1fr;
+    }
+
+    .full{
+        grid-column:auto;
+    }
 }
 
 @media(max-width:600px){
-    .keybox{max-width:none}
-    .grid{grid-template-columns:1fr}
-    .hero h1{font-size:21px}
+    .wrap{
+        width:calc(100% - 14px);
+    }
+
+    .card{
+        padding:15px;
+    }
+
+    .row{
+        flex-direction:column;
+    }
+
+    .row button{
+        width:100%;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .split{
+        grid-template-columns:1fr;
+    }
 }
 </style>
 </head>
 
 <body>
 
-<header class="top">
-<div class="topbar">
+<header>
+<div class="wrap nav">
 
-<div>
-    <div class="brand">⚡ LearnByte Admin Control Center</div>
-    <div class="badge">35 Tools • Cloudflare Worker • GitHub</div>
-</div>
+<a class="logo" href="admin-control.html">
+Learn<span>Byte</span> <small>/ ADMIN</small>
+</a>
 
-<div class="keybox">
-    <input
-        id="adminKey"
-        type="password"
-        placeholder="Enter ADMIN_KEY"
-    >
-    <button onclick="saveKey()">Save</button>
-    <button class="secondary" onclick="testWorker()">Test Worker</button>
+<div id="status" class="status">
+● Not connected
 </div>
 
 </div>
 </header>
 
-<main>
+<main class="wrap">
 
 <section class="hero">
 
-<h1>Website SEO & Repository Control Center</h1>
+<span class="badge">
+PRIVATE SEO ADMIN PANEL · 1–35 CONTROL CENTER
+</span>
+
+<h1>
+LearnByte <span class="gradient">Control Center.</span>
+</h1>
 
 <p>
-Manage your LearnByte GitHub website through the Cloudflare Worker.
-All 35 Worker endpoints are available below.
+Publishing, repository management, SEO auditing, content planning,
+health checks and safe website operations from one private dashboard.
 </p>
 
-<div class="status">
-    <span id="dot" class="dot"></span>
-    <span id="statusText">Worker not tested</span>
+</section>
+
+
+<div class="grid">
+
+
+<!-- CONNECTION -->
+
+<section class="card">
+
+<h2>🔐 Secure Connection</h2>
+
+<p class="desc">
+GitHub token stays inside the Cloudflare Worker.
+</p>
+
+<div class="field">
+<label>Cloudflare Worker URL</label>
+<input
+id="workerUrl"
+value="https://learnbyte-seo-manager.learnbytehq.workers.dev"
+>
+</div>
+
+<div class="field">
+<label>Admin Key</label>
+<input
+id="adminKey"
+type="password"
+autocomplete="off"
+placeholder="Enter Admin Key"
+>
+</div>
+
+<label class="check">
+<input id="rememberKey" type="checkbox">
+Remember key on this device
+</label>
+
+<div class="row">
+<button id="testConnectionBtn">
+Test Connection
+</button>
+
+<button id="clearSavedKeyBtn" class="secondary">
+Clear Saved Key
+</button>
+</div>
+
+<div id="connectionResult" class="result">
+Not tested yet.
 </div>
 
 </section>
 
+
+<!-- DASHBOARD -->
+
+<section class="card">
+
+<h2>📊 Dashboard</h2>
+
+<p class="desc">
+Current session and repository overview.
+</p>
+
+<div class="stats">
+
+<div class="stat">
+<b id="statStatus">—</b>
+<span>Connection</span>
+</div>
+
+<div class="stat">
+<b id="statFiles">0</b>
+<span>Files Updated</span>
+</div>
+
+<div class="stat">
+<b id="statArticles">0</b>
+<span>Articles Published</span>
+</div>
+
+<div class="stat">
+<b id="statKeywords">0</b>
+<span>Keywords</span>
+</div>
+
+</div>
+
+<div id="publishSummary" class="result">
+No publish completed yet.
+</div>
+
+</section>
+
+
+<!-- 35 TOOLS -->
+
+<section class="card full">
+
+<h2>🧭 Control Center Modules</h2>
+
+<p class="desc">
+All 35 management tools are available below.
+</p>
+
+<div class="module-grid">
+
+<div class="module">
+<b>1 · 🔌 GitHub Test</b>
+<small>Test GitHub repository connection.</small>
+</div>
+
+<div class="module">
+<b>2 · 📄 Get File</b>
+<small>Read any repository file.</small>
+</div>
+
+<div class="module">
+<b>3 · 💾 Update File</b>
+<small>Update and commit a repository file.</small>
+</div>
+
+<div class="module">
+<b>4 · 🗑️ Delete File</b>
+<small>Delete a repository file safely.</small>
+</div>
+
+<div class="module">
+<b>5 · 📁 Repository List</b>
+<small>Browse repository files and folders.</small>
+</div>
+
+<div class="module">
+<b>6 · 📰 List Articles</b>
+<small>Load published LearnByte articles.</small>
+</div>
+
+<div class="module">
+<b>7 · 🔎 Analyze URL</b>
+<small>Analyze a live website URL.</small>
+</div>
+
+<div class="module">
+<b>8 · 🌐 Check Live</b>
+<small>Check HTTP status and response.</small>
+</div>
+
+<div class="module">
+<b>9 · 🚨 Check 404</b>
+<small>Verify 404 behaviour.</small>
+</div>
+
+<div class="module">
+<b>10 · 🩺 Health</b>
+<small>Check Worker and website health.</small>
+</div>
+
+<div class="module">
+<b>11 · 🔗 Broken Links</b>
+<small>Scan pages for broken links.</small>
+</div>
+
+<div class="module">
+<b>12 · 🖼️ Image Audit</b>
+<small>Check images and ALT issues.</small>
+</div>
+
+<div class="module">
+<b>13 · 🗺️ Sitemap Audit</b>
+<small>Inspect sitemap health.</small>
+</div>
+
+<div class="module">
+<b>14 · 🔄 Sitemap Rebuild</b>
+<small>Rebuild sitemap from articles.</small>
+</div>
+
+<div class="module">
+<b>15 · 📊 Audit History</b>
+<small>Store and retrieve SEO audits.</small>
+</div>
+
+<div class="module">
+<b>16 · 📝 Operation Log</b>
+<small>Track administration operations.</small>
+</div>
+
+<div class="module">
+<b>17 · 📰 Article Library</b>
+<small>Search, filter, preview and manage articles.</small>
+</div>
+
+<div class="module">
+<b>18 · 💾 Draft Manager</b>
+<small>Save, load, duplicate and delete drafts.</small>
+</div>
+
+<div class="module">
+<b>19 · 📅 Publishing Manager</b>
+<small>Publishing history and operation logs.</small>
+</div>
+
+<div class="module">
+<b>20 · 🏷️ Category & Tag Manager</b>
+<small>Category health and article distribution.</small>
+</div>
+
+<div class="module">
+<b>21 · 🔎 Keyword Planning</b>
+<small>Page-wise keyword groups and content ideas.</small>
+</div>
+
+<div class="module">
+<b>22 · 🔗 Broken Link Scanner</b>
+<small>Scan repository pages for broken links.</small>
+</div>
+
+<div class="module">
+<b>23 · 🧭 Link Opportunities</b>
+<small>Find internal-link opportunities.</small>
+</div>
+
+<div class="module">
+<b>24 · 🧩 Schema Manager</b>
+<small>Inspect and generate JSON-LD schema.</small>
+</div>
+
+<div class="module">
+<b>25 · 🖼️ Image SEO Manager</b>
+<small>ALT and image loading checks.</small>
+</div>
+
+<div class="module">
+<b>26 · 🗺️ Sitemap Manager</b>
+<small>Inspect and rebuild sitemap.</small>
+</div>
+
+<div class="module">
+<b>27 · 🤖 Robots Manager</b>
+<small>Inspect and safely update robots.txt.</small>
+</div>
+
+<div class="module">
+<b>28 · 📁 Repository Explorer</b>
+<small>Browse files and directories.</small>
+</div>
+
+<div class="module">
+<b>29 · 🕐 Commit History</b>
+<small>View recent GitHub commits.</small>
+</div>
+
+<div class="module">
+<b>30 · 🔄 Backup Center</b>
+<small>Create and restore protected backups.</small>
+</div>
+
+<div class="module">
+<b>31 · 🩺 Website Health</b>
+<small>Check core site endpoints.</small>
+</div>
+
+<div class="module">
+<b>32 · 🚨 404 & Redirect Monitor</b>
+<small>Test URLs and redirects.</small>
+</div>
+
+<div class="module">
+<b>33 · 📊 SEO Audit History</b>
+<small>Store and compare audit results.</small>
+</div>
+
+<div class="module">
+<b>34 · ⚡ Performance Checker</b>
+<small>Check response time and technical data.</small>
+</div>
+
+<div class="module">
+<b>35 · 🛡️ Pre-Publish Safety</b>
+<small>Final validation before GitHub changes.</small>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- FULL SEO AUDIT -->
+
+<section class="card full">
+
+<h2>🔍 Full SEO Audit Center</h2>
+
+<p class="desc">
+Live page audit. Results are diagnostic only, not a Google ranking score.
+</p>
+
+<div class="field">
+<label>Website / Page URL</label>
 <input
-    id="search"
-    class="search"
-    type="search"
-    placeholder="🔎 Search any tool..."
-    oninput="filterTools()"
+id="auditUrl"
+type="url"
+placeholder="https://learnbtyehq.github.io/"
+>
+</div>
+
+<div class="row">
+
+<button id="runAuditBtn">
+🔍 RUN FULL SEO AUDIT
+</button>
+
+<button id="clearAuditBtn" class="secondary">
+🧹 Clear Audit
+</button>
+
+</div>
+
+<div id="auditStatus" class="result">
+Ready to analyze.
+</div>
+
+<div id="auditDashboard" class="hidden">
+
+<div class="stats">
+
+<div class="stat">
+<b id="auditScore">—</b>
+<span>INTERNAL SCORE</span>
+</div>
+
+<div class="stat">
+<b id="auditPassed">0</b>
+<span>PASSED</span>
+</div>
+
+<div class="stat">
+<b id="auditWarnings">0</b>
+<span>WARNINGS</span>
+</div>
+
+<div class="stat">
+<b id="auditErrors">0</b>
+<span>ERRORS</span>
+</div>
+
+</div>
+
+</div>
+
+<div id="auditResults" class="audit-grid hidden">
+
+<div class="audit-card">
+<h3>🌐 HTTP + PAGE SPEED</h3>
+<pre id="auditHttp"></pre>
+</div>
+
+<div class="audit-card">
+<h3>📝 META</h3>
+<pre id="auditMeta"></pre>
+</div>
+
+<div class="audit-card">
+<h3>🔗 URL</h3>
+<pre id="auditUrlCheck"></pre>
+</div>
+
+<div class="audit-card">
+<h3>📑 HEADINGS</h3>
+<pre id="auditHeadings"></pre>
+</div>
+
+<div class="audit-card">
+<h3>⚙️ TECHNICAL</h3>
+<pre id="auditTechnical"></pre>
+</div>
+
+<div class="audit-card">
+<h3>🌐 SOCIAL + SCHEMA</h3>
+<pre id="auditSocial"></pre>
+</div>
+
+<div class="audit-card">
+<h3>🖼️ IMAGES</h3>
+<pre id="auditImages"></pre>
+</div>
+
+<div class="audit-card">
+<h3>🔗 LINKS</h3>
+<pre id="auditLinks"></pre>
+</div>
+
+<div class="audit-card">
+<h3>📱 MOBILE</h3>
+<pre id="auditMobile"></pre>
+</div>
+
+<div class="audit-card">
+<h3>📚 CONTENT</h3>
+<pre id="auditContent"></pre>
+</div>
+
+<div class="audit-card">
+<h3>🗺️ SITEMAP + ROBOTS</h3>
+<pre id="auditFiles"></pre>
+</div>
+
+<div class="audit-card">
+<h3>🚨 404</h3>
+<pre id="audit404"></pre>
+</div>
+
+<div class="audit-card full">
+<h3>💡 RECOMMENDATIONS</h3>
+<pre id="auditRecommendations"></pre>
+</div>
+
+</div>
+
+</section>
+
+
+<!-- ARTICLE CREATOR -->
+
+<section class="card full">
+
+<h2>📝 Direct Publish Article</h2>
+
+<p class="desc">
+Create and publish a real LearnByte article without manually editing homepage,
+category and sitemap files.
+</p>
+
+<div class="field">
+<label>Website Section / Theme *</label>
+
+<select id="articleSection">
+<option value="education">🎓 Education</option>
+<option value="technology">💻 Technology</option>
+<option value="seo" selected>🔎 SEO</option>
+<option value="gaming">🎮 Gaming</option>
+</select>
+
+</div>
+
+<div id="sectionInfo" class="note"></div>
+
+<div class="field">
+<label>Article Title *</label>
+<input
+id="articleTitle"
+placeholder="What Is SEO? Complete Beginner Guide"
+>
+</div>
+
+<div class="field">
+<label>URL / File Name *</label>
+<input
+id="articleSlug"
+placeholder="what-is-seo.html"
+>
+</div>
+
+<div class="field">
+<label>Category / Subcategory</label>
+<input id="articleCategory" placeholder="SEO Basics">
+</div>
+
+<div class="field">
+<label>Publish Date</label>
+<input id="articleDate" type="date">
+</div>
+
+<div class="field">
+<label>Meta Title</label>
+<input id="articleMetaTitle">
+</div>
+
+<div class="field">
+<label>Meta Description *</label>
+<textarea id="articleMetaDescription"></textarea>
+</div>
+
+<div class="field">
+<label>Primary Keyword</label>
+<input id="articlePrimaryKeyword">
+</div>
+
+<div class="field">
+<label>Secondary Keywords</label>
+<input id="articleSecondaryKeywords">
+</div>
+
+<div class="field">
+<label>Featured Image URL</label>
+<input id="articleImage" type="url">
+</div>
+
+<div class="field">
+<label>Introduction</label>
+<textarea id="articleIntro"></textarea>
+</div>
+
+<div id="headingFields"></div>
+
+<div class="field">
+<label>Conclusion</label>
+<textarea id="articleConclusion"></textarea>
+</div>
+
+<div class="row">
+
+<button id="previewArticleBtn" class="secondary">
+👁️ Preview
+</button>
+
+<button id="analyzeSeoBtn" class="secondary">
+📈 Analyze SEO
+</button>
+
+<button id="generatedHtmlBtn" class="secondary">
+🔍 Generated HTML
+</button>
+
+<button id="clearArticleBtn" class="secondary">
+🧹 Clear
+</button>
+
+<button id="saveDraftBtn" class="secondary">
+💾 Save Draft
+</button>
+
+<button id="safetyCheckBtn" class="secondary">
+🛡️ Safety Check
+</button>
+
+</div>
+
+<button id="publishBtn" class="publish">
+🚀 DIRECT PUBLISH TO WEBSITE
+</button>
+
+<div id="articleResult" class="result">
+Ready.
+</div>
+
+<div id="seoBox" class="result hidden"></div>
+
+<div id="safetyBox" class="result hidden"></div>
+
+<div id="previewBox" class="preview">
+
+<h3>👁️ Article Preview</h3>
+
+<div id="previewArea"></div>
+
+</div>
+
+<div id="codeBox" class="hidden">
+
+<h3>🔍 Generated HTML</h3>
+
+<textarea
+id="articleCode"
+class="code"
+readonly
+></textarea>
+
+</div>
+
+</section>
+
+
+<!-- DELETE ARTICLE -->
+
+<section class="card full">
+
+<h2>🗑️ Delete Published Article</h2>
+
+<p class="desc">
+Delete article and clean its category, homepage, sitemap and keyword references.
+</p>
+
+<div class="field">
+<label>Article File Path *</label>
+<input id="deletePath" placeholder="posts/what-is-seo.html">
+</div>
+
+<div class="field">
+<label>Article Section *</label>
+
+<select id="deleteSection">
+<option value="education">🎓 Education</option>
+<option value="technology">💻 Technology</option>
+<option value="seo">🔎 SEO</option>
+<option value="gaming">🎮 Gaming</option>
+</select>
+
+</div>
+
+<div class="field">
+<label>Article Title / Text</label>
+<input id="deleteTitle">
+</div>
+
+<div class="row">
+
+<button id="deleteArticleBtn" class="danger">
+🗑️ DELETE ARTICLE COMPLETELY
+</button>
+
+</div>
+
+<div id="deleteResult" class="result">
+Nothing deleted.
+</div>
+
+</section>
+
+
+<!-- FILE MANAGER -->
+
+<section class="card">
+
+<h2>📄 File Manager</h2>
+
+<p class="desc">
+Read GitHub files and load them into the editor.
+</p>
+
+<div class="field">
+<label>Repository File Path</label>
+<input id="filePath" placeholder="index.html">
+</div>
+
+<div class="row">
+
+<button id="readFileBtn">
+📖 Read File
+</button>
+
+<button id="loadIndexBtn" class="secondary">
+Load index.html
+</button>
+
+</div>
+
+<div id="fileResult" class="result">
+No file loaded.
+</div>
+
+</section>
+
+
+<!-- GITHUB EDITOR -->
+
+<section class="card">
+
+<h2>✏️ GitHub Editor</h2>
+
+<p class="desc">
+Edit a loaded file and commit it.
+</p>
+
+<div class="field">
+<label>Current File</label>
+<input id="currentFile" readonly>
+</div>
+
+<div class="field">
+<label>Commit Message</label>
+<input
+id="commitMessage"
+value="Update file from LearnByte Control Center"
+>
+</div>
+
+<div class="field">
+<label>File Content</label>
+
+<textarea
+id="editor"
+style="min-height:300px;font-family:monospace"
+spellcheck="false"
+></textarea>
+
+</div>
+
+<div class="row">
+
+<button id="saveFileBtn">
+💾 Save & Commit
+</button>
+
+<button id="clearEditorBtn" class="secondary">
+Clear
+</button>
+
+</div>
+
+<div id="saveResult" class="result">
+No changes made.
+</div>
+
+</section>
+
+
+<!-- KEYWORDS -->
+
+<section class="card full">
+
+<h2>🔑 Keyword Manager + Planning</h2>
+
+<p class="desc">
+Page-wise SEO keyword storage plus content planning.
+</p>
+
+<div class="split">
+
+<div>
+
+<div class="field">
+<label>Page</label>
+<input id="keywordPage" placeholder="posts/example.html">
+</div>
+
+<div class="field">
+<label>Primary Keyword</label>
+<input id="keywordPrimary">
+</div>
+
+<div class="field">
+<label>Secondary Keywords</label>
+<input id="keywordSecondary">
+</div>
+
+<div class="field">
+<label>Search Intent / Content Idea</label>
+<input
+id="keywordIdea"
+placeholder="Informational · Beginner guide"
+>
+</div>
+
+<div class="row">
+
+<button id="addKeywordBtn">
+➕ Add Keyword
+</button>
+
+<button id="loadKeywordsBtn" class="secondary">
+🔄 Load Keywords
+</button>
+
+</div>
+
+</div>
+
+<div>
+
+<div id="keywordResult" class="result">
+Keyword manager ready.
+</div>
+
+<div id="keywordList" class="list"></div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- INTERNAL LINK -->
+
+<section class="card">
+
+<h2>🔗 Internal Linking</h2>
+
+<p class="desc">
+Generate and safely apply an internal link.
+</p>
+
+<div class="field">
+<label>Source Page</label>
+<input id="sourcePage">
+</div>
+
+<div class="field">
+<label>Target Page</label>
+<input id="targetPage">
+</div>
+
+<div class="field">
+<label>Anchor Text</label>
+<input id="anchorText">
+</div>
+
+<div class="row">
+
+<button id="prepareLinkBtn" class="secondary">
+Generate Link
+</button>
+
+<button id="applyInternalLinkBtn">
+⚡ Apply & Commit
+</button>
+
+</div>
+
+<div id="linkResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- REDIRECT -->
+
+<section class="card">
+
+<h2>🔀 Redirect Manager</h2>
+
+<p class="desc">
+Creates an HTML redirect, not a server-side 301.
+</p>
+
+<div class="field">
+<label>Old URL / File</label>
+<input id="oldUrl">
+</div>
+
+<div class="field">
+<label>New URL</label>
+<input id="newUrl">
+</div>
+
+<div class="row">
+
+<button id="createRedirectBtn">
+🚀 Create Redirect
+</button>
+
+</div>
+
+<div id="redirectResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- ARTICLE LIBRARY -->
+
+<section class="card full">
+
+<h2>📰 17 · Article Library</h2>
+
+<p class="desc">
+Browse repository articles and manage published content.
+</p>
+
+<div class="row">
+
+<button id="loadArticlesBtn">
+🔄 Load Articles
+</button>
+
+<button id="openSelectedArticleBtn" class="secondary">
+Open Selected
+</button>
+
+</div>
+
+<div class="split">
+
+<div class="field">
+<label>Search</label>
+<input
+id="articleSearch"
+placeholder="seo, gaming, guide..."
+>
+</div>
+
+<div class="field">
+<label>Category Filter</label>
+
+<select id="articleFilter">
+<option value="">All</option>
+<option value="education">Education</option>
+<option value="technology">Technology</option>
+<option value="seo">SEO</option>
+<option value="gaming">Gaming</option>
+</select>
+
+</div>
+
+</div>
+
+<div id="articleLibraryResult" class="result">
+Not loaded.
+</div>
+
+<div id="articleLibraryList" class="list"></div>
+
+</section>
+
+
+<!-- DRAFT -->
+
+<section class="card">
+
+<h2>💾 18 · Draft Manager</h2>
+
+<p class="desc">
+Store article drafts in drafts.json on GitHub.
+</p>
+
+<div class="field">
+<label>Draft ID</label>
+<input id="draftId" placeholder="auto-from-slug">
+</div>
+
+<div class="row">
+
+<button id="saveDraftManagerBtn">
+Save Current
+</button>
+
+<button id="loadDraftsBtn" class="secondary">
+Load Drafts
+</button>
+
+</div>
+
+<div id="draftResult" class="result">
+Draft manager ready.
+</div>
+
+<div id="draftList" class="list"></div>
+
+</section>
+
+
+<!-- PUBLISHING -->
+
+<section class="card">
+
+<h2>📅 19 · Publishing Manager</h2>
+
+<p class="desc">
+View publishing session history and operation logs.
+</p>
+
+<div class="row">
+
+<button id="loadHistoryBtn">
+Load History
+</button>
+
+<button id="clearSessionBtn" class="secondary">
+Clear Session Counters
+</button>
+
+</div>
+
+<div id="historyResult" class="result">
+No history loaded.
+</div>
+
+</section>
+
+
+<!-- CATEGORY -->
+
+<section class="card">
+
+<h2>🏷️ 20 · Category & Tag Manager</h2>
+
+<p class="desc">
+Check category pages, article counts and empty/orphan signals.
+</p>
+
+<div class="row">
+
+<button id="categoryHealthBtn">
+Check Categories
+</button>
+
+</div>
+
+<div id="categoryResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- KEYWORD PLANNING -->
+
+<section class="card">
+
+<h2>🔎 21 · Keyword Planning</h2>
+
+<p class="desc">
+Plan keywords without pretending to have search-volume data.
+</p>
+
+<div class="field">
+<label>Keyword Group</label>
+<input id="planGroup">
+</div>
+
+<div class="field">
+<label>Primary</label>
+<input id="planPrimary">
+</div>
+
+<div class="field">
+<label>Secondary</label>
+<input id="planSecondary">
+</div>
+
+<div class="field">
+<label>Intent / Idea</label>
+<textarea id="planIdea"></textarea>
+</div>
+
+<button id="savePlanBtn">
+Save Plan
+</button>
+
+<div id="planResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- BROKEN -->
+
+<section class="card">
+
+<h2>🔗 22 · Broken Link Scanner</h2>
+
+<p class="desc">
+Scans repository HTML and checks discovered links through the Worker.
+</p>
+
+<div class="row">
+
+<button id="brokenScanBtn">
+Run Scan
+</button>
+
+</div>
+
+<div id="brokenResult" class="result">
+Not scanned.
+</div>
+
+</section>
+
+
+<!-- OPPORTUNITIES -->
+
+<section class="card">
+
+<h2>🧭 23 · Link Opportunities</h2>
+
+<p class="desc">
+Find article pages and generate related internal-link candidates.
+</p>
+
+<div class="field">
+<label>Target Page</label>
+<input id="opTarget">
+</div>
+
+<div class="field">
+<label>Anchor Text</label>
+<input id="opAnchor">
+</div>
+
+<button id="opportunityBtn">
+Find Opportunities
+</button>
+
+<div id="opportunityResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- SCHEMA -->
+
+<section class="card">
+
+<h2>🧩 24 · Schema Manager</h2>
+
+<p class="desc">
+Inspect JSON-LD or generate schema from real article fields.
+</p>
+
+<div class="field">
+<label>Article File</label>
+<input id="schemaPath">
+</div>
+
+<div class="row">
+
+<button id="schemaInspectBtn">
+Inspect Schema
+</button>
+
+<button id="schemaGenerateBtn" class="secondary">
+Generate Article Schema
+</button>
+
+</div>
+
+<div id="schemaResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- IMAGE -->
+
+<section class="card">
+
+<h2>🖼️ 25 · Image SEO Manager</h2>
+
+<p class="desc">
+Scan repository HTML for images and ALT problems.
+</p>
+
+<div class="row">
+
+<button id="imageScanBtn">
+Scan Images
+</button>
+
+</div>
+
+<div id="imageResult" class="result">
+Not scanned.
+</div>
+
+</section>
+
+
+<!-- SITEMAP -->
+
+<section class="card">
+
+<h2>🗺️ 26 · Sitemap Manager</h2>
+
+<p class="desc">
+Inspect URLs, duplicates and missing article URLs.
+</p>
+
+<div class="row">
+
+<button id="sitemapCheckBtn">
+Check Sitemap
+</button>
+
+<button id="sitemapRebuildBtn" class="secondary">
+Rebuild from Articles
+</button>
+
+</div>
+
+<div id="sitemapResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- ROBOTS -->
+
+<section class="card">
+
+<h2>🤖 27 · Robots.txt Manager</h2>
+
+<p class="desc">
+Read, validate and safely edit robots.txt.
+</p>
+
+<div class="field">
+<label>Robots Content</label>
+
+<textarea
+id="robotsEditor"
+style="min-height:220px;font-family:monospace"
+></textarea>
+
+</div>
+
+<div class="row">
+
+<button id="robotsLoadBtn">
+Load
+</button>
+
+<button id="robotsValidateBtn" class="secondary">
+Validate
+</button>
+
+<button id="robotsSaveBtn">
+Save & Commit
+</button>
+
+</div>
+
+<div id="robotsResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- REPOSITORY -->
+
+<section class="card full">
+
+<h2>📁 28 · Repository Explorer</h2>
+
+<p class="desc">
+Browse repository paths and open files in the existing editor.
+</p>
+
+<div class="field">
+<label>Directory Path (blank = root)</label>
+<input id="repoPath" placeholder="">
+</div>
+
+<div class="row">
+
+<button id="repoBrowseBtn">
+Browse
+</button>
+
+</div>
+
+<div id="repoResult" class="result">
+Ready.
+</div>
+
+<div id="repoList" class="list"></div>
+
+</section>
+
+
+<!-- COMMITS -->
+
+<section class="card full">
+
+<h2>🕐 29 · GitHub Commit History</h2>
+
+<p class="desc">
+Recent repository commits.
+</p>
+
+<div class="row">
+
+<button id="commitsBtn">
+Load Commits
+</button>
+
+</div>
+
+<div id="commitResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- BACKUP -->
+
+<section class="card">
+
+<h2>🔄 30 · Backup / Restore</h2>
+
+<p class="desc">
+Create a backup copy before risky edits. Restore requires confirmation.
+</p>
+
+<div class="field">
+<label>File Path</label>
+<input id="backupPath" placeholder="index.html">
+</div>
+
+<div class="row">
+
+<button id="backupBtn">
+Create Backup
+</button>
+
+<button id="restoreBtn" class="secondary">
+Restore Backup
+</button>
+
+</div>
+
+<div id="backupResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- HEALTH -->
+
+<section class="card">
+
+<h2>🩺 31 · Website Health</h2>
+
+<p class="desc">
+Check core LearnByte endpoints.
+</p>
+
+<div class="row">
+
+<button id="healthBtn">
+Run Health Check
+</button>
+
+</div>
+
+<div id="healthResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- 404 -->
+
+<section class="card">
+
+<h2>🚨 32 · 404 & Redirect Monitor</h2>
+
+<p class="desc">
+Test a specific URL or run the random 404 check.
+</p>
+
+<div class="field">
+<label>URL</label>
+
+<input
+id="monitorUrl"
+placeholder="https://learnbtyehq.github.io/does-not-exist.html"
 >
 
-<div id="grid" class="grid"></div>
+</div>
+
+<div class="row">
+
+<button id="monitorBtn">
+Check URL
+</button>
+
+<button id="random404Btn" class="secondary">
+Random 404
+</button>
+
+</div>
+
+<div id="monitorResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- AUDIT HISTORY -->
+
+<section class="card">
+
+<h2>📊 33 · SEO Audit History</h2>
+
+<p class="desc">
+Store audit summaries and compare the latest result.
+</p>
+
+<div class="row">
+
+<button id="historyAuditBtn">
+Load Audit History
+</button>
+
+</div>
+
+<div id="auditHistoryResult" class="result">
+No history loaded.
+</div>
+
+</section>
+
+
+<!-- PERFORMANCE -->
+
+<section class="card">
+
+<h2>⚡ 34 · Performance Checker</h2>
+
+<p class="desc">
+Response-time and technical measurements from the Worker.
+</p>
+
+<div class="field">
+<label>URL</label>
+
+<input
+id="perfUrl"
+placeholder="https://learnbtyehq.github.io/"
+>
+
+</div>
+
+<button id="perfBtn">
+Run Performance Check
+</button>
+
+<div id="perfResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- SAFETY -->
+
+<section class="card full">
+
+<h2>🛡️ 35 · Pre-Publish Safety & Quality Center</h2>
+
+<p class="desc">
+Checks the current article before any GitHub write.
+</p>
+
+<div class="row">
+
+<button id="safetyCenterBtn">
+Run Full Safety Check
+</button>
+
+</div>
+
+<div id="safetyCenterResult" class="result">
+Ready.
+</div>
+
+</section>
+
+
+<!-- QUICK LINKS -->
+
+<section class="card full">
+
+<h2>🌐 Quick Links</h2>
+
+<div class="row">
+
+<button id="openWebsiteBtn" class="secondary">
+Website
+</button>
+
+<button id="openGithubBtn" class="secondary">
+GitHub
+</button>
+
+<button id="openWorkerBtn" class="secondary">
+Worker
+</button>
+
+<button id="openSitemapBtn" class="secondary">
+Sitemap
+</button>
+
+</div>
+
+</section>
+
+</div>
 
 </main>
 
 <footer>
-LearnByte Admin Control Center • Secure requests through Cloudflare Worker
+LearnByte SEO Control · Private administration tool · Internal audit scores are diagnostic only.
 </footer>
+
 
 <script>
 
-const WORKER =
-"https://learnbyte-seo-manager.learnbytehq.workers.dev";
+const CONFIG={
+    base:"https://learnbtyehq.github.io/",
+    repo:"learnbtyehq/learnbtyehq.github.io",
+    branch:"main",
 
-const tools = [
+    sections:{
+        education:{
+            name:"Education",
+            css:"education.css",
+            category:"category/education.html",
+            grid:"education-post-grid",
+            icon:"🎓",
+            read:"Read Guide →"
+        },
 
-{
-    n:1,
-    name:"GitHub Test",
-    path:"/github-test",
-    method:"GET",
-    desc:"Test GitHub repository connection."
-},
+        technology:{
+            name:"Technology",
+            css:"technology.css",
+            category:"category/technology.html",
+            grid:"tech-card-grid",
+            icon:"💻",
+            read:"Open Guide →"
+        },
 
-{
-    n:2,
-    name:"Get File",
-    path:"/get-file",
-    method:"POST",
-    desc:"Read any file from the repository.",
-    sample:{
-        path:"index.html"
+        seo:{
+            name:"SEO",
+            css:"seo.css",
+            category:"category/seo.html",
+            grid:"seo-post-grid",
+            icon:"🔎",
+            read:"Read Guide →"
+        },
+
+        gaming:{
+            name:"Gaming",
+            css:"gaming.css",
+            category:"category/gaming.html",
+            grid:"gaming-post-grid",
+            icon:"🎮",
+            read:"Read Article →"
+        }
     }
-},
+};
 
-{
-    n:3,
-    name:"Update / Create File",
-    path:"/update-file",
-    method:"POST",
-    desc:"Create or update a repository file.",
-    sample:{
-        path:"example.html",
-        content:"<h1>Hello LearnByte</h1>",
-        message:"Update example"
-    }
-},
+let currentFileSha=null;
+let currentFilePath=null;
+let keywordSha=null;
+let keywordData={keywords:[]};
+let articlesCache=[];
+let draftData={drafts:[]};
 
-{
-    n:4,
-    name:"Delete File",
-    path:"/delete-file",
-    method:"POST",
-    desc:"Delete a repository file.",
-    sample:{
-        path:"example.html",
-        message:"Delete example"
-    }
-},
+const $=id=>document.getElementById(id);
 
-{
-    n:5,
-    name:"Live SEO Analyzer",
-    path:"/analyze-url",
-    method:"POST",
-    desc:"Analyze a live webpage for SEO.",
-    sample:{
-        url:"https://learnbtyehq.github.io"
-    }
-},
+const worker=()=>
+    $("workerUrl").value.trim().replace(/\/+$/,"");
 
-{
-    n:6,
-    name:"Health Check",
-    path:"/health",
-    method:"GET",
-    desc:"Check important website files."
-},
+const key=()=>
+    $("adminKey").value.trim();
 
-{
-    n:7,
-    name:"Repository File List",
-    path:"/repo-list",
-    method:"POST",
-    desc:"List files inside a repository folder.",
-    sample:{
-        path:""
-    }
-},
+const headers=()=>({
+    "Content-Type":"application/json",
+    "X-Admin-Key":key()
+});
 
-{
-    n:8,
-    name:"Article List",
-    path:"/list-articles",
-    method:"GET",
-    desc:"List HTML articles from /posts."
-},
+function result(id,msg,type=""){
+    const e=$(id);
+    if(!e)return;
 
-{
-    n:9,
-    name:"Live URL Check",
-    path:"/check-live",
-    method:"POST",
-    desc:"Check HTTP status and redirects.",
-    sample:{
-        url:"https://learnbtyehq.github.io"
-    }
-},
-
-{
-    n:10,
-    name:"404 Check",
-    path:"/check-404",
-    method:"POST",
-    desc:"Verify website 404 response.",
-    sample:{
-        base:"https://learnbtyehq.github.io"
-    }
-},
-
-{
-    n:11,
-    name:"Sitemap Audit",
-    path:"/sitemap-audit",
-    method:"GET",
-    desc:"Audit sitemap URLs and duplicates."
-},
-
-{
-    n:12,
-    name:"Sitemap Rebuild",
-    path:"/sitemap-rebuild",
-    method:"POST",
-    desc:"Rebuild sitemap from website posts.",
-    sample:{}
-},
-
-{
-    n:13,
-    name:"Commit History",
-    path:"/commits",
-    method:"GET",
-    desc:"View latest GitHub commits."
-},
-
-{
-    n:14,
-    name:"File Backup",
-    path:"/backup",
-    method:"POST",
-    desc:"Create a backup of a repository file.",
-    sample:{
-        path:"index.html"
-    }
-},
-
-{
-    n:15,
-    name:"Audit History",
-    path:"/audit-history",
-    method:"GET",
-    desc:"View saved SEO audit history."
-},
-
-{
-    n:16,
-    name:"Image / ALT Audit",
-    path:"/image-audit",
-    method:"POST",
-    desc:"Find missing and empty image ALT attributes.",
-    sample:{}
-},
-
-{
-    n:17,
-    name:"Broken Internal Links",
-    path:"/broken-links",
-    method:"POST",
-    desc:"Find broken internal repository links.",
-    sample:{}
-},
-
-{
-    n:18,
-    name:"Link Opportunities",
-    path:"/link-opportunities",
-    method:"POST",
-    desc:"Find pages containing an anchor phrase.",
-    sample:{
-        anchor:"percentage calculator",
-        target:"posts/percentage-calculator.html"
-    }
-},
-
-{
-    n:19,
-    name:"Draft Manager",
-    path:"/drafts",
-    method:"POST",
-    desc:"List, save or delete article drafts.",
-    sample:{
-        action:"list"
-    }
-},
-
-{
-    n:20,
-    name:"Keyword Plans",
-    path:"/keyword-plans",
-    method:"POST",
-    desc:"Manage keyword planning records.",
-    sample:{
-        action:"list"
-    }
-},
-
-{
-    n:21,
-    name:"Keyword Manager",
-    path:"/keywords",
-    method:"POST",
-    desc:"Manage page primary and secondary keywords.",
-    sample:{
-        action:"list"
-    }
-},
-
-{
-    n:22,
-    name:"Apply Internal Link",
-    path:"/apply-link",
-    method:"POST",
-    desc:"Apply an internal link to anchor text.",
-    sample:{
-        source:"index.html",
-        target:"posts/example.html",
-        anchor:"example"
-    }
-},
-
-{
-    n:23,
-    name:"Redirect Manager",
-    path:"/redirect",
-    method:"POST",
-    desc:"Create an HTML redirect page.",
-    sample:{
-        old:"old-page.html",
-        new:"https://learnbtyehq.github.io/new-page.html"
-    }
-},
-
-{
-    n:24,
-    name:"Individual Page SEO",
-    path:"/page-seo",
-    method:"POST",
-    desc:"Run SEO analysis on one repository page.",
-    sample:{
-        path:"index.html"
-    }
-},
-
-{
-    n:25,
-    name:"Content Statistics",
-    path:"/content-stats",
-    method:"POST",
-    desc:"Count words, headings, images and links.",
-    sample:{
-        path:"index.html"
-    }
-},
-
-{
-    n:26,
-    name:"Meta Check",
-    path:"/meta-check",
-    method:"POST",
-    desc:"Check title, description, canonical, OG and Twitter.",
-    sample:{
-        path:"index.html"
-    }
-},
-
-{
-    n:27,
-    name:"Heading Check",
-    path:"/headings-check",
-    method:"POST",
-    desc:"Check H1 and H2 structure.",
-    sample:{
-        path:"index.html"
-    }
-},
-
-{
-    n:28,
-    name:"Robots.txt Check",
-    path:"/robots-check",
-    method:"GET",
-    desc:"Inspect robots.txt."
-},
-
-{
-    n:29,
-    name:"Sitemap URL Add",
-    path:"/sitemap-add",
-    method:"POST",
-    desc:"Add a URL to sitemap.xml.",
-    sample:{
-        url:"https://learnbtyehq.github.io/example.html"
-    }
-},
-
-{
-    n:30,
-    name:"Sitemap URL Remove",
-    path:"/sitemap-remove",
-    method:"POST",
-    desc:"Remove a URL from sitemap.xml.",
-    sample:{
-        url:"https://learnbtyehq.github.io/example.html"
-    }
-},
-
-{
-    n:31,
-    name:"Page Backup",
-    path:"/page-backup",
-    method:"POST",
-    desc:"Create a page backup.",
-    sample:{
-        path:"index.html"
-    }
-},
-
-{
-    n:32,
-    name:"Bulk Page SEO Audit",
-    path:"/bulk-audit",
-    method:"POST",
-    desc:"Audit multiple pages or all posts.",
-    sample:{}
-},
-
-{
-    n:33,
-    name:"Site Statistics",
-    path:"/site-statistics",
-    method:"GET",
-    desc:"Show repository and website statistics."
-},
-
-{
-    n:34,
-    name:"Repository File Search",
-    path:"/repo-search",
-    method:"POST",
-    desc:"Search repository file contents.",
-    sample:{
-        query:"canonical"
-    }
-},
-
-{
-    n:35,
-    name:"Complete Site Overview",
-    path:"/site-overview",
-    method:"GET",
-    desc:"Show complete website overview."
+    e.className="result "+type;
+    e.textContent=msg;
 }
 
-];
-
-function escapeHTML(value){
-
-    return String(value)
-    .replace(/&/g,"&amp;")
-    .replace(/</g,"&lt;")
-    .replace(/>/g,"&gt;")
-    .replace(/"/g,"&quot;")
-    .replace(/'/g,"&#039;");
-
+function esc(v){
+    return String(v??"")
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
 }
 
-function buildPanel(){
+async function api(
+    path,
+    method="GET",
+    body,
+    timeoutMs=45000
+){
 
-    const grid =
-    document.getElementById("grid");
+    const controller=new AbortController();
 
-    grid.innerHTML="";
+    const timer=setTimeout(
+        ()=>controller.abort(),
+        timeoutMs
+    );
 
-    tools.forEach(tool=>{
+    try{
 
-        const card =
-        document.createElement("article");
+        const response=await fetch(
+            worker()+path,
+            {
+                method,
+                headers:headers(),
+                body:
+                    body===undefined
+                    ?undefined
+                    :JSON.stringify(body),
+                signal:controller.signal
+            }
+        );
 
-        card.className="card tool";
+        let data={};
 
-        card.dataset.search =
-        (
-            tool.n+" "+
-            tool.name+" "+
-            tool.path+" "+
-            tool.desc
-        ).toLowerCase();
+        try{
+            data=await response.json();
+        }catch{}
 
-        let body="";
+        if(!response.ok){
 
-        if(tool.method==="POST"){
-
-            body=`
-
-            <div class="form">
-
-                <textarea
-                    id="body-${tool.n}"
-                    spellcheck="false"
-                >${escapeHTML(
-                    JSON.stringify(
-                        tool.sample || {},
-                        null,
-                        2
-                    )
-                )}</textarea>
-
-                <div class="actions">
-
-                    <button
-                        onclick="runTool(${tool.n})"
-                    >
-                        ▶ Run
-                    </button>
-
-                    <button
-                        class="secondary"
-                        onclick="resetTool(${tool.n})"
-                    >
-                        Reset
-                    </button>
-
-                </div>
-
-            </div>
-
-            `;
-
-        }else{
-
-            body=`
-
-            <div class="actions">
-
-                <button
-                    onclick="runTool(${tool.n})"
-                >
-                    ▶ Run GET
-                </button>
-
-            </div>
-
-            `;
-
+            throw new Error(
+                data.error ||
+                data.message ||
+                "Request failed: "+response.status
+            );
         }
 
-        card.innerHTML=`
+        return data;
 
-            <span class="method">
-                ${tool.method}
-            </span>
+    }catch(e){
 
-            <h3>
-                <span class="number">
-                    ${tool.n}.
-                </span>
-                ${escapeHTML(tool.name)}
-            </h3>
+        if(e.name==="AbortError"){
+            throw new Error("Request timed out.");
+        }
 
-            <div class="desc">
-                ${escapeHTML(tool.desc)}
-            </div>
+        throw e;
 
-            <div class="endpoint">
-                ${escapeHTML(tool.path)}
-            </div>
+    }finally{
 
-            ${body}
+        clearTimeout(timer);
 
-            <pre
-                id="result-${tool.n}"
-                class="result hidden"
-            ></pre>
+    }
+}
 
+
+function setConnected(value){
+
+    $("status").textContent=
+        value
+        ?"● Connected"
+        :"● Not connected";
+
+    $("status").classList.toggle(
+        "connected",
+        value
+    );
+
+    $("statStatus").textContent=
+        value
+        ?"OK"
+        :"—";
+}
+
+
+async function testConnection(){
+
+    result(
+        "connectionResult",
+        "🔄 Testing connection...",
+        "loading"
+    );
+
+    try{
+
+        if(!key()){
+            throw new Error("Enter Admin Key.");
+        }
+
+        const data=await api("/github-test");
+
+        result(
+            "connectionResult",
+            `✅ CONNECTION SUCCESSFUL
+
+Repository: ${data.repository}
+Branch: ${data.branch}
+Default Branch: ${data.default_branch}`,
+            "ok"
+        );
+
+        setConnected(true);
+
+        if($("rememberKey").checked){
+
+            localStorage.setItem(
+                "learnbyte_admin_key",
+                key()
+            );
+        }
+
+    }catch(e){
+
+        result(
+            "connectionResult",
+            "❌ CONNECTION FAILED\n\n"+e.message,
+            "err"
+        );
+
+        setConnected(false);
+    }
+}
+
+
+function clearSavedKey(){
+
+    localStorage.removeItem(
+        "learnbyte_admin_key"
+    );
+
+    $("adminKey").value="";
+    $("rememberKey").checked=false;
+
+    setConnected(false);
+
+    result(
+        "connectionResult",
+        "Saved key cleared."
+    );
+}
+
+
+function loadSavedKey(){
+
+    const saved=
+        localStorage.getItem(
+            "learnbyte_admin_key"
+        );
+
+    if(saved){
+
+        $("adminKey").value=saved;
+        $("rememberKey").checked=true;
+    }
+}
+
+
+function updateSectionInfo(){
+
+    const section=
+        CONFIG.sections[
+            $("articleSection").value
+        ];
+
+    $("sectionInfo").textContent=
+        `${section.icon} ${section.name} theme: ${section.css} · Category: ${section.category} · Articles: posts/`;
+}
+
+
+function makeHeadingFields(){
+
+    let html="";
+
+    for(let i=1;i<=6;i++){
+
+        html+=`
+        <div class="field">
+            <label>Heading ${i}</label>
+            <input
+                id="heading${i}"
+                placeholder="Optional heading ${i}"
+            >
+        </div>
+
+        <div class="field">
+            <label>Content ${i}</label>
+            <textarea
+                id="content${i}"
+                placeholder="Content for this section..."
+            ></textarea>
+        </div>
         `;
+    }
 
-        grid.appendChild(card);
+    $("headingFields").innerHTML=html;
+}
 
+
+function slugify(value){
+
+    return String(value)
+        .toLowerCase()
+        .trim()
+        .replace(/\.html$/,"")
+        .replace(/[^a-z0-9]+/g,"-")
+        .replace(/^-+|-+$/g,"")
+        +".html";
+}
+
+
+function articlePath(){
+
+    let slug=
+        $("articleSlug").value.trim();
+
+    if(!slug){
+
+        slug=slugify(
+            $("articleTitle").value
+        );
+    }
+
+    if(!slug)return"";
+
+    if(!slug.endsWith(".html")){
+        slug=slugify(slug);
+    }
+
+    return slug.includes("/")
+        ?slug
+        :"posts/"+slug;
+}
+
+
+function textParas(text){
+
+    return String(text||"")
+        .trim()
+        .split(/\n\s*\n/)
+        .filter(Boolean)
+        .map(
+            x=>
+            "<p>"+
+            esc(x).replace(/\n/g,"<br>")+
+            "</p>"
+        )
+        .join("\n");
+}
+
+
+function articleData(){
+
+    const headings=[];
+
+    for(let i=1;i<=6;i++){
+
+        const heading=
+            $("heading"+i).value.trim();
+
+        const content=
+            $("content"+i).value.trim();
+
+        if(heading||content){
+
+            headings.push({
+                heading,
+                content
+            });
+        }
+    }
+
+    return{
+
+        section:
+            $("articleSection").value,
+
+        title:
+            $("articleTitle").value.trim(),
+
+        path:
+            articlePath(),
+
+        category:
+            $("articleCategory").value.trim()
+            ||
+            CONFIG.sections[
+                $("articleSection").value
+            ].name,
+
+        date:
+            $("articleDate").value
+            ||
+            new Date().toISOString().slice(0,10),
+
+        metaTitle:
+            $("articleMetaTitle").value.trim(),
+
+        metaDescription:
+            $("articleMetaDescription").value.trim(),
+
+        primary:
+            $("articlePrimaryKeyword").value.trim(),
+
+        secondary:
+            $("articleSecondaryKeywords").value.trim(),
+
+        image:
+            $("articleImage").value.trim(),
+
+        intro:
+            $("articleIntro").value.trim(),
+
+        headings,
+
+        conclusion:
+            $("articleConclusion").value.trim()
+    };
+}
+
+
+function validate(article){
+
+    if(!article.title)
+        return"Article Title is required.";
+
+    if(!article.path)
+        return"URL / File Name is required.";
+
+    if(!article.metaDescription)
+        return"Meta Description is required.";
+
+    if(
+        !article.intro &&
+        !article.headings.length &&
+        !article.conclusion
+    )
+        return"Write some article content.";
+
+    return"";
+}
+
+
+function generateHTML(){
+
+    const article=articleData();
+
+    const section=
+        CONFIG.sections[
+            article.section
+        ];
+
+    let content="";
+
+    if(article.intro){
+
+        content=
+            `<section class="article-introduction">
+            ${textParas(article.intro)}
+            </section>`;
+    }
+
+    article.headings.forEach(item=>{
+
+        if(item.heading){
+
+            content+=
+                `<h2>${esc(item.heading)}</h2>`;
+        }
+
+        if(item.content){
+
+            content+=
+                textParas(item.content);
+        }
     });
 
-}
+    if(article.conclusion){
 
-function saveKey(){
-
-    const key =
-    document.getElementById("adminKey")
-    .value
-    .trim();
-
-    if(!key){
-
-        alert("ADMIN_KEY enter karein.");
-
-        return;
-
+        content+=
+            `<h2>Conclusion</h2>`+
+            textParas(article.conclusion);
     }
 
-    sessionStorage.setItem(
-        "learnbyte_admin_key",
-        key
-    );
+    const keywords=[
+        article.primary,
+        ...article.secondary
+            .split(",")
+            .map(x=>x.trim())
+            .filter(Boolean)
+    ]
+    .filter(Boolean)
+    .join(", ");
 
-    setStatus(
-        "ADMIN_KEY saved. Ab Test Worker karein.",
-        null
-    );
+    const image=
+        article.image
+        ?
+        `<img
+            class="article-featured-image"
+            src="${esc(article.image)}"
+            alt="${esc(article.title)}"
+            loading="lazy"
+        >`
+        :"";
 
+    const canonical=
+        CONFIG.base+
+        article.path;
+
+    const schema={
+        "@context":"https://schema.org",
+        "@type":"Article",
+        "headline":article.title,
+        "description":article.metaDescription,
+        "datePublished":article.date,
+        "author":{
+            "@type":"Organization",
+            "name":"LearnByte"
+        },
+        "mainEntityOfPage":{
+            "@type":"WebPage",
+            "@id":canonical
+        }
+    };
+
+    return `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1"
+>
+
+<title>
+${esc(article.metaTitle||article.title)}
+</title>
+
+<meta
+name="description"
+content="${esc(article.metaDescription)}"
+>
+
+<meta
+name="keywords"
+content="${esc(keywords)}"
+>
+
+<meta
+name="author"
+content="LearnByte"
+>
+
+<meta
+name="robots"
+content="index,follow,max-image-preview:large"
+>
+
+<link
+rel="canonical"
+href="${esc(canonical)}"
+>
+
+<meta
+property="og:type"
+content="article"
+>
+
+<meta
+property="og:title"
+content="${esc(article.metaTitle||article.title)}"
+>
+
+<meta
+property="og:description"
+content="${esc(article.metaDescription)}"
+>
+
+<meta
+property="og:url"
+content="${esc(canonical)}"
+>
+
+<meta
+property="og:site_name"
+content="LearnByte"
+>
+
+${article.image
+?`<meta
+property="og:image"
+content="${esc(article.image)}"
+>`
+:""}
+
+<meta
+name="twitter:card"
+content="${article.image?"summary_large_image":"summary"}"
+>
+
+<meta
+name="twitter:title"
+content="${esc(article.metaTitle||article.title)}"
+>
+
+<meta
+name="twitter:description"
+content="${esc(article.metaDescription)}"
+>
+
+${article.image
+?`<meta
+name="twitter:image"
+content="${esc(article.image)}"
+>`
+:""}
+
+<script type="application/ld+json">
+${JSON.stringify(schema)}
+<\/script>
+
+<link
+rel="stylesheet"
+href="../style.css"
+>
+
+<link
+rel="stylesheet"
+href="../${esc(section.css)}"
+>
+
+<style>
+
+.lb-published-article{
+    max-width:900px;
+    margin:auto;
+    padding:80px 20px
 }
 
-function getKey(){
+.lb-published-article h1{
+    font-size:clamp(2.3rem,6vw,4.3rem);
+    line-height:1.08
+}
 
-    return (
-        document
-        .getElementById("adminKey")
-        .value
-        .trim()
-        ||
-        sessionStorage.getItem(
-            "learnbyte_admin_key"
+.lb-published-article h2{
+    margin-top:42px
+}
+
+.lb-published-article p{
+    font-size:1.08rem;
+    line-height:1.85
+}
+
+.article-featured-image{
+    display:block;
+    width:100%;
+    max-height:520px;
+    object-fit:cover;
+    border-radius:18px;
+    margin:24px 0
+}
+
+.article-meta{
+    opacity:.7
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header class="site-header">
+
+<div class="container navbar">
+
+<a
+href="../index.html"
+class="logo"
+>
+Learn<span>Byte</span>
+</a>
+
+<nav class="nav-menu">
+
+<a href="../index.html">
+Home
+</a>
+
+<a href="../category/education.html">
+Education
+</a>
+
+<a href="../category/technology.html">
+Technology
+</a>
+
+<a href="../category/seo.html">
+SEO
+</a>
+
+<a href="../category/gaming.html">
+Gaming
+</a>
+
+</nav>
+
+</div>
+
+</header>
+
+<main>
+
+<article class="lb-published-article">
+
+<div class="article-meta">
+${esc(article.category)} · ${esc(article.date)}
+</div>
+
+<h1>
+${esc(article.title)}
+</h1>
+
+${image}
+
+${content}
+
+<a
+href="../category/${esc(article.section)}.html"
+>
+← Back to ${esc(section.name)}
+</a>
+
+</article>
+
+</main>
+
+<footer>
+LearnByte · ${esc(section.name)} Guides
+</footer>
+
+</body>
+
+</html>`;
+}
+
+
+function previewArticle(){
+
+    const article=articleData();
+    const error=validate(article);
+
+    if(error){
+        alert(error);
+        return;
+    }
+
+    const iframe=
+        document.createElement("iframe");
+
+    iframe.srcdoc=
+        generateHTML();
+
+    $("previewArea").innerHTML="";
+
+    $("previewArea")
+        .appendChild(iframe);
+
+    $("previewBox")
+        .style.display="block";
+}
+
+
+function showGeneratedHTML(){
+
+    const article=articleData();
+    const error=validate(article);
+
+    if(error){
+        alert(error);
+        return;
+    }
+
+    $("articleCode").value=
+        generateHTML();
+
+    $("articleCode").style.display=
+        "block";
+
+    $("codeBox")
+        .classList
+        .remove("hidden");
+}
+
+
+function analyzeSEO(){
+
+    const article=articleData();
+
+    const text=[
+        article.intro,
+        ...article.headings.map(x=>x.content),
+        article.conclusion
+    ].join(" ");
+
+    const words=
+        text.trim()
+        ?
+        text.trim().split(/\s+/).length
+        :0;
+
+    const h2=
+        article.headings
+        .filter(x=>x.heading)
+        .length;
+
+    const occurrences=
+        article.primary
+        ?
+        text
+            .toLowerCase()
+            .split(
+                article.primary.toLowerCase()
+            )
+            .length-1
+        :0;
+
+    result(
+        "seoBox",
+        `WORDS: ${words}
+TITLE CHARACTERS: ${article.title.length}
+META DESCRIPTION CHARACTERS: ${article.metaDescription.length}
+H2 HEADINGS: ${h2}
+PRIMARY KEYWORD OCCURRENCES: ${occurrences}`
+    );
+
+    $("seoBox")
+        .classList
+        .remove("hidden");
+}
+
+
+function clearArticle(){
+
+    [
+        "articleTitle",
+        "articleSlug",
+        "articleCategory",
+        "articleMetaTitle",
+        "articleMetaDescription",
+        "articlePrimaryKeyword",
+        "articleSecondaryKeywords",
+        "articleImage",
+        "articleIntro",
+        "articleConclusion"
+    ].forEach(
+        id=>$(id).value=""
+    );
+
+    for(let i=1;i<=6;i++){
+
+        $("heading"+i).value="";
+        $("content"+i).value="";
+    }
+
+    $("previewBox")
+        .style.display="none";
+
+    $("codeBox")
+        .classList
+        .add("hidden");
+
+    $("seoBox")
+        .classList
+        .add("hidden");
+
+    $("safetyBox")
+        .classList
+        .add("hidden");
+
+    result(
+        "articleResult",
+        "Ready."
+    );
+}
+
+
+async function getFile(path){
+
+    return api(
+        "/get-file",
+        "POST",
+        {path}
+    );
+}
+
+
+async function putFile(
+    path,
+    content,
+    message,
+    sha
+){
+
+    return api(
+        "/update-file",
+        "POST",
+        {
+            path,
+            content,
+            message,
+            sha
+        }
+    );
+}
+
+
+function cardHTML(article,index){
+
+    const section=
+        CONFIG.sections[
+            article.section
+        ];
+
+    const href=
+        "../"+article.path;
+
+    const desc=
+        esc(
+            (article.intro||"")
+            .replace(/\s+/g," ")
+            .slice(0,180)
+        );
+
+    return `
+<article class="post-card">
+
+<div class="post-number">
+${String(index).padStart(2,"0")}
+</div>
+
+<div class="post-icon">
+${section.icon}
+</div>
+
+<span class="post-category">
+${esc(article.category).toUpperCase()}
+</span>
+
+<h3>
+${esc(article.title)}
+</h3>
+
+<p>
+${desc}
+</p>
+
+<a href="${href}">
+${section.read}
+</a>
+
+</article>`;
+}
+
+
+function updateCategoryHTML(
+    html,
+    article
+){
+
+    const section=
+        CONFIG.sections[
+            article.section
+        ];
+
+    if(
+        html.includes(
+            `href="../${article.path}"`
         )
         ||
-        ""
-    );
+        html.includes(
+            `href="${article.path}"`
+        )
+    ){
+        return html;
+    }
 
-}
-
-function setStatus(text,ok){
-
-    document
-    .getElementById("statusText")
-    .textContent=text;
-
-    const dot =
-    document.getElementById("dot");
-
-    dot.className="dot";
-
-    if(ok===true)
-        dot.classList.add("ok");
-
-    if(ok===false)
-        dot.classList.add("bad");
-
-}
-
-function resetTool(n){
-
-    const tool =
-    tools.find(x=>x.n===n);
-
-    const box =
-    document.getElementById(
-        "body-"+n
-    );
-
-    if(box){
-
-        box.value =
-        JSON.stringify(
-            tool.sample || {},
-            null,
-            2
+    const regex=
+        new RegExp(
+            `(<div\\s+class=["'][^"']*${section.grid}[^"']*["'][^>]*>)`,
+            "i"
         );
 
+    if(!regex.test(html)){
+
+        throw new Error(
+            `Could not find ${section.grid} in ${section.category}.`
+        );
     }
 
-    const result =
-    document.getElementById(
-        "result-"+n
+    const count=
+        (html.match(
+            /<article\b/gi
+        )||[]).length+1;
+
+    return html.replace(
+        regex,
+        `$1\n${cardHTML(article,count)}`
     );
-
-    if(result){
-
-        result.classList.add("hidden");
-        result.textContent="";
-
-    }
-
 }
 
-async function runTool(n){
 
-    const tool =
-    tools.find(x=>x.n===n);
+async function updateCategory(article){
 
-    if(!tool)
-        return;
+    const section=
+        CONFIG.sections[
+            article.section
+        ];
 
-    const result =
-    document.getElementById(
-        "result-"+n
-    );
-
-    result.classList.remove("hidden");
-
-    result.textContent=
-    "Loading...";
-
-    const key=getKey();
-
-    if(!key){
-
-        result.textContent=
-        "ERROR: ADMIN_KEY missing.";
-
-        setStatus(
-            "ADMIN_KEY missing",
-            false
+    const data=
+        await getFile(
+            section.category
         );
 
-        return;
+    const html=
+        updateCategoryHTML(
+            data.content,
+            article
+        );
 
+    if(html===data.content){
+        return data;
     }
 
-    let body={};
+    return putFile(
+        section.category,
+        html,
+        `Add article to ${section.name}: ${article.title}`,
+        data.sha
+    );
+}
 
-    if(tool.method==="POST"){
+
+function updateHomeHTML(
+    html,
+    article
+){
+
+    if(
+        html.includes(
+            `href="${article.path}"`
+        )
+        ||
+        html.includes(
+            `href="./${article.path}"`
+        )
+    ){
+        return html;
+    }
+
+    const section=
+        CONFIG.sections[
+            article.section
+        ];
+
+    const desc=
+        esc(
+            (article.intro||"")
+            .replace(/\s+/g," ")
+            .slice(0,160)
+        );
+
+    const card=`
+<article class="post-card">
+
+<div class="post-image">
+${section.icon}
+</div>
+
+<div class="post-content">
+
+<span class="post-category">
+${esc(section.name)}
+</span>
+
+<h3>
+${esc(article.title)}
+</h3>
+
+<p>
+${desc}
+</p>
+
+<a href="${article.path}">
+Read Article →
+</a>
+
+</div>
+
+</article>`;
+
+    const regex=
+        /<div\s+class=["']post-grid["'][^>]*>/i;
+
+    if(!regex.test(html)){
+
+        throw new Error(
+            "Could not find homepage post-grid."
+        );
+    }
+
+    return html.replace(
+        regex,
+        match=>match+"\n"+card
+    );
+}
+
+
+async function updateHome(article){
+
+    const data=
+        await getFile("index.html");
+
+    const html=
+        updateHomeHTML(
+            data.content,
+            article
+        );
+
+    if(html===data.content){
+        return data;
+    }
+
+    return putFile(
+        "index.html",
+        html,
+        `Add article to homepage: ${article.title}`,
+        data.sha
+    );
+}
+
+
+function updateSitemapHTML(
+    xml,
+    article
+){
+
+    const url=
+        CONFIG.base+
+        article.path;
+
+    if(
+        xml.includes(
+            `<loc>${url}</loc>`
+        )
+    ){
+        return xml;
+    }
+
+    const entry=
+        `<url>
+<loc>${url}</loc>
+<lastmod>${article.date}</lastmod>
+</url>`;
+
+    if(
+        !/<\/urlset>/i.test(xml)
+    ){
+        throw new Error(
+            "Invalid sitemap.xml."
+        );
+    }
+
+    return xml.replace(
+        /<\/urlset>/i,
+        entry+"</urlset>"
+    );
+}
+
+
+async function updateSitemap(article){
+
+    const data=
+        await getFile("sitemap.xml");
+
+    const xml=
+        updateSitemapHTML(
+            data.content,
+            article
+        );
+
+    if(xml===data.content){
+        return data;
+    }
+
+    return putFile(
+        "sitemap.xml",
+        xml,
+        `Add sitemap URL: ${article.title}`,
+        data.sha
+    );
+}
+
+
+async function saveKeywordsForArticle(
+    article
+){
+
+    if(!article.primary)return;
+
+    const data=
+        await getFile(
+            "seo-keywords.json"
+        );
+
+    let object;
+
+    try{
+
+        object=
+            JSON.parse(
+                data.content ||
+                '{"keywords":[]}'
+            );
+
+    }catch{
+
+        object={
+            keywords:[]
+        };
+    }
+
+    if(!Array.isArray(object.keywords)){
+        object.keywords=[];
+    }
+
+    const existing=
+        object.keywords.find(
+            x=>x.page===article.path
+        );
+
+    const secondary=
+        article.secondary
+        .split(",")
+        .map(x=>x.trim())
+        .filter(Boolean);
+
+    if(existing){
+
+        existing.primary=
+            article.primary;
+
+        existing.secondary=
+            secondary;
+
+        existing.intent=
+            "Article";
+
+    }else{
+
+        object.keywords.push({
+
+            page:article.path,
+
+            primary:article.primary,
+
+            secondary,
+
+            intent:"Article"
+
+        });
+    }
+
+    await putFile(
+        "seo-keywords.json",
+        JSON.stringify(object,null,2),
+        "Update SEO keywords: "+article.title,
+        data.sha
+    );
+}
+
+
+async function safetyCheck(show=true){
+
+    const article=
+        articleData();
+
+    const issues=[];
+
+    if(!article.title)
+        issues.push("Article title missing.");
+
+    if(
+        !article.path ||
+        !/^posts\/[a-z0-9-]+\.html$/.test(
+            article.path
+        )
+    )
+        issues.push(
+            "Use a lowercase hyphenated posts/*.html URL."
+        );
+
+    if(
+        article.metaDescription.length<120 ||
+        article.metaDescription.length>160
+    )
+        issues.push(
+            "Meta description is outside the recommended 120–160 character range."
+        );
+
+    if(
+        !article.intro &&
+        !article.headings.length &&
+        !article.conclusion
+    )
+        issues.push(
+            "Article content is empty."
+        );
+
+    if(
+        article.headings.length>0 &&
+        article.headings.filter(
+            x=>x.heading
+        ).length===0
+    )
+        issues.push(
+            "Content sections exist but no headings are supplied."
+        );
+
+    if(
+        article.image &&
+        !/^https?:\/\//i.test(
+            article.image
+        )
+    )
+        issues.push(
+            "Featured image URL should be HTTP/HTTPS."
+        );
+
+    try{
+
+        const data=
+            await getFile(
+                article.path
+            );
+
+        if(data.content){
+
+            issues.push(
+                "Article file already exists; publishing will overwrite it."
+            );
+        }
+
+    }catch{}
+
+    const html=
+        generateHTML();
+
+    if(
+        (html.match(/<h1\b/gi)||[]).length!==1
+    )
+        issues.push(
+            "Generated article should contain exactly one H1."
+        );
+
+    if(
+        !html.includes(
+            'rel="canonical"'
+        )
+    )
+        issues.push(
+            "Canonical is missing."
+        );
+
+    if(
+        !html.includes(
+            "application/ld+json"
+        )
+    )
+        issues.push(
+            "Schema is missing."
+        );
+
+    const message=
+        issues.length
+        ?
+        `⚠️ ${issues.length} issue(s) found.
+
+${issues.map(
+    x=>"• "+x
+).join("\n")}
+
+Internal safety check only; review before publishing.`
+        :
+        `✅ READY TO PUBLISH
+
+No blocking safety issues were detected.`;
+
+    if(show){
+
+        result(
+            "safetyBox",
+            message,
+            issues.length
+            ?"warn"
+            :"ok"
+        );
+
+        $("safetyBox")
+            .classList
+            .remove("hidden");
+    }
+
+    return{
+        ok:issues.length===0,
+        issues
+    };
+}
+
+
+async function directPublish(){
+
+    const article=
+        articleData();
+
+    const error=
+        validate(article);
+
+    if(error){
+        alert(error);
+        return;
+    }
+
+    if(!key()){
+        alert("Enter Admin Key first.");
+        return;
+    }
+
+    const safe=
+        await safetyCheck(true);
+
+    if(
+        !safe.ok &&
+        !confirm(
+            "Safety check found issues. Publish anyway?"
+        )
+    ){
+        return;
+    }
+
+    if(
+        !confirm(
+            `DIRECT PUBLISH?
+
+${article.title}
+${article.path}
+
+Existing files will be updated.`
+        )
+    ){
+        return;
+    }
+
+    const button=
+        $("publishBtn");
+
+    button.disabled=true;
+
+    const steps=[];
+
+    try{
+
+        result(
+            "articleResult",
+            "1/5 Creating article..."
+        );
+
+        await putFile(
+            article.path,
+            generateHTML(),
+            "Publish article: "+article.title
+        );
+
+        steps.push(
+            "Article file created/updated"
+        );
+
+        result(
+            "articleResult",
+            "2/5 Updating category..."
+        );
+
+        await updateCategory(article);
+
+        steps.push(
+            "Category updated"
+        );
+
+        result(
+            "articleResult",
+            "3/5 Updating homepage..."
+        );
+
+        await updateHome(article);
+
+        steps.push(
+            "Homepage updated"
+        );
+
+        result(
+            "articleResult",
+            "4/5 Updating sitemap..."
+        );
+
+        await updateSitemap(article);
+
+        steps.push(
+            "Sitemap updated"
+        );
+
+        result(
+            "articleResult",
+            "5/5 Saving SEO keywords..."
+        );
+
+        await saveKeywordsForArticle(
+            article
+        );
+
+        steps.push(
+            "SEO keywords saved"
+        );
+
+        $("statArticles").textContent=
+            String(
+                Number(
+                    $("statArticles").textContent||0
+                )+1
+            );
+
+        $("statFiles").textContent=
+            String(
+                Number(
+                    $("statFiles").textContent||0
+                )+4
+            );
+
+        const live=
+            CONFIG.base+
+            article.path;
+
+        result(
+            "publishSummary",
+            `✅ DIRECT PUBLISH COMPLETE
+
+Live URL:
+${live}
+
+${steps.map(
+    x=>"✓ "+x
+).join("\n")}`,
+            "ok"
+        );
+
+        result(
+            "articleResult",
+            `✅ Published successfully.
+
+Live URL:
+${live}`,
+            "ok"
+        );
+
+        await api(
+            "/log-operation",
+            "POST",
+            {
+                type:"publish",
+                path:article.path,
+                title:article.title,
+                status:"success"
+            }
+        );
+
+    }catch(error){
+
+        result(
+            "articleResult",
+            `❌ PUBLISH STOPPED
+
+${error.message}
+
+Completed:
+${
+    steps.length
+    ?steps.map(x=>"✓ "+x).join("\n")
+    :"None"
+}`,
+            "err"
+        );
 
         try{
 
-            const raw =
-            document
-            .getElementById(
-                "body-"+n
-            )
-            .value
-            .trim();
+            await api(
+                "/log-operation",
+                "POST",
+                {
+                    type:"publish",
+                    path:article.path,
+                    title:article.title,
+                    status:"failed",
+                    error:error.message
+                }
+            );
 
-            body =
-            raw
-            ? JSON.parse(raw)
-            : {};
+        }catch{}
 
-        }catch(error){
+    }finally{
 
-            result.textContent=
-            "Invalid JSON.\n\n"+
-            error.message;
+        button.disabled=false;
 
-            return;
+    }
+}
 
-        }
 
+function removeArticleFromHTML(
+    html,
+    path,
+    title
+){
+
+    const escapedPath=
+        path.replace(
+            /[.*+?^${}()|[\]\\]/g,
+            "\\$&"
+        );
+
+    let output=html;
+
+    output=
+        output.replace(
+            new RegExp(
+                `<article\\b[^>]*>[\\s\\S]*?href=["'][^"']*${escapedPath}["'][\\s\\S]*?</article>`,
+                "gi"
+            ),
+            ""
+        );
+
+    if(
+        output===html &&
+        title
+    ){
+
+        const escapedTitle=
+            title.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+            );
+
+        output=
+            output.replace(
+                new RegExp(
+                    `<article\\b[^>]*>[\\s\\S]*?${escapedTitle}[\\s\\S]*?</article>`,
+                    "gi"
+                ),
+                ""
+            );
+    }
+
+    return output;
+}
+
+
+function removeSitemapURL(
+    xml,
+    path
+){
+
+    const escaped=
+        (
+            CONFIG.base+
+            path
+        ).replace(
+            /[.*+?^${}()|[\]\\]/g,
+            "\\$&"
+        );
+
+    return xml.replace(
+        new RegExp(
+            `<url>\\s*<loc>\\s*${escaped}\\s*</loc>[\\s\\S]*?</url>`,
+            "gi"
+        ),
+        ""
+    );
+}
+
+
+function removeKeywordEntry(
+    content,
+    path
+){
+
+    let object;
+
+    try{
+
+        object=
+            JSON.parse(
+                content ||
+                '{"keywords":[]}'
+            );
+
+    }catch{
+
+        return content;
+    }
+
+    if(
+        !Array.isArray(
+            object.keywords
+        )
+    ){
+        return content;
+    }
+
+    object.keywords=
+        object.keywords.filter(
+            x=>x.page!==path
+        );
+
+    return JSON.stringify(
+        object,
+        null,
+        2
+    );
+}
+
+
+async function deleteArticle(){
+
+    const path=
+        $("deletePath")
+        .value
+        .trim()
+        .replace(/^\/+/,"");
+
+    const section=
+        $("deleteSection")
+        .value;
+
+    const title=
+        $("deleteTitle")
+        .value
+        .trim();
+
+    if(!path){
+        alert("Enter Article File Path.");
+        return;
+    }
+
+    if(!key()){
+        alert("Enter Admin Key.");
+        return;
+    }
+
+    if(
+        !confirm(
+            `⚠️ PERMANENT DELETE?
+
+${path}
+
+Article file, category/home card, sitemap URL and keyword entry will be cleaned.`
+        )
+    ){
+        return;
+    }
+
+    const sectionConfig=
+        CONFIG.sections[section];
+
+    try{
+
+        result(
+            "deleteResult",
+            "1/5 Deleting article..."
+        );
+
+        await api(
+            "/delete-file",
+            "POST",
+            {
+                path,
+                message:"Delete article: "+path
+            }
+        );
+
+        result(
+            "deleteResult",
+            "2/5 Removing category..."
+        );
+
+        try{
+
+            const data=
+                await getFile(
+                    sectionConfig.category
+                );
+
+            const html=
+                removeArticleFromHTML(
+                    data.content,
+                    path,
+                    title
+                );
+
+            if(html!==data.content){
+
+                await putFile(
+                    sectionConfig.category,
+                    html,
+                    "Remove article from category: "+path,
+                    data.sha
+                );
+            }
+
+        }catch{}
+
+        result(
+            "deleteResult",
+            "3/5 Removing homepage..."
+        );
+
+        try{
+
+            const data=
+                await getFile("index.html");
+
+            const html=
+                removeArticleFromHTML(
+                    data.content,
+                    path,
+                    title
+                );
+
+            if(html!==data.content){
+
+                await putFile(
+                    "index.html",
+                    html,
+                    "Remove article from homepage: "+path,
+                    data.sha
+                );
+            }
+
+        }catch{}
+
+        result(
+            "deleteResult",
+            "4/5 Removing sitemap..."
+        );
+
+        try{
+
+            const data=
+                await getFile("sitemap.xml");
+
+            const xml=
+                removeSitemapURL(
+                    data.content,
+                    path
+                );
+
+            if(xml!==data.content){
+
+                await putFile(
+                    "sitemap.xml",
+                    xml,
+                    "Remove article from sitemap: "+path,
+                    data.sha
+                );
+            }
+
+        }catch{}
+
+        result(
+            "deleteResult",
+            "5/5 Removing keywords..."
+        );
+
+        try{
+
+            const data=
+                await getFile(
+                    "seo-keywords.json"
+                );
+
+            const content=
+                removeKeywordEntry(
+                    data.content,
+                    path
+                );
+
+            if(content!==data.content){
+
+                await putFile(
+                    "seo-keywords.json",
+                    content,
+                    "Remove SEO keyword: "+path,
+                    data.sha
+                );
+            }
+
+        }catch{}
+
+        result(
+            "deleteResult",
+            "✅ DELETE COMPLETED\n\n"+path,
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "deleteResult",
+            "❌ DELETE FAILED\n\n"+e.message,
+            "err"
+        );
+    }
+}
+
+
+async function readFile(){
+
+    const path=
+        $("filePath")
+        .value
+        .trim();
+
+    if(!path){
+
+        return result(
+            "fileResult",
+            "Enter a file path.",
+            "err"
+        );
     }
 
     try{
 
-        const options={
+        const data=
+            await getFile(path);
 
-            method:tool.method,
+        currentFileSha=
+            data.sha;
 
-            headers:{
-                "X-Admin-Key":key,
-                "Accept":"application/json"
-            }
+        currentFilePath=
+            data.path;
 
-        };
+        $("currentFile").value=
+            data.path;
 
-        if(tool.method==="POST"){
+        $("editor").value=
+            data.content;
 
-            options.headers[
-                "Content-Type"
-            ]="application/json";
-
-            options.body =
-            JSON.stringify(body);
-
-        }
-
-        const response =
-        await fetch(
-            WORKER+tool.path,
-            options
+        result(
+            "fileResult",
+            `Loaded: ${data.path}
+SHA: ${data.sha}`,
+            "ok"
         );
 
-        const text =
-        await response.text();
+    }catch(e){
 
-        let data;
+        result(
+            "fileResult",
+            e.message,
+            "err"
+        );
+    }
+}
 
-        try{
 
-            data=JSON.parse(text);
+async function saveFile(){
 
-        }catch{
+    if(!currentFilePath){
 
-            data=text;
+        alert(
+            "Load a file first."
+        );
 
-        }
+        return;
+    }
 
-        result.textContent =
-        "HTTP "+response.status+
-        "\n\n"+
-        (
-            typeof data==="string"
-            ? data
-            : JSON.stringify(
+    try{
+
+        const data=
+            await putFile(
+                currentFilePath,
+                $("editor").value,
+                $("commitMessage").value.trim()
+                ||
+                "Update file from LearnByte Control Center",
+                currentFileSha
+            );
+
+        currentFileSha=
+            data.sha||
+            currentFileSha;
+
+        $("statFiles").textContent=
+            String(
+                Number(
+                    $("statFiles").textContent||0
+                )+1
+            );
+
+        result(
+            "saveResult",
+            JSON.stringify(
                 data,
                 null,
                 2
-            )
+            ),
+            "ok"
         );
 
-        if(response.ok){
+    }catch(e){
 
-            setStatus(
-                tool.name+
-                " — Success",
-                true
-            );
-
-        }else{
-
-            setStatus(
-                tool.name+
-                " — HTTP "+
-                response.status,
-                false
-            );
-
-        }
-
-    }catch(error){
-
-        result.textContent=
-        "REQUEST ERROR\n\n"+
-        error.message+
-        "\n\n"+
-        "Check Worker URL, deployment and CORS.";
-
-        setStatus(
-            "Worker request failed",
-            false
+        result(
+            "saveResult",
+            e.message,
+            "err"
         );
-
     }
-
 }
 
-async function testWorker(){
 
-    const key=getKey();
+function clearEditor(){
 
-    if(!key){
+    currentFilePath=null;
+    currentFileSha=null;
 
-        alert(
-            "Pehle ADMIN_KEY enter karein."
-        );
+    $("currentFile").value="";
+    $("editor").value="";
 
-        return;
-
-    }
-
-    setStatus(
-        "Testing Worker...",
-        null
+    result(
+        "fileResult",
+        "No file loaded."
     );
+
+    result(
+        "saveResult",
+        "No changes made."
+    );
+}
+
+
+async function loadKeywords(){
 
     try{
 
-        const response =
-        await fetch(
-            WORKER+"/github-test",
-            {
-                method:"GET",
-                headers:{
-                    "X-Admin-Key":key,
-                    "Accept":
-                    "application/json"
-                }
-            }
-        );
+        const data=
+            await getFile(
+                "seo-keywords.json"
+            );
 
-        const text =
-        await response.text();
-
-        let data;
+        keywordSha=
+            data.sha;
 
         try{
 
-            data=JSON.parse(text);
+            keywordData=
+                JSON.parse(
+                    data.content ||
+                    '{"keywords":[]}'
+                );
 
         }catch{
 
-            data=text;
-
+            keywordData={
+                keywords:[]
+            };
         }
 
-        if(response.ok){
-
-            setStatus(
-                "Worker + GitHub connected",
-                true
-            );
-
-            alert(
-                "✅ Worker connected!\n\n"+
-                "Repository: "+
-                (
-                    data.repository ||
-                    "Connected"
-                )+
-                "\nBranch: "+
-                (
-                    data.branch ||
-                    "main"
-                )
-            );
-
-        }else{
-
-            setStatus(
-                "Worker returned HTTP "+
-                response.status,
-                false
-            );
-
-            alert(
-                "❌ HTTP "+
-                response.status+
-                "\n\n"+
-                (
-                    typeof data==="string"
-                    ? data
-                    : JSON.stringify(
-                        data,
-                        null,
-                        2
-                    )
-                )
-            );
-
+        if(
+            !Array.isArray(
+                keywordData.keywords
+            )
+        ){
+            keywordData.keywords=[];
         }
 
-    }catch(error){
+        renderKeywords();
 
-        setStatus(
-            "Worker unreachable",
-            false
+        $("statKeywords").textContent=
+            keywordData.keywords.length;
+
+        result(
+            "keywordResult",
+            "Keywords loaded.",
+            "ok"
         );
 
-        alert(
-            "❌ Worker request failed:\n\n"+
-            error.message
-        );
+    }catch(e){
 
+        result(
+            "keywordResult",
+            e.message,
+            "err"
+        );
     }
-
 }
 
-function filterTools(){
 
-    const query =
-    document
-    .getElementById("search")
-    .value
-    .toLowerCase()
-    .trim();
+function renderKeywords(){
 
-    document
-    .querySelectorAll(".tool")
-    .forEach(card=>{
+    $("keywordList").innerHTML=
+        keywordData.keywords.length
+        ?
+        keywordData.keywords.map(
+            (item,index)=>`
 
-        card.classList.toggle(
-            "hidden",
-            Boolean(
-                query &&
-                !card.dataset.search
-                .includes(query)
-            )
+<div class="item">
+
+<strong>
+${esc(item.page)}
+</strong>
+
+<small>
+
+Primary:
+${esc(item.primary)}
+
+<br>
+
+Secondary:
+${esc(
+    Array.isArray(item.secondary)
+    ?item.secondary.join(", ")
+    :item.secondary||"None"
+)}
+
+<br>
+
+Intent:
+${esc(item.intent||"Not set")}
+
+</small>
+
+<div class="row">
+
+<button
+class="danger"
+onclick="deleteKeyword(${index})"
+>
+Delete
+</button>
+
+</div>
+
+</div>
+
+`
+        ).join("")
+        :
+        '<div class="result">No keywords yet.</div>';
+}
+
+
+async function addKeyword(){
+
+    if(!keywordSha)
+        await loadKeywords();
+
+    if(!keywordSha)
+        return;
+
+    const page=
+        $("keywordPage")
+        .value
+        .trim();
+
+    const primary=
+        $("keywordPrimary")
+        .value
+        .trim();
+
+    if(!page||!primary){
+
+        alert(
+            "Page and Primary Keyword are required."
         );
+
+        return;
+    }
+
+    keywordData.keywords.push({
+
+        page,
+
+        primary,
+
+        secondary:
+            $("keywordSecondary")
+            .value
+            .split(",")
+            .map(x=>x.trim())
+            .filter(Boolean),
+
+        intent:
+            $("keywordIdea")
+            .value
+            .trim()
+            ||
+            "Not specified"
 
     });
 
+    await saveKeywords();
+
+    $("keywordPage").value="";
+    $("keywordPrimary").value="";
+    $("keywordSecondary").value="";
+    $("keywordIdea").value="";
 }
 
-document
-.getElementById("adminKey")
-.value =
-sessionStorage.getItem(
-    "learnbyte_admin_key"
-) || "";
 
-buildPanel();
+async function deleteKeyword(index){
+
+    if(
+        !confirm(
+            "Delete this keyword?"
+        )
+    ){
+        return;
+    }
+
+    keywordData.keywords.splice(
+        index,
+        1
+    );
+
+    await saveKeywords();
+}
+
+
+async function saveKeywords(){
+
+    try{
+
+        const data=
+            await putFile(
+                "seo-keywords.json",
+                JSON.stringify(
+                    keywordData,
+                    null,
+                    2
+                ),
+                "Update SEO keywords",
+                keywordSha
+            );
+
+        keywordSha=
+            data.sha||
+            keywordSha;
+
+        renderKeywords();
+
+        $("statKeywords").textContent=
+            keywordData.keywords.length;
+
+        result(
+            "keywordResult",
+            "✅ Keywords saved.",
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "keywordResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+function prepareLink(){
+
+    const source=
+        $("sourcePage")
+        .value
+        .trim();
+
+    const target=
+        $("targetPage")
+        .value
+        .trim();
+
+    const anchor=
+        $("anchorText")
+        .value
+        .trim();
+
+    if(!source||!target||!anchor){
+
+        alert(
+            "Fill all fields."
+        );
+
+        return;
+    }
+
+    result(
+        "linkResult",
+        `Generated link:
+
+<a href="${esc(target)}">${esc(anchor)}</a>`,
+        "ok"
+    );
+}
+
+
+async function applyInternalLink(){
+
+    const source=
+        $("sourcePage")
+        .value
+        .trim();
+
+    const target=
+        $("targetPage")
+        .value
+        .trim();
+
+    const anchor=
+        $("anchorText")
+        .value
+        .trim();
+
+    if(!source||!target||!anchor){
+
+        alert(
+            "Fill all fields."
+        );
+
+        return;
+    }
+
+    try{
+
+        const data=
+            await getFile(source);
+
+        const escaped=
+            anchor.replace(
+                /[.*+?^${}()|[\]\\]/g,
+                "\\$&"
+            );
+
+        const regex=
+            new RegExp(
+                "(?<![>])("+escaped+")(?![^<]*>)",
+                "i"
+            );
+
+        const html=
+            data.content.replace(
+                regex,
+                `<a href="${esc(target)}">$1</a>`
+            );
+
+        if(html===data.content){
+
+            throw new Error(
+                "Anchor text was not found."
+            );
+        }
+
+        const output=
+            await putFile(
+                source,
+                html,
+                "Add internal link: "+anchor,
+                data.sha
+            );
+
+        result(
+            "linkResult",
+            "✅ Internal link applied.\n\n"+
+            JSON.stringify(
+                output,
+                null,
+                2
+            ),
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "linkResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+function redirectHTML(url){
+
+    return `<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width,initial-scale=1"
+>
+
+<meta
+http-equiv="refresh"
+content="0; url=${esc(url)}"
+>
+
+<link
+rel="canonical"
+href="${esc(url)}"
+>
+
+<title>Redirecting...</title>
+
+<script>
+location.replace(${JSON.stringify(url)})
+<\/script>
+
+</head>
+
+<body>
+
+<p>
+Redirecting...
+</p>
+
+<a href="${esc(url)}">
+Continue
+</a>
+
+</body>
+
+</html>`;
+}
+
+
+async function createRedirect(){
+
+    const old=
+        $("oldUrl")
+        .value
+        .trim()
+        .replace(/^\/+/,"");
+
+    const url=
+        $("newUrl")
+        .value
+        .trim();
+
+    if(!old||!url){
+
+        alert(
+            "Fill Old URL and New URL."
+        );
+
+        return;
+    }
+
+    if(
+        !/^https?:\/\//i.test(url) &&
+        !url.startsWith("/")
+    ){
+
+        alert(
+            "New URL must be HTTP/HTTPS or site-relative."
+        );
+
+        return;
+    }
+
+    try{
+
+        const data=
+            await putFile(
+                old,
+                redirectHTML(url),
+                `Create redirect: ${old} -> ${url}`
+            );
+
+        result(
+            "redirectResult",
+            "✅ Redirect file created.\n\n"+
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "redirectResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function runFullSEOAudit(){
+
+    const target=
+        $("auditUrl")
+        .value
+        .trim();
+
+    if(!target){
+
+        return result(
+            "auditStatus",
+            "Enter a website/page URL first.",
+            "err"
+        );
+    }
+
+    if(!key()){
+
+        return result(
+            "auditStatus",
+            "Enter Admin Key first.",
+            "err"
+        );
+    }
+
+    result(
+        "auditStatus",
+        "🔄 Running full SEO audit...",
+        "loading"
+    );
+
+    $("auditDashboard")
+        .classList
+        .add("hidden");
+
+    $("auditResults")
+        .classList
+        .add("hidden");
+
+    try{
+
+        const data=
+            await api(
+                "/analyze-url",
+                "POST",
+                {
+                    url:target
+                }
+            );
+
+        const seo=
+            data.seo||{};
+
+        const points=[];
+
+        let passed=0;
+        let warnings=0;
+        let errors=0;
+
+        const add=(
+            ok,
+            message,
+            recommendation,
+            level="warn"
+        )=>{
+
+            if(ok){
+
+                passed++;
+
+                points.push(
+                    "✅ "+message
+                );
+
+            }else{
+
+                if(level==="error"){
+                    errors++;
+                }else{
+                    warnings++;
+                }
+
+                points.push(
+                    (
+                        level==="error"
+                        ?"❌ "
+                        :"⚠️ "
+                    )+message
+                );
+
+                if(recommendation){
+
+                    points.push(
+                        "→ "+recommendation
+                    );
+                }
+            }
+        };
+
+        add(
+            data.status>=200 &&
+            data.status<400,
+            "HTTP status acceptable",
+            "Check the live response."
+        );
+
+        const responseTime=
+            Number(
+                data.responseTimeMs||0
+            );
+
+        add(
+            responseTime<=1000,
+            `Response time: ${responseTime} ms`,
+            "Improve response time where possible"
+        );
+
+        add(
+            (seo.titleLength||0)>=30 &&
+            (seo.titleLength||0)<=60,
+            "Title length is in a reasonable range",
+            "Review title length"
+        );
+
+        add(
+            (seo.descriptionLength||0)>=120 &&
+            (seo.descriptionLength||0)<=160,
+            "Description length is in a reasonable range",
+            "Review description length"
+        );
+
+        const headings=
+            seo.headings||{};
+
+        add(
+            Number(headings.h1||0)===1,
+            "Exactly one H1 detected",
+            "Review H1 structure"
+        );
+
+        add(
+            !!seo.hasCanonical,
+            "Canonical detected",
+            "Add canonical URL"
+        );
+
+        add(
+            !!seo.meta?.robots,
+            "Robots meta detected",
+            "Check robots configuration"
+        );
+
+        add(
+            !!seo.meta?.ogTitle &&
+            !!seo.meta?.ogDescription,
+            "Open Graph basics detected",
+            "Add missing OG fields"
+        );
+
+        add(
+            !!seo.meta?.twitterCard,
+            "Twitter card detected",
+            "Add Twitter metadata where useful"
+        );
+
+        add(
+            !!seo.meta?.schema,
+            "JSON-LD schema detected",
+            "Add appropriate structured data"
+        );
+
+        const images=
+            seo.images||{};
+
+        add(
+            Number(images.missingAlt||0)===0,
+            "No images missing ALT",
+            "Add meaningful ALT text"
+        );
+
+        add(
+            Number(
+                (seo.links||{}).internal||0
+            )>0,
+            "Internal links detected",
+            "Add relevant internal links"
+        );
+
+        add(
+            !!seo.mobile?.viewport,
+            "Viewport detected",
+            "Add responsive viewport"
+        );
+
+        add(
+            Number(
+                seo.content?.words||0
+            )>0,
+            "Readable content detected",
+            "Add useful content"
+        );
+
+        $("auditHttp").textContent=
+`HTTP STATUS: ${data.status} ${data.statusText||""}
+FINAL URL: ${data.url}
+RESPONSE TIME: ${responseTime} ms
+CONTENT SIZE: ${data.contentLength||0} bytes
+CONTENT TYPE: ${data.contentType||"Unknown"}`;
+
+        $("auditMeta").textContent=
+`TITLE: ${seo.title||"MISSING"}
+TITLE LENGTH: ${seo.titleLength||0}
+DESCRIPTION: ${seo.description||"MISSING"}
+DESCRIPTION LENGTH: ${seo.descriptionLength||0}`;
+
+        const parsedURL=
+            new URL(data.url);
+
+        $("auditUrlCheck").textContent=
+`URL: ${data.url}
+LENGTH: ${parsedURL.pathname.length}
+LOWERCASE PATH: ${
+    !/[A-Z]/.test(
+        parsedURL.pathname
+    )
+    ?"YES"
+    :"NO"
+}`;
+
+        $("auditHeadings").textContent=
+`H1: ${headings.h1||0}
+H2: ${headings.h2||0}
+H3: ${headings.h3||0}
+H4: ${headings.h4||0}
+H5: ${headings.h5||0}
+H6: ${headings.h6||0}`;
+
+        $("auditTechnical").textContent=
+`CANONICAL: ${
+    seo.hasCanonical
+    ?"✅ "+seo.canonical
+    :"❌ Missing"
+}
+ROBOTS META: ${
+    seo.meta?.robots
+    ?"✅"
+    :"⚠️"
+}
+CONTENT TYPE: ${
+    data.contentType||"Unknown"
+}`;
+
+        $("auditSocial").textContent=
+`OG TITLE: ${
+    seo.meta?.ogTitle
+    ?"✅"
+    :"⚠️"
+}
+OG DESCRIPTION: ${
+    seo.meta?.ogDescription
+    ?"✅"
+    :"⚠️"
+}
+OG IMAGE: ${
+    seo.meta?.ogImage
+    ?"✅"
+    :"⚠️"
+}
+TWITTER CARD: ${
+    seo.meta?.twitterCard
+    ?"✅"
+    :"⚠️"
+}
+JSON-LD: ${
+    seo.meta?.schema
+    ?"✅"
+    :"⚠️"
+}`;
+
+        $("auditImages").textContent=
+`TOTAL: ${images.total||0}
+MISSING ALT: ${images.missingAlt||0}
+EMPTY ALT: ${images.emptyAlt||0}
+USABLE ALT: ${images.usableAlt||0}`;
+
+        const links=
+            seo.links||{};
+
+        $("auditLinks").textContent=
+`TOTAL: ${links.total||0}
+INTERNAL: ${links.internal||0}
+EXTERNAL: ${links.external||0}
+NOFOLLOW: ${links.nofollow||0}`;
+
+        $("auditMobile").textContent=
+`VIEWPORT: ${
+    seo.mobile?.viewport
+    ?"✅ Detected"
+    :"❌ Missing"
+}
+NOTE: Viewport presence is only a basic mobile check.`;
+
+        $("auditContent").textContent=
+`WORDS: ${seo.content?.words||0}
+Keyword ranking prediction is not provided by this audit.`;
+
+        const base=
+            new URL(data.url).origin;
+
+        const sitemap=
+            await api(
+                "/check-live",
+                "POST",
+                {
+                    url:
+                        base+
+                        "/sitemap.xml"
+                }
+            )
+            .catch(
+                ()=>({
+                    status:0,
+                    ok:false
+                })
+            );
+
+        const robots=
+            await api(
+                "/check-live",
+                "POST",
+                {
+                    url:
+                        base+
+                        "/robots.txt"
+                }
+            )
+            .catch(
+                ()=>({
+                    status:0,
+                    ok:false
+                })
+            );
+
+        $("auditFiles").textContent=
+`SITEMAP: ${
+    sitemap.ok
+    ?"✅ Reachable"
+    :"⚠️ Could not verify"
+}
+ROBOTS.TXT: ${
+    robots.ok
+    ?"✅ Reachable"
+    :"⚠️ Could not verify"
+}`;
+
+        const four=
+            await api(
+                "/check-404",
+                "POST",
+                {
+                    base
+                }
+            )
+            .catch(
+                ()=>({
+                    status:0,
+                    ok:false
+                })
+            );
+
+        $("audit404").textContent=
+            four.ok
+            ?
+            `✅ 404 returned HTTP ${four.status}`
+            :
+            `⚠️ Could not confirm 404 (HTTP ${four.status||"unknown"})`;
+
+        const total=
+            passed+
+            warnings+
+            errors;
+
+        const score=
+            total
+            ?
+            Math.round(
+                (
+                    passed+
+                    warnings*.5
+                )/
+                total*
+                100
+            )
+            :0;
+
+        $("auditScore").textContent=
+            score+"/100";
+
+        $("auditPassed").textContent=
+            passed;
+
+        $("auditWarnings").textContent=
+            warnings;
+
+        $("auditErrors").textContent=
+            errors;
+
+        $("auditDashboard")
+            .classList
+            .remove("hidden");
+
+        $("auditResults")
+            .classList
+            .remove("hidden");
+
+        $("auditRecommendations").textContent=
+            points
+            .filter(
+                x=>!x.startsWith("→ ")
+            )
+            .join("\n");
+
+        result(
+            "auditStatus",
+            `✅ FULL SEO AUDIT COMPLETED
+
+URL: ${data.url}
+INTERNAL SCORE: ${score}/100
+PASSED: ${passed}
+WARNINGS: ${warnings}
+ERRORS: ${errors}`,
+            "ok"
+        );
+
+        await api(
+            "/audit-history",
+            "POST",
+            {
+                url:data.url,
+                score,
+                passed,
+                warnings,
+                errors
+            }
+        ).catch(()=>{});
+
+    }catch(e){
+
+        result(
+            "auditStatus",
+            "❌ SEO AUDIT FAILED\n\n"+
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+function clearFullSEOAudit(){
+
+    $("auditUrl").value="";
+
+    $("auditDashboard")
+        .classList
+        .add("hidden");
+
+    $("auditResults")
+        .classList
+        .add("hidden");
+
+    result(
+        "auditStatus",
+        "Ready to analyze."
+    );
+}
+
+
+async function loadArticles(){
+
+    try{
+
+        const data=
+            await api(
+                "/list-articles",
+                "GET"
+            );
+
+        articlesCache=
+            data.articles||[];
+
+        renderArticles();
+
+        result(
+            "articleLibraryResult",
+            `Loaded ${articlesCache.length} article file(s).`,
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "articleLibraryResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+function renderArticles(){
+
+    const query=
+        $("articleSearch")
+        .value
+        .toLowerCase();
+
+    const filter=
+        $("articleFilter")
+        .value;
+
+    const list=
+        articlesCache.filter(
+            article=>
+                (
+                    !query ||
+                    (
+                        article.path+
+                        " "+
+                        (article.title||"")
+                    )
+                    .toLowerCase()
+                    .includes(query)
+                )
+                &&
+                (
+                    !filter ||
+                    article.section===filter
+                )
+        );
+
+    $("articleLibraryList").innerHTML=
+        list.length
+        ?
+        list.map(
+            article=>`
+
+<div class="item">
+
+<strong>
+${esc(article.title||article.path)}
+</strong>
+
+<small>
+
+${esc(article.path)}
+
+<br>
+
+Section:
+${esc(article.section||"unknown")}
+·
+Size:
+${article.size||0}
+bytes
+
+</small>
+
+<div class="row">
+
+<button
+class="secondary"
+onclick="window.open(
+'${CONFIG.base}${article.path}',
+'_blank'
+)"
+>
+Open Live
+</button>
+
+<button
+onclick="loadArticleForEdit(
+'${esc(article.path)}'
+)"
+>
+Load
+</button>
+
+</div>
+
+</div>
+
+`
+        ).join("")
+        :
+        '<div class="result">No matching articles.</div>';
+}
+
+
+async function loadArticleForEdit(path){
+
+    try{
+
+        const data=
+            await getFile(path);
+
+        $("filePath").value=
+            path;
+
+        currentFilePath=
+            path;
+
+        currentFileSha=
+            data.sha;
+
+        $("currentFile").value=
+            path;
+
+        $("editor").value=
+            data.content;
+
+        window.scrollTo({
+            top:
+                $("filePath")
+                .getBoundingClientRect()
+                .top+
+                scrollY-
+                100,
+            behavior:"smooth"
+        });
+
+        result(
+            "fileResult",
+            "Article loaded into GitHub Editor.",
+            "ok"
+        );
+
+    }catch(e){
+
+        alert(e.message);
+    }
+}
+
+
+async function saveDraft(){
+
+    const article=
+        articleData();
+
+    const error=
+        validate(article);
+
+    if(error){
+
+        alert(error);
+        return;
+    }
+
+    const id=
+        $("draftId")
+        .value
+        .trim()
+        ||
+        article.path
+            .replace(/^posts\//,"")
+            .replace(/\.html$/,"");
+
+    try{
+
+        const data=
+            await api(
+                "/drafts",
+                "POST",
+                {
+                    action:"save",
+                    draft:{
+                        id,
+                        ...article
+                    }
+                }
+            );
+
+        result(
+            "draftResult",
+            "✅ Draft saved.\n\n"+
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "draftResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function loadDrafts(){
+
+    try{
+
+        const data=
+            await api(
+                "/drafts",
+                "POST",
+                {
+                    action:"list"
+                }
+            );
+
+        draftData=
+            data.data||
+            {
+                drafts:[]
+            };
+
+        $("draftList").innerHTML=
+            (draftData.drafts||[])
+            .map(
+                item=>`
+
+<div class="item">
+
+<strong>
+${esc(item.title||item.id)}
+</strong>
+
+<small>
+${esc(item.path||"")}
+</small>
+
+<div class="row">
+
+<button
+onclick="loadDraft(
+'${esc(item.id)}'
+)"
+>
+Load
+</button>
+
+<button
+class="danger"
+onclick="deleteDraft(
+'${esc(item.id)}'
+)"
+>
+Delete
+</button>
+
+</div>
+
+</div>
+
+`
+            )
+            .join("")
+            ||
+            '<div class="result">No drafts.</div>';
+
+        result(
+            "draftResult",
+            `Loaded ${(draftData.drafts||[]).length} drafts.`,
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "draftResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function loadDraft(id){
+
+    try{
+
+        const data=
+            await api(
+                "/drafts",
+                "POST",
+                {
+                    action:"get",
+                    id
+                }
+            );
+
+        const article=
+            data.draft;
+
+        if(!article)return;
+
+        fillArticle(article);
+
+        result(
+            "draftResult",
+            "Draft loaded.",
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "draftResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function deleteDraft(id){
+
+    if(
+        !confirm(
+            "Delete draft?"
+        )
+    ){
+        return;
+    }
+
+    try{
+
+        await api(
+            "/drafts",
+            "POST",
+            {
+                action:"delete",
+                id
+            }
+        );
+
+        loadDrafts();
+
+    }catch(e){
+
+        result(
+            "draftResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+function fillArticle(article){
+
+    $("articleSection").value=
+        article.section||"seo";
+
+    updateSectionInfo();
+
+    $("articleTitle").value=
+        article.title||"";
+
+    $("articleSlug").value=
+        (article.path||"")
+        .replace(/^posts\//,"");
+
+    $("articleCategory").value=
+        article.category||"";
+
+    $("articleDate").value=
+        article.date||"";
+
+    $("articleMetaTitle").value=
+        article.metaTitle||"";
+
+    $("articleMetaDescription").value=
+        article.metaDescription||"";
+
+    $("articlePrimaryKeyword").value=
+        article.primary||"";
+
+    $("articleSecondaryKeywords").value=
+        article.secondary||"";
+
+    $("articleImage").value=
+        article.image||"";
+
+    $("articleIntro").value=
+        article.intro||"";
+
+    $("articleConclusion").value=
+        article.conclusion||"";
+
+    for(let i=1;i<=6;i++){
+
+        $("heading"+i).value=
+            article.headings?.[i-1]?.heading||"";
+
+        $("content"+i).value=
+            article.headings?.[i-1]?.content||"";
+    }
+}
+
+
+async function loadHistory(){
+
+    try{
+
+        const data=
+            await api(
+                "/operation-history",
+                "GET"
+            );
+
+        result(
+            "historyResult",
+            (data.operations||[])
+                .map(
+                    item=>
+                        `${item.time} · ${item.type} · ${item.status} · ${item.path||""}`
+                )
+                .join("\n")
+                ||
+                "No operations yet.",
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "historyResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function categoryHealth(){
+
+    const output=[];
+
+    for(
+        const [key,section]
+        of Object.entries(
+            CONFIG.sections
+        )
+    ){
+
+        try{
+
+            const data=
+                await getFile(
+                    section.category
+                );
+
+            const count=
+                (
+                    data.content.match(
+                        /<article\b/gi
+                    )||[]
+                ).length;
+
+            output.push(
+                `✅ ${section.name}: reachable · ${count} article elements`
+            );
+
+        }catch(e){
+
+            output.push(
+                `❌ ${section.name}: ${e.message}`
+            );
+        }
+    }
+
+    result(
+        "categoryResult",
+        output.join("\n")
+    );
+}
+
+
+async function savePlan(){
+
+    const data={
+
+        group:
+            $("planGroup").value,
+
+        primary:
+            $("planPrimary").value,
+
+        secondary:
+            $("planSecondary").value,
+
+        idea:
+            $("planIdea").value
+
+    };
+
+    try{
+
+        const output=
+            await api(
+                "/keyword-plans",
+                "POST",
+                {
+                    action:"add",
+                    item:data
+                }
+            );
+
+        result(
+            "planResult",
+            "✅ Keyword plan saved.\n\n"+
+            JSON.stringify(
+                output,
+                null,
+                2
+            ),
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "planResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function brokenScan(){
+
+    try{
+
+        const data=
+            await api(
+                "/broken-links",
+                "POST",
+                {
+                    maxPages:50
+                }
+            );
+
+        result(
+            "brokenResult",
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            data.broken?.length
+            ?"warn"
+            :"ok"
+        );
+
+    }catch(e){
+
+        result(
+            "brokenResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function opportunities(){
+
+    const target=
+        $("opTarget")
+        .value
+        .trim();
+
+    const anchor=
+        $("opAnchor")
+        .value
+        .trim();
+
+    if(!target){
+
+        alert(
+            "Enter target page."
+        );
+
+        return;
+    }
+
+    try{
+
+        const data=
+            await api(
+                "/link-opportunities",
+                "POST",
+                {
+                    target,
+                    anchor
+                }
+            );
+
+        result(
+            "opportunityResult",
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "opportunityResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function schemaInspect(){
+
+    const path=
+        $("schemaPath")
+        .value
+        .trim();
+
+    if(!path){
+
+        alert(
+            "Enter article file."
+        );
+
+        return;
+    }
+
+    try{
+
+        const data=
+            await getFile(path);
+
+        const matches=[
+            ...data.content.matchAll(
+                /<script[^>]+type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi
+            )
+        ];
+
+        result(
+            "schemaResult",
+            matches.length
+            ?
+            `Found ${matches.length} JSON-LD block(s).
+
+${matches.map(
+    x=>x[1].trim()
+).join("\n\n")}`
+            :
+            "Could not verify: no JSON-LD found.",
+            matches.length
+            ?"ok"
+            :"warn"
+        );
+
+    }catch(e){
+
+        result(
+            "schemaResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function schemaGenerate(){
+
+    const article=
+        articleData();
+
+    if(!article.title){
+
+        alert(
+            "Fill article title."
+        );
+
+        return;
+    }
+
+    const canonical=
+        CONFIG.base+
+        article.path;
+
+    result(
+        "schemaResult",
+        JSON.stringify(
+            {
+                "@context":
+                    "https://schema.org",
+
+                "@type":
+                    "Article",
+
+                "headline":
+                    article.title,
+
+                "description":
+                    article.metaDescription,
+
+                "datePublished":
+                    article.date,
+
+                "author":{
+                    "@type":
+                        "Organization",
+                    "name":
+                        "LearnByte"
+                },
+
+                "mainEntityOfPage":{
+                    "@type":
+                        "WebPage",
+                    "@id":
+                        canonical
+                }
+            },
+            null,
+            2
+        ),
+        "ok"
+    );
+}
+
+
+async function imageScan(){
+
+    try{
+
+        const data=
+            await api(
+                "/image-audit",
+                "POST",
+                {
+                    maxPages:50
+                }
+            );
+
+        result(
+            "imageResult",
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            data.issues?.length
+            ?"warn"
+            :"ok"
+        );
+
+    }catch(e){
+
+        result(
+            "imageResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function sitemapCheck(){
+
+    try{
+
+        const data=
+            await api(
+                "/sitemap-audit",
+                "GET"
+            );
+
+        result(
+            "sitemapResult",
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            data.duplicates?.length ||
+            data.missing?.length
+            ?"warn"
+            :"ok"
+        );
+
+    }catch(e){
+
+        result(
+            "sitemapResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function sitemapRebuild(){
+
+    if(
+        !confirm(
+            "Rebuild sitemap from repository article files?"
+        )
+    ){
+        return;
+    }
+
+    try{
+
+        const data=
+            await api(
+                "/sitemap-rebuild",
+                "POST",
+                {
+                    commit:true
+                }
+            );
+
+        result(
+            "sitemapResult",
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "sitemapResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function robotsLoad(){
+
+    try{
+
+        const data=
+            await getFile(
+                "robots.txt"
+            );
+
+        $("robotsEditor").value=
+            data.content;
+
+        result(
+            "robotsResult",
+            "robots.txt loaded.",
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "robotsResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+function robotsValidate(){
+
+    const content=
+        $("robotsEditor")
+        .value;
+
+    const issues=[];
+
+    if(
+        !/User-agent\s*:/i.test(
+            content
+        )
+    ){
+        issues.push(
+            "No User-agent directive detected."
+        );
+    }
+
+    if(
+        /Disallow\s*:\s*\/\s*$/im.test(
+            content
+        )
+    ){
+        issues.push(
+            "Disallow: / blocks the entire site; verify intentionally."
+        );
+    }
+
+    result(
+        "robotsResult",
+        issues.length
+        ?
+        issues.join("\n")
+        :
+        "✅ Basic robots.txt checks passed.",
+        issues.length
+        ?"warn"
+        :"ok"
+    );
+}
+
+
+async function robotsSave(){
+
+    if(
+        !confirm(
+            "Save robots.txt?"
+        )
+    ){
+        return;
+    }
+
+    try{
+
+        const data=
+            await getFile(
+                "robots.txt"
+            );
+
+        const output=
+            await putFile(
+                "robots.txt",
+                $("robotsEditor").value,
+                "Update robots.txt",
+                data.sha
+            );
+
+        result(
+            "robotsResult",
+            JSON.stringify(
+                output,
+                null,
+                2
+            ),
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "robotsResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function repoBrowse(){
+
+    try{
+
+        const data=
+            await api(
+                "/repo-list",
+                "POST",
+                {
+                    path:
+                        $("repoPath")
+                        .value
+                        .trim()
+                }
+            );
+
+        $("repoList").innerHTML=
+            (data.items||[])
+            .map(
+                item=>`
+
+<div class="item">
+
+<strong>
+${esc(item.name)}
+</strong>
+
+<small>
+${esc(item.path)}
+·
+${item.type}
+</small>
+
+<div class="row">
+
+${
+    item.type==="file"
+    ?
+    `<button
+        onclick="loadRepoFile(
+            '${esc(item.path)}'
+        )"
+    >
+        Open
+    </button>`
+    :
+    `<button
+        onclick="$('repoPath').value='${esc(item.path)}';repoBrowse()"
+    >
+        Browse
+    </button>`
+}
+
+</div>
+
+</div>
+
+`
+            )
+            .join("")
+            ||
+            "No items.";
+
+        result(
+            "repoResult",
+            `Loaded ${data.items?.length||0} item(s).`,
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "repoResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function loadRepoFile(path){
+
+    $("filePath").value=
+        path;
+
+    await readFile();
+}
+
+
+async function commits(){
+
+    try{
+
+        const data=
+            await api(
+                "/commits",
+                "GET"
+            );
+
+        result(
+            "commitResult",
+            (data.commits||[])
+                .map(
+                    item=>
+`${item.sha}
+${item.date} · ${item.author}
+${item.message}`
+                )
+                .join("\n\n")
+                ||
+                "No commits.",
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "commitResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function backup(){
+
+    const path=
+        $("backupPath")
+        .value
+        .trim();
+
+    if(!path){
+
+        alert(
+            "Enter file path."
+        );
+
+        return;
+    }
+
+    try{
+
+        const data=
+            await api(
+                "/backup",
+                "POST",
+                {
+                    action:"create",
+                    path
+                }
+            );
+
+        result(
+            "backupResult",
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "backupResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function restore(){
+
+    const path=
+        $("backupPath")
+        .value
+        .trim();
+
+    if(!path){
+
+        alert(
+            "Enter file path."
+        );
+
+        return;
+    }
+
+    if(
+        !confirm(
+            "Restore latest backup for this file?"
+        )
+    ){
+        return;
+    }
+
+    try{
+
+        const data=
+            await api(
+                "/backup",
+                "POST",
+                {
+                    action:"restore",
+                    path
+                }
+            );
+
+        result(
+            "backupResult",
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "backupResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function health(){
+
+    try{
+
+        const data=
+            await api(
+                "/health",
+                "GET"
+            );
+
+        result(
+            "healthResult",
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            data.ok
+            ?"ok"
+            :"warn"
+        );
+
+    }catch(e){
+
+        result(
+            "healthResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function monitor(){
+
+    const url=
+        $("monitorUrl")
+        .value
+        .trim();
+
+    if(!url){
+
+        alert(
+            "Enter URL."
+        );
+
+        return;
+    }
+
+    try{
+
+        const data=
+            await api(
+                "/check-live",
+                "POST",
+                {
+                    url
+                }
+            );
+
+        result(
+            "monitorResult",
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            data.status>=200 &&
+            data.status<400
+            ?"ok"
+            :"warn"
+        );
+
+    }catch(e){
+
+        result(
+            "monitorResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function random404(){
+
+    try{
+
+        const data=
+            await api(
+                "/check-404",
+                "POST",
+                {
+                    base:CONFIG.base
+                }
+            );
+
+        result(
+            "monitorResult",
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            data.ok
+            ?"ok"
+            :"warn"
+        );
+
+    }catch(e){
+
+        result(
+            "monitorResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function auditHistory(){
+
+    try{
+
+        const data=
+            await api(
+                "/audit-history",
+                "GET"
+            );
+
+        result(
+            "auditHistoryResult",
+            JSON.stringify(
+                data,
+                null,
+                2
+            ),
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "auditHistoryResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function perf(){
+
+    const url=
+        $("perfUrl")
+        .value
+        .trim();
+
+    if(!url){
+
+        alert(
+            "Enter URL."
+        );
+
+        return;
+    }
+
+    try{
+
+        const data=
+            await api(
+                "/analyze-url",
+                "POST",
+                {
+                    url
+                }
+            );
+
+        result(
+            "perfResult",
+`STATUS: ${data.status}
+RESPONSE: ${data.responseTimeMs} ms
+SIZE: ${data.contentLength} bytes
+TYPE: ${data.contentType}
+FINAL URL: ${data.url}`,
+            "ok"
+        );
+
+    }catch(e){
+
+        result(
+            "perfResult",
+            e.message,
+            "err"
+        );
+    }
+}
+
+
+async function safetyCenter(){
+
+    const data=
+        await safetyCheck(false);
+
+    result(
+        "safetyCenterResult",
+        data.ok
+        ?
+`✅ READY TO PUBLISH
+
+No blocking issues detected.`
+        :
+`⚠️ ${data.issues.length} issue(s)
+
+${data.issues.map(
+    x=>"• "+x
+).join("\n")}`,
+        data.ok
+        ?"ok"
+        :"warn"
+    );
+}
+
+
+function clearSession(){
+
+    $("statFiles").textContent="0";
+
+    $("statArticles").textContent="0";
+
+    $("publishSummary").textContent=
+        "Session counters cleared.";
+}
+
+
+function openWebsite(){
+
+    window.open(
+        CONFIG.base,
+        "_blank"
+    );
+}
+
+
+function openGitHub(){
+
+    window.open(
+        "https://github.com/"+CONFIG.repo,
+        "_blank"
+    );
+}
+
+
+function openWorker(){
+
+    window.open(
+        worker(),
+        "_blank"
+    );
+}
+
+
+function openSitemap(){
+
+    window.open(
+        CONFIG.base+
+        "sitemap.xml",
+        "_blank"
+    );
+}
+
+
+document.addEventListener(
+    "DOMContentLoaded",
+    ()=>{
+
+        makeHeadingFields();
+
+        updateSectionInfo();
+
+        loadSavedKey();
+
+        $("articleDate").value=
+            new Date()
+            .toISOString()
+            .slice(0,10);
+
+
+        $("articleTitle")
+            .addEventListener(
+                "input",
+                ()=>{
+
+                    if(
+                        !$("articleSlug")
+                        .value
+                    ){
+
+                        $("articleSlug").value=
+                            slugify(
+                                $("articleTitle")
+                                .value
+                            );
+                    }
+                }
+            );
+
+
+        $("testConnectionBtn")
+            .onclick=
+            testConnection;
+
+        $("clearSavedKeyBtn")
+            .onclick=
+            clearSavedKey;
+
+        $("articleSection")
+            .onchange=
+            updateSectionInfo;
+
+        $("previewArticleBtn")
+            .onclick=
+            previewArticle;
+
+        $("analyzeSeoBtn")
+            .onclick=
+            analyzeSEO;
+
+        $("generatedHtmlBtn")
+            .onclick=
+            showGeneratedHTML;
+
+        $("clearArticleBtn")
+            .onclick=
+            clearArticle;
+
+        $("publishBtn")
+            .onclick=
+            directPublish;
+
+        $("safetyCheckBtn")
+            .onclick=
+            ()=>safetyCheck(true);
+
+        $("saveDraftBtn")
+            .onclick=
+            saveDraft;
+
+        $("deleteArticleBtn")
+            .onclick=
+            deleteArticle;
+
+        $("readFileBtn")
+            .onclick=
+            readFile;
+
+        $("loadIndexBtn")
+            .onclick=
+            ()=>{
+                $("filePath").value=
+                    "index.html";
+
+                readFile();
+            };
+
+        $("saveFileBtn")
+            .onclick=
+            saveFile;
+
+        $("clearEditorBtn")
+            .onclick=
+            clearEditor;
+
+        $("addKeywordBtn")
+            .onclick=
+            addKeyword;
+
+        $("loadKeywordsBtn")
+            .onclick=
+            loadKeywords;
+
+        $("prepareLinkBtn")
+            .onclick=
+            prepareLink;
+
+        $("applyInternalLinkBtn")
+            .onclick=
+            applyInternalLink;
+
+        $("createRedirectBtn")
+            .onclick=
+            createRedirect;
+
+        $("runAuditBtn")
+            .onclick=
+            runFullSEOAudit;
+
+        $("clearAuditBtn")
+            .onclick=
+            clearFullSEOAudit;
+
+        $("loadArticlesBtn")
+            .onclick=
+            loadArticles;
+
+        $("articleSearch")
+            .oninput=
+            renderArticles;
+
+        $("articleFilter")
+            .onchange=
+            renderArticles;
+
+        $("saveDraftManagerBtn")
+            .onclick=
+            saveDraft;
+
+        $("loadDraftsBtn")
+            .onclick=
+            loadDrafts;
+
+        $("loadHistoryBtn")
+            .onclick=
+            loadHistory;
+
+        $("clearSessionBtn")
+            .onclick=
+            clearSession;
+
+        $("categoryHealthBtn")
+            .onclick=
+            categoryHealth;
+
+        $("savePlanBtn")
+            .onclick=
+            savePlan;
+
+        $("brokenScanBtn")
+            .onclick=
+            brokenScan;
+
+        $("opportunityBtn")
+            .onclick=
+            opportunities;
+
+        $("schemaInspectBtn")
+            .onclick=
+            schemaInspect;
+
+        $("schemaGenerateBtn")
+            .onclick=
+            schemaGenerate;
+
+        $("imageScanBtn")
+            .onclick=
+            imageScan;
+
+        $("sitemapCheckBtn")
+            .onclick=
+            sitemapCheck;
+
+        $("sitemapRebuildBtn")
+            .onclick=
+            sitemapRebuild;
+
+        $("robotsLoadBtn")
+            .onclick=
+            robotsLoad;
+
+        $("robotsValidateBtn")
+            .onclick=
+            robotsValidate;
+
+        $("robotsSaveBtn")
+            .onclick=
+            robotsSave;
+
+        $("repoBrowseBtn")
+            .onclick=
+            repoBrowse;
+
+        $("commitsBtn")
+            .onclick=
+            commits;
+
+        $("backupBtn")
+            .onclick=
+            backup;
+
+        $("restoreBtn")
+            .onclick=
+            restore;
+
+        $("healthBtn")
+            .onclick=
+            health;
+
+        $("monitorBtn")
+            .onclick=
+            monitor;
+
+        $("random404Btn")
+            .onclick=
+            random404;
+
+        $("historyAuditBtn")
+            .onclick=
+            auditHistory;
+
+        $("perfBtn")
+            .onclick=
+            perf;
+
+        $("safetyCenterBtn")
+            .onclick=
+            safetyCenter;
+
+        $("openWebsiteBtn")
+            .onclick=
+            openWebsite;
+
+        $("openGithubBtn")
+            .onclick=
+            openGitHub;
+
+        $("openWorkerBtn")
+            .onclick=
+            openWorker;
+
+        $("openSitemapBtn")
+            .onclick=
+            openSitemap;
+
+    }
+);
 
 </script>
 
 </body>
-</html>
+    </html>
