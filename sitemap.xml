@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<urlset
-    xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
     <!-- Homepage -->
 
@@ -67,6 +65,10 @@
         <loc>https://learnbtyehq.github.io/posts/scholarships-after-class-12.html</loc>
     </url>
 
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/best-courses-after-12th-pcm-without-jee.html</loc>
+    </url>
+
 
     <!-- Technology Articles -->
 
@@ -82,6 +84,14 @@
         <loc>https://learnbtyehq.github.io/posts/what-is-software.html</loc>
     </url>
 
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/practical-technology-tools.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/technology-for-productivity.html</loc>
+    </url>
+
 
     <!-- SEO Articles -->
 
@@ -95,6 +105,10 @@
 
     <url>
         <loc>https://learnbtyehq.github.io/posts/how-to-get-website-indexed-by-google.html</loc>
+    </url>
+
+    <url>
+        <loc>https://learnbtyehq.github.io/posts/what-is-seo.html</loc>
     </url>
 
 
@@ -113,6 +127,4 @@
     </url>
 
 
-
-    
 </urlset>
