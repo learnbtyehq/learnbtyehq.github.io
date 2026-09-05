@@ -179,7 +179,24 @@ img {
     text-shadow:
         0 0 18px rgba(0, 229, 255, 0.3);
 }
+.logo-image {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+}
 
+.logo-image img {
+    display: block;
+    width: 145px;
+    height: auto;
+    max-height: 55px;
+    object-fit: contain;
+}
+
+.logo-image:hover {
+    transform: translateY(-2px);
+    filter: drop-shadow(0 0 12px rgba(0, 229, 255, 0.3));
+}
 .nav-menu {
     display: flex;
     align-items: center;
